@@ -18,6 +18,7 @@
         <a href="/names/girl">Girl Names</a>
         <a href="/names/unisex">Unisex Names</a>
         <a href="/name-pages.html">Name Pages</a>
+        <a href="#saved-names-section" id="nav-saved-names">📄 Saved Names<span id="nav-saved-count" class="saved-count" aria-hidden="true"></span></a>
       </nav>
     </div>
   </header>
@@ -39,6 +40,135 @@
             <button type="submit" class="btn btn--primary btn--block">Look up name</button>
           </form>
         </div>
+
+        <section id="trending-section" class="trending-section" aria-labelledby="trending-heading">
+          <div class="card trending-card">
+            <h2 id="trending-heading" class="trending-card__title">Trending near you</h2>
+            <p id="trending-subtitle" class="trending-card__subtitle" aria-live="polite">Trending names in <span id="trending-country">USA</span></p>
+            <ul id="trending-list" class="trending-list" aria-label="Trending names"></ul>
+            <p class="trending-note">Based on your browser language. <a href="/names">Browse all names</a></p>
+          </div>
+        </section>
+
+        <section id="quiz-section" class="quiz-card-wrapper" aria-labelledby="quiz-heading">
+          <div class="card quiz-card">
+            <h2 id="quiz-heading" class="quiz-card__title">Discover your naming style</h2>
+            <p class="quiz-card__intro">A quick 5-question quiz to find names that match your taste.</p>
+
+            <div id="quiz-start" class="quiz-start">
+              <button type="button" id="quiz-start-btn" class="btn btn--accent">Start the quiz</button>
+            </div>
+
+            <div id="quiz-questions" class="quiz-questions" hidden>
+              <div class="quiz-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" aria-label="Quiz progress">
+                <span class="quiz-progress__bar" id="quiz-progress-bar"></span>
+                <span class="quiz-progress__text" id="quiz-progress-text">Question 1 of 5</span>
+              </div>
+              <div id="quiz-step" class="quiz-step">
+                <h3 id="quiz-question-title" class="quiz-step__title"></h3>
+                <div id="quiz-choices" class="quiz-choices" role="group" aria-labelledby="quiz-question-title"></div>
+                <div class="quiz-step__nav">
+                  <button type="button" id="quiz-back" class="btn btn--outline quiz-step__back" hidden>Back</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="quiz-result" class="quiz-result" hidden>
+              <p class="quiz-result__label">Your naming style</p>
+              <h3 id="quiz-style-tag" class="quiz-result__style-tag"></h3>
+              <p id="quiz-style-desc" class="quiz-result__description"></p>
+              <div id="quiz-matching-names" class="quiz-result__names"></div>
+              <a id="quiz-cta" href="/names" class="btn btn--primary quiz-result__cta">Explore full style collection</a>
+              <p class="quiz-result__retake">
+                <button type="button" id="quiz-retake" class="quiz-retake-btn">Retake quiz</button>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="swipe-section" class="swipe-section" aria-labelledby="swipe-heading">
+          <div class="card swipe-card">
+            <h2 id="swipe-heading" class="swipe-card__title">Discover names</h2>
+            <p class="swipe-card__intro">Swipe or tap to like, skip, or save favorites. Your favorites are stored on this device.</p>
+
+            <div id="swipe-deck" class="swipe-deck" hidden>
+              <div id="swipe-card-inner" class="swipe-card-inner" role="region" aria-live="polite">
+                <div class="swipe-card__name" id="swipe-name"></div>
+                <div id="swipe-badges" class="origin-badges" aria-label="Cultural origin"></div>
+                <p class="swipe-card__meta" id="swipe-meta"></p>
+                <p class="swipe-card__meaning" id="swipe-meaning"></p>
+              </div>
+              <div class="swipe-actions" role="group" aria-label="Name actions">
+                <button type="button" id="swipe-skip" class="swipe-btn swipe-btn--skip" aria-label="Skip">👎 Skip</button>
+                <button type="button" id="swipe-like" class="swipe-btn swipe-btn--like" aria-label="Like">❤️ Like</button>
+                <button type="button" id="swipe-save" class="swipe-btn swipe-btn--save" aria-label="Save to favorites">⭐ Save</button>
+              </div>
+              <p class="swipe-counter" id="swipe-counter" aria-live="polite"></p>
+            </div>
+
+            <div id="swipe-start" class="swipe-start">
+              <button type="button" id="swipe-start-btn" class="btn btn--primary">Start discovering</button>
+              <p id="swipe-view-faves" class="swipe-view-faves" hidden><a href="#" id="swipe-view-faves-link">View your favorites (<span id="swipe-faves-count">0</span>)</a></p>
+            </div>
+
+            <div id="swipe-empty" class="swipe-empty" hidden>
+              <p>You’ve seen all names in this round. Shuffle again or check your shortlist.</p>
+              <button type="button" id="swipe-again" class="btn btn--outline">Shuffle & try again</button>
+            </div>
+
+            <div id="swipe-shortlist" class="swipe-shortlist" hidden>
+              <h3 class="swipe-shortlist__title">Your shortlist</h3>
+              <ul id="swipe-shortlist-likes" class="swipe-shortlist__list" aria-label="Names you liked"></ul>
+              <h3 class="swipe-shortlist__title">Your favorites</h3>
+              <ul id="swipe-shortlist-faves" class="swipe-shortlist__list" aria-label="Saved names"></ul>
+              <p class="swipe-shortlist__empty" id="swipe-faves-empty">No favorites yet. Tap ★ Save on a name to add it.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="phonetic-section" class="phonetic-section" aria-labelledby="phonetic-heading">
+          <div class="card phonetic-card">
+            <h2 id="phonetic-heading" class="phonetic-card__title">Phonetic compatibility</h2>
+            <p class="phonetic-card__intro">See how a first and last name flow together. Rule-based scoring — no AI.</p>
+            <form id="phonetic-form" class="phonetic-form">
+              <div class="form-group">
+                <label for="phonetic-first">First name</label>
+                <input type="text" id="phonetic-first" name="first" placeholder="e.g. Olivia" autocomplete="off">
+              </div>
+              <div class="form-group">
+                <label for="phonetic-last">Last name</label>
+                <input type="text" id="phonetic-last" name="last" placeholder="e.g. Smith" autocomplete="off" required>
+              </div>
+              <button type="submit" class="btn btn--primary btn--block">Analyze</button>
+            </form>
+            <div id="phonetic-result" class="phonetic-result" hidden>
+              <p class="phonetic-result__names" id="phonetic-result-names"></p>
+              <div class="phonetic-score-wrap" aria-live="polite">
+                <span class="phonetic-score-label">Flows naturally</span>
+                <div class="phonetic-score-value" id="phonetic-score-value">—</div>
+                <p class="phonetic-score-desc" id="phonetic-score-desc"></p>
+              </div>
+              <div class="phonetic-bars" role="img" aria-label="Compatibility breakdown">
+                <div class="phonetic-bar-row">
+                  <span class="phonetic-bar-label">Length harmony</span>
+                  <div class="phonetic-bar-track"><div class="phonetic-bar-fill" id="phonetic-bar-length" style="width: 0%"></div></div>
+                  <span class="phonetic-bar-num" id="phonetic-num-length" aria-hidden="true">0</span>
+                </div>
+                <div class="phonetic-bar-row">
+                  <span class="phonetic-bar-label">Sound rhythm</span>
+                  <div class="phonetic-bar-track"><div class="phonetic-bar-fill" id="phonetic-bar-rhythm" style="width: 0%"></div></div>
+                  <span class="phonetic-bar-num" id="phonetic-num-rhythm" aria-hidden="true">0</span>
+                </div>
+                <div class="phonetic-bar-row">
+                  <span class="phonetic-bar-label">Ending match</span>
+                  <div class="phonetic-bar-track"><div class="phonetic-bar-fill" id="phonetic-bar-ending" style="width: 0%"></div></div>
+                  <span class="phonetic-bar-num" id="phonetic-num-ending" aria-hidden="true">0</span>
+                </div>
+              </div>
+              <p class="phonetic-meta" id="phonetic-meta"></p>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -47,9 +177,36 @@
         <h2 id="results-heading" class="section-heading">Result</h2>
         <div id="result-card" class="card result-card card--soft">
           <h3 id="result-name" class="result-card__name"></h3>
+          <div id="result-badges" class="origin-badges" aria-label="Cultural origin"></div>
           <p id="result-meta" class="result-card__meta"></p>
           <p id="result-meaning" class="result-card__meaning"></p>
+          <div id="result-more-wrap" class="name-card name-card--inline" hidden>
+            <button type="button" id="result-more-trigger" class="name-card__trigger" aria-expanded="false" aria-controls="result-more-panel">More: popularity &amp; similar names</button>
+            <div id="result-more-panel" class="name-card__panel" role="region">
+              <div class="name-card__panel-inner">
+                <div id="result-more-content" class="name-card__panel-content"></div>
+              </div>
+            </div>
+          </div>
+          <div class="result-card__actions">
+            <button type="button" id="result-save-btn" class="btn result-save-btn" aria-pressed="false" aria-label="Save name to your list">❤️ Save</button>
+          </div>
           <ul id="result-links" class="result-card__list" aria-label="Related names and pages"></ul>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true">
+
+      <section id="saved-names-section" class="section section--tight saved-names-section" aria-labelledby="saved-names-heading">
+        <h2 id="saved-names-heading" class="section-heading">Your saved names</h2>
+        <p class="saved-names-intro">Names you’ve saved appear here. No account needed — stored on this device.</p>
+        <div id="saved-names-list-wrap" class="card saved-names-card">
+          <ul id="saved-names-list" class="saved-names-list" aria-label="Saved names"></ul>
+          <p id="saved-names-empty" class="saved-names-empty">No names saved yet. Use ❤️ Save on a name or in Discover names to add some.</p>
+          <div class="saved-names-actions">
+            <button type="button" id="saved-download-pdf" class="btn btn--outline" disabled aria-describedby="pdf-coming">⬇ Download PDF</button>
+            <span id="pdf-coming" class="saved-pdf-note">(Coming in a later update)</span>
+          </div>
         </div>
       </section>
 
@@ -142,6 +299,8 @@
     </div>
   </footer>
 
+  <script src="js/core.js"></script>
+  <script src="js/accordion.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

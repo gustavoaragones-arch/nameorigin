@@ -1,0 +1,7 @@
+name = "nameorigin"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nameorigin-db"
+database_id = "61632d0d-f605-484d-9af9-ab3ff04da775"

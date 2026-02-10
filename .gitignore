@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Env and secrets
+.env
+.env.*
+
+# Generated seed (large; regenerate with node scripts/seed-d1.js)
+seed-d1.sql
+
+# Raw downloads and extracted data (regenerate with import scripts)
+data/raw/*.zip
+data/raw/ssa/
+raw-data/ssa/names.zip
+raw-data/ssa/yob*.txt
+raw-data/canada/*.zip
+raw-data/canada/*.csv
+raw-data/canada/17100147*
+
+# OS and editor
+.DS_Store
+*.swp
+*.swo

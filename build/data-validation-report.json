@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-02-10T03:37:38.020Z",
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "warnings": 2
+  },
+  "checks": {
+    "names_loaded": true,
+    "duplicate_names": {
+      "passed": true,
+      "count": 0,
+      "samples": [],
+      "all_ids": []
+    },
+    "missing_meanings": {
+      "passed": false,
+      "count": 3694,
+      "pct": "99.9%",
+      "sample_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    "missing_gender": {
+      "passed": true,
+      "count": 0,
+      "sample_ids": []
+    },
+    "missing_origin": {
+      "passed": false,
+      "count": 3694,
+      "pct": "99.9%",
+      "sample_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    "empty_popularity_data": {
+      "passed": true,
+      "popularity_row_count": 197457,
+      "names_with_no_popularity": 0,
+      "sample_ids_no_pop": []
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Missing meaning: 3694 names (99.9%)",
+    "Missing origin (country+language): 3694 names (99.9%)"
+  ]
+}

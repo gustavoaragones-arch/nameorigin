@@ -74,6 +74,33 @@ function personJsonLd(nameRecord) {
   };
 }
 
+const ORIGIN_BADGES = {
+  ireland: { flag: '🇮🇪', label: 'Irish', hint: 'Irish and Celtic origins; common in Ireland and the diaspora.' },
+  italy: { flag: '🇮🇹', label: 'Italian', hint: 'From Latin and Italian tradition; used across Romance-language cultures.' },
+  india: { flag: '🇮🇳', label: 'Sanskrit', hint: 'Sanskrit and Indian origins; classical and modern usage.' },
+  germany: { flag: '🇩🇪', label: 'German', hint: 'Germanic roots; widespread in German-speaking and European naming.' },
+  hebrew: { flag: '🇮🇱', label: 'Hebrew', hint: 'Hebrew and biblical tradition; used in Jewish and broader contexts.' },
+  latin: { flag: '🇮🇹', label: 'Latin', hint: 'Latin origin; classical and Romance-language naming.' },
+  sanskrit: { flag: '🇮🇳', label: 'Sanskrit', hint: 'Sanskrit origin; traditional and contemporary Indian names.' },
+  german: { flag: '🇩🇪', label: 'German', hint: 'Germanic origin; common in German and European naming.' },
+  irish: { flag: '🇮🇪', label: 'Irish', hint: 'Irish and Celtic origins; popular in Ireland and abroad.' },
+  french: { flag: '🇫🇷', label: 'French', hint: 'French tradition; used in France and Francophone regions.' },
+  english: { flag: '🇬🇧', label: 'English', hint: 'English-speaking usage; often from Old English or adopted from other languages.' },
+};
+
+function getOriginBadge(record) {
+  if (!record) return null;
+  const country = (record.origin_country || '').toLowerCase().replace(/\s+/g, '');
+  const lang = (record.language || '').toLowerCase().replace(/\s+/g, '');
+  return ORIGIN_BADGES[country] || ORIGIN_BADGES[lang] || null;
+}
+
+function originBadgeHtml(record) {
+  const badge = getOriginBadge(record);
+  if (!badge) return '';
+  return `<div class="origin-badges" aria-label="Cultural origin"><span class="origin-badge" title="${htmlEscape(badge.hint)}">${badge.flag} ${htmlEscape(badge.label)}</span></div>`;
+}
+
 function baseLayout(opts) {
   const title = opts.title || 'Name Origin';
   const description = opts.description || 'Discover the meaning and origin of first names.';
@@ -167,6 +194,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
 
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
+    ${originBadgeHtml(record)}
     <p><strong>Meaning:</strong> ${htmlEscape(record.meaning || '—')}</p>
     <p><strong>Origin:</strong> ${htmlEscape(record.origin_country || '—')} · ${htmlEscape(record.language || '—')}</p>
     <p><strong>Gender:</strong> ${htmlEscape(record.gender || '—')}</p>
