@@ -1,10 +1,104 @@
-<!-- Phase 2: Name detail page main content. Placeholders: {{NAME}}, {{ORIGIN_BADGE}}, {{MEANING}}, {{ORIGIN}}, {{GENDER}}, {{PHONETIC}}, {{POPULARITY_HTML}}, {{RELATED_LINKS_HTML}} -->
-<h1>{{NAME}}</h1>
-{{ORIGIN_BADGE}}
-<p><strong>Meaning:</strong> {{MEANING}}</p>
-<p><strong>Origin:</strong> {{ORIGIN}}</p>
-<p><strong>Gender:</strong> {{GENDER}}</p>
-{{PHONETIC}}
-<section aria-labelledby="popularity-heading">{{POPULARITY_HTML}}</section>
-<h2 id="related-heading">Related names</h2>
-<p>{{RELATED_LINKS_HTML}}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{PAGE_TITLE}}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+
+  <!-- Breadcrumb schema (JSON-LD) -->
+  <script type="application/ld+json">{{BREADCRUMB_SCHEMA}}</script>
+
+  <!-- Name / Person structured data -->
+  <script type="application/ld+json">{{NAME_STRUCTURED_DATA}}</script>
+
+  <!-- FAQ schema (optional; populate from name FAQs) -->
+  <script type="application/ld+json">{{FAQ_SCHEMA}}</script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo">nameorigin.io</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/names">Names</a>
+        <a href="/names/boy">Boy</a>
+        <a href="/names/girl">Girl</a>
+        <a href="/names/unisex">Unisex</a>
+        <a href="/names/letters">A–Z</a>
+        <a href="/names/style">Style</a>
+        <a href="/names/with-last-name">Last name</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <!-- Breadcrumbs (visible) -->
+    <nav aria-label="Breadcrumb" class="breadcrumb">{{BREADCRUMB_HTML}}</nav>
+
+    <article>
+      <h1>{{NAME}}</h1>
+      {{ORIGIN_BADGE}}
+
+      <!-- Expandable: Meaning & origin -->
+      <details class="expandable-panel" open>
+        <summary>Meaning &amp; origin</summary>
+        <p><strong>Meaning:</strong> {{MEANING}}</p>
+        <p><strong>Origin:</strong> {{ORIGIN}}</p>
+        <p><strong>Gender:</strong> {{GENDER}}</p>
+        {{PHONETIC_HTML}}
+      </details>
+
+      <!-- Expandable: Popularity -->
+      <details class="expandable-panel">
+        <summary>Popularity</summary>
+        {{POPULARITY_HTML}}
+      </details>
+
+      <!-- Expandable: Variants -->
+      <details class="expandable-panel">
+        <summary>Variants</summary>
+        {{VARIANTS_HTML}}
+      </details>
+
+      <!-- Expandable: Style & tags -->
+      <details class="expandable-panel">
+        <summary>Style &amp; tags</summary>
+        {{STYLE_TAGS_HTML}}
+      </details>
+
+      <!-- Expandable: Last name compatibility -->
+      <details class="expandable-panel">
+        <summary>Last name compatibility</summary>
+        {{COMPATIBILITY_TIPS_HTML}}
+      </details>
+
+      <!-- Internal link module (15–25 links: core + contextual + related) -->
+      <section class="internal-link-module" aria-labelledby="explore-heading">
+        <h2 id="explore-heading">Explore more</h2>
+        <p class="core-links">{{CORE_LINKS_HTML}}</p>
+        <p class="contextual-links">{{CONTEXTUAL_LINKS_HTML}}</p>
+      </section>
+
+      <!-- Similar names you may like -->
+      <section aria-labelledby="similar-heading">
+        <h2 id="similar-heading">Similar names you may like</h2>
+        {{SIMILAR_NAMES_HTML}}
+      </section>
+
+      <!-- Related / full internal link list -->
+      <section aria-labelledby="related-heading">
+        <h2 id="related-heading">Related names &amp; explore</h2>
+        <p class="internal-links">{{RELATED_LINKS_HTML}}</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins.</p>
+    </div>
+  </footer>
+</body>
+</html>

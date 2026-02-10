@@ -1177,3 +1177,63 @@ button, input, select, textarea {
 @media (min-width: 768px) {
   .section-heading { font-size: var(--text-3xl); }
 }
+
+/* Name page: popularity chart, style tags, internal links */
+.popularity-chart {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  margin-top: var(--space-2);
+}
+.popularity-chart th,
+.popularity-chart td {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+.popularity-chart th { font-weight: var(--weight-semibold); color: var(--color-text-muted); }
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-2);
+  margin-right: var(--space-2);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 4px;
+}
+.variant-lang { color: var(--color-text-muted); font-size: var(--text-sm); }
+.internal-links a { margin-right: var(--space-2); }
+.local-culture { font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-4); }
+.name-links a { margin-right: var(--space-2); }
+
+/* Template: expandable panels (details/summary) */
+.expandable-panel {
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.expandable-panel summary {
+  padding: var(--space-3) var(--space-4);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  background: var(--color-neutral-bg);
+  list-style: none;
+}
+.expandable-panel summary::-webkit-details-marker { display: none; }
+.expandable-panel summary::before { content: "▸ "; }
+.expandable-panel[open] summary::before { content: "▾ "; }
+.expandable-panel > *:not(summary) { padding: 0 var(--space-4) var(--space-4); }
+
+/* Template: results grid (filter pages) */
+.results-grid-list { display: grid; gap: var(--space-2); }
+@media (min-width: 640px) {
+  .results-grid-list { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+}
+.core-links a { margin-right: var(--space-2); }
+.letters-hub a { margin-right: var(--space-2); }
+.hub-list { list-style: none; padding-left: 0; }
+.hub-list li { margin-bottom: var(--space-2); }
+.internal-link-module .contextual-links a { margin-right: var(--space-2); }

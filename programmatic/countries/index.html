@@ -26,22 +26,111 @@
   </header>
   <main class="container section">
     <nav aria-label="Breadcrumb" class="breadcrumb"><a href="https://nameorigin.io/">Home</a> / <span aria-current="page">Countries</span></nav>
-    <!-- Phase 2: Hub index page. Placeholders: Names by country, First names by country of origin., <li><a href="/programmatic/countries/united-states/">United States</a></li>
-<li><a href="/programmatic/countries/canada/">Canada</a></li>
-<li><a href="/programmatic/countries/india/">India</a></li>
-<li><a href="/programmatic/countries/france/">France</a></li>
-<li><a href="/programmatic/countries/ireland/">Ireland</a></li> -->
-<h1>Names by country</h1>
-<p>First names by country of origin.</p>
-<nav aria-label="Hub links">
-  <ul class="hub-links">
-    <li><a href="/programmatic/countries/united-states/">United States</a></li>
-<li><a href="/programmatic/countries/canada/">Canada</a></li>
-<li><a href="/programmatic/countries/india/">India</a></li>
-<li><a href="/programmatic/countries/france/">France</a></li>
-<li><a href="/programmatic/countries/ireland/">Ireland</a></li>
-  </ul>
-</nav>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{PAGE_TITLE}}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <script type="application/ld+json">{{BREADCRUMB_SCHEMA}}</script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo">nameorigin.io</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/names">Names</a>
+        <a href="/names/boy">Boy</a>
+        <a href="/names/girl">Girl</a>
+        <a href="/names/unisex">Unisex</a>
+        <a href="/names/letters">A–Z</a>
+        <a href="/names/style">Style</a>
+        <a href="/names/with-last-name">Last name</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <nav aria-label="Breadcrumb" class="breadcrumb">{{BREADCRUMB_HTML}}</nav>
+
+    <h1>{{HUB_TITLE}}</h1>
+    <p class="intro-text">{{INTRO_TEXT}}</p>
+
+    <!-- All related generated pages (sections by type) -->
+    <section class="hub-related-pages" aria-labelledby="related-pages-heading">
+      <h2 id="related-pages-heading">All related pages</h2>
+
+      <h3 id="name-lists-heading">Name lists</h3>
+      <ul class="hub-list">
+        {{NAME_LISTS_HTML}}
+      </ul>
+
+      <!-- Country index -->
+      <h3 id="country-index-heading">Country index</h3>
+      <ul class="hub-list country-index">
+        {{COUNTRY_INDEX_HTML}}
+      </ul>
+
+      <!-- Gender × country (optional) -->
+      <h3 id="gender-country-heading">Gender + country</h3>
+      <ul class="hub-list">
+        {{GENDER_COUNTRY_HTML}}
+      </ul>
+
+      <h3 id="style-index-heading">Style index</h3>
+      <ul class="hub-list">
+        {{STYLE_INDEX_HTML}}
+      </ul>
+
+      <h3 id="last-name-index-heading">Last name compatibility</h3>
+      <ul class="hub-list">
+        {{LAST_NAME_INDEX_HTML}}
+      </ul>
+    </section>
+
+    <!-- Alphabet index (A–Z) -->
+    <section class="hub-alphabet-index" aria-labelledby="alphabet-heading">
+      <h2 id="alphabet-heading">Alphabet index</h2>
+      <p class="letters-hub">{{ALPHABET_INDEX_HTML}}</p>
+    </section>
+
+    <!-- Country index (duplicate heading for clarity; can merge with above) -->
+    <section class="hub-country-index" aria-labelledby="countries-heading">
+      <h2 id="countries-heading">Country index</h2>
+      <ul class="hub-list">
+        {{COUNTRY_INDEX_HTML}}
+      </ul>
+    </section>
+
+    <!-- Authority hub links -->
+    <section class="hub-authority-links" aria-labelledby="authority-heading">
+      <h2 id="authority-heading">Hub pages</h2>
+      <ul class="hub-list">
+        <li><a href="/all-name-pages.html">All name pages</a></li>
+        <li><a href="/country-name-pages.html">Country name pages</a></li>
+        <li><a href="/style-name-pages.html">Style name pages</a></li>
+        <li><a href="/last-name-pages.html">Last name pages</a></li>
+        <li><a href="/alphabet-name-pages.html">Alphabet name pages</a></li>
+      </ul>
+    </section>
+
+    <!-- Explore / core links -->
+    <section aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Explore</h2>
+      <p class="core-links">{{CORE_LINKS_HTML}}</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins.</p>
+    </div>
+  </footer>
+</body>
+</html>
 
   </main>
   <footer class="site-footer" role="contentinfo">

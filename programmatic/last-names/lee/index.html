@@ -26,22 +26,87 @@
   </header>
   <main class="container section">
     <nav aria-label="Breadcrumb" class="breadcrumb"><a href="https://nameorigin.io/">Home</a> / <a href="https://nameorigin.io/programmatic/last-names/">Last names</a> / <span aria-current="page">Lee</span></nav>
-    <!-- Phase 2: Last-name compatibility page. Placeholders: Lee, First names that pair well with the last name Lee. Browse by meaning and origin., <li><a href="/programmatic/names/liam/">Liam</a></li>
-<li><a href="/programmatic/names/olivia/">Olivia</a></li>
-<li><a href="/programmatic/names/aarav/">Aarav</a></li>
-<li><a href="/programmatic/names/emma/">Emma</a></li>
-<li><a href="/programmatic/names/noah/">Noah</a></li> -->
-<h1>Names that go with Lee</h1>
-<p>First names that pair well with the last name Lee. Browse by meaning and origin.</p>
-<nav aria-label="Suggested first names">
-  <ul class="name-list">
-    <li><a href="/programmatic/names/liam/">Liam</a></li>
-<li><a href="/programmatic/names/olivia/">Olivia</a></li>
-<li><a href="/programmatic/names/aarav/">Aarav</a></li>
-<li><a href="/programmatic/names/emma/">Emma</a></li>
-<li><a href="/programmatic/names/noah/">Noah</a></li>
-  </ul>
-</nav>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{PAGE_TITLE}}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <script type="application/ld+json">{{BREADCRUMB_SCHEMA}}</script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo">nameorigin.io</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/names">Names</a>
+        <a href="/names/boy">Boy</a>
+        <a href="/names/girl">Girl</a>
+        <a href="/names/unisex">Unisex</a>
+        <a href="/names/letters">A–Z</a>
+        <a href="/names/style">Style</a>
+        <a href="/names/with-last-name">Last name</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <nav aria-label="Breadcrumb" class="breadcrumb">{{BREADCRUMB_HTML}}</nav>
+
+    <h1>First names that go with Lee</h1>
+    <p class="intro-text">{{INTRO_TEXT}}</p>
+
+    <!-- Compatibility logic (vowel/consonant, syllables, length) -->
+    <section class="compatibility-logic" aria-labelledby="compatibility-heading">
+      <h2 id="compatibility-heading">Compatibility logic</h2>
+      <p>{{COMPATIBILITY_LOGIC_HTML}}</p>
+      <ul>
+        <li>First name ending in vowel + last name starting with consonant → good flow.</li>
+        <li>First name ending in consonant + last name starting with vowel → good flow.</li>
+        <li>Similar syllable count between first and last name → balanced sound.</li>
+        <li>Avoid same consonant at the boundary (e.g. “Matt Thompson”).</li>
+      </ul>
+    </section>
+
+    <!-- Phonetic explanation (specific to this surname) -->
+    <section class="phonetic-explanation" aria-labelledby="phonetic-heading">
+      <h2 id="phonetic-heading">Phonetic tips for Lee</h2>
+      {{PHONETIC_EXPLANATION_HTML}}
+    </section>
+
+    <!-- Cultural matching -->
+    <section class="cultural-matching" aria-labelledby="cultural-heading">
+      <h2 id="cultural-heading">Cultural matching</h2>
+      {{CULTURAL_MATCHING_HTML}}
+    </section>
+
+    <!-- Compatible names list -->
+    <section class="compatible-names" aria-labelledby="names-heading">
+      <h2 id="names-heading">Compatible first names</h2>
+      <ul class="name-list">
+        {{COMPATIBLE_NAMES_HTML}}
+      </ul>
+    </section>
+
+    <!-- Internal link clusters (hub + related pages) -->
+    <section class="internal-link-clusters" aria-labelledby="clusters-heading">
+      <h2 id="clusters-heading">Explore</h2>
+      <p class="cluster hub">{{HUB_LINKS_HTML}}</p>
+      <p class="cluster filters">{{FILTER_LINKS_HTML}}</p>
+      <p class="core-links">{{CORE_LINKS_HTML}}</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins.</p>
+    </div>
+  </footer>
+</body>
+</html>
 
   </main>
   <footer class="site-footer" role="contentinfo">

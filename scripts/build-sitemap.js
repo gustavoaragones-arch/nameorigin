@@ -1,26 +1,48 @@
 #!/usr/bin/env node
 /**
- * Phase 2 — Build sitemap.xml from programmatic/ output and static routes.
- * Safe canonical structure: one URL per page, trailing slashes for directories.
+ * build-sitemap.js
+ * Generates:
+ *   /sitemap.xml          — Sitemap index (references the 4 sitemaps below)
+ *   /sitemaps/names.xml   — All /name/{slug} URLs
+ *   /sitemaps/countries.xml — Country pages + gender+country
+ *   /sitemaps/filters.xml — /names, gender, style, letters, trending, popular, hub pages
+ *   /sitemaps/lastname.xml — Last name compatibility pages
+ *
+ * Uses same OUT_DIR and SITE_URL as generate-programmatic-pages.js.
  */
 
 const fs = require('fs');
 const path = require('path');
-const lib = require('./lib.js');
 
-const { ROOT, PROGRAMMATIC_DIR, SITE_URL } = lib;
+const ROOT = path.join(__dirname, '..');
+const DATA_DIR = path.join(ROOT, 'data');
+const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
+const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 
-const SKIP_DIRS = new Set(['data', 'scripts', 'node_modules', '.git', 'js', 'templates']);
-const STATIC_URLS = [
-  '/',
-  '/name-pages.html',
-  '/country-name-pages.html',
-  '/boy-name-pages.html',
-  '/girl-name-pages.html',
-  '/last-name-pages.html',
-  '/legal/privacy.html',
-  '/legal/terms.html',
+const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const STYLE_CONFIG = [
+  { slug: 'nature' },
+  { slug: 'classic' },
+  { slug: 'modern' },
+  { slug: 'rare' },
+  { slug: 'biblical' },
+  { slug: 'popular' },
+  { slug: 'traditional' },
 ];
+const COUNTRY_SLUG_MAP = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france', IRL: 'ireland' };
+
+function loadJson(name) {
+  const p = path.join(DATA_DIR, name + '.json');
+  if (!fs.existsSync(p)) return [];
+  return JSON.parse(fs.readFileSync(p, 'utf8'));
+}
+
+function slug(str) {
+  return String(str || '')
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}
 
 function escapeXml(s) {
   if (!s) return '';
@@ -32,51 +54,93 @@ function escapeXml(s) {
     .replace(/'/g, '&apos;');
 }
 
-function collectUrls(dir, basePath) {
-  let urls = [];
-  if (!fs.existsSync(dir)) return urls;
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
-    if (SKIP_DIRS.has(e.name)) continue;
-    const full = path.join(dir, e.name);
-    const rel = path.join(basePath, e.name).replace(/\\/g, '/');
-    if (e.isDirectory()) {
-      urls = urls.concat(collectUrls(full, rel));
-    } else if (e.name.endsWith('.html')) {
-      const urlPath = rel.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
-      urls.push(urlPath ? (urlPath.startsWith('/') ? urlPath : '/' + urlPath) : '/');
-    }
-  }
-  return urls;
+function urlEntry(loc, priority = '0.8', changefreq = 'weekly') {
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const fullLoc = loc.startsWith('http') ? loc : SITE_URL + (loc.startsWith('/') ? loc : '/' + loc);
+  return `  <url>\n    <loc>${escapeXml(fullLoc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
-function run() {
-  const programmaticUrls = collectUrls(PROGRAMMATIC_DIR, '/programmatic');
-  const allUrls = [...STATIC_URLS, ...programmaticUrls.map((u) => (u.startsWith('/') ? u : '/' + u))];
-  const seen = new Set();
-  const uniqueUrls = allUrls.filter((u) => {
-    const n = u.endsWith('/') ? u : (u === '/' ? u : u + '/');
-    if (seen.has(n)) return false;
-    seen.add(n);
-    return true;
-  });
-
-  const lastmod = new Date().toISOString().slice(0, 10);
-  const entries = uniqueUrls.map((u) => {
-    const isRoot = u === '/';
-    const isHtml = u.endsWith('.html') || u.includes('.html');
-    const loc = isRoot ? SITE_URL + '/' : isHtml ? SITE_URL + u : SITE_URL + (u.endsWith('/') ? u : u + '/');
-    const priority = u === '/' ? '1.0' : u.startsWith('/programmatic/') ? '0.8' : '0.7';
-    return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
-  });
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+function writeUrlset(filePath, urls, priority = '0.8') {
+  const entries = urls.map((loc) => urlEntry(loc, priority));
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries.join('\n')}
 </urlset>`;
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, xml, 'utf8');
+  return urls.length;
+}
 
-  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap, 'utf8');
-  console.log('Written sitemap.xml with', uniqueUrls.length, 'URLs');
+function run() {
+  const names = loadJson('names');
+  const countries = loadJson('countries');
+  const lastNames = loadJson('last-names');
+
+  const sitemapsDir = path.join(OUT_DIR, 'sitemaps');
+  if (!fs.existsSync(sitemapsDir)) fs.mkdirSync(sitemapsDir, { recursive: true });
+
+  const lastmod = new Date().toISOString().slice(0, 10);
+
+  // --- /sitemaps/names.xml: all /name/{slug} ---
+  const nameUrls = names.map((n) => '/name/' + slug(n.name)).filter((u) => u.length > 1);
+  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9');
+  console.log('Written sitemaps/names.xml with', namesCount, 'URLs');
+
+  // --- /sitemaps/countries.xml: country pages + gender+country ---
+  const countryUrls = [];
+  countries.forEach((c) => {
+    const slugKey = (c.code && COUNTRY_SLUG_MAP[c.code]) || slug(c.name);
+    countryUrls.push('/names/' + slugKey);
+    ['boy', 'girl', 'unisex'].forEach((gender) => {
+      countryUrls.push('/names/' + gender + '/' + slugKey);
+    });
+  });
+  const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls);
+  console.log('Written sitemaps/countries.xml with', countriesCount, 'URLs');
+
+  // --- /sitemaps/filters.xml: homepage, names index, gender, style, letters, trending, popular, hub pages ---
+  const filterUrls = [
+    '/',
+    '/names',
+    '/names/boy',
+    '/names/girl',
+    '/names/unisex',
+    '/names/trending',
+    '/names/popular',
+    '/names/style',
+    '/names/letters',
+  ];
+  STYLE_CONFIG.forEach((s) => filterUrls.push('/names/style/' + s.slug));
+  LETTERS.forEach((l) => filterUrls.push('/names/' + l));
+  filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
+  const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls);
+  console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs');
+
+  // --- /sitemaps/lastname.xml: last name compatibility ---
+  const lastnameUrls = ['/names/with-last-name'];
+  lastNames.forEach((s) => {
+    const sslug = slug(s.name);
+    if (sslug) lastnameUrls.push('/names/with-last-name-' + sslug);
+  });
+  const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls);
+  console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs');
+
+  // --- /sitemap.xml: sitemap index ---
+  const indexEntries = [
+    ['names', 'sitemaps/names.xml'],
+    ['countries', 'sitemaps/countries.xml'],
+    ['filters', 'sitemaps/filters.xml'],
+    ['lastname', 'sitemaps/lastname.xml'],
+  ].map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
+
+  const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${indexEntries.join('\n')}
+</sitemapindex>`;
+
+  fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), indexXml, 'utf8');
+  console.log('Written sitemap.xml (index with 4 sitemaps)');
+  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount);
 }
 
 run();
