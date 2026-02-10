@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover the meaning and origin of first names. Curated name meanings, popularity, and origins from around the world.">
+  <title>Name Origin — Meaning &amp; Origin of First Names</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://nameorigin.io/">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo" aria-label="Name Origin home">nameorigin.io</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/names">Names</a>
+        <a href="/names/boy">Boy Names</a>
+        <a href="/names/girl">Girl Names</a>
+        <a href="/names/unisex">Unisex Names</a>
+        <a href="/name-pages.html">Name Pages</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section section--hero" aria-labelledby="hero-title">
+      <div class="container">
+        <h1 id="hero-title">Discover the meaning and origin of any name</h1>
+        <p class="hero__subtitle">Curated meanings and origins for first names from around the world. No AI-generated content — only verified, sourced name data.</p>
+        <div class="card form-card" style="max-width: 32rem; margin: 0 auto;">
+          <h2 class="card__title">Search a name</h2>
+          <p class="card__description">Enter a first name to see its meaning, origin, and popularity.</p>
+          <form id="name-search-form" action="/" method="get" role="search" aria-label="Search by name">
+            <div class="form-group">
+              <label for="name-query">First name</label>
+              <input type="search" id="name-query" name="q" placeholder="e.g. Liam, Olivia, Aarav" autocomplete="off" aria-describedby="search-hint">
+              <span id="search-hint" class="visually-hidden">Type a name and submit to see results.</span>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block">Look up name</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="results-section" class="section section--tight" aria-labelledby="results-heading" hidden>
+        <h2 id="results-heading" class="section-heading">Result</h2>
+        <div id="result-card" class="card result-card card--soft">
+          <h3 id="result-name" class="result-card__name"></h3>
+          <p id="result-meta" class="result-card__meta"></p>
+          <p id="result-meaning" class="result-card__meaning"></p>
+          <ul id="result-links" class="result-card__list" aria-label="Related names and pages"></ul>
+        </div>
+      </section>
+
+      <hr class="section-divider" aria-hidden="true">
+
+      <section class="section section--tight" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="section-heading">Frequently asked questions</h2>
+        <ul class="faq-list">
+          <li class="faq-item" data-open="false">
+            <button type="button" class="faq-item__trigger" aria-expanded="false" aria-controls="faq-1" id="faq-trigger-1">
+              Where does the name data come from?
+              <span class="faq-item__icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-1" class="faq-item__panel" role="region" aria-labelledby="faq-trigger-1">
+              <p class="faq-item__content">All meanings and origins are from a curated database. We do not use AI to generate name meanings — only verified, sourced information is included.</p>
+            </div>
+          </li>
+          <li class="faq-item" data-open="false">
+            <button type="button" class="faq-item__trigger" aria-expanded="false" aria-controls="faq-2" id="faq-trigger-2">
+              Can I search by country or language?
+              <span class="faq-item__icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-2" class="faq-item__panel" role="region" aria-labelledby="faq-trigger-2">
+              <p class="faq-item__content">Yes. You can browse names by gender (boy, girl, unisex), by country (e.g. Canada, USA, India, France), and by combined filters like boy names in Canada.</p>
+            </div>
+          </li>
+          <li class="faq-item" data-open="false">
+            <button type="button" class="faq-item__trigger" aria-expanded="false" aria-controls="faq-3" id="faq-trigger-3">
+              Do you have last name compatibility?
+              <span class="faq-item__icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-3" class="faq-item__panel" role="region" aria-labelledby="faq-trigger-3">
+              <p class="faq-item__content">We offer suggestions for names that pair well with common last names (e.g. Smith, Garcia, Nguyen). Use the last-name compatibility pages to explore options.</p>
+            </div>
+          </li>
+          <li class="faq-item" data-open="false">
+            <button type="button" class="faq-item__trigger" aria-expanded="false" aria-controls="faq-4" id="faq-trigger-4">
+              Is nameorigin.io free to use?
+              <span class="faq-item__icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-4" class="faq-item__panel" role="region" aria-labelledby="faq-trigger-4">
+              <p class="faq-item__content">Yes. Browsing names, meanings, origins, and popularity is free. We keep the site lightweight and fast with no paywalls.</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer__heading">Browse</h3>
+          <ul class="footer__links">
+            <li><a href="/names">All names</a></li>
+            <li><a href="/names/boy">Boy names</a></li>
+            <li><a href="/names/girl">Girl names</a></li>
+            <li><a href="/names/unisex">Unisex names</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">By country</h3>
+          <ul class="footer__links">
+            <li><a href="/names/usa">USA</a></li>
+            <li><a href="/names/canada">Canada</a></li>
+            <li><a href="/names/india">India</a></li>
+            <li><a href="/names/france">France</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Hubs</h3>
+          <ul class="footer__links">
+            <li><a href="/name-pages.html">Name pages</a></li>
+            <li><a href="/country-name-pages.html">Country name pages</a></li>
+            <li><a href="/last-name-pages.html">Last name compatibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__heading">Legal</h3>
+          <ul class="footer__links">
+            <li><a href="/legal/privacy.html">Privacy</a></li>
+            <li><a href="/legal/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="mb-0">© nameorigin.io — Curated name meanings and origins. No AI-generated content.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "Liam",
+    "gender": "boy",
+    "origin_country": "Ireland",
+    "language": "Irish",
+    "meaning": "Strong-willed warrior; helmet of will.",
+    "phonetic": "LEE-əm",
+    "syllables": 2,
+    "first_letter": "L",
+    "is_traditional": 1,
+    "is_modern": 0
+  },
+  {
+    "id": 2,
+    "name": "Olivia",
+    "gender": "girl",
+    "origin_country": "Italy",
+    "language": "Latin",
+    "meaning": "Olive tree; symbol of peace.",
+    "phonetic": "ə-LIV-ee-ə",
+    "syllables": 4,
+    "first_letter": "O",
+    "is_traditional": 1,
+    "is_modern": 0
+  },
+  {
+    "id": 3,
+    "name": "Aarav",
+    "gender": "boy",
+    "origin_country": "India",
+    "language": "Sanskrit",
+    "meaning": "Peaceful; wise.",
+    "phonetic": "AH-ruv",
+    "syllables": 2,
+    "first_letter": "A",
+    "is_traditional": 1,
+    "is_modern": 0
+  },
+  {
+    "id": 4,
+    "name": "Emma",
+    "gender": "girl",
+    "origin_country": "Germany",
+    "language": "German",
+    "meaning": "Universal; whole.",
+    "phonetic": "EM-ə",
+    "syllables": 2,
+    "first_letter": "E",
+    "is_traditional": 1,
+    "is_modern": 0
+  },
+  {
+    "id": 5,
+    "name": "Noah",
+    "gender": "boy",
+    "origin_country": "Hebrew",
+    "language": "Hebrew",
+    "meaning": "Rest; comfort.",
+    "phonetic": "NO-ə",
+    "syllables": 2,
+    "first_letter": "N",
+    "is_traditional": 1,
+    "is_modern": 0
+  }
+]
