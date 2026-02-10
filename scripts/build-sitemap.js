@@ -18,6 +18,8 @@ const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
+// Must match generate-programmatic-pages.js: static .html URLs for crawlable pages
+const EXT = '.html';
 
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const STYLE_CONFIG = [
@@ -81,18 +83,18 @@ function run() {
 
   const lastmod = new Date().toISOString().slice(0, 10);
 
-  // --- /sitemaps/names.xml: all /name/{slug} ---
-  const nameUrls = names.map((n) => '/name/' + slug(n.name)).filter((u) => u.length > 1);
+  // --- /sitemaps/names.xml: all /name/{slug}.html ---
+  const nameUrls = names.map((n) => '/name/' + slug(n.name) + EXT).filter((u) => u.length > 1);
   const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9');
   console.log('Written sitemaps/names.xml with', namesCount, 'URLs');
 
-  // --- /sitemaps/countries.xml: country pages + gender+country ---
+  // --- /sitemaps/countries.xml: country pages + gender+country (.html) ---
   const countryUrls = [];
   countries.forEach((c) => {
     const slugKey = (c.code && COUNTRY_SLUG_MAP[c.code]) || slug(c.name);
-    countryUrls.push('/names/' + slugKey);
+    countryUrls.push('/names/' + slugKey + EXT);
     ['boy', 'girl', 'unisex'].forEach((gender) => {
-      countryUrls.push('/names/' + gender + '/' + slugKey);
+      countryUrls.push('/names/' + gender + '/' + slugKey + EXT);
     });
   });
   const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls);
@@ -102,25 +104,25 @@ function run() {
   const filterUrls = [
     '/',
     '/names',
-    '/names/boy',
-    '/names/girl',
-    '/names/unisex',
-    '/names/trending',
-    '/names/popular',
-    '/names/style',
-    '/names/letters',
+    '/names/boy' + EXT,
+    '/names/girl' + EXT,
+    '/names/unisex' + EXT,
+    '/names/trending' + EXT,
+    '/names/popular' + EXT,
+    '/names/style' + EXT,
+    '/names/letters' + EXT,
   ];
-  STYLE_CONFIG.forEach((s) => filterUrls.push('/names/style/' + s.slug));
-  LETTERS.forEach((l) => filterUrls.push('/names/' + l));
+  STYLE_CONFIG.forEach((s) => filterUrls.push('/names/style/' + s.slug + EXT));
+  LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls);
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs');
 
   // --- /sitemaps/lastname.xml: last name compatibility ---
-  const lastnameUrls = ['/names/with-last-name'];
+  const lastnameUrls = ['/names/with-last-name' + EXT];
   lastNames.forEach((s) => {
     const sslug = slug(s.name);
-    if (sslug) lastnameUrls.push('/names/with-last-name-' + sslug);
+    if (sslug) lastnameUrls.push('/names/with-last-name-' + sslug + EXT);
   });
   const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls);
   console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs');

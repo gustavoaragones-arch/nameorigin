@@ -3,7 +3,10 @@
  * generate-programmatic-pages.js
  * Generates all SEO programmatic pages: names list, country, gender, combined filters,
  * last-name compatibility, and individual name pages.
- * Output: /programmatic/* with breadcrumbs, JSON-LD, canonical, meta, internal links.
+ * Output: static .html with breadcrumbs, JSON-LD, canonical, meta, internal links.
+ *
+ * Structured data: every page has exactly one Breadcrumb JSON-LD, one canonical URL,
+ * FAQ JSON-LD when applicable, and a unique <title> per page.
  */
 
 const fs = require('fs');
@@ -11,10 +14,12 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
-// Output at project root so URLs are /names, /name/liam, etc. Use OUT_DIR=programmatic to nest under /programmatic.
+// Output at project root so URLs are /name/liam.html, /names/canada.html, etc. Use OUT_DIR=programmatic to nest under /programmatic.
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
+// Static .html URLs for crawlable, deployable programmatic pages (no directory index only).
+const EXT = '.html';
 
 function loadJson(name) {
   const p = path.join(DATA_DIR, name + '.json');
@@ -40,12 +45,15 @@ function htmlEscape(s) {
 }
 
 function breadcrumbJsonLd(items) {
-  const list = items.map((item, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    name: item.name,
-    item: item.url,
-  }));
+  const list = items.map((item, i) => {
+    const url = item.url && !item.url.startsWith('http') ? SITE_URL + (item.url.startsWith('/') ? item.url : '/' + item.url) : (item.url || SITE_URL + '/');
+    return {
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: url,
+    };
+  });
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -74,8 +82,14 @@ function defaultFaqForPage(path, title) {
   if (path && path.includes('/name/')) {
     faqs.unshift({ question: 'What does this name mean?', answer: 'See the Meaning & origin section above for the meaning, origin, and gender of this name.' });
   }
-  if (path && (path.includes('/names/with-last-name') || path === '/names/with-last-name')) {
+  if (path && path.includes('/names/with-last-name')) {
     faqs.unshift({ question: 'How does first and last name compatibility work?', answer: 'Names that end in a vowel often flow well with last names starting with a consonant, and vice versa. Similar syllable count also helps.' });
+  }
+  if (path && path.match(/\/names\/[a-z]\.html?$/)) {
+    faqs.unshift({ question: 'How do I browse names by letter?', answer: 'Use the A–Z links on this page or go to Browse by letter to see all names starting with each letter of the alphabet.' });
+  }
+  if (path && path.match(/\/names\/(usa|canada|france|india|ireland)\.html$/)) {
+    faqs.unshift({ question: 'What names are popular in this country?', answer: 'This page shows trending, popular, and rising names for the country. Each name links to its full meaning and origin.' });
   }
   return faqJsonLd(faqs);
 }
@@ -117,6 +131,7 @@ function originBadgeHtml(record) {
 }
 
 function baseLayout(opts) {
+  // SEO: one canonical per page, unique title per page, Breadcrumb + FAQ JSON-LD on all programmatic pages.
   const title = opts.title || 'Name Origin';
   const description = opts.description || 'Discover the meaning and origin of first names.';
   const canonical = opts.canonical || SITE_URL + (opts.path || '/');
@@ -131,6 +146,7 @@ function baseLayout(opts) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
   <meta name="description" content="${htmlEscape(description)}">
   <title>${htmlEscape(title)}</title>
   <link rel="stylesheet" href="/styles.css">
@@ -145,10 +161,12 @@ function baseLayout(opts) {
       <a href="/" class="site-logo">nameorigin.io</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/names">Names</a>
-        <a href="/names/boy">Boy Names</a>
-        <a href="/names/girl">Girl Names</a>
-        <a href="/names/unisex">Unisex Names</a>
-        <a href="/programmatic/name-pages/">Name Pages</a>
+        <a href="/names/boy${EXT}">Boy Names</a>
+        <a href="/names/girl${EXT}">Girl Names</a>
+        <a href="/names/unisex${EXT}">Unisex Names</a>
+        <a href="/names/letters${EXT}">By letter</a>
+        <a href="/names/with-last-name${EXT}">Last name fit</a>
+        <a href="/all-name-pages.html">All name pages</a>
       </nav>
     </div>
   </header>
@@ -201,7 +219,7 @@ const CATEGORY_TO_STYLE_SLUG = { classical: 'classic' };
 
 function internalLinksForName(record, names, popularity, categories, variants) {
   const links = [];
-  const nameSlug = (n) => '/name/' + slug(n.name);
+  const nameSlug = (n) => '/name/' + slug(n.name) + EXT;
   const len = (record.name || '').length;
   const letter = (record.first_letter || '').toLowerCase();
   const originKey = (record.origin_country || '').toLowerCase() || (record.language || '').toLowerCase();
@@ -211,19 +229,19 @@ function internalLinksForName(record, names, popularity, categories, variants) {
   // --- Core links (4) ---
   links.push({ href: '/', text: 'Home' });
   links.push({ href: '/programmatic/', text: 'Name generator & tools' });
-  links.push({ href: '/names/trending', text: 'Trending names' });
-  links.push({ href: '/names/popular', text: 'Top names' });
+  links.push({ href: '/names/trending' + EXT, text: 'Trending names' });
+  links.push({ href: '/names/popular' + EXT, text: 'Top names' });
   links.push({ href: '/names', text: 'All names' });
 
   // --- Contextual: same gender ---
-  links.push({ href: '/names/' + (record.gender || ''), text: (record.gender || '') + ' names' });
+  links.push({ href: '/names/' + (record.gender || '') + EXT, text: (record.gender || '') + ' names' });
   const sameGender = names.filter((n) => n.gender === record.gender && n.id !== record.id);
   sameGender.slice(0, 4).forEach((n) => links.push({ href: nameSlug(n), text: n.name }));
 
   // --- Contextual: same origin / country page ---
   if (originKey) {
     const countrySlug = slug(record.origin_country || record.language);
-    links.push({ href: '/names/' + countrySlug, text: 'Names from ' + (record.origin_country || record.language) });
+    links.push({ href: '/names/' + countrySlug + EXT, text: 'Names from ' + (record.origin_country || record.language) });
     const sameOrigin = names.filter(
       (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase() === originKey || (n.language || '').toLowerCase() === originKey)
     );
@@ -234,7 +252,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
   const nameCategories = (categories || []).filter((c) => c.name_id === record.id).map((c) => c.category);
   nameCategories.slice(0, 3).forEach((cat) => {
     const styleSlug = CATEGORY_TO_STYLE_SLUG[cat] || cat;
-    links.push({ href: '/names/style/' + styleSlug, text: cat.charAt(0).toUpperCase() + cat.slice(1) + ' names' });
+    links.push({ href: '/names/style/' + styleSlug + EXT, text: cat.charAt(0).toUpperCase() + cat.slice(1) + ' names' });
   });
 
   // --- Contextual: similar phonetics (syllables or vowel ending) ---
@@ -248,7 +266,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
 
   // --- Contextual: alphabet page ---
   if (letter) {
-    links.push({ href: '/names/' + letter, text: 'Names starting with ' + (record.first_letter || letter) });
+    links.push({ href: '/names/' + letter + EXT, text: 'Names starting with ' + (record.first_letter || letter) });
     const sameLetter = names.filter((n) => (n.first_letter || '').toLowerCase() === letter && n.id !== record.id);
     sameLetter.slice(0, 4).forEach((n) => links.push({ href: nameSlug(n), text: n.name }));
   }
@@ -266,7 +284,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
 }
 
 function getSimilarNamesForName(record, names, popularity, categories, limit = 8) {
-  const nameSlug = (n) => '/name/' + slug(n.name);
+  const nameSlug = (n) => '/name/' + slug(n.name) + EXT;
   const ids = new Set();
   const similar = [];
   const letter = (record.first_letter || '').toLowerCase();
@@ -303,37 +321,80 @@ function coreLinksHtml() {
   const core = [
     { href: '/', text: 'Home' },
     { href: '/programmatic/', text: 'Name generator & tools' },
-    { href: '/names/trending', text: 'Trending names' },
-    { href: '/names/popular', text: 'Top names' },
+    { href: '/names/trending' + EXT, text: 'Trending names' },
+    { href: '/names/popular' + EXT, text: 'Top names' },
     { href: '/names', text: 'All names' },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/style', text: 'Names by style' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
-    { href: '/names/letters', text: 'Browse by letter' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
+    { href: '/names/letters' + EXT, text: 'Browse by letter' },
   ];
   return core.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ');
 }
 
+// Shared internal-link sections for filter pages (15–25 links target)
+const FILTER_COUNTRY_SLUGS = [{ slug: 'usa', label: 'USA' }, { slug: 'canada', label: 'Canada' }, { slug: 'france', label: 'France' }, { slug: 'india', label: 'India' }, { slug: 'ireland', label: 'Ireland' }];
+function alphabetSectionHtml() {
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  return '<section aria-labelledby="alphabet-heading"><h2 id="alphabet-heading">Browse by letter (A–Z)</h2><p class="letters-hub">' + letters.map((l) => '<a href="/names/' + l + EXT + '">' + l.toUpperCase() + '</a>').join(' ') + '</p></section>';
+}
+function genderSectionHtml() {
+  return '<section aria-labelledby="gender-heading"><h2 id="gender-heading">Browse by gender</h2><p class="name-links"><a href="/names/boy' + EXT + '">Boy names</a> · <a href="/names/girl' + EXT + '">Girl names</a> · <a href="/names/unisex' + EXT + '">Unisex names</a></p></section>';
+}
+function countrySectionHtml() {
+  return '<section aria-labelledby="country-heading"><h2 id="country-heading">Browse by country</h2><p class="name-links">' + FILTER_COUNTRY_SLUGS.map((c) => '<a href="/names/' + c.slug + EXT + '">' + htmlEscape(c.label) + '</a>').join(' · ') + '</p></section>';
+}
+
 function generateNamePage(record, names, popularity, categories, variants) {
   const nameSlug = slug(record.name);
-  const pathSeg = '/name/' + nameSlug;
+  const pathSeg = '/name/' + nameSlug + EXT;
   const url = SITE_URL + pathSeg;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
     { name: record.name, url },
   ];
-  const internalLinks = internalLinksForName(record, names, popularity, categories, variants);
-  const linksHtml = internalLinks.map((l) => `<a href="${htmlEscape(l.href)}">${htmlEscape(l.text)}</a>`).join(' · ');
   const similarNames = getSimilarNamesForName(record, names, popularity, categories, 8);
   const similarNamesHtml =
     similarNames.length > 0
       ? '<ul class="name-list">' +
-        similarNames.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a></li>`).join('') +
+        similarNames.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a></li>`).join('') +
         '</ul>'
       : '';
+
+  const letter = (record.first_letter || (record.name || '').charAt(0) || '').toLowerCase();
+  const originKey = (record.origin_country || '').toLowerCase().replace(/\s+/g, '') || (record.language || '').toLowerCase().replace(/\s+/g, '');
+  const countrySlugForOrigin = slug(record.origin_country || record.language);
+  const countryCodeForPopular = countrySlugForOrigin ? (POP_COUNTRY_BY_SLUG[countrySlugForOrigin.toLowerCase()] || null) : null;
+  const sameOrigin = names.filter(
+    (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase() === (record.origin_country || '').toLowerCase() || (n.language || '').toLowerCase() === (record.language || '').toLowerCase())
+  );
+  const sameGender = names.filter((n) => n.gender === record.gender && n.id !== record.id);
+  const sameLetter = names.filter((n) => (n.first_letter || (n.name || '').charAt(0) || '').toLowerCase() === letter && n.id !== record.id);
+  const nameById = new Map(names.map((n) => [n.id, n]));
+  const popularInCountryIds = countryCodeForPopular ? getPopularNameIdsForCountry(popularity, countryCodeForPopular, 12) : [];
+  const popularInCountry = popularInCountryIds.map((id) => nameById.get(id)).filter((n) => n && n.id !== record.id).slice(0, 10);
+  const nameLink = (n) => `<a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>`;
+  const sectionList = (arr, max) => arr.slice(0, max).map(nameLink).join(', ');
+
+  const similarSection = similarNames.length > 0 ? `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Similar names</h2><ul class="name-list">${similarNames.map((n) => `<li>${nameLink(n)}</li>`).join('')}</ul></section>` : '';
+  const sameOriginSection = sameOrigin.length > 0
+    ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sectionList(sameOrigin, 8)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
+    : (countrySlugForOrigin ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
+  const sameGenderSection = sameGender.length > 0
+    ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p class="name-links">${sectionList(sameGender, 8)}</p><p><a href="/names/${record.gender || ''}${EXT}">All ${record.gender || ''} names</a></p></section>`
+    : (record.gender ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p><a href="/names/${record.gender}${EXT}">All ${record.gender} names</a></p></section>` : '');
+  const letterSection = letter && LETTERS.includes(letter)
+    ? (sameLetter.length > 0
+      ? `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p class="name-links">${sectionList(sameLetter, 8)}</p><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`
+      : `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`)
+    : '';
+  const popularCountrySection = popularInCountry.length > 0 && countrySlugForOrigin
+    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
+    : (countrySlugForOrigin ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
+  const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/programmatic/">Name generator &amp; tools</a> · <a href="/names">All names</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Top names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
 
   const popRows = (popularity || []).filter((p) => p.name_id === record.id);
   const popByYear = new Map();
@@ -372,7 +433,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
       : '';
 
   const compatibilityTips =
-    '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">Last name compatibility</h2><p>Names that end in a vowel often pair well with last names starting with a consonant, and vice versa. Similar syllable count can improve flow. <a href="/names/with-last-name">Browse last name compatibility</a> (e.g. <a href="/names/with-last-name-smith">Smith</a>, <a href="/names/with-last-name-garcia">Garcia</a>, <a href="/names/with-last-name-nguyen">Nguyen</a>).</p></section>';
+    '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">Last name compatibility</h2><p>Names that end in a vowel often pair well with last names starting with a consonant, and vice versa. Similar syllable count can improve flow. <a href="/names/with-last-name' + EXT + '">Browse last name compatibility</a> (e.g. <a href="/names/with-last-name-smith' + EXT + '">Smith</a>, <a href="/names/with-last-name-garcia' + EXT + '">Garcia</a>, <a href="/names/with-last-name-nguyen' + EXT + '">Nguyen</a>).</p></section>';
 
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
@@ -385,8 +446,12 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${variantsHtml}
     ${styleTagsHtml}
     ${compatibilityTips}
-    <section aria-labelledby="similar-heading"><h2 id="similar-heading">Similar names you may like</h2>${similarNamesHtml}</section>
-    <section aria-labelledby="related-heading"><h2 id="related-heading">Explore more</h2><p class="internal-links">${linksHtml}</p></section>
+    ${similarSection}
+    ${sameOriginSection}
+    ${sameGenderSection}
+    ${letterSection}
+    ${popularCountrySection}
+    ${browseSection}
   `;
 
   const html = baseLayout({
@@ -399,7 +464,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     extraSchema: personJsonLd(record),
   });
 
-  const outPath = path.join(OUT_DIR, 'name', nameSlug, 'index.html');
+  const outPath = path.join(OUT_DIR, 'name', nameSlug + EXT);
   ensureDir(path.dirname(outPath));
   fs.writeFileSync(outPath, html, 'utf8');
 }
@@ -411,8 +476,8 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     { name: listTitle || 'Names', url },
   ];
   const listHtml =
-    '<ul>' +
-    names.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
+    '<ul class="name-list">' +
+    names.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
     '</ul>';
   const html = baseLayout({
     title: title + ' | nameorigin.io',
@@ -420,53 +485,57 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     path: pathSeg,
     breadcrumb: breadcrumbItems,
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
-    mainContent: `<h1>${htmlEscape(title)}</h1><p class="core-links">${coreLinksHtml()}</p>${listHtml}`,
+    mainContent: `<h1>${htmlEscape(title)}</h1>
+    <p class="core-links">${coreLinksHtml()}</p>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
+    <section aria-labelledby="names-list-heading"><h2 id="names-list-heading">Names</h2>${listHtml}</section>`,
   });
   return html;
 }
 
-// --- Alphabet / letter pages: /names/a, /names/b, /names/c — internal link hubs ---
+// --- Alphabet / letter pages: /names/a.html, /names/b.html — internal link hubs ---
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 function generateLetterPage(letter, subset, allLettersWithNames) {
-  const pathSeg = '/names/' + letter;
+  const pathSeg = '/names/' + letter + EXT;
   const letterUpper = letter.toUpperCase();
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
-    { name: 'Browse by letter', url: SITE_URL + '/names/letters' },
+    { name: 'Browse by letter', url: SITE_URL + '/names/letters' + EXT },
     { name: 'Names starting with ' + letterUpper, url: SITE_URL + pathSeg },
   ];
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/style', text: 'Names by style' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
 
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
-        subset.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
+        subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
-      : '<p>No names starting with ' + letterUpper + ' in our list. <a href="/names/letters">Browse by letter</a> or <a href="/names">see all names</a>.</p>';
+      : '<p>No names starting with ' + letterUpper + ' in our list. <a href="/names/letters' + EXT + '">Browse by letter</a> or <a href="/names">see all names</a>.</p>';
 
   const otherLettersHtml = allLettersWithNames
-    .map((l) => (l === letter ? '<strong>' + l.toUpperCase() + '</strong>' : '<a href="/names/' + l + '">' + l.toUpperCase() + '</a>'))
+    .map((l) => (l === letter ? '<strong>' + l.toUpperCase() + '</strong>' : '<a href="/names/' + l + EXT + '">' + l.toUpperCase() + '</a>'))
     .join(' ');
 
   const mainContent = `
     <h1>Names starting with ${letterUpper}</h1>
     <p>${subset.length} first name${subset.length !== 1 ? 's' : ''} starting with ${letterUpper}. Each links to meaning and origin.</p>
-    <section aria-labelledby="letters-nav-heading"><h2 id="letters-nav-heading">Browse by letter</h2>
+    <section aria-labelledby="letters-nav-heading"><h2 id="letters-nav-heading">Browse by letter (A–Z)</h2>
     <p class="letters-hub">${otherLettersHtml}</p>
     </section>
-    <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Explore</h2>
-    <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
-    </section>
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="names-heading"><h2 id="names-heading">Names</h2>
     ${listHtml}
     </section>
@@ -485,7 +554,7 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
   return html;
 }
 
-const POP_COUNTRY_BY_SLUG = { usa: 'USA', canada: 'CAN', unitedstates: 'USA', uk: 'UK', australia: 'AUS' };
+const POP_COUNTRY_BY_SLUG = { usa: 'USA', canada: 'CAN', unitedstates: 'USA', uk: 'UK', australia: 'AUS', ireland: 'IRL', india: 'IND', france: 'FRA' };
 
 function getPopularNameIdsForCountry(popularity, countryCode, limit = 25) {
   const rows = (popularity || []).filter((p) => p.country === countryCode && p.rank != null);
@@ -520,7 +589,7 @@ const LOCAL_NAMING_CULTURE = {
 
 function generateCountryPage(c, slugKey, names, popularity) {
   const countryLabel = c.name || c.code || slugKey;
-  const pathSeg = '/names/' + slugKey;
+  const pathSeg = '/names/' + slugKey + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
@@ -545,17 +614,17 @@ function generateCountryPage(c, slugKey, names, popularity) {
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
-    { href: '/names/style', text: 'Names by style' },
-    { href: '/names/letters', text: 'Browse by letter' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
+    { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/names/letters' + EXT, text: 'Browse by letter' },
   ];
 
   const coreSection = '<section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">' + coreLinksHtml() + '</p></section>';
 
-  const list = (arr) => arr.map((n) => `<a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a>`).join(', ');
+  const list = (arr) => arr.map((n) => `<a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>`).join(', ');
   const section = (id, title, items) =>
     items.length > 0
       ? `<section aria-labelledby="${id}"><h2 id="${id}">${htmlEscape(title)}</h2><p class="name-links">${list(items)}</p></section>`
@@ -565,6 +634,8 @@ function generateCountryPage(c, slugKey, names, popularity) {
     <h1>Names from ${htmlEscape(countryLabel)}</h1>
     <p class="local-culture">${htmlEscape(cultureText)}</p>
 
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
     <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Filter &amp; explore</h2>
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
@@ -595,11 +666,11 @@ function generateCountryPage(c, slugKey, names, popularity) {
 function generateGenderCountryPage(gender, c, slugKey, names) {
   const countryLabel = c.name || c.code || slugKey;
   const genderLabel = gender.charAt(0).toUpperCase() + gender.slice(1);
-  const pathSeg = '/names/' + gender + '/' + slugKey;
+  const pathSeg = '/names/' + gender + '/' + slugKey + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
-    { name: genderLabel + ' names', url: SITE_URL + '/names/' + gender },
+    { name: genderLabel + ' names', url: SITE_URL + '/names/' + gender + EXT },
     { name: countryLabel, url: SITE_URL + pathSeg },
   ];
 
@@ -613,27 +684,27 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
-    { href: '/names/' + gender, text: genderLabel + ' names' },
-    { href: '/names/' + slugKey, text: 'Names from ' + countryLabel },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
-    { href: '/names/style', text: 'Names by style' },
-    { href: '/names/letters', text: 'Browse by letter' },
+    { href: '/names/' + gender + EXT, text: genderLabel + ' names' },
+    { href: '/names/' + slugKey + EXT, text: 'Names from ' + countryLabel },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
+    { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/names/letters' + EXT, text: 'Browse by letter' },
   ];
 
   const listHtml =
     subset.length > 0
-      ? '<ul class="name-list">' + subset.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape(n.meaning.slice(0, 60)) + (n.meaning.length > 60 ? '…' : '') : ''}</li>`).join('') + '</ul>'
-      : '<p>No ' + gender + ' names from ' + countryLabel + ' in our list yet. <a href="/names/' + gender + '">Browse all ' + gender + ' names</a> or <a href="/names/' + slugKey + '">names from ' + countryLabel + '</a>.</p>';
+      ? '<ul class="name-list">' + subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape(n.meaning.slice(0, 60)) + (n.meaning.length > 60 ? '…' : '') : ''}</li>`).join('') + '</ul>'
+      : '<p>No ' + gender + ' names from ' + countryLabel + ' in our list yet. <a href="/names/' + gender + EXT + '">Browse all ' + gender + ' names</a> or <a href="/names/' + slugKey + EXT + '">names from ' + countryLabel + '</a>.</p>';
 
   const mainContent = `
     <h1>${htmlEscape(genderLabel)} names from ${htmlEscape(countryLabel)}</h1>
     <p>Browse first names that are ${gender} and associated with ${htmlEscape(countryLabel)}.</p>
-    <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Filter &amp; explore</h2>
-    <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
-    </section>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="names-heading"><h2 id="names-heading">Names</h2>
     ${listHtml}
     </section>
@@ -652,7 +723,7 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
   return html;
 }
 
-// --- Style pages: /names/style/nature, /names/style/classic, /names/style/modern, /names/style/rare ---
+// --- Style pages: /names/style/nature.html, /names/style/classic.html, etc. ---
 const STYLE_CONFIG = [
   { slug: 'nature', label: 'Nature names', description: 'First names inspired by nature: plants, animals, landscapes, and the natural world.' },
   { slug: 'classic', label: 'Classic names', description: 'Timeless, classical names with enduring appeal across cultures and generations.', category: 'classical' },
@@ -673,33 +744,36 @@ function getNamesForStyle(styleSlug, styleCategory, names, categories) {
 }
 
 function generateStylePage(styleSlug, styleLabel, styleDescription, subset, names) {
-  const pathSeg = '/names/style/' + styleSlug;
+  const pathSeg = '/names/style/' + styleSlug + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
-    { name: 'Names by style', url: SITE_URL + '/names/style' },
+    { name: 'Names by style', url: SITE_URL + '/names/style' + EXT },
     { name: styleLabel, url: SITE_URL + pathSeg },
   ];
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/style', text: 'Names by style' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
 
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
-        subset.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
+        subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
-      : '<p>No names in this style yet. <a href="/names">Browse all names</a> or try another <a href="/names/style">style</a>.</p>';
+      : '<p>No names in this style yet. <a href="/names">Browse all names</a> or try another <a href="/names/style' + EXT + '">style</a>.</p>';
 
   const mainContent = `
     <h1>${htmlEscape(styleLabel)}</h1>
     <p class="local-culture">${htmlEscape(styleDescription)}</p>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Explore</h2>
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
@@ -785,11 +859,11 @@ function getCompatibleNames(names, lastNameMeta, limit = 60) {
 function generateLastNamePage(surnameMeta, names) {
   const surname = surnameMeta.name || '';
   const slugKey = slug(surname);
-  const pathSeg = '/names/with-last-name-' + slugKey;
+  const pathSeg = '/names/with-last-name-' + slugKey + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: 'Names', url: SITE_URL + '/names' },
-    { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' },
+    { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' + EXT },
     { name: surname, url: SITE_URL + pathSeg },
   ];
 
@@ -818,21 +892,25 @@ function generateLastNamePage(surnameMeta, names) {
   const listHtml = (arr) =>
     arr.length > 0
       ? '<ul class="name-list">' +
-        arr.map((n) => `<li><a href="/name/${slug(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
+        arr.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
       : '';
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
-    { href: '/names/boy', text: 'Boy names' },
-    { href: '/names/girl', text: 'Girl names' },
-    { href: '/names/unisex', text: 'Unisex names' },
-    { href: '/names/with-last-name', text: 'Last name compatibility' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/unisex' + EXT, text: 'Unisex names' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
 
   const mainContent = `
     <h1>First names that go with ${htmlEscape(surname)}</h1>
     <p class="local-culture">${htmlEscape(intro)}</p>
+
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
 
     <section aria-labelledby="phonetic-heading"><h2 id="phonetic-heading">Phonetic tips for ${htmlEscape(surname)}</h2>
     <p>${phoneticTip}</p>
@@ -891,26 +969,24 @@ function run() {
   );
   fs.writeFileSync(path.join(OUT_DIR, 'names', 'index.html'), namesHtml, 'utf8');
 
-  // Core list pages: trending names, top names (for internal link graph)
+  // Core list pages: trending names, top names (for internal link graph) — static .html
   const trendingIds = getTrendingNameIds(popularity, 80);
   const popularIds = getPopularNameIds(popularity, 80);
   const nameById = new Map(names.map((n) => [n.id, n]));
   const trendingNames = trendingIds.map((id) => nameById.get(id)).filter(Boolean);
   const popularNames = popularIds.map((id) => nameById.get(id)).filter(Boolean);
-  ensureDir(path.join(OUT_DIR, 'names', 'trending'));
-  ensureDir(path.join(OUT_DIR, 'names', 'popular'));
   fs.writeFileSync(
-    path.join(OUT_DIR, 'names', 'trending', 'index.html'),
-    generateListPage('Trending names', 'First names with rising popularity. Browse trending baby names.', '/names/trending', trendingNames, 'Names'),
+    path.join(OUT_DIR, 'names', 'trending' + EXT),
+    generateListPage('Trending names', 'First names with rising popularity. Browse trending baby names.', '/names/trending' + EXT, trendingNames, 'Names'),
     'utf8'
   );
   fs.writeFileSync(
-    path.join(OUT_DIR, 'names', 'popular', 'index.html'),
-    generateListPage('Top names', 'Most popular first names. Browse top baby names by rank.', '/names/popular', popularNames, 'Names'),
+    path.join(OUT_DIR, 'names', 'popular' + EXT),
+    generateListPage('Top names', 'Most popular first names. Browse top baby names by rank.', '/names/popular' + EXT, popularNames, 'Names'),
     'utf8'
   );
 
-  // Alphabet pages: /names/a, /names/b, ... /names/z — internal link hubs
+  // Alphabet pages: /names/a.html, /names/b.html, ... /names/z.html — internal link hubs
   const namesByLetter = new Map();
   LETTERS.forEach((l) => namesByLetter.set(l, []));
   names.forEach((n) => {
@@ -920,27 +996,24 @@ function run() {
   const lettersWithNames = LETTERS.filter((l) => namesByLetter.get(l).length > 0);
   LETTERS.forEach((letter) => {
     const subset = namesByLetter.get(letter) || [];
-    const dir = path.join(OUT_DIR, 'names', letter);
-    ensureDir(dir);
     const html = generateLetterPage(letter, subset, LETTERS);
-    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'names', letter + EXT), html, 'utf8');
   });
-  ensureDir(path.join(OUT_DIR, 'names', 'letters'));
-  const lettersHubLinks = (lettersWithNames.length > 0 ? lettersWithNames : LETTERS).map((l) => ({ href: '/names/' + l, text: l.toUpperCase() }));
+  const lettersHubLinks = (lettersWithNames.length > 0 ? lettersWithNames : LETTERS).map((l) => ({ href: '/names/' + l + EXT, text: l.toUpperCase() }));
   const lettersHubHtml = baseLayout({
     title: 'Browse names by letter | A–Z | nameorigin.io',
     description: 'Browse first names by first letter: A through Z. Each letter links to a full list of names with meaning and origin.',
-    path: '/names/letters',
-    canonical: SITE_URL + '/names/letters',
+    path: '/names/letters' + EXT,
+    canonical: SITE_URL + '/names/letters' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
       { name: 'Names', url: SITE_URL + '/names' },
-      { name: 'Browse by letter', url: SITE_URL + '/names/letters' },
+      { name: 'Browse by letter', url: SITE_URL + '/names/letters' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
       { name: 'Names', url: '/names' },
-      { name: 'Browse by letter', url: '/names/letters' },
+      { name: 'Browse by letter', url: '/names/letters' + EXT },
     ]),
     mainContent: `
     <h1>Browse names by letter</h1>
@@ -948,119 +1021,121 @@ function run() {
     <section aria-labelledby="letters-heading"><h2 id="letters-heading">A–Z</h2>
     <p class="letters-hub">${lettersHubLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' ')}</p>
     </section>
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,
   });
-  fs.writeFileSync(path.join(OUT_DIR, 'names', 'letters', 'index.html'), lettersHubHtml, 'utf8');
+  fs.writeFileSync(path.join(OUT_DIR, 'names', 'letters' + EXT), lettersHubHtml, 'utf8');
 
-  // /names/boy, /names/girl, /names/unisex
+  // /names/boy.html, /names/girl.html, /names/unisex.html
   ['boy', 'girl', 'unisex'].forEach((gender) => {
     const subset = names.filter((n) => n.gender === gender);
     const html = generateListPage(
       gender.charAt(0).toUpperCase() + gender.slice(1) + ' names',
       'Browse ' + gender + ' names with meaning and origin.',
-      '/names/' + gender,
+      '/names/' + gender + EXT,
       subset,
       gender
     );
-    ensureDir(path.join(OUT_DIR, 'names', gender));
-    fs.writeFileSync(path.join(OUT_DIR, 'names', gender, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'names', gender + EXT), html, 'utf8');
   });
 
-  // Country pages: /names/canada, /names/usa, /names/france — trending, popular, rising, culture, filter links
+  // Country pages: /names/canada.html, /names/usa.html, etc.
   const countrySlugMap = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france', IRL: 'ireland' };
   countries.forEach((c) => {
     const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
-    ensureDir(path.join(OUT_DIR, 'names', slugKey));
     const html = generateCountryPage(c, slugKey, names, popularity);
-    fs.writeFileSync(path.join(OUT_DIR, 'names', slugKey, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'names', slugKey + EXT), html, 'utf8');
   });
 
-  // Gender + country filters: /names/boy/canada, /names/girl/india, /names/unisex/france
+  // Gender + country filters: /names/boy/canada.html, /names/girl/india.html, etc.
+  ensureDir(path.join(OUT_DIR, 'names', 'boy'));
+  ensureDir(path.join(OUT_DIR, 'names', 'girl'));
+  ensureDir(path.join(OUT_DIR, 'names', 'unisex'));
   ['boy', 'girl', 'unisex'].forEach((gender) => {
     countries.forEach((c) => {
       const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
-      const dir = path.join(OUT_DIR, 'names', gender, slugKey);
-      ensureDir(dir);
       const html = generateGenderCountryPage(gender, c, slugKey, names);
-      fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+      fs.writeFileSync(path.join(OUT_DIR, 'names', gender, slugKey + EXT), html, 'utf8');
     });
   });
 
-  // Style pages: /names/style/nature, /names/style/classic, /names/style/modern, /names/style/rare, etc.
+  // Style pages: /names/style.html (hub), /names/style/nature.html, etc.
   ensureDir(path.join(OUT_DIR, 'names', 'style'));
   STYLE_CONFIG.forEach((style) => {
     const subset = getNamesForStyle(style.slug, style.category, names, categories);
-    const dir = path.join(OUT_DIR, 'names', 'style', style.slug);
-    ensureDir(dir);
     const html = generateStylePage(style.slug, style.label, style.description, subset, names);
-    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'names', 'style', style.slug + EXT), html, 'utf8');
   });
-  const styleHubLinks = STYLE_CONFIG.map((s) => ({ href: '/names/style/' + s.slug, text: s.label }));
+  const styleHubLinks = STYLE_CONFIG.map((s) => ({ href: '/names/style/' + s.slug + EXT, text: s.label }));
   const styleHubHtml = baseLayout({
     title: 'Names by style | Nature, classic, modern, rare | nameorigin.io',
     description: 'Browse first names by style: nature, classic, modern, rare, biblical, popular, and traditional names.',
-    path: '/names/style',
-    canonical: SITE_URL + '/names/style',
+    path: '/names/style' + EXT,
+    canonical: SITE_URL + '/names/style' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
       { name: 'Names', url: SITE_URL + '/names' },
-      { name: 'Names by style', url: SITE_URL + '/names/style' },
+      { name: 'Names by style', url: SITE_URL + '/names/style' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
       { name: 'Names', url: '/names' },
-      { name: 'Names by style', url: '/names/style' },
+      { name: 'Names by style', url: '/names/style' + EXT },
     ]),
     mainContent: `
     <h1>Names by style</h1>
     <p>Browse first names by style: nature-inspired, classic, modern, rare, biblical, popular, and traditional.</p>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="styles-heading"><h2 id="styles-heading">Styles</h2>
     <ul class="name-list">${styleHubLinks.map((l) => `<li><a href="${l.href}">${htmlEscape(l.text)}</a></li>`).join('')}</ul>
     </section>
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,
   });
-  fs.writeFileSync(path.join(OUT_DIR, 'names', 'style', 'index.html'), styleHubHtml, 'utf8');
+  fs.writeFileSync(path.join(OUT_DIR, 'names', 'style' + EXT), styleHubHtml, 'utf8');
 
-  // Last name compatibility: /names/with-last-name-smith, /names/with-last-name-garcia, etc.
+  // Last name compatibility: /names/with-last-name-smith.html, /names/with-last-name-garcia.html, etc.
   const lastNames = loadJson('last-names');
-  ensureDir(path.join(OUT_DIR, 'names', 'with-last-name'));
   lastNames.forEach((surnameMeta) => {
     const slugKey = slug(surnameMeta.name);
     if (!slugKey) return;
-    const dir = path.join(OUT_DIR, 'names', 'with-last-name-' + slugKey);
-    ensureDir(dir);
     const html = generateLastNamePage(surnameMeta, names);
-    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
+    fs.writeFileSync(path.join(OUT_DIR, 'names', 'with-last-name-' + slugKey + EXT), html, 'utf8');
   });
-  // Hub: /names/with-last-name (index of all last name pages)
-  const lastNameHubLinks = lastNames.map((s) => ({ href: '/names/with-last-name-' + slug(s.name), text: s.name }));
+  // Hub: /names/with-last-name.html (index of all last name pages)
+  const lastNameHubLinks = lastNames.map((s) => ({ href: '/names/with-last-name-' + slug(s.name) + EXT, text: s.name }));
   const lastNameHubHtml = baseLayout({
     title: 'Last name compatibility | First names that sound good with your surname | nameorigin.io',
     description: 'Browse first names that pair well with popular last names like Smith, Garcia, Nguyen. Phonetic tips and cultural matching.',
-    path: '/names/with-last-name',
-    canonical: SITE_URL + '/names/with-last-name',
+    path: '/names/with-last-name' + EXT,
+    canonical: SITE_URL + '/names/with-last-name' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
       { name: 'Names', url: SITE_URL + '/names' },
-      { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' },
+      { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
       { name: 'Names', url: '/names' },
-      { name: 'Last name compatibility', url: '/names/with-last-name' },
+      { name: 'Last name compatibility', url: '/names/with-last-name' + EXT },
     ]),
     mainContent: `
     <h1>Last name compatibility</h1>
     <p>Choose a last name to see first names that sound good with it, plus phonetic tips and cultural matching.</p>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
     <section aria-labelledby="surnames-heading"><h2 id="surnames-heading">Browse by last name</h2>
     <p class="name-links">${lastNameHubLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,
   });
-  fs.writeFileSync(path.join(OUT_DIR, 'names', 'with-last-name', 'index.html'), lastNameHubHtml, 'utf8');
+  fs.writeFileSync(path.join(OUT_DIR, 'names', 'with-last-name' + EXT), lastNameHubHtml, 'utf8');
 
   // Authority hub pages (structured indexes — root-level .html)
   function writeHubPage(filename, title, description, pathSeg, sections) {
@@ -1113,9 +1188,9 @@ function run() {
         heading: 'Name lists',
         links: [
           { href: '/names', text: 'All names' },
-          { href: '/names/boy', text: 'Boy names' },
-          { href: '/names/girl', text: 'Girl names' },
-          { href: '/names/unisex', text: 'Unisex names' },
+          { href: '/names/boy' + EXT, text: 'Boy names' },
+          { href: '/names/girl' + EXT, text: 'Girl names' },
+          { href: '/names/unisex' + EXT, text: 'Unisex names' },
         ],
       },
     ]
@@ -1131,7 +1206,7 @@ function run() {
         heading: 'Countries',
         links: countries.map((c) => {
           const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
-          return { href: '/names/' + slugKey, text: 'Names from ' + (c.name || c.code) };
+          return { href: '/names/' + slugKey + EXT, text: 'Names from ' + (c.name || c.code) };
         }),
       },
       {
@@ -1141,7 +1216,7 @@ function run() {
             countries.map((c) => {
               const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
               const label = gender.charAt(0).toUpperCase() + gender.slice(1) + ' names from ' + (c.name || c.code);
-              return { href: '/names/' + gender + '/' + slugKey, text: label };
+              return { href: '/names/' + gender + '/' + slugKey + EXT, text: label };
             })
           )
         ),
@@ -1155,10 +1230,10 @@ function run() {
     'Browse first names by style: nature, classic, modern, rare, biblical, popular, and traditional. Each style links to a full list of names.',
     '/style-name-pages.html',
     [
-      { heading: 'Styles hub', links: [{ href: '/names/style', text: 'Names by style' }] },
+      { heading: 'Styles hub', links: [{ href: '/names/style' + EXT, text: 'Names by style' }] },
       {
         heading: 'By style',
-        links: STYLE_CONFIG.map((s) => ({ href: '/names/style/' + s.slug, text: s.label })),
+        links: STYLE_CONFIG.map((s) => ({ href: '/names/style/' + s.slug + EXT, text: s.label })),
       },
     ]
   );
@@ -1169,10 +1244,10 @@ function run() {
     'Index of last name compatibility pages. Find first names that sound good with your surname — Smith, Garcia, Nguyen, and more. Phonetic tips and cultural matching.',
     '/last-name-pages.html',
     [
-      { heading: 'Hub', links: [{ href: '/names/with-last-name', text: 'Last name compatibility' }] },
+      { heading: 'Hub', links: [{ href: '/names/with-last-name' + EXT, text: 'Last name compatibility' }] },
       {
         heading: 'By last name',
-        links: lastNames.map((s) => ({ href: '/names/with-last-name-' + slug(s.name), text: s.name })),
+        links: lastNames.map((s) => ({ href: '/names/with-last-name-' + slug(s.name) + EXT, text: s.name })),
       },
     ]
   );
@@ -1183,15 +1258,62 @@ function run() {
     'Browse first names A–Z. Index of letter pages: names starting with A, B, C, and every letter. Each letter page is a hub of names with meaning and origin.',
     '/alphabet-name-pages.html',
     [
-      { heading: 'Letters hub', links: [{ href: '/names/letters', text: 'Browse by letter' }] },
+      { heading: 'Letters hub', links: [{ href: '/names/letters' + EXT, text: 'Browse by letter' }] },
       {
         heading: 'A–Z',
-        links: LETTERS.map((l) => ({ href: '/names/' + l, text: 'Names starting with ' + l.toUpperCase() })),
+        links: LETTERS.map((l) => ({ href: '/names/' + l + EXT, text: 'Names starting with ' + l.toUpperCase() })),
       },
     ]
   );
 
+  // Build verification: count programmatic output (name/, names/, hub .html), sample URLs, fail if zero
+  const nameDir = path.join(OUT_DIR, 'name');
+  const namesDir = path.join(OUT_DIR, 'names');
+  const hubFiles = ['all-name-pages.html', 'country-name-pages.html', 'style-name-pages.html', 'last-name-pages.html', 'alphabet-name-pages.html'];
+  const { total, samples } = countProgrammaticPages(OUT_DIR, nameDir, namesDir, hubFiles);
+  console.log('');
+  console.log('--- Build verification ---');
+  console.log('Total programmatic pages generated:', total.toLocaleString());
+  if (samples.length > 0) {
+    console.log('Sample URLs:');
+    samples.slice(0, 12).forEach((u) => console.log('  ', u));
+  }
+  console.log('---');
+  if (total === 0) {
+    console.error('ERROR: Zero programmatic pages generated. Build failed.');
+    process.exit(1);
+  }
   console.log('Generated programmatic pages under', OUT_DIR);
+}
+
+function countProgrammaticPages(outDir, nameDir, namesDir, hubFiles) {
+  const samples = [];
+  let total = 0;
+  const toUrl = (relPath) => SITE_URL + '/' + relPath.replace(/\\/g, '/');
+  function countHtmlInDir(d, baseRel) {
+    if (!fs.existsSync(d)) return;
+    const entries = fs.readdirSync(d, { withFileTypes: true });
+    for (const e of entries) {
+      const full = path.join(d, e.name);
+      const rel = baseRel ? baseRel + '/' + e.name : e.name;
+      if (e.isDirectory()) {
+        countHtmlInDir(full, rel);
+      } else if (e.name.endsWith('.html')) {
+        total += 1;
+        if (samples.length < 12) samples.push(toUrl(rel));
+      }
+    }
+  }
+  countHtmlInDir(nameDir, 'name');
+  countHtmlInDir(namesDir, 'names');
+  hubFiles.forEach((f) => {
+    const full = path.join(outDir, f);
+    if (fs.existsSync(full)) {
+      total += 1;
+      if (samples.length < 12) samples.push(toUrl(f));
+    }
+  });
+  return { total, samples };
 }
 
 run();

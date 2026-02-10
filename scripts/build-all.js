@@ -10,9 +10,11 @@
  *
  * Env: OUT_DIR, SITE_URL (and others) are passed through to child scripts.
  *
- * Alternative: To use the unified generator (name, filter, country, style, letter,
- * last-name, hub pages at root), run instead:
+ * Recommended (unified generator): To generate all programmatic pages (name, filter,
+ * country, style, letter, last-name, hub) with verification (total count, sample URLs,
+ * fail if zero pages), run:
  *   node scripts/generate-programmatic-pages.js && node scripts/build-sitemap.js
+ * The generator exits with code 1 if zero pages are generated.
  */
 
 const { spawnSync } = require('child_process');

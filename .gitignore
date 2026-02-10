@@ -2,6 +2,23 @@
 # NAMEORIGIN.IO — ROOT .gitignore
 # Cloudflare D1 + Programmatic SEO
 #######################################
+#
+# KEY RULE (architecture — do not change):
+# ----------------------------------------
+# NEVER tracked in Git:
+#   raw-data/
+#   data/
+#   normalized datasets
+#   CSVs / large JSON
+#   seed SQL
+#
+# ONLY tracked in Git:
+#   scripts/
+#   templates/
+#   components/
+#   schema.sql
+#   config files (e.g. wrangler.toml, package.json)
+# ----------------------------------------
 
 ############################
 # Dependencies
@@ -30,14 +47,16 @@ out/
 .cache/
 
 ############################
-# Generated SQL / Seeds
+# NEVER tracked: Seed SQL & DB files
 ############################
 seed-d1.sql
 *.sqlite
 *.db
 
 ############################
-# Generated Programmatic Pages
+# Generated Programmatic Pages (build output)
+# NOTE: name/ and names/ are NOT ignored — they are deployable static HTML
+# (e.g. /name/liam.html, /names/canada.html) and must be included in Pages deploy.
 ############################
 programmatic-pages/
 generated/
@@ -45,15 +64,17 @@ public/generated/
 programmatic/output/
 
 ############################
-# Raw Data & Large Datasets
+# NEVER tracked: Raw data, data dir, normalized, CSVs, large JSON
 ############################
-data/
-!data/README.md
-
 raw-data/
+data/
 downloads/
 exports/
 datasets/
+**/normalized*.json
+*.csv
+data/**/*.json
+raw-data/**/*
 
 ############################
 # Logs
