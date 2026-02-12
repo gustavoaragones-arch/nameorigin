@@ -88,7 +88,7 @@
               var card = document.createElement('div');
               card.className = 'name-card';
               var trigger = document.createElement('a');
-              trigger.href = '/name/' + (item.slug || slugify(item.name));
+              trigger.href = '/name/' + (item.slug || slugify(item.name)) + '/';
               trigger.className = 'name-card__trigger';
               trigger.textContent = item.name;
               card.appendChild(trigger);
@@ -101,7 +101,7 @@
         list.forEach(function (item) {
           var li = document.createElement('li');
           var a = document.createElement('a');
-          a.href = '/name/' + (item.slug || slugify(item.name));
+          a.href = '/name/' + (item.slug || slugify(item.name)) + '/';
           a.textContent = item.name;
           li.appendChild(a);
           listEl.appendChild(li);

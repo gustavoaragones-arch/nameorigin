@@ -3,7 +3,7 @@
  * build-sitemap.js
  * Generates:
  *   /sitemap.xml          — Sitemap index (references the 4 sitemaps below)
- *   /sitemaps/names.xml   — All /name/{slug} URLs
+ *   /sitemaps/names.xml   — All /name/{slug}/ URLs (directory-based, no .html)
  *   /sitemaps/countries.xml — Country pages + gender+country
  *   /sitemaps/filters.xml — /names, gender, style, letters, trending, popular, hub pages
  *   /sitemaps/lastname.xml — Last name compatibility pages
@@ -83,10 +83,11 @@ function run() {
 
   const lastmod = new Date().toISOString().slice(0, 10);
 
-  // --- /sitemaps/names.xml: all /name/{slug}.html ---
-  const nameUrls = names.map((n) => '/name/' + slug(n.name) + EXT).filter((u) => u.length > 1);
-  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.8');
-  console.log('Written sitemaps/names.xml with', namesCount, 'URLs');
+  // Step 6: changefreq weekly; priority 0.7–0.9 (name pages 0.9, country/gender 0.8, lastname 0.7)
+  // --- /sitemaps/names.xml: all /name/{slug}/ (Phase 2.25A: directory-only, no .html) ---
+  const nameUrls = names.map((n) => '/name/' + slug(n.name) + '/').filter((u) => u.length > 1);
+  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9');
+  console.log('Written sitemaps/names.xml with', namesCount, 'URLs (priority 0.9)');
 
   // --- /sitemaps/countries.xml: country pages + gender+country (.html) ---
   const countryUrls = [];
@@ -97,8 +98,8 @@ function run() {
       countryUrls.push('/names/' + gender + '/' + slugKey + EXT);
     });
   });
-  const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls);
-  console.log('Written sitemaps/countries.xml with', countriesCount, 'URLs');
+  const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls, '0.8');
+  console.log('Written sitemaps/countries.xml with', countriesCount, 'URLs (priority 0.8)');
 
   // --- /sitemaps/filters.xml: homepage, names index, gender, style, letters, trending, popular, hub pages ---
   const filterUrls = [
@@ -116,8 +117,8 @@ function run() {
   LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   filterUrls.push('/legal/privacy.html', '/legal/terms.html');
-  const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls);
-  console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs');
+  const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
+  console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
 
   // --- /sitemaps/lastname.xml: last name compatibility ---
   const lastnameUrls = ['/names/with-last-name' + EXT];
@@ -125,8 +126,13 @@ function run() {
     const sslug = slug(s.name);
     if (sslug) lastnameUrls.push('/names/with-last-name-' + sslug + EXT);
   });
-  const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls);
-  console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs');
+  const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls, '0.7');
+  console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs (priority 0.7)');
+
+  // --- /sitemaps/names-like.xml: Phase 2.5 "Names Like X" pages ---
+  const namesLikeUrls = names.map((n) => '/names-like/' + slug(n.name) + '/').filter((u) => u.length > 1);
+  const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7');
+  console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7)');
 
   // --- /sitemap.xml: sitemap index ---
   const indexEntries = [
@@ -134,6 +140,7 @@ function run() {
     ['countries', 'sitemaps/countries.xml'],
     ['filters', 'sitemaps/filters.xml'],
     ['lastname', 'sitemaps/lastname.xml'],
+    ['names-like', 'sitemaps/names-like.xml'],
   ].map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
 
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -142,8 +149,8 @@ ${indexEntries.join('\n')}
 </sitemapindex>`;
 
   fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), indexXml, 'utf8');
-  console.log('Written sitemap.xml (index with 4 sitemaps)');
-  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount);
+  console.log('Written sitemap.xml (index with 5 sitemaps)');
+  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount);
 }
 
 run();

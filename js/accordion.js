@@ -73,7 +73,7 @@
         var popHtml = pop.length ? pop.map(function (p) { return p.year + ': rank ' + (p.rank || '—'); }).join(' · ') : '—';
         var similar = getSimilarNames(record, names || [], 5);
         var similarHtml = similar.length ? similar.map(function (s) {
-          return '<a href="/name/' + slugify(s.name) + '">' + escapeHtml(s.name) + '</a>';
+          return '<a href="/name/' + slugify(s.name) + '/">' + escapeHtml(s.name) + '</a>';
         }).join('') : '—';
         content.innerHTML = '<dl><dt>Meaning</dt><dd>' + escapeHtml(record.meaning || '—') + '</dd><dt>Origin</dt><dd>' + escapeHtml(origin) + '</dd><dt>Popularity trend</dt><dd>' + escapeHtml(popHtml) + '</dd><dt>Similar names</dt><dd><span class="similar-names">' + similarHtml + '</span></dd></dl>';
       }

@@ -157,7 +157,7 @@ function main() {
   // 2. Internal linking graph: each programmatic page type has ≥15 visible internal links (to programmatic pages, hubs, homepage)
   const MIN_INTERNAL_LINKS = 15;
   const samples = [
-    { label: 'Name page (e.g. /name/liam.html)', path: path.join(OUT_DIR, 'name') },
+    { label: 'Name page (e.g. /name/liam/)', path: path.join(OUT_DIR, 'name') },
     { label: 'Filter page (e.g. /names/boy.html)', path: path.join(OUT_DIR, 'names', 'boy.html') },
     { label: 'Letter hub (e.g. /names/letters.html)', path: path.join(OUT_DIR, 'names', 'letters.html') },
     { label: 'Hub page (e.g. all-name-pages.html)', path: path.join(OUT_DIR, 'all-name-pages.html') },
@@ -385,6 +385,7 @@ function main() {
   // Step 5 — Programmatic page validation: 400+ words, intro, unique H1, internal links (home, gender, country)
   const MIN_WORDS = 400;
   const programmaticSamples = [
+    { label: 'Name detail (liam)', file: path.join(OUT_DIR, 'name', 'liam', 'index.html') },
     { label: 'Country (canada)', file: path.join(OUT_DIR, 'names', 'canada.html') },
     { label: 'Gender+country (girl/france)', file: path.join(OUT_DIR, 'names', 'girl', 'france.html') },
     { label: 'Style (nature)', file: path.join(OUT_DIR, 'names', 'style', 'nature.html') },

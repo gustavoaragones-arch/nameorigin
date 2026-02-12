@@ -89,7 +89,7 @@
     var links = [];
     if (record.gender) links.push({ href: '/names/' + record.gender, text: 'More ' + record.gender + ' names' });
     links.push({ href: '/names', text: 'Browse all names' });
-    links.push({ href: '/name/' + (nameorigin.normalizeKey ? nameorigin.normalizeKey(record.name) : record.name.toLowerCase()), text: 'Full page for ' + record.name });
+    links.push({ href: '/name/' + (nameorigin.slugify ? nameorigin.slugify(record.name) : record.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/gi, '')) + '/', text: 'Full page for ' + record.name });
     links.forEach(function (item) {
       var li = document.createElement('li');
       var a = document.createElement('a');
@@ -120,7 +120,7 @@
             nameorigin.loadNamesIndex && nameorigin.loadNamesIndex(function (names) {
               var similar = nameorigin.getSimilarNames ? nameorigin.getSimilarNames(record, names || [], 5) : [];
               var similarHtml = similar.length ? similar.map(function (s) {
-                return '<a href="/name/' + (nameorigin.slugify ? nameorigin.slugify(s.name) : s.name) + '">' + (nameorigin.escapeHtml ? nameorigin.escapeHtml(s.name) : s.name) + '</a>';
+                return '<a href="/name/' + (nameorigin.slugify ? nameorigin.slugify(s.name) : s.name) + '/">' + (nameorigin.escapeHtml ? nameorigin.escapeHtml(s.name) : s.name) + '</a>';
               }).join('') : '—';
               moreContent.innerHTML = '<dl><dt>Popularity trend</dt><dd>' + (nameorigin.escapeHtml ? nameorigin.escapeHtml(popHtml) : popHtml) + '</dd><dt>Similar names</dt><dd><span class="similar-names">' + similarHtml + '</span></dd></dl>';
             });
@@ -166,7 +166,8 @@
         showResult(record);
       } else {
         // No client-side match: go to canonical name page (server or static will 404 until generated)
-        window.location.href = '/name/' + encodeURIComponent(nameorigin.normalizeKey ? nameorigin.normalizeKey(q) : q.toLowerCase());
+        var slug = nameorigin.slugify ? nameorigin.slugify(q) : String(q).toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+        window.location.href = '/name/' + encodeURIComponent(slug) + '/';
       }
     });
   }
@@ -294,7 +295,7 @@
       quizMatchingNames.innerHTML = '';
       namesList.forEach(function (n) {
         var a = document.createElement('a');
-        a.href = '/name/' + n.name.toLowerCase().replace(/\s+/g, '-');
+        a.href = '/name/' + (nameorigin.slugify ? nameorigin.slugify(n.name) : n.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')) + '/';
         a.textContent = n.name;
         quizMatchingNames.appendChild(a);
       });
@@ -516,7 +517,7 @@
         likedThisSession.forEach(function (r) {
           var li = document.createElement('li');
           var a = document.createElement('a');
-          a.href = '/name/' + (nameorigin.slugify ? nameorigin.slugify(r.name) : r.name.toLowerCase());
+          a.href = '/name/' + (nameorigin.slugify ? nameorigin.slugify(r.name) : r.name.toLowerCase()) + '/';
           a.textContent = r.name;
           li.appendChild(a);
           shortlistLikes.appendChild(li);
@@ -527,7 +528,7 @@
         faves.forEach(function (f) {
           var li = document.createElement('li');
           var a = document.createElement('a');
-          a.href = '/name/' + (f.slug || (nameorigin.slugify ? nameorigin.slugify(f.name) : f.name));
+          a.href = '/name/' + (f.slug || (nameorigin.slugify ? nameorigin.slugify(f.name) : f.name)) + '/';
           a.textContent = f.name;
           li.appendChild(a);
           shortlistFavesList.appendChild(li);

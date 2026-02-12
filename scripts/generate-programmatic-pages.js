@@ -14,12 +14,14 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
-// Output at project root so URLs are /name/liam.html, /names/canada.html, etc. Use OUT_DIR=programmatic to nest under /programmatic.
+// Output at project root. Name detail URLs: /name/<slug>/ (directory); other programmatic: /names/canada.html etc. Use OUT_DIR=programmatic to nest under /programmatic.
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
-// Static .html URLs for crawlable, deployable programmatic pages (no directory index only).
+// Static .html URLs for crawlable programmatic pages (names, countries, etc.). Name detail: directory-only /name/<slug>/ (Phase 2.25A).
 const EXT = '.html';
+/** URL path for a name detail page (directory-based, no .html). Use for all links and canonical. */
+function nameDetailPath(s) { return '/name/' + slug(s) + '/'; }
 // Step 7: Breadcrumb label for names index (Home > Baby Names > …)
 const BREADCRUMB_NAMES_LABEL = 'Baby Names';
 
@@ -133,11 +135,12 @@ function originBadgeHtml(record) {
 }
 
 function baseLayout(opts) {
-  // SEO: one canonical per page, unique title per page, Breadcrumb + FAQ JSON-LD on all programmatic pages.
+  // Step 1 (SSG): Canonical must be exact URL path for this page — never homepage for non-home. Written at build time.
   const title = opts.title || 'Name Origin';
   const description = opts.description || 'Discover the meaning and origin of first names.';
-  const canonical = opts.canonical || SITE_URL + (opts.path || '/');
   const pathSeg = opts.path || '/';
+  const canonical = opts.canonical != null ? opts.canonical : SITE_URL + pathSeg;
+  // Step 5: BreadcrumbList JSON-LD + visible breadcrumb (Home > Baby Names > Canada > Girl Names) on name, country, gender pages
   const breadcrumbItems = opts.breadcrumb && opts.breadcrumb.length ? opts.breadcrumb : [{ name: 'Home', url: SITE_URL + '/' }, { name: title.replace(/\s*\|\s*nameorigin\.io\s*$/i, '').trim() || 'Names', url: SITE_URL + pathSeg }];
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
   const faqSchemaObj = opts.faqSchema !== undefined ? opts.faqSchema : defaultFaqForPage(pathSeg, title);
@@ -152,7 +155,7 @@ function baseLayout(opts) {
   <meta name="description" content="${htmlEscape(description)}">
   <title>${htmlEscape(title)}</title>
   <link rel="stylesheet" href="/styles.min.css">
-  <link rel="canonical" href="${htmlEscape(canonical)}">
+  <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
   ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ''}
   ${extraSchema ? `<script type="application/ld+json">${extraSchema}</script>` : ''}
@@ -221,7 +224,7 @@ const CATEGORY_TO_STYLE_SLUG = { classical: 'classic' };
 
 function internalLinksForName(record, names, popularity, categories, variants) {
   const links = [];
-  const nameSlug = (n) => '/name/' + slug(n.name) + EXT;
+  const nameSlug = (n) => nameDetailPath(n.name);
   const len = (record.name || '').length;
   const letter = (record.first_letter || '').toLowerCase();
   const originKey = (record.origin_country || '').toLowerCase() || (record.language || '').toLowerCase();
@@ -286,7 +289,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
 }
 
 function getSimilarNamesForName(record, names, popularity, categories, limit = 8) {
-  const nameSlug = (n) => '/name/' + slug(n.name) + EXT;
+  const nameSlug = (n) => nameDetailPath(n.name);
   const ids = new Set();
   const similar = [];
   const letter = (record.first_letter || '').toLowerCase();
@@ -351,7 +354,7 @@ function countrySectionHtml() {
 
 function generateNamePage(record, names, popularity, categories, variants) {
   const nameSlug = slug(record.name);
-  const pathSeg = '/name/' + nameSlug + EXT;
+  const pathSeg = nameDetailPath(record.name);
   const url = SITE_URL + pathSeg;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
@@ -362,7 +365,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const similarNamesHtml =
     similarNames.length > 0
       ? '<ul class="name-list">' +
-        similarNames.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a></li>`).join('') +
+        similarNames.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a></li>`).join('') +
         '</ul>'
       : '';
 
@@ -378,7 +381,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const nameById = new Map(names.map((n) => [n.id, n]));
   const popularInCountryIds = countryCodeForPopular ? getPopularNameIdsForCountry(popularity, countryCodeForPopular, 12) : [];
   const popularInCountry = popularInCountryIds.map((id) => nameById.get(id)).filter((n) => n && n.id !== record.id).slice(0, 10);
-  const nameLink = (n) => `<a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>`;
+  const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
   const sectionList = (arr, max) => arr.slice(0, max).map(nameLink).join(', ');
 
   const similarSection = similarNames.length > 0 ? `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Similar names</h2><ul class="name-list">${similarNames.map((n) => `<li>${nameLink(n)}</li>`).join('')}</ul></section>` : '';
@@ -396,7 +399,19 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const popularCountrySection = popularInCountry.length > 0 && countrySlugForOrigin
     ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
     : (countrySlugForOrigin ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
-  const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/programmatic/">Name generator &amp; tools</a> · <a href="/names">All names</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Top names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
+  const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/names">Baby names hub</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
+
+  // Step 4: At least 3 related name links (similar, then same letter, then same gender)
+  const relatedNames = [...similarNames];
+  if (relatedNames.length < 3 && sameLetter.length > 0) {
+    sameLetter.filter((n) => !relatedNames.find((r) => r.id === n.id)).forEach((n) => { if (relatedNames.length < 6) relatedNames.push(n); });
+  }
+  if (relatedNames.length < 3 && sameGender.length > 0) {
+    sameGender.filter((n) => !relatedNames.find((r) => r.id === n.id)).forEach((n) => { if (relatedNames.length < 6) relatedNames.push(n); });
+  }
+  const relatedSection = relatedNames.length > 0
+    ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Related names</h2><p class="name-links">${relatedNames.slice(0, 8).map(nameLink).join(', ')}</p></section>`
+    : '';
 
   const popRows = (popularity || []).filter((p) => p.name_id === record.id);
   const popByYear = new Map();
@@ -437,36 +452,322 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const compatibilityTips =
     '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">Last name compatibility</h2><p>Names that end in a vowel often pair well with last names starting with a consonant, and vice versa. Similar syllable count can improve flow. <a href="/names/with-last-name' + EXT + '">Browse last name compatibility</a> (e.g. <a href="/names/with-last-name-smith' + EXT + '">Smith</a>, <a href="/names/with-last-name-garcia' + EXT + '">Garcia</a>, <a href="/names/with-last-name-nguyen' + EXT + '">Nguyen</a>).</p></section>';
 
+  // Step 3: Minimum content floor — intro, meaning context, popularity context, internal linking (400+ words)
+  const nameIntro = `<p class="contextual">This page shows the meaning, origin, and popularity of the name ${htmlEscape(record.name)}. Use the sections below to explore related names, names from the same country or language, and names with the same gender or first letter.</p>`;
+  const meaningContext = `<section aria-labelledby="meaning-context-heading"><h2 id="meaning-context-heading">About name meanings and origins</h2><p class="contextual">Name meanings and origins come from linguistic and historical sources: etymology, traditional use, and cultural adoption. The meaning given here reflects the most widely cited interpretation for ${htmlEscape(record.name)}. Origin may refer to the language or region where the name first became established. For more names from the same background, use the same-origin and country links below.</p></section>`;
+  const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was used in a given country and year, often based on official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
+  const internalLinkingPara = `<p class="contextual">Explore the <a href="/">homepage</a> to search names, or the <a href="/names">baby names hub</a> to browse by gender, country, letter, and style. Below you will find related names, same-origin and same-gender options, and links to country and gender hubs.</p>`;
+
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
     ${originBadgeHtml(record)}
+    ${nameIntro}
     <p><strong>Meaning:</strong> ${htmlEscape(record.meaning || '—')}</p>
     <p><strong>Origin:</strong> ${htmlEscape([record.origin_country, record.language].filter(Boolean).join(' · ') || '—')}</p>
     <p><strong>Gender:</strong> ${htmlEscape(record.gender || '—')}</p>
     ${record.phonetic ? `<p><strong>Pronunciation:</strong> ${htmlEscape(record.phonetic)}</p>` : ''}
+    ${meaningContext}
+    ${popularityContext}
     ${popHtml}
     ${variantsHtml}
     ${styleTagsHtml}
     ${compatibilityTips}
+    ${relatedSection}
     ${similarSection}
     ${sameOriginSection}
     ${sameGenderSection}
     ${letterSection}
     ${popularCountrySection}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
+    ${internalLinkingPara}
     ${browseSection}
   `;
 
+  const descParts = [];
+  if (record.meaning) descParts.push(record.meaning);
+  const originLabel = record.origin_country || record.language;
+  if (originLabel) descParts.push(originLabel + ' origin');
+  if (record.gender) descParts.push(record.gender + ' name');
+  const uniqueDescription = descParts.length > 0
+    ? record.name + ': ' + descParts.join('. ') + '. Meaning, origin & popularity on NameOrigin.'
+    : record.name + ' — meaning, origin and popularity. Baby name details on NameOrigin.';
+
   const html = baseLayout({
-    title: record.name + ' — Meaning & Origin | nameorigin.io',
-    description: (record.meaning || 'Meaning and origin of the name ') + record.name + '.',
+    title: record.name + ' — Meaning, Origin & Popularity',
+    description: uniqueDescription.slice(0, 160),
     path: pathSeg,
+    canonical: SITE_URL + pathSeg,
     breadcrumb: breadcrumbItems,
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent,
     extraSchema: personJsonLd(record),
   });
 
-  const outPath = path.join(OUT_DIR, 'name', nameSlug + EXT);
+  const outPath = path.join(OUT_DIR, 'name', nameSlug, 'index.html');
+  ensureDir(path.dirname(outPath));
+  fs.writeFileSync(outPath, html, 'utf8');
+}
+
+/** Phase 2.5: Find 8-15 names similar to base name for "Names Like X" pages. */
+function getNamesLikeSimilarity(baseRecord, names, popularity, minCount = 8, maxCount = 15) {
+  const ids = new Set();
+  const similar = [];
+  const nameStr = (baseRecord.name || '').toLowerCase();
+  const firstLetter = (baseRecord.first_letter || nameStr.charAt(0) || '').toLowerCase();
+  const firstTwo = nameStr.slice(0, 2);
+  const firstThree = nameStr.slice(0, 3);
+  const originKey = (baseRecord.origin_country || '').toLowerCase().replace(/\s+/g, '') || (baseRecord.language || '').toLowerCase().replace(/\s+/g, '');
+  const gender = baseRecord.gender || '';
+  const nameById = new Map(names.map((n) => [n.id, n]));
+  const basePopRows = (popularity || []).filter((p) => p.name_id === baseRecord.id);
+  const basePopRank = basePopRows.length > 0 ? Math.min(...basePopRows.map((p) => p.rank || 9999)) : 9999;
+  const basePopBand = basePopRank < 100 ? 'top100' : basePopRank < 500 ? 'top500' : basePopRank < 1000 ? 'top1000' : 'other';
+
+  const add = (list, max) => {
+    for (const n of list) {
+      if (n.id === baseRecord.id || ids.has(n.id)) continue;
+      ids.add(n.id);
+      similar.push(n);
+      if (similar.length >= maxCount) return;
+    }
+  };
+
+  // 1. Same origin
+  if (originKey) {
+    const sameOrigin = names.filter(
+      (n) => n.id !== baseRecord.id && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+    );
+    add(sameOrigin, 4);
+  }
+
+  // 2. Same first letter + phonetic similarity (first 2-3 letters match)
+  const sameLetter = names.filter((n) => {
+    const nFirst = (n.first_letter || (n.name || '').charAt(0) || '').toLowerCase();
+    return nFirst === firstLetter && n.id !== baseRecord.id;
+  });
+  const phoneticMatch = sameLetter.filter((n) => {
+    const nStr = (n.name || '').toLowerCase();
+    return nStr.startsWith(firstTwo) || nStr.startsWith(firstThree);
+  });
+  add(phoneticMatch, 3);
+  add(sameLetter, 2);
+
+  // 3. Similar popularity band
+  if (basePopRank < 9999) {
+    const similarPop = names.filter((n) => {
+      if (n.id === baseRecord.id) return false;
+      const nPopRows = (popularity || []).filter((p) => p.name_id === n.id);
+      if (nPopRows.length === 0) return false;
+      const nPopRank = Math.min(...nPopRows.map((p) => p.rank || 9999));
+      const nPopBand = nPopRank < 100 ? 'top100' : nPopRank < 500 ? 'top500' : nPopRank < 1000 ? 'top1000' : 'other';
+      return nPopBand === basePopBand;
+    });
+    add(similarPop, 3);
+  }
+
+  // 4. Same gender
+  if (gender) {
+    const sameGender = names.filter((n) => n.gender === gender && n.id !== baseRecord.id);
+    add(sameGender, 3);
+  }
+
+  // 5. Fallback: same country popularity cluster
+  if (similar.length < minCount && basePopRows.length > 0) {
+    const countryCodes = [...new Set(basePopRows.map((p) => p.country))];
+    for (const country of countryCodes.slice(0, 2)) {
+      const countryPop = (popularity || []).filter((p) => p.country === country && p.name_id !== baseRecord.id);
+      const countryPopIds = countryPop.map((p) => p.name_id).slice(0, 10);
+      const countryNames = countryPopIds.map((id) => nameById.get(id)).filter(Boolean);
+      add(countryNames, 5);
+      if (similar.length >= minCount) break;
+    }
+  }
+
+  return similar.slice(0, maxCount);
+}
+
+/** Phase 2.5: Generate "Names Like X" page at /names-like/<slug>/index.html */
+function generateNamesLikePage(baseRecord, names, popularity, categories) {
+  const nameSlug = slug(baseRecord.name);
+  const pathSeg = '/names-like/' + nameSlug + '/';
+  const url = SITE_URL + pathSeg;
+  const baseNameUrl = SITE_URL + nameDetailPath(baseRecord.name);
+  const breadcrumbItems = [
+    { name: 'Home', url: SITE_URL + '/' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
+    { name: baseRecord.name, url: baseNameUrl },
+    { name: 'Names Like ' + baseRecord.name, url },
+  ];
+
+  const nameStr = (baseRecord.name || '').toLowerCase();
+  const firstLetter = (baseRecord.first_letter || nameStr.charAt(0) || '').toLowerCase();
+  const firstTwo = nameStr.slice(0, 2);
+  const firstThree = nameStr.slice(0, 3);
+  const originKey = (baseRecord.origin_country || '').toLowerCase().replace(/\s+/g, '') || (baseRecord.language || '').toLowerCase().replace(/\s+/g, '');
+  const gender = baseRecord.gender || '';
+  const nameById = new Map(names.map((n) => [n.id, n]));
+  const basePopRows = (popularity || []).filter((p) => p.name_id === baseRecord.id);
+  const basePopRank = basePopRows.length > 0 ? Math.min(...basePopRows.map((p) => p.rank || 9999)) : 9999;
+  const basePopBand = basePopRank < 100 ? 'top100' : basePopRank < 500 ? 'top500' : basePopRank < 1000 ? 'top1000' : 'other';
+
+  // Categorize similar names
+  const phoneticMatches = [];
+  const sameOriginMatches = [];
+  const similarPopMatches = [];
+  const otherAlternatives = [];
+  const seenIds = new Set([baseRecord.id]);
+
+  // Names similar in sound (phonetic: same first letter + first 2-3 letters match)
+  const sameLetter = names.filter((n) => {
+    const nFirst = (n.first_letter || (n.name || '').charAt(0) || '').toLowerCase();
+    return nFirst === firstLetter && n.id !== baseRecord.id && !seenIds.has(n.id);
+  });
+  sameLetter.forEach((n) => {
+    const nStr = (n.name || '').toLowerCase();
+    if (nStr.startsWith(firstTwo) || nStr.startsWith(firstThree)) {
+      if (phoneticMatches.length < 8) {
+        phoneticMatches.push(n);
+        seenIds.add(n.id);
+      }
+    }
+  });
+  sameLetter.forEach((n) => {
+    if (!seenIds.has(n.id) && phoneticMatches.length < 8) {
+      phoneticMatches.push(n);
+      seenIds.add(n.id);
+    }
+  });
+
+  // Names with same origin
+  if (originKey) {
+    const sameOrigin = names.filter(
+      (n) => n.id !== baseRecord.id && !seenIds.has(n.id) && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+    );
+    sameOrigin.slice(0, 6).forEach((n) => {
+      sameOriginMatches.push(n);
+      seenIds.add(n.id);
+    });
+  }
+
+  // Names with similar popularity
+  if (basePopRank < 9999) {
+    const similarPop = names.filter((n) => {
+      if (n.id === baseRecord.id || seenIds.has(n.id)) return false;
+      const nPopRows = (popularity || []).filter((p) => p.name_id === n.id);
+      if (nPopRows.length === 0) return false;
+      const nPopRank = Math.min(...nPopRows.map((p) => p.rank || 9999));
+      const nPopBand = nPopRank < 100 ? 'top100' : nPopRank < 500 ? 'top500' : nPopRank < 1000 ? 'top1000' : 'other';
+      return nPopBand === basePopBand;
+    });
+    similarPop.slice(0, 5).forEach((n) => {
+      similarPopMatches.push(n);
+      seenIds.add(n.id);
+    });
+  }
+
+  // Other alternatives (same gender, trending, or country cluster)
+  if (gender) {
+    const sameGender = names.filter((n) => n.gender === gender && n.id !== baseRecord.id && !seenIds.has(n.id));
+    sameGender.slice(0, 5).forEach((n) => {
+      otherAlternatives.push(n);
+      seenIds.add(n.id);
+    });
+  }
+  if (otherAlternatives.length < 5 && basePopRows.length > 0) {
+    const countryCodes = [...new Set(basePopRows.map((p) => p.country))];
+    for (const country of countryCodes.slice(0, 2)) {
+      const countryPop = (popularity || []).filter((p) => p.country === country && p.name_id !== baseRecord.id && !seenIds.has(p.name_id));
+      const countryPopIds = countryPop.map((p) => p.name_id).slice(0, 4);
+      countryPopIds.forEach((id) => {
+        const n = nameById.get(id);
+        if (n && !seenIds.has(n.id) && otherAlternatives.length < 8) {
+          otherAlternatives.push(n);
+          seenIds.add(n.id);
+        }
+      });
+      if (otherAlternatives.length >= 5) break;
+    }
+  }
+
+  const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
+  const nameCategories = (categories || []).filter((c) => c.name_id === baseRecord.id).map((c) => c.category);
+  const styleLabel = nameCategories.length > 0 ? nameCategories[0] : (gender === 'boy' ? 'classic' : gender === 'girl' ? 'elegant' : 'modern');
+  const originLabel = baseRecord.origin_country || baseRecord.language || 'various origins';
+
+  // Intro paragraph (~150-200 words)
+  const intro = `<p class="contextual">If you're considering the name ${htmlEscape(baseRecord.name)}, you might be looking for alternatives that share similar style, origin, or sound. ${htmlEscape(baseRecord.name)} has a ${htmlEscape(styleLabel)} feel and ${originLabel ? 'originates from ' + htmlEscape(originLabel) : 'has roots in multiple cultures'}. When choosing a name, many parents seek options that match their preferred style—whether that's ${htmlEscape(styleLabel)}, ${gender === 'boy' ? 'strong and traditional' : gender === 'girl' ? 'elegant and timeless' : 'versatile and modern'}—or that honor a specific cultural or linguistic heritage. Some parents also want names that sound similar phonetically, sharing the same first letter or similar opening sounds, which can create a cohesive feel when considering sibling names or family naming patterns. Others prioritize popularity, looking for names in a similar popularity band—whether that's top 100, top 500, or less common choices. This page curates names similar to ${htmlEscape(baseRecord.name)} across these dimensions, helping you discover alternatives that might resonate with your preferences while offering variety and meaning.</p>`;
+
+  // Names Similar in Sound section
+  const phoneticSectionHtml = phoneticMatches.length > 0
+    ? `<section aria-labelledby="sound-heading"><h2 id="sound-heading">Names Similar in Sound</h2><ul class="name-list">${phoneticMatches.map((n) => {
+        const nStr = (n.name || '').toLowerCase();
+        const explanation = nStr.startsWith(firstTwo) || nStr.startsWith(firstThree)
+          ? `${htmlEscape(n.name)} shares the same first letter and similar opening sounds as ${htmlEscape(baseRecord.name)}, creating a phonetic connection.`
+          : `${htmlEscape(n.name)} starts with the same letter as ${htmlEscape(baseRecord.name)} and has a similar rhythm and feel.`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+      }).join('')}</ul></section>`
+    : '';
+
+  // Names with Same Origin section
+  const originSectionHtml = sameOriginMatches.length > 0
+    ? `<section aria-labelledby="origin-heading"><h2 id="origin-heading">Names with the Same Origin</h2><ul class="name-list">${sameOriginMatches.map((n) => {
+        const explanation = `${htmlEscape(n.name)} shares the same ${originLabel ? htmlEscape(originLabel) : 'cultural'} origin as ${htmlEscape(baseRecord.name)}, reflecting similar linguistic roots and cultural traditions.`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+      }).join('')}</ul></section>`
+    : '';
+
+  // Names with Similar Popularity section
+  const popularitySectionHtml = similarPopMatches.length > 0
+    ? `<section aria-labelledby="popularity-heading"><h2 id="popularity-heading">Names with Similar Popularity</h2><ul class="name-list">${similarPopMatches.map((n) => {
+        const nPopRows = (popularity || []).filter((p) => p.name_id === n.id);
+        const nPopRank = nPopRows.length > 0 ? Math.min(...nPopRows.map((p) => p.rank || 9999)) : 9999;
+        const popLabel = nPopRank < 100 ? 'top 100' : nPopRank < 500 ? 'top 500' : nPopRank < 1000 ? 'top 1000' : 'less common';
+        const explanation = `${htmlEscape(n.name)} is in a similar popularity band as ${htmlEscape(baseRecord.name)}, appearing in the ${popLabel} names, which means it has comparable usage and recognition.`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+      }).join('')}</ul></section>`
+    : '';
+
+  // Other Alternatives section
+  const alternativesSectionHtml = otherAlternatives.length > 0
+    ? `<section aria-labelledby="alternatives-heading"><h2 id="alternatives-heading">Other Alternatives You Might Like</h2><ul class="name-list">${otherAlternatives.map((n) => {
+        const explanation = `${htmlEscape(n.name)} offers a similar ${gender ? gender + ' name' : 'style'} option that might appeal if you're drawn to ${htmlEscape(baseRecord.name)}'s characteristics.`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+      }).join('')}</ul></section>`
+    : '';
+
+  // Closing paragraph (~120-150 words)
+  const closing = `<p class="contextual">Exploring name meanings and origins can help you find the perfect name that resonates with your values, heritage, and style preferences. Each name carries its own history, cultural significance, and meaning, which can add depth and intention to your choice. Whether you're drawn to ${htmlEscape(baseRecord.name)} for its sound, origin, popularity, or meaning, the alternatives above offer similar qualities while giving you variety to consider. We encourage you to explore the full meaning and origin details for each name by visiting their individual pages, where you'll find comprehensive information about popularity trends, cultural context, and related names. Understanding a name's background can help you make an informed decision that feels right for your family. For more details about ${htmlEscape(baseRecord.name)} itself, including its complete meaning, origin story, and popularity data, visit the <a href="${nameDetailPath(baseRecord.name)}">${htmlEscape(baseRecord.name)} name page</a>.</p>`;
+
+  const mainContent = `
+    <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
+    ${intro}
+    ${phoneticSectionHtml}
+    ${originSectionHtml}
+    ${popularitySectionHtml}
+    ${alternativesSectionHtml}
+    ${closing}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
+    ${alphabetSectionHtml()}
+    <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
+  `;
+
+  const genderLabel = gender === 'boy' ? 'Boy' : gender === 'girl' ? 'Girl' : gender === 'unisex' ? 'Unisex' : '';
+  const totalSimilar = phoneticMatches.length + sameOriginMatches.length + similarPopMatches.length + otherAlternatives.length;
+  const description = `Looking for names like ${baseRecord.name}? Discover ${totalSimilar} similar ${genderLabel ? genderLabel.toLowerCase() : ''} names in sound, origin, and popularity${genderLabel ? ' for ' + genderLabel.toLowerCase() + 's' : ''} with detailed explanations. Each alternative includes meaning, origin, and links to full name details.`;
+
+  const html = baseLayout({
+    title: 'Names Like ' + baseRecord.name + (genderLabel ? ' — Similar ' + genderLabel + ' Names & Alternatives' : ' — Similar Names & Alternatives') + ' | nameorigin.io',
+    description: description.slice(0, 160),
+    path: pathSeg,
+    canonical: SITE_URL + pathSeg,
+    breadcrumb: breadcrumbItems,
+    breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
+    mainContent,
+  });
+
+  const outPath = path.join(OUT_DIR, 'names-like', nameSlug, 'index.html');
   ensureDir(path.dirname(outPath));
   fs.writeFileSync(outPath, html, 'utf8');
 }
@@ -480,7 +781,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
   ];
   const listHtml =
     '<ul class="name-list">' +
-    names.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
+    names.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
     '</ul>';
   const listIntro = '<p class="contextual">Browse first names with meaning and origin. Each name links to a detail page. Use the sections below to filter by gender, country, or letter, or explore trending and popular names.</p>';
   const html = baseLayout({
@@ -525,7 +826,7 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
-        subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
+        subset.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
       : '<p>No names starting with ' + letterUpper + ' in our list. <a href="/names/letters' + EXT + '">Browse by letter</a> or <a href="/names">see all names</a>.</p>';
 
@@ -657,7 +958,7 @@ function generateCountryPage(c, slugKey, names, popularity) {
 
   const coreSection = '<section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">' + coreLinksHtml() + '</p></section>';
 
-  const list = (arr) => arr.map((n) => `<a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>`).join(', ');
+  const list = (arr) => arr.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ');
   const section = (id, title, items) =>
     items.length > 0
       ? `<section aria-labelledby="${id}"><h2 id="${id}">${htmlEscape(title)}</h2><p class="name-links">${list(items)}</p></section>`
@@ -685,9 +986,10 @@ function generateCountryPage(c, slugKey, names, popularity) {
     ${coreSection}
   `;
 
+  const countryDescription = 'Popular baby names in ' + countryLabel + '. Trending, popular, and rising names with meaning and origin. ' + (cultureText.length > 90 ? cultureText.slice(0, 87) + '…' : cultureText);
   const html = baseLayout({
-    title: 'Names from ' + countryLabel + ' | nameorigin.io',
-    description: 'Trending, popular, and rising names from ' + countryLabel + '. ' + (cultureText.length > 120 ? cultureText.slice(0, 117) + '…' : cultureText),
+    title: 'Popular Baby Names in ' + countryLabel + ' — NameOrigin',
+    description: countryDescription.slice(0, 160),
     path: pathSeg,
     canonical: SITE_URL + pathSeg,
     breadcrumb: breadcrumbItems,
@@ -731,7 +1033,7 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
 
   const listHtml =
     subset.length > 0
-      ? '<ul class="name-list">' + subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape(n.meaning.slice(0, 60)) + (n.meaning.length > 60 ? '…' : '') : ''}</li>`).join('') + '</ul>'
+      ? '<ul class="name-list">' + subset.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape(n.meaning.slice(0, 60)) + (n.meaning.length > 60 ? '…' : '') : ''}</li>`).join('') + '</ul>'
       : '<p>No ' + gender + ' names from ' + countryLabel + ' in our list yet. <a href="/names/' + gender + EXT + '">Browse all ' + gender + ' names</a> or <a href="/names/' + slugKey + EXT + '">names from ' + countryLabel + '</a>.</p>';
 
   const mainContent = `
@@ -800,7 +1102,7 @@ function generateStylePage(styleSlug, styleLabel, styleDescription, subset, name
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
-        subset.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
+        subset.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 55)) + ((n.meaning || '').length > 55 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
       : '<p>No names in this style yet. <a href="/names">Browse all names</a> or try another <a href="/names/style' + EXT + '">style</a>.</p>';
 
@@ -929,7 +1231,7 @@ function generateLastNamePage(surnameMeta, names) {
   const listHtml = (arr) =>
     arr.length > 0
       ? '<ul class="name-list">' +
-        arr.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
+        arr.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
       : '';
 
@@ -996,6 +1298,9 @@ function run() {
 
   // Name pages
   names.forEach((n) => generateNamePage(n, names, popularity, categories, variants));
+
+  // Phase 2.5: Names Like pages are generated separately via scripts/generate-names-like.js
+  // Run: node scripts/generate-names-like.js --batch=50 (then expand to 200 if authority score ≥ 0.99)
 
   // /names
   const namesHtml = generateListPage(
@@ -1304,11 +1609,12 @@ function run() {
     ]
   );
 
-  // Build verification: count programmatic output (name/, names/, hub .html), sample URLs, fail if zero
+  // Build verification: count programmatic output (name/, names/, names-like/, hub .html), sample URLs, fail if zero
   const nameDir = path.join(OUT_DIR, 'name');
   const namesDir = path.join(OUT_DIR, 'names');
+  const namesLikeDir = path.join(OUT_DIR, 'names-like');
   const hubFiles = ['all-name-pages.html', 'country-name-pages.html', 'style-name-pages.html', 'last-name-pages.html', 'alphabet-name-pages.html'];
-  const { total, samples } = countProgrammaticPages(OUT_DIR, nameDir, namesDir, hubFiles);
+  const { total, samples } = countProgrammaticPages(OUT_DIR, nameDir, namesDir, hubFiles, namesLikeDir);
   console.log('');
   console.log('--- Build verification ---');
   console.log('Total programmatic pages generated:', total.toLocaleString());
@@ -1322,9 +1628,13 @@ function run() {
     process.exit(1);
   }
   console.log('Generated programmatic pages under', OUT_DIR);
+
+  // Step 6: Automatically regenerate sitemap after programmatic generation (homepage, country, gender, name pages)
+  console.log('\nRegenerating sitemap...');
+  require(path.join(__dirname, 'build-sitemap.js'));
 }
 
-function countProgrammaticPages(outDir, nameDir, namesDir, hubFiles) {
+function countProgrammaticPages(outDir, nameDir, namesDir, hubFiles, namesLikeDir) {
   const samples = [];
   let total = 0;
   const toUrl = (relPath) => SITE_URL + '/' + relPath.replace(/\\/g, '/');
@@ -1338,12 +1648,16 @@ function countProgrammaticPages(outDir, nameDir, namesDir, hubFiles) {
         countHtmlInDir(full, rel);
       } else if (e.name.endsWith('.html')) {
         total += 1;
-        if (samples.length < 12) samples.push(toUrl(rel));
+        let sampleUrl = toUrl(rel);
+        if (baseRel === 'name' && e.name === 'index.html') sampleUrl = SITE_URL + '/name/' + path.basename(path.dirname(full)) + '/';
+        if (baseRel === 'names-like' && e.name === 'index.html') sampleUrl = SITE_URL + '/names-like/' + path.basename(path.dirname(full)) + '/';
+        if (samples.length < 12) samples.push(sampleUrl);
       }
     }
   }
   countHtmlInDir(nameDir, 'name');
   countHtmlInDir(namesDir, 'names');
+  if (namesLikeDir) countHtmlInDir(namesLikeDir, 'names-like');
   hubFiles.forEach((f) => {
     const full = path.join(outDir, f);
     if (fs.existsSync(full)) {
