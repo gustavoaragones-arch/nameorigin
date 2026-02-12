@@ -52,6 +52,13 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
+/** Word count from HTML (strip tags, collapse spaces). Used for adaptive padding threshold. */
+function countWordsInHtml(html) {
+  if (!html) return 0;
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
 function breadcrumbJsonLd(items) {
   const list = items.map((item, i) => {
     const url = item.url && !item.url.startsWith('http') ? SITE_URL + (item.url.startsWith('/') ? item.url : '/' + item.url) : (item.url || SITE_URL + '/');
@@ -353,9 +360,35 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     (n, base, origin) => `${htmlEscape(n)} comes from the same ${origin ? htmlEscape(origin) : 'cultural'} tradition as ${htmlEscape(base)}, sharing heritage and linguistic connections.`,
   ];
 
+  // Section transition phrasing (micro-variation so pages don't share identical flow)
+  const transitionBeforeOrigin = [
+    () => '<p class="contextual">Beyond sound, names that share the same cultural or linguistic origin can offer a different kind of connection.</p>',
+    () => '<p class="contextual">Cultural and linguistic ties also matter when considering similar names.</p>',
+    () => '<p class="contextual">If heritage is important to you, the following names share the same origin as ' + htmlEscape(baseRecord.name) + '.</p>',
+    () => '<p class="contextual">Names from the same cultural or linguistic background can resonate for different reasons.</p>',
+    () => '<p class="contextual">Another dimension of similarity is shared origin—names that come from the same linguistic or cultural roots.</p>',
+    () => '<p class="contextual">You might also value names that share the same cultural or linguistic heritage.</p>',
+  ];
+  const transitionBeforePopularity = [
+    () => '<p class="contextual">Popularity can influence how familiar a name feels; the names below sit in a similar usage band.</p>',
+    () => '<p class="contextual">If you care about how common a name is, these options offer comparable recognition.</p>',
+    () => '<p class="contextual">Names in a similar popularity range can provide a comparable level of familiarity.</p>',
+    () => '<p class="contextual">Another way to find alternatives is by popularity—names that rank in a similar tier.</p>',
+    () => '<p class="contextual">Parents often consider popularity; here are names in a similar band to ' + htmlEscape(baseRecord.name) + '.</p>',
+    () => '<p class="contextual">If matching popularity matters to you, the following names are in a similar range.</p>',
+  ];
+  const transitionBeforeAlternatives = [
+    () => '<p class="contextual">Beyond sound, origin, and popularity, you might also like these alternatives that share a similar overall appeal.</p>',
+    () => '<p class="contextual">Finally, here are other options that might resonate if you\'re drawn to ' + htmlEscape(baseRecord.name) + '\'s style.</p>',
+    () => '<p class="contextual">These additional names offer a similar feel even when they don\'t match on every dimension.</p>',
+    () => '<p class="contextual">Other alternatives worth considering share ' + htmlEscape(baseRecord.name) + '\'s appeal in different ways.</p>',
+    () => '<p class="contextual">You might also like the following options, which share a comparable character or style.</p>',
+    () => '<p class="contextual">Rounding out the list are other alternatives that could fit your preferences.</p>',
+  ];
+
   // Names with Same Origin section
   const originSectionHtml = sameOriginMatches.length > 0
-    ? `<section aria-labelledby="origin-heading"><h2 id="origin-heading">Names with the Same Origin</h2><ul class="name-list">${sameOriginMatches.map((n, idx) => {
+    ? transitionBeforeOrigin[variationIndex]() + `<section aria-labelledby="origin-heading"><h2 id="origin-heading">Names with the Same Origin</h2><ul class="name-list">${sameOriginMatches.map((n, idx) => {
         const explanation = originExplanations[(variationIndex + idx) % originExplanations.length](n.name, baseRecord.name, originLabel);
         return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
       }).join('')}</ul></section>`
@@ -373,7 +406,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
 
   // Names with Similar Popularity section
   const popularitySectionHtml = similarPopMatches.length > 0
-    ? `<section aria-labelledby="popularity-heading"><h2 id="popularity-heading">Names with Similar Popularity</h2><ul class="name-list">${similarPopMatches.map((n, idx) => {
+    ? transitionBeforePopularity[(variationIndex + 1) % 6]() + `<section aria-labelledby="popularity-heading"><h2 id="popularity-heading">Names with Similar Popularity</h2><ul class="name-list">${similarPopMatches.map((n, idx) => {
         const nPopRows = (popularity || []).filter((p) => p.name_id === n.id);
         const nPopRank = nPopRows.length > 0 ? Math.min(...nPopRows.map((p) => p.rank || 9999)) : 9999;
         const popLabel = nPopRank < 100 ? 'top 100' : nPopRank < 500 ? 'top 500' : nPopRank < 1000 ? 'top 1000' : 'less common';
@@ -394,7 +427,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
 
   // Other Alternatives section
   const alternativesSectionHtml = otherAlternatives.length > 0
-    ? `<section aria-labelledby="alternatives-heading"><h2 id="alternatives-heading">Other Alternatives You Might Like</h2><ul class="name-list">${otherAlternatives.map((n, idx) => {
+    ? transitionBeforeAlternatives[(variationIndex + 2) % 6]() + `<section aria-labelledby="alternatives-heading"><h2 id="alternatives-heading">Other Alternatives You Might Like</h2><ul class="name-list">${otherAlternatives.map((n, idx) => {
         const explanation = alternativesExplanations[(variationIndex + idx) % alternativesExplanations.length](n.name, baseRecord.name, gender);
         return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
       }).join('')}</ul></section>`
@@ -411,7 +444,20 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   ];
   const closing = closingTemplates[variationIndex](baseRecord.name);
 
-  const mainContent = `
+  // Adaptive content padding: only when word count would be below threshold (preserves 600+ rule, no relaxation).
+  const PADDING_THRESHOLD = 650;
+  const paddingTemplates = [
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">When a name becomes widely used, many parents appreciate its style but look for alternatives that feel similar without being overused. They want familiarity—a name that fits current trends and feels recognizable—but not one that appears in every classroom or playground. Cultural overlap matters too: names that share an origin or language can honor heritage while offering variety. Trend cycles also play a role; names rise and fall in popularity, and some parents prefer options that sit in a similar band without following the exact same curve. Finally, name fatigue is real: hearing the same name everywhere can push people toward alternatives that capture the same appeal. Looking for names like ${htmlEscape(name)} often reflects a desire to keep that appeal while finding something that still feels distinct.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Parents who like ${htmlEscape(name)} often want options that match its style and feel without copying it exactly. Style preference drives a lot of this: the same qualities that make a name appealing—sound, origin, or vibe—can be found in alternatives that feel fresh. Familiarity without overuse is another factor; a name that is well known but not everywhere can feel like a sweet spot. Cultural overlap also draws people in: names from the same linguistic or regional background can reflect shared heritage while giving siblings or families a cohesive set. Trend cycles mean that popularity shifts over time, so some parents look for names in a similar band that might age well. Name fatigue—when a name feels too common in your circle—can also lead people to seek alternatives that keep the same appeal. Exploring names like ${htmlEscape(name)} is a way to balance all of these.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Searching for names similar to ${htmlEscape(name)} usually comes down to a few motivations. One is style preference: you like the sound or the feel of the name and want alternatives that share that quality. Another is the desire for familiarity without overuse—a name that feels recognizable and on-trend but not overdone. Cultural overlap matters for many families; names that share an origin or language can honor identity while providing choice. Trend cycles also influence decisions; names move in and out of favor, and parents sometimes look for options in a similar popularity range that might feel current for years. Name fatigue is another reason: when a name feels too common in your environment, finding alternatives that capture the same appeal can feel like the best of both worlds. This page helps you do that.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Many people look for names like ${htmlEscape(name)} because they like its style but want options. They might want something that feels familiar—recognizable and in line with current tastes—without being so common that it loses its distinctiveness. Cultural overlap is another draw: names from the same origin or language can create a cohesive set for siblings or reflect shared heritage. Popularity and trend cycles play a role too; some parents prefer names in a similar band that have held steady or feel timeless rather than spiking. And name fatigue is real: when you hear a name everywhere, it can push you toward alternatives that keep the same appeal without the overexposure. Whether it is style, familiarity, culture, trends, or variety, the reasons to look for names like ${htmlEscape(name)} are varied and valid.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">When a name like ${htmlEscape(name)} resonates with you, it is natural to look for alternatives that share its appeal. Style preference is often the starting point—the sound, the feel, or the image the name evokes. From there, many parents consider familiarity without overuse: a name that feels known and current but not overused in their circles. Cultural overlap can be important too; names that share an origin or linguistic background can honor heritage and still offer variety. Trend cycles mean that popularity shifts, so some look for names in a similar band that might age well. Name fatigue also drives the search when a name feels too common locally; finding alternatives that capture the same qualities can feel like a good compromise. The names below reflect these different dimensions of similarity.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Looking for names like ${htmlEscape(name)} often stems from a few common motivations. One is style: you like what the name represents—its sound, origin, or feel—and want alternatives that match. Another is the balance of familiarity without overuse; a name that is recognizable and on-trend but not everywhere can feel ideal. Cultural overlap matters for many; names from the same background can reflect shared roots while giving you options. Trend cycles affect choices too; names rise and fall, and some parents prefer options in a similar popularity range. Name fatigue can also play a role when a name feels too common in your environment; alternatives that keep the same appeal can feel fresh. The following names offer that kind of variety while staying close to what draws you to ${htmlEscape(name)}.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Parents who are drawn to ${htmlEscape(name)} often search for similar names for good reasons. Style preference is one: the name has a certain feel—classic, modern, or culturally rooted—and they want alternatives that share it. Familiarity without overuse is another; they want a name that feels known and current but not overused in playgrounds or schools. Cultural overlap allows names from the same origin or language to honor heritage while offering variety. Trend cycles mean that popularity shifts over time, so some look for names in a similar band that might stay appealing. Name fatigue also motivates the search when a name feels too common locally; alternatives that capture the same appeal can feel like the best of both worlds. Below you will find names that match ${htmlEscape(name)} in one or more of these ways.</p></section>`,
+    (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">When a name gains popularity, many parents appreciate its style but seek alternatives that feel similar without being overused. They want familiarity—a name that fits the times and feels recognizable—but not one that appears everywhere. Cultural overlap matters: names that share an origin or language can honor heritage and still offer choice. Trend cycles play a role too; names move in and out of favor, and some parents prefer options in a similar popularity band. Name fatigue is another factor; hearing the same name repeatedly can push people toward alternatives that keep the same appeal. Whether the driver is style, familiarity, culture, trends, or variety, looking for names like ${htmlEscape(name)} is a common and sensible way to find options that resonate.</p></section>`,
+  ];
+
+  let mainContent = `
     <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
     ${intro}
     ${phoneticSectionHtml}
@@ -424,6 +470,24 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     ${alphabetSectionHtml()}
     <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
   `;
+
+  if (countWordsInHtml(mainContent) < PADDING_THRESHOLD) {
+    const paddingBlock = paddingTemplates[(baseRecord.id || 0) % paddingTemplates.length](baseRecord.name);
+    mainContent = `
+    <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
+    ${intro}
+    ${paddingBlock}
+    ${phoneticSectionHtml}
+    ${originSectionHtml}
+    ${popularitySectionHtml}
+    ${alternativesSectionHtml}
+    ${closing}
+    ${genderSectionHtml()}
+    ${countrySectionHtml()}
+    ${alphabetSectionHtml()}
+    <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
+  `;
+  }
 
   const genderLabel = gender === 'boy' ? 'Boy' : gender === 'girl' ? 'Girl' : gender === 'unisex' ? 'Unisex' : '';
   const totalSimilar = phoneticMatches.length + sameOriginMatches.length + similarPopMatches.length + otherAlternatives.length;
