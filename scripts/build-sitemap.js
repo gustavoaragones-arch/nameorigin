@@ -134,14 +134,29 @@ function run() {
   const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7');
   console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7)');
 
+  // --- /sitemaps/baby-names-with.xml: Phase 2.6 STEP 9 — /baby-names-with-<slug>/ priority 0.7, changefreq weekly ---
+  let babyNamesWithCount = 0;
+  if (fs.existsSync(OUT_DIR)) {
+    const babyNamesWithDirs = fs.readdirSync(OUT_DIR, { withFileTypes: true })
+      .filter((d) => d.isDirectory() && d.name.startsWith('baby-names-with-'))
+      .map((d) => '/' + d.name + '/');
+    babyNamesWithCount = babyNamesWithDirs.length;
+    if (babyNamesWithCount > 0) {
+      writeUrlset(path.join(sitemapsDir, 'baby-names-with.xml'), babyNamesWithDirs, '0.7'); // urlEntry default changefreq = weekly
+      console.log('Written sitemaps/baby-names-with.xml with', babyNamesWithCount, 'URLs (priority 0.7, changefreq weekly)');
+    }
+  }
+
   // --- /sitemap.xml: sitemap index ---
-  const indexEntries = [
+  const sitemaps = [
     ['names', 'sitemaps/names.xml'],
     ['countries', 'sitemaps/countries.xml'],
     ['filters', 'sitemaps/filters.xml'],
     ['lastname', 'sitemaps/lastname.xml'],
     ['names-like', 'sitemaps/names-like.xml'],
-  ].map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
+  ];
+  if (babyNamesWithCount > 0) sitemaps.push(['baby-names-with', 'sitemaps/baby-names-with.xml']);
+  const indexEntries = sitemaps.map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
 
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -149,8 +164,8 @@ ${indexEntries.join('\n')}
 </sitemapindex>`;
 
   fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), indexXml, 'utf8');
-  console.log('Written sitemap.xml (index with 5 sitemaps)');
-  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount);
+  console.log('Written sitemap.xml (index with ' + sitemaps.length + ' sitemaps)');
+  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + babyNamesWithCount);
 }
 
 run();

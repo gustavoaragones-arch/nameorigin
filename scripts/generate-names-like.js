@@ -444,8 +444,8 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   ];
   const closing = closingTemplates[variationIndex](baseRecord.name);
 
-  // Adaptive content padding: only when word count would be below threshold (preserves 600+ rule, no relaxation).
-  const PADDING_THRESHOLD = 650;
+  // Adaptive content padding: inject when below minimum; strict enforcement after recalc.
+  const MIN_WORD_COUNT = 600;
   const paddingTemplates = [
     (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">When a name becomes widely used, many parents appreciate its style but look for alternatives that feel similar without being overused. They want familiarity—a name that fits current trends and feels recognizable—but not one that appears in every classroom or playground. Cultural overlap matters too: names that share an origin or language can honor heritage while offering variety. Trend cycles also play a role; names rise and fall in popularity, and some parents prefer options that sit in a similar band without following the exact same curve. Finally, name fatigue is real: hearing the same name everywhere can push people toward alternatives that capture the same appeal. Looking for names like ${htmlEscape(name)} often reflects a desire to keep that appeal while finding something that still feels distinct.</p></section>`,
     (name) => `<section aria-labelledby="why-heading"><h2 id="why-heading">Why People Look for Names Like ${htmlEscape(name)}</h2><p class="contextual">Parents who like ${htmlEscape(name)} often want options that match its style and feel without copying it exactly. Style preference drives a lot of this: the same qualities that make a name appealing—sound, origin, or vibe—can be found in alternatives that feel fresh. Familiarity without overuse is another factor; a name that is well known but not everywhere can feel like a sweet spot. Cultural overlap also draws people in: names from the same linguistic or regional background can reflect shared heritage while giving siblings or families a cohesive set. Trend cycles mean that popularity shifts over time, so some parents look for names in a similar band that might age well. Name fatigue—when a name feels too common in your circle—can also lead people to seek alternatives that keep the same appeal. Exploring names like ${htmlEscape(name)} is a way to balance all of these.</p></section>`,
@@ -471,7 +471,8 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
   `;
 
-  if (countWordsInHtml(mainContent) < PADDING_THRESHOLD) {
+  let wordCount = countWordsInHtml(mainContent);
+  if (wordCount < MIN_WORD_COUNT) {
     const paddingBlock = paddingTemplates[(baseRecord.id || 0) % paddingTemplates.length](baseRecord.name);
     mainContent = `
     <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
@@ -487,6 +488,10 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     ${alphabetSectionHtml()}
     <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
   `;
+    wordCount = countWordsInHtml(mainContent);
+  }
+  if (wordCount < MIN_WORD_COUNT) {
+    throw new Error(`Page below minimum word threshold: ${baseRecord.name} (${wordCount} words). Minimum required: ${MIN_WORD_COUNT}.`);
   }
 
   const genderLabel = gender === 'boy' ? 'Boy' : gender === 'girl' ? 'Girl' : gender === 'unisex' ? 'Unisex' : '';
@@ -507,10 +512,10 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   ensureDir(path.dirname(outPath));
   fs.writeFileSync(outPath, html, 'utf8');
 
-  // Verify word count and link count
+  // Verify word count and link count (from final HTML)
   const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   const mainText = mainMatch ? mainMatch[1].replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
-  const wordCount = mainText.split(/\s+/).filter(Boolean).length;
+  const finalWordCount = mainText.split(/\s+/).filter(Boolean).length;
   const linkMatches = html.match(/<a\s+[^>]*href\s*=\s*["']([^"']+)["']/gi) || [];
   const internalLinks = linkMatches.filter((m) => {
     const hrefMatch = m.match(/href\s*=\s*["']([^"']+)["']/i);
@@ -519,7 +524,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     return href.startsWith('/') || href.includes('nameorigin.io');
   }).length;
 
-  return { wordCount, internalLinks, totalSimilar };
+  return { wordCount: finalWordCount, internalLinks, totalSimilar };
 }
 
 const MAX_BATCH = 200; // Discipline: do not mass-generate. First 50 → audit → deploy → then 200 if score OK.
