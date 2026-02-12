@@ -85,7 +85,7 @@ function run() {
 
   // --- /sitemaps/names.xml: all /name/{slug}.html ---
   const nameUrls = names.map((n) => '/name/' + slug(n.name) + EXT).filter((u) => u.length > 1);
-  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9');
+  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.8');
   console.log('Written sitemaps/names.xml with', namesCount, 'URLs');
 
   // --- /sitemaps/countries.xml: country pages + gender+country (.html) ---
@@ -115,6 +115,7 @@ function run() {
   STYLE_CONFIG.forEach((s) => filterUrls.push('/names/style/' + s.slug + EXT));
   LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
+  filterUrls.push('/legal/privacy.html', '/legal/terms.html');
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls);
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs');
 

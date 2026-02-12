@@ -20,6 +20,8 @@ const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROO
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 // Static .html URLs for crawlable, deployable programmatic pages (no directory index only).
 const EXT = '.html';
+// Step 7: Breadcrumb label for names index (Home > Baby Names > …)
+const BREADCRUMB_NAMES_LABEL = 'Baby Names';
 
 function loadJson(name) {
   const p = path.join(DATA_DIR, name + '.json');
@@ -149,7 +151,7 @@ function baseLayout(opts) {
   <meta name="robots" content="index, follow">
   <meta name="description" content="${htmlEscape(description)}">
   <title>${htmlEscape(title)}</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}">
   <script type="application/ld+json">${breadcrumbSchema}</script>
   ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ''}
@@ -353,7 +355,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const url = SITE_URL + pathSeg;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: record.name, url },
   ];
   const similarNames = getSimilarNamesForName(record, names, popularity, categories, 8);
@@ -471,14 +473,16 @@ function generateNamePage(record, names, popularity, categories, variants) {
 
 function generateListPage(title, description, pathSeg, names, listTitle) {
   const url = SITE_URL + pathSeg;
+  const secondLabel = pathSeg === '/names' ? BREADCRUMB_NAMES_LABEL : (listTitle || 'Names');
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: listTitle || 'Names', url },
+    { name: secondLabel, url },
   ];
   const listHtml =
     '<ul class="name-list">' +
     names.map((n) => `<li><a href="/name/${slug(n.name)}${EXT}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
     '</ul>';
+  const listIntro = '<p class="contextual">Browse first names with meaning and origin. Each name links to a detail page. Use the sections below to filter by gender, country, or letter, or explore trending and popular names.</p>';
   const html = baseLayout({
     title: title + ' | nameorigin.io',
     description,
@@ -486,6 +490,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     breadcrumb: breadcrumbItems,
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent: `<h1>${htmlEscape(title)}</h1>
+    ${listIntro}
     <p class="core-links">${coreLinksHtml()}</p>
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -503,7 +508,7 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
   const letterUpper = letter.toUpperCase();
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: 'Browse by letter', url: SITE_URL + '/names/letters' + EXT },
     { name: 'Names starting with ' + letterUpper, url: SITE_URL + pathSeg },
   ];
@@ -531,6 +536,7 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
   const mainContent = `
     <h1>Names starting with ${letterUpper}</h1>
     <p>${subset.length} first name${subset.length !== 1 ? 's' : ''} starting with ${letterUpper}. Each links to meaning and origin.</p>
+    ${LETTER_PAGE_INTRO_BLOCK}
     <section aria-labelledby="letters-nav-heading"><h2 id="letters-nav-heading">Browse by letter (A–Z)</h2>
     <p class="letters-hub">${otherLettersHtml}</p>
     </section>
@@ -587,12 +593,39 @@ const LOCAL_NAMING_CULTURE = {
   australia: 'Australian naming blends British heritage with multicultural influences and a fondness for nature and place-inspired names.',
 };
 
+// Step 5: Contextual content for programmatic pages (400–600 words target; no thin pages).
+const COUNTRY_PAGE_INTRO_BLOCK = `
+<p class="contextual">On this page you will find first names linked to this country by origin, language, or popularity there. We group them into trending names (rising in use), popular names (current top ranks), and a longer list by origin so you can explore meaning and cultural context. Each name links to a detail page with full meaning, origin, and popularity data.</p>
+<p class="contextual">Names are included when they are traditionally or currently associated with this region—by language, cultural use, or official popularity data. You can narrow by gender using the links below, or browse by letter and style from the main names section. If you are pairing a first name with a last name, try our last name compatibility tool for phonetic and cultural fit.</p>
+<p class="contextual">Trending names show first names that have been rising in use in recent years in this country, based on official statistics where available. Popular names list current top-ranked choices. The origin list includes names tied to this region by language or tradition, even if they are less common in rankings. Click any name to read its full meaning, origin story, and popularity over time.</p>
+<p class="contextual">We recommend combining this page with our gender filters (boy, girl, unisex) and letter index (A–Z) to narrow your search. The homepage and names index offer more ways to explore: trending and popular lists, style categories like classic or nature-inspired, and last name compatibility for finding first names that sound good with your surname.</p>
+<p class="contextual">Whether you are looking for a name that reflects your heritage, fits current trends, or has a meaning you love, the lists on this page are a practical starting point. Use the explore links to move between countries, genders, and letters without leaving the site.</p>`;
+const GENDER_COUNTRY_INTRO_BLOCK = `
+<p class="contextual">This page lists first names that are both in this gender category and associated with this country—by origin, language, or regional use. Each name links to its detail page for meaning, origin, and popularity. Use the links below to switch to other countries, other genders, or to browse by letter and style. All names on nameorigin.io are curated for meaning and origin so you can choose with context in mind.</p>
+<p class="contextual">You can explore boy names, girl names, and unisex names from the gender links, or jump to country-only pages to see all names from a region regardless of gender. The letter and style hubs help you browse by first letter or by category such as classic, modern, or nature-inspired names.</p>
+<p class="contextual">Choosing a name by both gender and country helps when you want to honor heritage or match a naming tradition. The list below includes names that fit this combination; each links to a full profile with meaning, origin, and popularity. For more options, use the country page (all genders) or the gender page (all countries), or start from the homepage to see trending and popular names worldwide.</p>
+<p class="contextual">The filter and explore sections on this page link to all gender and country combinations so you can move between related lists in one or two clicks. Every name in the list is clickable for full details.</p>
+<p class="contextual">If you do not find enough options here, open the country page (all genders) or the gender page (all countries) from the links below. The homepage and names index also list trending and popular names, and the last name compatibility tool helps when you are pairing a first name with a surname.</p>`;
+const STYLE_PAGE_INTRO_BLOCK = `
+<p class="contextual">Names in this style are grouped by theme or category—whether classic, modern, nature-inspired, or another style we track. Each name links to its full detail page with meaning, origin, and popularity. Use the gender and country links below to combine this style with boy, girl, or unisex names, or with names from a specific country.</p>
+<p class="contextual">Style categories help you narrow choices when you have a vibe in mind. You can also browse by letter for a given style or explore our last name compatibility tool to see how first names in this style pair with common surnames.</p>
+<p class="contextual">If you are looking for a name that fits a particular feeling—timeless, fresh, rare, or rooted in nature or tradition—this list is a good starting point. Every name on nameorigin.io has a dedicated page with meaning, origin, and popularity, so you can dig deeper once you find options you like. The hubs for letters and countries give you more ways to filter and discover names.</p>
+<p class="contextual">Use the A–Z links above to switch to another letter, or the gender and country links to filter this style by boy, girl, unisex, or by region. The main names index and homepage link to trending, popular, and last name compatibility tools as well. Each name in the list below links to its full profile with meaning and origin.</p>
+<p class="contextual">Style lists are curated so you can quickly find names that match a theme. Combine with gender or country using the links on this page, or browse the letter hub and country pages for more discovery paths. Every name here has a full profile on nameorigin.io with meaning, origin, and popularity.</p>`;
+const LETTER_PAGE_INTRO_BLOCK = `
+<p class="contextual">Here you can browse first names that start with this letter. Each name links to a detail page with meaning, origin, and popularity. Below you will find links to browse by gender (boy, girl, unisex), by country, and by style, so you can combine letter with other filters. Our hub pages list all letters and all name pages for easy discovery.</p>
+<p class="contextual">Browsing by letter is useful when you have a preferred first letter or want to explore names in alphabetical order. You can then narrow by gender or country using the links in this page, or jump to trending and popular names from the main names section. Every name in the list below goes to a full profile with meaning, origin, and popularity data.</p>`;
+const LASTNAME_PAGE_INTRO_EXTRA = `
+<p class="contextual">We score first names by how well they pair with this last name using syllable balance, vowel and consonant flow, and length. Cultural matching suggests names from the same or related traditions. Use the links below to browse by gender or country, or try the main last name compatibility hub for other surnames.</p>
+<p class="contextual">A first name that flows well with your last name is easier to say and remember. The phonetic tips above explain how the sound of your surname affects which first names tend to work best. The compatible names list combines those factors with syllable balance and length. For more options, use the gender and country filters or the main names index; each name links to its full meaning and origin.</p>
+<p class="contextual">You can try other surnames from the last name compatibility hub linked below, or browse by gender and country to find names that match your style and heritage.</p>`;
+
 function generateCountryPage(c, slugKey, names, popularity) {
   const countryLabel = c.name || c.code || slugKey;
   const pathSeg = '/names/' + slugKey + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: 'Names from ' + countryLabel, url: SITE_URL + pathSeg },
   ];
 
@@ -633,6 +666,7 @@ function generateCountryPage(c, slugKey, names, popularity) {
   const mainContent = `
     <h1>Names from ${htmlEscape(countryLabel)}</h1>
     <p class="local-culture">${htmlEscape(cultureText)}</p>
+    ${COUNTRY_PAGE_INTRO_BLOCK}
 
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -667,11 +701,12 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
   const countryLabel = c.name || c.code || slugKey;
   const genderLabel = gender.charAt(0).toUpperCase() + gender.slice(1);
   const pathSeg = '/names/' + gender + '/' + slugKey + EXT;
+  // Step 7: Home > Baby Names > Canada > Girl Names
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
-    { name: genderLabel + ' names', url: SITE_URL + '/names/' + gender + EXT },
-    { name: countryLabel, url: SITE_URL + pathSeg },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
+    { name: countryLabel, url: SITE_URL + '/names/' + slugKey + EXT },
+    { name: genderLabel + ' names', url: SITE_URL + pathSeg },
   ];
 
   const subset = names.filter(
@@ -702,6 +737,7 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
   const mainContent = `
     <h1>${htmlEscape(genderLabel)} names from ${htmlEscape(countryLabel)}</h1>
     <p>Browse first names that are ${gender} and associated with ${htmlEscape(countryLabel)}.</p>
+    ${GENDER_COUNTRY_INTRO_BLOCK}
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
@@ -747,7 +783,7 @@ function generateStylePage(styleSlug, styleLabel, styleDescription, subset, name
   const pathSeg = '/names/style/' + styleSlug + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: 'Names by style', url: SITE_URL + '/names/style' + EXT },
     { name: styleLabel, url: SITE_URL + pathSeg },
   ];
@@ -771,6 +807,7 @@ function generateStylePage(styleSlug, styleLabel, styleDescription, subset, name
   const mainContent = `
     <h1>${htmlEscape(styleLabel)}</h1>
     <p class="local-culture">${htmlEscape(styleDescription)}</p>
+    ${STYLE_PAGE_INTRO_BLOCK}
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
@@ -862,7 +899,7 @@ function generateLastNamePage(surnameMeta, names) {
   const pathSeg = '/names/with-last-name-' + slugKey + EXT;
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
-    { name: 'Names', url: SITE_URL + '/names' },
+    { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' + EXT },
     { name: surname, url: SITE_URL + pathSeg },
   ];
@@ -907,6 +944,7 @@ function generateLastNamePage(surnameMeta, names) {
   const mainContent = `
     <h1>First names that go with ${htmlEscape(surname)}</h1>
     <p class="local-culture">${htmlEscape(intro)}</p>
+    ${LASTNAME_PAGE_INTRO_EXTRA}
 
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -1007,12 +1045,12 @@ function run() {
     canonical: SITE_URL + '/names/letters' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
-      { name: 'Names', url: SITE_URL + '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
       { name: 'Browse by letter', url: SITE_URL + '/names/letters' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
-      { name: 'Names', url: '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: '/names' },
       { name: 'Browse by letter', url: '/names/letters' + EXT },
     ]),
     mainContent: `
@@ -1076,12 +1114,12 @@ function run() {
     canonical: SITE_URL + '/names/style' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
-      { name: 'Names', url: SITE_URL + '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
       { name: 'Names by style', url: SITE_URL + '/names/style' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
-      { name: 'Names', url: '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: '/names' },
       { name: 'Names by style', url: '/names/style' + EXT },
     ]),
     mainContent: `
@@ -1115,12 +1153,12 @@ function run() {
     canonical: SITE_URL + '/names/with-last-name' + EXT,
     breadcrumb: [
       { name: 'Home', url: SITE_URL + '/' },
-      { name: 'Names', url: SITE_URL + '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
       { name: 'Last name compatibility', url: SITE_URL + '/names/with-last-name' + EXT },
     ],
     breadcrumbHtml: breadcrumbHtml([
       { name: 'Home', url: '/' },
-      { name: 'Names', url: '/names' },
+      { name: BREADCRUMB_NAMES_LABEL, url: '/names' },
       { name: 'Last name compatibility', url: '/names/with-last-name' + EXT },
     ]),
     mainContent: `

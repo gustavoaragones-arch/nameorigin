@@ -16,6 +16,16 @@
  *   ✅ Structured data (source code): BreadcrumbList JSON-LD on all programmatic pages; FAQPage JSON-LD where relevant.
  *     (Validate later with Google Rich Results Test.)
  *   ✅ Indexability: no noindex on pages; robots.txt allows crawling; sitemap.xml includes programmatic URLs.
+ *
+ * Phase 2.25 — Deployment & Index Integrity:
+ *   ✅ No noindex meta tags (covered above).
+ *   ✅ No accidental X-Robots-Tag in project config (wrangler, _headers, etc.).
+ *   ✅ No canonical pointing to homepage on non-homepage pages; canonicals are self-referencing.
+ *
+ * Step 5 — Programmatic page validation:
+ *   ✅ Minimum 400 words of contextual content (intro + body); unique H1; internal links to home, gender, country, related.
+ * Step 6 — Internal link graph:
+ *   ✅ Every page reachable from homepage within 3 clicks; no orphans; programmatic pages link to hub; hub links to categories.
  */
 
 const fs = require('fs');
@@ -86,6 +96,47 @@ function getPageMetadata(html) {
   const canonMatch = html.match(/<link\s+rel=["']canonical["'][^>]*href=["']([^"']*)["']/i) || html.match(/<link\s+href=["']([^"']*)["'][^>]*rel=["']canonical["']/i);
   const canonical = canonMatch ? canonMatch[1].trim() : '';
   return { title, description, canonical };
+}
+
+/** Strip HTML and return main content text (for word count). */
+function getMainContentText(html) {
+  if (!html || typeof html !== 'string') return '';
+  const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+  const block = mainMatch ? mainMatch[1] : html;
+  return block.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function countWords(text) {
+  return (text || '').split(/\s+/).filter(Boolean).length;
+}
+
+/** Extract internal link pathnames from HTML (href="/..." or full URL to nameorigin.io). */
+function getInternalLinkPaths(html, host = 'nameorigin.io') {
+  const paths = new Set();
+  const re = /<a\s+[^>]*href\s*=\s*["']([^"']+)["']/gi;
+  let m;
+  while ((m = re.exec(html))) {
+    const href = (m[1] || '').trim();
+    if (href.startsWith('/')) {
+      const p = href.replace(/#.*$/, '').replace(/\/$/, '') || '/';
+      paths.add(p);
+    } else if (href.includes(host)) {
+      try {
+        const u = new URL(href);
+        const p = u.pathname.replace(/\/$/, '') || '/';
+        paths.add(p);
+      } catch (_) {}
+    }
+  }
+  return paths;
+}
+
+/** Map URL pathname to file path under OUT_DIR. */
+function pathToFilePath(outDir, pathname) {
+  const p = pathname.replace(/^\//, '').replace(/\/$/, '');
+  if (!p) return path.join(outDir, 'index.html');
+  if (p === 'names') return path.join(outDir, 'names', 'index.html');
+  return path.join(outDir, p.includes('.html') ? p : p + '/index.html');
 }
 
 function main() {
@@ -270,6 +321,184 @@ function main() {
   const programmaticInSitemap = namesUrls.some((u) => /\/name\/|nameorigin\.io\/name\//i.test(u)) && (filtersUrls.some((u) => /\/names\/|nameorigin\.io\/names\//i.test(u)) || namesUrls.length > 0);
   console.log(programmaticInSitemap ? '✅' : '❌', 'Indexability (sitemap):', programmaticInSitemap ? 'sitemap includes programmatic URLs (/name/, /names/)' : 'sitemap missing programmatic URLs');
   if (!programmaticInSitemap) failed++;
+
+  // Phase 2.25 — Index Integrity: no canonical-to-homepage on non-homepage, no X-Robots-Tag in project
+  const HOMEPAGE_CANONICAL = /^https:\/\/nameorigin\.io\/?$/;
+  const staticPages = [
+    { file: path.join(OUT_DIR, 'index.html'), allowHomepageCanonical: true },
+    { file: path.join(OUT_DIR, 'legal', 'privacy.html'), allowHomepageCanonical: false },
+    { file: path.join(OUT_DIR, 'legal', 'terms.html'), allowHomepageCanonical: false },
+  ];
+  let canonicalIntegrityOk = true;
+  for (const { file, allowHomepageCanonical } of staticPages) {
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, 'utf8');
+    const canonicalMatch = html.match(/<link\s+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i);
+    const canonicalHref = canonicalMatch ? canonicalMatch[1].trim() : '';
+    const isHomepageCanonical = HOMEPAGE_CANONICAL.test(canonicalHref);
+    if (!allowHomepageCanonical && isHomepageCanonical) {
+      console.log('❌', 'Phase 2.25: non-homepage has canonical to homepage:', file);
+      canonicalIntegrityOk = false;
+    }
+  }
+  const nameSample = path.join(OUT_DIR, 'name');
+  if (fs.existsSync(nameSample)) {
+    const files = fs.readdirSync(nameSample, { withFileTypes: true }).filter((e) => e.isFile() && e.name.endsWith('.html'));
+    if (files.length > 0) {
+      const sampleFile = path.join(nameSample, files[0].name);
+      const html = fs.readFileSync(sampleFile, 'utf8');
+      const canonicalMatch = html.match(/<link\s+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i);
+      const canonicalHref = canonicalMatch ? canonicalMatch[1].trim() : '';
+      if (HOMEPAGE_CANONICAL.test(canonicalHref)) {
+        console.log('❌', 'Phase 2.25: name page has canonical to homepage:', sampleFile);
+        canonicalIntegrityOk = false;
+      }
+    }
+  }
+  const namesSample = path.join(OUT_DIR, 'names', 'canada.html');
+  if (fs.existsSync(namesSample)) {
+    const html = fs.readFileSync(namesSample, 'utf8');
+    const canonicalMatch = html.match(/<link\s+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i);
+    const canonicalHref = canonicalMatch ? canonicalMatch[1].trim() : '';
+    if (HOMEPAGE_CANONICAL.test(canonicalHref)) {
+      console.log('❌', 'Phase 2.25: names page has canonical to homepage:', namesSample);
+      canonicalIntegrityOk = false;
+    }
+  }
+  console.log(canonicalIntegrityOk ? '✅' : '❌', 'Phase 2.25 (canonical): no canonical-to-homepage on non-homepage pages');
+  if (!canonicalIntegrityOk) failed++;
+
+  const configFiles = ['wrangler.toml', '_headers', 'netlify.toml', 'vercel.json'].map((f) => path.join(OUT_DIR, f));
+  let noXRobotsInProject = true;
+  for (const cfg of configFiles) {
+    if (fs.existsSync(cfg)) {
+      const content = fs.readFileSync(cfg, 'utf8');
+      if (/x-robots|x-robots-tag|noindex/i.test(content)) {
+        console.log('❌', 'Phase 2.25: possible X-Robots / noindex in config:', cfg);
+        noXRobotsInProject = false;
+      }
+    }
+  }
+  console.log(noXRobotsInProject ? '✅' : '❌', 'Phase 2.25 (headers): no X-Robots-Tag/noindex in project config');
+  if (!noXRobotsInProject) failed++;
+
+  // Step 5 — Programmatic page validation: 400+ words, intro, unique H1, internal links (home, gender, country)
+  const MIN_WORDS = 400;
+  const programmaticSamples = [
+    { label: 'Country (canada)', file: path.join(OUT_DIR, 'names', 'canada.html') },
+    { label: 'Gender+country (girl/france)', file: path.join(OUT_DIR, 'names', 'girl', 'france.html') },
+    { label: 'Style (nature)', file: path.join(OUT_DIR, 'names', 'style', 'nature.html') },
+    { label: 'Last-name (smith)', file: path.join(OUT_DIR, 'names', 'with-last-name-smith.html') },
+  ];
+  let step5Ok = true;
+  for (const s of programmaticSamples) {
+    if (!fs.existsSync(s.file)) {
+      console.log('⚠️', 'Step 5: skip (missing)', s.label);
+      continue;
+    }
+    const html = fs.readFileSync(s.file, 'utf8');
+    const text = getMainContentText(html);
+    const words = countWords(text);
+    const hasEnoughWords = words >= MIN_WORDS;
+    const hasH1 = /<h1[^>]*>[\s\S]*?<\/h1>/i.test(html);
+    const hasIntroP = /<main[\s\S]*?<p[^>]*class=["']?(?:local-culture|contextual)/i.test(html) || /<main[\s\S]*?<p\s/i.test(html);
+    const linkPaths = getInternalLinkPaths(html);
+    const hasHome = linkPaths.has('/');
+    const hasGender = linkPaths.has('/names/boy.html') || linkPaths.has('/names/girl.html') || linkPaths.has('/names/unisex.html');
+    const hasCountry = [...linkPaths].some((p) => /\/names\/(usa|canada|france|india|ireland)\.html$/.test(p));
+    const linksOk = hasHome && (hasGender || hasCountry);
+    const ok = hasEnoughWords && hasH1 && hasIntroP && linksOk;
+    if (!ok) step5Ok = false;
+    console.log(ok ? '✅' : '❌', 'Step 5 (' + s.label + '):', 'words=' + words + (hasEnoughWords ? '' : '<400'), hasH1 ? 'H1' : 'no H1', hasIntroP ? 'intro' : 'no intro', linksOk ? 'links' : 'missing links');
+  }
+  console.log(step5Ok ? '✅' : '❌', 'Step 5 (programmatic): min 400 words, intro, unique H1, internal links (home, gender/country)');
+  if (!step5Ok) failed++;
+
+  // Step 6 — Internal link graph: reachable from homepage in 3 clicks, no orphans, hub ↔ programmatic
+  const allSitemapPaths = new Set();
+  for (const rel of ['sitemaps/names.xml', 'sitemaps/countries.xml', 'sitemaps/filters.xml', 'sitemaps/lastname.xml']) {
+    const fp = path.join(OUT_DIR, rel);
+    if (fs.existsSync(fp)) {
+      getSitemapUrls(fp).forEach((url) => {
+        try {
+          const u = new URL(url);
+          const pathname = u.pathname.replace(/\/$/, '') || '/';
+          allSitemapPaths.add(pathname);
+        } catch (_) {}
+      });
+    }
+  }
+  const reachable = new Set(['/']);
+  const queue = [{ path: '/', depth: 0 }];
+  const seen = new Set(['/']);
+  const maxDepth = 3;
+  while (queue.length > 0) {
+    const { path: p, depth } = queue.shift();
+    if (depth >= maxDepth) continue;
+    const filePath = pathToFilePath(OUT_DIR, p);
+    if (!fs.existsSync(filePath)) continue;
+    const html = fs.readFileSync(filePath, 'utf8');
+    const links = getInternalLinkPaths(html);
+    for (const linkPath of links) {
+      const norm = linkPath === '' ? '/' : linkPath;
+      reachable.add(norm);
+      if (!seen.has(norm)) {
+        seen.add(norm);
+        queue.push({ path: norm, depth: depth + 1 });
+      }
+    }
+  }
+  const pathToFile = (pn) => {
+    const p = pn.replace(/^\//, '').replace(/\/$/, '');
+    if (!p) return path.join(OUT_DIR, 'index.html');
+    if (p === 'names') return path.join(OUT_DIR, 'names', 'index.html');
+    return path.join(OUT_DIR, p.includes('.html') ? p : p + '/index.html');
+  };
+  let unreachable = [];
+  for (const p of allSitemapPaths) {
+    const norm = p === '' ? '/' : p;
+    if (!reachable.has(norm)) {
+      const fp = pathToFile(norm);
+      if (fs.existsSync(fp)) unreachable.push(norm);
+    }
+  }
+  const step6Reachable = unreachable.length === 0;
+  console.log(step6Reachable ? '✅' : '❌', 'Step 6 (link graph): all sitemap pages reachable from homepage within 3 clicks', step6Reachable ? '' : '(' + unreachable.length + ' unreachable)');
+  if (!step6Reachable) failed++;
+
+  const hubLinksToCategories = (hubPath, html) => {
+    const links = getInternalLinkPaths(html);
+    if (hubPath === '/names/letters.html') return links.has('/names/a.html') || links.has('/names/b.html');
+    if (hubPath === '/names/style.html') return links.has('/names/style/nature.html') || links.has('/names/style/classic.html');
+    if (hubPath === '/names/with-last-name.html') return [...links].some((l) => /\/names\/with-last-name-[a-z]+\.html/.test(l));
+    return true;
+  };
+  const hubSamples = [
+    { path: '/names/letters.html', file: path.join(OUT_DIR, 'names', 'letters.html') },
+    { path: '/names/style.html', file: path.join(OUT_DIR, 'names', 'style.html') },
+    { path: '/names/with-last-name.html', file: path.join(OUT_DIR, 'names', 'with-last-name.html') },
+  ];
+  let hubLinksOk = true;
+  for (const h of hubSamples) {
+    if (fs.existsSync(h.file)) {
+      const html = fs.readFileSync(h.file, 'utf8');
+      if (!hubLinksToCategories(h.path, html)) hubLinksOk = false;
+    }
+  }
+  console.log(hubLinksOk ? '✅' : '❌', 'Step 6 (hubs): hub pages link to programmatic categories');
+  if (!hubLinksOk) failed++;
+
+  const programmaticLinksToHub = (html, hubPath) => {
+    const links = getInternalLinkPaths(html);
+    return links.has(hubPath) || links.has(hubPath.replace('.html', ''));
+  };
+  const canadaHtml = fs.existsSync(path.join(OUT_DIR, 'names', 'canada.html')) ? fs.readFileSync(path.join(OUT_DIR, 'names', 'canada.html'), 'utf8') : '';
+  const smithHtml = fs.existsSync(path.join(OUT_DIR, 'names', 'with-last-name-smith.html')) ? fs.readFileSync(path.join(OUT_DIR, 'names', 'with-last-name-smith.html'), 'utf8') : '';
+  const canadaLinksToNames = canadaHtml && (programmaticLinksToHub(canadaHtml, '/names') || /href=["']\/names["']/.test(canadaHtml));
+  const smithLinksToHub = smithHtml && programmaticLinksToHub(smithHtml, '/names/with-last-name.html');
+  const programmaticToHubOk = (!canadaHtml || canadaLinksToNames) && (!smithHtml || smithLinksToHub);
+  console.log(programmaticToHubOk ? '✅' : '❌', 'Step 6 (programmatic→hub): country and last-name pages link back to hub');
+  if (!programmaticToHubOk) failed++;
 
   // 8. Zero orphan pages (design: every generated page is listed in sitemap and linked from hubs/letter/country)
   const totalSitemapUrls = [path.join(sitemapsDir, 'names.xml'), path.join(sitemapsDir, 'countries.xml'), path.join(sitemapsDir, 'filters.xml'), path.join(sitemapsDir, 'lastname.xml')]
