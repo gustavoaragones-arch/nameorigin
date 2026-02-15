@@ -117,6 +117,8 @@ function run() {
   LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   filterUrls.push('/legal/privacy.html', '/legal/terms.html');
+  filterUrls.push('/popularity/');
+  for (let y = 1980; y <= 2024; y++) filterUrls.push('/popularity/' + y + EXT);
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
 

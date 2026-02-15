@@ -107,6 +107,32 @@ function personJsonLd(nameRecord) {
   };
 }
 
+/** Structured data for popularity by year on name pages. */
+function popularityJsonLd(nameRecord, chartData, peakYear, latestRank) {
+  if (!chartData || chartData.length === 0) return null;
+  const analyzed = analyzeTrend(chartData);
+  const listItems = chartData.map((d, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: d.year + (d.rank != null ? ': Rank ' + d.rank : ''),
+  }));
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Popularity of ' + nameRecord.name + ' by year',
+    description: 'Baby name popularity rankings by year.',
+    numberOfItems: listItems.length,
+    itemListElement: listItems,
+  };
+  if (peakYear != null || latestRank != null || analyzed.trend) {
+    schema.additionalProperty = [];
+    if (peakYear != null) schema.additionalProperty.push({ '@type': 'PropertyValue', name: 'peakYear', value: peakYear });
+    if (latestRank != null) schema.additionalProperty.push({ '@type': 'PropertyValue', name: 'latestRank', value: latestRank });
+    if (analyzed.trend) schema.additionalProperty.push({ '@type': 'PropertyValue', name: 'trend', value: analyzed.trend });
+  }
+  return schema;
+}
+
 const ORIGIN_BADGES = {
   ireland: { flag: '🇮🇪', label: 'Irish', hint: 'Irish and Celtic origins; common in Ireland and the diaspora.' },
   italy: { flag: '🇮🇹', label: 'Italian', hint: 'From Latin and Italian tradition; used across Romance-language cultures.' },
@@ -145,7 +171,11 @@ function baseLayout(opts) {
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
   const faqSchemaObj = opts.faqSchema !== undefined ? opts.faqSchema : defaultFaqForPage(pathSeg, title);
   const faqSchema = faqSchemaObj ? JSON.stringify(faqSchemaObj) : '';
-  const extraSchema = opts.extraSchema ? JSON.stringify(opts.extraSchema) : '';
+  let extraSchemaHtml = '';
+  if (opts.extraSchema) {
+    const arr = Array.isArray(opts.extraSchema) ? opts.extraSchema : [opts.extraSchema];
+    extraSchemaHtml = arr.filter(Boolean).map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n  ');
+  }
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -158,7 +188,7 @@ function baseLayout(opts) {
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
   ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ''}
-  ${extraSchema ? `<script type="application/ld+json">${extraSchema}</script>` : ''}
+  ${extraSchemaHtml}
 </head>
 <body>
   <header class="site-header" role="banner">
@@ -352,6 +382,82 @@ function countrySectionHtml() {
   return '<section aria-labelledby="country-heading"><h2 id="country-heading">Browse by country</h2><p class="name-links">' + FILTER_COUNTRY_SLUGS.map((c) => '<a href="/names/' + c.slug + EXT + '">' + htmlEscape(c.label) + '</a>').join(' · ') + '</p></section>';
 }
 
+/** Phase 2.7 — Lightweight line chart (inline SVG, no external libs). data: [{ year, rank }, ...] sorted by year ASC. Lower rank = more popular. */
+function generateLineChart(data) {
+  if (!data || data.length < 2) return '';
+  const width = 320;
+  const height = 120;
+  const pad = { top: 8, right: 8, bottom: 20, left: 0 };
+  const innerW = width - pad.left - pad.right;
+  const innerH = height - pad.top - pad.bottom;
+  const ranks = data.map((d) => d.rank != null ? Math.max(1, d.rank) : 1000);
+  const minRank = Math.min(...ranks);
+  const maxRank = Math.max(...ranks);
+  const rankRange = maxRank - minRank || 1;
+  const yearMin = Math.min(...data.map((d) => d.year));
+  const yearMax = Math.max(...data.map((d) => d.year));
+  const yearRange = yearMax - yearMin || 1;
+  const points = data.map((d) => {
+    const x = pad.left + (d.year - yearMin) / yearRange * innerW;
+    const r = d.rank != null ? Math.max(1, d.rank) : 1000;
+    const y = pad.top + innerH * (1 - (r - minRank) / rankRange);
+    return `${Math.round(x)},${Math.round(y)}`;
+  }).join(' ');
+  const step = Math.max(1, Math.floor(data.length / 6));
+  const yearTicks = data.filter((_, i) => i % step === 0 || i === data.length - 1);
+  const labels = yearTicks.map((d) => {
+    const x = pad.left + (d.year - yearMin) / yearRange * innerW;
+    return `<text x="${x}" y="${height - 2}" font-size="9" text-anchor="middle">${d.year}</text>`;
+  }).join('');
+  return `<svg class="popularity-chart-svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="Popularity over time"><polyline points="${points}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>${labels}</svg>`;
+}
+
+/** Trend Summary Engine — detect trend from sorted rows [{ year, rank }, ...]. */
+function analyzeTrend(rows) {
+  if (!rows || rows.length < 2) return { trend: 'stable' };
+  const first = rows[0];
+  const last = rows[rows.length - 1];
+  const firstRank = first.rank != null ? first.rank : 9999;
+  const lastRank = last.rank != null ? last.rank : 9999;
+  const peakEntry = rows.reduce((best, d) => (d.rank != null && d.rank < best.rank ? d : best), rows[0]);
+  const peakYear = peakEntry.year;
+
+  if (lastRank < firstRank) {
+    return { trend: 'rising', sinceYear: first.year, peakYear };
+  }
+  if (lastRank > firstRank) {
+    if (peakYear === first.year) {
+      return { trend: 'declining', sinceYear: peakYear, peakYear };
+    }
+    return { trend: 'peaked', sinceYear: peakYear, peakYear };
+  }
+  return { trend: 'stable', sinceYear: first.year, peakYear };
+}
+
+/** Short unique sentence from analyzeTrend result. Reduces template feel. */
+function getTrendSummary(name, data, peakYear, latestRank) {
+  if (!data || data.length < 2) return '';
+  const analyzed = analyzeTrend(data);
+  const nameEsc = htmlEscape(name);
+  switch (analyzed.trend) {
+    case 'rising':
+      return analyzed.sinceYear
+        ? nameEsc + ' has risen steadily since ' + analyzed.sinceYear + '.'
+        : nameEsc + ' has reached peak popularity in ' + (peakYear || '') + '.';
+    case 'declining':
+      return analyzed.sinceYear
+        ? nameEsc + ' has steadily declined since ' + analyzed.sinceYear + '.'
+        : nameEsc + ' has declined in rank in recent years.';
+    case 'peaked':
+      return analyzed.peakYear
+        ? nameEsc + ' peaked in ' + analyzed.peakYear + ' and has declined since.'
+        : nameEsc + ' has declined from its peak.';
+    case 'stable':
+    default:
+      return nameEsc + ' has stayed stable in popularity' + (analyzed.peakYear ? ' with a peak in ' + analyzed.peakYear + '.' : '.');
+  }
+}
+
 function generateNamePage(record, names, popularity, categories, variants) {
   const nameSlug = slug(record.name);
   const pathSeg = nameDetailPath(record.name);
@@ -431,6 +537,36 @@ function generateNamePage(record, names, popularity, categories, variants) {
           .join('') +
         '</tbody></table>'
       : '';
+
+  // Phase 2.7 — Popularity Over Time: line chart, peak year, latest rank, trend summary
+  const chartData = [...popByYear.entries()]
+    .map(([y, rows]) => {
+      const bestRank = Math.min(...rows.filter((r) => r.rank != null).map((r) => r.rank), 9999);
+      return { year: y, rank: bestRank < 9999 ? bestRank : null };
+    })
+    .filter((d) => d.rank != null)
+    .sort((a, b) => a.year - b.year);
+  const peakEntry = chartData.length > 0 ? chartData.reduce((best, d) => (d.rank != null && d.rank < best.rank ? d : best), chartData[0]) : null;
+  const peakYear = peakEntry ? peakEntry.year : null;
+  const latestEntry = chartData.length > 0 ? chartData[chartData.length - 1] : null;
+  const latestRank = latestEntry ? latestEntry.rank : null;
+  const trendSummary = chartData.length >= 2 && peakYear ? getTrendSummary(record.name, chartData, peakYear, latestRank) : '';
+  const chartSvg = generateLineChart(chartData);
+  const popularityOverTimeSection =
+    chartData.length >= 2
+      ? `<section aria-labelledby="popularity-over-time-heading" class="popularity-over-time"><h2 id="popularity-over-time-heading">Popularity Over Time</h2>${chartSvg}<p class="popularity-stats">${peakYear ? 'Peak year: ' + peakYear + '. ' : ''}${latestRank != null ? 'Latest rank: ' + latestRank + '. ' : ''}</p><div class="ad-slot ad-slot--after-chart" data-ad-slot="name-popularity-chart" aria-label="Advertisement"></div>${trendSummary ? '<p class="contextual">' + trendSummary + '</p><div class="ad-slot ad-slot--after-trend" data-ad-slot="name-trend" aria-label="Advertisement"></div>' : ''}</section>`
+      : '';
+
+  // Popular Years section: top 5 years peaked, current year, explore trends
+  const peakYearsSorted = [...chartData].sort((a, b) => (a.rank || 9999) - (b.rank || 9999)).slice(0, 5).map((d) => d.year);
+  const allYearsInData = (popularity || []).map((p) => p.year).filter(Boolean);
+  const currentYear = allYearsInData.length > 0 ? Math.max(...allYearsInData) : new Date().getFullYear();
+  const peakYearLinks = peakYearsSorted.map((y) => '<a href="/popularity/' + y + EXT + '">' + y + '</a>').join(', ');
+  const popularYearsSection =
+    '<section aria-labelledby="popular-years-heading"><h2 id="popular-years-heading">Popular Years</h2><p class="contextual">' +
+    (peakYearLinks ? 'Top years ' + htmlEscape(record.name) + ' peaked: ' + peakYearLinks + '. ' : '') +
+    '<a href="/popularity/' + currentYear + EXT + '">' + currentYear + ' trends</a>. <a href="/popularity/">Explore trends by year</a>.</p></section>';
+
   const popHtml = popTable ? '<section aria-labelledby="popularity-heading"><h2 id="popularity-heading">Popularity</h2>' + popTable + '</section>' : '';
 
   const nameVariants = (variants || []).filter((v) => v.name_id === record.id);
@@ -468,6 +604,8 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${record.phonetic ? `<p><strong>Pronunciation:</strong> ${htmlEscape(record.phonetic)}</p>` : ''}
     ${meaningContext}
     ${popularityContext}
+    ${popularityOverTimeSection}
+    ${popularYearsSection}
     ${popHtml}
     ${variantsHtml}
     ${styleTagsHtml}
@@ -493,6 +631,10 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ? record.name + ': ' + descParts.join('. ') + '. Meaning, origin & popularity on NameOrigin.'
     : record.name + ' — meaning, origin and popularity. Baby name details on NameOrigin.';
 
+  const namePageSchemas = [personJsonLd(record)];
+  const popSchema = popularityJsonLd(record, chartData, peakYear, latestRank);
+  if (popSchema) namePageSchemas.push(popSchema);
+
   const html = baseLayout({
     title: record.name + ' — Meaning, Origin & Popularity',
     description: uniqueDescription.slice(0, 160),
@@ -501,7 +643,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     breadcrumb: breadcrumbItems,
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent,
-    extraSchema: personJsonLd(record),
+    extraSchema: namePageSchemas,
   });
 
   const outPath = path.join(OUT_DIR, 'name', nameSlug, 'index.html');
