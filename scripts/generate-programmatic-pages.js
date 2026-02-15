@@ -22,6 +22,10 @@ const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
 /** URL path for a name detail page (directory-based, no .html). Use for all links and canonical. */
 function nameDetailPath(s) { return '/name/' + slug(s) + '/'; }
+/** URL path for Names Like page. Mesh: horizontal (semantic) axis. */
+function namesLikePath(s) { return '/names-like/' + slug(s) + '/'; }
+/** Top compatibility surnames for mesh links (4–6 links; controlled set, no combinatorial explosion). */
+const TOP_COMPATIBILITY_SURNAMES = ['smith', 'garcia', 'johnson', 'williams'];
 // Step 7: Breadcrumb label for names index (Home > Baby Names > …)
 const BREADCRUMB_NAMES_LABEL = 'Baby Names';
 
@@ -467,7 +471,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
     { name: record.name, url },
   ];
-  const similarNames = getSimilarNamesForName(record, names, popularity, categories, 8);
+  const similarNames = getSimilarNamesForName(record, names, popularity, categories, 10);
   const similarNamesHtml =
     similarNames.length > 0
       ? '<ul class="name-list">' +
@@ -490,7 +494,10 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
   const sectionList = (arr, max) => arr.slice(0, max).map(nameLink).join(', ');
 
-  const similarSection = similarNames.length > 0 ? `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Similar names</h2><ul class="name-list">${similarNames.map((n) => `<li>${nameLink(n)}</li>`).join('')}</ul></section>` : '';
+  // Mesh B: Names Like Cluster (Semantic Axis) — 8–12 links
+  const namesLikeLink = `<a href="${namesLikePath(record.name)}">Names similar to ${htmlEscape(record.name)}</a>`;
+  const similarSection =
+    `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Names Similar to ${htmlEscape(record.name)}</h2><p class="contextual">${namesLikeLink}.</p>${similarNames.length > 0 ? '<ul class="name-list">' + similarNames.slice(0, 10).map((n) => `<li>${nameLink(n)}</li>`).join('') + '</ul>' : ''}</section>`;
   const sameOriginSection = sameOrigin.length > 0
     ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sectionList(sameOrigin, 8)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
     : (countrySlugForOrigin ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
@@ -505,6 +512,12 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const popularCountrySection = popularInCountry.length > 0 && countrySlugForOrigin
     ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
     : (countrySlugForOrigin ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
+  // Mesh D: Category + Origin (Authority Axis) — 4–6 links
+  const moreAboutLinks = [`<a href="/names/${record.gender || 'boy'}${EXT}">${(record.gender || 'boy').charAt(0).toUpperCase() + (record.gender || 'boy').slice(1)} names</a>`];
+  if (countrySlugForOrigin && countrySlugForOrigin !== 'null') moreAboutLinks.push(`<a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a>`);
+  moreAboutLinks.push(`<a href="/names/usa${EXT}">USA</a>`, `<a href="/names/canada${EXT}">Canada</a>`, `<a href="/names/ireland${EXT}">Ireland</a>`, `<a href="/names/letters${EXT}">By letter (A–Z)</a>`);
+  const moreAboutSection = `<section aria-labelledby="more-about-heading"><h2 id="more-about-heading">More About ${htmlEscape(record.name)}</h2><p class="name-links">${moreAboutLinks.slice(0, 6).join(' · ')}</p></section>`;
+
   const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/names">Baby names hub</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
 
   // Step 4: At least 3 related name links (similar, then same letter, then same gender)
@@ -557,15 +570,28 @@ function generateNamePage(record, names, popularity, categories, variants) {
       ? `<section aria-labelledby="popularity-over-time-heading" class="popularity-over-time"><h2 id="popularity-over-time-heading">Popularity Over Time</h2>${chartSvg}<p class="popularity-stats">${peakYear ? 'Peak year: ' + peakYear + '. ' : ''}${latestRank != null ? 'Latest rank: ' + latestRank + '. ' : ''}</p><div class="ad-slot ad-slot--after-chart" data-ad-slot="name-popularity-chart" aria-label="Advertisement"></div>${trendSummary ? '<p class="contextual">' + trendSummary + '</p><div class="ad-slot ad-slot--after-trend" data-ad-slot="name-trend" aria-label="Advertisement"></div>' : ''}</section>`
       : '';
 
-  // Popular Years section: top 5 years peaked, current year, explore trends
-  const peakYearsSorted = [...chartData].sort((a, b) => (a.rank || 9999) - (b.rank || 9999)).slice(0, 5).map((d) => d.year);
+  // Mesh A: Popularity Cluster (Vertical Axis) — 4–6 links
+  const peakYearsSorted = chartData.length ? [...chartData].sort((a, b) => (a.rank || 9999) - (b.rank || 9999)).slice(0, 5).map((d) => d.year) : [];
   const allYearsInData = (popularity || []).map((p) => p.year).filter(Boolean);
   const currentYear = allYearsInData.length > 0 ? Math.max(...allYearsInData) : new Date().getFullYear();
-  const peakYearLinks = peakYearsSorted.map((y) => '<a href="/popularity/' + y + EXT + '">' + y + '</a>').join(', ');
+  const peakRank = peakYear && chartData.length ? (chartData.find((d) => d.year === peakYear) || {}).rank : null;
+  const yearLinks = [];
+  if (peakYear) yearLinks.push('<a href="/popularity/' + peakYear + EXT + '">' + htmlEscape(record.name) + (peakRank ? ' ranked #' + peakRank + ' in ' : ' in ') + peakYear + '</a>');
+  yearLinks.push('<a href="/popularity/' + currentYear + EXT + '">Top names of ' + currentYear + '</a>');
+  peakYearsSorted.filter((y) => y !== peakYear && y !== currentYear).slice(0, 3).forEach((y) => {
+    yearLinks.push('<a href="/popularity/' + y + EXT + '">See top names in ' + y + '</a>');
+  });
+  if (chartData.length >= 2) {
+    const yearsAsc = chartData.map((d) => d.year).sort((a, b) => a - b);
+    const firstY = yearsAsc[0];
+    const lastY = yearsAsc[yearsAsc.length - 1];
+    if (firstY && firstY !== peakYear && firstY !== currentYear && !yearLinks.some((l) => l.includes(firstY))) yearLinks.push('<a href="/popularity/' + firstY + EXT + '">' + firstY + '</a>');
+    if (lastY && lastY !== firstY && lastY !== peakYear && lastY !== currentYear && !yearLinks.some((l) => l.includes(lastY))) yearLinks.push('<a href="/popularity/' + lastY + EXT + '">' + lastY + '</a>');
+  }
+  yearLinks.push('<a href="/popularity/">Explore trends by year</a>');
   const popularYearsSection =
-    '<section aria-labelledby="popular-years-heading"><h2 id="popular-years-heading">Popular Years</h2><p class="contextual">' +
-    (peakYearLinks ? 'Top years ' + htmlEscape(record.name) + ' peaked: ' + peakYearLinks + '. ' : '') +
-    '<a href="/popularity/' + currentYear + EXT + '">' + currentYear + ' trends</a>. <a href="/popularity/">Explore trends by year</a>.</p></section>';
+    '<section aria-labelledby="popular-years-heading"><h2 id="popular-years-heading">' + htmlEscape(record.name) + ' Popularity Over Time</h2><p class="contextual">' +
+    yearLinks.slice(0, 6).join('. ') + '.</p></section>';
 
   const popHtml = popTable ? '<section aria-labelledby="popularity-heading"><h2 id="popularity-heading">Popularity</h2>' + popTable + '</section>' : '';
 
@@ -585,8 +611,10 @@ function generateNamePage(record, names, popularity, categories, variants) {
         '</p></section>'
       : '';
 
+  // Mesh C: Compatibility Cluster (Intent Axis) — 4–6 links, anchor #name for filtered view
+  const compatLinks = TOP_COMPATIBILITY_SURNAMES.map((s) => '<a href="/names/with-last-name-' + s + EXT + '#' + nameSlug + '">' + s.charAt(0).toUpperCase() + s.slice(1) + '</a>').join(', ');
   const compatibilityTips =
-    '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">Last name compatibility</h2><p>Names that end in a vowel often pair well with last names starting with a consonant, and vice versa. Similar syllable count can improve flow. <a href="/names/with-last-name' + EXT + '">Browse last name compatibility</a> (e.g. <a href="/names/with-last-name-smith' + EXT + '">Smith</a>, <a href="/names/with-last-name-garcia' + EXT + '">Garcia</a>, <a href="/names/with-last-name-nguyen' + EXT + '">Nguyen</a>).</p></section>';
+    '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">How ' + htmlEscape(record.name) + ' Sounds With Popular Last Names</h2><p class="contextual">See how ' + htmlEscape(record.name) + ' pairs with common surnames: ' + compatLinks + '. <a href="/names/with-last-name' + EXT + '">Browse last name compatibility</a>. <a href="/compatibility/">Try the compatibility tool</a>.</p></section>';
 
   // Step 3: Minimum content floor — intro, meaning context, popularity context, internal linking (400+ words)
   const nameIntro = `<p class="contextual">This page shows the meaning, origin, and popularity of the name ${htmlEscape(record.name)}. Use the sections below to explore related names, names from the same country or language, and names with the same gender or first letter.</p>`;
@@ -616,6 +644,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${sameGenderSection}
     ${letterSection}
     ${popularCountrySection}
+    ${moreAboutSection}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${internalLinkingPara}
@@ -1373,7 +1402,7 @@ function generateLastNamePage(surnameMeta, names) {
   const listHtml = (arr) =>
     arr.length > 0
       ? '<ul class="name-list">' +
-        arr.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
+        arr.map((n) => `<li id="${slug(n.name)}"><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape((n.meaning || '').slice(0, 50)) + ((n.meaning || '').length > 50 ? '…' : '') : ''}</li>`).join('') +
         '</ul>'
       : '';
 
@@ -1384,6 +1413,18 @@ function generateLastNamePage(surnameMeta, names) {
     { href: '/names/unisex' + EXT, text: 'Unisex names' },
     { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
+
+  // Mesh: Names Like for top 10 compatible, popularity cross-link, tool CTA
+  const top10ForNamesLike = compatible.slice(0, 10);
+  const namesLikeLinksHtml = top10ForNamesLike.map((n) => '<a href="' + namesLikePath(n.name) + '">' + htmlEscape(n.name) + '</a>').join(', ');
+  const latestYear = new Date().getFullYear();
+  const lastNameMeshHtml = `
+    <section aria-labelledby="names-like-last-heading"><h2 id="names-like-last-heading">Names Like Top Compatible</h2>
+    <p class="contextual">Names similar to these: ${namesLikeLinksHtml || '—'}.</p></section>
+    <section aria-labelledby="popularity-last-heading"><h2 id="popularity-last-heading">Most Popular First Names with ${htmlEscape(surname)} in ${latestYear}</h2>
+    <p class="contextual"><a href="/popularity/${latestYear}${EXT}">Top names of ${latestYear}</a></p></section>
+    <section aria-labelledby="tool-cta-heading"><h2 id="tool-cta-heading">Try the Compatibility Tool</h2>
+    <p class="contextual"><a href="/compatibility/">Compatibility tool</a></p></section>`;
 
   const mainContent = `
     <h1>First names that go with ${htmlEscape(surname)}</h1>
@@ -1406,8 +1447,10 @@ function generateLastNamePage(surnameMeta, names) {
 
     <section aria-labelledby="compatible-heading"><h2 id="compatible-heading">Compatible first names</h2>
     <p>These first names tend to sound good with ${htmlEscape(surname)} based on syllable balance, vowel-consonant flow, and length.</p>
-    ${listHtml(compatible)}
+    ${listHtml(compatible.slice(0, 50))}
     </section>
+
+    ${lastNameMeshHtml}
 
     <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Explore more</h2>
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
@@ -1621,6 +1664,38 @@ function run() {
   `,
   });
   fs.writeFileSync(path.join(OUT_DIR, 'names', 'with-last-name' + EXT), lastNameHubHtml, 'utf8');
+
+  // /compatibility/ — primary utility page (mesh: intent axis)
+  ensureDir(path.join(OUT_DIR, 'compatibility'));
+  const compatTopLinks = TOP_COMPATIBILITY_SURNAMES.map((s) => ({ href: '/names/with-last-name-' + s + EXT, text: s.charAt(0).toUpperCase() + s.slice(1) }));
+  const compatibilityPageHtml = baseLayout({
+    title: 'First & Last Name Compatibility | NameOrigin',
+    description: 'See how first names sound with popular last names. Try Smith, Garcia, Johnson and more. Interactive compatibility tool.',
+    path: '/compatibility/',
+    canonical: SITE_URL + '/compatibility/',
+    breadcrumb: [
+      { name: 'Home', url: SITE_URL + '/' },
+      { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
+      { name: 'Compatibility', url: SITE_URL + '/compatibility/' },
+    ],
+    breadcrumbHtml: breadcrumbHtml([
+      { name: 'Home', url: '/' },
+      { name: BREADCRUMB_NAMES_LABEL, url: '/names' },
+      { name: 'Compatibility', url: '/compatibility/' },
+    ]),
+    mainContent: `
+    <h1>First & Last Name Compatibility</h1>
+    <p class="contextual">Find first names that sound good with your last name. Browse by popular surnames or use the compatibility hub to explore.</p>
+    <section aria-labelledby="try-heading"><h2 id="try-heading">Try These Last Names</h2>
+    <p class="name-links">${compatTopLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
+    </section>
+    <section aria-labelledby="hub-heading"><h2 id="hub-heading">Browse All</h2>
+    <p><a href="/names/with-last-name${EXT}">Last name compatibility hub</a> — see first names that pair well with Smith, Garcia, Johnson, Nguyen, and more.</p>
+    </section>
+    <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
+  `,
+  });
+  fs.writeFileSync(path.join(OUT_DIR, 'compatibility', 'index.html'), compatibilityPageHtml, 'utf8');
 
   // Authority hub pages (structured indexes — root-level .html)
   function writeHubPage(filename, title, description, pathSeg, sections) {

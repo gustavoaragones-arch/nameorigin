@@ -40,12 +40,12 @@ if (fs.existsSync(REPORT_PATH)) {
     const integrity = report.integritySummary || {};
     const authorityScore = integrity.authority_coverage_score || 0;
     console.log('Authority coverage score:', authorityScore);
-    if (authorityScore >= 0.99) {
-      console.log('✅ Authority score ≥ 0.99 — ready to expand.');
+    if (authorityScore >= 0.995) {
+      console.log('✅ Authority score ≥ 0.995 — ready to expand.');
       console.log('   Names Like: node scripts/generate-names-like.js --batch=200');
       console.log('   Baby names with [surname] (Phase 2.6): node scripts/generate-lastname-pages.js --batch=50');
     } else {
-      console.log('⚠️  Authority score < 0.99 — review integrity issues before expanding.');
+      console.log('⚠️  Authority score < 0.995 — review integrity issues before expanding.');
       console.log('   Check build/index-integrity-report.json for details.');
     }
   } catch (e) {

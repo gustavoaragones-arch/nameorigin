@@ -321,6 +321,25 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   ];
   const intro = introTemplates[variationIndex](baseRecord.name, styleLabel, originLabel, gender);
 
+  // Mesh B: Popularity cross-link — "Liam peaked in 2018"
+  const basePopByYear = (basePopRows || []).reduce((acc, p) => {
+    if (p.year && p.rank != null) {
+      if (!acc[p.year] || p.rank < acc[p.year]) acc[p.year] = p.rank;
+    }
+    return acc;
+  }, {});
+  const peakYearEntry = Object.entries(basePopByYear).sort((a, b) => a[1] - b[1])[0];
+  const meshPeakYear = peakYearEntry ? peakYearEntry[0] : null;
+  const allYears = Object.keys(basePopByYear).map(Number).filter(Boolean);
+  const latestYear = allYears.length ? Math.max(...allYears) : new Date().getFullYear();
+  const popularityMeshHtml =
+    meshPeakYear || allYears.length
+      ? `<section aria-labelledby="popularity-mesh-heading"><h2 id="popularity-mesh-heading">${htmlEscape(baseRecord.name)} popularity</h2><p class="contextual">${meshPeakYear ? htmlEscape(baseRecord.name) + ' peaked in ' + meshPeakYear + '. ' : ''}<a href="/popularity/${meshPeakYear || latestYear}.html">Top names of ${meshPeakYear || latestYear}</a>. <a href="/popularity/${latestYear}.html">Top names of ${latestYear}</a>.</p></section>`
+      : '';
+
+  // Mesh D: Compatibility CTA
+  const compatibilityMeshHtml = `<section aria-labelledby="compatibility-mesh-heading"><h2 id="compatibility-mesh-heading">Try These Names With Your Last Name</h2><p class="contextual"><a href="/names/with-last-name-smith${EXT}">Smith</a> · <a href="/names/with-last-name-garcia${EXT}">Garcia</a> · <a href="/compatibility/">Compatibility tool</a></p></section>`;
+
   // Explanation phrasing variations (avoid template repetition)
   const phoneticExplanations = [
     (n, base) => `${htmlEscape(n)} shares the same first letter and similar opening sounds as ${htmlEscape(base)}, creating a phonetic connection.`,
@@ -459,12 +478,15 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
 
   let mainContent = `
     <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
+    <p class="contextual"><a href="${nameDetailPath(baseRecord.name)}"><strong>${htmlEscape(baseRecord.name)}</strong> — full meaning, origin &amp; popularity</a></p>
     ${intro}
+    ${popularityMeshHtml}
     ${phoneticSectionHtml}
     ${originSectionHtml}
     ${popularitySectionHtml}
     ${alternativesSectionHtml}
     ${closing}
+    ${compatibilityMeshHtml}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${alphabetSectionHtml()}
@@ -476,13 +498,16 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
     const paddingBlock = paddingTemplates[(baseRecord.id || 0) % paddingTemplates.length](baseRecord.name);
     mainContent = `
     <h1>Names Like ${htmlEscape(baseRecord.name)} — Similar Names &amp; Alternatives</h1>
+    <p class="contextual"><a href="${nameDetailPath(baseRecord.name)}"><strong>${htmlEscape(baseRecord.name)}</strong> — full meaning, origin &amp; popularity</a></p>
     ${intro}
+    ${popularityMeshHtml}
     ${paddingBlock}
     ${phoneticSectionHtml}
     ${originSectionHtml}
     ${popularitySectionHtml}
     ${alternativesSectionHtml}
     ${closing}
+    ${compatibilityMeshHtml}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${alphabetSectionHtml()}

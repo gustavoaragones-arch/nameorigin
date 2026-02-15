@@ -23,7 +23,7 @@ const ROOT = path.join(__dirname, '..');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const REPORT_PATH = path.join(ROOT, 'build', 'index-integrity-report.json');
 const MIN_WORDS = 400;
-const MIN_INTERNAL_LINKS = 8;
+const MIN_INTERNAL_LINKS = 20;
 const HOMEPAGE_CANONICAL = /^https:\/\/nameorigin\.io\/?$/;
 
 const SKIP_DIRS = new Set(['templates', 'node_modules', 'docs', '.git', 'build']);
@@ -160,7 +160,7 @@ function run() {
   const missingMetaDescription = [];
   const duplicateTitles = {};
   const under400Words = [];
-  const under8InternalLinks = [];
+  const under20InternalLinks = [];
   const canonicalToHomepage = [];
   const duplicateCanonicals = {};
   const hasNoindex = [];
@@ -203,7 +203,7 @@ function run() {
     if (words < MIN_WORDS) under400Words.push({ path: rel, words });
 
     const linkCount = countInternalLinks(html);
-    if (linkCount < MIN_INTERNAL_LINKS) under8InternalLinks.push({ path: rel, count: linkCount });
+    if (linkCount < MIN_INTERNAL_LINKS) under20InternalLinks.push({ path: rel, count: linkCount });
 
     if (/<link[^>]+href=["'][^"']*styles\.css["']/i.test(html)) referencesStylesCss.push(rel);
     const scriptSrcMatch = html.match(/<script[^>]+src\s*=\s*["']([^"']+)["'][^>]*>/gi);
@@ -272,7 +272,7 @@ function run() {
     duplicateTitles: Object.keys(duplicateTitles).length,
     missingMetaDescription: missingMetaDescription.length,
     under400Words: under400Words.length,
-    under8InternalLinks: under8InternalLinks.length,
+    under20InternalLinks: under20InternalLinks.length,
     canonicalToHomepage: canonicalToHomepage.length,
     duplicateCanonicals: Object.keys(duplicateCanonicals).length,
     hasNoindex: hasNoindex.length,
@@ -290,8 +290,9 @@ function run() {
     missing_canonical: missingCanonical.length,
     canonical_to_homepage: canonicalToHomepage.length,
     pages_under_400_words: under400Words.length,
-    pages_with_less_than_8_internal_links: under8InternalLinks.length,
+    pages_with_less_than_20_internal_links: under20InternalLinks.length,
     authority_coverage_score: Math.round(authorityCoverageScore * 1000) / 1000,
+    max_hops_from_home: maxDepth,
   };
 
   const report = {
@@ -303,7 +304,7 @@ function run() {
     duplicateTitles: Object.keys(duplicateTitles).length ? duplicateTitles : undefined,
     missingMetaDescription,
     under400Words: under400Words.length ? under400Words : undefined,
-    under8InternalLinks: under8InternalLinks.length ? under8InternalLinks : undefined,
+    under20InternalLinks: under20InternalLinks.length ? under20InternalLinks : undefined,
     canonicalToHomepage: canonicalToHomepage.length ? canonicalToHomepage : undefined,
     duplicateCanonicals: Object.keys(duplicateCanonicals).length ? duplicateCanonicals : undefined,
     hasNoindex: hasNoindex.length ? hasNoindex : undefined,
@@ -317,7 +318,7 @@ function run() {
   console.log('Scanned', htmlFiles.length, 'pages. Report:', REPORT_PATH);
   console.log('Summary:', JSON.stringify(summary, null, 2));
   console.log('');
-  console.log('Integrity (clean targets: all 0, authority_coverage_score >= 0.99):');
+  console.log('Integrity (clean targets: all 0, authority_coverage_score >= 0.995):');
   console.log(JSON.stringify(integritySummary, null, 2));
   const integrityOk =
     integritySummary.orphan_pages === 0 &&
@@ -326,14 +327,14 @@ function run() {
     integritySummary.missing_canonical === 0 &&
     integritySummary.canonical_to_homepage === 0 &&
     integritySummary.pages_under_400_words === 0 &&
-    integritySummary.pages_with_less_than_8_internal_links === 0 &&
-    integritySummary.authority_coverage_score >= 0.99;
+    integritySummary.pages_with_less_than_20_internal_links === 0 &&
+    integritySummary.authority_coverage_score >= 0.995;
   if (!integrityOk) {
     console.log('');
     console.log('One or more integrity targets not met. See integritySummary above.');
   }
   if (summary.missingCanonical > 0 || summary.duplicateTitles > 0 || summary.missingMetaDescription > 0 ||
-      summary.under400Words > 0 || summary.under8InternalLinks > 0 || summary.canonicalToHomepage > 0 ||
+      summary.under400Words > 0 || summary.under20InternalLinks > 0 || summary.canonicalToHomepage > 0 ||
       summary.duplicateCanonicals > 0 || summary.hasNoindex > 0 ||
       summary.referencesStylesCss > 0 || summary.scriptSrcWithoutDefer > 0 || !integrityOk) {
     process.exit(1);
