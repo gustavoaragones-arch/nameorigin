@@ -28,6 +28,9 @@ const STEPS = [
   'generate-filter-pages.js',
   'generate-lastname-pages.js',
   'generate-hubs.js',
+  'generate-country-differentials.js', // MODULE C: data layer for comparison/templates
+  'generate-compare-pages.js', // Phase 2.8: country comparison (cap 500)
+  'generate-trends-page.js', // MODULE D: /trends/us-2025-vs-2015/
   'build-sitemap.js',
 ];
 

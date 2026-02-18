@@ -117,7 +117,7 @@ function run() {
   LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   filterUrls.push('/legal/privacy.html', '/legal/terms.html');
-  filterUrls.push('/popularity/', '/compatibility/');
+  filterUrls.push('/popularity/', '/compatibility/', '/compare/', '/trends/', '/trends/us-2025-vs-2015/');
   for (let y = 1980; y <= 2024; y++) filterUrls.push('/popularity/' + y + EXT);
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
@@ -135,6 +135,31 @@ function run() {
   const namesLikeUrls = names.map((n) => '/names-like/' + slug(n.name) + '/').filter((u) => u.length > 1);
   const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7');
   console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7)');
+
+  // --- /sitemaps/compare.xml: Phase 2.8 Country Comparison (hub + Module B overviews + top 100 × 5 pairs) ---
+  const COMPARE_PAIRS = ['us-vs-uk', 'us-vs-canada', 'uk-vs-australia', 'france-vs-spain', 'germany-vs-us'];
+  const compareUrls = ['/compare/', ...COMPARE_PAIRS.map((p) => '/compare/' + p + '/')];
+  const popularity = loadJson('popularity');
+  if (popularity.length > 0 && names.length > 0) {
+    const yearLatest = Math.max(...new Set(popularity.map((p) => p.year).filter(Boolean)));
+    const scoreById = new Map();
+    ['USA', 'UK', 'CAN', 'AUS'].forEach((code) => {
+      popularity.filter((p) => p.country === code && p.year === yearLatest && p.rank != null).forEach((r) => {
+        scoreById.set(r.name_id, (scoreById.get(r.name_id) || 0) + 1 / (r.rank || 9999));
+      });
+    });
+    const top100Ids = [...scoreById.entries()].sort((a, b) => b[1] - a[1]).map(([id]) => id).slice(0, 100);
+    const nameById = new Map(names.map((n) => [n.id, n]));
+    top100Ids.forEach((id) => {
+      const n = nameById.get(id);
+      if (!n) return;
+      const nameSlug = slug(n.name);
+      if (!nameSlug) return;
+      COMPARE_PAIRS.forEach((pairSlug) => compareUrls.push('/compare/' + nameSlug + '/' + pairSlug + '/'));
+    });
+  }
+  const compareCount = writeUrlset(path.join(sitemapsDir, 'compare.xml'), compareUrls, '0.7');
+  console.log('Written sitemaps/compare.xml with', compareCount, 'URLs (priority 0.7)');
 
   // --- /sitemaps/baby-names-with.xml: Phase 2.6 STEP 9 — /baby-names-with-<slug>/ priority 0.7, changefreq weekly ---
   let babyNamesWithCount = 0;
@@ -158,6 +183,7 @@ function run() {
     ['names-like', 'sitemaps/names-like.xml'],
   ];
   if (babyNamesWithCount > 0) sitemaps.push(['baby-names-with', 'sitemaps/baby-names-with.xml']);
+  sitemaps.push(['compare', 'sitemaps/compare.xml']);
   const indexEntries = sitemaps.map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
 
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -167,7 +193,7 @@ ${indexEntries.join('\n')}
 
   fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), indexXml, 'utf8');
   console.log('Written sitemap.xml (index with ' + sitemaps.length + ' sitemaps)');
-  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + babyNamesWithCount);
+  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + compareCount + babyNamesWithCount);
 }
 
 run();

@@ -417,7 +417,7 @@ function main() {
 
   // Step 6 — Internal link graph: reachable from homepage in 3 clicks, no orphans, hub ↔ programmatic
   const allSitemapPaths = new Set();
-  for (const rel of ['sitemaps/names.xml', 'sitemaps/countries.xml', 'sitemaps/filters.xml', 'sitemaps/lastname.xml']) {
+  for (const rel of ['sitemaps/names.xml', 'sitemaps/countries.xml', 'sitemaps/filters.xml', 'sitemaps/lastname.xml', 'sitemaps/names-like.xml', 'sitemaps/compare.xml']) {
     const fp = path.join(OUT_DIR, rel);
     if (fs.existsSync(fp)) {
       getSitemapUrls(fp).forEach((url) => {
@@ -502,11 +502,11 @@ function main() {
   if (!programmaticToHubOk) failed++;
 
   // 8. Zero orphan pages (design: every generated page is listed in sitemap and linked from hubs/letter/country)
-  const totalSitemapUrls = [path.join(sitemapsDir, 'names.xml'), path.join(sitemapsDir, 'countries.xml'), path.join(sitemapsDir, 'filters.xml'), path.join(sitemapsDir, 'lastname.xml')]
+  const totalSitemapUrls = [path.join(sitemapsDir, 'names.xml'), path.join(sitemapsDir, 'countries.xml'), path.join(sitemapsDir, 'filters.xml'), path.join(sitemapsDir, 'lastname.xml'), path.join(sitemapsDir, 'names-like.xml'), path.join(sitemapsDir, 'compare.xml')]
     .filter((p) => fs.existsSync(p))
     .reduce((sum, p) => sum + getSitemapUrls(p).length, 0);
   const noOrphans = hasIndex && totalSitemapUrls > 0;
-  console.log(noOrphans ? '✅' : '⚠️', 'Zero orphans: sitemap index + 4 sitemaps,', totalSitemapUrls.toLocaleString(), 'URLs (every page discoverable via sitemap and linked from hubs)');
+  console.log(noOrphans ? '✅' : '⚠️', 'Zero orphans: sitemap index + 6 sitemaps,', totalSitemapUrls.toLocaleString(), 'URLs (every page discoverable via sitemap and linked from hubs)');
   if (!noOrphans) failed++;
 
   console.log('');
