@@ -31,6 +31,9 @@ const STEPS = [
   'generate-country-differentials.js', // MODULE C: data layer for comparison/templates
   'generate-compare-pages.js', // Phase 2.8: country comparison (cap 500)
   'generate-trends-page.js', // MODULE D: /trends/us-2025-vs-2015/
+  'generate-jurisdiction-pages.js', // Phase 2.9: /names/us/california/, etc. (15 cap)
+  'generate-regional-trend-acceleration.js', // MODULE C: regional-trend-acceleration.json
+  'generate-jurisdiction-compare-pages.js', // MODULE B: /compare/california-vs-texas/, etc. (6 cap)
   'build-sitemap.js',
 ];
 

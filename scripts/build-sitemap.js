@@ -118,6 +118,13 @@ function run() {
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   filterUrls.push('/legal/privacy.html', '/legal/terms.html');
   filterUrls.push('/popularity/', '/compatibility/', '/compare/', '/trends/', '/trends/us-2025-vs-2015/');
+  // Phase 2.9 jurisdiction pages: /names/us/{state}/, /names/canada/{province}/ (15 cap)
+  const JURISDICTION_PATHS = [
+    '/names/us/california/', '/names/us/texas/', '/names/us/florida/', '/names/us/new-york/', '/names/us/pennsylvania/',
+    '/names/us/illinois/', '/names/us/ohio/', '/names/us/georgia/', '/names/us/north-carolina/', '/names/us/michigan/',
+    '/names/canada/ontario/', '/names/canada/quebec/', '/names/canada/british-columbia/', '/names/canada/alberta/', '/names/canada/manitoba/',
+  ];
+  JURISDICTION_PATHS.forEach((p) => filterUrls.push(p));
   for (let y = 1980; y <= 2024; y++) filterUrls.push('/popularity/' + y + EXT);
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
@@ -136,9 +143,10 @@ function run() {
   const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7');
   console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7)');
 
-  // --- /sitemaps/compare.xml: Phase 2.8 Country Comparison (hub + Module B overviews + top 100 × 5 pairs) ---
+  // --- /sitemaps/compare.xml: Phase 2.8 + Phase 2.9 MODULE B (hub, country overviews, name pairs, jurisdiction pairs) ---
   const COMPARE_PAIRS = ['us-vs-uk', 'us-vs-canada', 'uk-vs-australia', 'france-vs-spain', 'germany-vs-us'];
-  const compareUrls = ['/compare/', ...COMPARE_PAIRS.map((p) => '/compare/' + p + '/')];
+  const JURISDICTION_COMPARE_PAIRS = ['california-vs-texas', 'california-vs-florida', 'texas-vs-florida', 'alberta-vs-ontario', 'alberta-vs-quebec', 'ontario-vs-quebec'];
+  const compareUrls = ['/compare/', ...COMPARE_PAIRS.map((p) => '/compare/' + p + '/'), ...JURISDICTION_COMPARE_PAIRS.map((p) => '/compare/' + p + '/')];
   const popularity = loadJson('popularity');
   if (popularity.length > 0 && names.length > 0) {
     const yearLatest = Math.max(...new Set(popularity.map((p) => p.year).filter(Boolean)));

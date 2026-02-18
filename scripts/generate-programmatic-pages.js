@@ -1149,6 +1149,8 @@ function generateCountryPage(c, slugKey, names, popularity) {
     ${section('trending-heading', 'Trending names', trendingNames)}
     ${section('popular-heading', 'Popular names', popularNames)}
     ${section('rising-heading', 'Rising names', risingNames)}
+    ${slugKey === 'usa' ? `<section aria-labelledby="jurisdiction-heading"><h2 id="jurisdiction-heading">By state</h2><p class="name-links"><a href="/names/us/california/">California</a> · <a href="/names/us/texas/">Texas</a> · <a href="/names/us/florida/">Florida</a> · <a href="/names/us/new-york/">New York</a> · <a href="/names/us/pennsylvania/">Pennsylvania</a> · <a href="/names/us/illinois/">Illinois</a> · <a href="/names/us/ohio/">Ohio</a> · <a href="/names/us/georgia/">Georgia</a> · <a href="/names/us/north-carolina/">North Carolina</a> · <a href="/names/us/michigan/">Michigan</a></p></section>` : ''}
+    ${slugKey === 'canada' ? `<section aria-labelledby="jurisdiction-heading"><h2 id="jurisdiction-heading">By province</h2><p class="name-links"><a href="/names/canada/ontario/">Ontario</a> · <a href="/names/canada/quebec/">Quebec</a> · <a href="/names/canada/british-columbia/">British Columbia</a> · <a href="/names/canada/alberta/">Alberta</a> · <a href="/names/canada/manitoba/">Manitoba</a></p></section>` : ''}
 
     <section aria-labelledby="origin-heading"><h2 id="origin-heading">Names from ${htmlEscape(countryLabel)} (by origin)</h2>
     <p class="name-links">${subsetByOrigin.length ? list(subsetByOrigin.slice(0, 80)) : '—'}</p>

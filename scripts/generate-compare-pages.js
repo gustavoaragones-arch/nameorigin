@@ -561,6 +561,10 @@ function run() {
       <h2 id="pairs-heading">Name-by-name comparison</h2>
       <p class="internal-links">${hubNameLinks}</p>
     </section>
+    <section aria-labelledby="jurisdiction-compare-heading">
+      <h2 id="jurisdiction-compare-heading">State vs state / Province vs province</h2>
+      <p class="internal-links"><a href="/compare/california-vs-texas/">California vs Texas</a> · <a href="/compare/california-vs-florida/">California vs Florida</a> · <a href="/compare/texas-vs-florida/">Texas vs Florida</a> · <a href="/compare/alberta-vs-ontario/">Alberta vs Ontario</a> · <a href="/compare/alberta-vs-quebec/">Alberta vs Quebec</a> · <a href="/compare/ontario-vs-quebec/">Ontario vs Quebec</a></p>
+    </section>
     <section aria-labelledby="browse-heading">
       <h2 id="browse-heading">Browse</h2>
       <p class="internal-links">
