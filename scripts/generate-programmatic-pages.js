@@ -12,6 +12,20 @@
 const fs = require('fs');
 const path = require('path');
 
+let computeSmoothness;
+try {
+  computeSmoothness = require('./generate-smoothness-score.js').computeSmoothness;
+} catch (_) {
+  computeSmoothness = () => ({ score: 50, tier: 'Neutral', explanation_components: [] });
+}
+
+let explanationRenderer;
+try {
+  explanationRenderer = require('./compatibility-explanation-renderer.js');
+} catch (_) {
+  explanationRenderer = null;
+}
+
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 // Output at project root. Name detail URLs: /name/<slug>/ (directory); other programmatic: /names/canada.html etc. Use OUT_DIR=programmatic to nest under /programmatic.
@@ -645,6 +659,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${letterSection}
     ${popularCountrySection}
     ${moreAboutSection}
+    <section aria-labelledby="sibling-harmony-heading"><h2 id="sibling-harmony-heading">Sibling Name Harmony</h2><p class="contextual">Looking for sibling names that pair well with ${htmlEscape(record.name)}? See <a href="/names/${nameSlug}/siblings/">sibling names that pair well with ${htmlEscape(record.name)}</a> for harmony scores and suggestions.</p></section>
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${internalLinkingPara}
@@ -1392,11 +1407,72 @@ function generateLastNamePage(surnameMeta, names) {
 
   const lastStartsV = startsWithVowel(surname);
   const lastSyl = surnameMeta.syllables != null ? surnameMeta.syllables : syllableCount(surname);
-  const phoneticTip = lastStartsV
-    ? 'Since ' + htmlEscape(surname) + ' starts with a vowel, first names that end in a consonant (e.g. James, Oliver, Ethan) often create a smooth transition and avoid running the two names together.'
-    : 'Since ' + htmlEscape(surname) + ' starts with a consonant, first names that end in a vowel (e.g. Emma, Olivia, Noah) tend to flow well and create a clear break between first and last name.';
-  const syllableTip =
-    htmlEscape(surname) + ' has ' + lastSyl + ' syllable' + (lastSyl !== 1 ? 's' : '') + '. First names with a similar syllable count (or within one) often sound balanced when paired with it.';
+  const esc = (s) => htmlEscape(s);
+
+  // Phase 3.0B: Explanation variant engine — deterministic, hash-based rotation
+  const tierBlock = explanationRenderer
+    ? explanationRenderer.getTierBlockParagraph(surname)
+    : 'Tiers: <strong>Excellent Flow</strong> (85–100), <strong>Strong Flow</strong> (70–84), <strong>Neutral</strong> (50–69), <strong>Slight Friction</strong> (30–49), <strong>High Friction</strong> (0–29). Higher scores indicate smoother phonetic flow when the first and last names are said together.';
+
+  const transitionP = explanationRenderer
+    ? explanationRenderer.getTransitionParagraph(surname, lastStartsV, esc)
+    : lastStartsV ? 'Since ' + htmlEscape(surname) + ' starts with a vowel, first names that end in a consonant (e.g. James, Oliver, Ethan) often create a smooth transition and avoid running the two names together.' : 'Since ' + htmlEscape(surname) + ' starts with a consonant, first names that end in a vowel (e.g. Emma, Olivia, Noah) tend to flow well and create a clear break between first and last name.';
+  const syllableP = explanationRenderer
+    ? explanationRenderer.getSyllableParagraph(surname, lastSyl, esc)
+    : htmlEscape(surname) + ' has ' + lastSyl + ' syllable' + (lastSyl !== 1 ? 's' : '') + '. First names with a similar syllable count (or within one) often sound balanced when paired with it.';
+  const rhythmP = explanationRenderer
+    ? explanationRenderer.getRhythmParagraph(surname, esc)
+    : 'Stress and rhythm: names with alternating stress (e.g. two syllables in the first name, one or two in the last) often feel balanced. Avoiding repeated consonants at the boundary (where the first name ends and ' + htmlEscape(surname) + ' begins) keeps the full name from sounding choppy or tongue-twisting. Soft consonants (l, m, n, r) at the boundary tend to flow better than hard stops (t, k, p, b) when paired with ' + htmlEscape(surname) + '.';
+  const collisionP = explanationRenderer
+    ? explanationRenderer.getConsonantCollisionParagraph(surname, esc)
+    : 'Avoiding repeated consonants at the boundary (where the first name ends and ' + htmlEscape(surname) + ' begins) keeps the full name from sounding choppy. Soft consonants (l, m, n, r) at the boundary tend to flow better than hard stops (t, k, p, b).';
+
+  const phoneticOrder = explanationRenderer ? explanationRenderer.getPhoneticBlockOrder(surname) : ['transition', 'syllable', 'rhythm', 'consonant'];
+  const phoneticParagraphs = {};
+  phoneticParagraphs.transition = transitionP;
+  phoneticParagraphs.syllable = syllableP;
+  phoneticParagraphs.rhythm = rhythmP;
+  phoneticParagraphs.consonant = collisionP;
+  const phoneticParagraphsHtml = phoneticOrder.map((k) => phoneticParagraphs[k]).filter(Boolean).map((p) => `<p class="contextual">${p}</p>`).join('');
+
+  const whyParagraph = explanationRenderer
+    ? explanationRenderer.getWhyItMattersParagraph(surname, esc)
+    : 'A name that flows well is easier to say in introductions, on the phone, and in formal settings. The Smoothness Score distills several phonetic rules into a single number so you can quickly see which first names tend to pair best with ' + htmlEscape(surname) + '. It is not a guarantee of preference—cultural fit, meaning, and personal taste still matter—but it helps narrow the set to options that are less likely to feel awkward when said together. Use the compatible names list below to explore further; each name links to its full profile with meaning, origin, and popularity.';
+
+  // Phase 3.0: Surname Compatibility Smoothness Score — deterministic 0–100 + tier per name
+  const topForScore = compatible.slice(0, 12);
+  const smoothnessList = topForScore.map((n) => {
+    const result = computeSmoothness(n, surnameMeta);
+    return { name: n, ...result };
+  });
+  const scoreBlockRows = smoothnessList.map(
+    (r) => `<tr><td><a href="${nameDetailPath(r.name.name)}">${htmlEscape(r.name.name)}</a></td><td class="smoothness-score">${r.score}</td><td>${htmlEscape(r.tier)}</td></tr>`
+  ).join('');
+  const scoreBlockHtml = `
+    <section class="smoothness-score-block" aria-labelledby="smoothness-heading">
+    <h2 id="smoothness-heading">Surname Compatibility Smoothness Score™</h2>
+    <p class="contextual">Below are smoothness scores (0–100) for first names that pair well with ${htmlEscape(surname)}. The score is deterministic and based only on syllable balance, phonetic transition at the first–last boundary, consonant clash, and length symmetry—no subjective or random factors.</p>
+    <div class="score-table-wrap">
+    <table class="smoothness-table">
+    <thead><tr><th>First name</th><th>Score</th><th>Tier</th></tr></thead>
+    <tbody>${scoreBlockRows}</tbody>
+    </table>
+    </div>
+    <p class="contextual">${tierBlock}</p>
+    </section>`;
+
+  const scoringLogicP = explanationRenderer
+    ? explanationRenderer.getScoringLogicParagraph(surname)
+    : 'The Surname Compatibility Smoothness Score is a structured phonetic and linguistic model. It does not use numerology or subjective ratings; every factor is rule-based and repeatable. Syllable balance, phonetic transition at the boundary, consonant clash, length symmetry, and total length combine into a 0–100 score. The same first name and surname always produce the same score.';
+  const scoringLogicHtml = `
+    <section aria-labelledby="scoring-logic-heading"><h2 id="scoring-logic-heading">How the Smoothness Score is calculated</h2>
+    <p class="contextual">${scoringLogicP}</p>
+    </section>`;
+
+  const phoneticBreakdownHtml = `
+    <section aria-labelledby="phonetic-heading"><h2 id="phonetic-heading">Phonetic breakdown for ${htmlEscape(surname)}</h2>
+    ${phoneticParagraphsHtml}
+    </section>`;
 
   const intro =
     'Choosing a first name that sounds good with your last name can make the full name easier to say and remember. A few simple phonetic and cultural guidelines help narrow the options.';
@@ -1428,27 +1504,35 @@ function generateLastNamePage(surnameMeta, names) {
     <section aria-labelledby="tool-cta-heading"><h2 id="tool-cta-heading">Try the Compatibility Tool</h2>
     <p class="contextual"><a href="/compatibility/">Compatibility tool</a></p></section>`;
 
+  const whySmoothnessMattersHtml = `
+    <section aria-labelledby="why-smoothness-heading"><h2 id="why-smoothness-heading">Why the Smoothness Score matters</h2>
+    <p class="contextual">${whyParagraph}</p>
+    </section>`;
+
+  const blockOrder = explanationRenderer ? explanationRenderer.getBlockOrder(surname) : 'A';
+  const middleBlocks = blockOrder === 'A'
+    ? `${scoringLogicHtml}\n    ${phoneticBreakdownHtml}\n    ${whySmoothnessMattersHtml}`
+    : `${phoneticBreakdownHtml}\n    ${scoringLogicHtml}\n    ${whySmoothnessMattersHtml}`;
+
   const mainContent = `
     <h1>First names that go with ${htmlEscape(surname)}</h1>
     <p class="local-culture">${htmlEscape(intro)}</p>
     ${LASTNAME_PAGE_INTRO_EXTRA}
 
+    ${scoreBlockHtml}
+    ${middleBlocks}
+
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
 
-    <section aria-labelledby="phonetic-heading"><h2 id="phonetic-heading">Phonetic tips for ${htmlEscape(surname)}</h2>
-    <p>${phoneticTip}</p>
-    <p>${syllableTip}</p>
-    </section>
-
-    <section aria-labelledby="cultural-heading"><h2 id="cultural-heading">Cultural matching</h2>
+    <section aria-labelledby="cultural-heading"><h2 id="cultural-heading">Cultural compatibility</h2>
     <p>${htmlEscape(surnameMeta.note || surname + ' is a ' + (surnameMeta.origin || '') + ' surname. First names from the same or related traditions often pair well.')}</p>
     ${culturalSlice.length > 0 ? `<p>Names with ${htmlEscape(surnameMeta.origin || 'matching')} origin:</p>${listHtml(culturalSlice)}` : '<p>Browse the compatible names below for options that fit your style.</p>'}
     </section>
 
     <section aria-labelledby="compatible-heading"><h2 id="compatible-heading">Compatible first names</h2>
-    <p>These first names tend to sound good with ${htmlEscape(surname)} based on syllable balance, vowel-consonant flow, and length.</p>
+    <p>These first names tend to sound good with ${htmlEscape(surname)} based on syllable balance, vowel-consonant flow, and length. The top names above also have smoothness scores; the full list is ordered by compatibility.</p>
     ${listHtml(compatible.slice(0, 50))}
     </section>
 
@@ -1661,6 +1745,9 @@ function run() {
     ${countrySectionHtml()}
     <section aria-labelledby="surnames-heading"><h2 id="surnames-heading">Browse by last name</h2>
     <p class="name-links">${lastNameHubLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
+    </section>
+    <section aria-labelledby="baby-names-with-heading"><h2 id="baby-names-with-heading">Baby names with [surname] (detailed guides)</h2>
+    <p class="name-links"><a href="/baby-names-with-smith/">Smith</a> · <a href="/baby-names-with-garcia/">Garcia</a> · <a href="/baby-names-with-johnson/">Johnson</a> · <a href="/baby-names-with-williams/">Williams</a> · <a href="/baby-names-with-brown/">Brown</a></p>
     </section>
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,

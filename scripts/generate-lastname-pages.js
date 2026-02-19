@@ -32,6 +32,20 @@
 const fs = require('fs');
 const path = require('path');
 
+let computeSmoothness;
+try {
+  computeSmoothness = require('./generate-smoothness-score.js').computeSmoothness;
+} catch (_) {
+  computeSmoothness = () => ({ score: 50, tier: 'Neutral', explanation_components: [] });
+}
+
+let explanationRenderer;
+try {
+  explanationRenderer = require('./compatibility-explanation-renderer.js');
+} catch (_) {
+  explanationRenderer = null;
+}
+
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
@@ -40,15 +54,8 @@ const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
 function nameDetailPath(s) { return '/name/' + slug(s) + '/'; }
 
-/** Tier 1: High-volume English surnames (20). Controlled scale. */
-const TIER_1_SURNAMES = [
-  'Smith', 'Johnson', 'Williams', 'Brown', 'Jones',
-  'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez',
-  'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson',
-  'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin',
-];
-
-const MAX_BATCH = 50;
+/** Max batch for baby-names-with pages. Surname list comes from data/last-names.json (Phase 3.0C: cap 75). */
+const MAX_BATCH = 75;
 
 function loadJson(name) {
   const p = path.join(DATA_DIR, name + '.json');
@@ -294,7 +301,7 @@ function getCompatibilityExplanation(firstName, lastName, reasons, lastSyl, firs
   return `<a href="${link}">${nameEsc}</a> — ${sentence}`;
 }
 
-const MIN_WORD_COUNT = 600;
+const MIN_WORD_COUNT = 800;
 const MIN_LINKS = 12;
 const LIST_SIZE = 12; // 8–12 names per gender section
 
@@ -317,9 +324,13 @@ const closingCtaTemplates = [
   (s) => `<p class="contextual">Once you have a short list of names that flow well with ${htmlEscape(s)}, explore their meanings and origins on each name’s page. Use the links above to jump to the full profile for any name, and visit the <a href="/names/with-last-name${EXT}">last name compatibility hub</a> to see other surnames. You can also browse by <a href="/names/boy${EXT}">boy</a>, <a href="/names/girl${EXT}">girl</a>, or <a href="/names/unisex${EXT}">unisex</a> names.</p>`,
 ];
 
-function generatePage(surname, names) {
+function generatePage(surname, names, allSurnames) {
   const slugKey = slug(surname);
   const pathSeg = '/baby-names-with-' + slugKey + '/';
+  const otherSurnames = (allSurnames || []).filter((s) => slug(s) !== slugKey).slice(0, 5);
+  const relatedBabyNamesWithHtml = otherSurnames.length > 0
+    ? '<section aria-labelledby="related-surnames-heading"><h2 id="related-surnames-heading">More baby names with [surname] guides</h2><p class="name-links">' + otherSurnames.map((s) => '<a href="/baby-names-with-' + slug(s) + '/">' + htmlEscape(s) + '</a>').join(' · ') + '</p></section>'
+    : '';
   const lastSyl = syllableCount(surname);
   const lastNameMeta = { name: surname, syllables: lastSyl };
   // STEP 7: Breadcrumb — Home > Baby Names > Last Name [Surname]; JSON-LD BreadcrumbList in baseLayout
@@ -338,6 +349,60 @@ function generatePage(surname, names) {
   const unisexList = getCompatibleNamesByGender(names, lastNameMeta, 'unisex', LIST_SIZE);
 
   const surnameEsc = htmlEscape(surname);
+
+  // Phase 3.0: Surname Compatibility Smoothness Score — top names across boy/girl/unisex
+  const allNamed = [...boyList.map((x) => x.name), ...girlList.map((x) => x.name), ...unisexList.map((x) => x.name)];
+  const seen = new Set();
+  const uniqueNames = allNamed.filter((n) => {
+    const id = (n && n.name) || '';
+    if (seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
+  const smoothnessSample = uniqueNames.slice(0, 12).map((n) => ({ name: n, ...computeSmoothness(n, lastNameMeta) }));
+  smoothnessSample.sort((a, b) => b.score - a.score);
+  const scoreBlockRows = smoothnessSample.slice(0, 10).map(
+    (r) => `<tr><td><a href="${nameDetailPath(r.name.name)}">${htmlEscape(r.name.name)}</a></td><td class="smoothness-score">${r.score}</td><td>${htmlEscape(r.tier)}</td></tr>`
+  ).join('');
+  const tierKey = 'baby-' + surname;
+  const tierBlock = explanationRenderer
+    ? explanationRenderer.getTierBlockParagraph(tierKey)
+    : 'Tiers: <strong>Excellent Flow</strong> (85–100), <strong>Strong Flow</strong> (70–84), <strong>Neutral</strong> (50–69), <strong>Slight Friction</strong> (30–49), <strong>High Friction</strong> (0–29).';
+  const scoreBlockHtml = `
+    <section class="smoothness-score-block" aria-labelledby="smoothness-heading">
+    <h2 id="smoothness-heading">Surname Compatibility Smoothness Score™</h2>
+    <p class="contextual">Below are smoothness scores (0–100) for first names that pair well with ${surnameEsc}. The score is deterministic and based on syllable balance, phonetic transition at the first–last boundary, consonant clash, and length symmetry.</p>
+    <div class="score-table-wrap"><table class="smoothness-table"><thead><tr><th>First name</th><th>Score</th><th>Tier</th></tr></thead><tbody>${scoreBlockRows}</tbody></table></div>
+    <p class="contextual">${tierBlock}</p>
+    </section>`;
+  const scoringKey = 'baby-' + surname;
+  const scoringLogicP = explanationRenderer
+    ? explanationRenderer.getScoringLogicParagraph(scoringKey)
+    : 'The Surname Compatibility Smoothness Score is a structured phonetic and linguistic model: syllable balance (first and last within one syllable), vowel–consonant or consonant–vowel transition at the boundary, penalty for the same consonant at the end of the first name and start of the last, length symmetry, and a penalty for combined length over seven syllables. The same first name and surname always produce the same score.';
+  const scoringLogicHtml = `
+    <section aria-labelledby="scoring-logic-heading"><h2 id="scoring-logic-heading">How the Smoothness Score is calculated</h2>
+    <p class="contextual">${scoringLogicP}</p>
+    </section>`;
+  const lastStartsV = /^[aeiouy]/i.test(surname);
+  const esc = (s) => htmlEscape(s);
+  const phonKey = 'baby-' + surname;
+  const transitionP = explanationRenderer
+    ? explanationRenderer.getTransitionParagraph(surname, lastStartsV, esc, phonKey)
+    : lastStartsV ? `Since ${surnameEsc} starts with a vowel, first names that end in a consonant often create a smooth transition.` : `Since ${surnameEsc} starts with a consonant, first names that end in a vowel tend to flow well and create a clear break.`;
+  const syllableP = explanationRenderer
+    ? explanationRenderer.getSyllableParagraph(surname, lastSyl, esc, phonKey)
+    : `${surnameEsc} has ${lastSyl} syllable${lastSyl !== 1 ? 's' : ''}; first names with a similar or within-one syllable count often sound balanced.`;
+  const collisionP = explanationRenderer
+    ? explanationRenderer.getConsonantCollisionParagraph(surname, esc, phonKey)
+    : `Avoiding repeated consonants at the boundary and favoring soft consonants (l, m, n, r) at the boundary improves flow.`;
+  const phoneticOrder = explanationRenderer ? explanationRenderer.getPhoneticBlockOrder(phonKey) : ['transition', 'syllable', 'rhythm', 'consonant'];
+  const phoneticParagraphs = { transition: transitionP, syllable: syllableP, rhythm: collisionP, consonant: collisionP };
+  const phoneticParagraphsHtml = phoneticOrder.map((k) => phoneticParagraphs[k]).filter(Boolean).map((p) => `<p class="contextual">${p}</p>`).join('');
+  const phoneticBreakdownHtml = `
+    <section aria-labelledby="phonetic-breakdown-heading"><h2 id="phonetic-breakdown-heading">Phonetic breakdown for ${surnameEsc}</h2>
+    ${phoneticParagraphsHtml}
+    </section>`;
+
   const itemHtml = (item) => {
     const firstSyl = item.name.syllables != null ? item.name.syllables : syllableCount(item.name.name || '');
     const expl = getCompatibilityExplanation(item.name, surname, item.reasons, lastSyl, firstSyl);
@@ -354,9 +419,15 @@ function generatePage(surname, names) {
     ? `<section aria-labelledby="unisex-heading"><h2 id="unisex-heading">Gender-Neutral Names That Pair Well With ${surnameEsc}</h2><ul class="name-list">${unisexList.map(itemHtml).join('')}</ul></section>`
     : '';
 
+  const blockOrder = explanationRenderer ? explanationRenderer.getBlockOrder(phonKey) : 'A';
+  const middleBlocks = blockOrder === 'A'
+    ? `${scoringLogicHtml}\n    ${phoneticBreakdownHtml}`
+    : `${phoneticBreakdownHtml}\n    ${scoringLogicHtml}`;
   let mainContent = `
     <h1>Baby Names That Go With ${surnameEsc}</h1>
     ${intro}
+    ${scoreBlockHtml}
+    ${middleBlocks}
     ${boySection}
     ${girlSection}
     ${unisexSection}
@@ -364,17 +435,20 @@ function generatePage(surname, names) {
     ${closingCta}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
+    ${relatedBabyNamesWithHtml}
     ${alphabetSectionHtml()}
     <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
   `;
 
-  // STEP 8: Word floor — if < 600, inject "Why Name Flow Matters" (120–200 words); if still < 600, throw
+  // STEP 8: Word floor — if < 800, inject "Why Name Flow Matters"; if still under, throw (Phase 3.0: 800-word minimum)
   let wordCount = countWordsInHtml(mainContent);
   if (wordCount < MIN_WORD_COUNT) {
-    const whyNameFlowBlock = `<section aria-labelledby="why-name-flow-heading"><h2 id="why-name-flow-heading">Why Name Flow Matters</h2><p class="contextual">How a first name and last name sound together affects how easy the full name is to say and remember. When the last name is ${surnameEsc}, paying attention to rhythm and flow helps narrow the options. Syllable balance is one factor: a one-syllable surname often pairs well with a two- or three-syllable first name, so the full name has a clear rhythm. Vowel-consonant balance at the boundary matters too—when the first name ends in a vowel and the last name starts with a consonant, or the reverse, the names tend to flow without running together. Avoiding repeated sounds at the boundary (the same consonant at the end of the first name and the start of the last) keeps the name from feeling choppy. Soft consonants and vowels usually create smoother transitions than hard stops. Many parents say the full name aloud several times to test it; the boy, girl, and gender-neutral names on this page are chosen using these rules. Each name links to its meaning and origin so you can explore further. If you try a name and it doesn’t feel right with ${surnameEsc}, try another from the lists or browse the last name compatibility hub for more options.</p></section>`;
+    const whyNameFlowBlock = `<section aria-labelledby="why-name-flow-heading"><h2 id="why-name-flow-heading">Why Name Flow Matters</h2><p class="contextual">How a first name and last name sound together affects how easy the full name is to say and remember. When the last name is ${surnameEsc}, paying attention to rhythm and flow helps narrow the options. Syllable balance is one factor: a one-syllable surname often pairs well with a two- or three-syllable first name, so the full name has a clear rhythm. Vowel-consonant balance at the boundary matters too—when the first name ends in a vowel and the last name starts with a consonant, or the reverse, the names tend to flow without running together. Avoiding repeated sounds at the boundary (the same consonant at the end of the first name and the start of the last) keeps the name from feeling choppy. Soft consonants and vowels usually create smoother transitions than hard stops. Many parents say the full name aloud several times to test it; the boy, girl, and gender-neutral names on this page are chosen using these rules. Each name links to its meaning and origin so you can explore further. If you try a name and it doesn’t feel right with ${surnameEsc}, try another from the lists or browse the last name compatibility hub for more options. The Smoothness Score above summarizes these factors into a single 0–100 value so you can quickly compare options.</p></section>`;
     mainContent = `
     <h1>Baby Names That Go With ${surnameEsc}</h1>
     ${intro}
+    ${scoreBlockHtml}
+    ${middleBlocks}
     ${whyNameFlowBlock}
     ${boySection}
     ${girlSection}
@@ -383,6 +457,7 @@ function generatePage(surname, names) {
     ${closingCta}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
+    ${relatedBabyNamesWithHtml}
     ${alphabetSectionHtml()}
     <section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links">${coreLinksHtml()}</p></section>
   `;
@@ -441,13 +516,15 @@ function run() {
     console.warn('WARNING: Batch requested (' + requested + ') exceeds MAX_BATCH (' + MAX_BATCH + '). Capping at ' + MAX_BATCH + '.');
     batchSize = MAX_BATCH;
   }
-  const surnames = TIER_1_SURNAMES.slice(0, batchSize);
 
-  if (batchSize > 20) {
-    console.log('Reminder: Only run --batch=50 after post-2.25a-audit.js and authority_coverage_score >= 0.99.');
-    console.log('');
+  const lastNamesData = loadJson('last-names');
+  const surnames = lastNamesData.slice(0, batchSize).map((entry) => (entry && entry.name) || '').filter(Boolean);
+  if (surnames.length === 0) {
+    console.error('ERROR: No surnames in data/last-names.json or batch size 0.');
+    process.exit(1);
   }
-  console.log('Phase 2.6 — Last-Name Compatibility Engine');
+
+  console.log('Phase 2.6 — Last-Name Compatibility Engine (Phase 3.0C: 75 cap)');
   console.log('URL: /baby-names-with-<slug>/');
   console.log('Batch size:', surnames.length, requested > MAX_BATCH ? '(capped from ' + requested + ')' : '');
   console.log('');
@@ -466,7 +543,7 @@ function run() {
   let minLinks = Infinity;
 
   surnames.forEach((surname) => {
-    const result = generatePage(surname, names);
+    const result = generatePage(surname, names, surnames);
     generated += 1;
     totalWords += result.wordCount;
     totalLinks += result.internalLinks;
@@ -483,14 +560,14 @@ function run() {
   console.log('Minimum internal links:', minLinks, minLinks >= MIN_LINKS ? '✅' : '❌');
 
   if (minWords < MIN_WORD_COUNT || minLinks < MIN_LINKS) {
-    console.error('ERROR: Some pages do not meet requirements (600+ words, ≥12 links).');
+    console.error('ERROR: Some pages do not meet requirements (800+ words, ≥12 links).');
     process.exit(1);
   }
 
   console.log('');
   console.log('Next: node scripts/build-sitemap.js (includes baby-names-with-*), then:');
   console.log('  node scripts/post-2.25a-audit.js');
-  console.log('  If authority_coverage_score ≥ 0.99, expand to 50: node scripts/generate-lastname-pages.js --batch=50');
+  console.log('  After audits pass: node scripts/generate-lastname-pages.js --batch=75 (Phase 3.0C cap).');
 }
 
 run();

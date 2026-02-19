@@ -182,6 +182,23 @@ function run() {
     }
   }
 
+  // --- /sitemaps/siblings.xml: Phase 3.1 — /names/{name}/siblings/ (sibling harmony pages) ---
+  let siblingsCount = 0;
+  const namesDir = path.join(OUT_DIR, 'names');
+  if (fs.existsSync(namesDir)) {
+    const siblingUrls = [];
+    const nameDirs = fs.readdirSync(namesDir, { withFileTypes: true }).filter((d) => d.isDirectory() && /^[a-z0-9-]+$/.test(d.name));
+    for (const d of nameDirs) {
+      const siblingsIndex = path.join(namesDir, d.name, 'siblings', 'index.html');
+      if (fs.existsSync(siblingsIndex)) siblingUrls.push('/names/' + d.name + '/siblings/');
+    }
+    siblingsCount = siblingUrls.length;
+    if (siblingsCount > 0) {
+      writeUrlset(path.join(sitemapsDir, 'siblings.xml'), siblingUrls, '0.7');
+      console.log('Written sitemaps/siblings.xml with', siblingsCount, 'URLs (priority 0.7)');
+    }
+  }
+
   // --- /sitemap.xml: sitemap index ---
   const sitemaps = [
     ['names', 'sitemaps/names.xml'],
@@ -191,9 +208,11 @@ function run() {
     ['names-like', 'sitemaps/names-like.xml'],
   ];
   if (babyNamesWithCount > 0) sitemaps.push(['baby-names-with', 'sitemaps/baby-names-with.xml']);
+  if (siblingsCount > 0) sitemaps.push(['siblings', 'sitemaps/siblings.xml']);
   sitemaps.push(['compare', 'sitemaps/compare.xml']);
   const indexEntries = sitemaps.map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
 
+  const totalUrls = namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + compareCount + babyNamesWithCount + siblingsCount;
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${indexEntries.join('\n')}
@@ -201,7 +220,7 @@ ${indexEntries.join('\n')}
 
   fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), indexXml, 'utf8');
   console.log('Written sitemap.xml (index with ' + sitemaps.length + ' sitemaps)');
-  console.log('Total URLs:', namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + compareCount + babyNamesWithCount);
+  console.log('Total URLs:', totalUrls);
 }
 
 run();
