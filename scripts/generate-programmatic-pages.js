@@ -35,6 +35,19 @@ const OUT_DIR = (() => {
   return env ? path.join(ROOT, env) : ROOT;
 })();
 
+/** Phase 3.5 STEP 6: Count internal links in HTML (same-site: / or nameorigin.io). */
+function countInternalLinksInContent(html) {
+  if (!html || typeof html !== 'string') return 0;
+  let count = 0;
+  const re = /<a\s+[^>]*href\s*=\s*["']([^"']+)["']/gi;
+  let m;
+  while ((m = re.exec(html))) {
+    const href = (m[1] || '').trim();
+    if (href.startsWith('/') || href.includes('nameorigin.io')) count += 1;
+  }
+  return count;
+}
+
 /** Phase 3.3D: Only these country slugs may receive links. No /names/null.html or /names/arabic.html etc. */
 const SUPPORTED_COUNTRY_PAGES = ['usa', 'canada', 'india', 'france', 'ireland'];
 function isSupportedCountrySlug(slug) {
@@ -582,7 +595,55 @@ function getTrendSummary(name, data, peakYear, latestRank) {
   }
 }
 
-function generateNamePage(record, names, popularity, categories, variants, siblingSlugs) {
+/**
+ * Phase 3.5: Pick names for "Names in the Same Style & Origin Group" block.
+ * STEP 5: No more than 2 links per exact cluster (balanced); max 2 origin + 2 style + 2 letter + 2 popularity.
+ */
+function getClusterBlockNames(record, nameById, topicClusters, excludeIds) {
+  if (!topicClusters || !topicClusters.by_name) return [];
+  const slugKey = slug(record.name);
+  const entry = topicClusters.by_name[slugKey];
+  if (!entry) return [];
+  const originIds = topicClusters.by_origin_cluster[entry.origin_cluster] || [];
+  const styleIds = topicClusters.by_style_cluster[entry.style_cluster] || [];
+  const letterIds = topicClusters.by_first_letter[entry.first_letter] || [];
+  const popIds = topicClusters.by_popularity_band[entry.popularity_band] || [];
+  const chosen = new Set();
+  const add = (idList, maxFromThisCluster) => {
+    let taken = 0;
+    for (const id of idList) {
+      if (taken >= maxFromThisCluster) return;
+      if (id === record.id || excludeIds.has(id) || chosen.has(id)) continue;
+      const n = nameById.get(id);
+      if (!n) continue;
+      chosen.add(id);
+      taken += 1;
+    }
+  };
+  add(originIds, 2);
+  add(styleIds, 2);
+  add(letterIds, 2);
+  add(popIds, 2);
+  return [...chosen].map((id) => nameById.get(id)).filter(Boolean);
+}
+
+/** STEP 5: Trim a section list so no 4 names repeat across sections — for each prior set, overlap ≤ 3. */
+function trimSectionToMaxOverlap(list, maxLen, priorIdSets) {
+  let out = list.slice(0, maxLen);
+  for (const prior of priorIdSets) {
+    const priorSet = new Set(prior);
+    let overlap = out.filter((n) => priorSet.has(n.id)).length;
+    while (overlap > 3 && out.length > 0) {
+      const idx = out.findIndex((n) => priorSet.has(n.id));
+      if (idx === -1) break;
+      out.splice(idx, 1);
+      overlap = out.filter((n) => priorSet.has(n.id)).length;
+    }
+  }
+  return out;
+}
+
+function generateNamePage(record, names, popularity, categories, variants, siblingSlugs, topicClusters) {
   const nameSlug = slug(record.name);
   const pathSeg = nameDetailPath(record.name);
   const url = SITE_URL + pathSeg;
@@ -617,24 +678,14 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
   const sectionList = (arr, max) => arr.slice(0, max).map(nameLink).join(', ');
 
-  // Mesh B: Names Like Cluster (Semantic Axis) — 8–12 links
+  // Mesh B: Names Like Cluster (Semantic Axis) — use trimmed lists (STEP 5: no 4-name repeat across sections)
   const namesLikeLink = `<a href="${namesLikePath(record.name)}">Names similar to ${htmlEscape(record.name)}</a>`;
-  const similarSection =
-    `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Names Similar to ${htmlEscape(record.name)}</h2><p class="contextual">${namesLikeLink}.</p>${similarNames.length > 0 ? '<ul class="name-list">' + similarNames.slice(0, 10).map((n) => `<li>${nameLink(n)}</li>`).join('') + '</ul>' : ''}</section>`;
-  const sameOriginSection = sameOrigin.length > 0
-    ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sectionList(sameOrigin, 8)}</p>${countryLinkHtml ? '<p>' + countryLinkHtml + '</p>' : ''}</section>`
-    : (countryLinkHtml ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p>${countryLinkHtml}</p></section>` : '');
-  const sameGenderSection = sameGender.length > 0
-    ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p class="name-links">${sectionList(sameGender, 8)}</p><p><a href="/names/${record.gender || ''}${EXT}">All ${record.gender || ''} names</a></p></section>`
-    : (record.gender ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p><a href="/names/${record.gender}${EXT}">All ${record.gender} names</a></p></section>` : '');
-  const letterSection = letter && LETTERS.includes(letter)
-    ? (sameLetter.length > 0
-      ? `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p class="name-links">${sectionList(sameLetter, 8)}</p><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`
-      : `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`)
-    : '';
-  const popularCountrySection = popularInCountry.length > 0 && countryLinkHtml
-    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p>${countryLinkHtml}</p></section>`
-    : (countryLinkHtml ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p>${countryLinkHtml}</p></section>` : '');
+  // similarSection/sameOriginSection/sameGenderSection/letterSection/popularCountrySection use trimmed vars (set below after trimSectionToMaxOverlap)
+  let similarSection;
+  let sameOriginSection;
+  let sameGenderSection;
+  let letterSection;
+  let popularCountrySection;
   // Mesh D: Category + Origin (Authority Axis) — 4–6 links
   const moreAboutLinks = [`<a href="/names/${record.gender || 'boy'}${EXT}">${(record.gender || 'boy').charAt(0).toUpperCase() + (record.gender || 'boy').slice(1)} names</a>`];
   if (countryLinkHtml) moreAboutLinks.push(countryLinkHtml);
@@ -642,6 +693,21 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const moreAboutSection = `<section aria-labelledby="more-about-heading"><h2 id="more-about-heading">More About ${htmlEscape(record.name)}</h2><p class="name-links">${moreAboutLinks.slice(0, 6).join(' · ')}</p></section>`;
 
   const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/names">Baby names hub</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
+
+  // Phase 3.5: Names in the Same Style & Origin Group (cluster reinforcement block, before Related names)
+  const excludeFromCluster = new Set([
+    record.id,
+    ...similarNames.map((n) => n.id),
+    ...sameOrigin.slice(0, 8).map((n) => n.id),
+    ...sameGender.slice(0, 8).map((n) => n.id),
+    ...sameLetter.slice(0, 8).map((n) => n.id),
+    ...popularInCountry.map((n) => n.id),
+  ]);
+  const clusterBlockNames = getClusterBlockNames(record, nameById, topicClusters, excludeFromCluster);
+  const clusterBlockSection =
+    clusterBlockNames.length > 0
+      ? `<section aria-labelledby="cluster-mesh-heading"><h2 id="cluster-mesh-heading">Names in the Same Style &amp; Origin Group</h2><p class="name-links">${clusterBlockNames.map(nameLink).join(', ')}</p></section>`
+      : '';
 
   // Step 4: At least 3 related name links (similar, then same letter, then same gender)
   const relatedNames = [...similarNames];
@@ -651,8 +717,39 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   if (relatedNames.length < 3 && sameGender.length > 0) {
     sameGender.filter((n) => !relatedNames.find((r) => r.id === n.id)).forEach((n) => { if (relatedNames.length < 6) relatedNames.push(n); });
   }
-  const relatedSection = relatedNames.length > 0
-    ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Related names</h2><p class="name-links">${relatedNames.slice(0, 8).map(nameLink).join(', ')}</p></section>`
+
+  // STEP 5: No section repeats same 4 names — trim so overlap with each prior section ≤ 3
+  const clusterBlockIds = clusterBlockNames.map((n) => n.id);
+  const relatedNamesTrimmed = trimSectionToMaxOverlap(relatedNames, 8, [clusterBlockIds]);
+  const relatedIds = relatedNamesTrimmed.map((n) => n.id);
+  const similarNamesTrimmed = trimSectionToMaxOverlap(similarNames, 10, [clusterBlockIds, relatedIds]);
+  const similarIds = similarNamesTrimmed.map((n) => n.id);
+  const sameOriginTrimmed = trimSectionToMaxOverlap(sameOrigin, 8, [clusterBlockIds, relatedIds, similarIds]);
+  const sameOriginIds = sameOriginTrimmed.map((n) => n.id);
+  const sameGenderTrimmed = trimSectionToMaxOverlap(sameGender, 8, [clusterBlockIds, relatedIds, similarIds, sameOriginIds]);
+  const sameGenderIds = sameGenderTrimmed.map((n) => n.id);
+  const sameLetterTrimmed = trimSectionToMaxOverlap(sameLetter, 8, [clusterBlockIds, relatedIds, similarIds, sameOriginIds, sameGenderIds]);
+  const popularInCountryTrimmed = trimSectionToMaxOverlap(popularInCountry, 10, [clusterBlockIds, relatedIds, similarIds, sameOriginIds, sameGenderIds, sameLetterTrimmed.map((n) => n.id)]);
+
+  similarSection =
+    `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Names Similar to ${htmlEscape(record.name)}</h2><p class="contextual">${namesLikeLink}.</p>${similarNamesTrimmed.length > 0 ? '<ul class="name-list">' + similarNamesTrimmed.map((n) => `<li>${nameLink(n)}</li>`).join('') + '</ul>' : ''}</section>`;
+  sameOriginSection = sameOriginTrimmed.length > 0
+    ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sameOriginTrimmed.map(nameLink).join(', ')}</p>${countryLinkHtml ? '<p>' + countryLinkHtml + '</p>' : ''}</section>`
+    : (countryLinkHtml ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p>${countryLinkHtml}</p></section>` : '');
+  sameGenderSection = sameGenderTrimmed.length > 0
+    ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p class="name-links">${sameGenderTrimmed.map(nameLink).join(', ')}</p><p><a href="/names/${record.gender || ''}${EXT}">All ${record.gender || ''} names</a></p></section>`
+    : (record.gender ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p><a href="/names/${record.gender}${EXT}">All ${record.gender} names</a></p></section>` : '');
+  letterSection = letter && LETTERS.includes(letter)
+    ? (sameLetterTrimmed.length > 0
+      ? `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p class="name-links">${sameLetterTrimmed.map(nameLink).join(', ')}</p><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`
+      : `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`)
+    : '';
+  popularCountrySection = popularInCountryTrimmed.length > 0 && countryLinkHtml
+    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${popularInCountryTrimmed.map(nameLink).join(', ')}</p><p>${countryLinkHtml}</p></section>`
+    : (countryLinkHtml ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p>${countryLinkHtml}</p></section>` : '');
+
+  const relatedSection = relatedNamesTrimmed.length > 0
+    ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Related names</h2><p class="name-links">${relatedNamesTrimmed.map(nameLink).join(', ')}</p></section>`
     : '';
 
   const popRows = (popularity || []).filter((p) => p.name_id === record.id);
@@ -765,6 +862,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${styleTagsHtml}
     ${compatibilityTips}
     ${usageContextSection}
+    ${clusterBlockSection}
     ${relatedSection}
     ${similarSection}
     ${sameOriginSection}
@@ -803,9 +901,16 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     extraSchema: namePageSchemas,
   });
 
+  // STEP 6: Mesh density — name detail pages must have ≥ 30 internal links
+  const internalLinkCount = countInternalLinksInContent(html);
+  if (internalLinkCount < 30) {
+    throw new Error(`Phase 3.5 STEP 6: Name page /name/${nameSlug}/ has ${internalLinkCount} internal links (minimum 30). Fix mesh density.`);
+  }
+
   const outPath = path.join(OUT_DIR, 'name', nameSlug, 'index.html');
   ensureDir(path.dirname(outPath));
   fs.writeFileSync(outPath, html, 'utf8');
+  return internalLinkCount;
 }
 
 /** Phase 2.5: Find 8-15 names similar to base name for "Names Like X" pages. */
@@ -1071,7 +1176,29 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   fs.writeFileSync(outPath, html, 'utf8');
 }
 
-function generateListPage(title, description, pathSeg, names, listTitle) {
+/** Phase 3.5: Best rank per name_id from popularity rows (lower = more popular). */
+function getBestRankPerName(popularity) {
+  const byNameId = new Map();
+  for (const r of popularity || []) {
+    const rank = r.rank != null ? r.rank : 999999;
+    if (!byNameId.has(r.name_id)) byNameId.set(r.name_id, rank);
+    else byNameId.set(r.name_id, Math.min(byNameId.get(r.name_id), rank));
+  }
+  return byNameId;
+}
+
+/** Phase 3.5: Top 5 high-popularity and top 5 low-popularity (unique) names from a list. */
+function getPopularVsUniqueInCategory(names, popularity, limit = 5) {
+  const bestRank = getBestRankPerName(popularity);
+  const withRank = names.map((n) => ({ n, rank: bestRank.get(n.id) ?? 999999 }));
+  const byBestRank = [...withRank].sort((a, b) => a.rank - b.rank);
+  const topPopular = byBestRank.slice(0, limit).map((x) => x.n);
+  const byWorstFirst = [...withRank].sort((a, b) => b.rank - a.rank);
+  const topUnique = byWorstFirst.slice(0, limit).map((x) => x.n);
+  return { topPopular, topUnique };
+}
+
+function generateListPage(title, description, pathSeg, names, listTitle, popularity) {
   const url = SITE_URL + pathSeg;
   const secondLabel = pathSeg === '/names' ? BREADCRUMB_NAMES_LABEL : (listTitle || 'Names');
   const breadcrumbItems = [
@@ -1083,6 +1210,14 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     names.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
     '</ul>';
   const listIntro = '<p class="contextual">Browse first names with meaning and origin. Each name links to a detail page. Use the sections below to filter by gender, country, or letter, or explore trending and popular names.</p><p class="contextual">Data comes from official birth statistics and curated sources. Each name has a full profile with meaning, origin, popularity over time, and related names. Use the compatibility tool to see how names pair with your last name. The compare section shows how names rank across countries. Browse by letter (A–Z) or by style (classic, modern, nature) for more discovery paths.</p><p class="contextual">Names on this list are curated for meaning and cultural significance. Click any name for its full profile. Use the explore links to move between gender filters, country pages, and style categories. The popularity hub shows top names by year; the trends page shows rising names. Every name on nameorigin.io has a dedicated page with meaning, origin, and popularity.</p><p class="contextual">Use the A–Z links to browse by first letter, or the country links for names by origin. Style categories (nature, classic, modern) help narrow choices. The compatibility tool scores first names by how well they pair with your last name. All names are linked to their full profile for meaning, origin, and popularity over time.</p><p class="contextual">Use the compare section to see how names rank across countries. The compatibility tool helps when pairing a first name with your last name. Browse trending names and popular names for rising and top-ranked choices. All names on nameorigin.io are curated for meaning and cultural significance. Every name has a dedicated page with meaning, origin, and popularity over time.</p><p class="contextual">Use the letter hub to browse A–Z or the country links for names by origin. The popularity hub shows top names by year; the trends page shows rising names. Each name has a full profile with meaning and origin. The compatibility tool helps when pairing a first name with your last name. The compare section shows how names rank across countries. Browse by gender, country, or style for more discovery. All names are curated for meaning and cultural significance.</p>';
+  const { topPopular, topUnique } = popularity && (listTitle === 'boy' || listTitle === 'girl') ? getPopularVsUniqueInCategory(names, popularity, 5) : { topPopular: [], topUnique: [] };
+  const popularVsUniqueSection =
+    topPopular.length > 0 || topUnique.length > 0
+      ? '<section aria-labelledby="popular-unique-heading"><h2 id="popular-unique-heading">Popular vs Unique Names in This Category</h2><p class="contextual">Top popular names (high usage) and more unique names (lower usage or rare) in this category.</p>' +
+        (topPopular.length > 0 ? '<p class="name-links"><strong>Popular:</strong> ' + topPopular.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ') + '</p>' : '') +
+        (topUnique.length > 0 ? '<p class="name-links"><strong>Unique:</strong> ' + topUnique.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ') + '</p>' : '') +
+        '</section>'
+      : '';
   const html = baseLayout({
     title: title + ' | nameorigin.io',
     description,
@@ -1092,6 +1227,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     mainContent: `<h1>${htmlEscape(title)}</h1>
     ${listIntro}
     ${['boy', 'girl', 'unisex'].includes(listTitle) ? buildCategoryDiffSection('gender', { gender: listTitle }) : ''}
+    ${popularVsUniqueSection}
     <p class="core-links">${coreLinksHtml()}</p>
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -1104,7 +1240,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
 // --- Alphabet / letter pages: /names/a.html, /names/b.html — internal link hubs ---
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-function generateLetterPage(letter, subset, allLettersWithNames) {
+function generateLetterPage(letter, subset, allLettersWithNames, popularity) {
   const pathSeg = '/names/' + letter + EXT;
   const letterUpper = letter.toUpperCase();
   const breadcrumbItems = [
@@ -1122,6 +1258,35 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
     { href: '/names/style' + EXT, text: 'Names by style' },
     { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
+
+  // Phase 3.5: Letter page links to top 3 origin clusters (countries), top 3 styles (exist, deterministic, Set dedupe)
+  const letterCountryLabelBySlug = { usa: 'USA', canada: 'Canada', india: 'India', france: 'France', ireland: 'Ireland' };
+  const lateralLinksLetter = [
+    ...SUPPORTED_COUNTRY_PAGES.slice(0, 3).map((s) => ({ href: '/names/' + s + EXT, text: letterCountryLabelBySlug[s] || s })),
+    ...STYLE_CONFIG.slice(0, 3).map((s) => ({ href: '/names/style/' + s.slug + EXT, text: s.label })),
+  ];
+  const letterSeenHref = new Set();
+  const lateralLinksLetterDeduped = lateralLinksLetter.filter((l) => {
+    if (letterSeenHref.has(l.href)) return false;
+    letterSeenHref.add(l.href);
+    return true;
+  });
+  const lateralSectionLetter =
+    lateralLinksLetterDeduped.length > 0
+      ? '<section aria-labelledby="lateral-letter-heading"><h2 id="lateral-letter-heading">Explore by origin and style</h2><p class="name-links">' +
+        lateralLinksLetterDeduped.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(', ') +
+        '</p></section>'
+      : '';
+
+  // Phase 3.5: Popular vs Unique Names in This Category (letter page)
+  const { topPopular: letterPopular, topUnique: letterUnique } = popularity && subset.length > 0 ? getPopularVsUniqueInCategory(subset, popularity, 5) : { topPopular: [], topUnique: [] };
+  const popularVsUniqueLetterSection =
+    letterPopular.length > 0 || letterUnique.length > 0
+      ? '<section aria-labelledby="popular-unique-letter-heading"><h2 id="popular-unique-letter-heading">Popular vs Unique Names in This Category</h2><p class="contextual">Top popular and more unique names starting with ' + letterUpper + '.</p>' +
+        (letterPopular.length > 0 ? '<p class="name-links"><strong>Popular:</strong> ' + letterPopular.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ') + '</p>' : '') +
+        (letterUnique.length > 0 ? '<p class="name-links"><strong>Unique:</strong> ' + letterUnique.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ') + '</p>' : '') +
+        '</section>'
+      : '';
 
   const listHtml =
     subset.length > 0
@@ -1144,6 +1309,8 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
     </section>
     ${genderSectionHtml()}
     ${countrySectionHtml()}
+    ${lateralSectionLetter}
+    ${popularVsUniqueLetterSection}
     <section aria-labelledby="names-heading"><h2 id="names-heading">Names</h2>
     ${listHtml}
     </section>
@@ -1337,6 +1504,20 @@ function generateCountryPage(c, slugKey, allNames, popularity) {
     { href: '/names/letters' + EXT, text: 'Browse by letter' },
   ];
 
+  // Phase 3.5: Lateral linking — country page links to top 3 style clusters, top 3 letter clusters (exist, deterministic, Set dedupe)
+  const lettersWithNames = [...new Set(allNames.map((n) => (n.first_letter || (n.name || '').charAt(0) || '').toLowerCase()).filter((l) => l && LETTERS.includes(l)))].sort();
+  const top3Letters = lettersWithNames.slice(0, 3);
+  const lateralLinksCountry = [
+    ...STYLE_CONFIG.slice(0, 3).map((s) => ({ href: '/names/style/' + s.slug + EXT, text: s.label })),
+    ...top3Letters.map((l) => ({ href: '/names/' + l + EXT, text: l.toUpperCase() })),
+  ];
+  const lateralSectionCountry =
+    lateralLinksCountry.length > 0
+      ? '<section aria-labelledby="lateral-heading"><h2 id="lateral-heading">Explore by style and letter</h2><p class="name-links">' +
+        lateralLinksCountry.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(', ') +
+        '</p></section>'
+      : '';
+
   const coreSection = '<section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">' + coreLinksHtml() + '</p></section>';
   const list = (arr) => arr.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ');
   const section = (id, title, items) =>
@@ -1355,6 +1536,7 @@ function generateCountryPage(c, slugKey, allNames, popularity) {
     <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Filter &amp; explore</h2>
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
+    ${lateralSectionCountry}
 
     ${section('trending-heading', 'Trending names', trendingNames)}
     ${section('popular-heading', 'Popular names', popularNames)}
@@ -1482,6 +1664,27 @@ function generateStylePage(styleSlug, styleLabel, styleDescription, subset, name
     { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
   ];
 
+  // Phase 3.5: Style page links to top 3 countries, top 3 popularity-related pages (exist, deterministic, Set dedupe)
+  const countryLabelBySlug = { usa: 'USA', canada: 'Canada', india: 'India', france: 'France', ireland: 'Ireland' };
+  const lateralLinksStyle = [
+    ...SUPPORTED_COUNTRY_PAGES.slice(0, 3).map((s) => ({ href: '/names/' + s + EXT, text: countryLabelBySlug[s] || s })),
+    { href: '/names/popular' + EXT, text: 'Popular names' },
+    { href: '/names/trending' + EXT, text: 'Trending names' },
+    { href: '/names', text: 'All names' },
+  ];
+  const seenHref = new Set();
+  const lateralLinksStyleDeduped = lateralLinksStyle.filter((l) => {
+    if (seenHref.has(l.href)) return false;
+    seenHref.add(l.href);
+    return true;
+  });
+  const lateralSectionStyle =
+    lateralLinksStyleDeduped.length > 0
+      ? '<section aria-labelledby="lateral-style-heading"><h2 id="lateral-style-heading">Explore by country and popularity</h2><p class="name-links">' +
+        lateralLinksStyleDeduped.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(', ') +
+        '</p></section>'
+      : '';
+
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
@@ -1499,6 +1702,7 @@ function generateStylePage(styleSlug, styleLabel, styleDescription, subset, name
     <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Explore</h2>
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
+    ${lateralSectionStyle}
     <section aria-labelledby="names-heading"><h2 id="names-heading">Names</h2>
     ${listHtml}
     </section>
@@ -1764,11 +1968,28 @@ function run() {
   ensureDir(path.join(OUT_DIR, 'names'));
   ensureDir(path.join(OUT_DIR, 'name'));
 
+  let topicClusters = null;
+  const buildDir = path.join(ROOT, 'build');
+  const topicClustersPath = path.join(buildDir, 'topic-clusters.json');
+  if (fs.existsSync(topicClustersPath)) {
+    try {
+      topicClusters = JSON.parse(fs.readFileSync(topicClustersPath, 'utf8'));
+    } catch (_) {}
+  }
+
   // Phase 3.3E: only name slugs in the sibling batch get a sibling link (avoids broken links for ~3,500 names)
   const siblingSlugs = getSiblingBatchNameSlugs(names, popularity, 150);
 
-  // Name pages
-  names.forEach((n) => generateNamePage(n, names, popularity, categories, variants, siblingSlugs));
+  // Name pages (STEP 6: each ≥ 30 internal links; average > 40)
+  let namePageLinkTotal = 0;
+  names.forEach((n) => {
+    namePageLinkTotal += generateNamePage(n, names, popularity, categories, variants, siblingSlugs, topicClusters);
+  });
+  const avgLinksPerNamePage = names.length ? namePageLinkTotal / names.length : 0;
+  if (names.length > 0 && avgLinksPerNamePage <= 40) {
+    throw new Error(`Phase 3.5 STEP 6: Average internal links per name page is ${avgLinksPerNamePage.toFixed(1)} (required > 40). Fix mesh density.`);
+  }
+  console.log('Name pages: avg internal links =', avgLinksPerNamePage.toFixed(1));
 
   // Phase 2.5: Names Like pages are generated separately via scripts/generate-names-like.js
   // Run: node scripts/generate-names-like.js --batch=50 (then expand to 200 if authority score ≥ 0.99)
@@ -1779,7 +2000,8 @@ function run() {
     'Browse all first names with meaning and origin.',
     '/names',
     names,
-    'Names'
+    'Names',
+    popularity
   );
   fs.writeFileSync(path.join(OUT_DIR, 'names', 'index.html'), namesHtml, 'utf8');
 
@@ -1810,7 +2032,7 @@ function run() {
   const lettersWithNames = LETTERS.filter((l) => namesByLetter.get(l).length > 0);
   LETTERS.forEach((letter) => {
     const subset = namesByLetter.get(letter) || [];
-    const html = generateLetterPage(letter, subset, LETTERS);
+    const html = generateLetterPage(letter, subset, LETTERS, popularity);
     fs.writeFileSync(path.join(OUT_DIR, 'names', letter + EXT), html, 'utf8');
   });
   const lettersHubLinks = (lettersWithNames.length > 0 ? lettersWithNames : LETTERS).map((l) => ({ href: '/names/' + l + EXT, text: l.toUpperCase() }));
@@ -1854,7 +2076,8 @@ function run() {
       'Browse ' + gender + ' names with meaning and origin.',
       '/names/' + gender + EXT,
       subset,
-      gender
+      gender,
+      popularity
     );
     fs.writeFileSync(path.join(OUT_DIR, 'names', gender + EXT), html, 'utf8');
   });

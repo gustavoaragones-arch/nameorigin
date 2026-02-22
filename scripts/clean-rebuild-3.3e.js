@@ -24,6 +24,7 @@ const ROOT = path.join(__dirname, '..');
 
 const STEPS = [
   { name: 'apply-origin-enrichment.js', args: [] },
+  { name: 'topic-cluster-map.js', args: [] },
   { name: 'generate-programmatic-pages.js', args: [] },
   { name: 'generate-sibling-pages.js', args: ['--batch=150'] },
   { name: 'generate-lastname-pages.js', args: ['--batch=75'] },
@@ -33,6 +34,7 @@ const STEPS = [
   { name: 'generate-popularity-year-pages.js', args: [] },
   { name: 'build-sitemap.js', args: [] },
   { name: 'index-integrity-audit.js', args: [] },
+  { name: 'phase-3.5-validate-audit.js', args: [] },
   { name: 'post-2.25a-audit.js', args: [] },
 ];
 
