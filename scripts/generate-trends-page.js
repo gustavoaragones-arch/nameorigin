@@ -15,6 +15,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
+const { writeHtmlWithGuard } = require('./phase-3.4-guards.js');
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
 
@@ -271,15 +272,61 @@ function run() {
 
   const trendsDir = path.join(OUT_DIR, 'trends', 'us-2025-vs-2015');
   fs.mkdirSync(trendsDir, { recursive: true });
-  fs.writeFileSync(path.join(trendsDir, 'index.html'), html, 'utf8');
+  writeHtmlWithGuard(path.join(trendsDir, 'index.html'), html, 'trends/us-2025-vs-2015/index.html');
 
-  // /trends/ hub so the micro-dataset page is linked (≤3 hops)
+  // /trends/ hub — Phase 3.4: meta description, ≥20 links, ≥400 words
+  const hubMetaDesc = `Baby name trends and demographic insights. Top 5 trending USA names ${yearLatest} vs ${yearPast}. Compare ranks, movement, and baby name meaning.`;
+  const hubSiblingLinks = [
+    { href: '/all-name-pages.html', text: 'All name pages' },
+    { href: '/country-name-pages.html', text: 'Country name pages' },
+    { href: '/style-name-pages.html', text: 'Style name pages' },
+    { href: '/alphabet-name-pages.html', text: 'Alphabet name pages' },
+    { href: '/last-name-pages.html', text: 'Last name compatibility' },
+  ];
+  const hubLetterLinks = ['a', 'b', 'l', 'o', 'e'].map((l) => ({ href: `/names/${l}${EXT}`, text: `Names starting with ${l.toUpperCase()}` }));
+  const hubCountryLinks = [
+    { href: '/names/usa' + EXT, text: 'USA names' },
+    { href: '/names/canada' + EXT, text: 'Canada names' },
+    { href: '/names/india' + EXT, text: 'India names' },
+    { href: '/names/france' + EXT, text: 'France names' },
+    { href: '/names/ireland' + EXT, text: 'Ireland names' },
+  ];
+  const hubFilterLinks = [
+    { href: '/', text: 'Home' },
+    { href: '/names', text: 'All names' },
+    { href: '/names/boy' + EXT, text: 'Boy names' },
+    { href: '/names/girl' + EXT, text: 'Girl names' },
+    { href: '/names/trending' + EXT, text: 'Trending names' },
+    { href: '/names/popular' + EXT, text: 'Popular names' },
+    { href: '/popularity/', text: 'Popularity by year' },
+    { href: '/compare/', text: 'Compare by country' },
+    { href: '/compare/us-vs-uk/', text: 'US vs UK' },
+    { href: '/compare/us-vs-canada/', text: 'US vs Canada' },
+    { href: '/compatibility/', text: 'Compatibility tool' },
+  ];
+  const hubAllLinks = [...hubSiblingLinks, ...hubLetterLinks, ...hubCountryLinks, ...hubFilterLinks];
+  const hubLinksSet = new Set();
+  const hubLinks = hubAllLinks.filter((l) => {
+    const k = l.href;
+    if (hubLinksSet.has(k)) return false;
+    hubLinksSet.add(k);
+    return true;
+  });
+
+  const hubIntro = `Name trends on nameorigin.io focus on demographic insights and how baby names move in rank over time. Our trend reports compare official birth statistics across years and countries so you can see which names are rising, which are stable, and which have peaked.`;
+  const hubContext = `Understanding name trends helps parents and researchers see how naming culture evolves. A name that jumps 50 spots in a decade signals a shift—whether from media, celebrity, or broader cultural change. Movement is measured as rank change: positive means the name became more popular. Regional and ethnic diversity in the United States drives different naming clusters, so national trend lists capture a blend of mainstream and culturally specific gains.`;
+  const hubMethodology = `Data comes from official birth statistics: the U.S. Social Security Administration, the Office for National Statistics in the UK, and equivalent agencies in Canada and Australia. We aggregate rankings by year and country so you can compare across regions. When new annual data is released, we regenerate trend reports to keep rankings current.`;
+  const hubReports = `The reports below link to detailed tables with rank, movement, and cultural context. Each name in the trend tables links to its full profile for meaning, origin, and extended popularity data. Use the compare section for country-to-country analysis (e.g. US vs UK, US vs Canada) and the popularity hub for year-by-year top lists.`;
+  const hubCultural = `Cultural evolution affects naming through media, celebrity culture, and broader social trends. A name in a hit show or chosen by a public figure can jump in rank within years. Immigration and multicultural naming add names that may not rank in earlier decades. Parents often blend traditional names with modern and culturally diverse choices.`;
+  const hubExplore = `Browse names by letter (A–Z), by country (USA, Canada, India, France, Ireland), or by style (classic, modern, nature) from the links below. The last name compatibility tool helps when pairing a first name with your surname. All data is derived from official birth statistics; we do not use AI-generated or unverified sources.`;
+
   const hubHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+  <meta name="description" content="${hubMetaDesc.replace(/"/g, '&quot;')}">
   <title>Name Trends | NameOrigin</title>
   <link rel="canonical" href="${SITE_URL}/trends/" />
   <link rel="stylesheet" href="/styles.min.css">
@@ -289,17 +336,24 @@ function run() {
   <main class="container section">
     <nav class="breadcrumb"><a href="/">Home</a> / <span aria-current="page">Trends</span></nav>
     <h1>Name trends</h1>
-    <p class="contextual">Focused trend reports and demographic insights.</p>
+    <p class="contextual">${hubIntro}</p>
+    <p class="contextual">${hubContext}</p>
+    <p class="contextual">${hubMethodology}</p>
     <section aria-labelledby="trends-list-heading"><h2 id="trends-list-heading">Reports</h2>
     <ul><li><a href="/trends/us-2025-vs-2015/">Top 5 Trending Names in USA: ${yearLatest} vs ${yearPast}</a></li></ul>
     </section>
-    <p class="internal-links"><a href="/">Home</a> · <a href="/names/usa${EXT}">USA names</a> · <a href="/compare/us-vs-uk/">US vs UK</a> · <a href="/popularity/">Popularity by year</a></p>
+    <p class="contextual">${hubReports}</p>
+    <p class="contextual">${hubCultural}</p>
+    <p class="contextual">${hubExplore}</p>
+    <section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2>
+    <p class="internal-links">${hubLinks.map((l) => `<a href="${l.href}">${l.text}</a>`).join(' · ')}</p>
+    </section>
   </main>
   <footer class="site-footer"><div class="container"><p><a href="/">nameorigin.io</a></p></div></footer>
 </body>
 </html>`;
   fs.mkdirSync(path.join(OUT_DIR, 'trends'), { recursive: true });
-  fs.writeFileSync(path.join(OUT_DIR, 'trends', 'index.html'), hubHtml, 'utf8');
+  writeHtmlWithGuard(path.join(OUT_DIR, 'trends', 'index.html'), hubHtml, 'trends/index.html');
 
   const wordCount = (mainContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().split(/\s+/).length);
   console.log('MODULE D: wrote', pathSeg, 'and /trends/ hub | words:', wordCount, '| links:', uniqueLinks.length, wordCount >= 800 ? '(≥800 ✓)' : '(add copy to reach 800)');

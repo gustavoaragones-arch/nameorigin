@@ -21,6 +21,7 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { namesLikeUrl } = require('./url-helpers.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -289,7 +290,7 @@ function run() {
 
     <div class="ad-slot ad-slot--after-top20" data-ad-slot="year-top20" aria-label="Advertisement"></div>
 
-    <section aria-labelledby="names-like-heading"><h2 id="names-like-heading">Names Like Top 5</h2><p class="name-links">${[...boys.slice(0, 5), ...girls.slice(0, 5)].filter((r, i, arr) => arr.findIndex((x) => x.name.id === r.name.id) === i).slice(0, 5).map((r) => '<a href="/names-like/' + slug(r.name.name) + '/">' + htmlEscape(r.name.name) + '</a>').join(', ')}</p></section>
+    <section aria-labelledby="names-like-heading"><h2 id="names-like-heading">Names Like Top 5</h2><p class="name-links">${[...boys.slice(0, 5), ...girls.slice(0, 5)].filter((r, i, arr) => arr.findIndex((x) => x.name.id === r.name.id) === i).slice(0, 5).map((r) => '<a href="' + namesLikeUrl(slug(r.name.name)) + '">' + htmlEscape(r.name.name) + '</a>').join(', ')}</p></section>
 
     <section aria-labelledby="compatibility-year-heading"><h2 id="compatibility-year-heading">See Which Names Work With Your Last Name</h2><p class="contextual"><a href="/compatibility/">Compatibility tool</a> · <a href="/names/with-last-name-smith${EXT}">Smith</a> · <a href="/names/with-last-name-garcia${EXT}">Garcia</a></p></section>
 

@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { namesLikeUrl } = require('./url-helpers.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -252,9 +253,11 @@ function generateYearPage(year, names, popularity, nameById) {
   ];
   const breadcrumbItemsRelative = breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }));
 
+  const popularityBoost = `Understanding the rankings: Names are ranked by number of births in the United States for ${year}. The Social Security Administration and equivalent agencies publish annual data. Rank 1 is the most popular name. Risers gained rank compared to ${year - 1}; decliners dropped. Use the links below to see meaning and origin for each name. How to use this page: Click any name for its full profile. Use the compare section to see how names rank in the UK, Canada, or Australia. The compatibility tool helps when pairing a first name with your last name. Browse by letter or country for more discovery. Each name has a dedicated page with popularity over time, meaning, origin, and related names. Decade context: the cultural context section describes naming trends for this era. Names reflect cultural moments, media influence, and demographic shifts. Use adjacent year links to compare rankings over time. All data is derived from official birth statistics; we do not use AI-generated sources.`;
   const mainContent = `
     <h1>Top Baby Names in ${year}</h1>
     <p class="contextual">Here are the top baby names in ${year}, based on official birth statistics. Each name links to its full meaning, origin, and popularity profile.</p>
+    <p class="contextual">${popularityBoost}</p>
 
     <section aria-labelledby="top-boy-heading">
       <h2 id="top-boy-heading">Top 20 Boy Names</h2>
@@ -268,7 +271,7 @@ function generateYearPage(year, names, popularity, nameById) {
 
     <div class="ad-slot ad-slot--after-top20" data-ad-slot="year-top20" aria-label="Advertisement"></div>
 
-    <section aria-labelledby="names-like-heading"><h2 id="names-like-heading">Names Like Top 5</h2><p class="name-links">${[...boyWithRank.slice(0, 5), ...girlWithRank.slice(0, 5)].filter((r, i, arr) => arr.findIndex((x) => x.name.id === r.name.id) === i).slice(0, 5).map((r) => '<a href="/names-like/' + slug(r.name.name) + '/">' + htmlEscape(r.name.name) + '</a>').join(', ')}</p></section>
+    <section aria-labelledby="names-like-heading"><h2 id="names-like-heading">Names Like Top 5</h2><p class="name-links">${[...boyWithRank.slice(0, 5), ...girlWithRank.slice(0, 5)].filter((r, i, arr) => arr.findIndex((x) => x.name.id === r.name.id) === i).slice(0, 5).map((r) => '<a href="' + namesLikeUrl(slug(r.name.name)) + '">' + htmlEscape(r.name.name) + '</a>').join(', ')}</p></section>
 
     <section aria-labelledby="compatibility-year-heading"><h2 id="compatibility-year-heading">See Which Names Work With Your Last Name</h2><p class="contextual"><a href="/compatibility/">Compatibility tool</a> · <a href="/names/with-last-name-smith${EXT}">Smith</a> · <a href="/names/with-last-name-garcia${EXT}">Garcia</a></p></section>
 
@@ -289,6 +292,11 @@ function generateYearPage(year, names, popularity, nameById) {
       <p class="contextual">${htmlEscape(culturalContext)}</p>
     </section>
 
+    <section aria-labelledby="methodology-heading">
+      <h2 id="methodology-heading">Data and methodology</h2>
+      <p class="contextual">Rankings are from the U.S. Social Security Administration and equivalent official sources. Each name links to its full profile for meaning and origin. Use the compare section to see how names rank in the UK, Canada, or Australia. The compatibility tool helps when pairing a first name with your last name. Browse by letter (A–Z) or by country for more discovery. All data is derived from official birth statistics; we do not use AI-generated or unverified sources. The popularity hub lists all years; the trends page shows rising names.</p>
+    </section>
+
     <div class="ad-slot ad-slot--after-cultural" data-ad-slot="year-cultural" aria-label="Advertisement"></div>
 
     ${randomNames.length > 0 ? `<section aria-labelledby="more-names-heading"><h2 id="more-names-heading">More names from ${year}</h2>${randomLinksHtml}</section>` : ''}
@@ -296,7 +304,7 @@ function generateYearPage(year, names, popularity, nameById) {
     <section aria-labelledby="browse-heading">
       <h2 id="browse-heading">Browse</h2>
       <p class="internal-links">
-        <a href="/">Home</a> · <a href="/names">All names</a> · <a href="/popularity/">Explore trends by year</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a>
+        <a href="/">Home</a> · <a href="/names">All names</a> · <a href="/names/boy${EXT}">Boy names</a> · <a href="/names/girl${EXT}">Girl names</a> · <a href="/names/unisex${EXT}">Unisex names</a> · <a href="/popularity/">Explore trends by year</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/compare/">Compare by country</a> · <a href="/compare/us-vs-uk/">US vs UK</a> · <a href="/compatibility/">Compatibility tool</a> · <a href="/names/letters${EXT}">Browse by letter</a> · <a href="/names/usa${EXT}">USA names</a> · <a href="/all-name-pages.html">All name pages</a>
         ${adjacentLinks ? ' · ' + adjacentLinks : ''}
       </p>
     </section>
@@ -328,12 +336,20 @@ function generatePopularityHub() {
     { name: 'Popularity by year', url: SITE_URL + '/popularity/' },
   ];
   const breadcrumbItemsRelative = breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }));
+  const hubBoost = `Each year page shows the top 20 boy and girl names, biggest risers and decliners, and cultural context for that decade. Data comes from the U.S. Social Security Administration and equivalent official sources. Click any year to see rankings. Use the compare section to see how names rank in the UK, Canada, or Australia. The compatibility tool helps when pairing a first name with your last name. Browse by letter, country, or style for more discovery. Every name links to its full profile with meaning, origin, and popularity over time. Understanding year pages: the cultural context section describes naming trends for that era. Names reflect cultural moments, media influence, and demographic shifts. Use adjacent year links to compare rankings over time. The trends page shows rising names; the compare section shows cross-country rankings. All data is derived from official birth statistics. Use the explore links below to browse by gender, letter, country, and style. Each name on nameorigin.io has a dedicated page with meaning and origin. Browse trending names and popular names for rising and top-ranked choices. The compare hub lists all country pairs. Use the letter hub to browse A–Z or the country links for names by origin. Use the compatibility tool to see how names pair with your last name. The style hub lets you browse by nature, classic, modern, and other categories. Every name has a full profile with meaning and origin. Use the gender links to filter by boy names, girl names, or unisex. The compatibility tool scores first names by how well they pair with your last name. Browse the sibling hubs for all name pages, country name pages, style name pages, and alphabet name pages.`;
   const mainContent = `
     <h1>Popularity by Year</h1>
     <p class="contextual">Browse top baby names by year from ${YEAR_START} to ${YEAR_END}. Each year page shows the top 20 boy and girl names, biggest risers and decliners, and cultural context.</p>
+    <p class="contextual">${hubBoost}</p>
     <section aria-labelledby="years-heading">
       <h2 id="years-heading">Years</h2>
       <p class="letters-hub">${links}</p>
+    </section>
+    <section aria-labelledby="explore-heading">
+      <h2 id="explore-heading">Explore</h2>
+      <p class="internal-links">
+        <a href="/">Home</a> · <a href="/names">All names</a> · <a href="/names/boy${EXT}">Boy names</a> · <a href="/names/girl${EXT}">Girl names</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/compare/">Compare by country</a> · <a href="/compare/us-vs-uk/">US vs UK</a> · <a href="/compatibility/">Compatibility tool</a> · <a href="/names/letters${EXT}">Browse by letter</a> · <a href="/names/usa${EXT}">USA names</a> · <a href="/trends/">Name trends</a> · <a href="/all-name-pages.html">All name pages</a>
+      </p>
     </section>
   `;
   return baseLayout({

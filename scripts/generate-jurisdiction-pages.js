@@ -190,13 +190,10 @@ function run() {
 
     const countryPage = countryCode === 'USA' ? '/names/usa' + EXT : '/names/canada' + EXT;
     const nameLinks = [...top10Boys.slice(0, 5), ...top10Girls.slice(0, 5)].filter((r) => r.name).map((r) => `<a href="${nameDetailPath(r.name)}">${htmlEscape(r.name)}</a>`);
-    const jurisdictionCompareLinks = (countrySlug === 'us'
-      ? ['<a href="/compare/california-vs-texas/">California vs Texas</a>', '<a href="/compare/california-vs-florida/">California vs Florida</a>', '<a href="/compare/texas-vs-florida/">Texas vs Florida</a>']
-      : ['<a href="/compare/alberta-vs-ontario/">Alberta vs Ontario</a>', '<a href="/compare/alberta-vs-quebec/">Alberta vs Quebec</a>', '<a href="/compare/ontario-vs-quebec/">Ontario vs Quebec</a>']);
+    // Phase 3.3: Jurisdiction compare links removed until generate-jurisdiction-compare-pages.js is in rebuild.
     const meshLinks = [
       ...nameLinks,
       `<a href="${countryPage}">${htmlEscape(countryLabel)} names</a>`,
-      ...jurisdictionCompareLinks,
       '<a href="/compare/us-vs-uk/">US vs UK</a>',
       '<a href="/compare/us-vs-canada/">US vs Canada</a>',
       '<a href="/compare/uk-vs-australia/">UK vs Australia</a>',

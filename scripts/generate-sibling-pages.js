@@ -17,6 +17,7 @@
 const fs = require('fs');
 const path = require('path');
 const { getTopSiblingMatches } = require('./generate-sibling-harmony.js');
+const { namesLikeUrl } = require('./url-helpers.js');
 
 let siblingRenderer;
 try {
@@ -108,7 +109,6 @@ function coreLinksHtml() {
     { href: '/names/girl' + EXT, text: 'Girl names' },
     { href: '/names/unisex' + EXT, text: 'Unisex names' },
     { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
-    { href: '/names-like/', text: 'Names Like' },
     { href: '/names/letters' + EXT, text: 'By letter' },
     { href: '/names/trending' + EXT, text: 'Trending' },
     { href: '/names/popular' + EXT, text: 'Popular' },
@@ -180,9 +180,10 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     ctx.BASE_POP_BAND = htmlEscape(ctx.BASE_POP_BAND || '');
     ctx.BASE_FIRST_LETTER = htmlEscape(ctx.BASE_FIRST_LETTER || '');
   }
+  // Direct summary: 60–80 words (required block)
   const summaryBlock = siblingRenderer
     ? `<p class="contextual">${siblingRenderer.getSummaryIntro(baseRecord.name, ctx)}</p>`
-    : `<p class="contextual">Looking for sibling names that pair well with ${nameEsc}? This page shows the top 12 names that harmonize with ${nameEsc} based on shared origin, phonetic rhythm, popularity band, length balance, and style. Each candidate is scored 0–100 for compatibility.</p>`;
+    : `<p class="contextual">Looking for sibling names that pair well with ${nameEsc}? This page lists the top 12 names that harmonize with ${nameEsc} using a deterministic, data-driven score. We combine shared origin (30%), phonetic rhythm (25%), popularity band (20%), length balance (15%), and style cluster (10%) so you can quickly see which names feel cohesive together. Each candidate is scored 0–100. The table below shows the highest-scoring options; the sections that follow explain how the score works and why sibling harmony matters when naming multiple children.</p>`;
 
   // Harmony table: Candidate | Harmony Score | Shared Origin | Style Match
   const tableRows = matches.map((m) => {
@@ -232,11 +233,31 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     <p class="contextual">This doesn't mean these names are bad—they simply have different characteristics. Parents who want a cohesive sibling set often avoid pairing very contrasting names.</p>
     </section>`;
 
+  // Step 2 — "How We Calculate Sibling Harmony" (deterministic deep explanation, 120–180 words)
+  const scoreRange = matches.length ? (matches[0].score + '–' + (matches[matches.length - 1].score)) : '0–100';
+  const howWeCalculateHtml = `
+    <section aria-labelledby="calculate-heading"><h2 id="calculate-heading">How we calculate sibling harmony</h2>
+    <p class="contextual">The harmony score is a weighted sum of five factors, each scored 0–100, then combined with fixed weights. <strong>Shared origin</strong> (30%) reflects whether two names come from the same cultural or linguistic background; same origin scores 100, partial 50–60, different 0. <strong>Phonetic rhythm</strong> (25%) rewards similar syllable count and optional first-letter match so names sound good when said together. <strong>Popularity band</strong> (20%) compares usage tier (top 100, top 500, top 1000, or other); names in the same band score higher so sibling names feel balanced in familiarity. <strong>Length balance</strong> (15%) and <strong>style cluster</strong> (10%) round out the formula. The result is deterministic: the same two names always get the same score. For ${nameEsc}, the table above shows scores from ${scoreRange}. Rhythm and origin together carry 55% because auditory cohesion and cultural consistency drive most parents' sense of "these names go together."</p>
+    </section>`;
+
+  // Step 3 — "Stylistic Cohesion Across Siblings" (data-driven, 120–150 words)
+  const baseLetter = (baseRecord.first_letter || (baseRecord.name || '').charAt(0) || '').toUpperCase();
+  const matchLetters = [...new Set(matches.map((m) => (m.name.first_letter || (m.name.name || '').charAt(0) || '').toUpperCase()).filter(Boolean))];
+  const letterDiversity = matchLetters.length;
+  const baseOriginLabel = (baseRecord.origin_country || baseRecord.language || '').trim();
+  const baseSyl = baseRecord.syllables != null ? baseRecord.syllables : 2;
+  const avgSyl = matches.length ? (matches.reduce((acc, m) => acc + (m.name.syllables != null ? m.name.syllables : 2), 0) / matches.length).toFixed(1) : '2';
+  const originPhrase = baseOriginLabel ? `${nameEsc} has ${htmlEscape(baseOriginLabel)} roots` : `${nameEsc} and the top candidates`;
+  const stylisticCohesionHtml = `
+    <section aria-labelledby="cohesion-heading"><h2 id="cohesion-heading">Stylistic cohesion across siblings</h2>
+    <p class="contextual">First-letter diversity varies by family: some parents want matching initials (e.g. ${nameEsc} and a sibling starting with ${baseLetter}); others prefer variety. Our table includes both—same-letter names get a rhythm bonus, but strong origin and style matches can score high without it. Cultural consistency matters: ${originPhrase}${baseOriginLabel ? '; the top candidates share or complement that origin' : ' are scored for shared or complementary origin'}, which drives 30% of the score. Length contrast is balanced so one name doesn't dominate: ${nameEsc} has ${baseSyl} syllable(s); the suggested names average about ${avgSyl}, keeping the set cohesive. Generational naming patterns are reflected in the popularity band (20%): names in similar usage tiers often feel like they belong to the same era, which helps sibling sets feel intentional rather than random.</p>
+    </section>`;
+
   const whyHarmonyP = siblingRenderer ? siblingRenderer.getWhyHarmony(baseRecord.name, ctx) : `When choosing names for multiple children, many parents want a cohesive set: names that sound good together, share a cultural or stylistic thread, and feel balanced in length and rhythm. The Sibling Harmony score helps you quickly identify names that pair well with ${nameEsc}.`;
   const whySiblingHarmonyHtml = `
     <section aria-labelledby="why-harmony-heading"><h2 id="why-harmony-heading">Why sibling harmony matters</h2>
     <p class="contextual">${whyHarmonyP}</p>
-    <p class="contextual">Use the links below to browse by gender, country, or letter. Try the <a href="/names/with-last-name${EXT}">last name compatibility</a> tool to see how ${nameEsc} sounds with your surname, or explore <a href="/names-like/${nameSlug}/">names like ${nameEsc}</a> for alternatives that share similar style and sound. Each name in the harmony table links to its full profile with meaning, origin, and popularity.</p>
+    <p class="contextual">Use the links below to browse by gender, country, or letter. Try the <a href="/names/with-last-name${EXT}">last name compatibility</a> tool to see how ${nameEsc} sounds with your surname, or explore <a href="${namesLikeUrl(nameSlug)}">names like ${nameEsc}</a> for alternatives that share similar style and sound. Each name in the harmony table links to its full profile with meaning, origin, and popularity.</p>
     </section>`;
 
   const mainContent = `
@@ -244,13 +265,15 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     ${summaryBlock}
     ${harmonyTableHtml}
     ${explanationHtml}
+    ${howWeCalculateHtml}
+    ${stylisticCohesionHtml}
     ${contrastHtml}
     ${whySiblingHarmonyHtml}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${coreLinksHtml()}
     <section aria-labelledby="mesh-heading"><h2 id="mesh-heading">Related</h2>
-    <p><a href="${nameDetailPath(baseRecord.name)}">${nameEsc} — full profile</a> · <a href="/names/with-last-name-smith${EXT}">How ${nameEsc} sounds with Smith</a> · <a href="/names-like/${nameSlug}/">Names like ${nameEsc}</a> · <a href="/names/popular${EXT}">Popular names</a>. Check surname compatibility for ${nameEsc} at the <a href="/names/with-last-name${EXT}">last name compatibility hub</a>.</p>
+    <p><a href="${nameDetailPath(baseRecord.name)}">${nameEsc} — full profile</a> · <a href="/names/with-last-name-smith${EXT}">How ${nameEsc} sounds with Smith</a> · <a href="${namesLikeUrl(nameSlug)}">Names like ${nameEsc}</a> · <a href="/names/popular${EXT}">Popular names</a>. Check surname compatibility for ${nameEsc} at the <a href="/names/with-last-name${EXT}">last name compatibility hub</a>.</p>
     </section>
   `;
 
@@ -264,6 +287,12 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     </section>`;
     finalMainContent = mainContent + extraBlock;
     wordCount = countWordsInHtml(finalMainContent);
+  }
+
+  // Step 4 — Word count enforcement guard: do not write thin pages
+  if (wordCount < MIN_WORD_COUNT) {
+    console.error(`Sibling page ${nameSlug} below ${MIN_WORD_COUNT} words (${wordCount}). Structural content required.`);
+    process.exit(1);
   }
 
   // Schema: HowTo, FAQ (max 2), Article
@@ -361,7 +390,13 @@ function run() {
 
   const topIds = getTopPopularNameIds(popularity, limit);
   const nameById = new Map(names.map((n) => [n.id, n]));
-  const topNames = topIds.map((id) => nameById.get(id)).filter(Boolean);
+  let topNames = topIds.map((id) => nameById.get(id)).filter(Boolean);
+  // Phase 3.3D: If popularity has fewer than limit (e.g. only 4 USA rows), fill to limit from names list.
+  if (topNames.length < limit) {
+    const have = new Set(topNames.map((n) => n.id));
+    const rest = names.filter((n) => !have.has(n.id)).slice(0, limit - topNames.length);
+    topNames = topNames.concat(rest);
+  }
 
   console.log('Phase 3.0 — Sibling Harmony Compatibility Engine');
   console.log('URL: /names/{name}/siblings/');

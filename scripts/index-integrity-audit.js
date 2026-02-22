@@ -89,7 +89,7 @@ function getInternalLinkPaths(html, siteHost = 'nameorigin.io') {
     const href = (m[1] || '').trim();
     let p = '';
     if (href.startsWith('/')) {
-      p = href.replace(/#.*$/, '').replace(/\/$/, '') || '/';
+      p = (href.replace(/#.*$/, '').replace(/\/$/, '').trim()) || '/';
     } else if (href.includes(siteHost)) {
       try {
         const u = new URL(href);
@@ -101,15 +101,20 @@ function getInternalLinkPaths(html, siteHost = 'nameorigin.io') {
   return paths;
 }
 
-/** Map URL pathname to file path under OUT_DIR. Must match verify-phase2 / build-sitemap (name/slug/ -> name/slug/index.html). */
+/** Map URL pathname to file path under OUT_DIR. Must match verify-phase2 / build-sitemap (name/slug/ -> name/slug/index.html). Also resolve /names/boy -> names/boy.html when names/boy/index.html does not exist. Directory-style paths (/name/liam or /name/liam/) both resolve to name/liam/index.html. */
 function pathToFilePath(pathname) {
-  const p = pathname.replace(/^\//, '').replace(/\/$/, '');
+  const p = pathname.replace(/^\//, '').replace(/\/$/, '').trim();
   if (!p) return path.join(OUT_DIR, 'index.html');
   if (p === 'names') return path.join(OUT_DIR, 'names', 'index.html');
-  return path.join(OUT_DIR, p.includes('.html') ? p : p + '/index.html');
+  const withIndex = path.join(OUT_DIR, p.includes('.html') ? p : p + '/index.html');
+  if (p.includes('.html')) return withIndex;
+  if (fs.existsSync(withIndex)) return withIndex;
+  const withHtml = path.join(OUT_DIR, p + '.html');
+  if (fs.existsSync(withHtml)) return withHtml;
+  return withIndex;
 }
 
-/** File rel (e.g. name/liam/index.html) to URL path (e.g. /name/liam). */
+/** File rel (e.g. name/liam/index.html) to URL path (e.g. /name/liam/). */
 function relToPath(rel) {
   if (rel === 'index.html') return '/';
   const s = rel.replace(/\/index\.html$/, '').replace(/index\.html$/, '');
@@ -218,12 +223,25 @@ function run() {
   pageData.forEach((p) => { pathnameToFull[p.pathname] = p.full; });
 
   let brokenInternalLinks = 0;
+  const brokenTargetCount = {};
   pageData.forEach((p) => {
     p.linkPaths.forEach((linkPath) => {
       const fp = pathToFilePath(linkPath);
-      if (!fs.existsSync(fp)) brokenInternalLinks += 1;
+      if (!fs.existsSync(fp)) {
+        brokenInternalLinks += 1;
+        const key = linkPath || '/';
+        brokenTargetCount[key] = (brokenTargetCount[key] || 0) + 1;
+      
+        console.log('Broken link found:');
+        console.log('  Source page:', p.pathname);
+        console.log('  Target link:', linkPath);
+      }
     });
   });
+  const topBrokenLinks = Object.entries(brokenTargetCount)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([pathname, count]) => ({ pathname, count }));
 
   const sitemapPaths = getSitemapPaths();
   const reachable = new Set(['/']);
@@ -311,12 +329,18 @@ function run() {
     referencesStylesCss: refStylesCssUnique.length ? refStylesCssUnique : undefined,
     scriptSrcWithoutDefer: scriptNoDeferUnique.length ? scriptNoDeferUnique : undefined,
     orphanPaths: orphanPaths.length ? orphanPaths : undefined,
+    topBrokenLinks: topBrokenLinks.length ? topBrokenLinks : undefined,
   };
 
   fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2), 'utf8');
   console.log('Index integrity audit complete.');
   console.log('Scanned', htmlFiles.length, 'pages. Report:', REPORT_PATH);
   console.log('Summary:', JSON.stringify(summary, null, 2));
+  if (topBrokenLinks.length > 0) {
+    console.log('');
+    console.log('Top 10 broken internal link targets (pathname, occurrence count):');
+    topBrokenLinks.forEach(({ pathname, count }) => console.log('  ', pathname, count));
+  }
   console.log('');
   console.log('Integrity (clean targets: all 0, authority_coverage_score >= 0.995):');
   console.log(JSON.stringify(integritySummary, null, 2));

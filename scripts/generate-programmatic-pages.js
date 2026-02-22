@@ -28,16 +28,27 @@ try {
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
-// Output at project root. Name detail URLs: /name/<slug>/ (directory); other programmatic: /names/canada.html etc. Use OUT_DIR=programmatic to nest under /programmatic.
-const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
+// Output at project root only. Phase 3.3D: single canonical tree; /programmatic/ must not exist.
+const OUT_DIR = (() => {
+  const env = process.env.OUT_DIR;
+  if (env && env.toLowerCase() === 'programmatic') return ROOT;
+  return env ? path.join(ROOT, env) : ROOT;
+})();
+
+/** Phase 3.3D: Only these country slugs may receive links. No /names/null.html or /names/arabic.html etc. */
+const SUPPORTED_COUNTRY_PAGES = ['usa', 'canada', 'india', 'france', 'ireland'];
+function isSupportedCountrySlug(slug) {
+  return slug && SUPPORTED_COUNTRY_PAGES.includes(String(slug).toLowerCase().trim());
+}
 
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 // Static .html URLs for crawlable programmatic pages (names, countries, etc.). Name detail: directory-only /name/<slug>/ (Phase 2.25A).
 const EXT = '.html';
+const { namesLikeUrl } = require('./url-helpers.js');
 /** URL path for a name detail page (directory-based, no .html). Use for all links and canonical. */
 function nameDetailPath(s) { return '/name/' + slug(s) + '/'; }
-/** URL path for Names Like page. Mesh: horizontal (semantic) axis. */
-function namesLikePath(s) { return '/names-like/' + slug(s) + '/'; }
+/** URL path for Names Like page. Mesh: horizontal (semantic) axis. Always /names-like/<slug>/. */
+function namesLikePath(s) { return namesLikeUrl(slug(s)); }
 /** Top compatibility surnames for mesh links (4–6 links; controlled set, no combinatorial explosion). */
 const TOP_COMPATIBILITY_SURNAMES = ['smith', 'garcia', 'johnson', 'williams'];
 // Step 7: Breadcrumb label for names index (Home > Baby Names > …)
@@ -47,6 +58,16 @@ function loadJson(name) {
   const p = path.join(DATA_DIR, name + '.json');
   if (!fs.existsSync(p)) return [];
   return JSON.parse(fs.readFileSync(p, 'utf8'));
+}
+
+/** Phase 3.3: Use origin-enriched names when present (after apply-origin-enrichment.js). */
+function loadNames() {
+  const enrichedPath = path.join(DATA_DIR, 'names-enriched.json');
+  const basePath = path.join(DATA_DIR, 'names.json');
+  if (fs.existsSync(enrichedPath)) {
+    return JSON.parse(fs.readFileSync(enrichedPath, 'utf8'));
+  }
+  return JSON.parse(fs.readFileSync(basePath, 'utf8'));
 }
 
 function slug(str) {
@@ -268,6 +289,19 @@ function getPopularNameIds(popularity, limit = 100) {
   return latest.slice(0, limit).map((r) => r.name_id);
 }
 
+/** Phase 3.3E: Set of name slugs that get sibling pages (same batch as generate-sibling-pages.js --batch=150). Only emit sibling link when in this set. */
+function getSiblingBatchNameSlugs(names, popularity, limit = 150) {
+  const topIds = getPopularNameIds(popularity, limit);
+  const nameById = new Map(names.map((n) => [n.id, n]));
+  let topNames = topIds.map((id) => nameById.get(id)).filter(Boolean);
+  if (topNames.length < limit) {
+    const have = new Set(topNames.map((n) => n.id));
+    const rest = names.filter((n) => !have.has(n.id)).slice(0, limit - topNames.length);
+    topNames = topNames.concat(rest);
+  }
+  return new Set(topNames.map((n) => slug(n.name)));
+}
+
 const CATEGORY_TO_STYLE_SLUG = { classical: 'classic' };
 
 function internalLinksForName(record, names, popularity, categories, variants) {
@@ -279,9 +313,8 @@ function internalLinksForName(record, names, popularity, categories, variants) {
   const recordSyllables = record.syllables != null ? record.syllables : 0;
   const recordEndsVowel = /[aeiouy]$/i.test(String(record.name || '').trim());
 
-  // --- Core links (4) ---
+  // --- Core links (4) — Phase 3.3D: no /programmatic/ ---
   links.push({ href: '/', text: 'Home' });
-  links.push({ href: '/programmatic/', text: 'Name generator & tools' });
   links.push({ href: '/names/trending' + EXT, text: 'Trending names' });
   links.push({ href: '/names/popular' + EXT, text: 'Top names' });
   links.push({ href: '/names', text: 'All names' });
@@ -294,7 +327,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
   // --- Contextual: same origin / country page ---
   if (originKey) {
     const countrySlug = slug(record.origin_country || record.language);
-    links.push({ href: '/names/' + countrySlug + EXT, text: 'Names from ' + (record.origin_country || record.language) });
+    if (isSupportedCountrySlug(countrySlug)) links.push({ href: '/names/' + countrySlug + EXT, text: 'Names from ' + (record.origin_country || record.language) });
     const sameOrigin = names.filter(
       (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase() === originKey || (n.language || '').toLowerCase() === originKey)
     );
@@ -370,10 +403,82 @@ function getSimilarNamesForName(record, names, popularity, categories, limit = 8
   return similar.slice(0, limit);
 }
 
+/** Phase 3.4: Name Usage & Cultural Context — 150–250 words, data-driven. No repetition of meaning. */
+function buildNameUsageContextSection(record) {
+  const nameEsc = htmlEscape(record.name);
+  const syl = record.syllables != null ? record.syllables : Math.min(3, Math.max(1, Math.floor((record.name || '').length / 3)));
+  const gender = (record.gender || '').toLowerCase();
+  const originCluster = (record.origin_cluster || '').trim();
+  const originCountry = (record.origin_country || '').trim();
+  const language = (record.language || '').trim();
+  const hasOrigin = !!(originCluster || originCountry || language);
+  const originLabel = originCountry || originCluster || language || 'multiple traditions';
+
+  let p = '';
+  if (hasOrigin) {
+    p = `${nameEsc} belongs to the ${htmlEscape(originLabel)} naming cluster${language ? ', with roots in ' + htmlEscape(language) + ' naming traditions' : ''}. `;
+    p += `Its syllable structure (${syl} syllable${syl !== 1 ? 's' : ''}) places it in a common range for ${gender === 'boy' ? 'boys' : gender === 'girl' ? 'girls' : 'gender-neutral names'}, balancing brevity and presence. `;
+    p += `Names from the same origin cluster often share stylistic cues—formality, phonetic patterns, or generational associations—that influence pairing and sibling harmony. `;
+  } else {
+    p = `${nameEsc} has a ${syl}-syllable structure that fits modern naming trends toward concise, recognizable forms. `;
+    p += `Phonetic clarity and ease of spelling matter for many parents; names that balance distinctiveness with familiarity tend to remain usable across generations. `;
+    p += `Contemporary naming often blends traditions, so ${nameEsc} may draw from multiple linguistic or regional influences without a single dominant origin. `;
+  }
+  p += `Stylistic positioning—whether a name feels classic, modern, or rare—affects how it pairs with surnames and sibling names. `;
+  p += `See <a href="${namesLikePath(record.name)}">names like ${nameEsc}</a> for alternatives that share sound, origin, or popularity band. `;
+  p += `Browse <a href="/names/${record.gender || 'boy'}${EXT}">${(record.gender || 'boy').charAt(0).toUpperCase() + (record.gender || 'boy').slice(1)} names</a> and <a href="/names/letters${EXT}">by letter</a> for more options.`;
+
+  return `<section aria-labelledby="usage-context-heading"><h2 id="usage-context-heading">Name Usage &amp; Cultural Context</h2><p class="contextual">${p}</p></section>`;
+}
+
+/** Phase 3.4: How Names in This Category Differ — 180+ words, 5+ contextual links. Deterministic. */
+function buildCategoryDiffSection(type, opts) {
+  const links = [
+    '<a href="/names/popular' + EXT + '">Popular names</a>',
+    '<a href="/names/trending' + EXT + '">Trending names</a>',
+    '<a href="/names/letters' + EXT + '">Browse by letter</a>',
+    '<a href="/names/style' + EXT + '">Names by style</a>',
+    '<a href="/names/with-last-name' + EXT + '">Last name compatibility</a>',
+  ];
+  let p = '';
+  if (type === 'gender') {
+    const g = (opts.gender || 'boy').toLowerCase();
+    const label = (opts.gender || 'Boy').charAt(0).toUpperCase() + (opts.gender || 'boy').slice(1);
+    p = `${label} names in this list are distributed by origin, popularity, and structure. Distribution logic: names tagged as ${g} in our dataset appear here regardless of country of use; popularity rank and origin cluster influence how parents choose. `;
+    p += `Syllable structure varies—one-syllable names (e.g. Jack, Max) sit alongside longer forms (Alexander, Christopher). Stylistic positioning spans classic, modern, and rare; generational tone depends on when a name peaked. `;
+    p += `To choose within this category, consider phonetic fit with your surname, sibling harmony, and cultural resonance. Compare ${links[0]}, ${links[1]}, and ${links[2]} for cross-category context. `;
+    p += `Use ${links[3]} for style filters or ${links[4]} to test first–last pairing.`;
+  } else if (type === 'letter') {
+    const letter = (opts.letter || 'a').toUpperCase();
+    p = `Names starting with ${letter} span multiple origins and popularity bands. Distribution follows our dataset: each name is tagged by gender, origin, and usage. `;
+    p += `Popularity and structure differ—some letters favor short, punchy names; others include longer classical forms. First-letter filtering helps parents narrow by sound and alliteration potential. `;
+    p += `To choose: compare syllable count with your surname, check origin for cultural fit, and review popularity trends. See ${links[0]} and ${links[1]} for rank context. `;
+    p += `Filter by gender via <a href="/names/boy${EXT}">boy</a>, <a href="/names/girl${EXT}">girl</a>, or <a href="/names/unisex${EXT}">unisex</a> names. ${links[2]}, ${links[3]}, and ${links[4]} offer additional filters.`;
+  } else if (type === 'lettersHub') {
+    p = `Names in each letter category differ by count, origin mix, and popularity. Distribution: we assign each name to its first letter; some letters (A, J, M) have many names; others (Q, X, Z) have fewer. `;
+    p += `Popularity and structure vary by letter—common first letters often include both classic and modern choices. Choose a letter to narrow by sound, then use gender and country filters for refinement. `;
+    p += `Contextual links: ${links[0]}, ${links[1]}, ${links[2]}, ${links[3]}, ${links[4]}. Each name links to its full profile.`;
+  } else if (type === 'country') {
+    const label = opts.countryLabel || 'this country';
+    p = `Names from ${htmlEscape(label)} reflect that region’s linguistic and cultural traditions. Distribution: we include names tagged with ${htmlEscape(label)} as origin_country or origin_cluster. `;
+    p += `Popularity data (when available) comes from official birth statistics; structure and syllable patterns vary by tradition. Stylistic positioning—classic vs modern—often tracks generational adoption. `;
+    p += `To choose: consider how a name pairs with your surname, whether it honors heritage, and its popularity band. Compare <a href="/names/boy${EXT}">boy</a>, <a href="/names/girl${EXT}">girl</a>, and <a href="/names/unisex${EXT}">unisex</a> filters. `;
+    p += `${links[0]}, ${links[1]}, ${links[2]}, ${links[3]}, and ${links[4]} provide additional context.`;
+  } else if (type === 'genderCountry') {
+    const glabel = (opts.gender || 'boy').charAt(0).toUpperCase() + (opts.gender || 'boy').slice(1);
+    const clabel = opts.countryLabel || 'this country';
+    p = `${glabel} names from ${htmlEscape(clabel)} combine gender and origin filters. Distribution: names must match both tags. Popularity and structure reflect the overlap. `;
+    p += `Syllable patterns and stylistic cues often align with regional preferences. To choose: verify phonetic fit with your surname, check popularity trends, and compare with <a href="/names/${opts.gender || 'boy'}${EXT}">all ${glabel} names</a> or <a href="/names/${opts.slugKey || 'usa'}${EXT}">all names from ${htmlEscape(clabel)}</a>. `;
+    p += `${links[0]}, ${links[1]}, ${links[2]}, ${links[3]}, ${links[4]}.`;
+  } else {
+    p = `Names in this category are distributed by our dataset tags. Use popularity, structure, and style filters to narrow. ${links.slice(0, 5).join(', ')}.`;
+  }
+  return `<section aria-labelledby="category-diff-heading"><h2 id="category-diff-heading">How Names in This Category Differ</h2><p class="contextual">${p}</p></section>`;
+}
+
 function coreLinksHtml() {
   const core = [
     { href: '/', text: 'Home' },
-    { href: '/programmatic/', text: 'Name generator & tools' },
     { href: '/names/trending' + EXT, text: 'Trending names' },
     { href: '/names/popular' + EXT, text: 'Top names' },
     { href: '/names', text: 'All names' },
@@ -381,6 +486,7 @@ function coreLinksHtml() {
     { href: '/names/girl' + EXT, text: 'Girl names' },
     { href: '/names/unisex' + EXT, text: 'Unisex names' },
     { href: '/names/style' + EXT, text: 'Names by style' },
+    { href: '/style-name-pages.html', text: 'Browse by style' },
     { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
     { href: '/names/letters' + EXT, text: 'Browse by letter' },
   ];
@@ -476,7 +582,7 @@ function getTrendSummary(name, data, peakYear, latestRank) {
   }
 }
 
-function generateNamePage(record, names, popularity, categories, variants) {
+function generateNamePage(record, names, popularity, categories, variants, siblingSlugs) {
   const nameSlug = slug(record.name);
   const pathSeg = nameDetailPath(record.name);
   const url = SITE_URL + pathSeg;
@@ -496,6 +602,9 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const letter = (record.first_letter || (record.name || '').charAt(0) || '').toLowerCase();
   const originKey = (record.origin_country || '').toLowerCase().replace(/\s+/g, '') || (record.language || '').toLowerCase().replace(/\s+/g, '');
   const countrySlugForOrigin = slug(record.origin_country || record.language);
+  const countryLinkHtml = isSupportedCountrySlug(countrySlugForOrigin)
+    ? `<a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a>`
+    : '';
   const countryCodeForPopular = countrySlugForOrigin ? (POP_COUNTRY_BY_SLUG[countrySlugForOrigin.toLowerCase()] || null) : null;
   const sameOrigin = names.filter(
     (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase() === (record.origin_country || '').toLowerCase() || (n.language || '').toLowerCase() === (record.language || '').toLowerCase())
@@ -513,8 +622,8 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const similarSection =
     `<section aria-labelledby="similar-heading"><h2 id="similar-heading">Names Similar to ${htmlEscape(record.name)}</h2><p class="contextual">${namesLikeLink}.</p>${similarNames.length > 0 ? '<ul class="name-list">' + similarNames.slice(0, 10).map((n) => `<li>${nameLink(n)}</li>`).join('') + '</ul>' : ''}</section>`;
   const sameOriginSection = sameOrigin.length > 0
-    ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sectionList(sameOrigin, 8)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
-    : (countrySlugForOrigin ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
+    ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p class="name-links">${sectionList(sameOrigin, 8)}</p>${countryLinkHtml ? '<p>' + countryLinkHtml + '</p>' : ''}</section>`
+    : (countryLinkHtml ? `<section aria-labelledby="same-origin-heading"><h2 id="same-origin-heading">Same origin names</h2><p>${countryLinkHtml}</p></section>` : '');
   const sameGenderSection = sameGender.length > 0
     ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p class="name-links">${sectionList(sameGender, 8)}</p><p><a href="/names/${record.gender || ''}${EXT}">All ${record.gender || ''} names</a></p></section>`
     : (record.gender ? `<section aria-labelledby="same-gender-heading"><h2 id="same-gender-heading">Same gender names</h2><p><a href="/names/${record.gender}${EXT}">All ${record.gender} names</a></p></section>` : '');
@@ -523,12 +632,12 @@ function generateNamePage(record, names, popularity, categories, variants) {
       ? `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p class="name-links">${sectionList(sameLetter, 8)}</p><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`
       : `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`)
     : '';
-  const popularCountrySection = popularInCountry.length > 0 && countrySlugForOrigin
-    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>`
-    : (countrySlugForOrigin ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p><a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a></p></section>` : '');
+  const popularCountrySection = popularInCountry.length > 0 && countryLinkHtml
+    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${sectionList(popularInCountry, 10)}</p><p>${countryLinkHtml}</p></section>`
+    : (countryLinkHtml ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p>${countryLinkHtml}</p></section>` : '');
   // Mesh D: Category + Origin (Authority Axis) — 4–6 links
   const moreAboutLinks = [`<a href="/names/${record.gender || 'boy'}${EXT}">${(record.gender || 'boy').charAt(0).toUpperCase() + (record.gender || 'boy').slice(1)} names</a>`];
-  if (countrySlugForOrigin && countrySlugForOrigin !== 'null') moreAboutLinks.push(`<a href="/names/${countrySlugForOrigin}${EXT}">Names from ${htmlEscape(record.origin_country || record.language)}</a>`);
+  if (countryLinkHtml) moreAboutLinks.push(countryLinkHtml);
   moreAboutLinks.push(`<a href="/names/usa${EXT}">USA</a>`, `<a href="/names/canada${EXT}">Canada</a>`, `<a href="/names/ireland${EXT}">Ireland</a>`, `<a href="/names/letters${EXT}">By letter (A–Z)</a>`);
   const moreAboutSection = `<section aria-labelledby="more-about-heading"><h2 id="more-about-heading">More About ${htmlEscape(record.name)}</h2><p class="name-links">${moreAboutLinks.slice(0, 6).join(' · ')}</p></section>`;
 
@@ -630,6 +739,9 @@ function generateNamePage(record, names, popularity, categories, variants) {
   const compatibilityTips =
     '<section aria-labelledby="compatibility-heading"><h2 id="compatibility-heading">How ' + htmlEscape(record.name) + ' Sounds With Popular Last Names</h2><p class="contextual">See how ' + htmlEscape(record.name) + ' pairs with common surnames: ' + compatLinks + '. <a href="/names/with-last-name' + EXT + '">Browse last name compatibility</a>. <a href="/compatibility/">Try the compatibility tool</a>.</p></section>';
 
+  // Phase 3.4: Name Usage & Cultural Context — 150–250 words, data-driven, before related links
+  const usageContextSection = buildNameUsageContextSection(record);
+
   // Step 3: Minimum content floor — intro, meaning context, popularity context, internal linking (400+ words)
   const nameIntro = `<p class="contextual">This page shows the meaning, origin, and popularity of the name ${htmlEscape(record.name)}. Use the sections below to explore related names, names from the same country or language, and names with the same gender or first letter.</p>`;
   const meaningContext = `<section aria-labelledby="meaning-context-heading"><h2 id="meaning-context-heading">About name meanings and origins</h2><p class="contextual">Name meanings and origins come from linguistic and historical sources: etymology, traditional use, and cultural adoption. The meaning given here reflects the most widely cited interpretation for ${htmlEscape(record.name)}. Origin may refer to the language or region where the name first became established. For more names from the same background, use the same-origin and country links below.</p></section>`;
@@ -652,6 +764,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${variantsHtml}
     ${styleTagsHtml}
     ${compatibilityTips}
+    ${usageContextSection}
     ${relatedSection}
     ${similarSection}
     ${sameOriginSection}
@@ -659,7 +772,7 @@ function generateNamePage(record, names, popularity, categories, variants) {
     ${letterSection}
     ${popularCountrySection}
     ${moreAboutSection}
-    <section aria-labelledby="sibling-harmony-heading"><h2 id="sibling-harmony-heading">Sibling Name Harmony</h2><p class="contextual">Looking for sibling names that pair well with ${htmlEscape(record.name)}? See <a href="/names/${nameSlug}/siblings/">sibling names that pair well with ${htmlEscape(record.name)}</a> for harmony scores and suggestions.</p></section>
+    ${siblingSlugs && siblingSlugs.has(nameSlug) ? `<section aria-labelledby="sibling-harmony-heading"><h2 id="sibling-harmony-heading">Sibling Name Harmony</h2><p class="contextual">Looking for sibling names that pair well with ${htmlEscape(record.name)}? See <a href="/names/${nameSlug}/siblings/">sibling names that pair well with ${htmlEscape(record.name)}</a> for harmony scores and suggestions.</p></section>` : ''}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${internalLinkingPara}
@@ -776,7 +889,7 @@ function getNamesLikeSimilarity(baseRecord, names, popularity, minCount = 8, max
 /** Phase 2.5: Generate "Names Like X" page at /names-like/<slug>/index.html */
 function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const nameSlug = slug(baseRecord.name);
-  const pathSeg = '/names-like/' + nameSlug + '/';
+  const pathSeg = namesLikeUrl(nameSlug);
   const url = SITE_URL + pathSeg;
   const baseNameUrl = SITE_URL + nameDetailPath(baseRecord.name);
   const breadcrumbItems = [
@@ -969,7 +1082,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     '<ul class="name-list">' +
     names.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a> — ${htmlEscape(n.meaning || '')}</li>`).join('') +
     '</ul>';
-  const listIntro = '<p class="contextual">Browse first names with meaning and origin. Each name links to a detail page. Use the sections below to filter by gender, country, or letter, or explore trending and popular names.</p>';
+  const listIntro = '<p class="contextual">Browse first names with meaning and origin. Each name links to a detail page. Use the sections below to filter by gender, country, or letter, or explore trending and popular names.</p><p class="contextual">Data comes from official birth statistics and curated sources. Each name has a full profile with meaning, origin, popularity over time, and related names. Use the compatibility tool to see how names pair with your last name. The compare section shows how names rank across countries. Browse by letter (A–Z) or by style (classic, modern, nature) for more discovery paths.</p><p class="contextual">Names on this list are curated for meaning and cultural significance. Click any name for its full profile. Use the explore links to move between gender filters, country pages, and style categories. The popularity hub shows top names by year; the trends page shows rising names. Every name on nameorigin.io has a dedicated page with meaning, origin, and popularity.</p><p class="contextual">Use the A–Z links to browse by first letter, or the country links for names by origin. Style categories (nature, classic, modern) help narrow choices. The compatibility tool scores first names by how well they pair with your last name. All names are linked to their full profile for meaning, origin, and popularity over time.</p><p class="contextual">Use the compare section to see how names rank across countries. The compatibility tool helps when pairing a first name with your last name. Browse trending names and popular names for rising and top-ranked choices. All names on nameorigin.io are curated for meaning and cultural significance. Every name has a dedicated page with meaning, origin, and popularity over time.</p><p class="contextual">Use the letter hub to browse A–Z or the country links for names by origin. The popularity hub shows top names by year; the trends page shows rising names. Each name has a full profile with meaning and origin. The compatibility tool helps when pairing a first name with your last name. The compare section shows how names rank across countries. Browse by gender, country, or style for more discovery. All names are curated for meaning and cultural significance.</p>';
   const html = baseLayout({
     title: title + ' | nameorigin.io',
     description,
@@ -978,6 +1091,7 @@ function generateListPage(title, description, pathSeg, names, listTitle) {
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent: `<h1>${htmlEscape(title)}</h1>
     ${listIntro}
+    ${['boy', 'girl', 'unisex'].includes(listTitle) ? buildCategoryDiffSection('gender', { gender: listTitle }) : ''}
     <p class="core-links">${coreLinksHtml()}</p>
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -1023,6 +1137,7 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
   const mainContent = `
     <h1>Names starting with ${letterUpper}</h1>
     <p>${subset.length} first name${subset.length !== 1 ? 's' : ''} starting with ${letterUpper}. Each links to meaning and origin.</p>
+    ${buildCategoryDiffSection('letter', { letter })}
     ${LETTER_PAGE_INTRO_BLOCK}
     <section aria-labelledby="letters-nav-heading"><h2 id="letters-nav-heading">Browse by letter (A–Z)</h2>
     <p class="letters-hub">${otherLettersHtml}</p>
@@ -1048,6 +1163,43 @@ function generateLetterPage(letter, subset, allLettersWithNames) {
 }
 
 const POP_COUNTRY_BY_SLUG = { usa: 'USA', canada: 'CAN', unitedstates: 'USA', uk: 'UK', australia: 'AUS', ireland: 'IRL', india: 'IND', france: 'FRA' };
+
+/** Phase 3.2: Normalize country slug → accepted origin labels (country name or cultural/language form). */
+const ORIGIN_COUNTRY_MAP = {
+  france: ['France', 'French'],
+  india: ['India', 'Indian'],
+  ireland: ['Ireland', 'Irish'],
+  usa: ['United States', 'USA', 'American', 'English'],
+  canada: ['Canada', 'Canadian', 'English', 'French'],
+  uk: ['United Kingdom', 'UK', 'British', 'English'],
+  australia: ['Australia', 'Australian', 'English'],
+  germany: ['Germany', 'German'],
+  spain: ['Spain', 'Spanish'],
+  italy: ['Italy', 'Italian'],
+};
+
+/**
+ * Phase 3.2: Return only names tagged with this country as origin (or primary cultural association).
+ * No fallback to full catalog. Uses origin_country, origin_cluster, and language; normalizes via ORIGIN_COUNTRY_MAP.
+ */
+function getNamesForCountry(allNames, countrySlug, countryRecord) {
+  const slug = (countrySlug || '').toLowerCase().trim();
+  const accepted = ORIGIN_COUNTRY_MAP[slug];
+  const labels = accepted
+    ? accepted.map((l) => (l || '').toLowerCase().trim()).filter(Boolean)
+    : [
+        (countryRecord.name || '').toLowerCase().trim(),
+        (countryRecord.code || '').toLowerCase().trim(),
+        (countryRecord.primary_language || '').toLowerCase().trim(),
+      ].filter(Boolean);
+
+  return allNames.filter((n) => {
+    const o = (n.origin_country || '').toLowerCase().trim();
+    const oc = (n.origin_cluster || '').toLowerCase().trim();
+    const lang = (n.language || '').toLowerCase().trim();
+    return labels.some((l) => l && (o === l || oc === l || lang === l));
+  });
+}
 
 function getPopularNameIdsForCountry(popularity, countryCode, limit = 25) {
   const rows = (popularity || []).filter((p) => p.country === countryCode && p.rank != null);
@@ -1101,13 +1253,20 @@ const STYLE_PAGE_INTRO_BLOCK = `
 <p class="contextual">Style lists are curated so you can quickly find names that match a theme. Combine with gender or country using the links on this page, or browse the letter hub and country pages for more discovery paths. Every name here has a full profile on nameorigin.io with meaning, origin, and popularity.</p>`;
 const LETTER_PAGE_INTRO_BLOCK = `
 <p class="contextual">Here you can browse first names that start with this letter. Each name links to a detail page with meaning, origin, and popularity. Below you will find links to browse by gender (boy, girl, unisex), by country, and by style, so you can combine letter with other filters. Our hub pages list all letters and all name pages for easy discovery.</p>
-<p class="contextual">Browsing by letter is useful when you have a preferred first letter or want to explore names in alphabetical order. You can then narrow by gender or country using the links in this page, or jump to trending and popular names from the main names section. Every name in the list below goes to a full profile with meaning, origin, and popularity data.</p>`;
+<p class="contextual">Browsing by letter is useful when you have a preferred first letter or want to explore names in alphabetical order. You can then narrow by gender or country using the links in this page, or jump to trending and popular names from the main names section. Every name in the list below goes to a full profile with meaning, origin, and popularity data.</p>
+<p class="contextual">Some letters have many names; others have fewer. Use the compatibility tool to see how names pair with your last name. The compare section shows how names rank across countries. Data comes from official birth statistics and curated sources. Each name profile includes meaning, origin, popularity over time, and related names.</p>`;
 const LASTNAME_PAGE_INTRO_EXTRA = `
 <p class="contextual">We score first names by how well they pair with this last name using syllable balance, vowel and consonant flow, and length. Cultural matching suggests names from the same or related traditions. Use the links below to browse by gender or country, or try the main last name compatibility hub for other surnames.</p>
 <p class="contextual">A first name that flows well with your last name is easier to say and remember. The phonetic tips above explain how the sound of your surname affects which first names tend to work best. The compatible names list combines those factors with syllable balance and length. For more options, use the gender and country filters or the main names index; each name links to its full meaning and origin.</p>
 <p class="contextual">You can try other surnames from the last name compatibility hub linked below, or browse by gender and country to find names that match your style and heritage.</p>`;
 
-function generateCountryPage(c, slugKey, names, popularity) {
+const COUNTRY_NO_DATASET_HTML = `
+<section aria-labelledby="no-dataset-heading"><h2 id="no-dataset-heading">No dataset yet</h2>
+<p>We do not yet have names in our database tagged with this country as origin or primary cultural association. This page is reserved for a future list of names by origin only—no full catalog fallback.</p>
+<p>You can <a href="/names">browse all names</a>, filter by <a href="/names/boy.html">boy</a>, <a href="/names/girl.html">girl</a>, or <a href="/names/unisex.html">unisex</a>, or use <a href="/names/letters.html">browse by letter</a> and <a href="/names/style.html">names by style</a> until we add origin-tagged data for this country.</p>
+</section>`;
+
+function generateCountryPage(c, slugKey, allNames, popularity) {
   const countryLabel = c.name || c.code || slugKey;
   const pathSeg = '/names/' + slugKey + EXT;
   const breadcrumbItems = [
@@ -1116,12 +1275,48 @@ function generateCountryPage(c, slugKey, names, popularity) {
     { name: 'Names from ' + countryLabel, url: SITE_URL + pathSeg },
   ];
 
-  const subsetByOrigin = names.filter(
-    (n) =>
-      (n.origin_country || '').toLowerCase() === (c.name || '').toLowerCase() ||
-      (n.origin_country || '').toLowerCase() === (c.code || '').toLowerCase() ||
-      (n.language || '').toLowerCase() === (c.primary_language || '').toLowerCase()
-  );
+  const names = getNamesForCountry(allNames, slugKey, c);
+
+  if (names.length > 0.7 * allNames.length) {
+    throw new Error(
+      `Phase 3.2 guard: country page /names/${slugKey} would show ${names.length} of ${allNames.length} names (>70%). Fix origin tagging or slug.`
+    );
+  }
+
+  if (names.length === 0) {
+    const cultureText = LOCAL_NAMING_CULTURE[slugKey.toLowerCase()] || `Explore first names associated with ${countryLabel} and its naming traditions.`;
+    const filterLinks = [
+      { href: '/names', text: 'All names' },
+      { href: '/names/boy' + EXT, text: 'Boy names' },
+      { href: '/names/girl' + EXT, text: 'Girl names' },
+      { href: '/names/unisex' + EXT, text: 'Unisex names' },
+      { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
+      { href: '/names/style' + EXT, text: 'Names by style' },
+      { href: '/names/letters' + EXT, text: 'Browse by letter' },
+    ];
+    const mainContent = `
+    <h1>Names from ${htmlEscape(countryLabel)}</h1>
+    <p class="local-culture">${htmlEscape(cultureText)}</p>
+    ${alphabetSectionHtml()}
+    ${genderSectionHtml()}
+    <section aria-labelledby="filter-links-heading"><h2 id="filter-links-heading">Filter &amp; explore</h2>
+    <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
+    </section>
+    ${COUNTRY_NO_DATASET_HTML}
+    <section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
+  `;
+    const html = baseLayout({
+      title: 'Names from ' + countryLabel + ' — NameOrigin',
+      description: 'Names by origin for ' + countryLabel + '. We do not yet have names tagged with this country in our dataset. Browse all names or filter by gender and letter.',
+      path: pathSeg,
+      canonical: SITE_URL + pathSeg,
+      breadcrumb: breadcrumbItems,
+      breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
+      mainContent,
+    });
+    return html;
+  }
+
   const popCode = POP_COUNTRY_BY_SLUG[slugKey.toLowerCase()];
   const popularIds = popCode ? getPopularNameIdsForCountry(popularity, popCode, 25) : [];
   const risingIds = popCode ? getRisingNameIdsForCountry(popularity, popCode, 25) : [];
@@ -1143,7 +1338,6 @@ function generateCountryPage(c, slugKey, names, popularity) {
   ];
 
   const coreSection = '<section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">' + coreLinksHtml() + '</p></section>';
-
   const list = (arr) => arr.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ');
   const section = (id, title, items) =>
     items.length > 0
@@ -1153,6 +1347,7 @@ function generateCountryPage(c, slugKey, names, popularity) {
   const mainContent = `
     <h1>Names from ${htmlEscape(countryLabel)}</h1>
     <p class="local-culture">${htmlEscape(cultureText)}</p>
+    ${buildCategoryDiffSection('country', { countryLabel })}
     ${COUNTRY_PAGE_INTRO_BLOCK}
 
     ${alphabetSectionHtml()}
@@ -1164,12 +1359,10 @@ function generateCountryPage(c, slugKey, names, popularity) {
     ${section('trending-heading', 'Trending names', trendingNames)}
     ${section('popular-heading', 'Popular names', popularNames)}
     ${section('rising-heading', 'Rising names', risingNames)}
-    ${slugKey === 'usa' ? `<section aria-labelledby="jurisdiction-heading"><h2 id="jurisdiction-heading">By state</h2><p class="name-links"><a href="/names/us/california/">California</a> · <a href="/names/us/texas/">Texas</a> · <a href="/names/us/florida/">Florida</a> · <a href="/names/us/new-york/">New York</a> · <a href="/names/us/pennsylvania/">Pennsylvania</a> · <a href="/names/us/illinois/">Illinois</a> · <a href="/names/us/ohio/">Ohio</a> · <a href="/names/us/georgia/">Georgia</a> · <a href="/names/us/north-carolina/">North Carolina</a> · <a href="/names/us/michigan/">Michigan</a></p></section>` : ''}
-    ${slugKey === 'canada' ? `<section aria-labelledby="jurisdiction-heading"><h2 id="jurisdiction-heading">By province</h2><p class="name-links"><a href="/names/canada/ontario/">Ontario</a> · <a href="/names/canada/quebec/">Quebec</a> · <a href="/names/canada/british-columbia/">British Columbia</a> · <a href="/names/canada/alberta/">Alberta</a> · <a href="/names/canada/manitoba/">Manitoba</a></p></section>` : ''}
 
     <section aria-labelledby="origin-heading"><h2 id="origin-heading">Names from ${htmlEscape(countryLabel)} (by origin)</h2>
-    <p class="name-links">${subsetByOrigin.length ? list(subsetByOrigin.slice(0, 80)) : '—'}</p>
-    ${subsetByOrigin.length > 80 ? `<p><a href="/names">Browse all names</a></p>` : ''}
+    <p class="name-links">${list(names.slice(0, 80))}</p>
+    ${names.length > 80 ? `<p><a href="/names">Browse all names</a></p>` : ''}
     </section>
     ${coreSection}
   `;
@@ -1187,11 +1380,10 @@ function generateCountryPage(c, slugKey, names, popularity) {
   return html;
 }
 
-function generateGenderCountryPage(gender, c, slugKey, names) {
+function generateGenderCountryPage(gender, c, slugKey, allNames) {
   const countryLabel = c.name || c.code || slugKey;
   const genderLabel = gender.charAt(0).toUpperCase() + gender.slice(1);
   const pathSeg = '/names/' + gender + '/' + slugKey + EXT;
-  // Step 7: Home > Baby Names > Canada > Girl Names
   const breadcrumbItems = [
     { name: 'Home', url: SITE_URL + '/' },
     { name: BREADCRUMB_NAMES_LABEL, url: SITE_URL + '/names' },
@@ -1199,13 +1391,14 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
     { name: genderLabel + ' names', url: SITE_URL + pathSeg },
   ];
 
-  const subset = names.filter(
-    (n) =>
-      n.gender === gender &&
-      ((n.origin_country || '').toLowerCase() === (c.name || '').toLowerCase() ||
-        (n.origin_country || '').toLowerCase() === (c.code || '').toLowerCase() ||
-        (n.language || '').toLowerCase() === (c.primary_language || '').toLowerCase())
-  );
+  const originNames = getNamesForCountry(allNames, slugKey, c);
+  const subset = originNames.filter((n) => n.gender === gender);
+
+  if (subset.length > 0.7 * allNames.length) {
+    throw new Error(
+      `Phase 3.2 guard: gender+country page /names/${gender}/${slugKey} would show ${subset.length} of ${allNames.length} names (>70%). Fix origin tagging or slug.`
+    );
+  }
 
   const filterLinks = [
     { href: '/names', text: 'All names' },
@@ -1224,9 +1417,11 @@ function generateGenderCountryPage(gender, c, slugKey, names) {
       ? '<ul class="name-list">' + subset.map((n) => `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>${n.meaning ? ' — ' + htmlEscape(n.meaning.slice(0, 60)) + (n.meaning.length > 60 ? '…' : '') : ''}</li>`).join('') + '</ul>'
       : '<p>No ' + gender + ' names from ' + countryLabel + ' in our list yet. <a href="/names/' + gender + EXT + '">Browse all ' + gender + ' names</a> or <a href="/names/' + slugKey + EXT + '">names from ' + countryLabel + '</a>.</p>';
 
+  const categoryDiffHtml = buildCategoryDiffSection('genderCountry', { gender, countryLabel, slugKey });
   const mainContent = `
     <h1>${htmlEscape(genderLabel)} names from ${htmlEscape(countryLabel)}</h1>
     <p>Browse first names that are ${gender} and associated with ${htmlEscape(countryLabel)}.</p>
+    ${categoryDiffHtml}
     ${GENDER_COUNTRY_INTRO_BLOCK}
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
@@ -1495,7 +1690,9 @@ function generateLastNamePage(surnameMeta, names) {
   // Mesh: Names Like for top 10 compatible, popularity cross-link, tool CTA
   const top10ForNamesLike = compatible.slice(0, 10);
   const namesLikeLinksHtml = top10ForNamesLike.map((n) => '<a href="' + namesLikePath(n.name) + '">' + htmlEscape(n.name) + '</a>').join(', ');
-  const latestYear = new Date().getFullYear();
+  // Phase 3.3D: Link only to a year that has a popularity page (no /popularity/2026.html).
+  const currentYear = new Date().getFullYear();
+  const latestYear = Math.min(currentYear, 2024);
   const lastNameMeshHtml = `
     <section aria-labelledby="names-like-last-heading"><h2 id="names-like-last-heading">Names Like Top Compatible</h2>
     <p class="contextual">Names similar to these: ${namesLikeLinksHtml || '—'}.</p></section>
@@ -1557,7 +1754,7 @@ function generateLastNamePage(surnameMeta, names) {
 }
 
 function run() {
-  const names = loadJson('names');
+  const names = loadNames();
   const popularity = loadJson('popularity');
   const categories = loadJson('categories');
   const variants = loadJson('variants');
@@ -1567,8 +1764,11 @@ function run() {
   ensureDir(path.join(OUT_DIR, 'names'));
   ensureDir(path.join(OUT_DIR, 'name'));
 
+  // Phase 3.3E: only name slugs in the sibling batch get a sibling link (avoids broken links for ~3,500 names)
+  const siblingSlugs = getSiblingBatchNameSlugs(names, popularity, 150);
+
   // Name pages
-  names.forEach((n) => generateNamePage(n, names, popularity, categories, variants));
+  names.forEach((n) => generateNamePage(n, names, popularity, categories, variants, siblingSlugs));
 
   // Phase 2.5: Names Like pages are generated separately via scripts/generate-names-like.js
   // Run: node scripts/generate-names-like.js --batch=50 (then expand to 200 if authority score ≥ 0.99)
@@ -1632,6 +1832,10 @@ function run() {
     mainContent: `
     <h1>Browse names by letter</h1>
     <p>Choose a letter to see all first names starting with that letter. Each name links to its meaning and origin.</p>
+    <p class="contextual">Letter-based browsing helps when you have a preferred first letter or want to explore alphabetically. Some letters (A, J, M) have many names; others (Q, X, Z) have fewer. Combine with gender or country filters from the sections below. Every name has a full profile with popularity and related names. Use the compatibility tool to see how names pair with your last name.</p>
+    <p class="contextual">Use the A–Z links below to jump to any letter. Each letter page lists names with meaning and origin. The gender and country sections let you filter further. The popularity hub and compare section offer additional context. Browse trending names and popular names for rising and top-ranked choices. All names on nameorigin.io are curated for meaning and cultural significance.</p>
+    <p class="contextual">Letter-based discovery helps when you have a preferred first letter or want to explore alphabetically. Some letters (A, J, M) have many names; others (Q, X, Z) have fewer. Combine with gender or country using the links below. Every name has a full profile with meaning, origin, and popularity. Use the compare section to see how names rank across countries. The compatibility tool helps when pairing a first name with your last name.</p>
+    ${buildCategoryDiffSection('lettersHub', {})}
     <section aria-labelledby="letters-heading"><h2 id="letters-heading">A–Z</h2>
     <p class="letters-hub">${lettersHubLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' ')}</p>
     </section>
@@ -1655,21 +1859,23 @@ function run() {
     fs.writeFileSync(path.join(OUT_DIR, 'names', gender + EXT), html, 'utf8');
   });
 
-  // Country pages: /names/canada.html, /names/usa.html, etc.
+  // Country pages: /names/canada.html, /names/usa.html, etc. — Phase 3.3D: only supported slugs
   const countrySlugMap = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france', IRL: 'ireland' };
   countries.forEach((c) => {
     const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
+    if (!isSupportedCountrySlug(slugKey)) return;
     const html = generateCountryPage(c, slugKey, names, popularity);
     fs.writeFileSync(path.join(OUT_DIR, 'names', slugKey + EXT), html, 'utf8');
   });
 
-  // Gender + country filters: /names/boy/canada.html, /names/girl/india.html, etc.
+  // Gender + country filters: /names/boy/canada.html, /names/girl/india.html, etc. — only supported
   ensureDir(path.join(OUT_DIR, 'names', 'boy'));
   ensureDir(path.join(OUT_DIR, 'names', 'girl'));
   ensureDir(path.join(OUT_DIR, 'names', 'unisex'));
   ['boy', 'girl', 'unisex'].forEach((gender) => {
     countries.forEach((c) => {
       const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
+      if (!isSupportedCountrySlug(slugKey)) return;
       const html = generateGenderCountryPage(gender, c, slugKey, names);
       fs.writeFileSync(path.join(OUT_DIR, 'names', gender, slugKey + EXT), html, 'utf8');
     });
@@ -1701,6 +1907,10 @@ function run() {
     mainContent: `
     <h1>Names by style</h1>
     <p>Browse first names by style: nature-inspired, classic, modern, rare, biblical, popular, and traditional.</p>
+    <p class="contextual">Style categories help narrow choices when you have a vibe in mind. Nature names include plants and landscapes; classic names are timeless; modern names feel fresh. Combine with gender or country using the links below. Each name links to its full profile with meaning, origin, and popularity. Use the compatibility tool for last name pairing and the compare section for cross-country rankings.</p>
+    <p class="contextual">Click any style below to see names in that category. Biblical names come from religious tradition; popular names rank highly; rare names are distinctive. Use the A–Z links to browse by letter, or the country links for names by origin. The popularity hub and trends page offer additional discovery. Every name on nameorigin.io has a dedicated page with meaning and origin.</p>
+    <p class="contextual">Use the gender and country links to filter styles further. The letter hub lets you browse A–Z. The compatibility tool scores first names by how well they pair with your last name. The compare section shows how names rank across countries. Browse trending names and popular names for rising and top-ranked choices. All names are curated for meaning and cultural significance.</p>
+    <p class="contextual">Click any style below to see names in that category. Nature names include plants and landscapes; classic names are timeless; modern names feel fresh. Biblical names come from religious tradition; popular names rank highly; rare names are distinctive. Use the A–Z links to browse by letter, or the country links for names by origin. Every name has a full profile with meaning and origin. The popularity hub shows top names by year; the trends page shows rising names. Use the compatibility tool to see how names pair with your last name. The compare section shows how names rank across countries.</p>
     ${alphabetSectionHtml()}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
@@ -1747,7 +1957,7 @@ function run() {
     <p class="name-links">${lastNameHubLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
     <section aria-labelledby="baby-names-with-heading"><h2 id="baby-names-with-heading">Baby names with [surname] (detailed guides)</h2>
-    <p class="name-links"><a href="/baby-names-with-smith/">Smith</a> · <a href="/baby-names-with-garcia/">Garcia</a> · <a href="/baby-names-with-johnson/">Johnson</a> · <a href="/baby-names-with-williams/">Williams</a> · <a href="/baby-names-with-brown/">Brown</a></p>
+    <p class="name-links">${lastNames.slice(0, 75).map((s) => `<a href="/baby-names-with-${slug(s.name)}/">${htmlEscape(s.name)}</a>`).join(' · ')}</p>
     </section>
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,
@@ -1774,30 +1984,48 @@ function run() {
     ]),
     mainContent: `
     <h1>First & Last Name Compatibility</h1>
-    <p class="contextual">Find first names that sound good with your last name. Browse by popular surnames or use the compatibility hub to explore.</p>
+    <p class="contextual">Find first names that sound good with your last name. Browse by popular surnames or use the compatibility hub to explore. We score names by syllable balance, vowel-consonant flow, and length. Names that end in a vowel often pair well with last names starting with a consonant, and vice versa. Cultural matching suggests names from related traditions.</p>
+    <p class="contextual">Each last name page lists first names that tend to flow well phonetically. The compatibility tool helps when you have a specific surname in mind. Use the links below to try Smith, Garcia, Johnson, Williams, or Nguyen. Each name links to its full profile for meaning, origin, and popularity. Browse by letter, country, or style for more options.</p>
+    <p class="contextual">Understanding phonetic fit: first names that flow well with your last name are easier to say and remember. Syllable balance matters—short first names often pair well with longer last names, and vice versa. Vowel-consonant alternation creates smooth rhythm. Use the links below to explore by gender, country, letter, and style. The compare section shows how names rank across countries; the popularity hub shows top names by year.</p>
+    <p class="contextual">Use the explore links below to browse by gender, country, letter, and style. Each name on nameorigin.io has a dedicated page with meaning and origin. The compare section shows how names rank across countries. The popularity hub shows top names by year. Browse trending names and popular names for rising and top-ranked choices.</p>
+    <p class="contextual">Each last name page scores first names by syllable balance and phonetic flow. Cultural matching suggests names from related traditions. Use the hub link for the main compatibility tool. Browse by letter (A–Z) or by country for more discovery. Every name has a full profile with meaning, origin, and popularity over time. The compare section shows how names rank across countries.</p>
     <section aria-labelledby="try-heading"><h2 id="try-heading">Try These Last Names</h2>
     <p class="name-links">${compatTopLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
     <section aria-labelledby="hub-heading"><h2 id="hub-heading">Browse All</h2>
-    <p><a href="/names/with-last-name${EXT}">Last name compatibility hub</a> — see first names that pair well with Smith, Garcia, Johnson, Nguyen, and more.</p>
+    <p><a href="/names/with-last-name${EXT}">Last name compatibility hub</a> — see first names that pair well with Smith, Garcia, Johnson, Nguyen, and more. Each hub page includes phonetic tips and a list of compatible names. Use the explore section for trending names, popular names, compare by country, and browse by letter.</p>
     </section>
     <section aria-labelledby="core-explore-heading"><h2 id="core-explore-heading">Explore</h2><p class="core-links">${coreLinksHtml()}</p></section>
   `,
   });
   fs.writeFileSync(path.join(OUT_DIR, 'compatibility', 'index.html'), compatibilityPageHtml, 'utf8');
 
-  // Authority hub pages (structured indexes — root-level .html)
-  function writeHubPage(filename, title, description, pathSeg, sections) {
+  // Authority hub pages (structured indexes — root-level .html). Phase 3.4: guards before write.
+  const { writeHtmlWithGuard, pathExists } = require('./phase-3.4-guards.js');
+  const LETTERS_ARR = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  function collectValidLinks(candidates) {
+    const seen = new Set();
+    return candidates.filter((l) => {
+      const href = typeof l === 'string' ? l : (l.href || l);
+      if (seen.has(href)) return false;
+      seen.add(href);
+      return pathExists(href);
+    });
+  }
+  function writeHubPage(filename, title, description, pathSeg, sections, opts = {}) {
+    const introParagraphs = opts.introParagraphs || [];
     const breadcrumbItems = [
       { name: 'Home', url: SITE_URL + '/' },
       { name: title.replace(/\s*\|\s*nameorigin\.io\s*$/i, ''), url: SITE_URL + pathSeg },
     ];
+    const introHtml = introParagraphs.map((p) => '<p class="contextual">' + htmlEscape(p) + '</p>').join('\n    ');
     const mainContent =
       '<h1>' +
       htmlEscape(title.replace(/\s*\|\s*nameorigin\.io\s*$/i, '')) +
       '</h1>\n    <p>' +
       htmlEscape(description) +
       '</p>\n    ' +
+      (introHtml ? introHtml + '\n    ' : '') +
       sections
         .map(
           (sec) =>
@@ -1824,8 +2052,42 @@ function run() {
       breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
       mainContent,
     });
+    const { assertPageThresholds } = require('./phase-3.4-guards.js');
+    assertPageThresholds(html, filename);
     fs.writeFileSync(path.join(OUT_DIR, filename), html, 'utf8');
   }
+
+  const HUB_INTRO_PARAGRAPHS = {
+    all: [
+      'Every name on nameorigin.io has its own detail page with meaning, origin, and popularity data. Browse by gender (boy, girl, unisex), by country of origin, or by first letter. Each list links to individual name pages where you can read the full meaning, cultural context, and popularity over time.',
+      'Use the name lists below to find first names that match your style and heritage. The country and style hubs offer additional filters. The last name compatibility tool helps when pairing a first name with your surname. All names are curated for meaning and origin.',
+      'Names are grouped by gender, country of origin, and style. Country pages show names associated with USA, Canada, France, India, and Ireland. Style categories include nature, classic, modern, rare, biblical, popular, and traditional. Letter pages let you browse A–Z.',
+      'Each name links to a full profile with meaning, origin story, and popularity rankings. Use the explore links to move between lists. The popularity hub shows top names by year; the compare section compares rankings across countries.',
+      'The name lists hub indexes all ways to explore names on this site. Gender filters (boy, girl, unisex) let you narrow by typical usage. Country filters show names by cultural origin. Style filters group names by theme. Letter browsing helps when you have a preferred first letter.',
+      'All data is derived from official birth statistics and curated sources. We do not use AI-generated or unverified name data. Each name profile includes meaning, origin, popularity over time, and related names. Use the sibling hub links to jump to country, style, or alphabet indexes.',
+      'Whether you are choosing a baby name, researching family names, or exploring naming trends, the lists on this page are your starting point. Click any link below to begin. The explore section at the bottom links to all major sections of the site including trending names, popular names, and the compatibility tool.',
+    ],
+    alphabet: [
+      'Browse first names A–Z. Each letter page lists names starting with that letter, with links to meaning and origin. Combine letter browsing with gender or country filters from the main names section.',
+      'Letter-based discovery helps when you have a preferred first letter or want to explore names in alphabetical order. The style and country hubs offer alternative ways to narrow your search. Every name links to its full profile.',
+      'Some letters (A, J, M) have many names; others (Q, X, Z) have fewer. Each letter page includes links to boy, girl, and unisex filters, plus country and style hubs. Use the explore section for trending names, popular names, and last name compatibility.',
+      'All names on nameorigin.io are curated for meaning and origin. Click any name to see its full profile. The homepage and names index offer more discovery paths including compare by country and popularity by year.',
+      'Use the A–Z links below to jump to any letter. Each letter page lists names with meaning and origin. The gender and country sections let you filter further. Browse trending names and popular names for rising and top-ranked choices. The compatibility tool helps when pairing a first name with your last name.',
+      'Browse the sibling hubs for country name pages, style name pages, boy name pages, and girl name pages. Use the popularity hub for top names by year and the trends page for rising names. The compare section shows how names rank across countries. Every name on nameorigin.io has a dedicated page with meaning and origin.',
+      'Style categories include nature, classic, modern, rare, biblical, popular, and traditional. Each style links to a list of names. Use the gender and country filters to narrow further. The compatibility tool helps when pairing a first name with your last name. All names are curated for meaning and cultural significance. Browse trending names and popular names for more options.',
+      'Use the letter hub to browse A–Z or the country links for names by origin. Each style page lists names in that category. Use the popularity hub for top names by year and the trends page for rising names. The compare section shows how names rank across countries. Every name has a dedicated page with meaning and origin. Browse trending names and popular names for more options. The compatibility tool helps when pairing a first name with your last name. All names on nameorigin.io are curated for meaning and cultural significance.',
+      'Style categories include nature, classic, modern, rare, biblical, popular, and traditional. Each style links to a list of names. Use the gender and country filters to narrow further. The letter hub lets you browse A–Z. The popularity hub shows top names by year; the trends page shows rising names. The compare section shows how names rank across countries. The compatibility tool helps when pairing a first name with your last name. Every name has a dedicated page with meaning and origin. All names are curated for meaning and cultural significance. Browse trending names and popular names for more options.',
+    ],
+    style: [
+      'Browse first names by style: nature, classic, modern, rare, biblical, popular, and traditional. Each style links to a list of names that fit that category, with meaning and origin for each.',
+      'Style categories help narrow choices when you have a vibe in mind. Combine with gender or country using the main names section. The letter hub and last name compatibility tool offer more discovery paths.',
+      'Nature names include plants, animals, and landscapes. Classic names are timeless; modern names feel fresh. Biblical names come from religious tradition. Popular names rank highly in current usage. Each style page links to individual name profiles.',
+      'Use the style hub to jump to a category, then filter by gender or country. Every name has a full profile with meaning, origin, and popularity. The explore section links to trending names, compare, and compatibility tools.',
+      'Browse the sibling hubs for country name pages, alphabet name pages, and boy or girl name pages. Use the popularity hub for top names by year and the trends page for rising names. All names on nameorigin.io are curated for meaning and origin. Click any link below to explore.',
+      'Use the letter hub to browse A–Z or the country links for names by origin. Each style page lists names in that category. Use the popularity hub for top names by year and the trends page for rising names. The compare section shows how names rank across countries. Every name has a dedicated page with meaning and origin. Browse trending names and popular names for more options. The compatibility tool helps when pairing a first name with your last name. All names on nameorigin.io are curated for meaning and cultural significance.',
+      'Style categories include nature, classic, modern, rare, biblical, popular, and traditional. Use the gender and country filters to narrow further. The letter hub lets you browse A–Z. The popularity hub shows top names by year; the trends page shows rising names. The compare section shows how names rank across countries. The compatibility tool helps when pairing a first name with your last name. Every name has a dedicated page with meaning and origin. Browse trending names and popular names for more options. All names are curated for meaning and cultural significance.',
+    ],
+  };
 
   writeHubPage(
     'all-name-pages.html',
@@ -1842,9 +2104,30 @@ function run() {
           { href: '/names/unisex' + EXT, text: 'Unisex names' },
         ],
       },
-    ]
+      {
+        heading: 'Hub indexes',
+        links: [
+          { href: '/country-name-pages.html', text: 'Country name pages' },
+          { href: '/style-name-pages.html', text: 'Style name pages' },
+          { href: '/alphabet-name-pages.html', text: 'Alphabet name pages' },
+          { href: '/last-name-pages.html', text: 'Last name compatibility' },
+          { href: '/boy-name-pages.html', text: 'Boy name pages' },
+          { href: '/girl-name-pages.html', text: 'Girl name pages' },
+        ],
+      },
+    ],
+    { introParagraphs: HUB_INTRO_PARAGRAPHS.all }
   );
 
+  const COUNTRY_HUB_INTRO = [
+    'Index of name pages by country: USA, Canada, France, India, Ireland. Names from each country plus boy, girl, and unisex filters per country. Each link goes to a list of names associated with that region by origin, language, or popularity.',
+    'Country pages show names traditionally or currently linked to each region. Use gender filters to narrow to boy, girl, or unisex names from a specific country. Combine with letter and style hubs for more discovery paths. Every name links to its full profile.',
+    'Names are included when they are associated with the country by language, cultural use, or official popularity data. Use the explore section to move between countries, genders, and other filters. The popularity hub and compare section offer additional context.',
+    'Each country page includes trending names, popular names, and rising names where data is available. Cultural context paragraphs describe naming traditions in that region. Use the gender-plus-country links to see boy names from USA, girl names from France, and so on.',
+    'The supported countries (USA, Canada, France, India, Ireland) have names tagged by origin or popularity. Data comes from official birth statistics where available. Browse the links below to explore. The all-name-pages hub and style hub offer alternative indexes.',
+    'Use the gender-plus-country links to see boy names from USA, girl names from France, and so on. Each country page includes trending and popular names where data is available. The letter hub and compatibility tool offer more discovery paths. Every name links to its full profile.',
+    'Browse the sibling hubs for all name pages, style name pages, alphabet name pages, boy name pages, and girl name pages. Use the popularity hub for top names by year and the trends page for rising names. The compare section shows how names rank across countries. All names are curated for meaning and origin.',
+  ];
   writeHubPage(
     'country-name-pages.html',
     'Country name pages',
@@ -1853,24 +2136,30 @@ function run() {
     [
       {
         heading: 'Countries',
-        links: countries.map((c) => {
-          const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
-          return { href: '/names/' + slugKey + EXT, text: 'Names from ' + (c.name || c.code) };
-        }),
+        links: countries
+          .map((c) => {
+            const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
+            return isSupportedCountrySlug(slugKey) ? { href: '/names/' + slugKey + EXT, text: 'Names from ' + (c.name || c.code) } : null;
+          })
+          .filter(Boolean),
       },
       {
         heading: 'Gender + country',
         links: [].concat(
           ...['boy', 'girl', 'unisex'].map((gender) =>
-            countries.map((c) => {
-              const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
-              const label = gender.charAt(0).toUpperCase() + gender.slice(1) + ' names from ' + (c.name || c.code);
-              return { href: '/names/' + gender + '/' + slugKey + EXT, text: label };
-            })
+            countries
+              .map((c) => {
+                const slugKey = (c.code && countrySlugMap[c.code]) || slug(c.name);
+                if (!isSupportedCountrySlug(slugKey)) return null;
+                const label = gender.charAt(0).toUpperCase() + gender.slice(1) + ' names from ' + (c.name || c.code);
+                return { href: '/names/' + gender + '/' + slugKey + EXT, text: label };
+              })
+              .filter(Boolean)
           )
         ),
       },
-    ]
+    ],
+    { introParagraphs: COUNTRY_HUB_INTRO }
   );
 
   writeHubPage(
@@ -1884,9 +2173,19 @@ function run() {
         heading: 'By style',
         links: STYLE_CONFIG.map((s) => ({ href: '/names/style/' + s.slug + EXT, text: s.label })),
       },
-    ]
+    ],
+    { introParagraphs: HUB_INTRO_PARAGRAPHS.style }
   );
 
+  const LASTNAME_HUB_INTRO = [
+    'Index of last name compatibility pages. Find first names that sound good with your surname — Smith, Garcia, Nguyen, and more. Phonetic tips and cultural matching for each last name.',
+    'Each compatibility page scores first names by syllable balance, vowel and consonant flow, and length. Cultural matching suggests names from related traditions. Click any last name below to see compatible first names and phonetic tips.',
+    'First names that flow well with your last name are easier to say and remember. Use the hub link for the main compatibility tool, or browse by last name below. Each name in the compatible lists links to its full profile for meaning and origin.',
+    'Use the explore section to browse by gender, country, letter, and style. The popularity hub shows top names by year; the compare section shows how names rank across countries. Every name on nameorigin.io has a dedicated page with meaning, origin, and popularity over time. Browse trending names and popular names for more options.',
+    'Browse the sibling hubs for all name pages, country name pages, style name pages, boy name pages, and girl name pages. Use the filter hubs for trending names, popular names, and compare by country. The compatibility tool scores first names by how well they pair with your last name. All names are curated for meaning and origin.',
+    'Use the letter hub to browse A–Z or the country links for names by origin. Style categories (nature, classic, modern) help narrow choices. Each name links to its full profile with meaning and origin. The compatibility tool helps when pairing a first name with your last name. The compare section shows how names rank across countries. Browse the popularity hub for top names by year.',
+    'Click any last name below to see compatible first names and phonetic tips. Each name in the compatible lists links to its full profile. Use the letter hub to browse A–Z or the country links for names by origin. The popularity hub shows top names by year; the compare section shows how names rank across countries. Browse trending names and popular names for more options. All names on nameorigin.io are curated for meaning and cultural significance.',
+  ];
   writeHubPage(
     'last-name-pages.html',
     'Last name compatibility pages',
@@ -1898,7 +2197,8 @@ function run() {
         heading: 'By last name',
         links: lastNames.map((s) => ({ href: '/names/with-last-name-' + slug(s.name) + EXT, text: s.name })),
       },
-    ]
+    ],
+    { introParagraphs: LASTNAME_HUB_INTRO }
   );
 
   writeHubPage(
@@ -1912,7 +2212,80 @@ function run() {
         heading: 'A–Z',
         links: LETTERS.map((l) => ({ href: '/names/' + l + EXT, text: 'Names starting with ' + l.toUpperCase() })),
       },
-    ]
+    ],
+    { introParagraphs: HUB_INTRO_PARAGRAPHS.alphabet }
+  );
+
+  // Phase 3.4: boy-name-pages, girl-name-pages, name-pages — ≥20 links, ≥400 words (overwrite static)
+  const siblingHubLinks = [
+    { href: '/boy-name-pages.html', text: 'Boy name pages' },
+    { href: '/girl-name-pages.html', text: 'Girl name pages' },
+    { href: '/all-name-pages.html', text: 'All name pages' },
+    { href: '/country-name-pages.html', text: 'Country name pages' },
+    { href: '/style-name-pages.html', text: 'Style name pages' },
+    { href: '/alphabet-name-pages.html', text: 'Alphabet name pages' },
+  ];
+  const letterSampleLinks = ['a', 'b', 'l', 'o', 'e'].map((l) => ({ href: '/names/' + l + EXT, text: 'Names starting with ' + l.toUpperCase() }));
+  const countrySampleLinks = ['usa', 'canada', 'india', 'france', 'ireland']
+    .filter((s) => isSupportedCountrySlug(s))
+    .map((s) => ({ href: '/names/' + s + EXT, text: 'Names from ' + s.charAt(0).toUpperCase() + s.slice(1) }));
+  const filterHubLinks = [
+    { href: '/names', text: 'All names' },
+    { href: '/names/trending' + EXT, text: 'Trending names' },
+    { href: '/names/popular' + EXT, text: 'Popular names' },
+    { href: '/names/with-last-name' + EXT, text: 'Last name compatibility' },
+    { href: '/popularity/', text: 'Popularity by year' },
+    { href: '/compare/', text: 'Compare by country' },
+  ];
+  const boyGirlIntro = [
+    'Every name on nameorigin.io has its own detail page with meaning, origin, and popularity data. Use the links below to browse by letter, country, or style. Each name links to its full profile for meaning and cultural context.',
+    'Combine gender with country or letter filters from the main names section. The last name compatibility tool helps when pairing a first name with your surname. All names are curated for meaning and origin.',
+    'Boy names and girl names are tagged by our dataset. Unisex names work for any gender. Country pages show names by origin; letter pages let you browse A–Z. Style categories include nature, classic, modern, rare, biblical, popular, and traditional.',
+    'The sibling hubs link to related indexes: all name pages, country name pages, style name pages, alphabet name pages. Use the filter hubs for trending names, popular names, and compare by country. Each name in every list links to its full profile.',
+    'Use the explore section to move between gender lists, country pages, letter pages, and style categories. The popularity hub shows top names by year; the trends page shows rising names. Every name has a dedicated page with meaning, origin, and popularity over time.',
+    'Browse the sibling hubs for all name pages, country name pages, style name pages, and alphabet name pages. Use the filter hubs for trending names, popular names, and compare by country. The compatibility tool helps when pairing a first name with your last name. All names are curated for meaning and origin. Use the popularity hub for top names by year and the trends page for rising names.',
+  ];
+  writeHubPage(
+    'boy-name-pages.html',
+    'Boy name pages',
+    'Hub for boy names — meaning, origin, and popularity. Browse all boy name pages.',
+    '/boy-name-pages.html',
+    [
+      { heading: 'Sibling hubs', links: siblingHubLinks.filter((l) => l.href !== '/boy-name-pages.html').slice(0, 5) },
+      { heading: 'Browse by letter', links: letterSampleLinks },
+      { heading: 'By country', links: countrySampleLinks },
+      { heading: 'Filter hubs', links: filterHubLinks },
+      { heading: 'Gender lists', links: [{ href: '/names/boy' + EXT, text: 'All boy names' }, { href: '/names/girl' + EXT, text: 'Girl names' }, { href: '/names/unisex' + EXT, text: 'Unisex names' }] },
+    ],
+    { introParagraphs: boyGirlIntro }
+  );
+  writeHubPage(
+    'girl-name-pages.html',
+    'Girl name pages',
+    'Hub for girl names — meaning, origin, and popularity. Browse all girl name pages.',
+    '/girl-name-pages.html',
+    [
+      { heading: 'Sibling hubs', links: siblingHubLinks.filter((l) => l.href !== '/girl-name-pages.html').slice(0, 5) },
+      { heading: 'Browse by letter', links: letterSampleLinks },
+      { heading: 'By country', links: countrySampleLinks },
+      { heading: 'Filter hubs', links: filterHubLinks },
+      { heading: 'Gender lists', links: [{ href: '/names/boy' + EXT, text: 'Boy names' }, { href: '/names/girl' + EXT, text: 'All girl names' }, { href: '/names/unisex' + EXT, text: 'Unisex names' }] },
+    ],
+    { introParagraphs: boyGirlIntro }
+  );
+  writeHubPage(
+    'name-pages.html',
+    'Name pages',
+    'Index of all name detail pages at nameorigin.io — meaning, origin, and popularity for each name.',
+    '/name-pages.html',
+    [
+      { heading: 'Name lists', links: [{ href: '/names', text: 'All names' }, { href: '/names/boy' + EXT, text: 'Boy names' }, { href: '/names/girl' + EXT, text: 'Girl names' }, { href: '/names/unisex' + EXT, text: 'Unisex names' }] },
+      { heading: 'Sibling hubs', links: siblingHubLinks },
+      { heading: 'Browse by letter', links: letterSampleLinks },
+      { heading: 'By country', links: countrySampleLinks },
+      { heading: 'Filter hubs', links: filterHubLinks },
+    ],
+    { introParagraphs: boyGirlIntro }
   );
 
   // Build verification: count programmatic output (name/, names/, names-like/, hub .html), sample URLs, fail if zero
@@ -1956,7 +2329,7 @@ function countProgrammaticPages(outDir, nameDir, namesDir, hubFiles, namesLikeDi
         total += 1;
         let sampleUrl = toUrl(rel);
         if (baseRel === 'name' && e.name === 'index.html') sampleUrl = SITE_URL + '/name/' + path.basename(path.dirname(full)) + '/';
-        if (baseRel === 'names-like' && e.name === 'index.html') sampleUrl = SITE_URL + '/names-like/' + path.basename(path.dirname(full)) + '/';
+        if (baseRel === 'names-like' && e.name === 'index.html') sampleUrl = SITE_URL + namesLikeUrl(path.basename(path.dirname(full)));
         if (samples.length < 12) samples.push(sampleUrl);
       }
     }

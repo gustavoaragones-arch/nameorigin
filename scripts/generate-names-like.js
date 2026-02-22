@@ -1,25 +1,17 @@
 #!/usr/bin/env node
 /**
  * generate-names-like.js — Phase 2.5 Names Like Engine
- * Generates "Names Like X" pages for top popular names.
- *
- * IMPORTANT DISCIPLINE RULE:
- *   After generating first 50: run audit → deploy. Do NOT mass-generate thousands of pages immediately.
- *   Expansion: only after deploy and authority score ≥ 0.99, then --batch=200 (max allowed).
+ * Generates "Names Like X" pages for all names in the dataset.
+ * Full coverage so sitemap and name-detail links match generated pages (no broken links).
  *
  * Usage:
- *   node scripts/generate-names-like.js [--batch=50|200]
- *
- * Workflow:
- *   1. node scripts/generate-names-like.js --batch=50
- *   2. node scripts/post-2.25a-audit.js
- *   3. Deploy
- *   4. If authority_coverage_score ≥ 0.99, then: node scripts/generate-names-like.js --batch=200
+ *   node scripts/generate-names-like.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
+const { namesLikeUrl } = require('./url-helpers.js');
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
@@ -202,7 +194,7 @@ function getTopPopularNames(names, popularity, limit) {
 /** Phase 2.5: Generate "Names Like X" page at /names-like/<slug>/index.html */
 function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const nameSlug = slug(baseRecord.name);
-  const pathSeg = '/names-like/' + nameSlug + '/';
+  const pathSeg = namesLikeUrl(nameSlug);
   const url = SITE_URL + pathSeg;
   const baseNameUrl = SITE_URL + nameDetailPath(baseRecord.name);
   const breadcrumbItems = [
@@ -552,25 +544,8 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   return { wordCount: finalWordCount, internalLinks, totalSimilar };
 }
 
-const MAX_BATCH = 200; // Discipline: do not mass-generate. First 50 → audit → deploy → then 200 if score OK.
-
 function run() {
-  const batchArg = process.argv.find((a) => a.startsWith('--batch='));
-  const batchSize = batchArg ? parseInt(batchArg.split('=')[1], 10) : 50;
-  let targetBatch = batchSize === 200 ? 200 : 50;
-
-  if (batchSize > MAX_BATCH) {
-    console.error('ERROR: Batch size cannot exceed ' + MAX_BATCH + '.');
-    console.error('Discipline rule: first 50 → run audit → deploy. Only then expand to 200 if authority score ≥ 0.99.');
-    process.exit(1);
-  }
-
-  console.log('Phase 2.5 — Names Like Engine');
-  console.log('Batch size:', targetBatch);
-  if (targetBatch > 50) {
-    console.log('');
-    console.log('Reminder: Ensure you have already run audit and deployed after the first 50.');
-  }
+  console.log('Phase 2.5 — Names Like Engine (full coverage)');
   console.log('');
 
   const names = loadJson('names');
@@ -585,9 +560,9 @@ function run() {
   ensureDir(OUT_DIR);
   ensureDir(path.join(OUT_DIR, 'names-like'));
 
-  // Get top popular names
-  const topNames = getTopPopularNames(names, popularity, targetBatch);
-  console.log('Selected', topNames.length, 'names by global popularity score.');
+  // All names, ordered by global popularity (deterministic order)
+  const namesToGenerate = getTopPopularNames(names, popularity, names.length);
+  console.log('Generating Names Like pages for all', namesToGenerate.length, 'names (ordered by popularity).');
 
   let generated = 0;
   let totalWords = 0;
@@ -595,15 +570,15 @@ function run() {
   let minWords = Infinity;
   let minLinks = Infinity;
 
-  topNames.forEach((nameRecord) => {
+  namesToGenerate.forEach((nameRecord) => {
     const result = generateNamesLikePage(nameRecord, names, popularity, categories);
     generated += 1;
     totalWords += result.wordCount;
     totalLinks += result.internalLinks;
     minWords = Math.min(minWords, result.wordCount);
     minLinks = Math.min(minLinks, result.internalLinks);
-    if (generated % 10 === 0) {
-      console.log('Generated', generated, '/', topNames.length, 'Names Like pages...');
+    if (generated % 100 === 0 && generated > 0) {
+      console.log('Generated', generated, '/', namesToGenerate.length, 'Names Like pages...');
     }
   });
 
@@ -624,8 +599,6 @@ function run() {
   console.log('Next steps:');
   console.log('1. Run: node scripts/build-sitemap.js (to include names-like URLs)');
   console.log('2. Run: node scripts/post-2.25a-audit.js (to verify authority score)');
-  console.log('3. If authority_coverage_score ≥ 0.99, expand to 200 names:');
-  console.log('   node scripts/generate-names-like.js --batch=200');
 }
 
 run();

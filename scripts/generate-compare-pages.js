@@ -12,11 +12,22 @@
 const fs = require('fs');
 const path = require('path');
 
+const { namesLikeUrl } = require('./url-helpers.js');
+
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
+
+/** Phase 3.3: Only these country slugs get /names/{slug}.html links. No uk, spain, germany, australia. */
+const SUPPORTED_COUNTRY_PAGES = ['usa', 'canada', 'india', 'france', 'ireland'];
+const CODE_TO_SLUG = { USA: 'usa', UK: 'uk', CAN: 'canada', AUS: 'australia', FRA: 'france', ESP: 'spain', GER: 'germany', IND: 'india', IRL: 'ireland' };
+function countryIndexPath(code) {
+  const slug = (CODE_TO_SLUG[code] || (code && code.toLowerCase()) || '').toLowerCase();
+  if (!slug || !SUPPORTED_COUNTRY_PAGES.includes(slug)) return null;
+  return '/names/' + slug + EXT;
+}
 
 /** 5 core country pairs (slug, country codes for data lookup, display labels). */
 const COUNTRY_PAIRS = [
@@ -49,7 +60,7 @@ function htmlEscape(s) {
 }
 
 function nameDetailPath(name) { return '/name/' + slug(name) + '/'; }
-function namesLikePath(name) { return '/names-like/' + slug(name) + '/'; }
+function namesLikePath(name) { return namesLikeUrl(slug(name)); }
 
 /** Get rank for name_id in country in given year from popularity rows. */
 function getRank(popularity, nameId, countryCode, year) {
@@ -335,6 +346,7 @@ function run() {
       const directAnswer = getDirectAnswer(name, pair, pair.labelA, pair.labelB, rankA, rankB, yearLatest, nameSlug);
       const trendDeltaHtml = getTrendDeltaSection(name, pair.labelA, pair.labelB, rankA, rankB, movA, movB, yearLatest, year2015, (nameSlug + pair.slug).length);
       const culturalText = getCulturalContext(pair.slug, pair.labelA, pair.labelB, nameId);
+      const structuralInsightNameVs = `Rank differences for ${name} between ${pair.labelA} and ${pair.labelB} stem from cultural adoption, migration, and timing. A name that ranks high in one country may be uncommon elsewhere due to linguistic fit, ethnic demographics, or regulatory lists (e.g. approved names). Rhythm and syllable structure affect cross-border appeal; names that fit one language’s phonology may not translate. Style cluster impact—whether ${name} is perceived as classic, modern, or rare—varies by region and influences rank. The movement and volatility metrics above show trend direction and stability; use the country overview for broader cultural comparison. See the explore links for related names and country filters.`;
 
       const cell = (v) => (v != null && v !== '' ? htmlEscape(String(v)) : '—');
       const tableHtml = `
@@ -357,19 +369,14 @@ function run() {
       const threeRelatedIds = otherNameIds.slice(2, 5);
       const threeRelated = threeRelatedIds.map((id) => nameById.get(id)).filter(Boolean);
 
-      const countryIndexPath = (code) => {
-        const m = { USA: 'usa', UK: 'uk', CAN: 'canada', AUS: 'australia', FRA: 'france', ESP: 'spain', GER: 'germany' };
-        return '/names/' + (m[code] || code.toLowerCase()) + EXT;
-      };
-
       const meshLinks = [
         `<a href="${nameDetailPath(name)}">${htmlEscape(name)}</a>`,
         `<a href="/popularity/${popularityYear1}${EXT}">${popularityYear1}</a>`,
         `<a href="/popularity/${popularityYear2}${EXT}">${popularityYear2}</a>`,
         `<a href="${namesLikePath(name)}">Names like ${htmlEscape(name)}</a>`,
         `<a href="/compatibility/">Compatibility tool</a>`,
-        `<a href="${countryIndexPath(pair.codeA)}">${htmlEscape(pair.labelA)} names</a>`,
-        `<a href="${countryIndexPath(pair.codeB)}">${htmlEscape(pair.labelB)} names</a>`,
+        ...(countryIndexPath(pair.codeA) ? [`<a href="${countryIndexPath(pair.codeA)}">${htmlEscape(pair.labelA)} names</a>`] : []),
+        ...(countryIndexPath(pair.codeB) ? [`<a href="${countryIndexPath(pair.codeB)}">${htmlEscape(pair.labelB)} names</a>`] : []),
         `<a href="/names/${(record.gender || 'boy')}${EXT}">${(record.gender || 'boy').charAt(0).toUpperCase() + (record.gender || 'boy').slice(1)} names</a>`,
         ...threeRelated.map((n) => `<a href="/compare/${slug(n.name)}/${pair.slug}/">${htmlEscape(n.name)}: ${pair.labelA} vs ${pair.labelB}</a>`),
         ...similarTwo.map((n) => `<a href="/compare/${slug(n.name)}/${pair.slug}/">${htmlEscape(n.name)}</a>`),
@@ -377,9 +384,11 @@ function run() {
         '<a href="/compare/">Compare by country</a>',
       ].filter(Boolean);
 
+      const compareBoost = `How to interpret: Rank is the name's position among all names in that country. Movement shows change from ${year2015} to ${yearLatest}; positive means the name became more popular. Volatility indicates rank stability over recent years. Use the explore links for ${htmlEscape(name)}'s full profile, names like ${htmlEscape(name)}, and country-specific name lists.`;
       const mainContent = `
     <h1>${htmlEscape(name)}: ${htmlEscape(pair.labelA)} vs ${htmlEscape(pair.labelB)}</h1>
     <p class="direct-answer">${htmlEscape(directAnswer)}</p>
+    <p class="contextual">${compareBoost}</p>
 
     <section aria-labelledby="compare-table-heading">
       <h2 id="compare-table-heading">Comparison table</h2>
@@ -394,6 +403,16 @@ function run() {
     <section aria-labelledby="cultural-heading">
       <h2 id="cultural-heading">Cultural context</h2>
       <p class="contextual">${htmlEscape(culturalText)}</p>
+    </section>
+
+    <section aria-labelledby="structural-insight-heading">
+      <h2 id="structural-insight-heading">Structural Comparison Insight</h2>
+      <p class="contextual">${htmlEscape(structuralInsightNameVs)}</p>
+    </section>
+
+    <section aria-labelledby="methodology-heading">
+      <h2 id="methodology-heading">How rankings work</h2>
+      <p class="contextual">Rankings are from official birth statistics: U.S. Social Security, UK ONS, Canada and Australia equivalents. Movement is rank change over 10 years; positive means the name gained popularity. Use the name detail page for meaning and origin. The compare hub links to other country pairs.</p>
     </section>
 
     <section aria-labelledby="mesh-heading">
@@ -457,6 +476,7 @@ function run() {
     <p class="contextual"><strong>Top 10 overlap:</strong> ${top10A.length && top10B.length ? overlapPct + '%' : 'N/A'} (${top10A.length && top10B.length ? (overlap * 10).toFixed(0) + ' of 10 names appear in both lists' : 'rank data available for USA, UK, Canada, Australia only'}).</p>`;
 
     const methodology = `Our Naming Similarity Index (0–100) combines three components: (1) <strong>Shared top 10</strong> — the percentage of names that appear in both countries' top 10 lists (40% weight). (2) <strong>Phonetic similarity</strong> — how often top names share first-letter and syllable-count patterns (30% weight). (3) <strong>Origin cluster overlap</strong> — how many names share the same origin country or language in our database (30% weight). Higher scores indicate more similar naming cultures.`;
+    const structuralInsightOverview = `Structural comparison clarifies how naming cultures diverge. Cultural differences stem from immigration, language, and regional preferences—${pair.labelA} and ${pair.labelB} may share language but differ in ethnic mix or naming law (e.g. approved lists). Popularity differences reflect when and where a name peaked; a name popular in one country may be rare or unused in another. Rhythm and syllable patterns matter: some cultures favor shorter names, others longer forms. Style cluster impact—whether names skew classic, modern, or rare—varies by country and influences the overlap score. The volatility index captures how quickly top names change; higher turnover suggests trend-driven markets. Use the table and links below to drill into specific names.`;
     const volatilityCopy = volAvg != null
       ? `The Popularity Volatility Index measures how much each country's top 10 names changed over the past 10 years (${yearOld}–${yearLatest}). A higher score (more turnover) suggests a more trend-driven naming culture; a lower score suggests more traditional, stable preferences. For this pair, the average volatility is <strong>${volAvg}</strong> out of 100.`
       : `Volatility is computed from official rank data. We currently have multi-year data for the United States, United Kingdom, Canada, and Australia; volatility for other pairs will appear as data is added.`;
@@ -474,27 +494,25 @@ function run() {
           const rec = nameById.get(id);
           return rec ? `<a href="/compare/${slug(rec.name)}/${pair.slug}/">${htmlEscape(rec.name)}</a>` : null;
         }).filter(Boolean);
-    const countryIndexPath = (code) => {
-      const m = { USA: 'usa', UK: 'uk', CAN: 'canada', AUS: 'australia', FRA: 'france', ESP: 'spain', GER: 'germany' };
-      return '/names/' + (m[code] || code.toLowerCase()) + EXT;
-    };
     const categoryLinks = [
       `<a href="/names/boy${EXT}">Boy names</a>`,
       `<a href="/names/girl${EXT}">Girl names</a>`,
       `<a href="/names/style${EXT}">Names by style</a>`,
       `<a href="/names/letters${EXT}">Browse by letter</a>`,
-      `<a href="${countryIndexPath(pair.codeA)}">${htmlEscape(pair.labelA)} names</a>`,
-      `<a href="${countryIndexPath(pair.codeB)}">${htmlEscape(pair.labelB)} names</a>`,
+      ...(countryIndexPath(pair.codeA) ? [`<a href="${countryIndexPath(pair.codeA)}">${htmlEscape(pair.labelA)} names</a>`] : []),
+      ...(countryIndexPath(pair.codeB) ? [`<a href="${countryIndexPath(pair.codeB)}">${htmlEscape(pair.labelB)} names</a>`] : []),
       '<a href="/compatibility/">Compatibility tool</a>',
-      '<a href="/names/with-last-name${EXT}">Last name fit</a>',
+      `<a href="/names/with-last-name${EXT}">Last name fit</a>`,
       '<a href="/compare/">Compare hub</a>',
       '<a href="/">Home</a>',
     ];
     const overviewMesh = [...nameLinks, ...trendingLinks, ...threeComparePages, ...categoryLinks].filter(Boolean);
 
+    const overviewBoost = `How to use: Click any name in the table for its full profile with meaning, origin, and popularity. Use the name-by-name links below to see how a specific name ranks in each country. The compare hub lists all country pairs. Data comes from official birth statistics. Cultural and linguistic differences shape naming in each region. Use the explore links to browse by letter, country, style, and popularity. Every name has a dedicated page with meaning and origin.`;
     const overviewContent = `
     <h1>${htmlEscape(pair.labelA)} vs ${htmlEscape(pair.labelB)}: Baby Name Comparison</h1>
     <p class="contextual">Side-by-side comparison of top baby names and naming culture between ${pair.labelA} and ${pair.labelB}. Based on official rankings where available.</p>
+    <p class="contextual">${overviewBoost}</p>
 
     <section aria-labelledby="top10-heading">
       <h2 id="top10-heading">Top 10 names comparison</h2>
@@ -510,6 +528,11 @@ function run() {
     <section aria-labelledby="volatility-heading">
       <h2 id="volatility-heading">Popularity Volatility Index</h2>
       <p class="contextual">${volatilityCopy}</p>
+    </section>
+
+    <section aria-labelledby="structural-insight-heading">
+      <h2 id="structural-insight-heading">Structural Comparison Insight</h2>
+      <p class="contextual">${structuralInsightOverview}</p>
     </section>
 
     <section aria-labelledby="explore-heading">
@@ -553,6 +576,13 @@ function run() {
     mainContent: `
     <h1>Compare baby names by country</h1>
     <p class="contextual">See how the same name ranks in different countries. Compare top 10 lists and naming similarity by country pair.</p>
+    <p class="contextual">Country vs country overview pages show top 10 names for each country side by side, overlap percentage, phonetic similarity, and origin overlap. The Naming Similarity Index (0–100) summarizes how alike the naming cultures are. Name-by-name pages show how a single name ranks in each country, with 10-year movement and volatility. Data comes from official birth statistics: U.S. Social Security Administration, UK ONS, and equivalent agencies in Canada and Australia.</p>
+    <p class="contextual">Use the overview links for macro comparison (e.g. US vs UK) or the name-by-name links to see how a specific name ranks across countries. Each name links to its full profile for meaning, origin, and popularity. The popularity hub shows top names by year; the compatibility tool helps when pairing a first name with your last name.</p>
+    <p class="contextual">Understanding rank differences: names that rank high in one country may be uncommon elsewhere due to cultural adoption, migration, and timing. Linguistic fit and ethnic demographics affect popularity. Movement shows trend direction; volatility shows rank stability over time. Use the browse links to explore by letter, country, or style. Every name has a dedicated page with meaning and origin. Data comes from official birth statistics; we do not use AI-generated sources. The popularity hub and trends page offer additional context.</p>
+    <section aria-labelledby="structural-insight-heading">
+      <h2 id="structural-insight-heading">Structural Comparison Insight</h2>
+      <p class="contextual">Country vs country pages compare top 10 lists, overlap, phonetic similarity, and origin cluster overlap—yielding a 0–100 Naming Similarity Index. Name-by-name pages show how a single name ranks in each country, with trend movement and volatility. Cultural and popularity differences drive rank gaps; rhythm and style cluster impact how names transfer across markets. Choose an overview for macro comparison or a name-specific page for individual rank data.</p>
+    </section>
     <section aria-labelledby="overview-heading">
       <h2 id="overview-heading">Country vs country overview</h2>
       <p class="internal-links">${hubOverviewLinks}</p>
@@ -561,14 +591,10 @@ function run() {
       <h2 id="pairs-heading">Name-by-name comparison</h2>
       <p class="internal-links">${hubNameLinks}</p>
     </section>
-    <section aria-labelledby="jurisdiction-compare-heading">
-      <h2 id="jurisdiction-compare-heading">State vs state / Province vs province</h2>
-      <p class="internal-links"><a href="/compare/california-vs-texas/">California vs Texas</a> · <a href="/compare/california-vs-florida/">California vs Florida</a> · <a href="/compare/texas-vs-florida/">Texas vs Florida</a> · <a href="/compare/alberta-vs-ontario/">Alberta vs Ontario</a> · <a href="/compare/alberta-vs-quebec/">Alberta vs Quebec</a> · <a href="/compare/ontario-vs-quebec/">Ontario vs Quebec</a></p>
-    </section>
     <section aria-labelledby="browse-heading">
       <h2 id="browse-heading">Browse</h2>
       <p class="internal-links">
-        <a href="/">Home</a> · <a href="/names">All names</a> · <a href="/popularity/">Popularity by year</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/compatibility/">Compatibility tool</a>
+        <a href="/">Home</a> · <a href="/names">All names</a> · <a href="/names/boy${EXT}">Boy names</a> · <a href="/names/girl${EXT}">Girl names</a> · <a href="/popularity/">Popularity by year</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/compatibility/">Compatibility tool</a> · <a href="/names/letters${EXT}">Browse by letter</a> · <a href="/names/usa${EXT}">USA names</a> · <a href="/all-name-pages.html">All name pages</a> · <a href="/trends/">Name trends</a>
       </p>
     </section>
   `,
