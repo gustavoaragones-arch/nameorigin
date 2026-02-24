@@ -385,8 +385,13 @@ function run() {
       ].filter(Boolean);
 
       const compareBoost = `How to interpret: Rank is the name's position among all names in that country. Movement shows change from ${year2015} to ${yearLatest}; positive means the name became more popular. Volatility indicates rank stability over recent years. Use the explore links for ${htmlEscape(name)}'s full profile, names like ${htmlEscape(name)}, and country-specific name lists.`;
+
+      // Phase 3.7 STEP 4: 50-word compare summary — no links, one paragraph
+      const compareSummary = `<div class="compare-summary">${name} and its popularity differ between ${pair.labelA} and ${pair.labelB} in origin, usage, and phonetic structure. While in ${pair.labelA} it ${rankA != null ? 'ranks #' + rankA + ' in ' + yearLatest : 'appears in our data'}, in ${pair.labelB} it ${rankB != null ? 'ranks #' + rankB : 'has different adoption'}. Cross-country comparison reflects regional naming culture and data availability.</div>`;
+
       const mainContent = `
     <h1>${htmlEscape(name)}: ${htmlEscape(pair.labelA)} vs ${htmlEscape(pair.labelB)}</h1>
+    ${compareSummary}
     <p class="direct-answer">${htmlEscape(directAnswer)}</p>
     <p class="contextual">${compareBoost}</p>
 

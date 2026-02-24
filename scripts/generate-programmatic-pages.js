@@ -627,6 +627,151 @@ function getClusterBlockNames(record, nameById, topicClusters, excludeIds) {
   return [...chosen].map((id) => nameById.get(id)).filter(Boolean);
 }
 
+/** Phase 3.6 STEP 1: People Also Search For — 6 names: same origin OR same style OR similar phonetic ending (last 2 letters). No dupes from cluster or sibling blocks. */
+function getPeopleAlsoSearchFor(record, names, categories, nameById, excludeIds) {
+  const out = [];
+  const seen = new Set([record.id, ...excludeIds]);
+  const add = (list, max) => {
+    for (const n of list) {
+      if (seen.has(n.id) || !nameById.get(n.id)) continue;
+      seen.add(n.id);
+      out.push(n);
+      if (out.length >= 6) return;
+    }
+  };
+  const originKey = (record.origin_country || '').toLowerCase().replace(/\s+/g, '') || (record.language || '').toLowerCase().replace(/\s+/g, '');
+  const lastTwo = (record.name || '').toLowerCase().slice(-2);
+  const nameCats = new Set((categories || []).filter((c) => c.name_id === record.id).map((c) => c.category));
+  const sameOrigin = names.filter(
+    (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+  );
+  const sameStyle = nameCats.size
+    ? names.filter((n) => n.id !== record.id && (categories || []).some((c) => c.name_id === n.id && nameCats.has(c.category)))
+    : [];
+  const sameEnding = lastTwo.length >= 2
+    ? names.filter((n) => n.id !== record.id && (n.name || '').toLowerCase().slice(-2) === lastTwo)
+    : [];
+  add(sameOrigin, 2);
+  add(sameStyle, 2);
+  add(sameEnding, 2);
+  add(sameOrigin, 2);
+  add(sameStyle, 2);
+  add(sameEnding, 2);
+  return out.slice(0, 6);
+}
+
+/** Phase 3.6 STEP 2: Common Search Variations — 5 bullets, 80–120 words, no links. Semantic reinforcement. */
+function buildCommonSearchVariations(record, categories) {
+  const nameEsc = htmlEscape(record.name);
+  const isBiblical = (categories || []).some((c) => c.name_id === record.id && (c.category || '').toLowerCase() === 'biblical');
+  const genderLine = record.gender
+    ? `Is ${nameEsc} a boy or girl name? ${nameEsc} is typically used as a ${record.gender} name.`
+    : `Is ${nameEsc} a boy or girl name? ${nameEsc} is used for multiple genders.`;
+  const bullets = [
+    `What does ${nameEsc} mean? The meaning and origin are explained above.`,
+    isBiblical ? `Is ${nameEsc} a biblical name? Yes; ${nameEsc} has biblical or religious roots.` : `What is the origin of ${nameEsc}? See the origin section above.`,
+    `How popular is ${nameEsc}? See the popularity section for rank and trends.`,
+    genderLine,
+    `What are middle names for ${nameEsc}? See the Middle Name Ideas section below for complementary options.`,
+  ];
+  const html = '<ul class="search-variations">' + bullets.map((b) => `<li>${b}</li>`).join('') + '</ul>';
+  return `<section aria-labelledby="search-variations-heading"><h2 id="search-variations-heading">Common Search Variations</h2><p class="contextual">People often search for:</p>${html}</section>`;
+}
+
+/** Phase 3.6 STEP 3: Middle Name Ideas — 5 short complementary names (rhythm + syllable balance). No dupes from sibling/cluster/related. */
+function getMiddleNameIdeas(record, names, nameById, excludeIds) {
+  const syl = record.syllables != null ? record.syllables : Math.min(3, Math.max(1, Math.floor((record.name || '').length / 3)));
+  const targetSyl = syl === 1 ? [2, 2, 3, 1, 2] : syl === 2 ? [1, 1, 2, 3, 1] : [1, 2, 2, 1, 2];
+  const exclude = new Set([record.id, ...excludeIds]);
+  const candidates = names.filter((n) => !exclude.has(n.id) && (n.name || '').length <= 8);
+  const bySyl = new Map();
+  candidates.forEach((n) => {
+    const s = n.syllables != null ? n.syllables : Math.min(3, Math.max(1, Math.floor((n.name || '').length / 3)));
+    if (!bySyl.has(s)) bySyl.set(s, []);
+    bySyl.get(s).push(n);
+  });
+  const out = [];
+  for (const want of targetSyl) {
+    const list = bySyl.get(want) || [];
+    for (const n of list) {
+      if (exclude.has(n.id)) continue;
+      exclude.add(n.id);
+      out.push(n);
+      if (out.length >= 5) return out;
+    }
+  }
+  candidates.forEach((n) => {
+    if (out.length >= 5) return;
+    if (exclude.has(n.id)) return;
+    exclude.add(n.id);
+    out.push(n);
+  });
+  return out.slice(0, 5);
+}
+
+/** Phase 3.7 STEP 1: Definition block — 40–60 words, one paragraph, no links. Target definition snippet. */
+function buildDefinitionBlock(record) {
+  const nameEsc = htmlEscape(record.name);
+  const gender = (record.gender || 'given').toLowerCase();
+  const origin = (record.origin_country || record.language || '').trim();
+  const meaning = (record.meaning || '').trim() || '—';
+  let sentence = `<strong>${nameEsc}</strong> is a ${gender} name`;
+  if (origin) sentence += ` of ${htmlEscape(origin)} origin`;
+  sentence += ` meaning "${htmlEscape(meaning)}".`;
+  const wordCount = sentence.split(/\s+/).length;
+  if (wordCount < 40) {
+    sentence += ` It is used as a first name in many cultures. Origin and popularity data are summarized below.`;
+  }
+  return `<div class="definition-block">${sentence}</div>`;
+}
+
+/** Phase 3.7 STEP 2 & 6: Quick FAQ HTML + FAQPage JSON-LD. Three Q&As, answers 40–60 words, no links. Returns { html, schema, faqs }. */
+function buildQuickFaqForName(record, chartData, latestRank) {
+  const name = record.name;
+  const meaning = (record.meaning || '').trim() || '—';
+  const originLabel = [record.origin_country, record.language].filter(Boolean).join(' and ') || 'multiple traditions';
+  const genderLabel = record.gender ? (record.gender === 'boy' ? 'a boy' : record.gender === 'girl' ? 'a girl' : 'a unisex') : 'a unisex';
+  const ans1 = `The name ${name} means "${meaning}". It is of ${originLabel} origin. Meaning and origin are drawn from linguistic and historical sources and reflect the most widely cited interpretation. This page summarizes the standard attribution for the name.`;
+  const ans2 = `${name} is typically used as ${genderLabel} name. Gender association can vary by region and era; the usage above reflects current convention in our dataset. You can browse other names in the same gender category using the links on this page.`;
+  const bestRank = chartData && chartData.length > 0 ? Math.min(...chartData.map((d) => (d.rank != null ? d.rank : 9999))) : (latestRank != null ? latestRank : 9999);
+  const popWord = bestRank <= 100 ? 'highly popular' : bestRank <= 500 ? 'well established' : 'less common';
+  const ans3 = `${name} is ${popWord} in current naming data. When available, the popularity table and chart on this page show rank by country and year. Trends vary by region. Use the table above for detailed rank and count by year.`;
+  const faqs = [
+    { question: `What does the name ${name} mean?`, answer: ans1 },
+    { question: `Is ${name} a boy or girl name?`, answer: ans2 },
+    { question: `How popular is ${name}?`, answer: ans3 },
+  ];
+  const html =
+    '<section class="quick-faq" aria-labelledby="quick-faq-heading">' +
+    '<h2 id="quick-faq-heading">Frequently Asked Questions About ' + htmlEscape(name) + '</h2>' +
+    faqs.map((f) => '<h3>' + htmlEscape(f.question) + '</h3><p>' + htmlEscape(f.answer) + '</p>').join('') +
+    '</section>';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: { '@type': 'Answer', text: q.answer },
+    })),
+  };
+  return { html, schema, faqs };
+}
+
+/** Phase 3.6 STEP 6: How Popular Is [Name] Today? — deterministic band + trend. */
+function buildHowPopularToday(record, chartData, latestRank) {
+  const nameEsc = htmlEscape(record.name);
+  const bestRank = chartData && chartData.length > 0
+    ? Math.min(...chartData.map((d) => d.rank != null ? d.rank : 9999))
+    : (latestRank != null ? latestRank : 9999);
+  let band = 'less common';
+  if (bestRank <= 100) band = 'highly popular';
+  else if (bestRank <= 500) band = 'well established';
+  const analyzed = chartData && chartData.length >= 2 ? analyzeTrend(chartData) : { trend: 'stable' };
+  const trendWord = analyzed.trend === 'rising' ? 'Rising' : analyzed.trend === 'declining' || analyzed.trend === 'peaked' ? 'Declining' : 'Stable';
+  return `<section aria-labelledby="how-popular-heading"><h2 id="how-popular-heading">How Popular Is ${nameEsc} Today?</h2><p class="contextual">${nameEsc} is ${band} in current naming data. The trend is ${trendWord}.</p></section>`;
+}
+
 /** STEP 5: Trim a section list so no 4 names repeat across sections — for each prior set, overlap ≤ 3. */
 function trimSectionToMaxOverlap(list, maxLen, priorIdSets) {
   let out = list.slice(0, maxLen);
@@ -752,6 +897,35 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Related names</h2><p class="name-links">${relatedNamesTrimmed.map(nameLink).join(', ')}</p></section>`
     : '';
 
+  // Phase 3.6: People Also Search For (must not duplicate cluster or sibling blocks)
+  const allPriorIds = new Set([
+    ...clusterBlockIds,
+    ...relatedIds,
+    ...similarIds,
+    ...sameOriginIds,
+    ...sameGenderIds,
+    ...sameLetterTrimmed.map((n) => n.id),
+    ...popularInCountryTrimmed.map((n) => n.id),
+  ]);
+  const peopleAlsoSearchFor = getPeopleAlsoSearchFor(record, names, categories, nameById, allPriorIds);
+  const peopleAlsoSearchForSection =
+    peopleAlsoSearchFor.length > 0
+      ? `<section aria-labelledby="people-also-search-heading"><h2 id="people-also-search-heading">People Also Search For</h2><p class="name-links">${peopleAlsoSearchFor.map(nameLink).join(', ')}</p></section>`
+      : '';
+  const allPriorPlusPas = new Set([...allPriorIds, ...peopleAlsoSearchFor.map((n) => n.id)]);
+  const middleNameIdeas = getMiddleNameIdeas(record, names, nameById, allPriorPlusPas);
+  /** Phase 3.7 STEP 3: List snippet — 8–15 word descriptor per item. */
+  const listItemWithDescriptor = (n) => {
+    const desc = (n.meaning && n.meaning.length > 10)
+      ? (n.meaning.slice(0, 75) + (n.meaning.length > 75 ? '…' : ''))
+      : `A ${n.gender || 'given'} name${(n.origin_country || n.language) ? ' of ' + (n.origin_country || n.language) + ' origin' : ''}.`;
+    return `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a> – ${htmlEscape(desc)}</li>`;
+  };
+  const middleNameIdeasSection =
+    middleNameIdeas.length > 0
+      ? `<section aria-labelledby="middle-name-ideas-heading"><h2 id="middle-name-ideas-heading">Middle Name Ideas for ${htmlEscape(record.name)}</h2><ul class="name-list snippet-list">${middleNameIdeas.map(listItemWithDescriptor).join('')}</ul></section>`
+      : '';
+
   const popRows = (popularity || []).filter((p) => p.name_id === record.id);
   const popByYear = new Map();
   popRows.forEach((p) => {
@@ -789,6 +963,14 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     chartData.length >= 2
       ? `<section aria-labelledby="popularity-over-time-heading" class="popularity-over-time"><h2 id="popularity-over-time-heading">Popularity Over Time</h2>${chartSvg}<p class="popularity-stats">${peakYear ? 'Peak year: ' + peakYear + '. ' : ''}${latestRank != null ? 'Latest rank: ' + latestRank + '. ' : ''}</p><div class="ad-slot ad-slot--after-chart" data-ad-slot="name-popularity-chart" aria-label="Advertisement"></div>${trendSummary ? '<p class="contextual">' + trendSummary + '</p><div class="ad-slot ad-slot--after-trend" data-ad-slot="name-trend" aria-label="Advertisement"></div>' : ''}</section>`
       : '';
+
+  // Phase 3.6 STEP 6: How Popular Is [Name] Today?
+  const howPopularSection = buildHowPopularToday(record, chartData, latestRank);
+  const commonSearchVariationsSection = buildCommonSearchVariations(record, categories);
+
+  // Phase 3.7 STEP 2 & 6: Quick FAQ (HTML + JSON-LD)
+  const quickFaq = buildQuickFaqForName(record, chartData, latestRank);
+  const definitionBlock = buildDefinitionBlock(record);
 
   // Mesh A: Popularity Cluster (Vertical Axis) — 4–6 links
   const peakYearsSorted = chartData.length ? [...chartData].sort((a, b) => (a.rank || 9999) - (b.rank || 9999)).slice(0, 5).map((d) => d.year) : [];
@@ -845,17 +1027,46 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was used in a given country and year, often based on official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
   const internalLinkingPara = `<p class="contextual">Explore the <a href="/">homepage</a> to search names, or the <a href="/names">baby names hub</a> to browse by gender, country, letter, and style. Below you will find related names, same-origin and same-gender options, and links to country and gender hubs.</p>`;
 
+  // Phase 4 STEP 2: Soft conversion block (before FAQ). STEP 6: Certificate link under origin.
+  const certificateLink = '<p><a href="/tools/name-certificate/">Download a printable name meaning certificate</a></p>';
+  const nameReportConversionBlock =
+    '<section class="conversion-block" aria-labelledby="name-report-heading">' +
+    '<h2 id="name-report-heading">Create Your Personalized Name Report</h2>' +
+    '<p class="contextual">Get a single report combining origin, popularity, sibling fit, and middle name ideas for ' + htmlEscape(record.name) + '.</p>' +
+    '<p class="contextual">One document. No ads. Ready to save or print.</p>' +
+    '<ul class="conversion-benefits">' +
+    '<li>Full origin breakdown</li>' +
+    '<li>Popularity trajectory</li>' +
+    '<li>Sibling harmony matrix</li>' +
+    '<li>Middle name pairing grid</li>' +
+    '</ul>' +
+    '<p><a href="/tools/name-report/" class="cta-button">Generate Full Name Report</a></p>' +
+    '</section>';
+  // Phase 4 STEP 4: Email capture (inline, no popup, no JS)
+  const emailCaptureBlock =
+    '<div class="email-capture">' +
+    '<h3>Get curated baby name ideas</h3>' +
+    '<p>Weekly culturally curated name lists.</p>' +
+    '<form action="#" method="get" aria-label="Email signup">' +
+    '<input type="email" name="email" placeholder="Your email" aria-label="Your email">' +
+    '<button type="submit">Subscribe</button>' +
+    '</form>' +
+    '</div>';
+
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
+    ${definitionBlock}
     ${originBadgeHtml(record)}
     ${nameIntro}
     <p><strong>Meaning:</strong> ${htmlEscape(record.meaning || '—')}</p>
     <p><strong>Origin:</strong> ${htmlEscape([record.origin_country, record.language].filter(Boolean).join(' · ') || '—')}</p>
+    ${certificateLink}
     <p><strong>Gender:</strong> ${htmlEscape(record.gender || '—')}</p>
     ${record.phonetic ? `<p><strong>Pronunciation:</strong> ${htmlEscape(record.phonetic)}</p>` : ''}
     ${meaningContext}
     ${popularityContext}
     ${popularityOverTimeSection}
+    ${howPopularSection}
     ${popularYearsSection}
     ${popHtml}
     ${variantsHtml}
@@ -869,11 +1080,17 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${sameGenderSection}
     ${letterSection}
     ${popularCountrySection}
+    ${peopleAlsoSearchForSection}
+    ${middleNameIdeasSection}
+    ${commonSearchVariationsSection}
     ${moreAboutSection}
     ${siblingSlugs && siblingSlugs.has(nameSlug) ? `<section aria-labelledby="sibling-harmony-heading"><h2 id="sibling-harmony-heading">Sibling Name Harmony</h2><p class="contextual">Looking for sibling names that pair well with ${htmlEscape(record.name)}? See <a href="/names/${nameSlug}/siblings/">sibling names that pair well with ${htmlEscape(record.name)}</a> for harmony scores and suggestions.</p></section>` : ''}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${internalLinkingPara}
+    ${nameReportConversionBlock}
+    ${emailCaptureBlock}
+    ${quickFaq.html}
     ${browseSection}
   `;
 
@@ -890,6 +1107,17 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const popSchema = popularityJsonLd(record, chartData, peakYear, latestRank);
   if (popSchema) namePageSchemas.push(popSchema);
 
+  // Phase 3.7 STEP 7: Snippet guard — definition, FAQ, FAQ JSON-LD, no answer under 30 words
+  const wordCount = (s) => (s || '').split(/\s+/).filter(Boolean).length;
+  if (!definitionBlock || definitionBlock.length < 10) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing definition block.`);
+  if (!quickFaq.html || quickFaq.html.length < 50) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing FAQ section.`);
+  if (!quickFaq.schema || !quickFaq.schema.mainEntity || quickFaq.schema.mainEntity.length !== 3) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing or invalid FAQ JSON-LD.`);
+  const questionSet = new Set(quickFaq.faqs.map((f) => f.question));
+  if (questionSet.size !== 3) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ duplicate FAQ questions.`);
+  quickFaq.faqs.forEach((f, i) => {
+    if (wordCount(f.answer) < 30) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has fewer than 30 words.`);
+  });
+
   const html = baseLayout({
     title: record.name + ' — Meaning, Origin & Popularity',
     description: uniqueDescription.slice(0, 160),
@@ -899,12 +1127,13 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent,
     extraSchema: namePageSchemas,
+    faqSchema: quickFaq.schema,
   });
 
-  // STEP 6: Mesh density — name detail pages must have ≥ 30 internal links
+  // Phase 3.6 STEP 7: Name pages must have ≥ 40 internal links
   const internalLinkCount = countInternalLinksInContent(html);
-  if (internalLinkCount < 30) {
-    throw new Error(`Phase 3.5 STEP 6: Name page /name/${nameSlug}/ has ${internalLinkCount} internal links (minimum 30). Fix mesh density.`);
+  if (internalLinkCount < 40) {
+    throw new Error(`Phase 3.6 STEP 7: Name page /name/${nameSlug}/ has ${internalLinkCount} internal links (minimum 40). Fix mesh density.`);
   }
 
   const outPath = path.join(OUT_DIR, 'name', nameSlug, 'index.html');
@@ -1288,6 +1517,26 @@ function generateLetterPage(letter, subset, allLettersWithNames, popularity) {
         '</section>'
       : '';
 
+  // Phase 3.6 STEP 5 + Phase 3.7 STEP 3: Short/Unique names as ul/li with 8–15 word descriptor
+  const listItemDesc = (n) => {
+    const desc = (n.meaning && n.meaning.length > 10) ? (n.meaning.slice(0, 75) + (n.meaning.length > 75 ? '…' : '')) : `A ${n.gender || 'given'} name${(n.origin_country || n.language) ? ' of ' + (n.origin_country || n.language) + ' origin' : ''}.`;
+    return `<li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a> – ${htmlEscape(desc)}</li>`;
+  };
+  const shortNamesLetter = subset.filter((n) => (n.name || '').length <= 4).slice(0, 5);
+  const shortNamesLetterSection =
+    shortNamesLetter.length > 0
+      ? '<section aria-labelledby="short-names-letter-heading"><h2 id="short-names-letter-heading">Short Names Starting With ' + letterUpper + '</h2><ul class="name-list snippet-list">' +
+        shortNamesLetter.map(listItemDesc).join('') +
+        '</ul><p class="contextual">Short names (four letters or fewer) starting with ' + letterUpper + ' are easy to spell and remember. They work well as first or middle names and pair with longer surnames. Each name above links to its full meaning, origin, and popularity.</p></section>'
+      : '';
+  const uniqueNamesLetter = letterUnique.slice(0, 5);
+  const uniqueNamesLetterSection =
+    uniqueNamesLetter.length > 0
+      ? '<section aria-labelledby="unique-names-letter-heading"><h2 id="unique-names-letter-heading">Unique Names Starting With ' + letterUpper + '</h2><ul class="name-list snippet-list">' +
+        uniqueNamesLetter.map(listItemDesc).join('') +
+        '</ul><p class="contextual">These names starting with ' + letterUpper + ' are less common in current rankings, offering a distinctive choice. Each links to meaning, origin, and popularity so you can compare with more popular options.</p></section>'
+      : '';
+
   const listHtml =
     subset.length > 0
       ? '<ul class="name-list">' +
@@ -1311,6 +1560,8 @@ function generateLetterPage(letter, subset, allLettersWithNames, popularity) {
     ${countrySectionHtml()}
     ${lateralSectionLetter}
     ${popularVsUniqueLetterSection}
+    ${shortNamesLetterSection}
+    ${uniqueNamesLetterSection}
     <section aria-labelledby="names-heading"><h2 id="names-heading">Names</h2>
     ${listHtml}
     </section>
@@ -1519,14 +1770,43 @@ function generateCountryPage(c, slugKey, allNames, popularity) {
       : '';
 
   const coreSection = '<section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2><p class="core-links">' + coreLinksHtml() + '</p></section>';
+  // Phase 4 STEP 4: Email capture at bottom of country pages (inline, no popup)
+  const emailCaptureCountry = '<div class="email-capture"><h3>Get curated baby name ideas</h3><p>Weekly culturally curated name lists.</p><form action="#" method="get" aria-label="Email signup"><input type="email" name="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe</button></form></div>';
   const list = (arr) => arr.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ');
   const section = (id, title, items) =>
     items.length > 0
       ? `<section aria-labelledby="${id}"><h2 id="${id}">${htmlEscape(title)}</h2><p class="name-links">${list(items)}</p></section>`
       : '';
 
+  // Phase 3.6 STEP 4: Popular vs Traditional Names in [Country] — 5 modern + 5 traditional, 150–200 words
+  const topPopularForCountry = popularNames.slice(0, 5);
+  const popularIdSet = new Set(popularIds.slice(0, 20));
+  const bestRankCountry = getBestRankPerName(popularity);
+  const traditionalCandidates = names
+    .filter((n) => !popularIdSet.has(n.id))
+    .map((n) => ({ n, rank: bestRankCountry.get(n.id) ?? 999999 }))
+    .sort((a, b) => b.rank - a.rank)
+    .slice(0, 5)
+    .map((x) => x.n);
+  // Phase 3.7 STEP 3: List snippet format — ul/li with 8–15 word descriptor
+  const listItemDescCountry = (n) => {
+    const desc = (n.meaning && n.meaning.length > 10) ? (n.meaning.slice(0, 75) + (n.meaning.length > 75 ? '…' : '')) : `A ${n.gender || 'given'} name of ${countryLabel} origin.`;
+    return '<li><a href="' + nameDetailPath(n.name) + '">' + htmlEscape(n.name) + '</a> – ' + htmlEscape(desc) + '</li>';
+  };
+  const popularVsTraditionalSection =
+    (topPopularForCountry.length > 0 || traditionalCandidates.length > 0)
+      ? '<section aria-labelledby="popular-traditional-heading"><h2 id="popular-traditional-heading">Popular vs Traditional Names in ' + htmlEscape(countryLabel) + '</h2>' +
+        (topPopularForCountry.length > 0 ? '<p><strong>Modern high-popularity:</strong></p><ul class="name-list snippet-list">' + topPopularForCountry.map(listItemDescCountry).join('') + '</ul>' : '') +
+        (traditionalCandidates.length > 0 ? '<p><strong>Traditional origin-rooted:</strong></p><ul class="name-list snippet-list">' + traditionalCandidates.map(listItemDescCountry).join('') + '</ul>' : '') +
+        '<p class="contextual">Names from ' + htmlEscape(countryLabel) + ' span both current trends and long-standing tradition. Modern high-popularity names often reflect recent birth statistics and rising usage in this region. Traditional names are those firmly rooted in the language and culture of ' + htmlEscape(countryLabel) + ', sometimes less common in rankings but widely recognized for their heritage. Parents may choose a popular name for familiarity or a traditional name to honor roots. Both lists link to full meaning and origin.</p></section>'
+      : '';
+
+  // Phase 3.7 STEP 5: Country page definition block — 50–70 words, no links
+  const countryDefBlock = '<div class="definition-block">Names from ' + htmlEscape(countryLabel) + ' often reflect the region’s linguistic roots, cultural heritage, and traditional naming patterns. This page lists first names associated with ' + htmlEscape(countryLabel) + ' by origin, language, or popularity there. Each name links to its full meaning, origin, and popularity. Use the filters below to narrow by gender or browse by letter.</div>';
+
   const mainContent = `
     <h1>Names from ${htmlEscape(countryLabel)}</h1>
+    ${countryDefBlock}
     <p class="local-culture">${htmlEscape(cultureText)}</p>
     ${buildCategoryDiffSection('country', { countryLabel })}
     ${COUNTRY_PAGE_INTRO_BLOCK}
@@ -1537,6 +1817,7 @@ function generateCountryPage(c, slugKey, allNames, popularity) {
     <p>${filterLinks.map((l) => `<a href="${l.href}">${htmlEscape(l.text)}</a>`).join(' · ')}</p>
     </section>
     ${lateralSectionCountry}
+    ${popularVsTraditionalSection}
 
     ${section('trending-heading', 'Trending names', trendingNames)}
     ${section('popular-heading', 'Popular names', popularNames)}
@@ -1546,6 +1827,7 @@ function generateCountryPage(c, slugKey, allNames, popularity) {
     <p class="name-links">${list(names.slice(0, 80))}</p>
     ${names.length > 80 ? `<p><a href="/names">Browse all names</a></p>` : ''}
     </section>
+    ${emailCaptureCountry}
     ${coreSection}
   `;
 

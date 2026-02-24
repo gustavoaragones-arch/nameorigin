@@ -260,6 +260,20 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     <p class="contextual">Use the links below to browse by gender, country, or letter. Try the <a href="/names/with-last-name${EXT}">last name compatibility</a> tool to see how ${nameEsc} sounds with your surname, or explore <a href="${namesLikeUrl(nameSlug)}">names like ${nameEsc}</a> for alternatives that share similar style and sound. Each name in the harmony table links to its full profile with meaning, origin, and popularity.</p>
     </section>`;
 
+  // Phase 4 STEP 5: Premium sibling report upgrade
+  const siblingReportUpgradeHtml = `
+    <section class="conversion-block" aria-labelledby="sibling-report-heading">
+    <h2 id="sibling-report-heading">Get the Full Sibling Compatibility Report</h2>
+    <p class="contextual">Go beyond the top 12 with a full report: 50-name compatibility matrix, style compatibility scoring, phonetic match index, and cultural alignment analysis.</p>
+    <ul class="conversion-benefits">
+    <li>50-name compatibility matrix</li>
+    <li>Style compatibility scoring</li>
+    <li>Phonetic match index</li>
+    <li>Cultural alignment analysis</li>
+    </ul>
+    <p><a href="/tools/sibling-report/" class="cta-button">Get the Full Sibling Compatibility Report</a></p>
+    </section>`;
+
   const mainContent = `
     <h1>Sibling names that pair well with ${nameEsc}</h1>
     ${summaryBlock}
@@ -269,6 +283,7 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
     ${stylisticCohesionHtml}
     ${contrastHtml}
     ${whySiblingHarmonyHtml}
+    ${siblingReportUpgradeHtml}
     ${genderSectionHtml()}
     ${countrySectionHtml()}
     ${coreLinksHtml()}
