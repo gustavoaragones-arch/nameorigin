@@ -120,7 +120,8 @@ function baseLayout(opts) {
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer__bottom">
-        <p class="mb-0">© nameorigin.io — Curated name meanings and origins. No AI-generated content.</p>
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
       </div>
     </div>
   </footer>

@@ -376,7 +376,8 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0">© nameorigin.io — Curated name meanings and origins.</p>
+      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
     </div>
   </footer>
 </body>

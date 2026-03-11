@@ -264,7 +264,8 @@ function run() {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins.</p>
+      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
     </div>
   </footer>
 </body>
@@ -349,7 +350,7 @@ function run() {
     <p class="internal-links">${hubLinks.map((l) => `<a href="${l.href}">${l.text}</a>`).join(' · ')}</p>
     </section>
   </main>
-  <footer class="site-footer"><div class="container"><p><a href="/">nameorigin.io</a></p></div></footer>
+  <footer class="site-footer"><div class="container"><p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p></div></footer>
 </body>
 </html>`;
   fs.mkdirSync(path.join(OUT_DIR, 'trends'), { recursive: true });

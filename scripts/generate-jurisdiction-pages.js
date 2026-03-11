@@ -296,7 +296,8 @@ function run() {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins. Data: official civil registry and government open data.</p>
+      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
     </div>
   </footer>
 </body>

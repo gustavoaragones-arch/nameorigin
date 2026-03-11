@@ -77,6 +77,7 @@ function run() {
   const names = loadJson('names');
   const countries = loadJson('countries');
   const lastNames = loadJson('last-names');
+  const popularity = loadJson('popularity');
 
   const sitemapsDir = path.join(OUT_DIR, 'sitemaps');
   if (!fs.existsSync(sitemapsDir)) fs.mkdirSync(sitemapsDir, { recursive: true });
@@ -116,9 +117,9 @@ function run() {
   STYLE_CONFIG.forEach((s) => filterUrls.push('/names/style/' + s.slug + EXT));
   LETTERS.forEach((l) => filterUrls.push('/names/' + l + EXT));
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
-  filterUrls.push('/legal/privacy.html', '/legal/terms.html');
+  filterUrls.push('/legal/privacy.html', '/legal/terms.html', '/about/');
   filterUrls.push('/popularity/', '/compatibility/', '/compare/', '/trends/', '/trends/us-2025-vs-2015/');
-  for (let y = 1980; y <= 2024; y++) filterUrls.push('/popularity/' + y + EXT);
+  [2022, 2023, 2024].forEach((y) => filterUrls.push('/popularity/' + y + EXT));
   const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
   console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
 
@@ -141,7 +142,6 @@ function run() {
   const COMPARE_PAIRS = ['us-vs-uk', 'us-vs-canada', 'uk-vs-australia', 'france-vs-spain', 'germany-vs-us'];
   // Phase 3.3: Jurisdiction compare URLs not in sitemap until generate-jurisdiction-compare-pages.js is in rebuild.
   const compareUrls = ['/compare/', ...COMPARE_PAIRS.map((p) => '/compare/' + p + '/')];
-  const popularity = loadJson('popularity');
   if (popularity.length > 0 && names.length > 0) {
     const yearLatest = Math.max(...new Set(popularity.map((p) => p.year).filter(Boolean)));
     const scoreById = new Map();

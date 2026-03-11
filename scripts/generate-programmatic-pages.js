@@ -264,7 +264,8 @@ function baseLayout(opts) {
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer__bottom">
-        <p class="mb-0"><a href="/">nameorigin.io</a> — Curated name meanings and origins.</p>
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
       </div>
     </div>
   </footer>
@@ -972,23 +973,25 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const quickFaq = buildQuickFaqForName(record, chartData, latestRank);
   const definitionBlock = buildDefinitionBlock(record);
 
-  // Mesh A: Popularity Cluster (Vertical Axis) — 4–6 links
+  // Mesh A: Popularity Cluster — only link to years we generate (2022, 2023, 2024)
+  const POPULARITY_YEARS = [2022, 2023, 2024];
   const peakYearsSorted = chartData.length ? [...chartData].sort((a, b) => (a.rank || 9999) - (b.rank || 9999)).slice(0, 5).map((d) => d.year) : [];
   const allYearsInData = (popularity || []).map((p) => p.year).filter(Boolean);
-  const currentYear = allYearsInData.length > 0 ? Math.max(...allYearsInData) : new Date().getFullYear();
+  const currentYearRaw = allYearsInData.length > 0 ? Math.max(...allYearsInData) : new Date().getFullYear();
+  const currentYear = POPULARITY_YEARS.includes(currentYearRaw) ? currentYearRaw : Math.min(2024, currentYearRaw) || 2024;
   const peakRank = peakYear && chartData.length ? (chartData.find((d) => d.year === peakYear) || {}).rank : null;
   const yearLinks = [];
-  if (peakYear) yearLinks.push('<a href="/popularity/' + peakYear + EXT + '">' + htmlEscape(record.name) + (peakRank ? ' ranked #' + peakRank + ' in ' : ' in ') + peakYear + '</a>');
+  if (peakYear && POPULARITY_YEARS.includes(peakYear)) yearLinks.push('<a href="/popularity/' + peakYear + EXT + '">' + htmlEscape(record.name) + (peakRank ? ' ranked #' + peakRank + ' in ' : ' in ') + peakYear + '</a>');
   yearLinks.push('<a href="/popularity/' + currentYear + EXT + '">Top names of ' + currentYear + '</a>');
-  peakYearsSorted.filter((y) => y !== peakYear && y !== currentYear).slice(0, 3).forEach((y) => {
+  peakYearsSorted.filter((y) => POPULARITY_YEARS.includes(y) && y !== peakYear && y !== currentYear).slice(0, 3).forEach((y) => {
     yearLinks.push('<a href="/popularity/' + y + EXT + '">See top names in ' + y + '</a>');
   });
   if (chartData.length >= 2) {
     const yearsAsc = chartData.map((d) => d.year).sort((a, b) => a - b);
     const firstY = yearsAsc[0];
     const lastY = yearsAsc[yearsAsc.length - 1];
-    if (firstY && firstY !== peakYear && firstY !== currentYear && !yearLinks.some((l) => l.includes(firstY))) yearLinks.push('<a href="/popularity/' + firstY + EXT + '">' + firstY + '</a>');
-    if (lastY && lastY !== firstY && lastY !== peakYear && lastY !== currentYear && !yearLinks.some((l) => l.includes(lastY))) yearLinks.push('<a href="/popularity/' + lastY + EXT + '">' + lastY + '</a>');
+    if (firstY && POPULARITY_YEARS.includes(firstY) && firstY !== peakYear && firstY !== currentYear && !yearLinks.some((l) => l.includes(firstY))) yearLinks.push('<a href="/popularity/' + firstY + EXT + '">' + firstY + '</a>');
+    if (lastY && POPULARITY_YEARS.includes(lastY) && lastY !== firstY && lastY !== peakYear && lastY !== currentYear && !yearLinks.some((l) => l.includes(lastY))) yearLinks.push('<a href="/popularity/' + lastY + EXT + '">' + lastY + '</a>');
   }
   yearLinks.push('<a href="/popularity/">Explore trends by year</a>');
   const popularYearsSection =
@@ -1427,7 +1430,24 @@ function getPopularVsUniqueInCategory(names, popularity, limit = 5) {
   return { topPopular, topUnique };
 }
 
-function generateListPage(title, description, pathSeg, names, listTitle, popularity) {
+/** Phase 3.7: Build name explorer grid HTML (links to /name/{slug}/). */
+function buildNameExplorerGridHtml(explorerNames, cap = 200) {
+  const list = (explorerNames || []).slice(0, cap);
+  if (list.length === 0) return '';
+  const links = list
+    .map((n) => {
+      const label = (n.name || '').charAt(0).toUpperCase() + (n.name || '').slice(1).toLowerCase();
+      return `<a href="${nameDetailPath(n.name)}">${htmlEscape(label)}</a>`;
+    })
+    .join('\n  ');
+  return `<section class="section section--tight" aria-labelledby="explore-names-hub-heading">
+    <h2 id="explore-names-hub-heading" class="section-heading">Explore Baby Names</h2>
+    <p class="name-explorer-intro">Browse the directory: thousands of names with meanings, origin analysis, popularity data, and related suggestions. Below are ${list.length} popular names to start with.</p>
+    <div class="name-explorer-grid">\n  ${links}\n    </div>
+  </section>`;
+}
+
+function generateListPage(title, description, pathSeg, names, listTitle, popularity, explorerGridNames) {
   const url = SITE_URL + pathSeg;
   const secondLabel = pathSeg === '/names' ? BREADCRUMB_NAMES_LABEL : (listTitle || 'Names');
   const breadcrumbItems = [
@@ -1447,6 +1467,7 @@ function generateListPage(title, description, pathSeg, names, listTitle, popular
         (topUnique.length > 0 ? '<p class="name-links"><strong>Unique:</strong> ' + topUnique.map((n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`).join(', ') + '</p>' : '') +
         '</section>'
       : '';
+  const explorerGridSection = (explorerGridNames && explorerGridNames.length > 0) ? buildNameExplorerGridHtml(explorerGridNames, 200) : '';
   const html = baseLayout({
     title: title + ' | nameorigin.io',
     description,
@@ -1455,6 +1476,7 @@ function generateListPage(title, description, pathSeg, names, listTitle, popular
     breadcrumbHtml: breadcrumbHtml(breadcrumbItems.map((i) => ({ ...i, url: i.url.replace(SITE_URL, '') }))),
     mainContent: `<h1>${htmlEscape(title)}</h1>
     ${listIntro}
+    ${explorerGridSection}
     ${['boy', 'girl', 'unisex'].includes(listTitle) ? buildCategoryDiffSection('gender', { gender: listTitle }) : ''}
     ${popularVsUniqueSection}
     <p class="core-links">${coreLinksHtml()}</p>
@@ -2276,21 +2298,30 @@ function run() {
   // Phase 2.5: Names Like pages are generated separately via scripts/generate-names-like.js
   // Run: node scripts/generate-names-like.js --batch=50 (then expand to 200 if authority score ≥ 0.99)
 
-  // /names
+  const nameById = new Map(names.map((n) => [n.id, n]));
+
+  // /names — Phase 3.7: add 200-name explorer grid for crawl accelerator
+  const popular200Ids = getPopularNameIds(popularity, 200);
+  const explorer200 = popular200Ids.map((id) => nameById.get(id)).filter(Boolean);
+  if (explorer200.length < 200) {
+    const have = new Set(explorer200.map((n) => n.id));
+    explorer200.push(...names.filter((n) => !have.has(n.id)).slice(0, 200 - explorer200.length));
+  }
+  const namesHubExplorerNames = explorer200.slice(0, 200);
   const namesHtml = generateListPage(
     'All names',
     'Browse all first names with meaning and origin.',
     '/names',
     names,
     'Names',
-    popularity
+    popularity,
+    namesHubExplorerNames
   );
   fs.writeFileSync(path.join(OUT_DIR, 'names', 'index.html'), namesHtml, 'utf8');
 
   // Core list pages: trending names, top names (for internal link graph) — static .html
   const trendingIds = getTrendingNameIds(popularity, 80);
   const popularIds = getPopularNameIds(popularity, 80);
-  const nameById = new Map(names.map((n) => [n.id, n]));
   const trendingNames = trendingIds.map((id) => nameById.get(id)).filter(Boolean);
   const popularNames = popularIds.map((id) => nameById.get(id)).filter(Boolean);
   fs.writeFileSync(

@@ -1179,6 +1179,14 @@ button, input, select, textarea {
 .browse-grid__links li { margin-bottom: var(--space-2); }
 .browse-grid__links a { margin-right: var(--space-2); }
 
+/* Phase 3.7: Homepage explorer grid — crawl accelerator */
+.name-explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+.name-explorer-intro { margin-bottom: var(--space-4); }
+
 .footer-grid {
   display: grid;
   gap: var(--space-8);
