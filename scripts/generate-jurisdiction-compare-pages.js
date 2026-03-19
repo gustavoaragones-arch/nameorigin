@@ -310,6 +310,7 @@ function run() {
     <div class="container">
       <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
 nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
+      <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
     </div>
   </footer>
 </body>

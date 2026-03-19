@@ -74,6 +74,7 @@ function layout(opts) {
     <div class="container">
       <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
 nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
+      <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
     </div>
   </footer>
 </body>
@@ -94,8 +95,10 @@ function run() {
     <p class="contextual">As a static website, nameorigin.io minimizes data collection. We do not require accounts or logins. When you visit the site, your browser may send standard request data (IP address, user agent, referrer) to our hosting provider. We do not use this data for profiling or advertising. Server logs may be retained for security and operational purposes only.</p>
     <p class="contextual">We do not use cookies for tracking. If we use analytics, they would be configured to respect privacy (e.g. anonymized IP, no cross-site tracking). Third-party scripts, if any, are limited and disclosed. We do not share personal data with advertisers or third parties for marketing.</p>
     <p class="contextual">Name data on this site is for informational purposes only. It is derived from public sources and curated for meaning, origin, and popularity. We do not collect or store names you search for or names you view. All content is static and pre-generated.</p>
-    <p class="contextual">If you have questions about privacy, you can contact us through the site. We may update this policy from time to time. Continued use of the site after changes constitutes acceptance. For terms of use, see the <a href="/legal/terms.html">Terms of use</a> page.</p>
+    <p class="contextual">We may update this policy from time to time. Continued use of the site after changes constitutes acceptance. For terms of use, see the <a href="/legal/terms.html">Terms of use</a> page.</p>
     <p class="contextual">Data retention: We do not retain personal data beyond what is necessary for operating the site. Server logs may be kept for a limited period. We comply with applicable data protection laws to the extent they apply to our minimal data practices.</p>
+    <h2>Contact</h2>
+    <p>If you have questions about this policy, you can contact us at <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a>.</p>
   `;
 
   const termsContent = `
@@ -143,6 +146,8 @@ function run() {
     <p class="contextual">Popularity rankings reflect official birth records where available. Name meanings and origins are drawn from published reference works and cultural sources; we cite or summarize rather than invent. The site does not offer client services or custom research; it is a self-service resource for parents and anyone curious about name meanings and trends.</p>
     <p class="contextual">If you are looking for a name by style, try the <a href="/style-name-pages.html">style name pages</a> or <a href="/alphabet-name-pages.html">alphabet index</a>. For sibling name ideas, many name pages link to sibling harmony suggestions. Year-over-year movement is visible on the <a href="/popularity/">popularity by year</a> pages and in the <a href="/names/popular.html">popular names</a> and <a href="/names/trending.html">trending names</a> lists. Content is provided as-is; for accuracy and suitability, see our <a href="/legal/terms.html">Terms of use</a>.</p>
     <p class="contextual">We do not require an account to browse or read content. For policy details, see our <a href="/legal/privacy.html">Privacy policy</a> and <a href="/legal/terms.html">Terms of use</a>. Use the explore links below to reach the main hubs and legal pages.</p>
+    <h2>Contact</h2>
+    <p>For inquiries, corrections, or general questions, you can contact us at <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a>.</p>
   `;
   fs.mkdirSync(path.join(OUT_DIR, 'about'), { recursive: true });
   const aboutHtml = layout({
