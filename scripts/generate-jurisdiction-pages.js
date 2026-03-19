@@ -19,6 +19,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 /** USA: top 10 by population. Canada: top 5 provinces. */
 const JURISDICTIONS = [
@@ -217,6 +218,14 @@ function run() {
       { name: countryLabel, url: countryPage },
       { name: label, url: pathSeg },
     ];
+    const jurisdictionArticleLd = JSON.stringify(
+      mergeArticleSchema({
+        headline: 'Baby names in ' + label,
+        description: directSummary.slice(0, 160),
+        publisher: { '@type': 'Organization', name: 'NameOrigin.io', url: SITE_URL },
+        mainEntityOfPage: SITE_URL + pathSeg,
+      }),
+    );
 
     const mainContent = `
     <h1>Baby names in ${htmlEscape(label)}</h1>
@@ -268,7 +277,7 @@ function run() {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${SITE_URL}${pathSeg}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd(breadcrumbItems))}</script>
-  <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Article', headline: 'Baby names in ' + label, description: directSummary.slice(0, 160), author: { '@type': 'Organization', name: 'NameOrigin' }, publisher: { '@type': 'Organization', name: 'NameOrigin', url: SITE_URL }, mainEntityOfPage: SITE_URL + pathSeg })}</script>
+  <script type="application/ld+json">${jurisdictionArticleLd}</script>
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [
     { '@type': 'Question', name: 'What names are popular in ' + label + '?', acceptedAnswer: { '@type': 'Answer', text: 'Top names are shown in the tables above, using national ' + countryLabel + ' rankings until state- or province-level data is integrated. Each name links to its full profile.' } },
     { '@type': 'Question', name: 'Where does the data come from?', acceptedAnswer: { '@type': 'Answer', text: 'We use official civil registry and government open data only (e.g. U.S. SSA, Statistics Canada). No scraping or unverified sources.' } }

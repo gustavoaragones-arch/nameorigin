@@ -28,6 +28,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const TOP_N = 20;
 
 function loadJson(name) {
@@ -87,6 +88,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${aeoArticleSchema}</script>
   ${extraSchemaHtml}
 </head>
 <body>

@@ -13,6 +13,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { namesLikeUrl } = require('./url-helpers.js');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -269,6 +270,7 @@ function baseLayout(opts) {
   const canonical = opts.canonical != null ? opts.canonical : SITE_URL + pathSeg;
   const breadcrumbItems = opts.breadcrumb && opts.breadcrumb.length ? opts.breadcrumb : [{ name: 'Home', url: '/' }, { name: 'Compare', url: '/compare/' }];
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
+  const aeoArticleSchema = JSON.stringify(mergeArticleSchema());
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,6 +282,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${aeoArticleSchema}</script>
 </head>
 <body>
   <header class="site-header" role="banner">

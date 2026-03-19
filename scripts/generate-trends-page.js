@@ -16,6 +16,7 @@ const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const { writeHtmlWithGuard } = require('./phase-3.4-guards.js');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
 
@@ -203,16 +204,14 @@ function run() {
     })),
   };
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+  const pathSeg = '/trends/us-2025-vs-2015/';
+  const articleSchema = mergeArticleSchema({
     headline: 'Top 5 Trending Names in the USA: ' + yearLatest + ' vs ' + yearPast,
     description: directAnswer,
-    author: { '@type': 'Organization', name: 'NameOrigin' },
-    publisher: { '@type': 'Organization', name: 'NameOrigin', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'NameOrigin.io', url: SITE_URL },
     datePublished: new Date().toISOString().slice(0, 10),
-    mainEntityOfPage: SITE_URL + '/trends/us-2025-vs-2015/',
-  };
+    mainEntityOfPage: SITE_URL + pathSeg,
+  });
 
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -224,7 +223,6 @@ function run() {
     })),
   };
 
-  const pathSeg = '/trends/us-2025-vs-2015/';
   const breadcrumbHtml = '<nav aria-label="Breadcrumb" class="breadcrumb">' +
     breadcrumbItems.map((item, i) => i < breadcrumbItems.length - 1
       ? `<a href="${htmlEscape(item.url)}">${htmlEscape(item.name)}</a>`
@@ -332,6 +330,12 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
   <title>Name Trends | NameOrigin</title>
   <link rel="canonical" href="${SITE_URL}/trends/" />
   <link rel="stylesheet" href="/styles.min.css">
+  <script type="application/ld+json">${JSON.stringify(mergeArticleSchema({
+    headline: 'Name trends',
+    description: hubMetaDesc,
+    publisher: { '@type': 'Organization', name: 'NameOrigin.io', url: SITE_URL },
+    mainEntityOfPage: SITE_URL + '/trends/',
+  }))}</script>
 </head>
 <body>
   <header class="site-header" role="banner"><div class="container"><a href="/" class="site-logo">nameorigin.io</a><nav class="site-nav"><a href="/names">Names</a><a href="/compare/">Compare</a><a href="/popularity/">Popularity</a></nav></div></header>

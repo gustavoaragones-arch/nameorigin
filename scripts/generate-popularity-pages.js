@@ -14,6 +14,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 const ALLOWED_YEARS = [2022, 2023, 2024];
 
@@ -67,6 +68,7 @@ function baseLayout(opts) {
   const canonical = opts.canonical != null ? opts.canonical : SITE_URL + pathSeg;
   const breadcrumbItems = opts.breadcrumb && opts.breadcrumb.length ? opts.breadcrumb : [{ name: 'Home', url: SITE_URL + '/' }, { name: title.replace(/\s*\|\s*NameOrigin\s*$/i, '').trim() || 'Names', url: SITE_URL + pathSeg }];
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
+  const aeoArticleSchema = JSON.stringify(mergeArticleSchema());
   const extraSchemaHtml = opts.extraSchema
     ? (Array.isArray(opts.extraSchema) ? opts.extraSchema : [opts.extraSchema]).filter(Boolean).map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n  ')
     : '';
@@ -81,6 +83,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${aeoArticleSchema}</script>
   ${extraSchemaHtml}
 </head>
 <body>

@@ -16,6 +16,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const { getTopSiblingMatches } = require('./generate-sibling-harmony.js');
 const { namesLikeUrl } = require('./url-helpers.js');
 
@@ -332,12 +333,10 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
       { '@type': 'Question', name: 'What names clash with ' + baseRecord.name + '?', acceptedAnswer: { '@type': 'Answer', text: 'Names that differ strongly in origin, style, syllable count, or popularity band tend to score lower and may feel mismatched as siblings.' } },
     ],
   };
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+  const articleSchema = mergeArticleSchema({
     headline: 'Sibling names that pair well with ' + baseRecord.name,
     description: 'Top sibling names for ' + baseRecord.name + ' based on harmony score, shared origin, and style match.',
-  };
+  });
 
   const breadcrumbSchema = breadcrumbJsonLd(breadcrumbItems);
   const html = `<!DOCTYPE html>

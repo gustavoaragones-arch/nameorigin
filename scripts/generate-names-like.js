@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { namesLikeUrl } = require('./url-helpers.js');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
@@ -84,6 +85,7 @@ function baseLayout(opts) {
   const canonical = opts.canonical != null ? opts.canonical : SITE_URL + pathSeg;
   const breadcrumbItems = opts.breadcrumb && opts.breadcrumb.length ? opts.breadcrumb : [{ name: 'Home', url: SITE_URL + '/' }, { name: title.replace(/\s*\|\s*nameorigin\.io\s*$/i, '').trim() || 'Names', url: SITE_URL + pathSeg }];
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
+  const aeoArticleSchema = JSON.stringify(mergeArticleSchema());
   const mainContent = opts.mainContent || '';
 
   return `<!DOCTYPE html>
@@ -97,6 +99,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${aeoArticleSchema}</script>
 </head>
 <body>
   <header class="site-header" role="banner">

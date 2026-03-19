@@ -6,6 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 const ROOT = path.join(__dirname, '..');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
@@ -52,6 +53,7 @@ function layout(opts) {
   <title>${htmlEscape(opts.title)} | nameorigin.io</title>
   <link rel="canonical" href="${htmlEscape(opts.canonical)}">
   <link rel="stylesheet" href="/styles.min.css">
+  <script type="application/ld+json">${JSON.stringify(mergeArticleSchema())}</script>
 </head>
 <body>
   <header class="site-header" role="banner">

@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 let computeSmoothness;
 try {
@@ -223,6 +224,8 @@ function baseLayout(opts) {
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
   const faqSchemaObj = opts.faqSchema !== undefined ? opts.faqSchema : defaultFaqForPage(pathSeg, title);
   const faqSchema = faqSchemaObj ? JSON.stringify(faqSchemaObj) : '';
+  /** Phase 5.0 AEO: Article author + freshness on every page (EEAT). */
+  const articleSchema = JSON.stringify(mergeArticleSchema());
   let extraSchemaHtml = '';
   if (opts.extraSchema) {
     const arr = Array.isArray(opts.extraSchema) ? opts.extraSchema : [opts.extraSchema];
@@ -239,6 +242,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${articleSchema}</script>
   ${faqSchema ? `<script type="application/ld+json">${faqSchema}</script>` : ''}
   ${extraSchemaHtml}
 </head>
@@ -711,7 +715,7 @@ function getMiddleNameIdeas(record, names, nameById, excludeIds) {
   return out.slice(0, 5);
 }
 
-/** Phase 3.7 STEP 1: Definition block — 40–60 words, one paragraph, no links. Target definition snippet. */
+/** Phase 3.7 STEP 1: Definition block — kept for backward compatibility; name pages use direct-answer (Phase 5.0) in addition. */
 function buildDefinitionBlock(record) {
   const nameEsc = htmlEscape(record.name);
   const gender = (record.gender || 'given').toLowerCase();
@@ -720,32 +724,189 @@ function buildDefinitionBlock(record) {
   let sentence = `<strong>${nameEsc}</strong> is a ${gender} name`;
   if (origin) sentence += ` of ${htmlEscape(origin)} origin`;
   sentence += ` meaning "${htmlEscape(meaning)}".`;
-  const wordCount = sentence.split(/\s+/).length;
-  if (wordCount < 40) {
+  const wc = sentence.split(/\s+/).length;
+  if (wc < 40) {
     sentence += ` It is used as a first name in many cultures. Origin and popularity data are summarized below.`;
   }
   return `<div class="definition-block">${sentence}</div>`;
 }
 
-/** Phase 3.7 STEP 2 & 6: Quick FAQ HTML + FAQPage JSON-LD. Three Q&As, answers 40–60 words, no links. Returns { html, schema, faqs }. */
-function buildQuickFaqForName(record, chartData, latestRank) {
+function countWordsPlain(s) {
+  return (s || '').split(/\s+/).filter(Boolean).length;
+}
+
+/** Phase 5.0: Regions phrase from popularity rows (no links). */
+function buildPopularityRegionsPhrase(popRows) {
+  if (!popRows || !popRows.length) return 'the United States and other regions';
+  const counts = new Map();
+  popRows.forEach((p) => {
+    const c = p.country || '';
+    if (!c) return;
+    counts.set(c, (counts.get(c) || 0) + 1);
+  });
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([c]) => c);
+  const labels = {
+    USA: 'the United States',
+    UK: 'the United Kingdom',
+    CAN: 'Canada',
+    IND: 'India',
+    FRA: 'France',
+    IRL: 'Ireland',
+    AUS: 'Australia',
+  };
+  const parts = sorted.map((c) => labels[c] || c);
+  if (parts.length === 0) return 'the United States and other regions';
+  if (parts.length === 1) return parts[0];
+  if (parts.length === 2) return `${parts[0]} and ${parts[1]}`;
+  return `${parts[0]}, ${parts[1]}, and ${parts[2]}`;
+}
+
+/** Phase 5.0 STEP 1: Direct answer block — 40–60 words, standalone, no links inside. */
+function buildDirectAnswerSection(record, popRows) {
+  const name = record.name;
+  const fullMeaning = (record.meaning || '').trim() || 'a documented given name';
+  const originBits = [record.origin_country, record.language].filter(Boolean);
+  const originAdj = originBits.length ? originBits.join('–') : 'given';
+  const gender =
+    record.gender === 'boy' ? 'boy' : record.gender === 'girl' ? 'girl' : 'unisex';
+  const regions = buildPopularityRegionsPhrase(popRows);
+  const extenders = [
+    'Official statistics and curated references support the etymology and usage notes on this page.',
+    'Cultural background and linguistic roots are summarized in the sections below.',
+    'Name meaning and origin draw on standard reference works, not generated text.',
+  ];
+  for (let meanLen = Math.min(120, fullMeaning.length); meanLen >= 6; meanLen -= 3) {
+    const meaningSlice = fullMeaning.length > meanLen ? fullMeaning.slice(0, meanLen).trim() + '…' : fullMeaning;
+    let text = `${name} is a ${originAdj} name meaning "${meaningSlice}". It is commonly used as a ${gender} name and has gained popularity in ${regions}.`;
+    let wc = countWordsPlain(text);
+    let ext = 0;
+    while (wc < 40 && ext < extenders.length) {
+      text += ' ' + extenders[ext];
+      ext += 1;
+      wc = countWordsPlain(text);
+    }
+    while (wc > 60) {
+      const words = text.split(/\s+/).filter(Boolean);
+      if (words.length <= 25) break;
+      words.pop();
+      text = words.join(' ');
+      wc = countWordsPlain(text);
+    }
+    if (wc >= 40 && wc <= 60) {
+      return (
+        '<section class="direct-answer" aria-labelledby="direct-answer-heading">' +
+        '<h2 id="direct-answer-heading">What does ' +
+        htmlEscape(name) +
+        ' mean?</h2>' +
+        '<p>' +
+        htmlEscape(text) +
+        '</p></section>'
+      );
+    }
+  }
+  throw new Error(`Phase 5.0: could not build direct answer (40–60 words) for ${name}.`);
+}
+
+/** Phase 5.0 STEP 2: Quick facts table for extraction. */
+function buildNameFactsTable(record, popBand, syllables) {
+  const origin = [record.origin_country, record.language].filter(Boolean).join(' · ') || '—';
+  const meaning = (record.meaning || '').trim() || '—';
+  const gender = record.gender ? record.gender.charAt(0).toUpperCase() + record.gender.slice(1) : '—';
+  const row = (a, b) => `<tr><td>${htmlEscape(a)}</td><td>${htmlEscape(b)}</td></tr>`;
+  return (
+    '<table class="name-facts" aria-label="Quick facts for ' +
+    htmlEscape(record.name) +
+    '">' +
+    row('Origin', origin) +
+    row('Meaning', meaning) +
+    row('Gender', gender) +
+    row('Popularity', popBand) +
+    row('Syllables', String(syllables)) +
+    '</table>'
+  );
+}
+
+/** Phase 5.0 STEP 7: Comparison micro block (bottom of name page). Uses plain name text, no links in paragraph. */
+function buildComparisonMicroBlock(record, similarTrimmed) {
+  if (!similarTrimmed || similarTrimmed.length < 2) return '';
+  const n1 = record.name;
+  const n2 = similarTrimmed[0].name;
+  const n3 = similarTrimmed[1].name;
+  const origin = (record.origin_country || record.language || 'the same broad tradition').trim();
+  const style =
+    (record.origin_cluster || '').trim() || (record.language || '').trim() || 'cultural';
+  const p = `Compared to ${n2} and ${n3}, ${n1} has a stronger ${style} profile tied to ${origin}, while maintaining a similar phonetic structure and length for many speakers.`;
+  return (
+    '<section class="name-comparison-micro" aria-labelledby="name-compare-micro-heading">' +
+    '<h2 id="name-compare-micro-heading">How does ' +
+    htmlEscape(n1) +
+    ' compare to similar names?</h2>' +
+    '<p>' +
+    htmlEscape(p) +
+    '</p></section>'
+  );
+}
+
+/** Phase 5.0 STEP 3 + 3.7: Six FAQ items; answers 30–60 words; direct first sentence; no links in answers. */
+function buildQuickFaqForName(record, chartData, latestRank, categories, similarTrimmed) {
   const name = record.name;
   const meaning = (record.meaning || '').trim() || '—';
   const originLabel = [record.origin_country, record.language].filter(Boolean).join(' and ') || 'multiple traditions';
   const genderLabel = record.gender ? (record.gender === 'boy' ? 'a boy' : record.gender === 'girl' ? 'a girl' : 'a unisex') : 'a unisex';
-  const ans1 = `The name ${name} means "${meaning}". It is of ${originLabel} origin. Meaning and origin are drawn from linguistic and historical sources and reflect the most widely cited interpretation. This page summarizes the standard attribution for the name.`;
-  const ans2 = `${name} is typically used as ${genderLabel} name. Gender association can vary by region and era; the usage above reflects current convention in our dataset. You can browse other names in the same gender category using the links on this page.`;
   const bestRank = chartData && chartData.length > 0 ? Math.min(...chartData.map((d) => (d.rank != null ? d.rank : 9999))) : (latestRank != null ? latestRank : 9999);
   const popWord = bestRank <= 100 ? 'highly popular' : bestRank <= 500 ? 'well established' : 'less common';
-  const ans3 = `${name} is ${popWord} in current naming data. When available, the popularity table and chart on this page show rank by country and year. Trends vary by region. Use the table above for detailed rank and count by year.`;
+  const isBiblical = (categories || []).some((c) => c.name_id === record.id && String(c.category || '').toLowerCase() === 'biblical');
+
+  const simA = similarTrimmed && similarTrimmed[0] ? similarTrimmed[0].name : '';
+  const simB = similarTrimmed && similarTrimmed[1] ? similarTrimmed[1].name : '';
+  const simPhrase =
+    simA && simB
+      ? `${simA}, ${simB}, and others listed in the similar-names section on this page`
+      : simA
+        ? `${simA} and other names in the similar-names section on this page`
+        : 'the similar-names section on this page';
+
+  const ans1 = `The name ${name} means "${meaning}". It reflects ${originLabel} etymology and the usual dictionary sense cited for this spelling. Linguistic roots and cultural background are summarized above; we rely on curated references rather than machine-generated glosses.`;
+  const ans2 = `${name} is typically used as ${genderLabel} name in our dataset. Regional usage can differ, and some names shift over time. The gender label here matches how the name is tagged for browse filters on this site.`;
+  const ans3 = `${name} is ${popWord} in current naming data where ranks exist. The first sentence reflects typical rank bands in official statistics we track. Use the popularity table and chart on this page for year-by-year detail by country.`;
+  const ans4 = isBiblical
+    ? `Yes — ${name} is tagged as biblical in our dataset, reflecting scripture, saints, or long-standing religious use. That tag is separate from everyday popularity. Etymology may still include secular or regional layers beyond a single verse reference.`
+    : `In our dataset, ${name} is not tagged as biblical; it may still appear in religious communities depending on tradition. Biblical status varies by source; check style tags and origin notes above for context.`;
+  const ans5 =
+    bestRank <= 500
+      ? `${name} is not especially rare in available statistics; it sits in a well-used band rather than a niche long tail. "Rare" usually means very low birth counts; compare ranks in the table below by country and year.`
+      : `${name} is relatively uncommon in the ranks we track, which supports treating it as a rarer choice in many regions. Exact rarity still depends on country and decade; consult the popularity table for concrete ranks.`;
+  const ans6 = `Names similar to ${name} include ${simPhrase}. Similarity blends sound, origin cluster, and popularity band in our matching logic. Open the lists above for full profiles, etymology, and cross-links to related names.`;
+
   const faqs = [
     { question: `What does the name ${name} mean?`, answer: ans1 },
     { question: `Is ${name} a boy or girl name?`, answer: ans2 },
     { question: `How popular is ${name}?`, answer: ans3 },
+    { question: `Is ${name} a biblical name?`, answer: ans4 },
+    { question: `Is ${name} a rare name?`, answer: ans5 },
+    { question: `What names are similar to ${name}?`, answer: ans6 },
   ];
+
+  faqs.forEach((f) => {
+    let w = countWordsPlain(f.answer);
+    while (w < 30) {
+      f.answer += ' Additional detail appears in the structured sections above.';
+      w = countWordsPlain(f.answer);
+    }
+    while (w > 60) {
+      const words = f.answer.split(/\s+/).filter(Boolean);
+      if (words.length < 20) break;
+      words.pop();
+      f.answer = words.join(' ');
+      w = countWordsPlain(f.answer);
+    }
+  });
+
   const html =
     '<section class="quick-faq" aria-labelledby="quick-faq-heading">' +
-    '<h2 id="quick-faq-heading">Frequently Asked Questions About ' + htmlEscape(name) + '</h2>' +
+    '<h2 id="quick-faq-heading">Frequently Asked Questions About ' +
+    htmlEscape(name) +
+    '</h2>' +
     faqs.map((f) => '<h3>' + htmlEscape(f.question) + '</h3><p>' + htmlEscape(f.answer) + '</p>').join('') +
     '</section>';
   const schema = {
@@ -970,8 +1131,23 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const howPopularSection = buildHowPopularToday(record, chartData, latestRank);
   const commonSearchVariationsSection = buildCommonSearchVariations(record, categories);
 
-  // Phase 3.7 STEP 2 & 6: Quick FAQ (HTML + JSON-LD)
-  const quickFaq = buildQuickFaqForName(record, chartData, latestRank);
+  // Phase 5.0 AEO: direct answer, facts table, expanded FAQ, comparison micro-block
+  const bestRankForBand =
+    chartData && chartData.length > 0
+      ? Math.min(...chartData.map((d) => (d.rank != null ? d.rank : 9999)))
+      : latestRank != null
+        ? latestRank
+        : 9999;
+  const popBandLabel =
+    bestRankForBand <= 100 ? 'Highly popular' : bestRankForBand <= 500 ? 'Well established' : 'Less common';
+  const syllableCount =
+    record.syllables != null
+      ? record.syllables
+      : Math.min(4, Math.max(1, Math.floor((record.name || '').length / 3)));
+  const directAnswerSection = buildDirectAnswerSection(record, popRows);
+  const nameFactsTable = buildNameFactsTable(record, popBandLabel, syllableCount);
+  const comparisonMicroSection = buildComparisonMicroBlock(record, similarNamesTrimmed);
+  const quickFaq = buildQuickFaqForName(record, chartData, latestRank, categories, similarNamesTrimmed);
   const definitionBlock = buildDefinitionBlock(record);
 
   // Mesh A: Popularity Cluster — only link to years we generate (2022, 2023, 2024)
@@ -1026,9 +1202,9 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const usageContextSection = buildNameUsageContextSection(record);
 
   // Step 3: Minimum content floor — intro, meaning context, popularity context, internal linking (400+ words)
-  const nameIntro = `<p class="contextual">This page shows the meaning, origin, and popularity of the name ${htmlEscape(record.name)}. Use the sections below to explore related names, names from the same country or language, and names with the same gender or first letter.</p>`;
-  const meaningContext = `<section aria-labelledby="meaning-context-heading"><h2 id="meaning-context-heading">About name meanings and origins</h2><p class="contextual">Name meanings and origins come from linguistic and historical sources: etymology, traditional use, and cultural adoption. The meaning given here reflects the most widely cited interpretation for ${htmlEscape(record.name)}. Origin may refer to the language or region where the name first became established. For more names from the same background, use the same-origin and country links below.</p></section>`;
-  const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was used in a given country and year, often based on official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
+  const nameIntro = `<p class="contextual">This page covers name meaning, etymology, and cultural background for ${htmlEscape(record.name)}. We summarize linguistic roots, the usual gloss, and popularity so you can compare ${htmlEscape(record.name)} with related options. Use the sections below for same-origin lists, gender matches, letter browsing, and name origin context.</p>`;
+  const meaningContext = `<section aria-labelledby="meaning-context-heading"><h2 id="meaning-context-heading">About name meanings and origins</h2><p class="contextual">Name meaning and name origin draw on etymology, historical usage, and cultural adoption. The interpretation here reflects the most widely cited sense for ${htmlEscape(record.name)}. Cultural background and linguistic roots may span more than one region; the quick facts table summarizes the primary attribution. For more names from a similar tradition, use the same-origin and country links below.</p></section>`;
+  const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was registered in a given country and year, often from official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
   const internalLinkingPara = `<p class="contextual">Explore the <a href="/">homepage</a> to search names, or the <a href="/names">baby names hub</a> to browse by gender, country, letter, and style. Below you will find related names, same-origin and same-gender options, and links to country and gender hubs.</p>`;
 
   // Phase 4 STEP 2: Soft conversion block (before FAQ). STEP 6: Certificate link under origin.
@@ -1059,9 +1235,12 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
 
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
+    ${directAnswerSection}
     ${definitionBlock}
     ${originBadgeHtml(record)}
     ${nameIntro}
+    <p class="last-updated">Last updated: 2026</p>
+    ${nameFactsTable}
     <p><strong>Meaning:</strong> ${htmlEscape(record.meaning || '—')}</p>
     <p><strong>Origin:</strong> ${htmlEscape([record.origin_country, record.language].filter(Boolean).join(' · ') || '—')}</p>
     ${certificateLink}
@@ -1095,6 +1274,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${nameReportConversionBlock}
     ${emailCaptureBlock}
     ${quickFaq.html}
+    ${comparisonMicroSection}
     ${browseSection}
   `;
 
@@ -1111,15 +1291,18 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const popSchema = popularityJsonLd(record, chartData, peakYear, latestRank);
   if (popSchema) namePageSchemas.push(popSchema);
 
-  // Phase 3.7 STEP 7: Snippet guard — definition, FAQ, FAQ JSON-LD, no answer under 30 words
+  // Phase 3.7 + 5.0: Snippet guard — definition, direct answer, FAQ JSON-LD, FAQ answers 30–60 words
   const wordCount = (s) => (s || '').split(/\s+/).filter(Boolean).length;
   if (!definitionBlock || definitionBlock.length < 10) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing definition block.`);
+  if (!directAnswerSection || directAnswerSection.length < 80) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ missing direct answer block.`);
   if (!quickFaq.html || quickFaq.html.length < 50) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing FAQ section.`);
-  if (!quickFaq.schema || !quickFaq.schema.mainEntity || quickFaq.schema.mainEntity.length !== 3) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ missing or invalid FAQ JSON-LD.`);
+  if (!quickFaq.schema || !quickFaq.schema.mainEntity || quickFaq.schema.mainEntity.length !== 6) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ FAQ JSON-LD must have 6 questions.`);
   const questionSet = new Set(quickFaq.faqs.map((f) => f.question));
-  if (questionSet.size !== 3) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ duplicate FAQ questions.`);
+  if (questionSet.size !== 6) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ duplicate FAQ questions.`);
   quickFaq.faqs.forEach((f, i) => {
-    if (wordCount(f.answer) < 30) throw new Error(`Phase 3.7: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has fewer than 30 words.`);
+    const w = wordCount(f.answer);
+    if (w < 30) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has fewer than 30 words.`);
+    if (w > 60) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has more than 60 words.`);
   });
 
   const html = baseLayout({

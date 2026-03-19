@@ -2,4 +2,11 @@
 User-agent: *
 Allow: /
 
+# Phase 5.0 AEO: explicit allow for common AI crawlers (optional, recommended).
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 Sitemap: https://nameorigin.io/sitemap.xml

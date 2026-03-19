@@ -17,6 +17,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
 const SITE_URL = process.env.SITE_URL || 'https://nameorigin.io';
 const EXT = '.html';
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 /** Top 3 jurisdiction pairs per country. 6 total. */
 const JURISDICTION_PAIRS = [
@@ -252,16 +253,13 @@ function run() {
         item: SITE_URL + (item.url.startsWith('/') ? item.url : '/' + item.url),
       })),
     };
-    const articleSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
+    const articleSchema = mergeArticleSchema({
       headline: `${pair.labelA} vs ${pair.labelB}: Baby Name Comparison`,
       description: directSummary,
-      author: { '@type': 'Organization', name: 'NameOrigin' },
-      publisher: { '@type': 'Organization', name: 'NameOrigin', url: SITE_URL },
+      publisher: { '@type': 'Organization', name: 'NameOrigin.io', url: SITE_URL },
       datePublished: new Date().toISOString().slice(0, 10),
       mainEntityOfPage: SITE_URL + pathSeg,
-    };
+    });
     const faqSchema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',

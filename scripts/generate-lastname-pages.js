@@ -31,6 +31,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 let computeSmoothness;
 try {
@@ -110,6 +111,7 @@ function baseLayout(opts) {
   const canonical = opts.canonical != null ? opts.canonical : SITE_URL + pathSeg;
   const breadcrumbItems = opts.breadcrumb && opts.breadcrumb.length ? opts.breadcrumb : [{ name: 'Home', url: SITE_URL + '/' }, { name: 'Baby names', url: SITE_URL + pathSeg }];
   const breadcrumbSchema = JSON.stringify(breadcrumbJsonLd(breadcrumbItems));
+  const aeoArticleSchema = JSON.stringify(mergeArticleSchema());
   const mainContent = opts.mainContent || '';
   return `<!DOCTYPE html>
 <html lang="en">
@@ -122,6 +124,7 @@ function baseLayout(opts) {
   <link rel="stylesheet" href="/styles.min.css">
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${breadcrumbSchema}</script>
+  <script type="application/ld+json">${aeoArticleSchema}</script>
 </head>
 <body>
   <header class="site-header" role="banner">
