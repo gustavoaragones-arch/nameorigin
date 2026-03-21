@@ -1,6 +1,6 @@
 /**
- * Phase 5.0 AEO: Shared Article JSON-LD (author + dateModified) for sitewide EEAT.
- * Merge with page-specific fields (headline, description) where needed.
+ * Phase 5.0 AEO + 5.3: Shared Article JSON-LD (author + dateModified) for sitewide EEAT.
+ * Name pages may pass overrides: headline, description, mainEntityOfPage, about (Thing), mentions (Thing[]), hasPart (Question[]).
  */
 
 const AEO_AUTHOR = {

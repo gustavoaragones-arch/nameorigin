@@ -64,6 +64,30 @@ function loadJson(name) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
+/** Phase 5.3: controlled heraldry dataset (surname slug → optional section). */
+let heraldryBySlug = {};
+try {
+  const hp = path.join(DATA_DIR, 'heraldry.json');
+  if (fs.existsSync(hp)) heraldryBySlug = JSON.parse(fs.readFileSync(hp, 'utf8')) || {};
+} catch (_) {
+  heraldryBySlug = {};
+}
+
+function buildHeraldrySection(surnameSlug, surnameDisplay) {
+  const entry = heraldryBySlug[surnameSlug];
+  if (!entry || entry.available !== true) return '';
+  const region = (entry.region || 'regional').trim();
+  const lastEsc = htmlEscape(surnameDisplay);
+  return (
+    `<section class="heraldry-section" aria-labelledby="heraldry-heading">` +
+    `<h2 id="heraldry-heading">Heraldry and Family Heritage</h2>` +
+    `<p>The surname ${lastEsc} is historically associated with family traditions in ${htmlEscape(region)}. Heraldic symbols linked to this name reflect lineage and regional identity.</p>` +
+    (entry.note ? `<p class="contextual">${htmlEscape(String(entry.note))}</p>` : '') +
+    `<p class="disclaimer heraldry-disclaimer">Coats of arms are granted to individuals and families, not surnames universally.</p>` +
+    `</section>`
+  );
+}
+
 function slug(str) {
   return String(str || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
@@ -147,9 +171,13 @@ function baseLayout(opts) {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+      <div class="footer__bottom">
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
 nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
-      <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p class="crawl-links">Browse: <a href="/names/">All names</a> | <a href="/names/boy${EXT}">Boy names</a> | <a href="/names/girl${EXT}">Girl names</a> | <a href="/popularity/">Popular names</a></p>
+        <p><a href="/sitemap/">Sitemap</a></p>
+      </div>
     </div>
   </footer>
 </body>
@@ -348,6 +376,7 @@ function generatePage(surname, names, allSurnames) {
   const intro = introTemplates[slugKey.length % introTemplates.length](surname);
   const howToChoose = howToChooseTemplates[slugKey.length % howToChooseTemplates.length](surname);
   const closingCta = closingCtaTemplates[slugKey.length % closingCtaTemplates.length](surname);
+  const heraldrySection = buildHeraldrySection(slugKey, surname);
 
   const boyList = getCompatibleNamesByGender(names, lastNameMeta, 'boy', LIST_SIZE);
   const girlList = getCompatibleNamesByGender(names, lastNameMeta, 'girl', LIST_SIZE);
@@ -436,6 +465,7 @@ function generatePage(surname, names, allSurnames) {
     ${boySection}
     ${girlSection}
     ${unisexSection}
+    ${heraldrySection}
     ${howToChoose}
     ${closingCta}
     ${genderSectionHtml()}
@@ -458,6 +488,7 @@ function generatePage(surname, names, allSurnames) {
     ${boySection}
     ${girlSection}
     ${unisexSection}
+    ${heraldrySection}
     ${howToChoose}
     ${closingCta}
     ${genderSectionHtml()}

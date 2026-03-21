@@ -262,9 +262,13 @@ function run() {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+      <div class="footer__bottom">
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
 nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
-      <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p class="crawl-links">Browse: <a href="/names/">All names</a> | <a href="/names/boy${EXT}">Boy names</a> | <a href="/names/girl${EXT}">Girl names</a> | <a href="/popularity/">Popular names</a></p>
+        <p><a href="/sitemap/">Sitemap</a></p>
+      </div>
     </div>
   </footer>
 </body>
@@ -355,7 +359,7 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
     <p class="internal-links">${hubLinks.map((l) => `<a href="${l.href}">${l.text}</a>`).join(' · ')}</p>
     </section>
   </main>
-  <footer class="site-footer"><div class="container"><p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p><p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p></div></footer>
+  <footer class="site-footer"><div class="container"><div class="footer__bottom"><p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p><p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p><p class="crawl-links">Browse: <a href="/names/">All names</a> | <a href="/names/boy${EXT}">Boy names</a> | <a href="/names/girl${EXT}">Girl names</a> | <a href="/popularity/">Popular names</a></p><p><a href="/sitemap/">Sitemap</a></p></div></div></footer>
 </body>
 </html>`;
   fs.mkdirSync(path.join(OUT_DIR, 'trends'), { recursive: true });

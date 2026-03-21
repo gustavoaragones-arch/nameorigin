@@ -1,8 +1,14 @@
 # Phase 2.25: No Disallow rules — all programmatic pages are indexable.
+# Phase 5.5: Explicit allow for search and AI crawlers.
 User-agent: *
 Allow: /
 
-# Phase 5.0 AEO: explicit allow for common AI crawlers (optional, recommended).
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: OAI-SearchBot
 Allow: /
 

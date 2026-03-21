@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
+const { getBuildDate } = require('./build-date.js');
 
 const ROOT = path.join(__dirname, '..');
 const OUT_DIR = process.env.OUT_DIR ? path.join(ROOT, process.env.OUT_DIR) : ROOT;
@@ -42,6 +43,7 @@ const TOOL_LINKS = [
 ];
 
 function toolLayout(opts) {
+  const bd = getBuildDate();
   const linksHtml = opts.links.map((l) => `<a href="${htmlEscape(l.href)}">${htmlEscape(l.text)}</a>`).join(' · ');
   const aeoArticleSchema = JSON.stringify(mergeArticleSchema());
   return `<!DOCTYPE html>
@@ -78,9 +80,14 @@ function toolLayout(opts) {
   </main>
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+      <div class="footer__bottom">
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
 nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
-      <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p class="last-updated"><time datetime="${bd.iso}">Last updated: ${bd.display}</time></p>
+        <p class="crawl-links">Browse: <a href="/names/">All names</a> | <a href="/names/boy${EXT}">Boy names</a> | <a href="/names/girl${EXT}">Girl names</a> | <a href="/popularity/">Popular names</a></p>
+        <p><a href="/sitemap/">Sitemap</a></p>
+      </div>
     </div>
   </footer>
 </body>

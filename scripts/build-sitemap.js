@@ -2,7 +2,7 @@
 /**
  * build-sitemap.js
  * Generates:
- *   /sitemap.xml          — Sitemap index (references the 4 sitemaps below)
+ *   /sitemap.xml          — Sitemap index (references multiple part sitemaps below)
  *   /sitemaps/names.xml   — All /name/{slug}/ URLs (directory-based, no .html)
  *   /sitemaps/countries.xml — Country pages + gender+country
  *   /sitemaps/filters.xml — /names, gender, style, letters, trending, popular, hub pages
@@ -62,8 +62,8 @@ function urlEntry(loc, priority = '0.8', changefreq = 'weekly') {
   return `  <url>\n    <loc>${escapeXml(fullLoc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
-function writeUrlset(filePath, urls, priority = '0.8') {
-  const entries = urls.map((loc) => urlEntry(loc, priority));
+function writeUrlset(filePath, urls, priority = '0.8', changefreq = 'weekly') {
+  const entries = urls.map((loc) => urlEntry(loc, priority, changefreq));
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${entries.join('\n')}
@@ -87,7 +87,7 @@ function run() {
   // Step 6: changefreq weekly; priority 0.7–0.9 (name pages 0.9, country/gender 0.8, lastname 0.7)
   // --- /sitemaps/names.xml: all /name/{slug}/ (Phase 2.25A: directory-only, no .html) ---
   const nameUrls = names.map((n) => '/name/' + slug(n.name) + '/').filter((u) => u.length > 1);
-  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9');
+  const namesCount = writeUrlset(path.join(sitemapsDir, 'names.xml'), nameUrls, '0.9', 'weekly');
   console.log('Written sitemaps/names.xml with', namesCount, 'URLs (priority 0.9)');
 
   // --- /sitemaps/countries.xml: country pages + gender+country (.html) ---
@@ -99,8 +99,8 @@ function run() {
       countryUrls.push('/names/' + gender + '/' + slugKey + EXT);
     });
   });
-  const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls, '0.8');
-  console.log('Written sitemaps/countries.xml with', countriesCount, 'URLs (priority 0.8)');
+  const countriesCount = writeUrlset(path.join(sitemapsDir, 'countries.xml'), countryUrls, '0.8', 'monthly');
+  console.log('Written sitemaps/countries.xml with', countriesCount, 'URLs (priority 0.8, changefreq monthly)');
 
   // --- /sitemaps/filters.xml: homepage, names index, gender, style, letters, trending, popular, hub pages ---
   const filterUrls = [
@@ -119,9 +119,11 @@ function run() {
   filterUrls.push('/all-name-pages.html', '/country-name-pages.html', '/style-name-pages.html', '/last-name-pages.html', '/alphabet-name-pages.html');
   filterUrls.push('/legal/privacy.html', '/legal/terms.html', '/about/');
   filterUrls.push('/popularity/', '/compatibility/', '/compare/', '/trends/', '/trends/us-2025-vs-2015/');
+  filterUrls.push('/sitemap/');
+  filterUrls.push('/tools/name-report/', '/tools/sibling-report/', '/tools/name-certificate/');
   [2022, 2023, 2024].forEach((y) => filterUrls.push('/popularity/' + y + EXT));
-  const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8');
-  console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8)');
+  const filtersCount = writeUrlset(path.join(sitemapsDir, 'filters.xml'), filterUrls, '0.8', 'monthly');
+  console.log('Written sitemaps/filters.xml with', filtersCount, 'URLs (priority 0.8, changefreq monthly)');
 
   // --- /sitemaps/lastname.xml: last name compatibility ---
   const lastnameUrls = ['/names/with-last-name' + EXT];
@@ -129,14 +131,38 @@ function run() {
     const sslug = slug(s.name);
     if (sslug) lastnameUrls.push('/names/with-last-name-' + sslug + EXT);
   });
-  const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls, '0.7');
-  console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs (priority 0.7)');
+  const lastnameCount = writeUrlset(path.join(sitemapsDir, 'lastname.xml'), lastnameUrls, '0.7', 'monthly');
+  console.log('Written sitemaps/lastname.xml with', lastnameCount, 'URLs (priority 0.7, changefreq monthly)');
 
   // --- /sitemaps/names-like.xml: Phase 2.5 "Names Like X" pages ---
   const { namesLikeUrl } = require('./url-helpers.js');
   const namesLikeUrls = names.map((n) => namesLikeUrl(slug(n.name))).filter((u) => u.length > 1);
-  const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7');
-  console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7)');
+  const namesLikeCount = writeUrlset(path.join(sitemapsDir, 'names-like.xml'), namesLikeUrls, '0.7', 'monthly');
+  console.log('Written sitemaps/names-like.xml with', namesLikeCount, 'URLs (priority 0.7, changefreq monthly)');
+
+  // --- /sitemaps/equivalents.xml: Phase 5.2 — /equivalents/{slug}/ (matches generated pages only)
+  let equivalentsUrls = [];
+  let equivalentsCount = 0;
+  try {
+    const eqPath = path.join(DATA_DIR, 'name-equivalents.json');
+    if (fs.existsSync(eqPath)) {
+      const eqRaw = JSON.parse(fs.readFileSync(eqPath, 'utf8'));
+      const { getEquivalents } = require('./utils/name-equivalents.js');
+      // Same hard filter as utils/name-equivalents.js (names-enriched valid slugs + non-empty filtered list)
+      equivalentsUrls = Object.keys(eqRaw || {})
+        .map((k) => slug(k))
+        .filter((k) => k && getEquivalents(k).length > 0)
+        .sort()
+        .map((k) => '/equivalents/' + k + '/');
+      equivalentsCount = equivalentsUrls.length;
+      if (equivalentsCount > 0) {
+        writeUrlset(path.join(sitemapsDir, 'equivalents.xml'), equivalentsUrls, '0.8', 'weekly');
+        console.log('Written sitemaps/equivalents.xml with', equivalentsCount, 'URLs (priority 0.8, changefreq weekly)');
+      }
+    }
+  } catch (e) {
+    console.warn('Sitemap equivalents skipped:', e.message);
+  }
 
   // --- /sitemaps/compare.xml: Phase 2.8 + Phase 2.9 MODULE B (hub, country overviews, name pairs, jurisdiction pairs) ---
   const COMPARE_PAIRS = ['us-vs-uk', 'us-vs-canada', 'uk-vs-australia', 'france-vs-spain', 'germany-vs-us'];
@@ -160,8 +186,8 @@ function run() {
       COMPARE_PAIRS.forEach((pairSlug) => compareUrls.push('/compare/' + nameSlug + '/' + pairSlug + '/'));
     });
   }
-  const compareCount = writeUrlset(path.join(sitemapsDir, 'compare.xml'), compareUrls, '0.7');
-  console.log('Written sitemaps/compare.xml with', compareCount, 'URLs (priority 0.7)');
+  const compareCount = writeUrlset(path.join(sitemapsDir, 'compare.xml'), compareUrls, '0.7', 'monthly');
+  console.log('Written sitemaps/compare.xml with', compareCount, 'URLs (priority 0.7, changefreq monthly)');
 
   // --- /sitemaps/baby-names-with.xml: Phase 2.6 STEP 9 — /baby-names-with-<slug>/ priority 0.7, changefreq weekly ---
   let babyNamesWithCount = 0;
@@ -171,8 +197,8 @@ function run() {
       .map((d) => '/' + d.name + '/');
     babyNamesWithCount = babyNamesWithDirs.length;
     if (babyNamesWithCount > 0) {
-      writeUrlset(path.join(sitemapsDir, 'baby-names-with.xml'), babyNamesWithDirs, '0.7'); // urlEntry default changefreq = weekly
-      console.log('Written sitemaps/baby-names-with.xml with', babyNamesWithCount, 'URLs (priority 0.7, changefreq weekly)');
+      writeUrlset(path.join(sitemapsDir, 'baby-names-with.xml'), babyNamesWithDirs, '0.7', 'monthly');
+      console.log('Written sitemaps/baby-names-with.xml with', babyNamesWithCount, 'URLs (priority 0.7, changefreq monthly)');
     }
   }
 
@@ -188,8 +214,8 @@ function run() {
     }
     siblingsCount = siblingUrls.length;
     if (siblingsCount > 0) {
-      writeUrlset(path.join(sitemapsDir, 'siblings.xml'), siblingUrls, '0.7');
-      console.log('Written sitemaps/siblings.xml with', siblingsCount, 'URLs (priority 0.7)');
+      writeUrlset(path.join(sitemapsDir, 'siblings.xml'), siblingUrls, '0.7', 'monthly');
+      console.log('Written sitemaps/siblings.xml with', siblingsCount, 'URLs (priority 0.7, changefreq monthly)');
     }
   }
 
@@ -201,12 +227,13 @@ function run() {
     ['lastname', 'sitemaps/lastname.xml'],
     ['names-like', 'sitemaps/names-like.xml'],
   ];
+  if (equivalentsCount > 0) sitemaps.push(['equivalents', 'sitemaps/equivalents.xml']);
   if (babyNamesWithCount > 0) sitemaps.push(['baby-names-with', 'sitemaps/baby-names-with.xml']);
   if (siblingsCount > 0) sitemaps.push(['siblings', 'sitemaps/siblings.xml']);
   sitemaps.push(['compare', 'sitemaps/compare.xml']);
   const indexEntries = sitemaps.map(([_, rel]) => `  <sitemap>\n    <loc>${escapeXml(SITE_URL + '/' + rel)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </sitemap>`);
 
-  const totalUrls = namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + compareCount + babyNamesWithCount + siblingsCount;
+  const totalUrls = namesCount + countriesCount + filtersCount + lastnameCount + namesLikeCount + equivalentsCount + compareCount + babyNamesWithCount + siblingsCount;
   const indexXml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${indexEntries.join('\n')}

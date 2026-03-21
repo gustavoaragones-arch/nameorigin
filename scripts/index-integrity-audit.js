@@ -74,7 +74,23 @@ function countInternalLinks(html, siteHost = 'nameorigin.io') {
   let m;
   while ((m = re.exec(html))) {
     const href = (m[1] || '').trim();
-    if (href.startsWith('/') || href.includes(siteHost)) count += 1;
+    // Ignore email links and non-http protocols
+    if (
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      /^[^/]+@[^/]+\.[^/]+$/.test(href)
+    ) {
+      continue;
+    }
+    if (
+      href.startsWith('/') ||
+      href.startsWith('http://') ||
+      href.startsWith('https://')
+    ) {
+      if (href.includes(siteHost) || href.startsWith('/')) {
+        count += 1;
+      }
+    }
   }
   return count;
 }
@@ -87,21 +103,30 @@ function getInternalLinkPaths(html, siteHost = 'nameorigin.io') {
   let m;
   while ((m = re.exec(html))) {
     const href = (m[1] || '').trim();
+    if (
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      /^[^/]+@[^/]+\.[^/]+$/.test(href)
+    ) {
+      continue;
+    }
     let p = '';
     if (href.startsWith('/')) {
       p = (href.replace(/#.*$/, '').replace(/\/$/, '').trim()) || '/';
-    } else if (href.includes(siteHost)) {
-      try {
-        const u = new URL(href);
-        p = u.pathname.replace(/\/$/, '') || '/';
-      } catch (_) {}
+    } else if (href.startsWith('http://') || href.startsWith('https://')) {
+      if (href.includes(siteHost)) {
+        try {
+          const u = new URL(href);
+          p = u.pathname.replace(/\/$/, '') || '/';
+        } catch (_) {}
+      }
     }
     if (p) paths.add(p);
   }
   return paths;
 }
 
-/** Map URL pathname to file path under OUT_DIR. Must match verify-phase2 / build-sitemap (name/slug/ -> name/slug/index.html). Also resolve /names/boy -> names/boy.html when names/boy/index.html does not exist. Directory-style paths (/name/liam or /name/liam/) both resolve to name/liam/index.html. */
+/** Map URL pathname to file path under OUT_DIR. Must match verify-phase2 / build-sitemap (name/slug/ -> name/slug/index.html). Also resolve /names/boy -> names/boy.html when names/boy/index.html does not exist. Directory-style paths (/name/liam or /name/liam/) both resolve to name/liam/index.html. Phase 5.2: /equivalents/{slug}/ -> equivalents/{slug}/index.html (same directory pattern). */
 function pathToFilePath(pathname) {
   const p = pathname.replace(/^\//, '').replace(/\/$/, '').trim();
   if (!p) return path.join(OUT_DIR, 'index.html');

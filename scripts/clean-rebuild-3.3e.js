@@ -6,6 +6,7 @@
  * 1. Delete generated output
  * 2. apply-origin-enrichment.js
  * 3. generate-programmatic-pages.js
+ * 3b. generate-equivalent-pages.js (Phase 5.2 — after name pages)
  * 4. generate-sibling-pages.js --batch=150
  * 5. generate-lastname-pages.js --batch=75
  * 6. generate-compare-pages.js   ← FIX 1: /compare/index.html, /compare/us-vs-uk/index.html
@@ -27,7 +28,9 @@ const STEPS = [
   { name: 'topic-cluster-map.js', args: [] },
   { name: 'intent-monetization-map.js', args: [] },
   { name: 'generate-programmatic-pages.js', args: [] },
+  { name: 'generate-equivalent-pages.js', args: [] },
   { name: 'generate-homepage.js', args: [] },
+  { name: 'generate-html-sitemap.js', args: [] },
   { name: 'generate-tool-pages.js', args: [] },
   { name: 'generate-sibling-pages.js', args: ['--batch=150'] },
   { name: 'generate-lastname-pages.js', args: ['--batch=75'] },
@@ -56,8 +59,8 @@ function run(step) {
 }
 
 // Delete generated output (Phase 3.3E order)
-const dirsToRemove = ['build', 'name', 'names', 'compare', 'popularity'];
-console.log('Removing generated output: build, name, names, compare, baby-names-with-*');
+const dirsToRemove = ['build', 'name', 'names', 'compare', 'popularity', 'equivalents'];
+console.log('Removing generated output: build, name, names, compare, equivalents, baby-names-with-*');
 dirsToRemove.forEach((d) => {
   const full = path.join(ROOT, d);
   if (fs.existsSync(full)) {
