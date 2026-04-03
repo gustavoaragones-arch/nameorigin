@@ -1353,6 +1353,28 @@ button, input, select, textarea {
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--color-border);
 }
+.direct-answer-lead {
+  font-size: var(--text-base);
+  line-height: var(--line-relaxed);
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}
+.serp-hook {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-secondary-light);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--text-base);
+  line-height: var(--line-relaxed);
+  color: var(--color-secondary);
+}
+.name-comparison-micro {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-sm);
+  line-height: var(--line-relaxed);
+  color: var(--color-text-muted);
+}
 .direct-answers-stack h2 {
   font-size: var(--text-lg);
   margin: var(--space-5) 0 var(--space-2);

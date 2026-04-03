@@ -101,6 +101,74 @@ function hashSlug(slugStr) {
   return Math.abs(hash);
 }
 
+/** Phase 6: SERP title (~60–65 chars target); includes name, meaning, origin, gender, popularity signal. */
+function buildTitle(name, _origin, gender, popularityBand) {
+  const genderPart = gender ? `${gender} name` : 'name';
+  let popularityText = '';
+  if (popularityBand === 'high') popularityText = ' (Top Ranked)';
+  else if (popularityBand === 'medium') popularityText = ' (Trending)';
+  let base = `${name} Name Meaning, Origin, ${genderPart}, Popularity${popularityText}`;
+  if (base.length > 65) {
+    popularityText =
+      popularityBand === 'high' ? ' (Top)' : popularityBand === 'medium' ? ' (Trend)' : '';
+    base = `${name} Name Meaning, Origin, ${genderPart}, Popularity${popularityText}`;
+  }
+  if (base.length > 65) {
+    base = `${name}: Meaning, Origin, ${genderPart}, Popularity${popularityText}`;
+  }
+  if (base.length > 65) {
+    const gShort = gender ? gender.charAt(0).toUpperCase() + gender.slice(1) : 'Name';
+    base = `${name} · Meaning, Origin, ${gShort}, Popularity${popularityText}`;
+  }
+  if (base.length > 65) {
+    base = base.slice(0, 62).replace(/\s+\S*$/, '').trim() + '…';
+  }
+  return base;
+}
+
+/** Map rank to title band: only top tiers get a suffix. */
+function titlePopularityBandFromRank(bestRank, hasRank) {
+  if (!hasRank || bestRank == null || bestRank >= 9999) return 'none';
+  if (bestRank <= 100) return 'high';
+  if (bestRank <= 500) return 'medium';
+  return 'none';
+}
+
+/** Phase 6: Meta description 140–160 chars; intent + meaning + origin + soft CTA. */
+function buildMetaDescription(name, origin, gender, meaning, popularityText) {
+  const g = gender ? `${gender} ` : '';
+  const orig = (origin || 'multiple').trim() || 'multiple';
+  const mean = (meaning || 'a documented given name').trim().replace(/"/g, "'");
+  let s = `${name} is a ${g}name of ${orig} origin meaning "${mean}". ${popularityText} Discover similar names, cultural context, and popularity trends.`;
+  if (s.length > 160) {
+    const shortMean = mean.length > 45 ? mean.slice(0, 42).trim() + '…' : mean;
+    s = `${name} is a ${g}name of ${orig} origin meaning "${shortMean}". ${popularityText} Discover similar names and popularity trends.`;
+  }
+  if (s.length > 160) s = s.slice(0, 157).replace(/\s+\S*$/, '').trim() + '…';
+  if (s.length < 140) {
+    s += ' Explore meaning and trends on NameOrigin.';
+    if (s.length > 160) s = s.slice(0, 157).replace(/\s+\S*$/, '').trim() + '…';
+  }
+  return s;
+}
+
+function metaPopularitySnippet(bestRank, hasRank) {
+  if (!hasRank || bestRank == null || bestRank >= 9999) {
+    return 'Popularity varies by country and year in our data.';
+  }
+  if (bestRank <= 100) return 'It ranks among the most chosen names in official statistics we track.';
+  if (bestRank <= 500) return 'It is a well-established name in recent years in those lists.';
+  return 'It is a less common but distinctive name in published rankings.';
+}
+
+/** Phase 6: One-line instant answer (1–2 sentences) for above-the-fold clarity. */
+function buildDirectAnswer(name, origin, meaning, gender) {
+  const orig = (origin || 'documented').trim() || 'documented';
+  const mean = (meaning || 'a documented given name').trim();
+  const g = gender ? `${gender} ` : '';
+  return `${name} is a ${g}name of ${orig} origin that means "${mean}". It is used in various cultures and has gained recognition for its simplicity and meaning.`;
+}
+
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
@@ -868,10 +936,10 @@ function buildDirectAnswers(record, data) {
   const popLine1 = !hasRank
     ? `${name} does not yet show a stable rank band in every dataset we publish; treat popularity as region-specific.`
     : bestRank <= 100
-      ? `${name} charts as a widely used choice where official birth statistics are available.`
+      ? `${name} is a top-ranked choice in official birth statistics where we track it.`
       : bestRank <= 500
-        ? `${name} sits in a well-used band rather than the ultra-rare tail in many registries.`
-        : `${name} is comparatively uncommon in published rank lists, though local counts can differ.`;
+        ? `${name} is a well-established name in recent years in many registries we publish.`
+        : `${name} is a less common but distinctive name in published rank lists; local counts can still vary.`;
   const popLine2 = hasRank
     ? `Figures on this page summarize how often parents chose ${name} in ${regions}.`
     : `Use the popularity table when it appears below to compare countries and years side by side.`;
@@ -880,10 +948,13 @@ function buildDirectAnswers(record, data) {
     (c) => c.name_id === record.id && String(c.category || '').toLowerCase() === 'biblical',
   );
 
+  const directLeadRaw = buildDirectAnswer(name, whereFromAssoc, meaning, record.gender || '');
+  const directLeadHtml = '<p class="direct-answer-lead">' + htmlEscape(directLeadRaw) + '</p>';
+
   const blocks = [];
   blocks.push({
     q: `What does the name ${name} mean?`,
-    a: `${name} means “${meaning}” in our primary gloss. It originates from ${fromTraditionsPhrase} and remains a recognized given name in many communities today.`,
+    a: `${name} means “${meaning}”. It draws on ${fromTraditionsPhrase} and matches the lead summary above.`,
   });
   if (isBiblical) {
     blocks.push({
@@ -907,6 +978,7 @@ function buildDirectAnswers(record, data) {
   const slugSafe = slug(name) || 'name';
   const html =
     '<section class="direct-answers-stack" aria-label="Quick answers">' +
+    directLeadHtml +
     blocks
       .map(
         (b, i) =>
@@ -915,11 +987,18 @@ function buildDirectAnswers(record, data) {
       .join('') +
     '</section>';
 
-  const hasPart = blocks.slice(0, 3).map((b) => ({
-    '@type': 'Question',
-    name: b.q,
-    acceptedAnswer: { '@type': 'Answer', text: b.a },
-  }));
+  const hasPart = [
+    {
+      '@type': 'Question',
+      name: `What does the name ${name} mean?`,
+      acceptedAnswer: { '@type': 'Answer', text: directLeadRaw },
+    },
+    ...blocks.slice(1, 3).map((b) => ({
+      '@type': 'Question',
+      name: b.q,
+      acceptedAnswer: { '@type': 'Answer', text: b.a },
+    })),
+  ];
 
   return { html, hasPart };
 }
@@ -952,8 +1031,8 @@ function buildPeopleAlsoAsk(record, data) {
 
   const rareAns = hasRank
     ? bestRank > 500
-      ? `${name} charts outside the tightest top bands in our data, which reads as relatively uncommon in those lists. Counts still vary by country and year.`
-      : `${name} appears often enough in published rank lists that we would not call it ultra-rare in those datasets. Check the table below for your region.`
+      ? `${name} is a less common but distinctive name in our published lists. Counts still vary by country and year.`
+      : `${name} is a well-established name in recent years in those datasets, not an ultra-rare outlier. Check the table below for your region.`
     : `We do not anchor ${name} to one global rarity score here. Treat "rare" as a local question until you see your own registry.`;
 
   const simThree = (similarNames || [])
@@ -1022,6 +1101,7 @@ function buildNameComparisonInsights(record, otherNames) {
     `<section class="name-comparison-insights" aria-labelledby="nci-heading">` +
     `<h2 id="nci-heading">Name Comparison Insights</h2>` +
     `<ul>${lines.join('')}</ul>` +
+    `<p class="name-comparison-micro">Compare ${htmlEscape(n0)} with similar names, explore variations across cultures, and find the best match.</p>` +
     `</section>`
   );
 }
@@ -1045,36 +1125,42 @@ function buildNameFactsTable(record, popBand, syllables) {
   );
 }
 
-/** Phase 5.0 STEP 3 + 3.7: Six FAQ items; answers 30–60 words; direct first sentence; no links in answers. */
+/** Phase 6: Six FAQ items; answers ≤2 sentences, direct openers; 15–52 words; no links in answers. */
 function buildQuickFaqForName(record, chartData, latestRank, categories, similarTrimmed) {
   const name = record.name;
   const meaning = (record.meaning || '').trim() || '—';
   const originLabel = [record.origin_country, record.language].filter(Boolean).join(' and ') || 'multiple traditions';
   const genderLabel = record.gender ? (record.gender === 'boy' ? 'a boy' : record.gender === 'girl' ? 'a girl' : 'a unisex') : 'a unisex';
   const bestRank = chartData && chartData.length > 0 ? Math.min(...chartData.map((d) => (d.rank != null ? d.rank : 9999))) : (latestRank != null ? latestRank : 9999);
-  const popWord = bestRank <= 100 ? 'highly popular' : bestRank <= 500 ? 'well established' : 'less common';
+  const hasRank = bestRank != null && bestRank < 9999;
   const isBiblical = (categories || []).some((c) => c.name_id === record.id && String(c.category || '').toLowerCase() === 'biblical');
 
   const simA = similarTrimmed && similarTrimmed[0] ? similarTrimmed[0].name : '';
   const simB = similarTrimmed && similarTrimmed[1] ? similarTrimmed[1].name : '';
   const simPhrase =
     simA && simB
-      ? `${simA}, ${simB}, and others listed in the similar-names section on this page`
+      ? `${simA}, ${simB}, and others in the similar-names list on this page`
       : simA
-        ? `${simA} and other names in the similar-names section on this page`
-        : 'the similar-names section on this page';
+        ? `${simA} and other picks in the similar-names list on this page`
+        : 'the similar-names list on this page';
 
-  const ans1 = `The name ${name} means "${meaning}". It reflects ${originLabel} etymology and the usual dictionary sense cited for this spelling. Linguistic roots and cultural background are summarized above; we rely on curated references rather than machine-generated glosses.`;
-  const ans2 = `${name} is typically used as ${genderLabel} name in our dataset. Regional usage can differ, and some names shift over time. The gender label here matches how the name is tagged for browse filters on this site.`;
-  const ans3 = `${name} is ${popWord} in current naming data where ranks exist. The first sentence reflects typical rank bands in official statistics we track. Use the popularity table and chart on this page for year-by-year detail by country.`;
+  const ans1 = `${name} means "${meaning}" and comes from ${originLabel} naming roots. The gloss matches what we show in the quick facts and lead summary above.`;
+  const ans2 = `${name} is listed as ${genderLabel} name in our dataset. Usage can differ by region, so confirm the reading you want for your family.`;
+  const ans3 = !hasRank
+    ? `We do not have a single global rank for ${name} on this page. Use the popularity table and chart below for country- and year-specific counts.`
+    : bestRank <= 100
+      ? `${name} is a top-ranked name in the official statistics we track. See the table below for year-by-year detail where available.`
+      : bestRank <= 500
+        ? `${name} is a well-established name in recent years in those lists. Check the table below for your country and decade.`
+        : `${name} is a less common but distinctive name in published rankings. Local offices may still show steady use—compare the table below.`;
   const ans4 = isBiblical
-    ? `Yes — ${name} is tagged as biblical in our dataset, reflecting scripture, saints, or long-standing religious use. That tag is separate from everyday popularity. Etymology may still include secular or regional layers beyond a single verse reference.`
-    : `In our dataset, ${name} is not tagged as biblical; it may still appear in religious communities depending on tradition. Biblical status varies by source; check style tags and origin notes above for context.`;
+    ? `Yes — ${name} is tagged as biblical in our directory (scripture, saints, or long religious use). It can still be used outside strictly religious settings.`
+    : `No — ${name} is not tagged as biblical in our directory. It may still appear in religious families depending on tradition and region.`;
   const ans5 =
-    bestRank <= 500
-      ? `${name} is not especially rare in available statistics; it sits in a well-used band rather than a niche long tail. "Rare" usually means very low birth counts; compare ranks in the table below by country and year.`
-      : `${name} is relatively uncommon in the ranks we track, which supports treating it as a rarer choice in many regions. Exact rarity still depends on country and decade; consult the popularity table for concrete ranks.`;
-  const ans6 = `Names similar to ${name} include ${simPhrase}. Similarity blends sound, origin cluster, and popularity band in our matching logic. Open the lists above for full profiles, etymology, and cross-links to related names.`;
+    bestRank <= 500 && hasRank
+      ? `${name} is not ultra-rare in the data we show; it sits in a well-used band. Compare ranks in the table below before calling it “rare.”`
+      : `${name} ranks toward the uncommon side in the lists we publish. Exact rarity depends on country and year—use the table below.`;
+  const ans6 = `Similar options to ${name} include ${simPhrase}. Open those links for meanings, origins, and popularity in one place.`;
 
   const faqs = [
     { question: `What does the name ${name} mean?`, answer: ans1 },
@@ -1087,13 +1173,13 @@ function buildQuickFaqForName(record, chartData, latestRank, categories, similar
 
   faqs.forEach((f) => {
     let w = countWordsPlain(f.answer);
-    while (w < 30) {
-      f.answer += ' Additional detail appears in the structured sections above.';
+    while (w < 15) {
+      f.answer += ' See the sections above for more detail.';
       w = countWordsPlain(f.answer);
     }
-    while (w > 60) {
+    while (w > 52) {
       const words = f.answer.split(/\s+/).filter(Boolean);
-      if (words.length < 20) break;
+      if (words.length < 12) break;
       words.pop();
       f.answer = words.join(' ');
       w = countWordsPlain(f.answer);
@@ -1125,9 +1211,9 @@ function buildHowPopularToday(record, chartData, latestRank) {
   const bestRank = chartData && chartData.length > 0
     ? Math.min(...chartData.map((d) => d.rank != null ? d.rank : 9999))
     : (latestRank != null ? latestRank : 9999);
-  let band = 'less common';
-  if (bestRank <= 100) band = 'highly popular';
-  else if (bestRank <= 500) band = 'well established';
+  let band = 'a less common but distinctive name';
+  if (bestRank <= 100) band = 'a top-ranked name';
+  else if (bestRank <= 500) band = 'a well-established name in recent years';
   const analyzed = chartData && chartData.length >= 2 ? analyzeTrend(chartData) : { trend: 'stable' };
   const trendWord = analyzed.trend === 'rising' ? 'Rising' : analyzed.trend === 'declining' || analyzed.trend === 'peaked' ? 'Declining' : 'Stable';
   return `<section aria-labelledby="how-popular-heading"><h2 id="how-popular-heading">How Popular Is ${nameEsc} Today?</h2><p class="contextual">${nameEsc} is ${band} in current naming data. The trend is ${trendWord}.</p></section>`;
@@ -1227,7 +1313,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   moreAboutLinks.push(`<a href="/names/usa${EXT}">USA</a>`, `<a href="/names/canada${EXT}">Canada</a>`, `<a href="/names/ireland${EXT}">Ireland</a>`, `<a href="/names/letters${EXT}">By letter (A–Z)</a>`);
   const moreAboutSection = `<section aria-labelledby="more-about-heading"><h2 id="more-about-heading">More About ${htmlEscape(record.name)}</h2><p class="name-links">${moreAboutLinks.slice(0, 6).join(' · ')}</p></section>`;
 
-  const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/names">Baby names hub</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
+  const browseSection = `<section aria-labelledby="browse-heading"><h2 id="browse-heading">Browse the site</h2><p class="internal-links"><a href="/">Home</a> · <a href="/names">Baby names hub</a> · <a href="/names/trending${EXT}">Trending names</a> · <a href="/names/popular${EXT}">Popular names like ${htmlEscape(record.name)}</a> · <a href="/names/letters${EXT}">By letter (A–Z)</a> · <a href="/names/style${EXT}">By style</a> · <a href="/names/with-last-name${EXT}">Last name compatibility</a></p></section>`;
 
   // Phase 3.5: Names in the Same Style & Origin Group (cluster reinforcement block, before Related names)
   const excludeFromCluster = new Set([
@@ -1280,11 +1366,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
       : `<section aria-labelledby="letter-heading"><h2 id="letter-heading">Names starting with ${letter.toUpperCase()}</h2><p><a href="/names/${letter}${EXT}">All names starting with ${letter.toUpperCase()}</a></p></section>`)
     : '';
   popularCountrySection = popularInCountryTrimmed.length > 0 && countryLinkHtml
-    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${popularInCountryTrimmed.map(nameLink).join(', ')}</p><p>${countryLinkHtml}</p></section>`
-    : (countryLinkHtml ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names in ${htmlEscape(record.origin_country || record.language)}</h2><p>${countryLinkHtml}</p></section>` : '');
+    ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names like ${htmlEscape(record.name)} in ${htmlEscape(record.origin_country || record.language)}</h2><p class="name-links">${popularInCountryTrimmed.map(nameLink).join(', ')}</p><p>${countryLinkHtml}</p></section>`
+    : (countryLinkHtml ? `<section aria-labelledby="popular-country-heading"><h2 id="popular-country-heading">Popular names like ${htmlEscape(record.name)} in ${htmlEscape(record.origin_country || record.language)}</h2><p>${countryLinkHtml}</p></section>` : '');
 
   const relatedSection = relatedNamesTrimmed.length > 0
-    ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Related names</h2><p class="name-links">${relatedNamesTrimmed.map(nameLink).join(', ')}</p></section>`
+    ? `<section aria-labelledby="related-names-heading"><h2 id="related-names-heading">Names similar to ${htmlEscape(record.name)}</h2><p class="name-links">${relatedNamesTrimmed.map(nameLink).join(', ')}</p></section>`
     : '';
 
   // Phase 3.6: People Also Search For (must not duplicate cluster or sibling blocks)
@@ -1394,7 +1480,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
         ? latestRank
         : 9999;
   const popBandLabel =
-    bestRankForBand <= 100 ? 'Highly popular' : bestRankForBand <= 500 ? 'Well established' : 'Less common';
+    bestRankForBand <= 100
+      ? 'Top ranked'
+      : bestRankForBand <= 500
+        ? 'Well established in recent years'
+        : 'Less common but distinctive';
   const syllableCount =
     record.syllables != null
       ? record.syllables
@@ -1416,7 +1506,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     const bits = [`<a href="${namesLikePath(record.name)}">names similar to ${n}</a>`];
     if (hasEquivForPaa) bits.push(`<a href="/equivalents/${htmlEscape(nameSlug)}/">equivalents in other languages</a>`);
     if (hasSiblingsForPaa) bits.push(`<a href="/names/${htmlEscape(nameSlug)}/siblings/">sibling name ideas</a>`);
-    let sentence = 'Explore more: ';
+    let sentence = `Explore names like ${n}: `;
     if (bits.length === 1) sentence += `${bits[0]}.`;
     else if (bits.length === 2) sentence += `${bits[0]} and ${bits[1]}.`;
     else sentence += `${bits[0]}, ${bits[1]}, and ${bits[2]}.`;
@@ -1449,7 +1539,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     if (firstY && POPULARITY_YEARS.includes(firstY) && firstY !== peakYear && firstY !== currentYear && !yearLinks.some((l) => l.includes(firstY))) yearLinks.push('<a href="/popularity/' + firstY + EXT + '">' + firstY + '</a>');
     if (lastY && POPULARITY_YEARS.includes(lastY) && lastY !== firstY && lastY !== peakYear && lastY !== currentYear && !yearLinks.some((l) => l.includes(lastY))) yearLinks.push('<a href="/popularity/' + lastY + EXT + '">' + lastY + '</a>');
   }
-  yearLinks.push('<a href="/popularity/">Explore trends by year</a>');
+  yearLinks.push('<a href="/popularity/">Explore popularity trends by year for ' + htmlEscape(record.name) + '</a>');
   const popularYearsSection =
     '<section aria-labelledby="popular-years-heading"><h2 id="popular-years-heading">' + htmlEscape(record.name) + ' Popularity Over Time</h2><p class="contextual">' +
     yearLinks.slice(0, 6).join('. ') + '.</p></section>';
@@ -1483,11 +1573,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   // Step 3: Minimum content floor — intro, meaning context, popularity context, internal linking (400+ words)
   const nameIntro = `<p class="contextual">This page covers name meaning, etymology, and cultural background for ${htmlEscape(record.name)}. We summarize linguistic roots, the usual gloss, and popularity so you can compare ${htmlEscape(record.name)} with related options. Use the sections below for same-origin lists, gender matches, letter browsing, and name origin context.</p>`;
   const meaningContext = `<section aria-labelledby="meaning-context-heading"><h2 id="meaning-context-heading">About name meanings and origins</h2><p class="contextual">Name meaning and name origin draw on etymology, historical usage, and cultural adoption. The interpretation here reflects the most widely cited sense for ${htmlEscape(record.name)}. Cultural background and linguistic roots may span more than one region; the quick facts table summarizes the primary attribution. For more names from a similar tradition, use the same-origin and country links below.</p></section>`;
-  const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was registered in a given country and year, often from official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
-  const internalLinkingPara = `<p class="contextual">Explore the <a href="/">homepage</a> to search names, or the <a href="/names">baby names hub</a> to browse by gender, country, letter, and style. Below you will find related names, same-origin and same-gender options, and links to country and gender hubs.</p>`;
+  const popularityContext = `<section aria-labelledby="popularity-context-heading"><h2 id="popularity-context-heading">Understanding popularity data</h2><p class="contextual">When available, the popularity table shows how often ${htmlEscape(record.name)} was registered in a given country and year, often from official birth statistics (e.g. Social Security in the US, ONS in the UK). Rank is the name’s position among all names; count is the number of births. Trends vary by region and year. Browse <a href="/names/popular${EXT}">popular names like ${htmlEscape(record.name)}</a> and <a href="/names/trending${EXT}">trending names</a> for more context.</p></section>`;
+  const internalLinkingPara = `<p class="contextual">Learn more about ${htmlEscape(record.name)} via the <a href="/">homepage</a> and <a href="/names">baby names hub</a>, or browse by gender, country, letter, and style. Below you will find names similar to ${htmlEscape(record.name)}, same-origin and same-gender options, and links to country and gender hubs.</p>`;
 
   // Phase 4 STEP 2: Soft conversion block (before FAQ). STEP 6: Certificate link under origin.
-  const certificateLink = '<p><a href="/tools/name-certificate/">Download a printable name meaning certificate</a></p>';
+  const certificateLink = `<p><a href="/tools/name-certificate/">Learn more about ${htmlEscape(record.name)} — download a printable name meaning certificate</a></p>`;
   const nameReportConversionBlock =
     '<section class="conversion-block" aria-labelledby="name-report-heading">' +
     '<h2 id="name-report-heading">Create Your Personalized Name Report</h2>' +
@@ -1531,9 +1621,12 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   });
   const comparisonInsightsSection = buildNameComparisonInsights(record, comparisonOtherNames);
 
+  const serpHookHtml = `<p class="serp-hook">Find out the meaning, origin, popularity, and similar names to ${htmlEscape(record.name)}.</p>`;
+
   const mainContent = `
     <h1>${htmlEscape(record.name)}</h1>
     ${directAnswerSection}
+    ${serpHookHtml}
     ${definitionBlock}
     ${originBadgeHtml(record)}
     ${nameIntro}
@@ -1585,13 +1678,17 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${browseSection}
   `;
 
-  const descParts = [];
-  if (record.meaning) descParts.push(record.meaning);
-  if (originLabel) descParts.push(originLabel + ' origin');
-  if (record.gender) descParts.push(record.gender + ' name');
-  const uniqueDescription = descParts.length > 0
-    ? record.name + ': ' + descParts.join('. ') + '. Meaning, origin & popularity on NameOrigin.'
-    : record.name + ' — meaning, origin and popularity. Baby name details on NameOrigin.';
+  const originForMeta = originLabel || 'multiple naming traditions';
+  const hasRankTitle = bestRankForBand != null && bestRankForBand < 9999;
+  const titlePopBand = titlePopularityBandFromRank(bestRankForBand, hasRankTitle);
+  const namePageTitle = buildTitle(record.name, originForMeta, record.gender || '', titlePopBand);
+  const namePageDescription = buildMetaDescription(
+    record.name,
+    originForMeta,
+    record.gender || '',
+    (record.meaning || '').trim() || 'a documented given name',
+    metaPopularitySnippet(bestRankForBand, hasRankTitle),
+  );
 
   const namePageSchemas = [personJsonLd(record)];
   const popSchema = popularityJsonLd(record, chartData, peakYear, latestRank);
@@ -1607,14 +1704,14 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   if (questionSet.size !== 6) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ duplicate FAQ questions.`);
   quickFaq.faqs.forEach((f, i) => {
     const w = wordCount(f.answer);
-    if (w < 30) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has fewer than 30 words.`);
-    if (w > 60) throw new Error(`Phase 5.0: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has more than 60 words.`);
+    if (w < 15) throw new Error(`Phase 6: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has fewer than 15 words.`);
+    if (w > 52) throw new Error(`Phase 6: Name page /name/${nameSlug}/ FAQ answer ${i + 1} has more than 52 words.`);
   });
 
   const aboutOrigin = originLabel || 'documented naming traditions';
   const html = baseLayout({
-    title: record.name + ' — Meaning, Origin & Popularity',
-    description: uniqueDescription.slice(0, 160),
+    title: namePageTitle,
+    description: namePageDescription,
     path: pathSeg,
     canonical: SITE_URL + pathSeg,
     breadcrumb: breadcrumbItems,
@@ -1623,8 +1720,8 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     extraSchema: namePageSchemas,
     faqSchema: quickFaq.schema,
     articleSchemaOverrides: {
-      headline: record.name + ' — Meaning, Origin & Popularity',
-      description: uniqueDescription.slice(0, 160),
+      headline: namePageTitle,
+      description: namePageDescription,
       mainEntityOfPage: SITE_URL + pathSeg,
       about: {
         '@type': 'Thing',
