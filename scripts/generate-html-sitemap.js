@@ -92,6 +92,8 @@ const COUNTRY_SLUG_MAP = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france
   <main class="container section">
     <h1>NameOrigin Sitemap</h1>
     <p class="contextual">This HTML sitemap helps search engines and visitors discover all pages on nameorigin.io. Browse names, countries, letters, tools, and special pages.</p>
+    <p class="contextual">An HTML sitemap complements the XML sitemap by listing important destinations in a readable layout. It groups popular given names, letter hubs, country collections, and tools so crawlers and people can reach deep content in a few clicks. Each build refreshes this page so it stays aligned with the live set of name profiles, filters, and utilities. Use it when you want a single overview of major sections, or when verifying that core paths remain discoverable. Links below lead to hubs that in turn open thousands of individual name pages with meanings, origins, and popularity data drawn from the same structured dataset.</p>
+    <p class="contextual">The name list emphasizes widely searched entries and fills out toward two hundred links for breadth. Letter pages cover the full alphabet for systematic browsing. Country rows connect to regional name lists where the dataset supports them. Tools and special pages surface reports, comparisons, trend views, and compatibility helpers that sit alongside the core dictionary. Together these blocks mirror how the site is organized internally: names first, then browse axes, then editorial and interactive features.</p>
 
     <h2>Names</h2>
     <ul class="name-list">
