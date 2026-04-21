@@ -1267,6 +1267,106 @@ function buildEquivalentsSection(record, nameBySlug) {
   return { section, contextLink };
 }
 
+/** Phase 6.3: query-shaped sections (no new URLs); uses existing middle / similar / PAS / related lists. */
+function buildMiddleNamesSEOSection(record, middleNames) {
+  if (!Array.isArray(middleNames) || middleNames.length === 0) return '';
+  const nameEsc = htmlEscape(record.name);
+  const items = middleNames
+    .slice(0, 6)
+    .map((n) => {
+      const mid = n && n.name != null ? String(n.name) : '';
+      if (!mid) return '';
+      return `    <li>${nameEsc} ${htmlEscape(mid)}</li>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+  if (!items) return '';
+  return `
+<section class="query-expansion">
+  <h2>What are good middle names for ${nameEsc}?</h2>
+  <p>
+    Good middle names for ${nameEsc} include combinations that create balance and flow. These combinations work well with ${nameEsc} and are commonly considered by parents looking for a complete name.
+  </p>
+  <ul>
+${items}
+  </ul>
+</section>`;
+}
+
+function buildNamesLikeGenderedSection(record, similarNames) {
+  if (!Array.isArray(similarNames) || similarNames.length === 0) return '';
+  const nameEsc = htmlEscape(record.name);
+  const genderLabel = record.gender ? String(record.gender).toLowerCase() : 'baby';
+  const forLabel = capitalizeWord(genderLabel);
+  const items = similarNames
+    .slice(0, 6)
+    .map((n) => {
+      if (!n || !n.name) return '';
+      return `    <li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a></li>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+  if (!items) return '';
+  return `
+<section class="query-expansion">
+  <h2>What names are similar to ${nameEsc} for ${forLabel}?</h2>
+  <p>
+    Names similar to ${nameEsc} share a comparable style, sound, or cultural background.
+  </p>
+  <ul>
+${items}
+  </ul>
+</section>`;
+}
+
+function buildUniqueNamesSection(record, uniqueNames) {
+  if (!Array.isArray(uniqueNames) || uniqueNames.length === 0) return '';
+  const nameEsc = htmlEscape(record.name);
+  const items = uniqueNames
+    .slice(0, 6)
+    .map((n) => {
+      if (!n || !n.name) return '';
+      return `    <li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a></li>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+  if (!items) return '';
+  return `
+<section class="query-expansion">
+  <h2>What are unique names like ${nameEsc}?</h2>
+  <p>
+    Unique names like ${nameEsc} offer a similar feel while being less common.
+  </p>
+  <ul>
+${items}
+  </ul>
+</section>`;
+}
+
+function buildClassicNamesSection(record, classicNames) {
+  if (!Array.isArray(classicNames) || classicNames.length === 0) return '';
+  const nameEsc = htmlEscape(record.name);
+  const items = classicNames
+    .slice(0, 6)
+    .map((n) => {
+      if (!n || !n.name) return '';
+      return `    <li><a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a></li>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+  if (!items) return '';
+  return `
+<section class="query-expansion">
+  <h2>What are classic names like ${nameEsc}?</h2>
+  <p>
+    Classic names like ${nameEsc} have a long history of use and a timeless quality.
+  </p>
+  <ul>
+${items}
+  </ul>
+</section>`;
+}
+
 function generateNamePage(record, names, popularity, categories, variants, siblingSlugs, topicClusters) {
   const buildDate = getBuildDate();
   const nameSlug = slug(record.name);
@@ -1688,6 +1788,15 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
 
   const serpHookHtml = `<p class="serp-hook">Find out the meaning, origin, popularity, and similar names to ${htmlEscape(record.name)}.</p>`;
 
+  const queryExpansionGenderSimilar = record.gender
+    ? similarNamesTrimmed.filter((n) => n.gender === record.gender)
+    : similarNamesTrimmed;
+  const queryExpansionHtml =
+    buildMiddleNamesSEOSection(record, middleNameIdeas) +
+    buildNamesLikeGenderedSection(record, queryExpansionGenderSimilar) +
+    buildUniqueNamesSection(record, peopleAlsoSearchFor) +
+    buildClassicNamesSection(record, relatedNamesTrimmed);
+
   const mainContent = `
     <h1>${htmlEscape(record.name)} Meaning and Origin</h1>
     ${trustLineHtml}
@@ -1697,6 +1806,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${snippetPopularityHtml}
     ${snippetBulletsHtml}
     ${snippetComparisonHtml}
+    ${queryExpansionHtml}
     ${serpIntentLineHtml}
     ${directAnswerSection}
     ${meaningReinforcementHtml}

@@ -1390,6 +1390,10 @@ button, input, select, textarea {
   padding-left: 18px;
 }
 
+.query-expansion {
+  margin-top: 28px;
+}
+
 .meaning-reinforcement {
   font-size: var(--text-base);
   line-height: var(--line-relaxed);
