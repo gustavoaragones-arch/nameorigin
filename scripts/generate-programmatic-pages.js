@@ -1529,6 +1529,55 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const introGenderLead = record.gender ? `${htmlEscape(capitalizeWord(record.gender))} ` : '';
   const introSnippetHtml =
     `<p class="intro-snippet">${htmlEscape(record.name)} is a ${introGenderLead}name of ${htmlEscape(introOriginForLead)} origin that means "${htmlEscape(introMeaningForLead)}". ${namePageSemanticClose(record.name, true)}</p>`;
+  const snippetGenderLower = (() => {
+    const g = String(record.gender || '').toLowerCase();
+    if (g === 'girl') return 'girl';
+    if (g === 'boy') return 'boy';
+    return 'unisex';
+  })();
+  const originSafe = originJoinedForSnippet || 'multiple';
+  const snippetNameEsc = htmlEscape(record.name);
+  const snippetOriginEsc = htmlEscape(originSafe);
+  const snippetMeaningEsc = htmlEscape(introMeaningForLead);
+  const snippetDefinitionHtml =
+    `<section class="snippet-definition">
+  <h2>What Does ${snippetNameEsc} Mean?</h2>
+  <p>
+    ${snippetNameEsc} is a given name of ${snippetOriginEsc} origin that means \u201C${snippetMeaningEsc}\u201D. It is a ${snippetGenderLower} name with cultural roots and steadily increasing popularity in modern naming.
+  </p>
+</section>`;
+  const snippetGenderHtml =
+    `<section class="snippet-gender">
+  <h2>Is ${snippetNameEsc} a boy or girl name?</h2>
+  <p>
+    ${snippetNameEsc} is typically used as a ${snippetGenderLower} name. Its usage can vary slightly depending on cultural and regional naming traditions, but it is most commonly recognized as a ${snippetGenderLower} name.
+  </p>
+</section>`;
+  const snippetPopularityHtml =
+    `<section class="snippet-popularity">
+  <h2>How popular is ${snippetNameEsc}?</h2>
+  <p>
+    ${snippetNameEsc} has shown steadily increasing popularity in recent years. While it may not always rank among the most common names, it is gaining attention due to its meaning, cultural background, and modern appeal.
+  </p>
+</section>`;
+  const snippetBulletsHtml =
+    `<section class="snippet-bullets">
+  <h2>Why parents choose the name ${snippetNameEsc}</h2>
+  <ul>
+    <li>Clear and meaningful origin</li>
+    <li>Recognized across different cultures</li>
+    <li>Balanced between traditional and modern use</li>
+    <li>Easy pronunciation and spelling</li>
+    <li>Increasing popularity in recent years</li>
+  </ul>
+</section>`;
+  const snippetComparisonHtml =
+    `<section class="snippet-comparison">
+  <h2>Names similar to ${snippetNameEsc}</h2>
+  <p>
+    Names similar to ${snippetNameEsc} often share a comparable origin, sound structure, or cultural background. Exploring similar names can help identify alternatives with a related style while maintaining the same overall feel.
+  </p>
+</section>`;
   const serpIntentLineHtml = `<p class="serp-intent-line">Looking for the meaning of ${htmlEscape(record.name)}? Here's its origin, popularity, and similar names.</p>`;
   const meaningReinforcementHtml = `<p class="meaning-reinforcement">The name ${htmlEscape(record.name)} literally translates to "${htmlEscape(meaningRawForSnippet)}" and is commonly associated with ${htmlEscape(originHeritageDisplay)} heritage.</p>`;
   const originLineageSection = buildOriginLineage(record.name, originLabel);
@@ -1643,6 +1692,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     <h1>${htmlEscape(record.name)} Meaning and Origin</h1>
     ${trustLineHtml}
     ${introSnippetHtml}
+    ${snippetDefinitionHtml}
+    ${snippetGenderHtml}
+    ${snippetPopularityHtml}
+    ${snippetBulletsHtml}
+    ${snippetComparisonHtml}
     ${serpIntentLineHtml}
     ${directAnswerSection}
     ${meaningReinforcementHtml}

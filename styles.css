@@ -1378,6 +1378,18 @@ button, input, select, textarea {
   margin: 0 0 var(--space-4);
   color: var(--color-text);
 }
+.snippet-definition,
+.snippet-gender,
+.snippet-popularity,
+.snippet-bullets,
+.snippet-comparison {
+  margin-top: 24px;
+}
+
+.snippet-bullets ul {
+  padding-left: 18px;
+}
+
 .meaning-reinforcement {
   font-size: var(--text-base);
   line-height: var(--line-relaxed);
