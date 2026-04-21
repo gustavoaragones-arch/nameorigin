@@ -1359,6 +1359,31 @@ button, input, select, textarea {
   margin: 0 0 var(--space-4);
   color: var(--color-text);
 }
+.serp-intent-line {
+  font-size: var(--text-base);
+  line-height: var(--line-relaxed);
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
+}
+.trust-line {
+  font-size: var(--text-sm);
+  line-height: var(--line-relaxed);
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+.intro-snippet {
+  font-size: var(--text-base);
+  line-height: var(--line-relaxed);
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}
+.meaning-reinforcement {
+  font-size: var(--text-base);
+  line-height: var(--line-relaxed);
+  margin: 0 0 var(--space-5);
+  color: var(--color-text);
+}
 .serp-hook {
   margin: 0 0 var(--space-5);
   padding: var(--space-3) var(--space-4);
