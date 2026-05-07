@@ -289,12 +289,17 @@ function baseLayout(opts) {
     <div class="container">
       <a href="/" class="site-logo">nameorigin.io</a>
       <nav class="site-nav" aria-label="Main navigation">
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+  ☰
+        </button>
+        <div class="nav-inner">
         <a href="/names">Names</a>
         <a href="/names/boy${EXT}">Boy Names</a>
         <a href="/names/girl${EXT}">Girl Names</a>
         <a href="/names/letters${EXT}">By letter</a>
         <a href="/compare/">Compare</a>
         <a href="/names/with-last-name${EXT}">Last name fit</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -313,6 +318,7 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
       </div>
     </div>
   </footer>
+  <script src="/assets/js/navigation.js" defer></script>
 </body>
 </html>`;
 }

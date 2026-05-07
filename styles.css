@@ -1566,3 +1566,82 @@ p.disclaimer.heraldry-disclaimer {
   font-style: italic;
   margin-top: var(--space-4);
 }
+
+/* MOBILE NAV FIX */
+@media (max-width: 768px) {
+
+  .site-nav {
+    position: relative;
+    width: 100%;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .nav-inner {
+    display: none;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+
+    background: #fff;
+    z-index: 1000;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding-top: calc(60px + env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .nav-inner.open {
+    display: flex;
+  }
+
+  .nav-inner a {
+    display: block;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 16px;
+  }
+}
+
+/* DESKTOP SAFETY */
+@media (min-width: 769px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    width: auto;
+  }
+
+  .nav-inner {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-6);
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    max-width: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: visible;
+    overscroll-behavior: auto;
+    z-index: auto;
+    background: transparent;
+  }
+}

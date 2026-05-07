@@ -247,12 +247,17 @@ function run() {
     <div class="container">
       <a href="/" class="site-logo">nameorigin.io</a>
       <nav class="site-nav" aria-label="Main navigation">
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+  ☰
+        </button>
+        <div class="nav-inner">
         <a href="/names">Names</a>
         <a href="/names/boy${EXT}">Boy Names</a>
         <a href="/names/girl${EXT}">Girl Names</a>
         <a href="/names/letters${EXT}">By letter</a>
         <a href="/compare/">Compare</a>
         <a href="/names/with-last-name${EXT}">Last name fit</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -271,6 +276,7 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
       </div>
     </div>
   </footer>
+  <script src="/assets/js/navigation.js" defer></script>
 </body>
 </html>`;
 
@@ -342,7 +348,9 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
   }))}</script>
 </head>
 <body>
-  <header class="site-header" role="banner"><div class="container"><a href="/" class="site-logo">nameorigin.io</a><nav class="site-nav"><a href="/names">Names</a><a href="/compare/">Compare</a><a href="/popularity/">Popularity</a></nav></div></header>
+  <header class="site-header" role="banner"><div class="container"><a href="/" class="site-logo">nameorigin.io</a><nav class="site-nav"><button class="mobile-menu-toggle" aria-label="Open menu">
+  ☰
+</button><div class="nav-inner"><a href="/names">Names</a><a href="/compare/">Compare</a><a href="/popularity/">Popularity</a></div></nav></div></header>
   <main class="container section">
     <nav class="breadcrumb"><a href="/">Home</a> / <span aria-current="page">Trends</span></nav>
     <h1>Name trends</h1>
@@ -360,6 +368,7 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
     </section>
   </main>
   <footer class="site-footer"><div class="container"><div class="footer__bottom"><p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p><p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p><p class="crawl-links">Browse: <a href="/names/">All names</a> | <a href="/names/boy${EXT}">Boy names</a> | <a href="/names/girl${EXT}">Girl names</a> | <a href="/popularity/">Popular names</a></p><p><a href="/sitemap/">Sitemap</a></p></div></div></footer>
+  <script src="/assets/js/navigation.js" defer></script>
 </body>
 </html>`;
   fs.mkdirSync(path.join(OUT_DIR, 'trends'), { recursive: true });
