@@ -1570,38 +1570,49 @@ p.disclaimer.heraldry-disclaimer {
 /* MOBILE NAV FIX */
 @media (max-width: 768px) {
 
-  .site-nav {
-    position: relative;
-    width: 100%;
-  }
-
   .mobile-menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+
     font-size: 24px;
-    background: none;
+    background: #f4f4f4;
     border: none;
+    border-radius: 16px;
     cursor: pointer;
+
+    position: relative;
     z-index: 1001;
   }
 
   .nav-inner {
     display: none;
+
     flex-direction: column;
 
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100dvh;
 
     background: #fff;
+
     z-index: 1000;
 
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    padding-top: calc(60px + env(safe-area-inset-top));
-    padding-bottom: env(safe-area-inset-bottom);
+    padding:
+      calc(88px + env(safe-area-inset-top))
+      24px
+      env(safe-area-inset-bottom);
+
+    gap: 0;
   }
 
   .nav-inner.open {
@@ -1610,9 +1621,17 @@ p.disclaimer.heraldry-disclaimer {
 
   .nav-inner a {
     display: block;
-    padding: 16px 20px;
-    border-bottom: 1px solid #f2f2f2;
-    font-size: 16px;
+
+    width: 100%;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    text-align: left;
   }
 }
 
@@ -1622,26 +1641,22 @@ p.disclaimer.heraldry-disclaimer {
     display: none;
   }
 
-  .site-nav {
-    width: auto;
-  }
-
   .nav-inner {
-    display: flex !important;
-    position: static;
+    display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: var(--space-6);
-    top: auto;
-    left: auto;
+
+    position: static;
+
     width: auto;
     height: auto;
-    max-width: none;
-    padding-top: 0;
-    padding-bottom: 0;
+
     overflow: visible;
-    overscroll-behavior: auto;
-    z-index: auto;
+
     background: transparent;
+
+    padding: 0;
+
+    gap: var(--space-6);
+    align-items: center;
   }
 }

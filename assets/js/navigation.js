@@ -9,19 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = '';
   }
 
-  function openMenu() {
-    nav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
   toggle.addEventListener('click', function (e) {
     e.stopPropagation();
 
-    if (nav.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
   });
 
   // ✅ Close on link click
