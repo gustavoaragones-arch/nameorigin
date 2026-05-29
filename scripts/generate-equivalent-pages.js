@@ -239,6 +239,7 @@ function run() {
   <meta name="description" content="${htmlEscape(description.slice(0, 160))}">
   <title>${htmlEscape(displayName)} in Other Languages | NameOrigin</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${htmlEscape(canonical)}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd(breadcrumbItems))}</script>
   <script type="application/ld+json">${JSON.stringify(articleLd)}</script>

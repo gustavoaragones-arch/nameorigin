@@ -72,6 +72,7 @@ const COUNTRY_SLUG_MAP = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france
   <meta name="description" content="HTML sitemap for nameorigin.io — browse all names, countries, letters, tools, and special pages.">
   <title>NameOrigin Sitemap | nameorigin.io</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${SITE_URL}/sitemap/" />
 </head>
 <body>

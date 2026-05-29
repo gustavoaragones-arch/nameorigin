@@ -275,6 +275,7 @@ function run() {
   <meta name="description" content="${htmlEscape(directSummary.slice(0, 155))}">
   <title>Baby names in ${htmlEscape(label)} | ${htmlEscape(countryLabel)} | NameOrigin</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${SITE_URL}${pathSeg}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbJsonLd(breadcrumbItems))}</script>
   <script type="application/ld+json">${jurisdictionArticleLd}</script>

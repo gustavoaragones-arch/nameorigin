@@ -348,6 +348,7 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
   <meta name="description" content="Sibling names that pair well with ${nameEsc}. Harmony scores, shared origin, style match. Top 12 compatible sibling names.">
   <title>Sibling names for ${baseRecord.name} — Sibling Harmony | nameorigin.io</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${htmlEscape(SITE_URL + pathSeg)}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
   <script type="application/ld+json">${JSON.stringify(howToSchema)}</script>

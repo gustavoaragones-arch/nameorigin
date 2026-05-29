@@ -237,6 +237,7 @@ function run() {
   <meta name="description" content="${htmlEscape(directAnswer.slice(0, 155))}">
   <title>Top 5 Trending Names in the USA: ${yearLatest} vs ${yearPast} | NameOrigin</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${SITE_URL}${pathSeg}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
   <script type="application/ld+json">${JSON.stringify(articleSchema)}</script>
@@ -340,6 +341,7 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
   <title>Name Trends | NameOrigin</title>
   <link rel="canonical" href="${SITE_URL}/trends/" />
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <script type="application/ld+json">${JSON.stringify(mergeArticleSchema({
     headline: 'Name trends',
     description: hubMetaDesc,

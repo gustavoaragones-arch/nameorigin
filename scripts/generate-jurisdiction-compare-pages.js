@@ -279,6 +279,7 @@ function run() {
   <meta name="description" content="${htmlEscape(directSummary.slice(0, 155))}">
   <title>${htmlEscape(pair.labelA)} vs ${htmlEscape(pair.labelB)} Baby Names | NameOrigin</title>
   <link rel="stylesheet" href="/styles.min.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${SITE_URL}${pathSeg}" />
   <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
   <script type="application/ld+json">${JSON.stringify(articleSchema)}</script>

@@ -124,6 +124,7 @@ function baseLayout(opts) {
   <meta name="description" content="${description}">
   <title>${title}</title>
   <link rel="stylesheet" href="/styles.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3974004697476579" crossorigin="anonymous"></script>
   <link rel="canonical" href="${canonical}">
   ${breadcrumb ? `<script type="application/ld+json">${breadcrumb}</script>` : ''}
   ${extraSchema ? `<script type="application/ld+json">${extraSchema}</script>` : ''}
