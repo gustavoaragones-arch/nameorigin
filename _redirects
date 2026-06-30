@@ -1,3 +1,6 @@
+# Ensure AdSense verification file is served as a static text asset.
+/ads.txt  /ads.txt  200
+
 # Phase 2.25A: collapse duplicate name URLs — /name/<slug>.html → /name/<slug>/ (301)
 # Cloudflare Pages: supports /name/:slug.html → /name/:slug/ 301
 # If your host uses different syntax, add a single rule: match /name/*.html, redirect to /name/*/ (or equivalent).
