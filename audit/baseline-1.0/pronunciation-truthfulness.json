@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-23T03:58:51.079Z",
+  "method": "Page-level pronunciation truthfulness ratio: share of pronunciation-affected pages with zero pronunciation-fallback-marker hits and zero retired placeholder phrases. Available and disclosed-empty pages count as truthful.",
+  "baseline": {
+    "pronunciationAffectedPages": 3697,
+    "fallbackOccurrences": 11091,
+    "retiredPlaceholderOccurrences": 11091,
+    "fallbackPages": 3697,
+    "disclosedPages": 0,
+    "availablePronunciationPages": 0,
+    "truthfulPages": 0,
+    "truthfulnessRatioPct": 0
+  },
+  "activation": {
+    "pronunciationAffectedPages": 3697,
+    "fallbackOccurrences": 0,
+    "retiredPlaceholderOccurrences": 0,
+    "fallbackPages": 0,
+    "disclosedPages": 3697,
+    "availablePronunciationPages": 0,
+    "truthfulPages": 3697,
+    "truthfulnessRatioPct": 100
+  },
+  "truthfulnessIncreasePct": 100
+}

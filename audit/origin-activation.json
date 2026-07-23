@@ -1,0 +1,117 @@
+{
+  "phase": "4A",
+  "title": "Origin Activation",
+  "generatedAt": "2026-07-23T03:20:18.522Z",
+  "scope": {
+    "generators": [
+      "scripts/generate-programmatic-pages.js",
+      "scripts/generate-names-like.js",
+      "scripts/generate-sibling-pages.js",
+      "scripts/generate-compare-pages.js"
+    ],
+    "dataSource": "namesEnriched (canonical enriched origin)",
+    "policyModule": "lib/render/origin.js",
+    "pagesInScope": 7544
+  },
+  "dataset": {
+    "totalNames": 3697,
+    "canonicalOriginAvailable": 167,
+    "canonicalOriginMissing": 3530,
+    "canonicalOriginUtilizationPct": 4.5
+  },
+  "baseline": {
+    "pageCount": 7544,
+    "fallbackOccurrences": 32395,
+    "disclosedOccurrences": 0,
+    "researchedOriginPages": 273,
+    "disclosedPages": 0,
+    "fallbackPages": 7378,
+    "truthfulPages": 166,
+    "truthfulnessRatioPct": 2.2,
+    "fallbackByMarker": {
+      "multiple traditions": 3534,
+      "various linguistic traditions": 7068,
+      "various cultural traditions": 3534,
+      "multiple naming traditions": 10602,
+      "diverse cultural": 3534,
+      "various origins": 4123
+    },
+    "byTemplate": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 28272,
+        "disclosedOccurrences": 0,
+        "researchedPages": 167,
+        "disclosedPages": 0,
+        "fallbackPages": 3534
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 3694,
+        "disclosedOccurrences": 0,
+        "researchedPages": 64,
+        "disclosedPages": 0,
+        "fallbackPages": 3694
+      },
+      "sibling-harmony-page": {
+        "pages": 150,
+        "fallbackOccurrences": 429,
+        "disclosedOccurrences": 0,
+        "researchedPages": 42,
+        "disclosedPages": 0,
+        "fallbackPages": 150
+      }
+    }
+  },
+  "activation": {
+    "pageCount": 7544,
+    "fallbackOccurrences": 0,
+    "disclosedOccurrences": 67174,
+    "researchedOriginPages": 441,
+    "disclosedPages": 7103,
+    "fallbackPages": 0,
+    "truthfulPages": 7544,
+    "truthfulnessRatioPct": 100,
+    "fallbackByMarker": {},
+    "byTemplate": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 63540,
+        "researchedPages": 167,
+        "disclosedPages": 3530,
+        "fallbackPages": 0
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 3530,
+        "researchedPages": 167,
+        "disclosedPages": 3530,
+        "fallbackPages": 0
+      },
+      "sibling-harmony-page": {
+        "pages": 150,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 104,
+        "researchedPages": 107,
+        "disclosedPages": 43,
+        "fallbackPages": 0
+      }
+    }
+  },
+  "successMetrics": {
+    "fallbackReductionPct": 100,
+    "researchedOriginCoveragePct": 5.8,
+    "disclosedMissingPageCoveragePct": 94.2,
+    "disclosedMissingOccurrences": 67174,
+    "htmlPagesChanged": 7544,
+    "canonicalOriginUtilizationPct": 4.5,
+    "activationTruthfulnessRatioPct": 100
+  },
+  "validation": {
+    "urlsUnchanged": true,
+    "internalLinksUnchanged": false,
+    "structuredDataUnchangedExceptOrigin": false
+  }
+}

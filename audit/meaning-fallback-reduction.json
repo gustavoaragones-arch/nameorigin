@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-07-23T03:47:40.827Z",
+  "baselineFallbackOccurrences": 29552,
+  "activationFallbackOccurrences": 0,
+  "fallbackReductionPct": 100,
+  "baselineByMarker": {
+    "documented given name": 14776,
+    "a documented given name": 14776
+  },
+  "activationByMarker": {},
+  "byTemplate": {
+    "baseline": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 29552,
+        "disclosedOccurrences": 0,
+        "researchedPages": 3,
+        "disclosedPages": 0,
+        "fallbackPages": 3694
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 0,
+        "researchedPages": 0,
+        "disclosedPages": 0,
+        "fallbackPages": 0
+      }
+    },
+    "activation": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 25858,
+        "researchedPages": 3,
+        "disclosedPages": 3694,
+        "fallbackPages": 0
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 0,
+        "researchedPages": 0,
+        "disclosedPages": 0,
+        "fallbackPages": 0
+      }
+    }
+  }
+}

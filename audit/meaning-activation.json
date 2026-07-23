@@ -1,0 +1,101 @@
+{
+  "phase": "4B",
+  "title": "Meaning Activation",
+  "generatedAt": "2026-07-23T03:47:40.822Z",
+  "scope": {
+    "policyModule": "lib/render/meaning.js",
+    "generators": [
+      "scripts/generate-programmatic-pages.js",
+      "scripts/generate-names-like.js"
+    ],
+    "pagesInScope": 7394,
+    "baselineHtmlSource": "build/origin-activation"
+  },
+  "dataset": {
+    "totalNames": 3697,
+    "canonicalMeaningAvailable": 3,
+    "canonicalMeaningMissing": 3694,
+    "canonicalMeaningUtilizationPct": 0.08
+  },
+  "baseline": {
+    "pageCount": 7394,
+    "fallbackOccurrences": 29552,
+    "disclosedOccurrences": 0,
+    "researchedMeaningPages": 3,
+    "disclosedPages": 0,
+    "fallbackPages": 3694,
+    "truthfulPages": 3700,
+    "truthfulnessRatioPct": 50,
+    "fallbackByMarker": {
+      "documented given name": 14776,
+      "a documented given name": 14776
+    },
+    "byTemplate": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 29552,
+        "disclosedOccurrences": 0,
+        "researchedPages": 3,
+        "disclosedPages": 0,
+        "fallbackPages": 3694
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 0,
+        "researchedPages": 0,
+        "disclosedPages": 0,
+        "fallbackPages": 0
+      }
+    }
+  },
+  "activation": {
+    "pageCount": 7394,
+    "fallbackOccurrences": 0,
+    "disclosedOccurrences": 25858,
+    "researchedMeaningPages": 3,
+    "disclosedPages": 3694,
+    "fallbackPages": 0,
+    "truthfulPages": 7394,
+    "truthfulnessRatioPct": 100,
+    "fallbackByMarker": {},
+    "byTemplate": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 25858,
+        "researchedPages": 3,
+        "disclosedPages": 3694,
+        "fallbackPages": 0
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 0,
+        "researchedPages": 0,
+        "disclosedPages": 0,
+        "fallbackPages": 0
+      }
+    }
+  },
+  "successMetrics": {
+    "fallbackReductionPct": 100,
+    "researchedMeaningPageCoveragePct": 0.04,
+    "disclosedMissingPageCoveragePct": 50,
+    "htmlPagesChanged": 7394,
+    "semanticDiffPages": 3694,
+    "canonicalMeaningUtilizationPct": 0.08,
+    "activationTruthfulnessRatioPct": 100
+  },
+  "validation": {
+    "urlsUnchanged": true,
+    "internalLinksUnchanged": true,
+    "diffCategoryBreakdown": {
+      "semantic": 3694,
+      "generator-drift": 0,
+      "build-environment": 0,
+      "other-html": 3700,
+      "unchanged": 0
+    }
+  }
+}

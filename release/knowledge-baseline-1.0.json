@@ -1,0 +1,118 @@
+{
+  "releaseName": "Knowledge Baseline 1.0",
+  "releaseTag": "knowledge-baseline-1.0",
+  "releaseDate": "2026-07-23",
+  "description": "Permanent production baseline freezing Phase 4A–4C rendering policy, truthfulness guarantees, and validated programmatic HTML before Phase 5 knowledge acquisition.",
+  "includedPhases": [
+    {
+      "phase": "4A",
+      "title": "Origin Activation",
+      "policyModule": "lib/render/origin.js",
+      "documentation": "docs/PHASE4A_ORIGIN_ACTIVATION.md"
+    },
+    {
+      "phase": "4B",
+      "title": "Meaning Activation",
+      "policyModule": "lib/render/meaning.js",
+      "documentation": "docs/PHASE4B_MEANING_ACTIVATION.md"
+    },
+    {
+      "phase": "4C",
+      "title": "Pronunciation Activation",
+      "policyModule": "lib/render/pronunciation.js",
+      "documentation": "docs/PHASE4C_PRONUNCIATION_ACTIVATION.md"
+    }
+  ],
+  "productionPromotion": {
+    "sourceBuild": "build/pronunciation-activation/",
+    "regeneratedAfterValidation": false,
+    "promotedPaths": [
+      "name/",
+      "names/",
+      "compatibility/",
+      "sitemaps/",
+      "sitemap.xml",
+      "all-name-pages.html",
+      "alphabet-name-pages.html",
+      "boy-name-pages.html",
+      "country-name-pages.html",
+      "girl-name-pages.html",
+      "last-name-pages.html",
+      "name-pages.html",
+      "style-name-pages.html"
+    ],
+    "namePagesPromoted": 3697,
+    "nameDirectoryByteIdenticalToSource": true
+  },
+  "activationMetrics": {
+    "origin": {
+      "researchedNames": 167,
+      "coveragePct": 4.5,
+      "originAffectedPages": 7544,
+      "fallbackReductionPct": 100,
+      "activationTruthfulnessRatioPct": 100
+    },
+    "meaning": {
+      "researchedNames": 3,
+      "coveragePct": 0.08,
+      "meaningAffectedPages": 7394,
+      "fallbackReductionPct": 100,
+      "activationTruthfulnessRatioPct": 100
+    },
+    "pronunciation": {
+      "storedPronunciations": 0,
+      "coveragePct": 0,
+      "pronunciationAffectedPages": 3697,
+      "fallbackReductionPct": 100,
+      "activationTruthfulnessRatioPct": 100,
+      "pronunciationBlockCoveragePct": 100
+    }
+  },
+  "truthfulnessMetrics": {
+    "originTruthfulnessIncreasePct": 97.8,
+    "meaningTruthfulnessIncreasePct": 50,
+    "pronunciationTruthfulnessIncreasePct": 100,
+    "combinedFallbackElimination": "100% on all activation-affected page sets",
+    "retiredPlaceholderCategories": [
+      "origin fallback prose (various origins, multiple traditions, etc.)",
+      "meaning fallback prose (documented given name)",
+      "pronunciation placeholders (easy pronunciation, phonetic guide on file, ask speakers you trust)"
+    ]
+  },
+  "validationSummary": {
+    "auditArchive": "audit/baseline-1.0/",
+    "artifactsArchived": 11,
+    "canonicalUrlsUnchanged": true,
+    "internalLinksUnchanged": true,
+    "generatorDriftPages": 0,
+    "semanticDiffIsolation": true,
+    "renderingFlowsThroughPolicyModules": true,
+    "scopeCompliance": {
+      "libModified": false,
+      "scriptsModified": false,
+      "templatesModified": false,
+      "dataModified": false,
+      "schemaModified": false,
+      "adaptersModified": false,
+      "routingModified": false
+    }
+  },
+  "knownLimitations": [
+    "Knowledge coverage is the primary bottleneck: 167 researched origins, 3 researched meanings, 0 stored pronunciations.",
+    "Phase 4A/4B validated names-like, compare, and sibling-harmony pages in separate activation builds; this baseline promotion used build/pronunciation-activation/ for programmatic output.",
+    "Legacy paths under names/*/ (e.g. per-name sibling subpaths) may exist outside the activation build tree.",
+    "Computed rendering states (origin, meaning, pronunciation) remain reserved and unimplemented.",
+    "Phase 4D (Popularity Activation) was not started — rendering architecture considered complete."
+  ],
+  "nextRoadmap": {
+    "immediate": "Knowledge Completeness Index (KCI) — internal scoring, no user-facing changes",
+    "phase5Sequence": [
+      "5A — Origin Expansion",
+      "5B — Meaning Research",
+      "5C — Pronunciation Dataset",
+      "5D — Etymology",
+      "5E — Citations & Provenance"
+    ],
+    "retiredRoadmap": "Phase 4 activation (rendering policy complete)"
+  }
+}

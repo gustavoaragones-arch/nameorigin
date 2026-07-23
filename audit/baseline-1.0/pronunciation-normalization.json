@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-07-23T03:58:51.079Z",
+  "objective": "Single pronunciation rendering policy — stored values rendered exactly; empty values use one disclosed sentence.",
+  "disclosedSentence": "Pronunciation is not currently available in our sources.",
+  "baseline": {
+    "pageCount": 3697,
+    "availableExactMatchPages": 0,
+    "availableMismatchPages": 0,
+    "emptyDisclosedExactPages": 0,
+    "emptyWithoutDisclosedPages": 3697,
+    "missingPronunciationBlockPages": 3697,
+    "disclosedSentencePolicy": "Pronunciation is not currently available in our sources.",
+    "singlePolicyCompliancePct": 0
+  },
+  "activation": {
+    "pageCount": 3697,
+    "availableExactMatchPages": 0,
+    "availableMismatchPages": 0,
+    "emptyDisclosedExactPages": 3697,
+    "emptyWithoutDisclosedPages": 0,
+    "missingPronunciationBlockPages": 0,
+    "disclosedSentencePolicy": "Pronunciation is not currently available in our sources.",
+    "singlePolicyCompliancePct": 100
+  },
+  "retiredPlaceholders": [
+    "easy pronunciation and spelling",
+    "easy to pronounce",
+    "phonetic guide on file",
+    "ask speakers you trust"
+  ],
+  "baselineRetiredPlaceholderOccurrences": 11091,
+  "activationRetiredPlaceholderOccurrences": 0
+}

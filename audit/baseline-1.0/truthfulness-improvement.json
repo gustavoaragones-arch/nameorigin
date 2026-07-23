@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-23T03:20:32.118Z",
+  "method": "Page-level origin truthfulness ratio: share of origin-affected pages with zero fallback-marker hits. Researched and disclosed-unknown pages both count as truthful; fallback prose counts against the ratio. Assertion-level detail remains in audit/truthfulness-matrix.json (Phase 1C).",
+  "baseline": {
+    "originAffectedPages": 7544,
+    "fallbackOccurrences": 32395,
+    "fallbackPages": 7378,
+    "disclosedOccurrences": 0,
+    "disclosedPages": 0,
+    "researchedOriginPages": 273,
+    "truthfulPages": 166,
+    "truthfulnessRatioPct": 2.2
+  },
+  "activation": {
+    "originAffectedPages": 7544,
+    "fallbackOccurrences": 0,
+    "fallbackPages": 0,
+    "disclosedOccurrences": 67174,
+    "disclosedPages": 7103,
+    "researchedOriginPages": 441,
+    "truthfulPages": 7544,
+    "truthfulnessRatioPct": 100
+  },
+  "truthfulnessIncreasePct": 97.8
+}

@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-07-23T03:47:40.827Z",
+  "method": "Page-level meaning truthfulness ratio: share of meaning-affected pages with zero meaning-fallback-marker hits. Researched-meaning and disclosed-unknown pages count as truthful.",
+  "baseline": {
+    "meaningAffectedPages": 7394,
+    "fallbackOccurrences": 29552,
+    "fallbackPages": 3694,
+    "disclosedPages": 0,
+    "researchedMeaningPages": 3,
+    "truthfulPages": 3700,
+    "truthfulnessRatioPct": 50
+  },
+  "activation": {
+    "meaningAffectedPages": 7394,
+    "fallbackOccurrences": 0,
+    "fallbackPages": 0,
+    "disclosedPages": 3694,
+    "researchedMeaningPages": 3,
+    "truthfulPages": 7394,
+    "truthfulnessRatioPct": 100
+  },
+  "truthfulnessIncreasePct": 50
+}

@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-07-23T03:20:32.117Z",
+  "baselineFallbackOccurrences": 32395,
+  "activationFallbackOccurrences": 0,
+  "fallbackReductionPct": 100,
+  "baselineByMarker": {
+    "multiple traditions": 3534,
+    "various linguistic traditions": 7068,
+    "various cultural traditions": 3534,
+    "multiple naming traditions": 10602,
+    "diverse cultural": 3534,
+    "various origins": 4123
+  },
+  "activationByMarker": {},
+  "byTemplate": {
+    "baseline": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 28272,
+        "disclosedOccurrences": 0,
+        "researchedPages": 167,
+        "disclosedPages": 0,
+        "fallbackPages": 3534
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 3694,
+        "disclosedOccurrences": 0,
+        "researchedPages": 64,
+        "disclosedPages": 0,
+        "fallbackPages": 3694
+      },
+      "sibling-harmony-page": {
+        "pages": 150,
+        "fallbackOccurrences": 429,
+        "disclosedOccurrences": 0,
+        "researchedPages": 42,
+        "disclosedPages": 0,
+        "fallbackPages": 150
+      }
+    },
+    "activation": {
+      "name-detail-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 63540,
+        "researchedPages": 167,
+        "disclosedPages": 3530,
+        "fallbackPages": 0
+      },
+      "names-like-page": {
+        "pages": 3697,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 3530,
+        "researchedPages": 167,
+        "disclosedPages": 3530,
+        "fallbackPages": 0
+      },
+      "sibling-harmony-page": {
+        "pages": 150,
+        "fallbackOccurrences": 0,
+        "disclosedOccurrences": 104,
+        "researchedPages": 107,
+        "disclosedPages": 43,
+        "fallbackPages": 0
+      }
+    }
+  }
+}

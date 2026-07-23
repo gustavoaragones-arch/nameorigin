@@ -1,0 +1,87 @@
+{
+  "phase": "4C",
+  "title": "Pronunciation Activation",
+  "generatedAt": "2026-07-23T03:58:51.079Z",
+  "scope": {
+    "policyModule": "lib/render/pronunciation.js",
+    "generators": [
+      "scripts/generate-programmatic-pages.js"
+    ],
+    "generatorsSkipped": [
+      "scripts/generate-names-like.js (no pronunciation display snippets)"
+    ],
+    "pagesInScope": 3697,
+    "baselineHtmlSource": "build/meaning-activation",
+    "phase4DNotStarted": true
+  },
+  "dataset": {
+    "totalNames": 3697,
+    "storedPronunciationAvailable": 0,
+    "storedPronunciationMissing": 3697,
+    "storedPronunciationUtilizationPct": 0
+  },
+  "policy": {
+    "policyModule": "lib/render/pronunciation.js",
+    "generatorUsesPolicyModule": true,
+    "rawPhoneticDisplayInGenerator": false,
+    "renderingFlowsThroughPolicyModule": true
+  },
+  "baseline": {
+    "pageCount": 3697,
+    "fallbackOccurrences": 11091,
+    "disclosedOccurrences": 0,
+    "availablePronunciationPages": 0,
+    "disclosedPages": 0,
+    "fallbackPages": 3697,
+    "pronunciationBlockPages": 0,
+    "truthfulPages": 0,
+    "truthfulnessRatioPct": 0,
+    "fallbackByMarker": {
+      "easy pronunciation": 3697,
+      "phonetic guide on file": 3697,
+      "ask speakers you trust": 3697
+    },
+    "retiredPlaceholderByMarker": {
+      "easy pronunciation and spelling": 3697,
+      "phonetic guide on file": 3697,
+      "ask speakers you trust": 3697
+    },
+    "retiredPlaceholderOccurrences": 11091
+  },
+  "activation": {
+    "pageCount": 3697,
+    "fallbackOccurrences": 0,
+    "disclosedOccurrences": 11091,
+    "availablePronunciationPages": 0,
+    "disclosedPages": 3697,
+    "fallbackPages": 0,
+    "pronunciationBlockPages": 3697,
+    "truthfulPages": 3697,
+    "truthfulnessRatioPct": 100,
+    "fallbackByMarker": {},
+    "retiredPlaceholderByMarker": {},
+    "retiredPlaceholderOccurrences": 0
+  },
+  "successMetrics": {
+    "fallbackReductionPct": 100,
+    "pronunciationBlockCoveragePct": 100,
+    "disclosedMissingPageCoveragePct": 100,
+    "htmlPagesChanged": 3697,
+    "semanticDiffPages": 3697,
+    "generatorDriftPages": 0,
+    "storedPronunciationUtilizationPct": 0,
+    "activationTruthfulnessRatioPct": 100
+  },
+  "validation": {
+    "urlsUnchanged": true,
+    "internalLinksUnchanged": true,
+    "diffCategoryBreakdown": {
+      "semantic": 3697,
+      "generator-drift": 0,
+      "build-environment": 0,
+      "other-html": 0,
+      "unchanged": 0
+    },
+    "renderingFlowsThroughPolicyModule": true
+  }
+}

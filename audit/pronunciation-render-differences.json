@@ -1,0 +1,168 @@
+{
+  "baselineSource": "build/meaning-activation",
+  "pagesCompared": 3697,
+  "htmlPagesChanged": 3697,
+  "diffCategories": {
+    "semantic": 3697,
+    "generator-drift": 0,
+    "build-environment": 0,
+    "other-html": 0,
+    "unchanged": 0
+  },
+  "canonicalUrlsUnchanged": true,
+  "internalLinksUnchanged": true,
+  "jsonLdStableExceptPronunciation": true,
+  "sampleDiffs": [
+    {
+      "path": "name/aadi/index.html",
+      "category": "semantic",
+      "baselineSha256": "2b05181d5ff73cba63798f0336d75d83b32c93d628424def69951759bf83243a",
+      "activationSha256": "e2c0444abeedf7b2597a977f1778a2d8a5ea1e155193aa4e499e7aee08ef2cad"
+    },
+    {
+      "path": "name/aahil/index.html",
+      "category": "semantic",
+      "baselineSha256": "c294f5dd12734ee50e303d84d29d160eba08e13ad301f293098fb0f9f5139b6f",
+      "activationSha256": "b9bff7de6f6952a2331b149e294a9000742c78cb66a33f2969ec8fa5dc635ccc"
+    },
+    {
+      "path": "name/aakriti/index.html",
+      "category": "semantic",
+      "baselineSha256": "41c74007711c7e310cd070b0a9b6a23fc3a376464cf742a7e6e7b2d05d0fb219",
+      "activationSha256": "c4e80d9cc9982121b5372d137f82d7717eadd2f92aa6eeb8f73559c2f3b897ce"
+    },
+    {
+      "path": "name/aaradhya/index.html",
+      "category": "semantic",
+      "baselineSha256": "ff2b8638dfe47db346179460132487ad435682834d8b2cae10266c00d25fb96a",
+      "activationSha256": "063e56b7e34a9e925c56ee877cd82fa163a2db284d008f61e69bf3bafdccb1aa"
+    },
+    {
+      "path": "name/aarnav/index.html",
+      "category": "semantic",
+      "baselineSha256": "6ccdfe247e04172a070e00d6c011a00f17a7412da6b78dab97c21d541fad4305",
+      "activationSha256": "47457f7c22bc6343f995a16bb71d100af945ede9dadfaac018250136029aaec3"
+    },
+    {
+      "path": "name/aarvika/index.html",
+      "category": "semantic",
+      "baselineSha256": "c680505178105ab135139b38c01fb0b7edc30437ddbc9533f81c095cddfa0459",
+      "activationSha256": "9e6ee06863bdd1c7cccba3e91349070f5ec5a406f92b4a4f6508a2bae623c8fc"
+    },
+    {
+      "path": "name/aashvi/index.html",
+      "category": "semantic",
+      "baselineSha256": "7ab79305a00135ff96fc7806edb2cefe2f577fcf1cb0ac62298577de6f15a260",
+      "activationSha256": "9372e3cd5aeb98adc98bec825a0e300cf1fc4ea9ddcf1e3970efbcf4fc8115de"
+    },
+    {
+      "path": "name/aathish/index.html",
+      "category": "semantic",
+      "baselineSha256": "e928867191ed3b209c71419218b0b5ef2d511b1a56d47c6a3f933690e4718ed6",
+      "activationSha256": "204b0f4e088123a8eb8b8de07b2354bf9fecfdb29692a5a122f581cf74f5e698"
+    },
+    {
+      "path": "name/abbas/index.html",
+      "category": "semantic",
+      "baselineSha256": "3a9c125b41ee892a2981f6d44bc08fc2432afcdf6ba3c80f4f063ddd1ec6dab2",
+      "activationSha256": "d8178c7a2a104e8f1efd3ca577cc868b9bab5979018fd8eb05f1a68eda6d6f9a"
+    },
+    {
+      "path": "name/abbygail/index.html",
+      "category": "semantic",
+      "baselineSha256": "3ab27ed0fac21b38662e703239e73143efaeb44ef438bf9f0b07cd52a0c3294f",
+      "activationSha256": "934674eecb07332dcecaed96d5882c6a5c6e490ffe30ef9b8e60c0788eee3b5f"
+    },
+    {
+      "path": "name/abd/index.html",
+      "category": "semantic",
+      "baselineSha256": "1275eb0741320a457eeb12674bcaf263b6066f77deac6559cb3a24c5e3840e1b",
+      "activationSha256": "6c00c15a8d73ab917f03a3273b586caad3a7ded902c507d3380d500bd13d2d26"
+    },
+    {
+      "path": "name/abdifatah/index.html",
+      "category": "semantic",
+      "baselineSha256": "6da8b65d8c877739f986207905a731100985a56a2b68211acd4c95c333b3243a",
+      "activationSha256": "118108511d27d7c01938365ef8ae44d22ef5d0b883161150a39b759097974aca"
+    },
+    {
+      "path": "name/abdirahman/index.html",
+      "category": "semantic",
+      "baselineSha256": "7dce58e6410a36d53a1609db5857a3564c0bb64008d917da233194e36a372275",
+      "activationSha256": "a7a1ce4d1bbaf720b25b8e2a03830eff85365503d59d916452d1e15ae943136b"
+    },
+    {
+      "path": "name/abdullahi/index.html",
+      "category": "semantic",
+      "baselineSha256": "14446a4040c1905e56a4f8f45816b3fd7eaa2a88d7f087414363601192b7d7d7",
+      "activationSha256": "ad7ebc3f97d36726929329f30474b135075d7e81b2c16e67ef89245817fa3f85"
+    },
+    {
+      "path": "name/abe/index.html",
+      "category": "semantic",
+      "baselineSha256": "317109d464e333158426c68c91fd4973b27050bbbdbeddde28a5937d41fa4c4a",
+      "activationSha256": "0a698cf9c74d8a8a7cef3765c4b81e22b79bb0c4e1b6485f378ea0f3c60995dc"
+    },
+    {
+      "path": "name/abel/index.html",
+      "category": "semantic",
+      "baselineSha256": "b6485cb3bbfc6d6ec92d5f9cd25401730a3fe0b8e7218368d6bea42fe0221374",
+      "activationSha256": "ee9091fa98d8dc5a7bf1a1c57b1222b68f29f9f5234b4377eae4cc987ab86ac3"
+    },
+    {
+      "path": "name/abhijot/index.html",
+      "category": "semantic",
+      "baselineSha256": "13d6b8320b705d479e0807ca489635c6d8494032132de65d61a7222192b6a874",
+      "activationSha256": "ddc12d11744d470a71a9c37f74100c1d2e512de1d68e4cbe0a8a145c14e19d1a"
+    },
+    {
+      "path": "name/abhimanyu/index.html",
+      "category": "semantic",
+      "baselineSha256": "6b6547d5d7dc6e93695747653f15555fb5565df15afae288303f0d85b0cb9ca7",
+      "activationSha256": "d8109305b4d8ead80ab2ddacd1ce545c48837e87db997636db415e1564360204"
+    },
+    {
+      "path": "name/abhinav/index.html",
+      "category": "semantic",
+      "baselineSha256": "d9c27f2e1000b7c0cf0f88d19033f79fef370948d0f241f92d90050b57e108b2",
+      "activationSha256": "2d607832a791d8f476dc0a1e0d7db5d80be7205936d98079d61f85d371307da8"
+    },
+    {
+      "path": "name/abhiroop/index.html",
+      "category": "semantic",
+      "baselineSha256": "83d6e0c54c1072a217348fe7a911319a7a87f94182aa26b5eb97ea329589e280",
+      "activationSha256": "2d07fff628449e7c4b03da3f4751d5804f7e544f4c3534911e269a4a8847bbd5"
+    },
+    {
+      "path": "name/abhishek/index.html",
+      "category": "semantic",
+      "baselineSha256": "526b0d7f1f4c63106860b6a4b2da4d26715f2b5c039b13b49d643c593ac6b803",
+      "activationSha256": "31f717d3e4cabd144555b3f936cd16b84513c6133acac74d418be5e5e5748aa5"
+    },
+    {
+      "path": "name/abifoluwa/index.html",
+      "category": "semantic",
+      "baselineSha256": "fba7362492f2da72071a516487d1285b3f06801c314b6a188d9e154539561888",
+      "activationSha256": "b75d2a13f4cddcdf56bc71c5fc9da5f003f728e0b375b581cf677bb3f2dcde81"
+    },
+    {
+      "path": "name/abilash/index.html",
+      "category": "semantic",
+      "baselineSha256": "c7672cf74e68e3a96e61b173549407445e60f3d13352b595d7c2856f2be94792",
+      "activationSha256": "e1a6ead959a60686c11331ebed0908717e37388f9441562657f97ea3a2cc9f02"
+    },
+    {
+      "path": "name/abisha/index.html",
+      "category": "semantic",
+      "baselineSha256": "e3ce19a95b1973bdb73f75fc4b1bdc0ed582727bf093753d7cfcc5f74da6eabf",
+      "activationSha256": "67bb730561e15fb4fb34950b160972f47384598fc6bbb2c780ee815975b2ca9f"
+    },
+    {
+      "path": "name/abishan/index.html",
+      "category": "semantic",
+      "baselineSha256": "24956fc60d88d69d8a26c9f9f9615360180a9b01e993c863f730cb044c3ae978",
+      "activationSha256": "fc66f3b2a376ef942728c2925c97a69c09931872b425236481333dac5be6f21c"
+    }
+  ],
+  "allDiffCount": 3697
+}

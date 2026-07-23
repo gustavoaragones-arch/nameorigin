@@ -1,0 +1,193 @@
+{
+  "baselineSource": "build/origin-activation",
+  "pagesCompared": 7394,
+  "htmlPagesChanged": 7394,
+  "diffCategories": {
+    "semantic": 3694,
+    "generator-drift": 0,
+    "build-environment": 0,
+    "other-html": 3700,
+    "unchanged": 0
+  },
+  "canonicalUrlsUnchanged": true,
+  "internalLinksUnchanged": true,
+  "jsonLdStableExceptMeaning": true,
+  "sampleDiffs": [
+    {
+      "path": "name/aadi/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "9c3aebfeeff0e8969212cd00e1938dfaf6b9c54b5b6721f85b5f412c2cb40af6",
+      "activationSha256": "2b05181d5ff73cba63798f0336d75d83b32c93d628424def69951759bf83243a"
+    },
+    {
+      "path": "name/aahil/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "28e8aa9c2393afd824080b43cc46aae869a37dc8cee3f53365129842e1451d42",
+      "activationSha256": "c294f5dd12734ee50e303d84d29d160eba08e13ad301f293098fb0f9f5139b6f"
+    },
+    {
+      "path": "name/aakriti/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "40ce0fb63fb08923c775e301e69fddf2ba965feca4d6e61b972ba03697b1f471",
+      "activationSha256": "41c74007711c7e310cd070b0a9b6a23fc3a376464cf742a7e6e7b2d05d0fb219"
+    },
+    {
+      "path": "name/aaradhya/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "a25bef818d8f7c960df44fe5570b4f6d5c60ffe910c2d17dbd830f9be4568d04",
+      "activationSha256": "ff2b8638dfe47db346179460132487ad435682834d8b2cae10266c00d25fb96a"
+    },
+    {
+      "path": "name/aarnav/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "c4ba0bd9f2bec2018dcfa5c6b4ad6783f7b2a1dd5919e10d3051ec82900924bd",
+      "activationSha256": "6ccdfe247e04172a070e00d6c011a00f17a7412da6b78dab97c21d541fad4305"
+    },
+    {
+      "path": "name/aarvika/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "7d80b15357e4116ceb204961aa2d47492b564042b3f9718074c7caebf565d65b",
+      "activationSha256": "c680505178105ab135139b38c01fb0b7edc30437ddbc9533f81c095cddfa0459"
+    },
+    {
+      "path": "name/aashvi/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "81f5430eefea1e62a1a6ad45d02b2cc0e612c48d625ce043b1b3c9c046c6a179",
+      "activationSha256": "7ab79305a00135ff96fc7806edb2cefe2f577fcf1cb0ac62298577de6f15a260"
+    },
+    {
+      "path": "name/aathish/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "9070ccdc16d806d467b65985be835d764f4a5f4177b0cb4c289d1d1c192e5466",
+      "activationSha256": "e928867191ed3b209c71419218b0b5ef2d511b1a56d47c6a3f933690e4718ed6"
+    },
+    {
+      "path": "name/abbas/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "09284a5dfb4e19cc4b96a435605bf63c9ced9f87dd66bc08d5abe02e8b583c9c",
+      "activationSha256": "3a9c125b41ee892a2981f6d44bc08fc2432afcdf6ba3c80f4f063ddd1ec6dab2"
+    },
+    {
+      "path": "name/abbygail/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "438e02bba02b7b02b221327a46a9b6989d1b06600501a7f00a2757cca1417236",
+      "activationSha256": "3ab27ed0fac21b38662e703239e73143efaeb44ef438bf9f0b07cd52a0c3294f"
+    },
+    {
+      "path": "name/abd/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "88bcd2afacf7b8dfb9669342369a0eeed53d0c4f2bebc64efe756f8fa8b0f962",
+      "activationSha256": "1275eb0741320a457eeb12674bcaf263b6066f77deac6559cb3a24c5e3840e1b"
+    },
+    {
+      "path": "name/abdifatah/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "00efe34ba465bbb4c5146d3c1b8bbb221985078d945a9dc9aee2e0fac83167fa",
+      "activationSha256": "6da8b65d8c877739f986207905a731100985a56a2b68211acd4c95c333b3243a"
+    },
+    {
+      "path": "name/abdirahman/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "b4ca2b1cf6c76589c6e0d380d7552e3da057901524d808b6d737c7812d5a436a",
+      "activationSha256": "7dce58e6410a36d53a1609db5857a3564c0bb64008d917da233194e36a372275"
+    },
+    {
+      "path": "name/abdullahi/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "7b9c7b56c426eb944a9c0e6f342e0038bc1534aec767b3a57416c294fe14f141",
+      "activationSha256": "14446a4040c1905e56a4f8f45816b3fd7eaa2a88d7f087414363601192b7d7d7"
+    },
+    {
+      "path": "name/abe/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "66e9c6754c6d150ee21aad732d96eb9a42fd7f7c70e49fbfc83004539aaeb013",
+      "activationSha256": "317109d464e333158426c68c91fd4973b27050bbbdbeddde28a5937d41fa4c4a"
+    },
+    {
+      "path": "name/abel/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "4d9dbcacd4b0b270651f1239dec81638432b54cea39211fd5e8c79dbaf51ceef",
+      "activationSha256": "b6485cb3bbfc6d6ec92d5f9cd25401730a3fe0b8e7218368d6bea42fe0221374"
+    },
+    {
+      "path": "name/abhijot/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "367ea1fc13a35400baab12686b7891977426053b0f464a942efb30efebba6962",
+      "activationSha256": "13d6b8320b705d479e0807ca489635c6d8494032132de65d61a7222192b6a874"
+    },
+    {
+      "path": "name/abhimanyu/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "aa7541cace08df47626af1cdf6896ffbf271f20155cc574e6671601a966902ca",
+      "activationSha256": "6b6547d5d7dc6e93695747653f15555fb5565df15afae288303f0d85b0cb9ca7"
+    },
+    {
+      "path": "name/abhinav/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "edac7b62bbd6fc9044bffd8187eaff14c2439ab3be6921c0b8976ec563274640",
+      "activationSha256": "d9c27f2e1000b7c0cf0f88d19033f79fef370948d0f241f92d90050b57e108b2"
+    },
+    {
+      "path": "name/abhiroop/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "0d1545ad03711b43b059c4650e20c672e9e44258471456b1514c831dea7cefb7",
+      "activationSha256": "83d6e0c54c1072a217348fe7a911319a7a87f94182aa26b5eb97ea329589e280"
+    },
+    {
+      "path": "name/abhishek/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "1462e05aeffb679874a96f2d31aa96aeaf7add9d8f1d04c236546e4b7004c41a",
+      "activationSha256": "526b0d7f1f4c63106860b6a4b2da4d26715f2b5c039b13b49d643c593ac6b803"
+    },
+    {
+      "path": "name/abifoluwa/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "5308abdfe36bf3457c06c39d8733b26a74a442eba78c879afd9edeb37d4284fe",
+      "activationSha256": "fba7362492f2da72071a516487d1285b3f06801c314b6a188d9e154539561888"
+    },
+    {
+      "path": "name/abilash/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "dc16516ac2302a92fd660b454f83d2b04381ab5f381b3874ae8d72b686e67c4d",
+      "activationSha256": "c7672cf74e68e3a96e61b173549407445e60f3d13352b595d7c2856f2be94792"
+    },
+    {
+      "path": "name/abisha/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "c3072972758cf5c0024c5d0c25abf7ccdbdbe18ec9d942e2996e65dfd651cb65",
+      "activationSha256": "e3ce19a95b1973bdb73f75fc4b1bdc0ed582727bf093753d7cfcc5f74da6eabf"
+    },
+    {
+      "path": "name/abishan/index.html",
+      "template": "name-detail-page",
+      "category": "semantic",
+      "baselineSha256": "9c14279d911133fec50b088edc479af8bfdd19574ab06f38b88c41fd73f6c0dd",
+      "activationSha256": "24956fc60d88d69d8a26c9f9f9615360180a9b01e993c863f730cb044c3ae978"
+    }
+  ],
+  "allDiffCount": 7394
+}
