@@ -1,0 +1,30 @@
+{
+  "capturedAt": "2026-07-24T13:58:03.574Z",
+  "baselineReference": "editorial-architecture-v2",
+  "knowledgeRecords": 757,
+  "fullFiveDomainRecords": 407,
+  "domainCoverage": {
+    "origin": {
+      "count": 585,
+      "pct": 15.82
+    },
+    "meaning": {
+      "count": 513,
+      "pct": 13.88
+    },
+    "pronunciation": {
+      "count": 583,
+      "pct": 15.77
+    },
+    "etymology": {
+      "count": 571,
+      "pct": 15.44
+    },
+    "history": {
+      "count": 571,
+      "pct": 15.44
+    }
+  },
+  "averagePopulatedDomains": 3.73,
+  "totalProvenanceEntries": 4801
+}

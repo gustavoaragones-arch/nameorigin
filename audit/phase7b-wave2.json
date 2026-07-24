@@ -1,0 +1,368 @@
+{
+  "phase": "7B",
+  "title": "Editorial Expansion Wave 2 Batch 2",
+  "generatedAt": "2026-07-24T14:15:54.547Z",
+  "baselineReference": "editorial-architecture-v2",
+  "wave2Governance": {
+    "architectureFrozen": true,
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "renderingFrozen": true
+  },
+  "knowledgeRecordsBefore": 950,
+  "knowledgeRecordsAfter": 1150,
+  "knowledgeRecordsAdded": 200,
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 778,
+        "pct": 21.04
+      },
+      "meaning": {
+        "count": 706,
+        "pct": 19.1
+      },
+      "pronunciation": {
+        "count": 776,
+        "pct": 20.99
+      },
+      "etymology": {
+        "count": 764,
+        "pct": 20.67
+      },
+      "history": {
+        "count": 764,
+        "pct": 20.67
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 978,
+        "pct": 26.45
+      },
+      "meaning": {
+        "count": 906,
+        "pct": 24.51
+      },
+      "pronunciation": {
+        "count": 976,
+        "pct": 26.4
+      },
+      "etymology": {
+        "count": 964,
+        "pct": 26.08
+      },
+      "history": {
+        "count": 964,
+        "pct": 26.08
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 200,
+        "pct": 5.41
+      },
+      "meaning": {
+        "count": 200,
+        "pct": 5.41
+      },
+      "pronunciation": {
+        "count": 200,
+        "pct": 5.41
+      },
+      "etymology": {
+        "count": 200,
+        "pct": 5.41
+      },
+      "history": {
+        "count": 200,
+        "pct": 5.41
+      }
+    }
+  },
+  "averagePopulatedDomains": {
+    "before": 3.99,
+    "after": 4.16
+  },
+  "fullFiveDomainRecords": {
+    "before": 600,
+    "after": 800
+  },
+  "totalProvenanceEntries": {
+    "before": 6314,
+    "after": 7886
+  },
+  "newEditorialRecords": {
+    "curatedCount": 200,
+    "names": [
+      "Bethlehem",
+      "Betsaleel",
+      "Betsy",
+      "Bevan",
+      "Bexley",
+      "Bhairavi",
+      "Bhavdeep",
+      "Bhavjot",
+      "Bhavneet",
+      "Bhavreet",
+      "Bhupinder",
+      "Bianka",
+      "Bibek",
+      "Billie-rose",
+      "Birpartap",
+      "Bishop",
+      "Blade",
+      "Blain",
+      "Blaine",
+      "Blair",
+      "Blaire",
+      "Blaise",
+      "Blakeley",
+      "Blanc",
+      "Blayden",
+      "Blaze",
+      "Blessed",
+      "Blessing",
+      "Blossom",
+      "Blythe",
+      "Bobbi",
+      "Bobbi-jo",
+      "Bodhi",
+      "Boe",
+      "Bogdan",
+      "Bogdana",
+      "Bohdan",
+      "Boluwatife",
+      "Bora",
+      "Bosco",
+      "Boston",
+      "Boubacar",
+      "Bowen",
+      "Bowman",
+      "Boyd",
+      "Bradford",
+      "Bradly",
+      "Branson",
+      "Brant",
+      "Brave",
+      "Braven",
+      "Brayan",
+      "Braylon",
+      "Breagh",
+      "Brennen",
+      "Brewer",
+      "Briar",
+      "Briar-rose",
+      "Brice",
+      "Bridger",
+      "Bridgette",
+      "Brie",
+      "Brighton",
+      "Briley",
+      "Briseis",
+      "Britney",
+      "Brivael",
+      "Brixton",
+      "Broderick",
+      "Brodie",
+      "Brogan",
+      "Broly",
+      "Bronwen",
+      "Brook-lynn",
+      "Brooker",
+      "Brooklyn",
+      "Bryana",
+      "Bryden",
+      "Brylee",
+      "Bryleigh",
+      "Bryn",
+      "Brynnley",
+      "Brysen",
+      "Bryton",
+      "Burkley",
+      "Bushra",
+      "Cadel",
+      "Cadence",
+      "Cael",
+      "Caelan",
+      "Caileigh",
+      "Calel",
+      "Calen",
+      "Calix",
+      "Callista",
+      "Calogero",
+      "Calypso",
+      "Cambria",
+      "Camden",
+      "Cameryn",
+      "Camil",
+      "Camilia",
+      "Campbell",
+      "Camron",
+      "Capri",
+      "Caprice",
+      "Capucine",
+      "Carleigh",
+      "Carlens",
+      "Carlin",
+      "Carlton",
+      "Carlyle",
+      "Carmine",
+      "Carrera",
+      "Carrington",
+      "Carsen",
+      "Carsyn",
+      "Carver",
+      "Cashton",
+      "Cason",
+      "Casper",
+      "Caspian",
+      "Cassandre",
+      "Cassara",
+      "Cassidy",
+      "Cassiopee",
+      "Catarina",
+      "Catlin",
+      "Cattleya",
+      "Cavan",
+      "Cayden",
+      "Caydence",
+      "Caylee",
+      "Cedar",
+      "Cedrik",
+      "Cedrika",
+      "Celena",
+      "Celestin",
+      "Chadi",
+      "Chadwick",
+      "Chakib",
+      "Chance",
+      "Chanceline",
+      "Chancellor",
+      "Chandler",
+      "Chanice",
+      "Channing",
+      "Chanse",
+      "Chante",
+      "Charisma",
+      "Charity",
+      "Charles-alexandre",
+      "Charlie-rose",
+      "Charline",
+      "Charly",
+      "Charmaine",
+      "Chayce",
+      "Chayton",
+      "Chesney",
+      "Chevelle",
+      "Chevonne",
+      "Chevy",
+      "Chi",
+      "Chidubem",
+      "Chimaobim",
+      "Chinenye",
+      "Chiziterem",
+      "Chukwuebuka",
+      "Chukwunonso",
+      "Cianna",
+      "Cj",
+      "Clair",
+      "Claira",
+      "Clara-rose",
+      "Clarity",
+      "Clarke",
+      "Claudel",
+      "Claudelle",
+      "Clemence",
+      "Cleo",
+      "Cleopatra",
+      "Clive",
+      "Clodagh",
+      "Clover",
+      "Clovis",
+      "Coast",
+      "Coby",
+      "Coco",
+      "Cohen",
+      "Colby",
+      "Coleman",
+      "Coleson",
+      "Collins",
+      "Collyns",
+      "Colombe",
+      "Colter",
+      "Coltin",
+      "Conan",
+      "Conlan",
+      "Conrad"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "editorialQualityStatus": "NEEDS_ATTENTION",
+    "totalIssueCount": 0,
+    "schemaValidation": "PASS",
+    "determinism": "PASS"
+  },
+  "validationStatus": {
+    "knowledgeRecordValidation": "PASS",
+    "schemaValidation": "PASS",
+    "sourceCompleteness": {
+      "origin": {
+        "populated": 978,
+        "emptySources": 0,
+        "nullNotes": 0
+      },
+      "meaning": {
+        "populated": 906,
+        "emptySources": 0,
+        "nullNotes": 0
+      },
+      "pronunciation": {
+        "populated": 976,
+        "emptySources": 0,
+        "nullNotes": 0
+      },
+      "etymology": {
+        "populated": 964,
+        "emptySources": 0,
+        "nullNotes": 0
+      },
+      "history": {
+        "populated": 964,
+        "emptySources": 0,
+        "nullNotes": 0
+      }
+    }
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0,
+    "baselineDifferences": 0
+  },
+  "kciSummary": {
+    "averageBefore": 23.74,
+    "averageAfter": 23.74,
+    "medianBefore": 5,
+    "medianAfter": 5,
+    "maxBefore": 90,
+    "maxAfter": 90,
+    "weightsUnchanged": true
+  },
+  "performance": {
+    "pipelineElapsedMs": 4389,
+    "deterministicRebuild": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "targetKnowledgeRecordsApprox1150": true,
+    "targetEntityCoverageApprox31Pct": true,
+    "targetDomainCoverageMet": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "platformUnchanged": true,
+    "schemaUnchanged": true,
+    "renderingUnchanged": true,
+    "kciRulesUnchanged": true
+  }
+}
