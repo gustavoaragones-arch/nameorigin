@@ -1,0 +1,52 @@
+{
+  "phase": "6C",
+  "title": "Origin Provenance Backfill",
+  "generatedAt": "2026-07-24T03:46:09.842Z",
+  "baselineReference": "knowledge-baseline-v2",
+  "researchFile": "data/sources/origin-wave1-research.json",
+  "before": {
+    "originRecords": 585,
+    "withSources": 418,
+    "withNotes": 418,
+    "emptySources": 167,
+    "emptyNotes": 167
+  },
+  "after": {
+    "originRecords": 585,
+    "withSources": 585,
+    "withNotes": 585,
+    "emptySources": 0,
+    "emptyNotes": 0
+  },
+  "delta": {
+    "withSources": 167,
+    "withNotes": 167,
+    "emptySources": -167,
+    "emptyNotes": -167
+  },
+  "researchEntries": 585,
+  "enrichmentEquivalence": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "pipelineEquivalence": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "validation": {
+    "targetWithSources": 585,
+    "targetWithNotes": 585,
+    "targetEmptySources": 0,
+    "targetEmptyNotes": 0,
+    "withSourcesMet": true,
+    "withNotesMet": true,
+    "emptySourcesMet": true,
+    "emptyNotesMet": true,
+    "originValuesUnchanged": true,
+    "entityCountUnchanged": true,
+    "renderingUnchanged": true,
+    "schemaUnchanged": true,
+    "kciUnchanged": true
+  },
+  "overallStatus": "PASS"
+}

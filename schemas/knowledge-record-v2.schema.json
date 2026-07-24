@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nameorigin.io/schemas/knowledge-record-v2.schema.json",
+  "title": "Knowledge Record v2",
+  "description": "Unified editorial knowledge record for a single name entity. Frozen in Phase 6A.",
+  "type": "object",
+  "required": ["schemaVersion", "title", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "2.0"
+    },
+    "title": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["type", "reference"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "reference": { "type": "string" }
+      }
+    },
+    "domainField": {
+      "type": "object",
+      "required": ["value", "confidence", "confidenceLevel", "sources", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "value": {},
+        "confidence": { "type": ["number", "null"] },
+        "confidenceLevel": { "type": ["string", "null"], "enum": ["high", "medium", "low", null] },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/source" }
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "originValue": {
+      "type": "object",
+      "required": ["origin_country", "origin_cluster", "language"],
+      "additionalProperties": false,
+      "properties": {
+        "origin_country": { "type": ["string", "null"] },
+        "origin_cluster": { "type": ["string", "null"] },
+        "language": { "type": ["string", "null"] }
+      }
+    },
+    "record": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "origin": {
+          "allOf": [
+            { "$ref": "#/$defs/domainField" },
+            {
+              "properties": {
+                "value": { "$ref": "#/$defs/originValue" }
+              }
+            }
+          ]
+        },
+        "meaning": {
+          "allOf": [
+            { "$ref": "#/$defs/domainField" },
+            {
+              "properties": {
+                "value": { "type": ["string", "null"] }
+              }
+            }
+          ]
+        },
+        "pronunciation": {
+          "allOf": [
+            { "$ref": "#/$defs/domainField" },
+            {
+              "properties": {
+                "value": { "type": ["string", "null"] }
+              }
+            }
+          ]
+        },
+        "etymology": {
+          "allOf": [
+            { "$ref": "#/$defs/domainField" },
+            {
+              "properties": {
+                "value": { "type": ["string", "null"] }
+              }
+            }
+          ]
+        },
+        "history": {
+          "allOf": [
+            { "$ref": "#/$defs/domainField" },
+            {
+              "properties": {
+                "value": { "type": ["string", "null"] }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

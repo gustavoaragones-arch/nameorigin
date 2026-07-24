@@ -1,6 +1,6 @@
 # Roadmap Status
 
-_Last updated: Knowledge Baseline v2 editorial expansion complete (2026-07-24)_
+_Last updated: Phase 6C — Origin provenance backfill complete (2026-07-24)_
 
 ## Completed
 
@@ -8,19 +8,17 @@ _Last updated: Knowledge Baseline v2 editorial expansion complete (2026-07-24)_
 | --- | --- | --- |
 | **Infrastructure Migration** | Canonical schema, builder, adapters, generator waves | `docs/CANONICAL_PLATFORM_V1.md` |
 | **Canonical Platform V1** | 3,697 entities, adapter parity, production equivalence | `audit/canonical-validation.json` |
-| **Phase 4A — Origin Activation** | Researched / disclosed / computed origin policy | `docs/PHASE4A_ORIGIN_ACTIVATION.md` |
-| **Phase 4B — Meaning Activation** | Researched / disclosed / computed meaning policy | `docs/PHASE4B_MEANING_ACTIVATION.md` |
-| **Phase 4C — Pronunciation Activation** | Available / disclosed / computed pronunciation policy | `docs/PHASE4C_PRONUNCIATION_ACTIVATION.md` |
-| **Knowledge Baseline 1.0** | Production freeze, audit archive, permanent reference point | `docs/KNOWLEDGE_BASELINE_1.0.md` |
-| **KCI v1.0** | Knowledge Completeness Index — internal scoring (weights frozen) | `audit/knowledge-completeness.json` |
-| **Phase 5A — Origin Expansion (Wave 1)** | +585 researched origins (15.82%) | `docs/PHASE5A_ORIGIN_EXPANSION_WAVE1.md` |
-| **Phase 5B — Meaning Expansion (Wave 1)** | +516 researched meanings (13.96%) | `docs/PHASE5B_MEANING_EXPANSION_WAVE1.md` |
-| **Phase 5C — Pronunciation Expansion (Wave 1)** | +583 stored pronunciations (15.77%) | `docs/PHASE5C_PRONUNCIATION_EXPANSION_WAVE1.md` |
-| **Phase 5D — Etymology Expansion (Wave 1)** | +571 researched etymologies (15.44%) | `docs/PHASE5D_ETYMOLOGY_EXPANSION_WAVE1.md` |
-| **Phase 5E — History Expansion (Wave 1)** | +571 researched histories (15.44%) | `docs/PHASE5E_HISTORY_EXPANSION_WAVE1.md` |
-| **Knowledge Baseline v2 — Editorial Expansion** | All five editorial domains populated (Wave 1) | This document |
+| **Phase 4A–4C Activation** | Origin, meaning, pronunciation rendering policy | `docs/PHASE4A_ORIGIN_ACTIVATION.md` |
+| **Knowledge Baseline 1.0** | Production freeze, audit archive | `docs/KNOWLEDGE_BASELINE_1.0.md` |
+| **KCI v1.0** | Knowledge Completeness Index (weights frozen) | `audit/knowledge-completeness.json` |
+| **Phase 5A–5E Wave 1** | Origin, meaning, pronunciation, etymology, history expansion | `docs/PHASE5E_HISTORY_EXPANSION_WAVE1.md` |
+| **Knowledge Baseline v2** | All five editorial domains populated (Wave 1) | `docs/KNOWLEDGE_RECORD_V2.md` |
+| **Phase 6A — Knowledge Record v2** | Unified editorial record per name; legacy compatibility active | `docs/KNOWLEDGE_RECORD_V2.md` |
+| **Phase 6B — Editorial QA** | Knowledge Record v2 quality audit; deterministic reporting | `docs/EDITORIAL_QA.md` |
+| **Phase 6C — Origin Provenance Backfill** | Complete origin sources/notes for all 585 records | `docs/PHASE6C_ORIGIN_PROVENANCE_BACKFILL.md` |
+| **Editorial Architecture v2** | Uniform metadata across all five domains; platform structurally complete | This document |
 
-## Current coverage (post–Phase 5E)
+## Current coverage (post–Phase 6A)
 
 | Domain | Researched | Coverage |
 | --- | ---: | ---: |
@@ -33,23 +31,33 @@ _Last updated: Knowledge Baseline v2 editorial expansion complete (2026-07-24)_
 | **Average KCI** | — | **15.24** |
 | **Max KCI** | — | **90** |
 
-## Upcoming
+## Editorial architecture
 
-### Post-expansion consolidation (not started)
+| Component | Status |
+| --- | --- |
+| **Knowledge Record v2** | ✅ Implemented (`data/knowledge-records.json`) |
+| **Legacy override compatibility** | ✅ Active (fallback supported) |
+| **Deterministic rebuild** | ✅ Verified (0 equivalence differences) |
+| **Editorial QA baseline** | ✅ Phase 6B audit (`audit/editorial-qa.json`) |
+| **Origin provenance complete** | ✅ 585/585 origin records with sources + notes |
+| **Canonical editorial source** | Knowledge Record v2 (preferred) |
+
+## Upcoming
 
 | Item | Notes |
 | --- | --- |
-| **Knowledge Record v2** | Unify per-domain override files into a single editorial record per name — after editorial model stabilizes |
-| **Citation system** | Provenance on every researched field (0% today) |
-| **Wave 2+ expansion** | Continue editorial acquisition for remaining ~3,100 names per domain |
+| **Wave 2 expansion** | Increase coverage beyond ~15% per domain (QA baseline established) |
+| **Citation expansion** | Provenance on researched fields (0% today) |
+| **Legacy override retirement** | Remove per-domain files after extended validation |
+| **Generator rebuild** | Surface new knowledge once model is stable |
 
 ## Deferred
 
 | Item | Notes |
 | --- | --- |
-| Phase 4D (Popularity Activation) | Retired — rendering architecture complete; popularity largely computed already |
-| Phase 6 work | Not started — separate milestone after post-expansion validation |
+| Phase 4D (Popularity Activation) | Retired — rendering architecture complete |
+| HTML regeneration | Deferred until post-consolidation QA |
 
 ## Architectural note
 
-Rendering architecture is **complete**. Phase 4 activation roadmap is **retired**. Knowledge Baseline v2 editorial expansion (Phases 5A–5E Wave 1) is **complete**. All five editorial domains now feed a deterministic enrichment pipeline via per-domain override files and `rebuild-names-enriched.js`. Future work should prioritize citation provenance, Wave 2+ coverage expansion, and Knowledge Record v2 consolidation rather than rendering or schema changes.
+Knowledge Baseline v2 editorial expansion is **complete**. Phase 6A–6C establish Knowledge Record v2, editorial QA, and uniform provenance metadata across all five domains. The editorial platform is **structurally complete** — Wave 2 adds content through the existing pipeline and QA gate, not architectural changes.
