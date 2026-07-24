@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-07-24T00:28:07.912Z",
+  "readOnly": true,
+  "sourceFile": "data/canonical/names.json",
+  "entitiesValidated": 3697,
+  "checks": [
+    {
+      "check": "Schema compliance",
+      "result": "PASS",
+      "detail": "3697 of 3697 entities schema-valid",
+      "failures": []
+    },
+    {
+      "check": "Required fields present",
+      "result": "PASS",
+      "detail": "0 missing-required-field occurrences",
+      "failures": []
+    },
+    {
+      "check": "Ownership rules (exactly 18 domain keys per entity, no extras)",
+      "result": "PASS",
+      "detail": "0 ownership violations",
+      "failures": []
+    },
+    {
+      "check": "No cross-domain field duplication",
+      "result": "PASS",
+      "detail": "0 suspected cross-domain duplicate prose-like values (>=10 chars, contains a space; short categorical tokens like country/gender codes are intentionally excluded — see code comment)",
+      "failures": []
+    },
+    {
+      "check": "Null handling — zero fallback-text markers in canonical data",
+      "result": "PASS",
+      "detail": "0 occurrences of known fallback text found (should always be 0 — the entire point of this builder is to never write it)",
+      "failures": []
+    },
+    {
+      "check": "Identifier uniqueness (id + slug)",
+      "result": "PASS",
+      "detail": "0 duplicate ids, 0 duplicate slugs",
+      "failures": []
+    }
+  ],
+  "knownDocumentedDeviations": [
+    {
+      "item": "relationships.comparisonPairs[] shape",
+      "description": "Schema declares {countryA, countryB, rankA, rankB} (a country-pair shape); the real source dataset (data/country-differentials.json) is per-single-country, so the builder emits {country, rank, priorRank, delta, volatilityScore} instead of fabricating a second country to fit the pair shape. See lib/canonical/domains/relationships.js header comment.",
+      "verifiedConsistent": true
+    }
+  ],
+  "overallResult": "PASS"
+}

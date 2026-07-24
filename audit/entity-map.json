@@ -1,0 +1,329 @@
+{
+  "generatedAt": "2026-07-21T18:24:59.063Z",
+  "readOnly": true,
+  "entities": {
+    "names": {
+      "count": 3697,
+      "source": "data/names.json (base) / data/names-enriched.json (with origin overrides merged)",
+      "attributes": [
+        "id",
+        "name",
+        "gender",
+        "origin_country",
+        "language",
+        "meaning",
+        "phonetic",
+        "syllables",
+        "first_letter",
+        "is_traditional",
+        "is_modern",
+        "origin_cluster (enriched only)",
+        "origin_confidence (enriched only)"
+      ],
+      "fieldCoverage": {
+        "withGender": 3697,
+        "withOriginOrLanguage": 163,
+        "withMeaning": 3,
+        "withCategoryAssignment": 3697,
+        "withPopularityRecord": 5,
+        "withVariantRecord": 3697
+      }
+    },
+    "countries": {
+      "count": 5,
+      "source": "data/countries.json",
+      "records": [
+        {
+          "code": "USA",
+          "name": "United States",
+          "primary_language": "English",
+          "region_group": "Americas"
+        },
+        {
+          "code": "CAN",
+          "name": "Canada",
+          "primary_language": "English",
+          "region_group": "Americas"
+        },
+        {
+          "code": "IND",
+          "name": "India",
+          "primary_language": "Hindi",
+          "region_group": "Asia"
+        },
+        {
+          "code": "FRA",
+          "name": "France",
+          "primary_language": "French",
+          "region_group": "Europe"
+        },
+        {
+          "code": "IRL",
+          "name": "Ireland",
+          "primary_language": "English",
+          "region_group": "Europe"
+        }
+      ],
+      "siteSupportedCountryPageSlugs": [
+        "usa",
+        "canada",
+        "india",
+        "france",
+        "ireland"
+      ],
+      "note": "countries.json defines 5 countries with code/name/primary_language/region_group; the same 5 slugs are separately hardcoded as SUPPORTED_COUNTRY_PAGES in generate-programmatic-pages.js."
+    },
+    "origins": {
+      "count": 11,
+      "values": [
+        "France",
+        "Germany",
+        "Greece",
+        "India",
+        "Iran",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Spain",
+        "United Kingdom"
+      ],
+      "source": "derived from names-enriched.json origin_country field",
+      "coverage": "163 / 3697 names (4.4%) have an origin_country or language assigned"
+    },
+    "languages": {
+      "count": 18,
+      "values": [
+        "Arabic",
+        "English",
+        "French",
+        "German",
+        "Greek",
+        "Hebrew",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Latin",
+        "Nordic",
+        "Persian",
+        "Punjabi",
+        "Russian",
+        "Sanskrit",
+        "Scottish",
+        "Spanish",
+        "Turkish"
+      ],
+      "source": "derived from names-enriched.json language field"
+    },
+    "originClusters": {
+      "count": 18,
+      "values": [
+        "African",
+        "Arabic",
+        "English",
+        "French",
+        "German",
+        "Greek",
+        "Hebrew",
+        "Indian",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Latin",
+        "Nordic",
+        "Persian",
+        "Russian",
+        "Scottish",
+        "Spanish",
+        "Turkish"
+      ],
+      "source": "derived from names-enriched.json origin_cluster field (also consumed by build/topic-clusters.json)"
+    },
+    "religions": {
+      "count": 0,
+      "values": [],
+      "note": "No religion taxonomy exists in the dataset. The closest concept is the \"biblical\" value inside the 6-value categories.json taxonomy (a thematic/style label, not a religion entity), and heraldry.json has no religious dimension either."
+    },
+    "genders": {
+      "count": 3,
+      "values": [
+        "boy",
+        "girl",
+        "unisex"
+      ],
+      "source": "data/names.json gender field",
+      "distribution": {
+        "boy": 1592,
+        "girl": 1446,
+        "unisex": 659
+      }
+    },
+    "surnames": {
+      "count": 75,
+      "source": "data/last-names.json",
+      "attributes": [
+        "name",
+        "origin",
+        "syllables",
+        "note"
+      ],
+      "withHeraldryData": 2,
+      "heraldryAvailableCount": 1
+    },
+    "meanings": {
+      "count": 3,
+      "coverage": "3 / 3697 names (0.08%) have a non-null \"meaning\" field",
+      "source": "data/names.json / data/names-enriched.json meaning field"
+    },
+    "alphabet": {
+      "count": 26,
+      "values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "source": "derived from names.json first_letter field; backs the 26 /names/[a-z].html letter pages"
+    },
+    "categoryTaxonomy": {
+      "count": 6,
+      "values": [
+        "biblical",
+        "classical",
+        "nature",
+        "popular",
+        "rare",
+        "traditional"
+      ],
+      "totalAssignments": 4468,
+      "namesCovered": 3697,
+      "coveragePct": 100,
+      "source": "data/categories.json (name_id -> category)",
+      "crossCheckWithStylePages": {
+        "stylePageSlugs": [
+          "modern",
+          "traditional",
+          "rare",
+          "nature",
+          "biblical",
+          "classic",
+          "popular"
+        ],
+        "note": "The 7 /names/style/{slug}.html pages (modern, traditional, rare, nature, biblical, classic, popular) do not map 1:1 onto the 6 categories.json values (traditional, popular, rare, biblical, classical, nature) — \"modern\" has no categories.json equivalent, and \"classic\" vs \"classical\" is a naming mismatch between the two systems."
+      }
+    },
+    "equivalentGroups": {
+      "count": 27,
+      "source": "data/name-equivalents.json (closed/curated dataset; anchor slug -> { origin, equivalents: [{lang, slug}] })",
+      "sampleAnchors": [
+        "johannes",
+        "joao",
+        "evan",
+        "ivan",
+        "james",
+        "jaime",
+        "santiago",
+        "jim",
+        "katherine",
+        "catherine"
+      ]
+    },
+    "normalizedNameRecords": {
+      "count": 3697,
+      "source": "data/normalized-names.json — adds slug, phonetic_code, spelling_variants[], length, syllable_estimate on top of the base name record"
+    },
+    "originOverrides": {
+      "count": 167,
+      "coverage": "167 / 3697 names (4.5%)",
+      "source": "data/origin-overrides.json — curated, deterministic origin backfill (scripts/build-origin-seed.js), merged into names-enriched.json by scripts/apply-origin-enrichment.js"
+    }
+  },
+  "relationships": [
+    {
+      "from": "name",
+      "to": "gender",
+      "cardinality": "1:1",
+      "source": "data/names.json"
+    },
+    {
+      "from": "name",
+      "to": "origin_country / language / origin_cluster",
+      "cardinality": "1:0..1 (sparse — see entities.origins.coverage)",
+      "source": "data/names-enriched.json"
+    },
+    {
+      "from": "name",
+      "to": "category",
+      "cardinality": "1:N (avg 1.21 categories per covered name; 0 names have zero categories)",
+      "source": "data/categories.json"
+    },
+    {
+      "from": "name",
+      "to": "popularity record",
+      "cardinality": "1:N (5 / 3697 names have ANY record — extremely sparse)",
+      "source": "data/popularity.json"
+    },
+    {
+      "from": "name",
+      "to": "variant",
+      "cardinality": "1:N (avg 5.0 variants per name)",
+      "source": "data/variants.json"
+    },
+    {
+      "from": "name",
+      "to": "equivalent group",
+      "cardinality": "1:0..1 (only 27 anchor names are covered)",
+      "source": "data/name-equivalents.json"
+    },
+    {
+      "from": "name",
+      "to": "surname",
+      "cardinality": "computed at build time (compatibility scoring), not a stored relationship",
+      "source": "scripts/generate-programmatic-pages.js scoreCompatibility()"
+    },
+    {
+      "from": "surname",
+      "to": "heraldry record",
+      "cardinality": "1:0..1 (2 of 75 surnames have any heraldry.json entry)",
+      "source": "data/heraldry.json"
+    },
+    {
+      "from": "country",
+      "to": "primary_language",
+      "cardinality": "1:1",
+      "source": "data/countries.json"
+    },
+    {
+      "from": "name",
+      "to": "country-pair comparison",
+      "cardinality": "1:N (only 4 of 3697 names have compare/ pages generated)",
+      "source": "data/country-differentials.json + compare/ output"
+    }
+  ],
+  "notes": [
+    "All counts are computed live from /data/*.json each time this script runs — nothing here is a hardcoded snapshot.",
+    "Sparse-coverage figures (origin, meaning, popularity) are purely descriptive; no pruning or enrichment recommendation is made in this phase."
+  ]
+}

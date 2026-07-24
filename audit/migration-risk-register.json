@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Every risk below is derived from a specific measured finding in Phases 1A-2A or this phase's own dependency/impact analysis — none is a generic migration-risk template. probability and impact are categorical (low/medium/high); no numeric risk score is computed, since Phases 1A-2B's evidence does not support a defensible weighting between the two.",
+  "risks": [
+    {
+      "id": "risk-01-sibling-score-drift",
+      "title": "Sibling-harmony scores will change once origin data flows correctly",
+      "description": "generate-sibling-harmony.js's documented weights (origin 30%, rhythm 25%, popularity 20%, length 15%, style 10%) currently compute origin's 30% contribution against an always-fallback value ('various origins') for all 150 live sibling-harmony pages (audit/knowledge-redundancy.json origin-dual-file-split). Once this generator is adapter-fed real origin data, harmony scores will shift for every pair where either name has real origin data — a content change on already-indexed, live pages.",
+      "affectedDatasets": ["data/names.json", "data/names-enriched.json"],
+      "affectedGenerators": ["scripts/generate-sibling-pages.js", "scripts/generate-sibling-harmony.js", "scripts/sibling-explanation-renderer.js"],
+      "dependencyChain": "origin domain (wave 2) -> relationships domain (wave 3) -> relationships.siblingPairs[].harmonyScore -> 150 live /names/{slug}/siblings/ pages",
+      "probability": "high",
+      "impact": "medium",
+      "architecturalMitigation": "Run the canonical-fed generator in parallel with the current one for the relationships wave's validation window; compare harmony-score distributions before publishing the switch. This is a validation-checkpoint pattern, not a code change.",
+      "validationCheckpoint": "Wave 3 gate: harmony-score diff report across all 150 pairs, reviewed before cutover."
+    },
+    {
+      "id": "risk-02-duplicate-producer-silent-drift",
+      "title": "Two unreconciled producers of the same canonical field could silently diverge before migration completes",
+      "description": "scripts/normalize-names.js and scripts/acquire/build-variants.js both produce variants.spellingVariants[]-equivalent data (and a parallel case exists for pronunciation.syllableCount between data/names.json's syllables and normalized-names.json's syllable_estimate). Phase 2A confirmed 100% agreement today across all 3,697 names, but nothing structurally prevents one producer being edited without the other before the merge happens.",
+      "affectedDatasets": ["data/variants.json", "data/normalized-names.json", "data/names.json"],
+      "affectedGenerators": ["scripts/normalize-names.js", "scripts/acquire/build-variants.js"],
+      "dependencyChain": "identity (wave 1) -> variants domain (wave 2) -> two independent producers -> potential silent divergence prior to merge",
+      "probability": "medium",
+      "impact": "low",
+      "architecturalMitigation": "Designate one producer authoritative and the other deprecated-but-monitored before the wave-2 merge, rather than merging both indefinitely in parallel.",
+      "validationCheckpoint": "Wave 2 gate: re-run the exhaustive 3,697-name equality check from audit/knowledge-redundancy.json immediately before merge; any new mismatch blocks the merge."
+    },
+    {
+      "id": "risk-03-trends-page-refactor-regression",
+      "title": "Trend-page narrative logic may not survive simplification unchanged",
+      "description": "scripts/generate-trends-page.js is the one generator classified requires-refactor (audit/backward-compatibility.json) because it reconciles three differently-shaped popularity-derived sources in its own logic. Removing that reconciliation once a unified popularity.trendAcceleration exists risks subtly changing the single live trend page's narrative output if the refactor doesn't preserve today's exact combination logic.",
+      "affectedDatasets": ["data/popularity.json", "data/country-differentials.json", "data/regional-trend-acceleration.json"],
+      "affectedGenerators": ["scripts/generate-trends-page.js"],
+      "dependencyChain": "popularity domain (wave 2) -> generate-trends-page.js refactor -> 1 live /trends/us-2025-vs-2015/ page",
+      "probability": "medium",
+      "impact": "low",
+      "architecturalMitigation": "Snapshot the current live page's rendered output as a regression fixture before refactoring; the refactor is scoped to preserve that fixture's semantic content, not just its data source.",
+      "validationCheckpoint": "Wave 2 gate: rendered-output comparison against the pre-refactor snapshot."
+    },
+    {
+      "id": "risk-04-url-slug-instability",
+      "title": "Any deviation in slug computation during migration would break every indexed URL sitewide",
+      "description": "identity.slug is currently a deterministic function of the name string. The canonical model doesn't change this function, but a migration that reimplements slug generation (rather than reusing the exact current logic) could silently produce different slugs for edge-case names (accents, hyphens, multi-word names), breaking URL stability — explicitly one of the five properties this migration is required to preserve per the Phase 2B brief.",
+      "affectedDatasets": ["data/names.json (identity.slug source)"],
+      "affectedGenerators": ["all page-generators (URL construction is universal)"],
+      "dependencyChain": "identity domain (wave 1) -> every generated URL sitewide",
+      "probability": "low (if the existing slug function is reused verbatim)",
+      "impact": "high",
+      "architecturalMitigation": "Freeze and reuse today's exact slug-generation logic rather than reimplementing it; treat any change to slug output as a hard migration blocker, not a refinement opportunity.",
+      "validationCheckpoint": "Wave 1 gate: full-catalog slug diff (all ~3,697+ current slugs vs. canonically-generated slugs) with zero tolerance for mismatch."
+    },
+    {
+      "id": "risk-05-word-count-guard-regression",
+      "title": "Removing fallback prose could trigger existing minimum-word-count build guards",
+      "description": "scripts/phase-3.4-guards.js enforces a 400-word minimum before any page is written. Today's fallback prose ('a documented given name', 'various linguistic traditions', etc.) contributes real word count. As meaning/origin coverage increases and fallback text is replaced by real (possibly shorter) researched content, some pages could fall below the enforced minimum for the first time — an ironic case where improving data quality trips an existing quantity-based guard.",
+      "affectedDatasets": ["data/names.json / data/names-enriched.json (meaning, origin)"],
+      "affectedGenerators": ["scripts/generate-programmatic-pages.js", "scripts/phase-3.4-guards.js"],
+      "dependencyChain": "meaning + origin domains (wave 2) -> rendered word count -> existing build guard",
+      "probability": "medium",
+      "impact": "medium",
+      "architecturalMitigation": "Re-evaluate the fixed word-count guard's suitability once real content replaces generic filler, as a distinct decision from the migration itself — noted here as a dependency the migration surfaces, not a migration task to resolve.",
+      "validationCheckpoint": "Wave 2 gate: run the existing guard against a sample of newly-enriched pages before broader rollout."
+    },
+    {
+      "id": "risk-06-citations-domain-blocked-upstream",
+      "title": "The citations domain has no confirmed live producer",
+      "description": "scripts/enrich-meanings.js is the only script that would populate citations.sources[]-equivalent data (meaning_source, origin_source, confidence_score), but Phase 2A found its output columns present-but-always-null in live data/normalized-names.json, suggesting it may not be wired into the current build pipeline. Wave 4 (citations) cannot meaningfully begin until this is resolved.",
+      "affectedDatasets": ["data/normalized-names.json"],
+      "affectedGenerators": ["scripts/enrich-meanings.js"],
+      "dependencyChain": "meaning + origin + etymology + history domains (waves 2-3) -> citations domain (wave 4) -> currently no confirmed live producer",
+      "probability": "high (currently blocked, as measured)",
+      "impact": "low (citations affects no live rendered content today per audit/capability-matrix.json)",
+      "architecturalMitigation": "Confirm or restore scripts/enrich-meanings.js's pipeline connectivity before attempting any Wave 4 work — a prerequisite investigation, not part of this migration plan's scope.",
+      "validationCheckpoint": "Pre-Wave-4 gate: confirm meaning_source/origin_source/confidence_score populate in a live (non-null) test run."
+    },
+    {
+      "id": "risk-07-whole-domain-granularity-blocks-simple-generators",
+      "title": "Whole-domain wave assignment can delay a structurally-simple generator behind a structurally-complex one",
+      "description": "scripts/generate-equivalent-pages.js needs only relatedNames.equivalents[] (which itself only depends on identity), but the relatedNames DOMAIN is assigned wave 3 because its other sub-fields (similarNameIds, clusterId) depend on origin/classification/popularity. Under whole-domain migration ordering, this simple generator waits for wave 3 unnecessarily.",
+      "affectedDatasets": ["data/name-equivalents.json"],
+      "affectedGenerators": ["scripts/generate-equivalent-pages.js"],
+      "dependencyChain": "relatedNames domain (wave 3, gated by its slowest sub-field) -> generate-equivalent-pages.js (whose actual need is ready at wave 1)",
+      "probability": "high (structural, given the domain-level wave assignment documented in audit/migration-waves.json)",
+      "impact": "low (a scheduling delay, not a correctness risk)",
+      "architecturalMitigation": "A future implementation phase could consider sub-field-level migration tracking for domains with heterogeneous internal dependencies, rather than the whole-domain granularity used in this plan — noted as an option, not adopted here, since whole-domain tracking is simpler to validate (audit/migration-validation.json) and the cost is a schedule delay, not a defect.",
+      "validationCheckpoint": "n/a — a scheduling consideration, not a correctness check."
+    },
+    {
+      "id": "risk-08-triple-source-of-truth-during-parallel-period",
+      "title": "The 'parallel' transition strategy for data/names.json creates a temporary third source of truth",
+      "description": "audit/dataset-transition-map.json classifies data/names.json 'parallel' — it continues operating alongside the canonical identity domain during a validation window. If that window runs long, or if any generator is missed during cutover verification, the project would temporarily have identity data in three places (names.json, names-enriched.json, and the canonical record) rather than resolving cleanly to one.",
+      "affectedDatasets": ["data/names.json", "data/names-enriched.json"],
+      "affectedGenerators": ["all page-generators"],
+      "dependencyChain": "identity domain (wave 1, strategy: parallel) -> indefinite parallel operation if not time-boxed",
+      "probability": "medium",
+      "impact": "medium",
+      "architecturalMitigation": "Time-box the parallel period to one validated migration wave rather than leaving it open-ended; maintain an explicit generator-by-generator cutover checklist (audit/generator-impact-matrix.json provides the generator list this checklist would be built from).",
+      "validationCheckpoint": "Wave 1 completion gate: 100% of generators confirmed reading the canonical source before data/names.json's parallel period ends."
+    },
+    {
+      "id": "risk-09-premature-archival-of-unreferenced-datasets",
+      "title": "Datasets confirmed unreferenced within the repository could still have an external consumer",
+      "description": "The 3 datasets marked archive-after-validation (data/cultural-explanation-variants.json, data/comparison-intro-variants.json, data/delta-interpretation-variants.json) were confirmed unreferenced by Phase 1B's exhaustive script-text search — but that search covers only the repository's own scripts, not external tooling, manual scripts, or deployment configuration that might reference them.",
+      "affectedDatasets": ["data/cultural-explanation-variants.json", "data/comparison-intro-variants.json", "data/delta-interpretation-variants.json"],
+      "affectedGenerators": ["none currently"],
+      "dependencyChain": "no domain dependency — a standalone archival-safety question",
+      "probability": "low",
+      "impact": "medium (if an undiscovered external consumer exists)",
+      "architecturalMitigation": "The 'archive-AFTER-validation' qualifier is itself the mitigation: a validation step (checking deployment configuration and any external bindings) precedes archival, rather than archiving on repository evidence alone.",
+      "validationCheckpoint": "Pre-archival gate: deployment/config review confirming no external reference, documented separately from this repository-scoped audit series."
+    },
+    {
+      "id": "risk-10-future-circular-dependency",
+      "title": "Future domain additions could introduce a circular migration dependency without the same rigor applied here",
+      "description": "The current 18-domain graph is confirmed acyclic (audit/migration-dependency-graph.json cycleCheck). A future contributor extending the schema (e.g. adding a religion-references-history edge alongside an existing history-references-religion-like edge) could introduce a cycle without necessarily re-running the topological validation this phase performed.",
+      "affectedDatasets": ["n/a — a process risk, not a current data risk"],
+      "affectedGenerators": ["n/a"],
+      "dependencyChain": "any future schema/dependency edit -> unchecked -> potential cycle",
+      "probability": "low today; increases without a repeatable process",
+      "impact": "high (a cycle blocks all migration-wave computation)",
+      "architecturalMitigation": "Re-run the same topological-level computation method documented in audit/migration-dependency-graph.json whenever a new domain or dependency edge is proposed — a documented process, not a code artifact.",
+      "validationCheckpoint": "Any future schema change: topological computation must complete without a circular-dependency error before the change is accepted."
+    }
+  ],
+  "riskCount": 10,
+  "probabilityDistribution": { "high": 3, "medium": 4, "low": 3 },
+  "impactDistribution": { "high": 2, "medium": 4, "low": 4 }
+}

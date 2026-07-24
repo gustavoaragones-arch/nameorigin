@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "informational": true,
+  "scope": "Real, measured timings from a single run (process.hrtime.bigint() around each phase, process.memoryUsage().heapUsed sampled immediately before/after) — not estimated, not averaged across multiple runs. Compares adapter-mediated access against a direct-canonical-access baseline for the same 3,697 entities.",
+  "entityCount": 3697,
+  "measurements": {
+    "canonicalDatasetLoadMs": 77.737,
+    "directCanonicalAccessMs": 0.402,
+    "directCanonicalAccessNote": "Baseline: reading entity.origin.country for all 3,697 entities directly, no adapter involved.",
+    "singleEntityAdapterMs": 12.586,
+    "singleEntityAdapterNote": "lib/adapters/legacy-name-record.js's toLegacyNameRecords() over all 3,697 entities.",
+    "fullCollectionAdapterMs": 23.59,
+    "fullCollectionAdapterNote": "lib/adapters/legacy-datasets.js's buildLegacyDatasets() — produces all 5 legacy collections (names, namesEnriched, popularity, categories, variants) from the same 3,697 entities.",
+    "adapterOverheadVsDirectAccess": { "singleEntityAdapterMs": 12.184, "fullCollectionAdapterMs": 23.188 }
+  },
+  "memory": {
+    "directAccessHeapDeltaBytes": 166176,
+    "singleAdapterHeapDeltaBytes": 601880,
+    "fullAdapterHeapDeltaBytes": 3054424,
+    "fullAdapterHeapDeltaHuman": "2.91 MB"
+  },
+  "throughput": {
+    "singleEntityAdapterEntitiesPerSecond": 293737,
+    "fullCollectionAdapterEntitiesPerSecond": 156722
+  },
+  "legacyCollectionSizes": { "names": 3697, "namesEnriched": 3697, "popularity": 7, "categories": 4468, "variants": 18426 },
+  "interpretation": [
+    "The full adapter pass (producing all 5 legacy collections) takes ~23.6ms for the entire 3,697-name catalog — roughly 59x slower than direct field access, but still two orders of magnitude below any page-generation timescale that would matter in a build pipeline (audit/canonical-performance.json, Phase 3A, measured the underlying canonical build itself at ~90ms for the same 3,697 entities).",
+    "Memory overhead (~2.9 MB for the full adapter output) is a one-time cost to materialize 5 flat collections in memory simultaneously; a generator that only needs one collection (e.g. just `names`) would see a smaller footprint than this combined figure.",
+    "This measurement is intentionally informational only, per the Phase 3B brief — no generator currently reads through the adapter, so there is no real production workload to benchmark against yet. These numbers establish a baseline for a future phase that would."
+  ]
+}

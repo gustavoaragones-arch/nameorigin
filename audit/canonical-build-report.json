@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-07-22T22:04:01.586Z",
+  "readOnly": false,
+  "additiveOnly": true,
+  "note": "This script writes exactly one new file outside of /audit/ (data/canonical/names.json). No existing dataset, generator, or HTML file is read for writing, or modified.",
+  "entitiesBuilt": 3697,
+  "schemaValidEntities": 3697,
+  "outputPath": "data/canonical/names.json",
+  "outputSizeBytes": 5630992,
+  "outputSizeHuman": "5.37 MB",
+  "timings": {
+    "datasetLoadMs": 126.09,
+    "entityAssemblyMs": 74.64,
+    "assemblyMsPerEntity": 0.0202,
+    "schemaValidationMs": 124.46,
+    "fileWriteMs": 52.28,
+    "totalMs": 377.47
+  },
+  "populatedDomainCounts": {
+    "identity": 3697,
+    "classification": 3697,
+    "meaning": 3,
+    "origin": 167,
+    "language": 163,
+    "etymology": 0,
+    "history": 0,
+    "culture": 0,
+    "religion": 0,
+    "usage": 3697,
+    "pronunciation": 3697,
+    "variants": 2253,
+    "nicknames": 0,
+    "relatedNames": 3695,
+    "popularity": 5,
+    "relationships": 5,
+    "citations": 0,
+    "metadata": 3697
+  },
+  "nullDomainCounts": {
+    "identity": 0,
+    "classification": 0,
+    "meaning": 3694,
+    "origin": 3530,
+    "language": 3534,
+    "etymology": 3697,
+    "history": 3697,
+    "culture": 3697,
+    "religion": 3697,
+    "usage": 0,
+    "pronunciation": 0,
+    "variants": 1444,
+    "nicknames": 3697,
+    "relatedNames": 2,
+    "popularity": 3692,
+    "relationships": 3692,
+    "citations": 3697,
+    "metadata": 0
+  },
+  "provenanceFieldCounts": {
+    "researched": 29,
+    "computed": 21
+  },
+  "computedVsResearchedNote": "21 leaf fields are x-provenance:computed (no possible missing-data state), 29 are x-provenance:researched (can be legitimately null) — counted directly from schemas/name-entity.schema.json's own annotations, not estimated.",
+  "validationSummary": {
+    "allEntitiesSchemaValid": true,
+    "duplicateIds": 0,
+    "duplicateSlugs": 0
+  }
+}

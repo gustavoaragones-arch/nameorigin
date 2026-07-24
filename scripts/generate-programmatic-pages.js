@@ -11,6 +11,31 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection, loadJsonFromFile } = require('../lib/adapters/legacy-dataset-runtime.js');
+const {
+  resolveOrigin,
+  matchesRecordOrigin,
+  recordHasOriginKey,
+  originKeyForMatching,
+  DISCLOSED_UNKNOWN_SENTENCE,
+  DISCLOSED_UNKNOWN_SHORT,
+  DISCLOSED_UNKNOWN_TABLE,
+  whereFromPhrase,
+} = require('../lib/render/origin.js');
+const {
+  resolveMeaning,
+  meaningTableLabel,
+  meaningSnippet,
+  DISCLOSED_UNKNOWN_SENTENCE: MEANING_DISCLOSED_SENTENCE,
+  DISCLOSED_UNKNOWN_SHORT: MEANING_DISCLOSED_SHORT,
+  DISCLOSED_UNKNOWN_TABLE: MEANING_DISCLOSED_TABLE,
+} = require('../lib/render/meaning.js');
+const {
+  resolvePronunciation,
+  pronunciationTableLabel,
+  paaPronunciationAnswer,
+  snippetBulletText,
+} = require('../lib/render/pronunciation.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const { getBuildDate } = require('./build-date.js');
 const { getEquivalents } = require('./utils/name-equivalents.js');
@@ -78,12 +103,7 @@ function loadJson(name) {
 
 /** Phase 3.3: Use origin-enriched names when present (after apply-origin-enrichment.js). */
 function loadNames() {
-  const enrichedPath = path.join(DATA_DIR, 'names-enriched.json');
-  const basePath = path.join(DATA_DIR, 'names.json');
-  if (fs.existsSync(enrichedPath)) {
-    return JSON.parse(fs.readFileSync(enrichedPath, 'utf8'));
-  }
-  return JSON.parse(fs.readFileSync(basePath, 'utf8'));
+  return loadLegacyCollection('namesEnriched');
 }
 
 function slug(str) {
@@ -128,18 +148,30 @@ function titlePopularityBandFromRank(bestRank, hasRank) {
 }
 
 /** Phase 6.1: credibility line + curiosity hook; clamp ~140–160 chars. */
-function buildMetaDescription(name, origin, gender, meaning, popularityText) {
+function buildMetaDescription(name, record, gender, popularityText) {
+  const o = resolveOrigin(record);
+  const m = resolveMeaning(record);
   const g = gender ? `${gender} ` : '';
-  const orig = (origin || 'multiple').trim() || 'multiple';
-  const mean = (meaning || 'a documented given name').trim().replace(/"/g, "'");
-  let s = `Discover the meaning of ${name}, a ${g}name of ${orig} origin meaning "${mean}". Trusted name insights and popularity trends. See why ${name} is ${popularityText} and explore similar names.`;
-  if (s.length > 160) {
-    const shortMean = mean.length > 32 ? mean.slice(0, 29).trim() + '…' : mean;
-    s = `Discover the meaning of ${name}, a ${g}name of ${orig} origin meaning "${shortMean}". Trusted insights. See why ${name} is ${popularityText} and explore similar names.`;
-  }
-  if (s.length > 160) {
-    const shortMean2 = mean.length > 24 ? mean.slice(0, 21).trim() + '…' : mean;
-    s = `Discover ${name}, a ${g}name of ${orig} origin: "${shortMean2}". Trusted insights. See why ${name} is ${popularityText}. Explore similar names.`;
+  const originClause = o.hasOrigin
+    ? `a ${g}name of ${o.metaPhrase} origin`
+    : `a ${g}name (${DISCLOSED_UNKNOWN_SHORT})`;
+  let s;
+  if (m.hasMeaning) {
+    const mean = m.metaPhrase;
+    s = `Discover the meaning of ${name}, ${originClause} meaning "${mean}". Trusted name insights and popularity trends. See why ${name} is ${popularityText} and explore similar names.`;
+    if (s.length > 160) {
+      const shortMean = mean.length > 32 ? mean.slice(0, 29).trim() + '…' : mean;
+      s = `Discover the meaning of ${name}, ${originClause} meaning "${shortMean}". Trusted insights. See why ${name} is ${popularityText} and explore similar names.`;
+    }
+    if (s.length > 160) {
+      const shortMean2 = mean.length > 24 ? mean.slice(0, 21).trim() + '…' : mean;
+      s = `Discover ${name}, ${originClause}: "${shortMean2}". Trusted insights. See why ${name} is ${popularityText}. Explore similar names.`;
+    }
+  } else {
+    s = `Discover ${name}, ${originClause}. ${MEANING_DISCLOSED_SENTENCE} Trusted insights and popularity trends. See why ${name} is ${popularityText}.`;
+    if (s.length > 160) {
+      s = `Discover ${name}, ${originClause}. ${MEANING_DISCLOSED_SHORT}. See why ${name} is ${popularityText}. Explore similar names.`;
+    }
   }
   if (s.length > 160) s = s.slice(0, 157).replace(/\s+\S*$/, '').trim() + '…';
   if (s.length < 130) {
@@ -160,11 +192,20 @@ function metaPopularitySnippet(bestRank, hasRank) {
 }
 
 /** Phase 6 CTR: direct answer for snippet capture. */
-function buildDirectAnswer(name, origin, meaning, gender) {
-  const orig = (origin || 'documented').trim() || 'documented';
-  const mean = (meaning || 'a documented given name').trim();
+function buildDirectAnswer(name, record, gender) {
+  const o = resolveOrigin(record);
+  const m = resolveMeaning(record);
   const g = gender ? `${gender} ` : '';
-  return `${name} is a ${g}name of ${orig} origin that means "${mean}". ${namePageSemanticClose(name, false)}`;
+  if (m.hasMeaning) {
+    if (o.hasOrigin) {
+      return `${name} is a ${g}name of ${o.displayLabel} origin that means "${m.displayText}". ${namePageSemanticClose(name, false)}`;
+    }
+    return `${name} is a ${g}name (${DISCLOSED_UNKNOWN_SHORT}) that means "${m.displayText}". ${namePageSemanticClose(name, false)}`;
+  }
+  if (o.hasOrigin) {
+    return `${name} is a ${g}name of ${o.displayLabel} origin. ${MEANING_DISCLOSED_SENTENCE} ${namePageSemanticClose(name, false)}`;
+  }
+  return `${name} is a ${g}name. ${MEANING_DISCLOSED_SENTENCE} ${namePageSemanticClose(name, false)}`;
 }
 
 function ensureDir(dir) {
@@ -238,11 +279,12 @@ function defaultFaqForPage(path, title) {
 }
 
 function personJsonLd(nameRecord) {
+  const m = resolveMeaning(nameRecord);
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: nameRecord.name,
-    description: nameRecord.meaning || ('Meaning and origin of the name ' + nameRecord.name),
+    description: m.hasMeaning ? m.displayText : MEANING_DISCLOSED_SENTENCE,
   };
 }
 
@@ -425,7 +467,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
   const nameSlug = (n) => nameDetailPath(n.name);
   const len = (record.name || '').length;
   const letter = (record.first_letter || '').toLowerCase();
-  const originKey = (record.origin_country || '').toLowerCase() || (record.language || '').toLowerCase();
+  const originKey = originKeyForMatching(record);
   const recordSyllables = record.syllables != null ? record.syllables : 0;
   const recordEndsVowel = /[aeiouy]$/i.test(String(record.name || '').trim());
 
@@ -445,7 +487,7 @@ function internalLinksForName(record, names, popularity, categories, variants) {
     const countrySlug = slug(record.origin_country || record.language);
     if (isSupportedCountrySlug(countrySlug)) links.push({ href: '/names/' + countrySlug + EXT, text: 'Names from ' + (record.origin_country || record.language) });
     const sameOrigin = names.filter(
-      (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase() === originKey || (n.language || '').toLowerCase() === originKey)
+      (n) => n.id !== record.id && matchesRecordOrigin(record, n)
     );
     sameOrigin.slice(0, 4).forEach((n) => links.push({ href: nameSlug(n), text: n.name }));
   }
@@ -524,21 +566,17 @@ function buildNameUsageContextSection(record) {
   const nameEsc = htmlEscape(record.name);
   const syl = record.syllables != null ? record.syllables : Math.min(3, Math.max(1, Math.floor((record.name || '').length / 3)));
   const gender = (record.gender || '').toLowerCase();
-  const originCluster = (record.origin_cluster || '').trim();
-  const originCountry = (record.origin_country || '').trim();
-  const language = (record.language || '').trim();
-  const hasOrigin = !!(originCluster || originCountry || language);
-  const originLabel = originCountry || originCluster || language || 'multiple traditions';
+  const o = resolveOrigin(record);
 
   let p = '';
-  if (hasOrigin) {
-    p = `${nameEsc} belongs to the ${htmlEscape(originLabel)} naming cluster${language ? ', with roots in ' + htmlEscape(language) + ' naming traditions' : ''}. `;
+  if (o.hasOrigin) {
+    p = `${nameEsc} belongs to the ${htmlEscape(o.displayLabel)} naming cluster${o.language ? ', with roots in ' + htmlEscape(o.language) + ' naming traditions' : ''}. `;
     p += `Its syllable structure (${syl} syllable${syl !== 1 ? 's' : ''}) places it in a common range for ${gender === 'boy' ? 'boys' : gender === 'girl' ? 'girls' : 'gender-neutral names'}, balancing brevity and presence. `;
     p += `Names from the same origin cluster often share stylistic cues—formality, phonetic patterns, or generational associations—that influence pairing and sibling harmony. `;
   } else {
     p = `${nameEsc} has a ${syl}-syllable structure that fits modern naming trends toward concise, recognizable forms. `;
     p += `Phonetic clarity and ease of spelling matter for many parents; names that balance distinctiveness with familiarity tend to remain usable across generations. `;
-    p += `Contemporary naming often blends traditions, so ${nameEsc} may draw from multiple linguistic or regional influences without a single dominant origin. `;
+    p += `${DISCLOSED_UNKNOWN_SENTENCE} We do not assign a single cultural or regional origin without verified data in our sources. `;
   }
   p += `Stylistic positioning—whether a name feels classic, modern, or rare—affects how it pairs with surnames and sibling names. `;
   p += `See <a href="${namesLikePath(record.name)}">names like ${nameEsc}</a> for alternatives that share sound, origin, or popularity band. `;
@@ -742,11 +780,10 @@ function getPeopleAlsoSearchFor(record, names, categories, nameById, excludeIds)
       if (out.length >= 6) return;
     }
   };
-  const originKey = (record.origin_country || '').toLowerCase().replace(/\s+/g, '') || (record.language || '').toLowerCase().replace(/\s+/g, '');
   const lastTwo = (record.name || '').toLowerCase().slice(-2);
   const nameCats = new Set((categories || []).filter((c) => c.name_id === record.id).map((c) => c.category));
   const sameOrigin = names.filter(
-    (n) => n.id !== record.id && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+    (n) => n.id !== record.id && matchesRecordOrigin(record, n)
   );
   const sameStyle = nameCats.size
     ? names.filter((n) => n.id !== record.id && (categories || []).some((c) => c.name_id === n.id && nameCats.has(c.category)))
@@ -816,11 +853,13 @@ function getMiddleNameIdeas(record, names, nameById, excludeIds) {
 function buildDefinitionBlock(record) {
   const nameEsc = htmlEscape(record.name);
   const gender = (record.gender || 'given').toLowerCase();
-  const origin = (record.origin_country || record.language || '').trim();
-  const meaning = (record.meaning || '').trim() || '—';
+  const o = resolveOrigin(record);
+  const m = resolveMeaning(record);
   let sentence = `<strong>${nameEsc}</strong> is a ${gender} name`;
-  if (origin) sentence += ` of ${htmlEscape(origin)} origin`;
-  sentence += ` meaning "${htmlEscape(meaning)}".`;
+  if (o.hasOrigin) sentence += ` of ${htmlEscape(o.displayLabel)} origin`;
+  else sentence += ` (${DISCLOSED_UNKNOWN_SHORT})`;
+  if (m.hasMeaning) sentence += ` meaning "${htmlEscape(m.displayText)}".`;
+  else sentence += `. ${MEANING_DISCLOSED_SENTENCE}`;
   const wc = sentence.split(/\s+/).length;
   if (wc < 40) {
     sentence += ` It is used as a first name in many cultures. Origin and popularity data are summarized below.`;
@@ -829,20 +868,28 @@ function buildDefinitionBlock(record) {
 }
 
 /** Phase 5.3: Origin and Linguistic Lineage — structured evolution narrative. */
-function buildOriginLineage(name, origin) {
+function buildOriginLineage(name, record) {
   const nameEsc = htmlEscape(name);
-  const originLabel = origin || 'various linguistic traditions';
-  const derivedGroup = origin
-    ? (origin.toLowerCase().includes('greek') ? 'Indo-European'
-      : origin.toLowerCase().includes('hebrew') ? 'Semitic'
-      : origin.toLowerCase().includes('latin') ? 'Romance'
-      : origin.toLowerCase().includes('german') ? 'Germanic'
-      : 'related language families')
+  const o = resolveOrigin(record);
+  if (!o.hasOrigin) {
+    return (
+      `<section aria-labelledby="origin-lineage-heading">` +
+      `<h2 id="origin-lineage-heading">Origin and Linguistic Lineage</h2>` +
+      `<p>${DISCLOSED_UNKNOWN_SENTENCE}</p>` +
+      `<p class="contextual">We do not infer linguistic lineage or historical forms without a verified origin in our curated dataset.</p>` +
+      `</section>`
+    );
+  }
+  const originLabel = o.displayLabel;
+  const derivedGroup = originLabel.toLowerCase().includes('greek') ? 'Indo-European'
+    : originLabel.toLowerCase().includes('hebrew') ? 'Semitic'
+    : originLabel.toLowerCase().includes('latin') ? 'Romance'
+    : originLabel.toLowerCase().includes('german') ? 'Germanic'
     : 'related language families';
   const variants = [];
-  if (origin && origin.toLowerCase().includes('greek')) variants.push('classical forms', 'Hellenic variants');
-  if (origin && origin.toLowerCase().includes('hebrew')) variants.push('biblical forms', 'Semitic variants');
-  if (origin && origin.toLowerCase().includes('latin')) variants.push('Roman forms', 'Romance variants');
+  if (originLabel.toLowerCase().includes('greek')) variants.push('classical forms', 'Hellenic variants');
+  if (originLabel.toLowerCase().includes('hebrew')) variants.push('biblical forms', 'Semitic variants');
+  if (originLabel.toLowerCase().includes('latin')) variants.push('Roman forms', 'Romance variants');
   const variantText = variants.length > 0 ? variants.slice(0, 2).join(', ') : 'historical variants';
   return (
     `<section aria-labelledby="origin-lineage-heading">` +
@@ -860,9 +907,19 @@ function buildOriginLineage(name, origin) {
 }
 
 /** Phase 5.3: Historical and Cultural Context — neutral, encyclopedic tone. */
-function buildCulturalContext(name, origin) {
+function buildCulturalContext(name, record) {
   const nameEsc = htmlEscape(name);
-  const originLabel = origin || 'various cultural traditions';
+  const o = resolveOrigin(record);
+  if (!o.hasOrigin) {
+    return (
+      `<section aria-labelledby="cultural-context-heading">` +
+      `<h2 id="cultural-context-heading">Historical and Cultural Context</h2>` +
+      `<p>${DISCLOSED_UNKNOWN_SENTENCE}</p>` +
+      `<p class="contextual">Without a verified origin we do not attribute ${nameEsc} to specific regional traditions or historical narratives.</p>` +
+      `</section>`
+    );
+  }
+  const originLabel = o.displayLabel;
   return (
     `<section aria-labelledby="cultural-context-heading">` +
     `<h2 id="cultural-context-heading">Historical and Cultural Context</h2>` +
@@ -929,12 +986,10 @@ function buildPopularityRegionsPhrase(popRows) {
 function buildDirectAnswers(record, data) {
   const { popRows, chartData, latestRank, categories } = data;
   const name = record.name;
-  const meaning = (record.meaning || '').trim() || 'a documented given name';
-  const originLabel = [record.origin_country, record.language].filter(Boolean).join(' and ');
-  const fromTraditionsPhrase = originLabel
-    ? `${originLabel} naming traditions`
-    : 'naming traditions we document across several regions';
-  const whereFromAssoc = originLabel || 'multiple naming traditions';
+  const m = resolveMeaning(record);
+  const o = resolveOrigin(record);
+  const fromTraditionsPhrase = o.hasOrigin ? `${o.combinedLabel} naming traditions` : DISCLOSED_UNKNOWN_SHORT;
+  const whereFromAssoc = whereFromPhrase(record);
   const regions = buildPopularityRegionsPhrase(popRows);
   const genderShort =
     record.gender === 'boy' ? 'a boy' : record.gender === 'girl' ? 'a girl' : 'a unisex or gender-neutral';
@@ -960,13 +1015,15 @@ function buildDirectAnswers(record, data) {
     (c) => c.name_id === record.id && String(c.category || '').toLowerCase() === 'biblical',
   );
 
-  const directLeadRaw = buildDirectAnswer(name, whereFromAssoc, meaning, record.gender || '');
+  const directLeadRaw = buildDirectAnswer(name, record, record.gender || '');
   const directLeadHtml = '<p class="direct-answer-lead">' + htmlEscape(directLeadRaw) + '</p>';
 
   const blocks = [];
   blocks.push({
     q: `What does the name ${name} mean?`,
-    a: `${name} means “${meaning}”. It draws on ${fromTraditionsPhrase} and matches the lead summary above.`,
+    a: m.hasMeaning
+      ? `${name} means “${m.displayText}”. It draws on ${fromTraditionsPhrase} and matches the lead summary above.`
+      : `${MEANING_DISCLOSED_SENTENCE} See the quick facts table and origin sections on this page for what we do document.`,
   });
   if (isBiblical) {
     blocks.push({
@@ -984,7 +1041,9 @@ function buildDirectAnswers(record, data) {
   });
   blocks.push({
     q: `Where does the name ${name} come from?`,
-    a: `${name} is chiefly associated with ${whereFromAssoc} in our records. Spellings travel through migration and media, so you may hear the name well beyond its original linguistic home.`,
+    a: o.hasOrigin
+      ? `${name} is chiefly associated with ${whereFromAssoc} in our records. Spellings travel through migration and media, so you may hear the name well beyond its original linguistic home.`
+      : `${DISCLOSED_UNKNOWN_SENTENCE} We list verified origin data only when it appears in our curated sources.`,
   });
 
   const slugSafe = slug(name) || 'name';
@@ -1036,10 +1095,7 @@ function buildPeopleAlsoAsk(record, data) {
     ? `Many parents pair ${name} with a complementary first like ${mid} for rhythm.`
     : `Look for middles that balance syllable count and stress with ${name}.`;
 
-  const phon = (record.phonetic || '').trim();
-  const pronAns = phon
-    ? `We list the pronunciation as ${phon}. Say it with your chosen middle and surname to hear the full rhythm.`
-    : `We do not have a phonetic guide on file for ${name}. Ask speakers you trust or compare with audio you already know.`;
+  const pronAns = paaPronunciationAnswer(name, record);
 
   const rareAns = hasRank
     ? bestRank > 500
@@ -1120,8 +1176,9 @@ function buildNameComparisonInsights(record, otherNames) {
 
 /** Phase 5.0 STEP 2: Quick facts table for extraction. */
 function buildNameFactsTable(record, popBand, syllables) {
-  const origin = [record.origin_country, record.language].filter(Boolean).join(' · ') || '—';
-  const meaning = (record.meaning || '').trim() || '—';
+  const origin = resolveOrigin(record).tableLabel;
+  const meaning = meaningTableLabel(record);
+  const pronunciation = pronunciationTableLabel(record);
   const gender = record.gender ? record.gender.charAt(0).toUpperCase() + record.gender.slice(1) : '—';
   const row = (a, b) => `<tr><td>${htmlEscape(a)}</td><td>${htmlEscape(b)}</td></tr>`;
   return (
@@ -1130,6 +1187,7 @@ function buildNameFactsTable(record, popBand, syllables) {
     '">' +
     row('Origin', origin) +
     row('Meaning', meaning) +
+    row('Pronunciation', pronunciation) +
     row('Gender', gender) +
     row('Popularity', popBand) +
     row('Syllables', String(syllables)) +
@@ -1140,8 +1198,9 @@ function buildNameFactsTable(record, popBand, syllables) {
 /** Phase 6: Six FAQ items; answers ≤2 sentences, direct openers; 15–52 words; no links in answers. */
 function buildQuickFaqForName(record, chartData, latestRank, categories, similarTrimmed) {
   const name = record.name;
-  const meaning = (record.meaning || '').trim() || '—';
-  const originLabel = [record.origin_country, record.language].filter(Boolean).join(' and ') || 'multiple traditions';
+  const m = resolveMeaning(record);
+  const o = resolveOrigin(record);
+  const originLabel = o.hasOrigin ? o.combinedLabel : DISCLOSED_UNKNOWN_SHORT;
   const genderLabel = record.gender ? (record.gender === 'boy' ? 'a boy' : record.gender === 'girl' ? 'a girl' : 'a unisex') : 'a unisex';
   const bestRank = chartData && chartData.length > 0 ? Math.min(...chartData.map((d) => (d.rank != null ? d.rank : 9999))) : (latestRank != null ? latestRank : 9999);
   const hasRank = bestRank != null && bestRank < 9999;
@@ -1156,7 +1215,9 @@ function buildQuickFaqForName(record, chartData, latestRank, categories, similar
         ? `${simA} and other picks in the similar-names list on this page`
         : 'the similar-names list on this page';
 
-  const ans1 = `${name} means "${meaning}" and comes from ${originLabel} naming roots. The gloss matches what we show in the quick facts and lead summary above.`;
+  const ans1 = m.hasMeaning
+    ? `${name} means "${m.displayText}" and comes from ${originLabel} naming roots. The gloss matches what we show in the quick facts and lead summary above.`
+    : `${MEANING_DISCLOSED_SENTENCE} Origin and popularity data on this page come from our curated sources.`;
   const ans2 = `${name} is listed as ${genderLabel} name in our dataset. Usage can differ by region, so confirm the reading you want for your family.`;
   const ans3 = !hasRank
     ? `We do not have a single global rank for ${name} on this page. Use the popularity table and chart below for country- and year-specific counts.`
@@ -1626,31 +1687,34 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   })();
   const definitionBlock = buildDefinitionBlock(record);
   // Phase 5.3: Authority layer — origin lineage, cultural context, references
-  const originLabel = (record.origin_country || record.language || '').trim();
-  const originJoinedForSnippet = [record.origin_country, record.language].filter(Boolean).join(' and ').trim();
-  const introOriginForLead = originJoinedForSnippet || 'multiple naming traditions';
-  const meaningRawForSnippet = (record.meaning || '').trim() || '—';
-  const originHeritageDisplay = originLabel || 'diverse cultural';
+  const o = resolveOrigin(record);
+  const originLabel = o.hasOrigin ? o.displayLabel : '';
+  const originJoinedForSnippet = o.hasOrigin ? o.combinedLabel : DISCLOSED_UNKNOWN_SHORT;
+  const introOriginForLead = o.hasOrigin ? o.combinedLabel : DISCLOSED_UNKNOWN_SHORT;
+  const m = resolveMeaning(record);
+  const originHeritageDisplay = o.hasOrigin ? o.displayLabel : DISCLOSED_UNKNOWN_SHORT;
   const trustLineHtml = '<p class="trust-line">Frequently searched name meaning with rising interest.</p>';
-  const introMeaningForLead = (record.meaning || '').trim() || 'a documented given name';
   const introGenderLead = record.gender ? `${htmlEscape(capitalizeWord(record.gender))} ` : '';
-  const introSnippetHtml =
-    `<p class="intro-snippet">${htmlEscape(record.name)} is a ${introGenderLead}name of ${htmlEscape(introOriginForLead)} origin that means "${htmlEscape(introMeaningForLead)}". ${namePageSemanticClose(record.name, true)}</p>`;
+  const introSnippetHtml = m.hasMeaning
+    ? `<p class="intro-snippet">${htmlEscape(record.name)} is a ${introGenderLead}name${o.hasOrigin ? ' of ' + htmlEscape(introOriginForLead) + ' origin' : ' (' + htmlEscape(DISCLOSED_UNKNOWN_SHORT) + ')'} that means "${htmlEscape(m.displayText)}". ${namePageSemanticClose(record.name, true)}</p>`
+    : `<p class="intro-snippet">${htmlEscape(record.name)} is a ${introGenderLead}name${o.hasOrigin ? ' of ' + htmlEscape(introOriginForLead) + ' origin' : ' (' + htmlEscape(DISCLOSED_UNKNOWN_SHORT) + ')'}. ${htmlEscape(MEANING_DISCLOSED_SENTENCE)} ${namePageSemanticClose(record.name, true)}</p>`;
   const snippetGenderLower = (() => {
     const g = String(record.gender || '').toLowerCase();
     if (g === 'girl') return 'girl';
     if (g === 'boy') return 'boy';
     return 'unisex';
   })();
-  const originSafe = originJoinedForSnippet || 'multiple';
+  const originSafe = o.hasOrigin ? o.combinedLabel : DISCLOSED_UNKNOWN_SHORT;
   const snippetNameEsc = htmlEscape(record.name);
   const snippetOriginEsc = htmlEscape(originSafe);
-  const snippetMeaningEsc = htmlEscape(introMeaningForLead);
+  const snippetMeaningEsc = m.hasMeaning ? htmlEscape(m.displayText) : htmlEscape(MEANING_DISCLOSED_SENTENCE);
   const snippetDefinitionHtml =
     `<section class="snippet-definition">
   <h2>What Does ${snippetNameEsc} Mean?</h2>
   <p>
-    ${snippetNameEsc} is a given name of ${snippetOriginEsc} origin that means \u201C${snippetMeaningEsc}\u201D. It is a ${snippetGenderLower} name with cultural roots and steadily increasing popularity in modern naming.
+    ${m.hasMeaning
+      ? `${snippetNameEsc} is a given name${o.hasOrigin ? ' of ' + snippetOriginEsc + ' origin' : ' (' + htmlEscape(DISCLOSED_UNKNOWN_SHORT) + ')'} that means \u201C${snippetMeaningEsc}\u201D. It is a ${snippetGenderLower} name with cultural roots and steadily increasing popularity in modern naming.`
+      : `${snippetNameEsc} is a given name${o.hasOrigin ? ' of ' + snippetOriginEsc + ' origin' : ' (' + htmlEscape(DISCLOSED_UNKNOWN_SHORT) + ')'} . ${snippetMeaningEsc} It is a ${snippetGenderLower} name with cultural roots and steadily increasing popularity in modern naming.`}
   </p>
 </section>`;
   const snippetGenderHtml =
@@ -1674,7 +1738,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     <li>Clear and meaningful origin</li>
     <li>Recognized across different cultures</li>
     <li>Balanced between traditional and modern use</li>
-    <li>Easy pronunciation and spelling</li>
+    <li>${htmlEscape(snippetBulletText(record))}</li>
     <li>Increasing popularity in recent years</li>
   </ul>
 </section>`;
@@ -1686,9 +1750,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   </p>
 </section>`;
   const serpIntentLineHtml = `<p class="serp-intent-line">Looking for the meaning of ${htmlEscape(record.name)}? Here's its origin, popularity, and similar names.</p>`;
-  const meaningReinforcementHtml = `<p class="meaning-reinforcement">The name ${htmlEscape(record.name)} literally translates to "${htmlEscape(meaningRawForSnippet)}" and is commonly associated with ${htmlEscape(originHeritageDisplay)} heritage.</p>`;
-  const originLineageSection = buildOriginLineage(record.name, originLabel);
-  const culturalContextSection = buildCulturalContext(record.name, originLabel);
+  const meaningReinforcementHtml = m.hasMeaning
+    ? `<p class="meaning-reinforcement">The name ${htmlEscape(record.name)} is glossed as "${htmlEscape(m.displayText)}" in our sources${o.hasOrigin ? ' and is chiefly associated with ' + htmlEscape(originHeritageDisplay) + ' origin' : ''}.</p>`
+    : `<p class="meaning-reinforcement">${htmlEscape(MEANING_DISCLOSED_SENTENCE)}</p>`;
+  const originLineageSection = buildOriginLineage(record.name, record);
+  const culturalContextSection = buildCulturalContext(record.name, record);
   const referenceBlockSection = buildReferenceBlock(record.name);
 
   // Mesh A: Popularity Cluster — only link to years we generate (2022, 2023, 2024)
@@ -1823,12 +1889,12 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${nameIntro}
     <p class="last-updated"><time datetime="${buildDate.iso}">Last updated: ${buildDate.display}</time></p>
     ${nameFactsTable}
-    <p><strong>Meaning:</strong> ${htmlEscape(record.meaning || '—')}</p>
+    <p><strong>Meaning:</strong> ${htmlEscape(meaningTableLabel(record))}</p>
     <p><strong>Origin:</strong> ${htmlEscape([record.origin_country, record.language].filter(Boolean).join(' · ') || '—')}</p>
     ${originLineageSection}
     ${certificateLink}
     <p><strong>Gender:</strong> ${htmlEscape(record.gender || '—')}</p>
-    ${record.phonetic ? `<p><strong>Pronunciation:</strong> ${htmlEscape(record.phonetic)}</p>` : ''}
+    <p><strong>Pronunciation:</strong> ${htmlEscape(resolvePronunciation(record).displayText)}</p>
     ${meaningContext}
     ${culturalContextSection}
     ${popularityContext}
@@ -1869,16 +1935,15 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${browseSection}
   `;
 
-  const originForMeta = originLabel || 'multiple naming traditions';
+  const originForMeta = o.hasOrigin ? o.combinedLabel : DISCLOSED_UNKNOWN_SHORT;
   const hasRankTitle = bestRankForBand != null && bestRankForBand < 9999;
   const titlePopBand = titlePopularityBandFromRank(bestRankForBand, hasRankTitle);
   const titleYear = parseInt(String(buildDate.iso).slice(0, 4), 10) || new Date().getFullYear();
   const namePageTitle = buildTitle(record.name, originForMeta, record.gender || '', titlePopBand, titleYear);
   const namePageDescription = buildMetaDescription(
     record.name,
-    originForMeta,
+    record,
     record.gender || '',
-    (record.meaning || '').trim() || 'a documented given name',
     metaPopularitySnippet(bestRankForBand, hasRankTitle),
   );
 
@@ -1945,7 +2010,7 @@ function getNamesLikeSimilarity(baseRecord, names, popularity, minCount = 8, max
   const firstLetter = (baseRecord.first_letter || nameStr.charAt(0) || '').toLowerCase();
   const firstTwo = nameStr.slice(0, 2);
   const firstThree = nameStr.slice(0, 3);
-  const originKey = (baseRecord.origin_country || '').toLowerCase().replace(/\s+/g, '') || (baseRecord.language || '').toLowerCase().replace(/\s+/g, '');
+  const originKey = originKeyForMatching(baseRecord);
   const gender = baseRecord.gender || '';
   const nameById = new Map(names.map((n) => [n.id, n]));
   const basePopRows = (popularity || []).filter((p) => p.name_id === baseRecord.id);
@@ -1964,7 +2029,7 @@ function getNamesLikeSimilarity(baseRecord, names, popularity, minCount = 8, max
   // 1. Same origin
   if (originKey) {
     const sameOrigin = names.filter(
-      (n) => n.id !== baseRecord.id && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+      (n) => n.id !== baseRecord.id && matchesRecordOrigin(baseRecord, n)
     );
     add(sameOrigin, 4);
   }
@@ -2032,7 +2097,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const firstLetter = (baseRecord.first_letter || nameStr.charAt(0) || '').toLowerCase();
   const firstTwo = nameStr.slice(0, 2);
   const firstThree = nameStr.slice(0, 3);
-  const originKey = (baseRecord.origin_country || '').toLowerCase().replace(/\s+/g, '') || (baseRecord.language || '').toLowerCase().replace(/\s+/g, '');
+  const originKey = originKeyForMatching(baseRecord);
   const gender = baseRecord.gender || '';
   const nameById = new Map(names.map((n) => [n.id, n]));
   const basePopRows = (popularity || []).filter((p) => p.name_id === baseRecord.id);
@@ -2070,7 +2135,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   // Names with same origin
   if (originKey) {
     const sameOrigin = names.filter(
-      (n) => n.id !== baseRecord.id && !seenIds.has(n.id) && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+      (n) => n.id !== baseRecord.id && !seenIds.has(n.id) && matchesRecordOrigin(baseRecord, n)
     );
     sameOrigin.slice(0, 6).forEach((n) => {
       sameOriginMatches.push(n);
@@ -2121,10 +2186,11 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
   const nameCategories = (categories || []).filter((c) => c.name_id === baseRecord.id).map((c) => c.category);
   const styleLabel = nameCategories.length > 0 ? nameCategories[0] : (gender === 'boy' ? 'classic' : gender === 'girl' ? 'elegant' : 'modern');
-  const originLabel = baseRecord.origin_country || baseRecord.language || 'various origins';
+  const baseOrigin = resolveOrigin(baseRecord);
+  const originLabel = baseOrigin.hasOrigin ? baseOrigin.displayLabel : null;
 
   // Intro paragraph (~150-200 words)
-  const intro = `<p class="contextual">If you're considering the name ${htmlEscape(baseRecord.name)}, you might be looking for alternatives that share similar style, origin, or sound. ${htmlEscape(baseRecord.name)} has a ${htmlEscape(styleLabel)} feel and ${originLabel ? 'originates from ' + htmlEscape(originLabel) : 'has roots in multiple cultures'}. When choosing a name, many parents seek options that match their preferred style—whether that's ${htmlEscape(styleLabel)}, ${gender === 'boy' ? 'strong and traditional' : gender === 'girl' ? 'elegant and timeless' : 'versatile and modern'}—or that honor a specific cultural or linguistic heritage. Some parents also want names that sound similar phonetically, sharing the same first letter or similar opening sounds, which can create a cohesive feel when considering sibling names or family naming patterns. Others prioritize popularity, looking for names in a similar popularity band—whether that's top 100, top 500, or less common choices. This page curates names similar to ${htmlEscape(baseRecord.name)} across these dimensions, helping you discover alternatives that might resonate with your preferences while offering variety and meaning.</p>`;
+  const intro = `<p class="contextual">If you're considering the name ${htmlEscape(baseRecord.name)}, you might be looking for alternatives that share similar style, origin, or sound. ${htmlEscape(baseRecord.name)} has a ${htmlEscape(styleLabel)} feel and ${originLabel ? 'originates from ' + htmlEscape(originLabel) : DISCLOSED_UNKNOWN_SENTENCE.toLowerCase()}. When choosing a name, many parents seek options that match their preferred style—whether that's ${htmlEscape(styleLabel)}, ${gender === 'boy' ? 'strong and traditional' : gender === 'girl' ? 'elegant and timeless' : 'versatile and modern'}—or that honor a specific cultural or linguistic heritage. Some parents also want names that sound similar phonetically, sharing the same first letter or similar opening sounds, which can create a cohesive feel when considering sibling names or family naming patterns. Others prioritize popularity, looking for names in a similar popularity band—whether that's top 100, top 500, or less common choices. This page curates names similar to ${htmlEscape(baseRecord.name)} across these dimensions, helping you discover alternatives that might resonate with your preferences while offering variety and meaning.</p>`;
 
   // Names Similar in Sound section
   const phoneticSectionHtml = phoneticMatches.length > 0
@@ -2140,7 +2206,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   // Names with Same Origin section
   const originSectionHtml = sameOriginMatches.length > 0
     ? `<section aria-labelledby="origin-heading"><h2 id="origin-heading">Names with the Same Origin</h2><ul class="name-list">${sameOriginMatches.map((n) => {
-        const explanation = `${htmlEscape(n.name)} shares the same ${originLabel ? htmlEscape(originLabel) : 'cultural'} origin as ${htmlEscape(baseRecord.name)}, reflecting similar linguistic roots and cultural traditions.`;
+        const explanation = `${htmlEscape(n.name)} shares the same ${originLabel ? htmlEscape(originLabel) : 'verified'} origin as ${htmlEscape(baseRecord.name)}, reflecting similar linguistic roots and cultural traditions.`;
         return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
       }).join('')}</ul></section>`
     : '';
@@ -3055,10 +3121,10 @@ function generateLastNamePage(surnameMeta, names) {
 
 function run() {
   const names = loadNames();
-  const popularity = loadJson('popularity');
-  const categories = loadJson('categories');
-  const variants = loadJson('variants');
-  const countries = loadJson('countries');
+  const popularity = loadLegacyCollection('popularity');
+  const categories = loadLegacyCollection('categories');
+  const variants = loadLegacyCollection('variants');
+  const countries = loadJsonFromFile('countries');
 
   ensureDir(OUT_DIR);
   ensureDir(path.join(OUT_DIR, 'names'));
@@ -3251,7 +3317,7 @@ function run() {
   fs.writeFileSync(path.join(OUT_DIR, 'names', 'style' + EXT), styleHubHtml, 'utf8');
 
   // Last name compatibility: /names/with-last-name-smith.html, /names/with-last-name-garcia.html, etc.
-  const lastNames = loadJson('last-names');
+  const lastNames = loadJsonFromFile('last-names');
   lastNames.forEach((surnameMeta) => {
     const slugKey = slug(surnameMeta.name);
     if (!slugKey) return;

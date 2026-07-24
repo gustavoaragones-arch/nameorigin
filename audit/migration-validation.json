@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Validates the internal consistency of every Phase 2B deliverable. Every check below was actually run against the real files in this phase (reproduced commands available in this file's methodology notes) — none is asserted without having been executed.",
+
+  "validations": [
+    {
+      "check": "Every canonical domain belongs to exactly one migration wave",
+      "method": "Compared the 18 domain keys in schemas/name-entity.schema.json's properties against audit/migration-waves.json's domainWaveIndex — checked for domains missing from the index and index entries not present in the schema.",
+      "result": "PASS",
+      "evidence": "18 schema domains, 18 indexed, 0 missing, 0 extra. Independently re-confirmed the domains array across all 4 waves sums to 18 (2+8+7+1)."
+    },
+    {
+      "check": "Every dataset has one transition strategy",
+      "method": "Compared the 19 dataset paths in audit/datasets.json (Phase 1B) against audit/dataset-transition-map.json's dataset list, checking for any Phase 1B dataset absent from the transition map, and for duplicate entries within the transition map.",
+      "result": "PASS",
+      "evidence": "19 of 19 Phase 1B datasets present in the transition map, 0 missing. 0 duplicate dataset entries found in the transition map itself."
+    },
+    {
+      "check": "Every generator has one migration classification",
+      "method": "Compared the generator lists in audit/generator-impact-matrix.json and audit/backward-compatibility.json against each other (both should cover the identical 23-generator set established in audit/generator-dependencies-v2.json, Phase 2A) and checked for duplicate entries within each.",
+      "result": "PASS",
+      "evidence": "23 generators in the impact matrix, 23 in the compatibility matrix, identical sets (0 present in only one). 0 duplicate generator entries in either file."
+    },
+    {
+      "check": "Every dependency chain terminates (no infinite chains)",
+      "method": "The topological-level computation in audit/migration-dependency-graph.json (longest-path leveling) inherently terminates only if the graph is finite and acyclic; a cycle would cause the computation to throw rather than return a level. Re-ran the same computation independently in this validation pass, fresh, against the prerequisite edges as literally recorded in audit/migration-dependency-graph.json's domains[].migrationPrerequisites (not against the original hand-written edge list from earlier in this phase).",
+      "result": "PASS",
+      "evidence": "Independent re-computation completed for all 18 domains without error, producing the same 4-level result (max level 4, at 'citations') as audit/migration-waves.json."
+    },
+    {
+      "check": "No circular migration dependencies exist",
+      "method": "Same computation as above — a cycle is detected as a side effect of the leveling algorithm (visiting a node already on the current recursion path throws).",
+      "result": "PASS",
+      "evidence": "audit/migration-dependency-graph.json's own cycleCheck field records this; independently reconfirmed in this validation pass with a fresh implementation reading the same source data."
+    },
+    {
+      "check": "No canonical domain is orphaned",
+      "method": "Checked every migrationPrerequisites entry across all 18 domains in audit/migration-dependency-graph.json for a reference to a domain name not present in schemas/name-entity.schema.json's 18 domains (which would indicate a prerequisite pointing at something that doesn't exist).",
+      "result": "PASS",
+      "evidence": "0 bad prerequisite references found across all edges (32 total edges, including soft/conceptual ones)."
+    },
+    {
+      "check": "No dataset transition conflicts exist",
+      "method": "Checked audit/dataset-transition-map.json for any dataset assigned more than one transitionStrategy (which the JSON structure — one object per dataset — could not represent even if attempted, but was checked for duplicate dataset keys as the practical equivalent).",
+      "result": "PASS",
+      "evidence": "0 duplicate dataset entries (see 'every dataset has one transition strategy' above — the same check covers this)."
+    }
+  ],
+
+  "unresolvedDependenciesExplicitlyReported": [
+    {
+      "item": "citations domain (wave 4)",
+      "issue": "Its only real-world producer, scripts/enrich-meanings.js, has output columns confirmed present-but-always-null in live data (Phase 2A finding, re-surfaced as risk-06 in audit/migration-risk-register.json). This is not a graph-structure problem (the dependency chain is valid and acyclic) — it is a DATA problem: wave 4 has a structurally sound migration path with no confirmed live data flowing through it yet.",
+      "statedNotAHiddenFailure": true
+    },
+    {
+      "item": "etymology, history, culture, religion, nicknames domains (wave 3)",
+      "issue": "All 5 have zero current data (audit/knowledge-domains.json). Their wave-3 placement is structurally valid (soft prerequisites only), but there is nothing to migrate for any of them today — their 'migration' is really 'activation of an empty structure,' not a data-transformation task.",
+      "statedNotAHiddenFailure": true
+    }
+  ],
+
+  "overallResult": "PASS — all 7 structural validations pass with cited evidence. Two items are explicitly flagged as unresolved DATA dependencies (not structural/graph failures) per this file's mandate to report unresolved dependencies explicitly rather than let a structural PASS imply full readiness.",
+  "limitations": [
+    "This validation confirms internal consistency of the Phase 2B planning artifacts against each other and against Phase 1A-2A's findings. It does not and cannot confirm that executing this plan would succeed without incident — that can only be confirmed by execution, which is out of scope for a read-only planning phase.",
+    "The soft/conceptual prerequisite edges (e.g. origin -> history) are architectural recommendations, not verified data dependencies, since no current data exists to verify them against — this is stated explicitly in audit/migration-dependency-graph.json per-domain and not re-litigated here."
+  ]
+}

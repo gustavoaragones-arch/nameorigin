@@ -1,0 +1,355 @@
+{
+  "generatedAt": "2026-07-21T18:25:00.735Z",
+  "readOnly": true,
+  "representation": "Type-level (schema) graph with live-computed cardinalities, plus a small sampleEdges[] of real instances. A full instance-level graph would require one node per name (3,697+) and was judged unusable as a human-readable report; every count below is nonetheless computed from the live data, not estimated.",
+  "nodes": [
+    {
+      "id": "Name",
+      "kind": "entity",
+      "count": 3697,
+      "source": "data/names.json"
+    },
+    {
+      "id": "Origin",
+      "kind": "entity",
+      "count": 18,
+      "source": "distinct data/names-enriched.json origin_cluster values",
+      "values": [
+        "African",
+        "Arabic",
+        "English",
+        "French",
+        "German",
+        "Greek",
+        "Hebrew",
+        "Indian",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Latin",
+        "Nordic",
+        "Persian",
+        "Russian",
+        "Scottish",
+        "Spanish",
+        "Turkish"
+      ]
+    },
+    {
+      "id": "Country",
+      "kind": "entity",
+      "count": 5,
+      "source": "data/countries.json (site-supported country pages)",
+      "values": [
+        "United States",
+        "Canada",
+        "India",
+        "France",
+        "Ireland"
+      ]
+    },
+    {
+      "id": "OriginCountry",
+      "kind": "entity",
+      "count": 11,
+      "source": "distinct data/names-enriched.json origin_country values (broader than the Country node set)",
+      "values": [
+        "France",
+        "Germany",
+        "Greece",
+        "India",
+        "Iran",
+        "Ireland",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Spain",
+        "United Kingdom"
+      ],
+      "note": "8 of these countries have no corresponding Country node / no /names/{country}.html page."
+    },
+    {
+      "id": "Language",
+      "kind": "entity",
+      "count": 18,
+      "source": "distinct data/names-enriched.json language values",
+      "values": [
+        "Arabic",
+        "English",
+        "French",
+        "German",
+        "Greek",
+        "Hebrew",
+        "Irish",
+        "Italian",
+        "Japanese",
+        "Latin",
+        "Nordic",
+        "Persian",
+        "Punjabi",
+        "Russian",
+        "Sanskrit",
+        "Scottish",
+        "Spanish",
+        "Turkish"
+      ]
+    },
+    {
+      "id": "Category",
+      "kind": "entity",
+      "count": 6,
+      "source": "distinct data/categories.json category values",
+      "values": [
+        "traditional",
+        "popular",
+        "rare",
+        "biblical",
+        "classical",
+        "nature"
+      ]
+    },
+    {
+      "id": "PopularityRecord",
+      "kind": "entity",
+      "count": 7,
+      "source": "data/popularity.json rows"
+    },
+    {
+      "id": "Variant",
+      "kind": "entity",
+      "count": 18426,
+      "source": "data/variants.json rows (spelling variants, not deduplicated to unique strings)"
+    },
+    {
+      "id": "EquivalentGroup",
+      "kind": "entity",
+      "count": 27,
+      "source": "data/name-equivalents.json (closed set)"
+    },
+    {
+      "id": "Surname",
+      "kind": "entity",
+      "count": 75,
+      "source": "data/last-names.json"
+    },
+    {
+      "id": "Letter",
+      "kind": "entity",
+      "count": 26,
+      "source": "distinct data/names.json first_letter values (backs the A–Z pages)"
+    },
+    {
+      "id": "Style",
+      "kind": "entity",
+      "count": 7,
+      "source": "hardcoded style slugs in generate-programmatic-pages.js",
+      "values": [
+        "modern",
+        "traditional",
+        "rare",
+        "nature",
+        "biblical",
+        "classic",
+        "popular"
+      ]
+    },
+    {
+      "id": "SiblingBatch",
+      "kind": "computed-set",
+      "count": 150,
+      "source": "top 150 names by popularity rank (getSiblingBatchNameSlugs), the only names with a /siblings/ page"
+    },
+    {
+      "id": "CountryPage",
+      "kind": "page-type",
+      "count": 5,
+      "source": "/names/{country}.html — one per Country node"
+    },
+    {
+      "id": "ComparePair",
+      "kind": "page-type",
+      "count": 5,
+      "source": "/compare/{a}-vs-{b}/ hub pages (fixed 5 pairs)"
+    },
+    {
+      "id": "CountryDifferentialEntry",
+      "kind": "entity",
+      "count": 5,
+      "source": "data/country-differentials.json entries[] (feeds ComparePair × Name pages)"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Name",
+      "to": "Origin",
+      "relationship": "HAS_ORIGIN_CLUSTER",
+      "cardinality": "1:0..1",
+      "edgesPresent": 167,
+      "edgesPossible": 3697,
+      "coveragePct": 4.52
+    },
+    {
+      "from": "Name",
+      "to": "OriginCountry",
+      "relationship": "ORIGINATES_IN",
+      "cardinality": "1:0..1",
+      "edgesPresent": 124,
+      "edgesPossible": 3697,
+      "coveragePct": 3.35
+    },
+    {
+      "from": "Name",
+      "to": "Language",
+      "relationship": "ASSOCIATED_WITH_LANGUAGE",
+      "cardinality": "1:0..1",
+      "edgesPresent": 163,
+      "edgesPossible": 3697,
+      "coveragePct": 4.41
+    },
+    {
+      "from": "Name",
+      "to": "Category",
+      "relationship": "TAGGED_AS",
+      "cardinality": "1:N",
+      "edgesPresent": 4468,
+      "edgesPossible": null,
+      "note": "3697 of 3697 names (100.0%) have at least one Category edge; average 1.21 categories per tagged name."
+    },
+    {
+      "from": "Name",
+      "to": "PopularityRecord",
+      "relationship": "HAS_POPULARITY_RECORD",
+      "cardinality": "1:N",
+      "edgesPresent": 7,
+      "edgesPossible": null,
+      "note": "Only 5 of 3697 names (0.14%) have ANY PopularityRecord edge."
+    },
+    {
+      "from": "Name",
+      "to": "Variant",
+      "relationship": "HAS_VARIANT",
+      "cardinality": "1:N",
+      "edgesPresent": 18426,
+      "edgesPossible": null,
+      "note": "3697 of 3697 names (100.00%) have at least one Variant edge; average 5.0 variants per covered name."
+    },
+    {
+      "from": "Name",
+      "to": "EquivalentGroup",
+      "relationship": "ANCHORS",
+      "cardinality": "1:0..1",
+      "edgesPresent": 27,
+      "edgesPossible": 3697,
+      "coveragePct": 0.73
+    },
+    {
+      "from": "Name",
+      "to": "Letter",
+      "relationship": "STARTS_WITH",
+      "cardinality": "1:1",
+      "edgesPresent": 3697,
+      "edgesPossible": 3697,
+      "coveragePct": 100
+    },
+    {
+      "from": "Name",
+      "to": "Style",
+      "relationship": "STYLED_AS",
+      "cardinality": "1:0..1 (via Category, not a direct field)",
+      "edgesPresent": 3697,
+      "edgesPossible": 3697,
+      "coveragePct": 100,
+      "note": "The 7 Style nodes are a hardcoded superset of the 6 Category values (see audit/entity-map.json categoryTaxonomy.crossCheckWithStylePages) — this edge is inferred, not a direct dataset field."
+    },
+    {
+      "from": "Name",
+      "to": "SiblingBatch",
+      "relationship": "IS_MEMBER_OF",
+      "cardinality": "1:0..1",
+      "edgesPresent": 150,
+      "edgesPossible": 3697,
+      "coveragePct": 4.06
+    },
+    {
+      "from": "Name",
+      "to": "Surname",
+      "relationship": "COMPATIBLE_WITH (computed)",
+      "cardinality": "N:M, computed at build time — not a stored edge",
+      "edgesPresent": null,
+      "edgesPossible": 277275,
+      "note": "scoreCompatibility() computes a live score for any name+surname pair; no compatibility edge is persisted in a dataset, so it has no \"missing\" state — it is generated on demand for the top slice shown per page (60 names per surname page, 60 surnames worth per name-with-surname page)."
+    },
+    {
+      "from": "Name",
+      "to": "Name",
+      "relationship": "SIBLING_PAIRED_WITH (computed)",
+      "cardinality": "N:M within SiblingBatch only, computed at build time",
+      "edgesPresent": null,
+      "edgesPossible": 22350,
+      "note": "generate-sibling-harmony.js scores pairs live; only names inside SiblingBatch (150) can participate."
+    },
+    {
+      "from": "Country",
+      "to": "Country",
+      "relationship": "HAS_COMPARE_PAIR",
+      "cardinality": "5 fixed pairs (not all C(5,2)=10 possible pairs are covered)",
+      "edgesPresent": 5,
+      "edgesPossible": 10
+    },
+    {
+      "from": "Name",
+      "to": "ComparePair",
+      "relationship": "COMPARED_ACROSS",
+      "cardinality": "1:0..5",
+      "edgesPresent": 5,
+      "edgesPossible": 18485,
+      "coveragePct": 0.027,
+      "note": "Only 4 of 3,697 names have any /compare/ page generated, matching the compare-name-country-pair-page gap already noted in Phase 1A."
+    },
+    {
+      "from": "Surname",
+      "to": "Surname",
+      "relationship": "HAS_HERALDRY_RECORD (self-attribute, listed for completeness)",
+      "cardinality": "1:0..1",
+      "edgesPresent": 2,
+      "edgesPossible": 75,
+      "coveragePct": 2.67
+    }
+  ],
+  "sampleEdges": [
+    {
+      "from": "Name:Aadi",
+      "to": "Origin:Indian",
+      "relationship": "HAS_ORIGIN_CLUSTER"
+    },
+    {
+      "from": "Name:Aahil",
+      "to": "Origin:Indian",
+      "relationship": "HAS_ORIGIN_CLUSTER"
+    },
+    {
+      "from": "Name:Aakriti",
+      "to": "Origin:Indian",
+      "relationship": "HAS_ORIGIN_CLUSTER"
+    },
+    {
+      "from": "Name:Abtin",
+      "to": "Origin:∅",
+      "relationship": "HAS_ORIGIN_CLUSTER (no edge — field empty)"
+    },
+    {
+      "from": "Name:Aceson",
+      "to": "Origin:∅",
+      "relationship": "HAS_ORIGIN_CLUSTER (no edge — field empty)"
+    },
+    {
+      "from": "Name:Adedamola",
+      "to": "Origin:∅",
+      "relationship": "HAS_ORIGIN_CLUSTER (no edge — field empty)"
+    }
+  ],
+  "notes": [
+    "Edge coveragePct answers \"of all possible Name→X edges, how many actually exist\" — the same entity-level lens used in audit/knowledge-coverage.json.",
+    "Two relationship types (Name–Surname compatibility, Name–Name sibling pairing) are computed on demand at build time rather than stored, so they have no missing-data state; they are included because the Phase 1B brief asked for them explicitly."
+  ]
+}

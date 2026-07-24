@@ -1,0 +1,170 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "How each KNOWLEDGE-relevant generator would consume the canonical model — not a rewrite plan. 'currentDatasetReads' is verified against source (Phase 1A/1B/1C tracing); 'canonicalFieldsRequired' is what that generator would read from a single Name Entity record instead, under the model in schemas/name-entity.schema.json.",
+  "outOfScopeNote": "Non-knowledge-rendering scripts (index-integrity-audit.js, sitemap-hygiene-report.js, origin-integrity-audit.js, crawl-depth-distribution.js, internal-link-density-report.js, topic-cluster-map.js, minify-css.js, and the other ~50 audit/utility/build scripts cataloged in audit/build-pipeline.json) are excluded — they check or transform build output rather than render canonical knowledge into a page, so they have no canonical-field dependency to map.",
+  "generators": [
+    {
+      "generator": "scripts/generate-programmatic-pages.js",
+      "role": "Page-generation (master generator — name-detail, names-like, letter/gender/country/style, last-name filter, compatibility, root hub pages)",
+      "currentDatasetReads": ["data/names.json / data/names-enriched.json", "data/popularity.json", "data/categories.json", "data/variants.json", "data/name-equivalents.json", "data/last-names.json", "build/topic-clusters.json"],
+      "canonicalFieldsRequired": ["identity.*", "classification.*", "meaning.primary", "origin.*", "language.primary", "pronunciation.*", "usage.regionsOfUse", "variants.spellingVariants[]", "relatedNames.*", "popularity.records[]", "relationships.surnameCompatibility[]"],
+      "note": "The single largest consumer — would read nearly every domain of the canonical model. This is the generator that currently reads the enriched file correctly."
+    },
+    {
+      "generator": "scripts/generate-names-like.js",
+      "role": "Page-generation (standalone Names Like runner; same logic embedded in generate-programmatic-pages.js)",
+      "currentDatasetReads": ["data/names.json", "data/popularity.json", "data/categories.json"],
+      "canonicalFieldsRequired": ["identity.*", "origin.*", "language.primary", "popularity.records[]", "classification.categories[]", "relatedNames.similarNameIds[]"],
+      "note": "Note this standalone script reads data/names.json (unenriched), while generate-programmatic-pages.js's embedded copy of the same logic reads data/names-enriched.json — an internal inconsistency between two implementations of the same page. Confirmed via source in this phase; see audit/knowledge-redundancy.json."
+    },
+    {
+      "generator": "scripts/generate-sibling-pages.js",
+      "role": "Page-generation (sibling-harmony pages, top-150 batch)",
+      "currentDatasetReads": ["data/names.json (UNENRICHED)", "data/popularity.json", "data/categories.json"],
+      "canonicalFieldsRequired": ["identity.*", "origin.cluster", "pronunciation.syllableCount", "popularity.records[]", "classification.categories[]", "relationships.siblingPairs[]"],
+      "note": "The generator behind the Phase 1C/1D headline finding: reads data/names.json instead of data/names-enriched.json, so origin.cluster is unavailable to it even for names where the canonical record would have a real value. Under the canonical model, this generator would read the SAME entity record as every other generator, structurally eliminating this gap."
+    },
+    {
+      "generator": "scripts/generate-lastname-pages.js",
+      "role": "Page-generation (surname-compatibility landing pages)",
+      "currentDatasetReads": ["data/last-names.json", "data/names.json", "data/heraldry.json", "data/compatibility_patterns.json (via compatibility-explanation-renderer.js)", "data/compatibility-explanation-variants.json"],
+      "canonicalFieldsRequired": ["identity.* (of the first names being matched)", "relationships.surnameCompatibility[] scoring inputs", "(Surname Entity fields — out of scope for this schema)"],
+      "note": "The one generator whose primary subject (surname) is NOT the Name Entity — see audit/schema-validation.json unmapped-scope note."
+    },
+    {
+      "generator": "scripts/generate-compare-pages.js",
+      "role": "Page-generation (name x country-pair comparison pages)",
+      "currentDatasetReads": ["data/names.json", "data/popularity.json"],
+      "canonicalFieldsRequired": ["identity.*", "popularity.records[]", "relationships.comparisonPairs[]"],
+      "note": "Phase 1C source verification found this generator does NOT read data/country-differentials.json despite that file's fields conceptually matching what it renders — it recomputes rank/movement directly from popularity.records-equivalent data every time. Under the canonical model, relationships.comparisonPairs[] would be the single computed/stored destination this generator both reads and (if precomputed) writes."
+    },
+    {
+      "generator": "scripts/generate-equivalent-pages.js",
+      "role": "Page-generation (cross-linguistic equivalent-name pages)",
+      "currentDatasetReads": ["data/name-equivalents.json", "data/names.json"],
+      "canonicalFieldsRequired": ["identity.*", "relatedNames.equivalents[]"],
+      "note": "Must run after name pages exist per its own header comment — under the canonical model this ordering constraint would remain (an equivalent-name page still needs the anchor entity to exist), but 'name pages exist' becomes 'the canonical entity record exists' rather than a file-generation-order dependency."
+    },
+    {
+      "generator": "scripts/generate-popularity-pages.js",
+      "role": "Page-generation (popularity hub + 2022-2024 year pages)",
+      "currentDatasetReads": ["data/popularity.json", "data/names.json"],
+      "canonicalFieldsRequired": ["popularity.records[] (aggregated across entities)", "identity.name / identity.slug (for linking)"],
+      "note": "Aggregation page — reads popularity.records[] across many entities. Distinct from generate-popularity-year-pages.js below (Phase 1A cataloged both as separate scripts covering an overlapping year range)."
+    },
+    {
+      "generator": "scripts/generate-popularity-year-pages.js",
+      "role": "Page-generation (popularity hub + year pages)",
+      "currentDatasetReads": ["data/popularity.json", "data/names.json"],
+      "canonicalFieldsRequired": ["popularity.records[] (aggregated across entities)", "identity.name / identity.slug (for linking)"],
+      "note": "Aggregation pages — read popularity.records[] across many entities rather than domains of a single entity."
+    },
+    {
+      "generator": "scripts/generate-trends-page.js",
+      "role": "Page-generation (single US 2025-vs-2015 trend page)",
+      "currentDatasetReads": ["data/names.json", "data/popularity.json", "data/regional-trend-acceleration.json", "data/country-differentials.json"],
+      "canonicalFieldsRequired": ["identity.*", "popularity.records[]", "popularity.trendAcceleration"],
+      "note": "The one page-generator confirmed to actually read data/country-differentials.json (contrast with generate-compare-pages.js above)."
+    },
+    {
+      "generator": "scripts/generate-country-differentials.js",
+      "role": "Data-build (writes data/country-differentials.json)",
+      "currentDatasetReads": ["data/popularity.json", "data/names.json"],
+      "canonicalFieldsRequired": ["popularity.records[] (source)", "writes: relationships.comparisonPairs[] / popularity.trendAcceleration inputs"],
+      "note": "A data-build script, not a page renderer — included because it is the producer half of the relationships.comparisonPairs[] canonical field."
+    },
+    {
+      "generator": "scripts/generate-regional-trend-acceleration.js",
+      "role": "Data-build (writes data/regional-trend-acceleration.json)",
+      "currentDatasetReads": ["data/popularity.json"],
+      "canonicalFieldsRequired": ["popularity.records[] (source)", "writes: popularity.trendAcceleration"],
+      "note": "Derives independently from data/popularity.json, in parallel with generate-country-differentials.js above rather than building on it — see audit/knowledge-redundancy.json."
+    },
+    {
+      "generator": "scripts/apply-origin-enrichment.js",
+      "role": "Data-build (writes data/names-enriched.json)",
+      "currentDatasetReads": ["data/names.json", "data/origin-overrides.json"],
+      "canonicalFieldsRequired": ["identity.* (source)", "origin-overrides curation input (source)", "writes: origin.*, language.primary"],
+      "note": "The merge step every page-generator except generate-sibling-pages.js and the standalone generate-names-like.js currently benefits from. Under the canonical model this merge happens once, upstream of ALL generators, by construction — there is no 'enriched' vs 'base' file distinction left to accidentally skip."
+    },
+    {
+      "generator": "scripts/build-origin-seed.js",
+      "role": "Data-build (writes data/origin-overrides.json, curated, top-300-name scope per its own header comment)",
+      "currentDatasetReads": ["(hand-curated source, not a repository dataset)"],
+      "canonicalFieldsRequired": ["writes: origin.country, origin.cluster, origin.confidence, language.primary"],
+      "note": "The actual research-entry point for the origin domain today. Under the canonical model this remains the write-path for origin.* — the highest-leverage field per audit/knowledge-roi.json (Phase 1D)."
+    },
+    {
+      "generator": "scripts/classify-categories.js",
+      "role": "Data-build (writes data/categories.json)",
+      "currentDatasetReads": ["data/names.json", "data/sources/category-rules.json"],
+      "canonicalFieldsRequired": ["identity.* (source)", "writes: classification.categories[]"],
+      "note": "Rule-based, deterministic — matches the schema's x-provenance: computed annotation for classification.categories[]."
+    },
+    {
+      "generator": "scripts/build-popularity.js",
+      "role": "Data-build (writes data/popularity.json)",
+      "currentDatasetReads": ["raw-data/ssa, raw-data/statcan", "data/names.json"],
+      "canonicalFieldsRequired": ["identity.* (source, for name_id resolution)", "writes: popularity.records[]"],
+      "note": "The sole entry point for real popularity research today."
+    },
+    {
+      "generator": "scripts/enrich-meanings.js",
+      "role": "Data-build (Phase 1 acquisition Step 4 — meaning + origin enrichment from Wikidata/curated linguistic datasets)",
+      "currentDatasetReads": ["raw-data/wikidata", "data/sources/curated-meanings.json"],
+      "canonicalFieldsRequired": ["writes: meaning.primary, meaning.confidence, origin.confidence, citations.sources[] (via its own meaning_source/origin_source/confidence_score output columns)"],
+      "note": "Missed in this phase's first pass over audit/build-pipeline.json's generator catalog — added after audit/schema-validation.json's cross-check flagged the gap. Its own header comment states 'only verified meanings; store source reference; no AI-generated meanings,' meaning this script already intends to produce exactly the citations data the canonical model formalizes — but its meaning_source/origin_source/confidence_score output columns were found to be present-but-always-null in the live data/normalized-names.json (audit/knowledge-coverage.json), suggesting this script's enrichment step is not currently wired into the live build pipeline's data path. Not independently re-verified in this phase."
+    },
+    {
+      "generator": "scripts/generate-sibling-harmony.js",
+      "role": "Computation engine (deterministic sibling-pair scoring: origin 30% + rhythm 25% + popularity 20% + length 15% + style 10%)",
+      "currentDatasetReads": ["(no direct dataset reads — scores two already-loaded name records passed to it by scripts/generate-sibling-pages.js)"],
+      "canonicalFieldsRequired": ["origin.cluster, pronunciation.syllableCount, popularity.records[], classification.categories[] (of both entities being scored)", "writes: relationships.siblingPairs[].harmonyScore"],
+      "note": "Missed in this phase's first pass; added after cross-check. The actual scoring engine behind relationships.siblingPairs[] — distinct from scripts/generate-sibling-pages.js, which handles page assembly and dataset loading (including the unenriched-file read documented in audit/knowledge-redundancy.json's origin-dual-file-split finding)."
+    },
+    {
+      "generator": "scripts/generate-smoothness-score.js",
+      "role": "Computation engine (deterministic first+surname phonetic compatibility scoring)",
+      "currentDatasetReads": ["(no direct dataset reads — scores a name+surname pair passed to it)"],
+      "canonicalFieldsRequired": ["identity.name (of the first name), (Surname Entity fields — out of scope for this schema)", "writes: relationships.surnameCompatibility[].score"],
+      "note": "Missed in this phase's first pass; added after cross-check. The scoring engine behind relationships.surnameCompatibility[], consumed by both scripts/generate-lastname-pages.js and scripts/generate-programmatic-pages.js's generateLastNamePage()."
+    },
+    {
+      "generator": "scripts/normalize-names.js",
+      "role": "Data-build (writes data/normalized-names.json)",
+      "currentDatasetReads": ["raw-data/<source>/normalized.json (all import sources)"],
+      "canonicalFieldsRequired": ["writes: identity.slug, pronunciation.syllableCount, variants.spellingVariants[] (parallel to acquire/build-variants.js — see audit/knowledge-redundancy.json)"],
+      "note": "Overlaps acquire/build-variants.js's output domain (variants); overlaps names.json/names-enriched.json's syllables field."
+    },
+    {
+      "generator": "scripts/build-compatibility.js",
+      "role": "Data-build (writes data/compatibility_patterns.json)",
+      "currentDatasetReads": ["(curated rules, not a repository dataset)"],
+      "canonicalFieldsRequired": ["writes: scoring ruleset consumed by relationships.surnameCompatibility[].score computation"],
+      "note": "A ruleset producer, not a knowledge-field producer — see audit/dataset-mapping.json status 'computed'."
+    },
+    {
+      "generator": "scripts/acquire/build-variants.js",
+      "role": "Data-build (writes data/variants.json)",
+      "currentDatasetReads": ["data/names.json"],
+      "canonicalFieldsRequired": ["identity.* (source)", "writes: variants.spellingVariants[]"],
+      "note": "Parallel producer to normalize-names.js for the same canonical field — see audit/knowledge-redundancy.json."
+    },
+    {
+      "generator": "scripts/generate-homepage.js",
+      "role": "Page-generation (homepage explorer grid injection)",
+      "currentDatasetReads": ["data/names-enriched.json or data/names.json (fallback)", "data/popularity.json"],
+      "canonicalFieldsRequired": ["identity.name / identity.slug", "popularity.records[] (for ranking which names to feature)"],
+      "note": "Its own header comment documents a fallback from enriched to base data — the same enriched/unenriched ambiguity pattern found elsewhere, at smaller stakes since only identity fields are used for the grid."
+    },
+    {
+      "generator": "scripts/build-sitemap.js / scripts/generate-html-sitemap.js",
+      "role": "Post-generation (sitemap assembly)",
+      "currentDatasetReads": ["scans already-generated output directories; data/countries.json, data/last-names.json for URL enumeration"],
+      "canonicalFieldsRequired": ["identity.slug (for URL construction only)"],
+      "note": "Consumes URLs, not knowledge — included for completeness since it does read identity.slug indirectly via the generated file tree."
+    }
+  ],
+  "generatorsCataloged": 23
+}

@@ -1,0 +1,224 @@
+{
+  "phase": "5E-1",
+  "title": "History Expansion Wave 1",
+  "generatedAt": "2026-07-24T00:28:02.040Z",
+  "baselineReference": "knowledge-baseline-1.0",
+  "knowledgeBaselineV2EditorialExpansionComplete": true,
+  "postExpansionConsolidationNotStarted": true,
+  "editorial": {
+    "researchFile": "data/sources/history-wave1-research.json",
+    "waveEntriesResearched": 571
+  },
+  "historiesBefore": 0,
+  "historiesAfter": 571,
+  "entitiesResearched": 571,
+  "coverageBeforePct": 0,
+  "coverageAfterPct": 15.44,
+  "coverageIncreasePct": 15.44,
+  "kciImpact": {
+    "averageBefore": 13.69,
+    "averageAfter": 15.24,
+    "medianBefore": 5,
+    "medianAfter": 5,
+    "distributionBefore": {
+      "0": 1207,
+      "1-20": 1769,
+      "21-40": 223,
+      "41-60": 90,
+      "61-80": 408,
+      "81-100": 0
+    },
+    "distributionAfter": {
+      "0": 1207,
+      "1-20": 1766,
+      "21-40": 137,
+      "41-60": 158,
+      "61-80": 162,
+      "81-100": 267
+    }
+  },
+  "domainPreservation": {
+    "originsBefore": 585,
+    "originsAfter": 585,
+    "meaningsBefore": 516,
+    "meaningsAfter": 516,
+    "pronunciationsBefore": 583,
+    "pronunciationsAfter": 583,
+    "etymologiesBefore": 571,
+    "etymologiesAfter": 571
+  },
+  "highestScoringEntitiesAfter": [
+    {
+      "slug": "aadi",
+      "name": "Aadi",
+      "score": 90,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aahil",
+      "name": "Aahil",
+      "score": 90,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aakriti",
+      "name": "Aakriti",
+      "score": 90,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aaradhya",
+      "name": "Aaradhya",
+      "score": 90,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aarnav",
+      "name": "Aarnav",
+      "score": 90,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aashvi",
+      "name": "Aashvi",
+      "score": 85,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "aathish",
+      "name": "Aathish",
+      "score": 85,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abe",
+      "name": "Abe",
+      "score": 85,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abhijot",
+      "name": "Abhijot",
+      "score": 85,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abhinav",
+      "name": "Abhinav",
+      "score": 85,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    }
+  ],
+  "validation": {
+    "entityCountUnchanged": true,
+    "deterministicScoring": true,
+    "deterministicRebuild": true,
+    "averageKciIncreased": true,
+    "historyCoverageIncreased": true,
+    "etymologyCoveragePreserved": true,
+    "pronunciationCoveragePreserved": true,
+    "meaningCoveragePreserved": true,
+    "originCoveragePreserved": true,
+    "noExistingHistoryReduction": true,
+    "scoreRangeValid": true,
+    "renderingUnchanged": true,
+    "htmlUnchanged": true,
+    "routingUnchanged": true,
+    "urlsUnchanged": true,
+    "schemaUnchanged": true,
+    "adaptersUnchanged": true,
+    "kciScoringUnchanged": true,
+    "kciWeightsUnchanged": true,
+    "targetMinimumHistoriesMet": true
+  }
+}

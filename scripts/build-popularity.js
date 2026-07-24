@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -56,9 +57,9 @@ function resolveNameId(nameIdMap, name, gender) {
 }
 
 function run() {
-  const names = loadJson(NAMES_PATH);
+  const names = loadLegacyCollection('names');
   if (names.length === 0) {
-    console.warn('No names at', NAMES_PATH);
+    console.warn('No names loaded via adapter runtime');
     return;
   }
   const nameIdMap = buildNameIdMap(names);

@@ -1,0 +1,218 @@
+{
+  "phase": "5D-1",
+  "title": "Etymology Expansion Wave 1",
+  "generatedAt": "2026-07-23T23:18:07.056Z",
+  "baselineReference": "knowledge-baseline-1.0",
+  "phase5ENotStarted": true,
+  "editorial": {
+    "researchFile": "data/sources/etymology-wave1-research.json",
+    "waveEntriesResearched": 571
+  },
+  "etymologiesBefore": 0,
+  "etymologiesAfter": 571,
+  "entitiesResearched": 571,
+  "coverageBeforePct": 0,
+  "coverageAfterPct": 15.44,
+  "coverageIncreasePct": 15.44,
+  "kciImpact": {
+    "averageBefore": 11.38,
+    "averageAfter": 13.69,
+    "medianBefore": 5,
+    "medianAfter": 5,
+    "distributionBefore": {
+      "0": 1208,
+      "1-20": 1901,
+      "21-40": 116,
+      "41-60": 467,
+      "61-80": 5,
+      "81-100": 0
+    },
+    "distributionAfter": {
+      "0": 1207,
+      "1-20": 1769,
+      "21-40": 223,
+      "41-60": 90,
+      "61-80": 408,
+      "81-100": 0
+    }
+  },
+  "domainPreservation": {
+    "originsBefore": 585,
+    "originsAfter": 585,
+    "meaningsBefore": 516,
+    "meaningsAfter": 516,
+    "pronunciationsBefore": 583,
+    "pronunciationsAfter": 583
+  },
+  "highestScoringEntitiesAfter": [
+    {
+      "slug": "aadi",
+      "name": "Aadi",
+      "score": 80,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aahil",
+      "name": "Aahil",
+      "score": 80,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aakriti",
+      "name": "Aakriti",
+      "score": 80,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aaradhya",
+      "name": "Aaradhya",
+      "score": 80,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aarnav",
+      "name": "Aarnav",
+      "score": 80,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aashvi",
+      "name": "Aashvi",
+      "score": 75,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "aathish",
+      "name": "Aathish",
+      "score": 75,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abe",
+      "name": "Abe",
+      "score": 75,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abhijot",
+      "name": "Abhijot",
+      "score": 75,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abhinav",
+      "name": "Abhinav",
+      "score": 75,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    }
+  ],
+  "validation": {
+    "entityCountUnchanged": true,
+    "deterministicScoring": true,
+    "averageKciIncreased": true,
+    "etymologyCoverageIncreased": true,
+    "pronunciationCoveragePreserved": true,
+    "meaningCoveragePreserved": true,
+    "originCoveragePreserved": true,
+    "noExistingEtymologyReduction": true,
+    "scoreRangeValid": true,
+    "renderingUnchanged": true,
+    "htmlUnchanged": true,
+    "urlsUnchanged": true,
+    "schemaUnchanged": true,
+    "builderUnchanged": true,
+    "adaptersUnchanged": true,
+    "kciScoringUnchanged": true,
+    "targetMinimumEtymologiesMet": true
+  }
+}

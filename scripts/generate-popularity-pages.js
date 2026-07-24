@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -380,8 +381,8 @@ function generateYearPage(year, names, popularity, nameById) {
 }
 
 function run() {
-  const names = loadJson('names');
-  const popularity = loadJson('popularity');
+  const names = loadLegacyCollection('names');
+  const popularity = loadLegacyCollection('popularity');
   const nameById = new Map((names || []).map((n) => [n.id, n]));
 
   const popularityDir = path.join(OUT_DIR, 'popularity');

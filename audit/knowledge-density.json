@@ -1,0 +1,177 @@
+{
+  "generatedAt": "2026-07-21T18:25:00.998Z",
+  "readOnly": true,
+  "method": "For 1:1 entity-backed templates, every record in the backing dataset is iterated and its populated-attribute count is tallied directly — min/max/average/median below are exact statistics over that full population, not a sample. For non-1:1 (list/aggregation) templates, no distribution is computed since every instance is structurally identical by construction; see structurallyUniformTemplates.",
+  "byTemplate": {
+    "name-detail-page": {
+      "recordSource": "data/names-enriched.json (all 3,697 names)",
+      "recordsMeasured": 3697,
+      "minAttributes": 5,
+      "maxAttributes": 10,
+      "averageAttributes": 5.134,
+      "medianAttributes": 5,
+      "attributesTracked": 13,
+      "attributeList": [
+        "meaning",
+        "origin_country",
+        "language",
+        "origin_cluster",
+        "phonetic",
+        "syllables",
+        "gender",
+        "first_letter",
+        "hasPopularityRecord",
+        "hasCategoryTag",
+        "hasVariantRecord",
+        "isEquivalentsAnchor",
+        "hasComputablePopularityRank"
+      ]
+    },
+    "names-like-page": {
+      "recordSource": "same underlying records as name-detail-page (1:1 with data/names-enriched.json)",
+      "recordsMeasured": 3697,
+      "minAttributes": 5,
+      "maxAttributes": 10,
+      "averageAttributes": 5.134,
+      "medianAttributes": 5,
+      "attributesTracked": 13,
+      "attributeList": [
+        "meaning",
+        "origin_country",
+        "language",
+        "origin_cluster",
+        "phonetic",
+        "syllables",
+        "gender",
+        "first_letter",
+        "hasPopularityRecord",
+        "hasCategoryTag",
+        "hasVariantRecord",
+        "isEquivalentsAnchor",
+        "hasComputablePopularityRank"
+      ],
+      "note": "names-like-page draws on the identical per-name attribute set as name-detail-page, since both are generated from the same record."
+    },
+    "sibling-harmony-page": {
+      "recordSource": "data/names-enriched.json, first 150 records (proxy — see note)",
+      "recordsMeasured": 150,
+      "minAttributes": 5,
+      "maxAttributes": 10,
+      "averageAttributes": 6.987,
+      "medianAttributes": 8,
+      "attributesTracked": 13,
+      "note": "The true sibling-batch membership list (top 150 by popularity rank) cannot be exactly reproduced from committed data since data/popularity.json only ranks 5 names; this measures the first 150 name-enriched.json records as the closest computable proxy and is flagged as a limitation, not presented as the exact batch."
+    },
+    "surname-compatibility-page": {
+      "recordSource": "data/last-names.json (all 75 surnames)",
+      "recordsMeasured": 75,
+      "minAttributes": 4,
+      "maxAttributes": 5,
+      "averageAttributes": 4.027,
+      "medianAttributes": 4,
+      "attributesTracked": 5,
+      "attributeList": [
+        "name",
+        "origin",
+        "syllables",
+        "note",
+        "hasHeraldryRecord"
+      ]
+    },
+    "names-lastname-filter-page": {
+      "recordSource": "data/last-names.json (all 75 surnames)",
+      "recordsMeasured": 75,
+      "minAttributes": 4,
+      "maxAttributes": 5,
+      "averageAttributes": 4.027,
+      "medianAttributes": 4,
+      "attributesTracked": 5,
+      "attributeList": [
+        "name",
+        "origin",
+        "syllables",
+        "note",
+        "hasHeraldryRecord"
+      ],
+      "note": "Same backing records as surname-compatibility-page — two templates, one dataset."
+    },
+    "equivalents-page": {
+      "recordSource": "data/name-equivalents.json (all 27 anchors)",
+      "recordsMeasured": 27,
+      "minAttributes": 2,
+      "maxAttributes": 2,
+      "averageAttributes": 2,
+      "medianAttributes": 2,
+      "attributesTracked": 2,
+      "attributeList": [
+        "origin",
+        "equivalents"
+      ]
+    },
+    "compare-name-country-pair-page": {
+      "recordSource": "data/country-differentials.json entries[] (5 rows — see limitation)",
+      "recordsMeasured": 5,
+      "minAttributes": 1,
+      "maxAttributes": 2,
+      "averageAttributes": 1.4,
+      "medianAttributes": 1,
+      "attributesTracked": 4,
+      "attributeList": [
+        "rank_2025",
+        "rank_2015",
+        "delta",
+        "volatility_score"
+      ],
+      "limitation": "20 compare-name-country-pair-page instances exist on disk, but data/country-differentials.json only has 5 entries; density could only be computed for those 5 — the remaining 15 pages' actual rendered attribute counts cannot be verified from committed data alone."
+    }
+  },
+  "structurallyUniformTemplates": [
+    {
+      "template": "names-country-page",
+      "fixedAttributeCount": 3,
+      "attributeList": [
+        "country metadata",
+        "names-tagged-to-country list",
+        "popular/rising list"
+      ],
+      "instances": 5
+    },
+    {
+      "template": "names-style-page",
+      "fixedAttributeCount": 2,
+      "attributeList": [
+        "style label",
+        "names-tagged-to-style list"
+      ],
+      "instances": 7
+    },
+    {
+      "template": "popularity-year-page",
+      "fixedAttributeCount": 1,
+      "attributeList": [
+        "top-ranked-names list"
+      ],
+      "instances": 3
+    },
+    {
+      "template": "trend-page",
+      "fixedAttributeCount": 1,
+      "attributeList": [
+        "top-5-trending-names table"
+      ],
+      "instances": 1
+    },
+    {
+      "template": "names-letter-page",
+      "fixedAttributeCount": 1,
+      "attributeList": [
+        "names-starting-with-letter list"
+      ],
+      "instances": 26
+    }
+  ],
+  "notes": [
+    "attributesTracked is the denominator used implicitly for interpretation — e.g. name-detail-page tracks 13 possible attributes per name; an average of ~9.0 out of 13 (see byTemplate) reflects that 8 of those 13 are near-universal structural fields (gender, first_letter, syllables, hasVariantRecord) while 5 are the sparse enrichment fields (meaning, origin_country, language, origin_cluster, popularity/equivalents/rank flags).",
+    "Where the exact backing record set for a page instance could not be reconstructed from committed data (sibling batch, 15 of 20 compare pages), that limitation is stated explicitly next to the figure rather than silently estimated."
+  ]
+}

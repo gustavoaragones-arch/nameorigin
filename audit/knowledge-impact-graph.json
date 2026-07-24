@@ -1,0 +1,536 @@
+{
+  "generatedAt": "2026-07-21T18:26:06.601Z",
+  "readOnly": true,
+  "description": "Dataset field -> Generator -> Template -> Assertion -> Live pages, for every field with at least one fallback or disclosed-missing assertion. Built from scripts/audit/truthfulness-lib.js (Phase 1C) assertions and audit/knowledge-dependencies.json (Phase 1B) dataset chains.",
+  "fieldsIncluded": [
+    "heraldry",
+    "meaning",
+    "origin",
+    "popularity",
+    "pronunciation",
+    "trend"
+  ],
+  "nodeCount": 43,
+  "edgeCount": 56,
+  "nodes": [
+    {
+      "id": "field:heraldry",
+      "kind": "dataset-field",
+      "label": "data/heraldry.json"
+    },
+    {
+      "id": "generator:buildHeraldrySection()",
+      "kind": "generator",
+      "label": "buildHeraldrySection()"
+    },
+    {
+      "id": "template:surname-compatibility-page",
+      "kind": "template",
+      "label": "surname-compatibility-page"
+    },
+    {
+      "id": "assertion:surname-compatibility-page:Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+      "kind": "assertion",
+      "label": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)"
+    },
+    {
+      "id": "pages:surname-compatibility-page",
+      "kind": "live-pages",
+      "label": "surname-compatibility-page (75 pages total for this template — see audit/project-inventory.json)"
+    },
+    {
+      "id": "field:meaning",
+      "kind": "dataset-field",
+      "label": "data/names.json / data/names-enriched.json (meaning)"
+    },
+    {
+      "id": "generator:buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+      "kind": "generator",
+      "label": "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()"
+    },
+    {
+      "id": "template:name-detail-page",
+      "kind": "template",
+      "label": "name-detail-page"
+    },
+    {
+      "id": "assertion:name-detail-page:States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+      "kind": "assertion",
+      "label": "States what the name \"means\" in the meta description / direct-answer / FAQ lead"
+    },
+    {
+      "id": "pages:name-detail-page",
+      "kind": "live-pages",
+      "label": "name-detail-page (3697 pages total for this template — see audit/project-inventory.json)"
+    },
+    {
+      "id": "generator:buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+      "kind": "generator",
+      "label": "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()"
+    },
+    {
+      "id": "assertion:name-detail-page:Shows the name's meaning in the Quick Facts table",
+      "kind": "assertion",
+      "label": "Shows the name's meaning in the Quick Facts table"
+    },
+    {
+      "id": "field:origin",
+      "kind": "dataset-field",
+      "label": "data/names-enriched.json (origin_country/language/origin_cluster) for name-detail-page & names-like-page; data/names.json (unenriched — see caveat) for sibling-harmony-page"
+    },
+    {
+      "id": "generator:buildOriginLineage()",
+      "kind": "generator",
+      "label": "buildOriginLineage()"
+    },
+    {
+      "id": "assertion:name-detail-page:Describes the name's \"Origin and Linguistic Lineage\"",
+      "kind": "assertion",
+      "label": "Describes the name's \"Origin and Linguistic Lineage\""
+    },
+    {
+      "id": "generator:buildCulturalContext()",
+      "kind": "generator",
+      "label": "buildCulturalContext()"
+    },
+    {
+      "id": "assertion:name-detail-page:Describes the name's \"Historical and Cultural Context\"",
+      "kind": "assertion",
+      "label": "Describes the name's \"Historical and Cultural Context\""
+    },
+    {
+      "id": "generator:buildDirectAnswers()",
+      "kind": "generator",
+      "label": "buildDirectAnswers()"
+    },
+    {
+      "id": "assertion:name-detail-page:FAQ answers \"Where does the name {name} come from?\"",
+      "kind": "assertion",
+      "label": "FAQ answers \"Where does the name {name} come from?\""
+    },
+    {
+      "id": "generator:buildNameUsageContextSection()",
+      "kind": "generator",
+      "label": "buildNameUsageContextSection()"
+    },
+    {
+      "id": "assertion:name-detail-page:Describes the name's \"Name Usage & Cultural Context\"",
+      "kind": "assertion",
+      "label": "Describes the name's \"Name Usage & Cultural Context\""
+    },
+    {
+      "id": "generator:generateNamesLikePage() sameOriginMatches",
+      "kind": "generator",
+      "label": "generateNamesLikePage() sameOriginMatches"
+    },
+    {
+      "id": "template:names-like-page",
+      "kind": "template",
+      "label": "names-like-page"
+    },
+    {
+      "id": "assertion:names-like-page:Lists names with \"the Same Origin\" (section omitted when none found)",
+      "kind": "assertion",
+      "label": "Lists names with \"the Same Origin\" (section omitted when none found)"
+    },
+    {
+      "id": "pages:names-like-page",
+      "kind": "live-pages",
+      "label": "names-like-page (7544 pages total for this template — see audit/project-inventory.json)"
+    },
+    {
+      "id": "generator:sibling-explanation-renderer.js :: buildContext()",
+      "kind": "generator",
+      "label": "sibling-explanation-renderer.js :: buildContext()"
+    },
+    {
+      "id": "template:sibling-harmony-page",
+      "kind": "template",
+      "label": "sibling-harmony-page"
+    },
+    {
+      "id": "assertion:sibling-harmony-page:States the base name's origin as part of the \"Shared origin\" scoring factor",
+      "kind": "assertion",
+      "label": "States the base name's origin as part of the \"Shared origin\" scoring factor"
+    },
+    {
+      "id": "pages:sibling-harmony-page",
+      "kind": "live-pages",
+      "label": "sibling-harmony-page (7544 pages total for this template — see audit/project-inventory.json)"
+    },
+    {
+      "id": "field:popularity",
+      "kind": "dataset-field",
+      "label": "data/popularity.json"
+    },
+    {
+      "id": "assertion:name-detail-page:FAQ answers \"How popular is the name {name}?\"",
+      "kind": "assertion",
+      "label": "FAQ answers \"How popular is the name {name}?\""
+    },
+    {
+      "id": "generator:generateNamesLikePage() similarPopMatches",
+      "kind": "generator",
+      "label": "generateNamesLikePage() similarPopMatches"
+    },
+    {
+      "id": "assertion:names-like-page:Lists names with \"Similar Popularity\" (section omitted when none found)",
+      "kind": "assertion",
+      "label": "Lists names with \"Similar Popularity\" (section omitted when none found)"
+    },
+    {
+      "id": "generator:sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)",
+      "kind": "generator",
+      "label": "sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)"
+    },
+    {
+      "id": "assertion:sibling-harmony-page:States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+      "kind": "assertion",
+      "label": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor"
+    },
+    {
+      "id": "field:pronunciation",
+      "kind": "dataset-field",
+      "label": "data/names-enriched.json (phonetic)"
+    },
+    {
+      "id": "generator:conditional `record.phonetic ? ... : ''` (section omitted, not faked)",
+      "kind": "generator",
+      "label": "conditional `record.phonetic ? ... : ''` (section omitted, not faked)"
+    },
+    {
+      "id": "assertion:name-detail-page:Shows a Pronunciation section",
+      "kind": "assertion",
+      "label": "Shows a Pronunciation section"
+    },
+    {
+      "id": "field:trend",
+      "kind": "dataset-field",
+      "label": "data/popularity.json (generate-compare-pages.js computes rank/movement directly; does NOT read data/country-differentials.json — Phase 1C correction to the Phase 1B chain)"
+    },
+    {
+      "id": "generator:generate-compare-pages.js :: getTrendDeltaSection()",
+      "kind": "generator",
+      "label": "generate-compare-pages.js :: getTrendDeltaSection()"
+    },
+    {
+      "id": "template:compare-name-country-pair-page",
+      "kind": "template",
+      "label": "compare-name-country-pair-page"
+    },
+    {
+      "id": "assertion:compare-name-country-pair-page:States the 10-year rank movement / trend delta between two countries",
+      "kind": "assertion",
+      "label": "States the 10-year rank movement / trend delta between two countries"
+    },
+    {
+      "id": "pages:compare-name-country-pair-page",
+      "kind": "live-pages",
+      "label": "compare-name-country-pair-page (20 pages total for this template — see audit/project-inventory.json)"
+    }
+  ],
+  "edges": [
+    {
+      "from": "field:heraldry",
+      "to": "generator:buildHeraldrySection()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildHeraldrySection()",
+      "to": "template:surname-compatibility-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:surname-compatibility-page",
+      "to": "assertion:surname-compatibility-page:Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:surname-compatibility-page:Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+      "to": "pages:surname-compatibility-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:meaning",
+      "to": "generator:buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:meaning",
+      "to": "generator:buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:Shows the name's meaning in the Quick Facts table",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:Shows the name's meaning in the Quick Facts table",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:buildOriginLineage()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildOriginLineage()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:Describes the name's \"Origin and Linguistic Lineage\"",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:Describes the name's \"Origin and Linguistic Lineage\"",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:buildCulturalContext()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildCulturalContext()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:Describes the name's \"Historical and Cultural Context\"",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:Describes the name's \"Historical and Cultural Context\"",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:buildDirectAnswers()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildDirectAnswers()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:FAQ answers \"Where does the name {name} come from?\"",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:FAQ answers \"Where does the name {name} come from?\"",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:buildNameUsageContextSection()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildNameUsageContextSection()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:Describes the name's \"Name Usage & Cultural Context\"",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:Describes the name's \"Name Usage & Cultural Context\"",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:generateNamesLikePage() sameOriginMatches",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:generateNamesLikePage() sameOriginMatches",
+      "to": "template:names-like-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:names-like-page",
+      "to": "assertion:names-like-page:Lists names with \"the Same Origin\" (section omitted when none found)",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:names-like-page:Lists names with \"the Same Origin\" (section omitted when none found)",
+      "to": "pages:names-like-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:origin",
+      "to": "generator:sibling-explanation-renderer.js :: buildContext()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:sibling-explanation-renderer.js :: buildContext()",
+      "to": "template:sibling-harmony-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:sibling-harmony-page",
+      "to": "assertion:sibling-harmony-page:States the base name's origin as part of the \"Shared origin\" scoring factor",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:sibling-harmony-page:States the base name's origin as part of the \"Shared origin\" scoring factor",
+      "to": "pages:sibling-harmony-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    },
+    {
+      "from": "field:popularity",
+      "to": "generator:buildDirectAnswers()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:buildDirectAnswers()",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:FAQ answers \"How popular is the name {name}?\"",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:FAQ answers \"How popular is the name {name}?\"",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:popularity",
+      "to": "generator:generateNamesLikePage() similarPopMatches",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:generateNamesLikePage() similarPopMatches",
+      "to": "template:names-like-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:names-like-page",
+      "to": "assertion:names-like-page:Lists names with \"Similar Popularity\" (section omitted when none found)",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:names-like-page:Lists names with \"Similar Popularity\" (section omitted when none found)",
+      "to": "pages:names-like-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:popularity",
+      "to": "generator:sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)",
+      "to": "template:sibling-harmony-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:sibling-harmony-page",
+      "to": "assertion:sibling-harmony-page:States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:sibling-harmony-page:States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+      "to": "pages:sibling-harmony-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:pronunciation",
+      "to": "generator:conditional `record.phonetic ? ... : ''` (section omitted, not faked)",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:conditional `record.phonetic ? ... : ''` (section omitted, not faked)",
+      "to": "template:name-detail-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:name-detail-page",
+      "to": "assertion:name-detail-page:Shows a Pronunciation section",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:name-detail-page:Shows a Pronunciation section",
+      "to": "pages:name-detail-page",
+      "relationship": "APPEARS_ON",
+      "state": "disclosed-missing"
+    },
+    {
+      "from": "field:trend",
+      "to": "generator:generate-compare-pages.js :: getTrendDeltaSection()",
+      "relationship": "READ_BY"
+    },
+    {
+      "from": "generator:generate-compare-pages.js :: getTrendDeltaSection()",
+      "to": "template:compare-name-country-pair-page",
+      "relationship": "GENERATES"
+    },
+    {
+      "from": "template:compare-name-country-pair-page",
+      "to": "assertion:compare-name-country-pair-page:States the 10-year rank movement / trend delta between two countries",
+      "relationship": "RENDERS"
+    },
+    {
+      "from": "assertion:compare-name-country-pair-page:States the 10-year rank movement / trend delta between two countries",
+      "to": "pages:compare-name-country-pair-page",
+      "relationship": "APPEARS_ON",
+      "state": "fallback"
+    }
+  ],
+  "correctionsAppliedFromPhase1B": [
+    "audit/knowledge-dependencies.json (Phase 1B) attributed compare-name-country-pair-page to data/country-differentials.json. Phase 1C source verification (scripts/generate-compare-pages.js) found it instead computes rank/movement directly from data/popularity.json and never reads country-differentials.json. This graph reflects the corrected chain.",
+    "The \"origin\" field node is split by template in its label because sibling-harmony-page reads the unenriched data/names.json (via generate-sibling-pages.js) while name-detail-page and names-like-page read data/names-enriched.json (via generate-programmatic-pages.js) — the same conceptual field, populated through two different files, so enriching one does not automatically propagate to the other."
+  ],
+  "notes": [
+    "Only fallback and disclosed-missing assertions are graphed here — supported/computed assertions have no recovery potential and are out of scope for an impact graph about missing knowledge.",
+    "This graph answers \"if I populate field X, which generators, templates, and pages does that touch?\" — it does not weight or score impact; see audit/knowledge-roi.json for the scored view of the same relationships."
+  ]
+}

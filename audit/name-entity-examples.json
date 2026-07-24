@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Five canonical entity examples, populated ONLY with values found in committed repository data. No value below was invented. Where a domain has no backing data, its value is null, not a placeholder string — this is itself the point: the canonical model represents absence as null, never as generated filler text, unlike the current live site (see audit/fallback-taxonomy.json).",
+  "method": "Each example was assembled by directly querying the relevant /data/*.json files and, for the comparison and sibling examples, the actual generated HTML in /compare/ and /names/*/siblings/. Every source is cited per example.",
+
+  "example_1_minimallyPopulated": {
+    "subject": "Abtin (id 32) — chosen because it has zero origin/meaning/popularity/equivalents data of any kind, the modal case for the site's 3,697 names.",
+    "sources": ["data/names.json", "data/names-enriched.json", "data/categories.json", "data/variants.json", "names/abtin/siblings/index.html"],
+    "entity": {
+      "identity": { "id": 32, "slug": "abtin", "name": "Abtin", "gender": "boy", "firstLetter": "A" },
+      "classification": { "categories": ["traditional"], "styleTags": null, "isTraditional": true, "isModern": false },
+      "meaning": null,
+      "origin": null,
+      "language": null,
+      "etymology": null,
+      "history": null,
+      "culture": null,
+      "religion": null,
+      "usage": { "regionsOfUse": null, "isUnisex": false },
+      "pronunciation": { "ipa": null, "phoneticSpelling": null, "syllableCount": 2, "audioUrl": null },
+      "variants": { "spellingVariants": [{ "spelling": "Abdimalik", "language": "English" }], "transliterations": null },
+      "nicknames": null,
+      "relatedNames": { "equivalents": null, "similarNameIds": null, "clusterId": null },
+      "popularity": null,
+      "relationships": {
+        "surnameCompatibility": null,
+        "siblingPairs": [{ "nameId": "abbas", "harmonyScore": 85, "sharedOrigin": null, "styleMatch": "traditional" }],
+        "comparisonPairs": null
+      },
+      "citations": null,
+      "metadata": { "schemaVersion": "1.0.0", "createdAt": null, "lastUpdated": null, "dataCompletenessScore": 0.38 }
+    },
+    "_dataGaps": ["dataCompletenessScore (0.38) = 14 non-null leaf values / 37 total leaf slots in this entity object, counted directly from the JSON below (a non-empty array counts as one populated leaf; a null domain object counts its inner leaves as absent).", "metadata.createdAt and metadata.lastUpdated cannot be populated from any current dataset — no repository data tracks per-record timestamps, despite the schema requiring them.", "relatedNames.similarNameIds/clusterId are computed at page-render time by generate-programmatic-pages.js and are not persisted anywhere queryable outside of that render — this example reports null rather than re-running that render logic."]
+  },
+
+  "example_2_highlyPopulated": {
+    "subject": "Aadi (id 1) — chosen because it has the richest combination of real data found anywhere in the dataset: origin, language, popularity, and a sibling-harmony page.",
+    "sources": ["data/names-enriched.json", "data/popularity.json", "data/categories.json", "data/variants.json", "data/countries.json", "names/aadi/siblings/index.html"],
+    "entity": {
+      "identity": { "id": 1, "slug": "aadi", "name": "Aadi", "gender": "boy", "firstLetter": "A" },
+      "classification": { "categories": ["traditional"], "styleTags": null, "isTraditional": true, "isModern": false },
+      "meaning": null,
+      "origin": { "country": "India", "cluster": "Indian", "confidence": 0.92 },
+      "language": { "primary": "Sanskrit", "related": null },
+      "etymology": null,
+      "history": null,
+      "culture": null,
+      "religion": null,
+      "usage": { "regionsOfUse": ["United States"], "isUnisex": false },
+      "pronunciation": { "ipa": null, "phoneticSpelling": null, "syllableCount": 2, "audioUrl": null },
+      "variants": { "spellingVariants": [{ "spelling": "Ahad", "language": "English" }, { "spelling": "Aadhi", "language": "English" }, { "spelling": "Ata", "language": "English" }, { "spelling": "Ayad", "language": "English" }, { "spelling": "Audi", "language": "English" }, { "spelling": "Ade", "language": "English" }, { "spelling": "Awad", "language": "English" }], "transliterations": null },
+      "nicknames": null,
+      "relatedNames": { "equivalents": null, "similarNameIds": null, "clusterId": null },
+      "popularity": { "records": [{ "country": "USA", "year": 2023, "rank": 1, "count": 19542, "trendDirection": null }, { "country": "USA", "year": 2022, "rank": 1, "count": 20143, "trendDirection": null }], "trendAcceleration": null },
+      "relationships": {
+        "surnameCompatibility": null,
+        "siblingPairs": [{ "nameId": "aahil", "harmonyScore": 85, "sharedOrigin": null, "styleMatch": "traditional" }],
+        "comparisonPairs": [{ "countryA": "USA", "countryB": "CAN", "rankA": 1, "rankB": null }]
+      },
+      "citations": null,
+      "metadata": { "schemaVersion": "1.0.0", "createdAt": null, "lastUpdated": null, "dataCompletenessScore": 0.51 }
+    },
+    "_dataGaps": ["dataCompletenessScore (0.51) = 21 non-null leaf values / 41 total leaf slots, same counting method as example_1.", "meaning is still null even for this, one of the most-populated names in the dataset — meaning.primary is populated for only 3 of 3,697 names sitewide (audit/knowledge-coverage.json).", "relationships.siblingPairs[0].sharedOrigin is null (not false) specifically because scripts/generate-sibling-pages.js computed this from the UNENRICHED data/names.json, which has no origin_cluster for Aadi even though data/names-enriched.json (used for this example's own origin.* fields) does. This null is a direct, faithful illustration of the finding in audit/knowledge-redundancy.json (origin-dual-file-split)."]
+  },
+
+  "example_3_surname": {
+    "subject": "Campbell — a surname entity. NOTE: this is deliberately NOT expressed using schemas/name-entity.schema.json, because a surname is a different entity type. It is included in the shape a future Surname Entity schema would likely take, built only from real data, to make the Name-vs-Surname boundary concrete (see docs/CANONICAL_KNOWLEDGE_MODEL.md).",
+    "sources": ["data/last-names.json", "data/heraldry.json"],
+    "entity": {
+      "identity": { "slug": "campbell", "name": "Campbell" },
+      "origin": { "country": "Scotland", "cluster": null, "confidence": null },
+      "pronunciation": { "syllableCount": 2 },
+      "usageNote": "Scottish surname; works with first names ending in a vowel or with two syllables.",
+      "heraldry": { "available": true, "region": "Scotland", "note": "Associated with Scottish clan heritage" }
+    },
+    "_dataGaps": ["No canonical schema exists yet for this entity type — see docs/CANONICAL_KNOWLEDGE_MODEL.md, 'Domain boundaries', for why Surname was intentionally excluded from Phase 2A's scope."]
+  },
+
+  "example_4_comparisonEntity": {
+    "subject": "Aadi: United States vs Canada — a real, live /compare/aadi/us-vs-canada/ page.",
+    "sources": ["compare/aadi/us-vs-canada/index.html (rendered output, since scripts/generate-compare-pages.js computes these values at render time rather than persisting them to any dataset)"],
+    "entity": {
+      "name": "aadi",
+      "countryA": { "code": "USA", "rank2023": 1, "rank2013": null },
+      "countryB": { "code": "CAN", "rank2023": null, "rank2013": null },
+      "movement10Year": null,
+      "popularityDelta": null,
+      "volatilityIndex": "Low"
+    },
+    "_dataGaps": [
+      "rank2013/movement/delta are null because data/popularity.json contains no year-2013-or-2015 rows for any name — not specific to this comparison.",
+      "This single rendered page contains BOTH an honest disclosure ('We do not yet have official rankings for Canada') in its direct-answer lead AND a generic fallback claim ('Rank and movement data are available for our covered countries') later in the same page's trend-delta section — both verified present in compare/aadi/us-vs-canada/index.html in this phase. This example's structured fields reflect the true null data; the page's own text does not consistently do the same, which is exactly the Phase 1C finding this example is drawn from."
+    ]
+  },
+
+  "example_5_siblingRelationship": {
+    "subject": "Aadi + Aahil — the #1-ranked sibling-harmony recommendation on Aadi's real /names/aadi/siblings/ page.",
+    "sources": ["names/aadi/siblings/index.html (rendered output)"],
+    "entity": {
+      "nameA": "aadi",
+      "nameB": "aahil",
+      "harmonyScore": 85,
+      "scoringFactors": { "sharedOrigin": { "weight": 0.30, "value": null, "renderedLabel": "various origins" }, "phoneticRhythm": { "weight": 0.25, "value": "2-syllable, first letter A match" }, "popularityBand": { "weight": 0.20, "value": "top 100" }, "lengthBalance": { "weight": 0.15, "value": null }, "styleCluster": { "weight": 0.10, "value": "traditional" } }
+    },
+    "_dataGaps": ["scoringFactors.sharedOrigin.value is null despite Aadi having real origin data (India / Sanskrit) in data/names-enriched.json, because the sibling generator never reads that file — the renderedLabel field shows the literal fallback text ('various origins') the live page shows in its place. This is the single clearest concrete instance of the origin-dual-file-split finding (audit/knowledge-redundancy.json) applied to one real, named pair of entities rather than described in the abstract."]
+  }
+}

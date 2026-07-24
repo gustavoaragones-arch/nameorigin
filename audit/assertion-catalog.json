@@ -1,0 +1,639 @@
+{
+  "generatedAt": "2026-07-21T18:25:47.437Z",
+  "readOnly": true,
+  "purpose": "Inventories CLAIMS the site can make (e.g. \"meaning\", \"origin\", \"popularity\"), not raw dataset fields — the same underlying field can back multiple distinct assertions across different templates, and this catalog is organized by the claim, cross-referencing every template it appears in.",
+  "conceptCount": 17,
+  "totalAssertionInstances": 34,
+  "concepts": [
+    {
+      "concept": "category",
+      "label": "Category / style tag",
+      "assertionCount": 2,
+      "pageTemplates": [
+        "name-detail-page",
+        "names-style-page"
+      ],
+      "backingDatasets": [
+        "data/categories.json (category === \"biblical\")",
+        "data/categories.json"
+      ],
+      "generators": [
+        "buildQuickFaqForName() (lines ~1148-1181)",
+        "generateStylePage() (\"No names in this style yet.\" literal)"
+      ],
+      "truthfulnessStates": [
+        "supported"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"Is {name} a biblical name?\" with Yes or No",
+          "state": "supported",
+          "generatorFunction": "buildQuickFaqForName() (lines ~1148-1181)"
+        },
+        {
+          "template": "names-style-page",
+          "assertion": "Lists names tagged with this style (explicit \"No names in this style yet\" fallback text exists in source)",
+          "state": "supported",
+          "generatorFunction": "generateStylePage() (\"No names in this style yet.\" literal)"
+        }
+      ]
+    },
+    {
+      "concept": "compatibility_score",
+      "label": "Compatibility / harmony score",
+      "assertionCount": 3,
+      "pageTemplates": [
+        "sibling-harmony-page",
+        "surname-compatibility-page",
+        "names-lastname-filter-page"
+      ],
+      "backingDatasets": [
+        "computed (generate-sibling-harmony.js: origin 30% + rhythm 25% + popularity 20% + length 15% + style 10%)",
+        "computed (scoreCompatibility(): syllable balance, vowel/consonant endings, phonetic flow, length harmony)"
+      ],
+      "generators": [
+        "generate-sibling-harmony.js",
+        "scoreCompatibility() / getCompatibleNames()"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States a Harmony score / percentage between two names",
+          "state": "computed",
+          "generatorFunction": "generate-sibling-harmony.js"
+        },
+        {
+          "template": "surname-compatibility-page",
+          "assertion": "States a first-name/surname compatibility score or ranking",
+          "state": "computed",
+          "generatorFunction": "scoreCompatibility() / getCompatibleNames()"
+        },
+        {
+          "template": "names-lastname-filter-page",
+          "assertion": "States a first-name/surname compatibility score or ranking",
+          "state": "computed",
+          "generatorFunction": "scoreCompatibility() / getCompatibleNames()"
+        }
+      ]
+    },
+    {
+      "concept": "cultural_context",
+      "label": "Cultural context",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "compare-name-country-pair-page"
+      ],
+      "backingDatasets": [
+        "hardcoded per-pair static text blocks (getCulturalContext()), not derived from any per-name dataset"
+      ],
+      "generators": [
+        "generate-compare-pages.js :: getCulturalContext()"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "compare-name-country-pair-page",
+          "assertion": "Describes cultural/naming differences between the two countries",
+          "state": "computed",
+          "generatorFunction": "generate-compare-pages.js :: getCulturalContext()"
+        }
+      ]
+    },
+    {
+      "concept": "equivalent_names",
+      "label": "Equivalent names (cross-linguistic)",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "equivalents-page"
+      ],
+      "backingDatasets": [
+        "data/name-equivalents.json (closed/curated set)"
+      ],
+      "generators": [
+        "generate-equivalent-pages.js"
+      ],
+      "truthfulnessStates": [
+        "supported"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "equivalents-page",
+          "assertion": "Lists cross-linguistic equivalents of the anchor name",
+          "state": "supported",
+          "generatorFunction": "generate-equivalent-pages.js"
+        }
+      ]
+    },
+    {
+      "concept": "gender",
+      "label": "Gender",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "name-detail-page"
+      ],
+      "backingDatasets": [
+        "data/names.json (gender)"
+      ],
+      "generators": [
+        "baseLayout() consumers; record.gender used directly"
+      ],
+      "truthfulnessStates": [
+        "supported"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States the name's gender (boy/girl/unisex)",
+          "state": "supported",
+          "generatorFunction": "baseLayout() consumers; record.gender used directly"
+        }
+      ]
+    },
+    {
+      "concept": "gender-cluster",
+      "label": "Gender/country cluster (names-like alternatives)",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "names-like-page"
+      ],
+      "backingDatasets": [
+        "data/names.json (gender) + data/popularity.json (country cluster, optional)"
+      ],
+      "generators": [
+        "generateNamesLikePage() otherAlternatives"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "names-like-page",
+          "assertion": "Lists \"Other Alternatives You Might Like\"",
+          "state": "computed",
+          "generatorFunction": "generateNamesLikePage() otherAlternatives"
+        }
+      ]
+    },
+    {
+      "concept": "heraldry",
+      "label": "Heraldry",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "surname-compatibility-page"
+      ],
+      "backingDatasets": [
+        "data/heraldry.json (available === true)"
+      ],
+      "generators": [
+        "buildHeraldrySection()"
+      ],
+      "truthfulnessStates": [
+        "disclosed-missing"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "surname-compatibility-page",
+          "assertion": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+          "state": "disclosed-missing",
+          "generatorFunction": "buildHeraldrySection()"
+        }
+      ]
+    },
+    {
+      "concept": "letter",
+      "label": "Letter (alphabetical)",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "name-detail-page"
+      ],
+      "backingDatasets": [
+        "data/names.json (first_letter) — deterministic first character of the name string"
+      ],
+      "generators": [
+        "getOriginBadge()/internalLinksForName()-equivalent letter links"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Groups/links the name by its first letter",
+          "state": "computed",
+          "generatorFunction": "getOriginBadge()/internalLinksForName()-equivalent letter links"
+        }
+      ]
+    },
+    {
+      "concept": "meaning",
+      "label": "Meaning",
+      "assertionCount": 2,
+      "pageTemplates": [
+        "name-detail-page"
+      ],
+      "backingDatasets": [
+        "data/names.json / data/names-enriched.json (meaning)"
+      ],
+      "generators": [
+        "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+        "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()"
+      ],
+      "truthfulnessStates": [
+        "fallback",
+        "disclosed-missing"
+      ],
+      "stateVariesByTemplate": true,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+          "state": "fallback",
+          "generatorFunction": "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows the name's meaning in the Quick Facts table",
+          "state": "disclosed-missing",
+          "generatorFunction": "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()"
+        }
+      ]
+    },
+    {
+      "concept": "origin",
+      "label": "Origin",
+      "assertionCount": 7,
+      "pageTemplates": [
+        "name-detail-page",
+        "names-like-page",
+        "sibling-harmony-page",
+        "names-country-page"
+      ],
+      "backingDatasets": [
+        "data/names-enriched.json (origin_country / language / origin_cluster)",
+        "data/names-enriched.json (origin_country / language)",
+        "data/names.json (origin_country/language — NOTE: unenriched dataset, see note)",
+        "data/names-enriched.json (origin_country match) + data/countries.json"
+      ],
+      "generators": [
+        "buildOriginLineage()",
+        "buildCulturalContext()",
+        "buildDirectAnswers()",
+        "buildNameUsageContextSection()",
+        "generateNamesLikePage() sameOriginMatches",
+        "sibling-explanation-renderer.js :: buildContext()",
+        "generateCountryPage() (`if (names.length === 0)` guard)"
+      ],
+      "truthfulnessStates": [
+        "fallback",
+        "disclosed-missing",
+        "supported"
+      ],
+      "stateVariesByTemplate": true,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+          "state": "fallback",
+          "generatorFunction": "buildOriginLineage()"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Historical and Cultural Context\"",
+          "state": "fallback",
+          "generatorFunction": "buildCulturalContext()"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+          "state": "fallback",
+          "generatorFunction": "buildDirectAnswers()"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+          "state": "fallback",
+          "generatorFunction": "buildNameUsageContextSection()"
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+          "state": "disclosed-missing",
+          "generatorFunction": "generateNamesLikePage() sameOriginMatches"
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+          "state": "fallback",
+          "generatorFunction": "sibling-explanation-renderer.js :: buildContext()"
+        },
+        {
+          "template": "names-country-page",
+          "assertion": "Lists names associated with this country (explicit empty-state guard exists in source)",
+          "state": "supported",
+          "generatorFunction": "generateCountryPage() (`if (names.length === 0)` guard)"
+        }
+      ]
+    },
+    {
+      "concept": "phonetic-similarity",
+      "label": "Phonetic similarity (names-like pool)",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "names-like-page"
+      ],
+      "backingDatasets": [
+        "data/names.json (name string only — first letter / prefix match)"
+      ],
+      "generators": [
+        "generateNamesLikePage() phoneticMatches"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names \"Similar in Sound\"",
+          "state": "computed",
+          "generatorFunction": "generateNamesLikePage() phoneticMatches"
+        }
+      ]
+    },
+    {
+      "concept": "popularity",
+      "label": "Popularity",
+      "assertionCount": 5,
+      "pageTemplates": [
+        "name-detail-page",
+        "names-like-page",
+        "sibling-harmony-page",
+        "compare-name-country-pair-page",
+        "popularity-year-page"
+      ],
+      "backingDatasets": [
+        "data/popularity.json",
+        "data/popularity.json (via getRank(), computed independently of data/country-differentials.json)",
+        "data/popularity.json (7 rows total across 2022-2023)"
+      ],
+      "generators": [
+        "buildDirectAnswers()",
+        "generateNamesLikePage() similarPopMatches",
+        "sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)",
+        "generate-compare-pages.js :: getRank()",
+        "generate-popularity-pages.js / generate-popularity-year-pages.js"
+      ],
+      "truthfulnessStates": [
+        "disclosed-missing",
+        "supported"
+      ],
+      "stateVariesByTemplate": true,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"How popular is the name {name}?\"",
+          "state": "disclosed-missing",
+          "generatorFunction": "buildDirectAnswers()"
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"Similar Popularity\" (section omitted when none found)",
+          "state": "disclosed-missing",
+          "generatorFunction": "generateNamesLikePage() similarPopMatches"
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+          "state": "disclosed-missing",
+          "generatorFunction": "sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)"
+        },
+        {
+          "template": "compare-name-country-pair-page",
+          "assertion": "States each country's current popularity rank for the name",
+          "state": "supported",
+          "generatorFunction": "generate-compare-pages.js :: getRank()"
+        },
+        {
+          "template": "popularity-year-page",
+          "assertion": "Lists top-ranked names for the year",
+          "state": "supported",
+          "generatorFunction": "generate-popularity-pages.js / generate-popularity-year-pages.js"
+        }
+      ]
+    },
+    {
+      "concept": "pronunciation",
+      "label": "Pronunciation",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "name-detail-page"
+      ],
+      "backingDatasets": [
+        "data/names-enriched.json (phonetic)"
+      ],
+      "generators": [
+        "conditional `record.phonetic ? ... : ''` (section omitted, not faked)"
+      ],
+      "truthfulnessStates": [
+        "disclosed-missing"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows a Pronunciation section",
+          "state": "disclosed-missing",
+          "generatorFunction": "conditional `record.phonetic ? ... : ''` (section omitted, not faked)"
+        }
+      ]
+    },
+    {
+      "concept": "surname_origin",
+      "label": "Surname origin",
+      "assertionCount": 2,
+      "pageTemplates": [
+        "surname-compatibility-page",
+        "names-lastname-filter-page"
+      ],
+      "backingDatasets": [
+        "data/last-names.json (origin)"
+      ],
+      "generators": [
+        "generate-lastname-pages.js",
+        "generateLastNamePage()"
+      ],
+      "truthfulnessStates": [
+        "supported"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "surname-compatibility-page",
+          "assertion": "States the surname's linguistic origin",
+          "state": "supported",
+          "generatorFunction": "generate-lastname-pages.js"
+        },
+        {
+          "template": "names-lastname-filter-page",
+          "assertion": "States the surname's linguistic origin",
+          "state": "supported",
+          "generatorFunction": "generateLastNamePage()"
+        }
+      ]
+    },
+    {
+      "concept": "syllables",
+      "label": "Syllables",
+      "assertionCount": 2,
+      "pageTemplates": [
+        "name-detail-page",
+        "sibling-harmony-page"
+      ],
+      "backingDatasets": [
+        "data/names.json (syllables) — derived at acquisition time (scripts/acquire/build-names.js)",
+        "data/names.json (syllables, first_letter)"
+      ],
+      "generators": [
+        "buildNameUsageContextSection(), buildNameFactsTable()",
+        "sibling-explanation-renderer.js :: buildContext()"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States the name's syllable count",
+          "state": "computed",
+          "generatorFunction": "buildNameUsageContextSection(), buildNameFactsTable()"
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States syllable count / first letter as part of the \"Phonetic rhythm\" scoring factor",
+          "state": "computed",
+          "generatorFunction": "sibling-explanation-renderer.js :: buildContext()"
+        }
+      ]
+    },
+    {
+      "concept": "trend",
+      "label": "Trend / rank movement",
+      "assertionCount": 2,
+      "pageTemplates": [
+        "compare-name-country-pair-page",
+        "trend-page"
+      ],
+      "backingDatasets": [
+        "data/popularity.json (requires a year-2015 row, which does not exist for any name)",
+        "data/regional-trend-acceleration.json (2 of 5 site countries: USA, CAN)"
+      ],
+      "generators": [
+        "generate-compare-pages.js :: getTrendDeltaSection()",
+        "generate-trends-page.js"
+      ],
+      "truthfulnessStates": [
+        "fallback",
+        "supported"
+      ],
+      "stateVariesByTemplate": true,
+      "instances": [
+        {
+          "template": "compare-name-country-pair-page",
+          "assertion": "States the 10-year rank movement / trend delta between two countries",
+          "state": "fallback",
+          "generatorFunction": "generate-compare-pages.js :: getTrendDeltaSection()"
+        },
+        {
+          "template": "trend-page",
+          "assertion": "Lists top-5 trending names, 2015 vs 2025",
+          "state": "supported",
+          "generatorFunction": "generate-trends-page.js"
+        }
+      ]
+    },
+    {
+      "concept": "variants",
+      "label": "Spelling variants",
+      "assertionCount": 1,
+      "pageTemplates": [
+        "name-detail-page"
+      ],
+      "backingDatasets": [
+        "data/variants.json / data/normalized-names.json spelling_variants[]"
+      ],
+      "generators": [
+        "internalLinksForName()-equivalent variant linking"
+      ],
+      "truthfulnessStates": [
+        "computed"
+      ],
+      "stateVariesByTemplate": false,
+      "instances": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Lists spelling variants of the name",
+          "state": "computed",
+          "generatorFunction": "internalLinksForName()-equivalent variant linking"
+        }
+      ]
+    }
+  ],
+  "conceptsWithMixedTruthfulnessStates": [
+    {
+      "concept": "meaning",
+      "label": "Meaning",
+      "states": [
+        "fallback",
+        "disclosed-missing"
+      ],
+      "note": "The same conceptual claim is classified differently depending on which template/generator renders it — see instances[] for the per-template breakdown."
+    },
+    {
+      "concept": "origin",
+      "label": "Origin",
+      "states": [
+        "fallback",
+        "disclosed-missing",
+        "supported"
+      ],
+      "note": "The same conceptual claim is classified differently depending on which template/generator renders it — see instances[] for the per-template breakdown."
+    },
+    {
+      "concept": "popularity",
+      "label": "Popularity",
+      "states": [
+        "disclosed-missing",
+        "supported"
+      ],
+      "note": "The same conceptual claim is classified differently depending on which template/generator renders it — see instances[] for the per-template breakdown."
+    },
+    {
+      "concept": "trend",
+      "label": "Trend / rank movement",
+      "states": [
+        "fallback",
+        "supported"
+      ],
+      "note": "The same conceptual claim is classified differently depending on which template/generator renders it — see instances[] for the per-template breakdown."
+    }
+  ],
+  "notes": [
+    "Example of why this view matters: \"meaning\" appears as both a fallback (direct-answer/meta-description text) and a disclosed-missing placeholder (Quick Facts table \"—\") on the SAME name-detail-page template, because two independently-coded sections handle the same empty field differently. A field-level or template-level view alone would not surface that inconsistency; the concept-level view here does.",
+    "This catalog contains 34 assertion instances across 17 distinct concepts, matching audit/truthfulness-matrix.json exactly (same underlying data, different grouping) — no assertion was added or dropped between the two views."
+  ]
+}

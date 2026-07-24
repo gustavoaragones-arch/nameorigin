@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-07-21T18:26:06.842Z",
+  "readOnly": true,
+  "scope": "Estimates enrichment workload in RECORDS (names, surnames, or name/country pairs) requiring research, computed directly from audit/knowledge-coverage.json missing counts. This is not a time or cost estimate — no such estimate can be derived from repository data alone, so none is offered.",
+  "workload": [
+    {
+      "field": "trend",
+      "label": "Trend / rank movement",
+      "recordsRequiringEnrichment": 18480,
+      "totalRecordsInUniverse": 18485,
+      "currentlyEnriched": 5,
+      "universe": "name × country pairs",
+      "recoverableOccurrenceTotal": 20,
+      "occurrencesPerRecordEnriched": 0
+    },
+    {
+      "field": "pronunciation",
+      "label": "Pronunciation (phonetic)",
+      "recordsRequiringEnrichment": 3697,
+      "totalRecordsInUniverse": 3697,
+      "currentlyEnriched": 0,
+      "universe": "data/names.json (names)",
+      "recoverableOccurrenceTotal": 3697,
+      "occurrencesPerRecordEnriched": 1
+    },
+    {
+      "field": "meaning",
+      "label": "Meaning",
+      "recordsRequiringEnrichment": 3694,
+      "totalRecordsInUniverse": 3697,
+      "currentlyEnriched": 3,
+      "universe": "data/names.json (names)",
+      "recoverableOccurrenceTotal": 7391,
+      "occurrencesPerRecordEnriched": 2
+    },
+    {
+      "field": "popularity",
+      "label": "Popularity",
+      "recordsRequiringEnrichment": 3692,
+      "totalRecordsInUniverse": 3697,
+      "currentlyEnriched": 5,
+      "universe": "data/names.json (names)",
+      "recoverableOccurrenceTotal": 7534,
+      "occurrencesPerRecordEnriched": 2.04
+    },
+    {
+      "field": "origin",
+      "label": "Origin (country / language / cluster)",
+      "recordsRequiringEnrichment": 3534,
+      "totalRecordsInUniverse": 3697,
+      "currentlyEnriched": 163,
+      "universe": "data/names.json (names)",
+      "recoverableOccurrenceTotal": 17820,
+      "occurrencesPerRecordEnriched": 5.04
+    },
+    {
+      "field": "heraldry",
+      "label": "Heraldry",
+      "recordsRequiringEnrichment": 73,
+      "totalRecordsInUniverse": 75,
+      "currentlyEnriched": 2,
+      "universe": "data/last-names.json (surnames)",
+      "recoverableOccurrenceTotal": 74,
+      "occurrencesPerRecordEnriched": 1.01
+    }
+  ],
+  "notes": [
+    "\"occurrencesPerRecordEnriched\" is recoverableOccurrenceTotal / recordsRequiringEnrichment — roughly how many rendered fallback/disclosed-missing statements convert to supported per one record fully enriched, on average. It is a ratio of two measured counts, not a prediction: enriching a specific single record could affect more or fewer occurrences than this average depending on which templates render for that record (e.g. only 150 of 3,697 names get a sibling-harmony page).",
+    "trend's universe (name × country pairs, 18,485 possible combinations) is structurally different from the others (per-name or per-surname records) — its \"records requiring enrichment\" figure reflects pairs, not names, and is not directly comparable to the other rows without accounting for that."
+  ]
+}

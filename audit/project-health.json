@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-07-21T18:24:59.862Z",
+  "readOnly": true,
+  "scope": "Observational only — this report intentionally makes no deletion, pruning, SEO, or enrichment recommendations. It exists so future phases have a factual baseline.",
+  "largestPageGroups": [
+    {
+      "group": "name",
+      "label": "Name pages",
+      "count": 3697
+    },
+    {
+      "group": "names-like",
+      "label": "Names Like pages",
+      "count": 3697
+    },
+    {
+      "group": "surname",
+      "label": "Surname pages",
+      "count": 150
+    },
+    {
+      "group": "sibling",
+      "label": "Sibling Harmony pages",
+      "count": 150
+    },
+    {
+      "group": "equivalents",
+      "label": "Equivalent-name pages",
+      "count": 27
+    },
+    {
+      "group": "letter",
+      "label": "Letter (A–Z) pages",
+      "count": 26
+    },
+    {
+      "group": "pair",
+      "label": "Pair pages (comparisons)",
+      "count": 25
+    },
+    {
+      "group": "country",
+      "label": "Country pages",
+      "count": 20
+    }
+  ],
+  "largestDatasets": [
+    {
+      "path": "data/variants.json",
+      "sizeHuman": "1.4 MB",
+      "rows": 18426
+    },
+    {
+      "path": "data/normalized-names.json",
+      "sizeHuman": "1.4 MB",
+      "rows": 3697
+    },
+    {
+      "path": "data/names.json",
+      "sizeHuman": "906.6 KB",
+      "rows": 3697
+    },
+    {
+      "path": "data/names-enriched.json",
+      "sizeHuman": "818.2 KB",
+      "rows": 3697
+    },
+    {
+      "path": "data/categories.json",
+      "sizeHuman": "257.0 KB",
+      "rows": 4468
+    }
+  ],
+  "largestGenerators": [
+    {
+      "script": "scripts/generate-programmatic-pages.js",
+      "lines": 3679
+    },
+    {
+      "script": "scripts/build-origin-seed.js",
+      "lines": 916
+    },
+    {
+      "script": "scripts/generate-compare-pages.js",
+      "lines": 630
+    },
+    {
+      "script": "scripts/generate-names-like.js",
+      "lines": 619
+    },
+    {
+      "script": "scripts/generate-lastname-pages.js",
+      "lines": 617
+    },
+    {
+      "script": "scripts/verify-phase2.js",
+      "lines": 523
+    },
+    {
+      "script": "scripts/generate-sibling-pages.js",
+      "lines": 465
+    },
+    {
+      "script": "scripts/generate-popularity-pages.js",
+      "lines": 402
+    }
+  ],
+  "maintenanceRisks": [
+    {
+      "risk": "Three competing \"master build\" scripts",
+      "evidence": "scripts/build-all.js, scripts/clean-rebuild-3.3e.js, and scripts/run-phase1.js each claim a full-build role for different (and in build-all.js's case, partly stale) parts of the pipeline. See audit/build-pipeline.json orchestratorSequences."
+    },
+    {
+      "risk": "Legacy generator scripts target a directory that must not exist",
+      "evidence": "scripts/generate-name-pages.js, scripts/generate-filter-pages.js, and scripts/generate-hubs.js (and the scripts/lib.js they share) write to /programmatic/, which generate-programmatic-pages.js explicitly documents as forbidden (\"Phase 3.3D: single canonical tree; /programmatic/ must not exist\"). These three scripts are still present, still runnable, and still referenced by build-all.js."
+    },
+    {
+      "risk": "One 3,678-line generator owns most of the site",
+      "evidence": "scripts/generate-programmatic-pages.js is 3,678 lines and contains ~80 functions covering name pages, names-like pages, letter/gender/country/style pages, last-name pages, the compatibility tool, and the 8 root hub pages. It is by a wide margin the largest and most structurally load-bearing script in the repo (next-largest is 915 lines)."
+    },
+    {
+      "risk": "3 datasets have no detected reader",
+      "evidence": "data/comparison-intro-variants.json, data/cultural-explanation-variants.json, and data/delta-interpretation-variants.json produced zero hits when every script in scripts/, scripts/acquire/, and scripts/utils/ was searched for their basename. See audit/datasets.json unreferencedDatasets."
+    },
+    {
+      "risk": "Two parallel surname-related URL systems for the same 75 surnames",
+      "evidence": "data/last-names.json backs both /baby-names-with-{surname}/ (scripts/generate-lastname-pages.js) and /names/with-last-name-{surname}.html (generate-programmatic-pages.js generateLastNamePage()) — two different templates, two different URL shapes, same underlying 75-surname entity set."
+    }
+  ],
+  "scalingRisks": [
+    {
+      "risk": "Popularity data covers 5 of 3,697 names (0.1%)",
+      "evidence": "data/popularity.json has 7 rows referencing only 5 unique name_id values, yet popularity charts/sections are code paths on all 3,697 name-detail pages and all 3,697 names-like pages, and popularity is one of the four similarity dimensions on names-like pages."
+    },
+    {
+      "risk": "Origin/language coverage is 4.4% of names",
+      "evidence": "163 / 3697 names (4.4%) have an origin_country or language assigned. Country pages, style pages, and origin-lineage sections all depend on this field, but 95.6% of names have neither an origin_country nor a language value."
+    },
+    {
+      "risk": "Meaning field covers 0.08% of names",
+      "evidence": "entity-map.json meanings.coverage: 3 / 3697 names (0.08%) have a non-null \"meaning\" field. The word \"meaning\" appears in the copy of both name-detail and names-like page templates, but the structured meaning field itself is populated for only 3 of 3,697 names."
+    },
+    {
+      "risk": "compare/ pages generated at ~4% of documented capacity",
+      "evidence": "scripts/generate-compare-pages.js header describes a cap of \"Top 100 global names × 5 country pairs = 500 pages max\"; only 4 names × 5 pairs = 20 pages plus 5 hubs exist on disk today."
+    },
+    {
+      "risk": "popularity/ year pages generated at a fraction of documented range",
+      "evidence": "scripts/generate-popularity-year-pages.js targets \"/popularity/1980.html through /popularity/2024.html\"; only 2022–2024 (3 pages) exist on disk."
+    },
+    {
+      "risk": "sibling-harmony pages cover 4% of names",
+      "evidence": "Only the top 150 of 3,697 names (getSiblingBatchNameSlugs, hard-coded limit) get a /names/{slug}/siblings/ page; the other 3,547 name pages contain no sibling cross-link by design."
+    }
+  ],
+  "duplicationRisks": [
+    {
+      "risk": "Prose is generated from small fixed variant pools reused across thousands of pages",
+      "evidence": "generate-programmatic-pages.js / generate-names-like.js select intro/closing/explanation text from arrays of 5–8 hand-written templates, chosen deterministically by (name id % pool size), and interpolate the name/origin/style into them. Across 3,697 names-like pages and 3,697 name pages, each of the ~6-8 variants is reused hundreds to over a thousand times with only the interpolated tokens differing."
+    },
+    {
+      "risk": "Existing repo tooling already targets this exact question",
+      "evidence": "scripts/compatibility-duplication-audit.js already exists (\"ensures explanation sections are not templated clones... tier explanations are not repeated >25%\") — this is a pre-existing, narrower audit for the surname-compatibility template specifically; it was not run as part of this read-only Phase 1A pass."
+    }
+  ],
+  "buildComplexity": {
+    "totalScripts": 77,
+    "totalOrchestrators": 3,
+    "totalSharedUtilities": 10,
+    "note": "77 scripts across scripts/, scripts/acquire/, and scripts/utils/, coordinated by 3 different orchestrator entry points rather than one canonical pipeline."
+  },
+  "generatorComplexity": {
+    "largestGenerators": [
+      {
+        "script": "scripts/generate-programmatic-pages.js",
+        "lines": 3679
+      },
+      {
+        "script": "scripts/build-origin-seed.js",
+        "lines": 916
+      },
+      {
+        "script": "scripts/generate-compare-pages.js",
+        "lines": 630
+      },
+      {
+        "script": "scripts/generate-names-like.js",
+        "lines": 619
+      },
+      {
+        "script": "scripts/generate-lastname-pages.js",
+        "lines": 617
+      },
+      {
+        "script": "scripts/verify-phase2.js",
+        "lines": 523
+      },
+      {
+        "script": "scripts/generate-sibling-pages.js",
+        "lines": 465
+      },
+      {
+        "script": "scripts/generate-popularity-pages.js",
+        "lines": 402
+      }
+    ],
+    "totalGeneratorLinesOfCode": 17416,
+    "note": "scripts/generate-programmatic-pages.js alone accounts for roughly a fifth of all script code in the repo (by line count) and is a single point of change for most page categories."
+  },
+  "crossReport": {
+    "totalHtmlPages": 7832,
+    "totalJsonDatasets": 19,
+    "totalTemplates": 24,
+    "totalEntityTypes": 14,
+    "directoryDepthMax": 3
+  },
+  "notes": [
+    "Every figure in this report is either read directly from another audit/*.json report or computed fresh from the filesystem in this run — nothing is asserted without a cited source.",
+    "This report answers \"what is true about the project\" only. Phase 1B and later phases are expected to consume it for scoring, pruning, and enrichment decisions."
+  ]
+}

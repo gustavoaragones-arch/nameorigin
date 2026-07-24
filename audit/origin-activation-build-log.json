@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-07-23T03:11:56.014Z",
+  "quick": true,
+  "buildResults": [
+    {
+      "id": "generate-sibling-pages",
+      "ok": true,
+      "status": 0,
+      "elapsedMs": 58435,
+      "stderrTail": ""
+    },
+    {
+      "id": "generate-compare-pages",
+      "ok": true,
+      "status": 0,
+      "elapsedMs": 447,
+      "stderrTail": ""
+    }
+  ]
+}

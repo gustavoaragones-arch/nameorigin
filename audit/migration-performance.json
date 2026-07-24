@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-07-22T22:22:01.569Z",
+  "phase": "3D",
+  "wave": 2,
+  "adapterOverhead": {
+    "legacyFileReadMs": 9.02,
+    "canonicalBuildColdMs": 266.68,
+    "canonicalBuildWarmMs": 9.07,
+    "adapterOverheadColdMs": 257.67,
+    "adapterCacheSpeedupRatio": 29.41,
+    "entityCount": 3697,
+    "multiGeneratorNote": "Each generator spawn is a separate Node process — adapter cache in legacy-dataset-runtime.js does not persist across spawns; repeated canonical assembly is expected until a shared build orchestrator is introduced.",
+    "adapterCollections": {
+      "names": 3697,
+      "popularity": 7
+    }
+  },
+  "runtimeCacheInSingleProcess": {
+    "firstCollectionLoadMs": 207.21,
+    "secondCollectionLoadMs": 0.02,
+    "cacheWarmAfterFirstLoad": true,
+    "adapterBuildCountInProcess": 1,
+    "cacheEffective": true
+  },
+  "generators": [
+    {
+      "wave": 1,
+      "generator": "scripts/build-sitemap.js",
+      "legacyBuildTimeMs": 321.135361,
+      "adapterBuildTimeMs": 513.688698,
+      "deltaMs": 192.55,
+      "legacyMemoryDeltaMb": 0.076,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/generate-html-sitemap.js",
+      "legacyBuildTimeMs": 144.153378,
+      "adapterBuildTimeMs": 482.632751,
+      "deltaMs": 338.48,
+      "legacyMemoryDeltaMb": 0.051,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/generate-homepage.js",
+      "legacyBuildTimeMs": 173.459309,
+      "adapterBuildTimeMs": 522.268076,
+      "deltaMs": 348.81,
+      "legacyMemoryDeltaMb": 0.042,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/generate-popularity-pages.js",
+      "legacyBuildTimeMs": 172.1072,
+      "adapterBuildTimeMs": 464.78786,
+      "deltaMs": 292.68,
+      "legacyMemoryDeltaMb": 0.039,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/generate-popularity-year-pages.js",
+      "legacyBuildTimeMs": 256.24845,
+      "adapterBuildTimeMs": 548.627575,
+      "deltaMs": 292.38,
+      "legacyMemoryDeltaMb": 0.048,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/classify-categories.js",
+      "legacyBuildTimeMs": 227.644123,
+      "adapterBuildTimeMs": 502.646489,
+      "deltaMs": 275,
+      "legacyMemoryDeltaMb": 0.04,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 1,
+      "generator": "scripts/build-popularity.js",
+      "legacyBuildTimeMs": 2778.810985,
+      "adapterBuildTimeMs": 3119.122233,
+      "deltaMs": 340.31,
+      "legacyMemoryDeltaMb": 0.04,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-programmatic-pages.js",
+      "legacyBuildTimeMs": 183219.566311,
+      "adapterBuildTimeMs": 184606.56873,
+      "deltaMs": 1387,
+      "legacyMemoryDeltaMb": 0.041,
+      "adapterMemoryDeltaMb": 0.041
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-names-like.js",
+      "legacyBuildTimeMs": 15325.166294,
+      "adapterBuildTimeMs": 15529.663864,
+      "deltaMs": 204.5,
+      "legacyMemoryDeltaMb": 0.045,
+      "adapterMemoryDeltaMb": 0.043
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-sibling-pages.js",
+      "legacyBuildTimeMs": 7063.517178,
+      "adapterBuildTimeMs": 7940.017718,
+      "deltaMs": 876.5,
+      "legacyMemoryDeltaMb": 0.043,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-lastname-pages.js",
+      "legacyBuildTimeMs": 286.886764,
+      "adapterBuildTimeMs": 249.10807,
+      "deltaMs": -37.78,
+      "legacyMemoryDeltaMb": 0.04,
+      "adapterMemoryDeltaMb": 0.04
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-compare-pages.js",
+      "legacyBuildTimeMs": 166.187209,
+      "adapterBuildTimeMs": 492.100239,
+      "deltaMs": 325.91,
+      "legacyMemoryDeltaMb": 0.039,
+      "adapterMemoryDeltaMb": 0.039
+    },
+    {
+      "wave": 2,
+      "generator": "scripts/generate-equivalent-pages.js",
+      "legacyBuildTimeMs": 288.237788,
+      "adapterBuildTimeMs": 582.811802,
+      "deltaMs": 294.57,
+      "legacyMemoryDeltaMb": 0.039,
+      "adapterMemoryDeltaMb": 0.039
+    }
+  ],
+  "summary": {
+    "wave1TotalLegacyMs": 4073.56,
+    "wave1TotalAdapterMs": 6153.77,
+    "wave2TotalLegacyMs": 206349.56,
+    "wave2TotalAdapterMs": 209400.27,
+    "totalLegacyMs": 210423.12,
+    "totalAdapterMs": 215554.04
+  }
+}

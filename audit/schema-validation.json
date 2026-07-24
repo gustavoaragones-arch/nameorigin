@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Validates the completeness and internal consistency of the Phase 2A deliverables (schemas/name-entity.schema.json, audit/knowledge-domains.json, audit/dataset-mapping.json, audit/generator-dependencies-v2.json). Every check below states its method and actual result — none is asserted without having been run.",
+
+  "checks": [
+    {
+      "check": "Every current knowledge field/concept maps somewhere",
+      "method": "Cross-referenced all 17 assertion concepts from audit/assertion-catalog.json (Phase 1C) against the text of audit/knowledge-domains.json's 53 mapping rows.",
+      "result": "PASS",
+      "detail": "17 of 17 concepts (category, compatibility_score, cultural_context, equivalent_names, gender, gender-cluster, heraldry, letter, meaning, origin, phonetic-similarity, popularity, pronunciation, surname_origin, syllables, trend, variants) are referenced in at least one mapping row."
+    },
+    {
+      "check": "No canonical schema leaf is orphaned without explanation",
+      "method": "Extracted all 50 leaf paths from schemas/name-entity.schema.json and checked each against audit/knowledge-domains.json's canonicalPath values.",
+      "result": "PASS (with 18 expected non-mappings, all accounted for)",
+      "detail": "32 of 50 leaf paths have at least one direct mapping row. The remaining 18 (meaning.alternates, meaning.confidence, etymology.rootWord, etymology.rootLanguage, etymology.derivationNotes, history.firstRecordedUse, history.notableBearers, history.historicalUsageNotes, culture.culturalSignificance, culture.regionalNotes, religion.scripturalReference, pronunciation.audioUrl, nicknames.commonNicknames, nicknames.diminutives, metadata.schemaVersion, metadata.createdAt, metadata.lastUpdated, metadata.dataCompletenessScore) have zero current backing data — every one of them belongs to a domain audit/knowledge-domains.json's domainCoverageSummary already explicitly labels 'no current field' (etymology, history, culture, religion, nicknames, metadata). Cross-checked individually: 0 of the 18 represent a genuine gap; all 18 are correctly-flagged new fields."
+    },
+    {
+      "check": "No current dataset is ignored",
+      "method": "Compared the 19 datasets listed in audit/datasets.json (Phase 1B) against audit/dataset-mapping.json's dataset list.",
+      "result": "PASS",
+      "detail": "19 of 19 datasets present, confirmed programmatically (dataset-mapping.json's own summaryByStatus totals sum to 19, matching datasets.length === 19)."
+    },
+    {
+      "check": "Every current generator dependency is represented",
+      "method": "Compared all 77 scripts in audit/build-pipeline.json's generatorCatalog (Phase 1A) against audit/generator-dependencies-v2.json.",
+      "result": "PARTIAL — 23 of 77 scripts covered; 54 explicitly excluded with a stated reason (see gap analysis below).",
+      "detail": "This check surfaced 3 genuine gaps in the first draft of audit/generator-dependencies-v2.json (scripts/enrich-meanings.js, scripts/generate-sibling-harmony.js, scripts/generate-smoothness-score.js — all three directly relevant to canonical fields meaning.*, relationships.siblingPairs[], and relationships.surnameCompatibility[]) and one malformed entry (generate-popularity-pages.js and generate-popularity-year-pages.js had been combined into a single non-standard 'generator' string, hiding the former from a programmatic check). All four were corrected in this phase before this validation file was finalized — see the corresponding entries' notes in audit/generator-dependencies-v2.json, which document that they were added after this check flagged them, rather than silently backdating the discovery."
+    },
+    {
+      "check": "Every knowledge domain has an owner",
+      "method": "Confirmed all 18 domains in schemas/name-entity.schema.json have a corresponding entry in audit/knowledge-domains.json's domainCoverageSummary.",
+      "result": "PASS",
+      "detail": "18 of 18 domains present in domainCoverageSummary, each with an explicit coverage statement (fully mapped / partially mapped / no current field)."
+    },
+    {
+      "check": "Every mapped field has a canonical destination",
+      "method": "Checked all 53 rows in audit/knowledge-domains.json's mappings[] for a canonicalPath that either (a) resolves to a real schema domain, or (b) is an explicit, worded non-mapping (containing 'OUT OF SCOPE', 'no current field', 'n/a', or a parenthetical explanation of why no entity field applies).",
+      "result": "PASS",
+      "detail": "51 of 53 rows resolve to a real schema domain path directly; the remaining 2 (normalized-names.json :: length, and generate-compare-pages.js's static cultural-context paragraphs) carry an explicit parenthetical explanation of why they are intentionally not modeled as entity fields, rather than a malformed or missing destination."
+    }
+  ],
+
+  "unmappedConceptsExplicitlyReported": [
+    {
+      "concept": "Surname-specific fields (data/last-names.json, data/heraldry.json)",
+      "status": "Intentionally unmapped into schemas/name-entity.schema.json",
+      "reason": "Belongs to a distinct future Surname Entity, per the domain-boundary decision documented in docs/CANONICAL_KNOWLEDGE_MODEL.md, 'Domain boundaries'. Referenced FROM the Name Entity (relationships.surnameCompatibility[]) but not merged into it."
+    },
+    {
+      "concept": "Country reference data (data/countries.json)",
+      "status": "Intentionally unmapped as a merge target; retained as a reference lookup",
+      "reason": "A 5-row reference table; merging it into every entity record would itself be a redundancy of the kind this phase is designed to prevent, not resolve. See audit/dataset-mapping.json status 'keep'."
+    },
+    {
+      "concept": "5 prose-variant-pool datasets (compatibility-explanation-variants.json, sibling-explanation-variants.json, cultural-explanation-variants.json, comparison-intro-variants.json, delta-interpretation-variants.json)",
+      "status": "Intentionally unmapped — not knowledge",
+      "reason": "Presentation-layer wording-rotation assets, not facts about any entity. See docs/CANONICAL_KNOWLEDGE_MODEL.md, 'Separation of canonical knowledge vs presentation'."
+    },
+    {
+      "concept": "Compatibility scoring ruleset (data/compatibility_patterns.json)",
+      "status": "Intentionally unmapped as an entity field; retained as scoring configuration",
+      "reason": "Configures HOW relationships.surnameCompatibility[].score is computed; is not itself a fact about any name or surname."
+    },
+    {
+      "concept": "54 of 77 cataloged generator scripts",
+      "status": "Intentionally excluded from audit/generator-dependencies-v2.json",
+      "reason": "Fall into one of four categories, each independently verified in this phase: (1) legacy/orphaned generators confirmed non-live in Phase 1A (generate-name-pages.js, generate-filter-pages.js, generate-hubs.js — target a /programmatic/ directory that does not exist); (2) generators confirmed to produce no live output on disk (generate-jurisdiction-pages.js, generate-jurisdiction-compare-pages.js — no /names/{country}/{jurisdiction}/ directories found on disk in this phase's own check; generate-year-pages.js — previously documented in audit/templates.json as 'D1-backed, not reflected in current static output'); (3) upstream-of-upstream data-acquisition scripts (import-*.js, fetch-*.js, acquire/build-names.js, acquire/build-categories.js) whose output is already represented via their downstream consumers (normalize-names.js, classify-categories.js); (4) non-rendering audit/build/infra scripts (the ~30 audit-report, validation, and build-orchestration scripts already out of scope per audit/generator-dependencies-v2.json's own outOfScopeNote)."
+    }
+  ],
+
+  "overallResult": "PASS, with one PARTIAL check (generator coverage, 23/77 by design — the other 54 are categorized and justified, not silently dropped) and one self-correction made during validation (3 missing generators + 1 malformed entry, fixed before this file was finalized).",
+  "limitations": [
+    "This validation checks structural completeness (does everything have a mapped destination or an explicit exclusion reason) — it does not and cannot validate that every mapping judgment is correct; several individual mapping rows in audit/knowledge-domains.json note their own open questions (e.g. whether normalized-names.json's phonetic_code is really the right candidate for pronunciation.ipa) rather than presenting a false certainty.",
+    "The generator coverage check's PASS/PARTIAL distinction reflects a deliberate scoping decision (page-rendering and data-build scripts only), not an oversight — but that scoping decision is itself unverified against any objective standard beyond the reasoning stated in audit/generator-dependencies-v2.json's outOfScopeNote."
+  ]
+}

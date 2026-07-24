@@ -1,0 +1,98 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Architecture inventory only. Maps every factual concept currently found anywhere in the repository (Phases 1A-1D field/concept/entity catalogs) to its destination in schemas/name-entity.schema.json. No dataset, generator, or HTML was modified to produce this file.",
+  "method": "Built by cross-referencing audit/entity-map.json (Phase 1A), audit/knowledge-coverage.json (Phase 1B), audit/assertion-catalog.json (Phase 1C), and audit/knowledge-roi.json (Phase 1D) against the domain structure defined in schemas/name-entity.schema.json. Every source field/concept in those four reports appears exactly once below (see audit/schema-validation.json for the completeness check).",
+  "mappings": [
+    { "currentField": "names.json / names-enriched.json :: id", "currentSource": "data/names.json", "canonicalPath": "identity.id", "notes": "Direct 1:1 mapping." },
+    { "currentField": "names.json :: name", "currentSource": "data/names.json", "canonicalPath": "identity.name", "notes": "Direct 1:1 mapping." },
+    { "currentField": "normalized-names.json :: slug", "currentSource": "data/normalized-names.json", "canonicalPath": "identity.slug", "notes": "Direct 1:1 mapping; today computed by normalize-names.js." },
+    { "currentField": "names.json :: gender", "currentSource": "data/names.json", "canonicalPath": "identity.gender", "notes": "Direct 1:1 mapping." },
+    { "currentField": "names.json :: first_letter", "currentSource": "data/names.json", "canonicalPath": "identity.firstLetter", "notes": "Direct 1:1 mapping. Also the backing field for assertion concept 'letter' (Phase 1C)." },
+    { "currentField": "normalized-names.json :: variant_no_accents", "currentSource": "data/normalized-names.json", "canonicalPath": "identity.name (accent-stripped form, not separately modeled)", "notes": "Folded into identity — an accent-stripped display variant, not a distinct fact." },
+    { "currentField": "normalized-names.json :: length", "currentSource": "data/normalized-names.json", "canonicalPath": "(derivable from identity.name.length; not modeled as a stored field)", "notes": "Trivially re-derivable; omitted from the canonical schema as redundant with identity.name." },
+
+    { "currentField": "categories.json :: category", "currentSource": "data/categories.json", "canonicalPath": "classification.categories[]", "notes": "Assertion concept 'category' (Phase 1C)." },
+    { "currentField": "style-page taxonomy (hardcoded 7-slug list in generate-programmatic-pages.js)", "currentSource": "scripts/generate-programmatic-pages.js (not a data file)", "canonicalPath": "classification.styleTags[]", "notes": "Currently not a dataset at all — a hardcoded array in the generator. See audit/knowledge-redundancy.json for the mismatch with categories.json's 6-value taxonomy." },
+    { "currentField": "names.json :: is_traditional", "currentSource": "data/names.json", "canonicalPath": "classification.isTraditional", "notes": "Direct 1:1 mapping." },
+    { "currentField": "names.json :: is_modern", "currentSource": "data/names.json", "canonicalPath": "classification.isModern", "notes": "Direct 1:1 mapping." },
+
+    { "currentField": "names.json / names-enriched.json :: meaning", "currentSource": "data/names.json, data/names-enriched.json", "canonicalPath": "meaning.primary", "notes": "Assertion concept 'meaning' (Phase 1C). Currently rendered via 2 different mechanisms with 2 different truthfulness outcomes on the same page (fallback text vs. disclosed '—') — collapses to one canonical value with no fallback text possible by construction." },
+    { "currentField": "normalized-names.json :: meaning_source", "currentSource": "data/normalized-names.json", "canonicalPath": "citations.sources[] (field: \"meaning.primary\")", "notes": "Currently an unused/always-null column (see audit/knowledge-coverage.json normalized-names.json field coverage); its intended purpose maps directly onto the new citations domain." },
+
+    { "currentField": "names-enriched.json :: origin_country", "currentSource": "data/names-enriched.json (merged from data/origin-overrides.json)", "canonicalPath": "origin.country", "notes": "Assertion concept 'origin' (Phase 1C, part 1 of 3 fields)." },
+    { "currentField": "names-enriched.json :: origin_cluster", "currentSource": "data/names-enriched.json", "canonicalPath": "origin.cluster", "notes": "Assertion concept 'origin' (Phase 1C, part 2 of 3)." },
+    { "currentField": "names-enriched.json :: origin_confidence", "currentSource": "data/names-enriched.json", "canonicalPath": "origin.confidence", "notes": "Direct 1:1 mapping." },
+    { "currentField": "names.json :: origin_country / origin_cluster (unenriched copy read by generate-sibling-pages.js)", "currentSource": "data/names.json", "canonicalPath": "origin.country / origin.cluster (SAME canonical path as the enriched version)", "notes": "This is the Phase 1D/1C finding: two files currently supply what becomes ONE canonical field. See audit/knowledge-redundancy.json." },
+    { "currentField": "normalized-names.json :: origin_source", "currentSource": "data/normalized-names.json", "canonicalPath": "citations.sources[] (field: \"origin.country\")", "notes": "Currently an unused/always-null column; maps onto citations." },
+    { "currentField": "origin-overrides.json (keyed dataset)", "currentSource": "data/origin-overrides.json", "canonicalPath": "origin.* (upstream curation input, merged before reaching the canonical entity)", "notes": "A curation-input dataset, not a final consumer-facing one — see audit/dataset-mapping.json status 'derived'." },
+
+    { "currentField": "names-enriched.json :: language", "currentSource": "data/names-enriched.json", "canonicalPath": "language.primary", "notes": "Assertion concept 'origin' includes language today; the canonical model splits it into its own domain (see schema description)." },
+    { "currentField": "variants.json :: language (per-variant language tag)", "currentSource": "data/variants.json", "canonicalPath": "language.related[] (when distinct from language.primary)", "notes": "Indirect — today's per-variant language tag is closer to 'what language is this spelling variant used in' than a name-level related-language fact; flagged for judgment during a future migration, not resolved here." },
+
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "etymology.*", "notes": "New domain; no current field maps here. Explicitly named as a future expansion in the Phase 2A brief." },
+
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "history.*", "notes": "New domain. The existing buildCulturalContext()/buildOriginLineage() fallback text (audit/fallback-taxonomy.json) occupies the space this domain would fill with real per-entity facts." },
+
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "culture.*", "notes": "New domain; distinguished from history per schema description." },
+
+    { "currentField": "(no current dataset — see audit/entity-map.json entities.religions, count: 0)", "currentSource": "n/a", "canonicalPath": "religion.*", "notes": "Explicitly confirmed absent in Phase 1A. The closest existing concept, categories.json's 'biblical' tag, is intentionally mapped to classification.categories[] instead (see below), not to religion.*, since it is a style/theme tag rather than a religious-tradition fact." },
+    { "currentField": "categories.json :: category === 'biblical'", "currentSource": "data/categories.json", "canonicalPath": "classification.categories[] (NOT religion.tradition)", "notes": "Deliberately not mapped to the new religion domain — see the distinction explained in docs/CANONICAL_KNOWLEDGE_MODEL.md. This is the one mapping in this file where the current concept and the canonical concept it most resembles are intentionally kept separate." },
+
+    { "currentField": "(derived from popularity.records at render time)", "currentSource": "n/a", "canonicalPath": "usage.regionsOfUse[]", "notes": "Currently computed inline by buildPopularityRegionsPhrase() at render time, not stored; canonical model would store it as a computed field on the entity instead of recomputing per render." },
+    { "currentField": "names.json :: gender (mirrored)", "currentSource": "data/names.json", "canonicalPath": "usage.isUnisex", "notes": "Convenience derivation of identity.gender." },
+
+    { "currentField": "names.json / names-enriched.json :: phonetic", "currentSource": "data/names.json, data/names-enriched.json", "canonicalPath": "pronunciation.ipa or pronunciation.phoneticSpelling", "notes": "Assertion concept 'pronunciation' (Phase 1C). 0% populated today (audit/knowledge-coverage.json) — this canonical field would remain null until real IPA/phonetic-spelling data exists; the field's own name ('phonetic') is ambiguous between IPA and plain respelling, which the canonical model resolves by splitting into two explicit fields." },
+    { "currentField": "names.json :: syllables", "currentSource": "data/names.json", "canonicalPath": "pronunciation.syllableCount", "notes": "Assertion concept 'syllables' (Phase 1C)." },
+    { "currentField": "normalized-names.json :: syllable_estimate", "currentSource": "data/normalized-names.json", "canonicalPath": "pronunciation.syllableCount (same canonical destination as names.json :: syllables)", "notes": "A second, algorithmically-derived estimate of the same fact — see audit/knowledge-redundancy.json for whether these two ever disagree." },
+    { "currentField": "normalized-names.json :: phonetic_code", "currentSource": "data/normalized-names.json", "canonicalPath": "pronunciation.ipa (candidate destination — see note)", "notes": "phonetic_code (e.g. 'A300') looks like a Soundex-style code, not an IPA transcription; mapped here provisionally as the closest existing concept, flagged for confirmation in a future migration phase, not resolved now." },
+
+    { "currentField": "variants.json :: variant", "currentSource": "data/variants.json", "canonicalPath": "variants.spellingVariants[]", "notes": "Assertion concept 'variants' (Phase 1C)." },
+    { "currentField": "normalized-names.json :: spelling_variants[]", "currentSource": "data/normalized-names.json", "canonicalPath": "variants.spellingVariants[] (SAME canonical path as variants.json)", "notes": "Two datasets currently supply what becomes one canonical array — see audit/knowledge-redundancy.json." },
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "variants.transliterations[]", "notes": "New field; explicitly named as a future expansion in the Phase 2A brief." },
+
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "nicknames.*", "notes": "New domain; no current field maps here." },
+
+    { "currentField": "name-equivalents.json (keyed dataset) :: equivalents[].lang / .slug", "currentSource": "data/name-equivalents.json", "canonicalPath": "relatedNames.equivalents[]", "notes": "Assertion concept 'equivalent_names' (Phase 1C)." },
+    { "currentField": "name-equivalents.json :: origin (per-anchor)", "currentSource": "data/name-equivalents.json", "canonicalPath": "origin.cluster (cross-check against the anchor's own origin.cluster value)", "notes": "This per-anchor 'origin' field was not verified in Phase 1A-1D to agree with the anchor's own names-enriched.json origin_cluster — flagged for a future consistency check, not resolved here." },
+    { "currentField": "generateNamesLikePage() similarity pools (phonetic/origin/popularity/gender), computed at render time", "currentSource": "computed from data/names.json + data/popularity.json + data/categories.json", "canonicalPath": "relatedNames.similarNameIds[]", "notes": "Assertion concepts 'phonetic-similarity' and 'gender-cluster' (Phase 1C). Currently recomputed on every generator run rather than stored on the entity." },
+    { "currentField": "build/topic-clusters.json (per name: origin_cluster, gender, first_letter, syllable_count, popularity_band, style_cluster)", "currentSource": "build/topic-clusters.json", "canonicalPath": "relatedNames.clusterId", "notes": "A derived, computed grouping key; the fields it is built from are separately mapped elsewhere in this file." },
+
+    { "currentField": "popularity.json :: country / year / rank / count", "currentSource": "data/popularity.json", "canonicalPath": "popularity.records[]", "notes": "Assertion concept 'popularity' (Phase 1C). 0.14% entity-level coverage (audit/knowledge-coverage.json)." },
+    { "currentField": "build-popularity.js-computed trend_direction (rising/stable/falling)", "currentSource": "data/popularity.json (per header comment; not observed as a populated field in the 7 live rows)", "canonicalPath": "popularity.records[].trendDirection", "notes": "Documented in scripts/build-popularity.js's own header comment as an intended field; not confirmed populated in the current 7-row dataset." },
+    { "currentField": "regional-trend-acceleration.json :: trend_acceleration", "currentSource": "data/regional-trend-acceleration.json", "canonicalPath": "popularity.trendAcceleration", "notes": "Assertion concept 'trend' (Phase 1C), covers 2 of 5 site countries." },
+    { "currentField": "country-differentials.json :: rank_2025 / rank_2015 / delta / volatility_score", "currentSource": "data/country-differentials.json", "canonicalPath": "relationships.comparisonPairs[] (rank fields) and popularity.trendAcceleration (delta/volatility, conceptually)", "notes": "Phase 1C found scripts/generate-compare-pages.js does NOT actually read this file (it computes rank/movement independently from data/popularity.json) — this mapping describes the DATASET's intended fields, not what currently reaches a rendered page. See audit/knowledge-redundancy.json." },
+
+    { "currentField": "scoreCompatibility() computed score (first name + surname)", "currentSource": "computed at render time from data/names.json + data/last-names.json", "canonicalPath": "relationships.surnameCompatibility[]", "notes": "Assertion concept 'compatibility_score' (Phase 1C). References a Surname Entity not defined by this schema — see audit/schema-validation.json unmapped-scope note." },
+    { "currentField": "generate-sibling-harmony.js computed score + shared-origin/style-match flags", "currentSource": "computed at render time from data/names.json (unenriched) + data/popularity.json + data/categories.json", "canonicalPath": "relationships.siblingPairs[]", "notes": "Assertion concept 'compatibility_score' + 'origin' (sibling variant). sharedOrigin is nullable in the schema specifically because of the unenriched-dataset finding from Phase 1C/1D." },
+    { "currentField": "generate-compare-pages.js :: getCulturalContext() static per-pair paragraphs", "currentSource": "hardcoded in scripts/generate-compare-pages.js, not a per-name dataset field", "canonicalPath": "(not modeled as an entity field — see docs/CANONICAL_KNOWLEDGE_MODEL.md, 'presentation vs canonical knowledge')", "notes": "Assertion concept 'cultural_context' (Phase 1C). This is generic prose about a COUNTRY PAIR, not a per-name fact, and is deliberately excluded from the Name Entity schema — it belongs to presentation logic or a future Country-Pair entity, not to any individual name's canonical record." },
+
+    { "currentField": "(no current dataset)", "currentSource": "n/a", "canonicalPath": "citations.sources[]", "notes": "New domain; explicitly named as a future expansion in the Phase 2A brief. See also normalized-names.json's unused meaning_source/origin_source/confidence_score columns, mapped above, which show this need was anticipated but never implemented." },
+
+    { "currentField": "last-names.json :: name / origin / syllables / note", "currentSource": "data/last-names.json", "canonicalPath": "(OUT OF SCOPE — belongs to a future Surname Entity, not the Name Entity)", "notes": "Assertion concept 'surname_origin' (Phase 1C). Explicitly and intentionally unmapped into schemas/name-entity.schema.json; see audit/schema-validation.json." },
+    { "currentField": "heraldry.json :: available / region / note", "currentSource": "data/heraldry.json", "canonicalPath": "(OUT OF SCOPE — belongs to a future Surname Entity)", "notes": "Assertion concept 'heraldry' (Phase 1C). Same out-of-scope status as last-names.json." },
+    { "currentField": "countries.json :: code / name / primary_language / region_group", "currentSource": "data/countries.json", "canonicalPath": "(OUT OF SCOPE — reference/lookup data, not a Name Entity field; would back a future Country Entity referenced by origin.country and popularity.records[].country)", "notes": "A small reference table, not per-name knowledge." },
+    { "currentField": "compatibility_patterns.json :: factors / patterns", "currentSource": "data/compatibility_patterns.json", "canonicalPath": "(OUT OF SCOPE — a scoring RULESET, not per-entity data; configures how relationships.surnameCompatibility[].score is computed)", "notes": "Rules/config, not knowledge about any specific name or surname." },
+    { "currentField": "compatibility-explanation-variants.json, sibling-explanation-variants.json, cultural-explanation-variants.json, comparison-intro-variants.json, delta-interpretation-variants.json", "currentSource": "data/*.json (5 files)", "canonicalPath": "(OUT OF SCOPE — presentation-layer prose-variant pools, not canonical knowledge)", "notes": "None of these represent a fact about any entity; they are wording-rotation pools for renderers. 3 of the 5 were already found to be unreferenced by any script (audit/datasets.json, Phase 1B)." }
+  ],
+  "domainCoverageSummary": {
+    "identity": "fully mapped from existing fields",
+    "classification": "fully mapped from existing fields (with a noted categories-vs-styles taxonomy overlap)",
+    "meaning": "mapped, but the backing data is 0.08% populated",
+    "origin": "mapped, but split across two current files (enriched vs. unenriched) — see audit/knowledge-redundancy.json",
+    "language": "mapped from the same source as origin",
+    "etymology": "no current field — new domain",
+    "history": "no current field — new domain; today filled by generic fallback prose instead",
+    "culture": "no current field — new domain",
+    "religion": "no current field — new domain; Phase 1A already confirmed this absence",
+    "usage": "mapped, but derived/computed rather than stored today",
+    "pronunciation": "mapped, but 0% populated (never rendered on any live page)",
+    "variants": "mapped, but duplicated across two current datasets",
+    "nicknames": "no current field — new domain",
+    "relatedNames": "mapped, mixing a small curated dataset (equivalents) with fully computed pools (similarNameIds, clusterId)",
+    "popularity": "mapped, but fragmented across three current datasets and 0.14% populated",
+    "relationships": "mapped, entirely computed, and references entity types (Surname, Country pair) not defined by this schema",
+    "citations": "no current field populated — the intended columns exist (unused) in normalized-names.json",
+    "metadata": "no current equivalent — new bookkeeping domain, computed entirely at canonical-record build time"
+  }
+}

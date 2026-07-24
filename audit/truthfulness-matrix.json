@@ -1,0 +1,708 @@
+{
+  "generatedAt": "2026-07-21T18:25:19.886Z",
+  "readOnly": true,
+  "scope": "Truthfulness (data-backing) only. Not a quality, SEO, or hallucination-detection audit. Classification rules: supported = comes directly from structured data; computed = derived deterministically with no missing state; disclosed-missing = the page honestly states or silently omits an unknown; fallback = the generator substitutes generic prose that reads as a specific claim.",
+  "states": [
+    "supported",
+    "computed",
+    "disclosed-missing",
+    "fallback"
+  ],
+  "templates": {
+    "name-detail-page": [
+      {
+        "assertion": "States the name's gender (boy/girl/unisex)",
+        "concept": "gender",
+        "state": "supported",
+        "backingDataset": "data/names.json (gender)",
+        "generatorFunction": "baseLayout() consumers; record.gender used directly",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "phase1b-coverage"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "Groups/links the name by its first letter",
+        "concept": "letter",
+        "state": "computed",
+        "backingDataset": "data/names.json (first_letter) — deterministic first character of the name string",
+        "generatorFunction": "getOriginBadge()/internalLinksForName()-equivalent letter links",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "deterministic-derivation"
+        },
+        "minorityPath": null,
+        "note": "Classified as computed, not supported, because it is a deterministic transform of the name string with no possible missing state (per Phase 1C classification rules, matching the brief's own \"Letter\" example)."
+      },
+      {
+        "assertion": "States the name's syllable count",
+        "concept": "syllables",
+        "state": "computed",
+        "backingDataset": "data/names.json (syllables) — derived at acquisition time (scripts/acquire/build-names.js)",
+        "generatorFunction": "buildNameUsageContextSection(), buildNameFactsTable()",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "phase1b-coverage"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "Lists spelling variants of the name",
+        "concept": "variants",
+        "state": "computed",
+        "backingDataset": "data/variants.json / data/normalized-names.json spelling_variants[]",
+        "generatorFunction": "internalLinksForName()-equivalent variant linking",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "phase1b-coverage"
+        },
+        "minorityPath": null,
+        "note": "Classified as computed (per the brief's explicit \"Variants\" example) since variant generation is a deterministic phonetic/spelling transform, not per-name research."
+      },
+      {
+        "assertion": "FAQ answers \"Is {name} a biblical name?\" with Yes or No",
+        "concept": "category",
+        "state": "supported",
+        "backingDataset": "data/categories.json (category === \"biblical\")",
+        "generatorFunction": "buildQuickFaqForName() (lines ~1148-1181)",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "source-verified + live data count"
+        },
+        "minorityPath": null,
+        "note": "Always renders, but always accurately reflects data/categories.json either way (Yes for the 1 biblical-tagged name, No for the other 3696) — a binary claim that is truthful in both branches, unlike the meaning/origin fallbacks. Classified supported, not fallback, because the \"No\" answer is not a generic substitute; it is the correct answer given the data."
+      },
+      {
+        "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+        "concept": "meaning",
+        "state": "fallback",
+        "backingDataset": "data/names.json / data/names-enriched.json (meaning)",
+        "generatorFunction": "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+        "evidence": {
+          "pagesInState": 3694,
+          "totalPages": 3697,
+          "pct": 99.92,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "meaning is present",
+          "state": "supported",
+          "pages": 3
+        },
+        "note": null
+      },
+      {
+        "assertion": "Shows the name's meaning in the Quick Facts table",
+        "concept": "meaning",
+        "state": "disclosed-missing",
+        "backingDataset": "data/names.json / data/names-enriched.json (meaning)",
+        "generatorFunction": "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "grep-verified"
+        },
+        "minorityPath": null,
+        "note": "The \"—</p>\" marker is coarse: it also fires for other unrelated empty fields on the same page (e.g. a missing rank), so the exact page count for meaning specifically is an upper bound, not a precise isolation. The qualitative classification (honest placeholder, not fabrication) is verified regardless."
+      },
+      {
+        "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+        "concept": "origin",
+        "state": "fallback",
+        "backingDataset": "data/names-enriched.json (origin_country / language / origin_cluster)",
+        "generatorFunction": "buildOriginLineage()",
+        "evidence": {
+          "pagesInState": 3534,
+          "totalPages": 3697,
+          "pct": 95.59,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "origin data is present",
+          "state": "supported",
+          "pages": 163
+        },
+        "note": null
+      },
+      {
+        "assertion": "Describes the name's \"Historical and Cultural Context\"",
+        "concept": "origin",
+        "state": "fallback",
+        "backingDataset": "data/names-enriched.json (origin_country / language / origin_cluster)",
+        "generatorFunction": "buildCulturalContext()",
+        "evidence": {
+          "pagesInState": 3534,
+          "totalPages": 3697,
+          "pct": 95.59,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "origin data is present",
+          "state": "supported",
+          "pages": 163
+        },
+        "note": null
+      },
+      {
+        "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+        "concept": "origin",
+        "state": "fallback",
+        "backingDataset": "data/names-enriched.json (origin_country / language)",
+        "generatorFunction": "buildDirectAnswers()",
+        "evidence": {
+          "pagesInState": 3534,
+          "totalPages": 3697,
+          "pct": 95.59,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "origin data is present",
+          "state": "supported",
+          "pages": 163
+        },
+        "note": null
+      },
+      {
+        "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+        "concept": "origin",
+        "state": "fallback",
+        "backingDataset": "data/names-enriched.json (origin_country / language / origin_cluster)",
+        "generatorFunction": "buildNameUsageContextSection()",
+        "evidence": {
+          "pagesInState": 3534,
+          "totalPages": 3697,
+          "pct": 95.59,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "origin data is present",
+          "state": "supported",
+          "pages": 163
+        },
+        "note": null
+      },
+      {
+        "assertion": "FAQ answers \"How popular is the name {name}?\"",
+        "concept": "popularity",
+        "state": "disclosed-missing",
+        "backingDataset": "data/popularity.json",
+        "generatorFunction": "buildDirectAnswers()",
+        "evidence": {
+          "pagesInState": 3692,
+          "totalPages": 3697,
+          "pct": 99.86,
+          "method": "grep-verified"
+        },
+        "minorityPath": {
+          "when": "a popularity rank exists",
+          "state": "supported",
+          "pages": 5
+        },
+        "note": null
+      },
+      {
+        "assertion": "Shows a Pronunciation section",
+        "concept": "pronunciation",
+        "state": "disclosed-missing",
+        "backingDataset": "data/names-enriched.json (phonetic)",
+        "generatorFunction": "conditional `record.phonetic ? ... : ''` (section omitted, not faked)",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "phase1b-coverage (phonetic = 0%)"
+        },
+        "minorityPath": null,
+        "note": "phonetic coverage is exactly 0%, so this section is omitted on all 3,697 pages — the maximal case of an honest, silent non-claim."
+      }
+    ],
+    "names-like-page": [
+      {
+        "assertion": "Lists names \"Similar in Sound\"",
+        "concept": "phonetic-similarity",
+        "state": "computed",
+        "backingDataset": "data/names.json (name string only — first letter / prefix match)",
+        "generatorFunction": "generateNamesLikePage() phoneticMatches",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": "Requires only the name string itself, so it is populated for effectively every name; classified computed (deterministic string match), not supported (no per-name research involved)."
+      },
+      {
+        "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+        "concept": "origin",
+        "state": "disclosed-missing",
+        "backingDataset": "data/names-enriched.json (origin_country / language)",
+        "generatorFunction": "generateNamesLikePage() sameOriginMatches",
+        "evidence": {
+          "pagesInState": null,
+          "totalPages": 3697,
+          "pct": 95.59,
+          "method": "phase1b-coverage (proxy: section renders only when origin data exists, so its absence rate tracks origin_country_or_language coverage)"
+        },
+        "minorityPath": {
+          "when": "origin data is present",
+          "state": "supported",
+          "pctApprox": 4.41
+        },
+        "note": null
+      },
+      {
+        "assertion": "Lists names with \"Similar Popularity\" (section omitted when none found)",
+        "concept": "popularity",
+        "state": "disclosed-missing",
+        "backingDataset": "data/popularity.json",
+        "generatorFunction": "generateNamesLikePage() similarPopMatches",
+        "evidence": {
+          "pagesInState": null,
+          "totalPages": 3697,
+          "pct": 99.86,
+          "method": "phase1b-coverage (proxy)"
+        },
+        "minorityPath": {
+          "when": "a popularity rank exists",
+          "state": "supported",
+          "pctApprox": 0.14
+        },
+        "note": null
+      },
+      {
+        "assertion": "Lists \"Other Alternatives You Might Like\"",
+        "concept": "gender-cluster",
+        "state": "computed",
+        "backingDataset": "data/names.json (gender) + data/popularity.json (country cluster, optional)",
+        "generatorFunction": "generateNamesLikePage() otherAlternatives",
+        "evidence": {
+          "pagesInState": 3697,
+          "totalPages": 3697,
+          "pct": 100,
+          "method": "phase1b-coverage (gender is the guaranteed fallback dimension)"
+        },
+        "minorityPath": null,
+        "note": null
+      }
+    ],
+    "sibling-harmony-page": [
+      {
+        "assertion": "States a Harmony score / percentage between two names",
+        "concept": "compatibility_score",
+        "state": "computed",
+        "backingDataset": "computed (generate-sibling-harmony.js: origin 30% + rhythm 25% + popularity 20% + length 15% + style 10%)",
+        "generatorFunction": "generate-sibling-harmony.js",
+        "evidence": {
+          "pagesInState": 150,
+          "totalPages": 150,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+        "concept": "origin",
+        "state": "fallback",
+        "backingDataset": "data/names.json (origin_country/language — NOTE: unenriched dataset, see note)",
+        "generatorFunction": "sibling-explanation-renderer.js :: buildContext()",
+        "evidence": {
+          "pagesInState": 150,
+          "totalPages": 150,
+          "pct": 100,
+          "method": "grep-verified"
+        },
+        "minorityPath": null,
+        "note": "generate-sibling-pages.js loads data/names.json, not data/names-enriched.json, so this fires at 100% even for names whose own name-detail page has real origin data."
+      },
+      {
+        "assertion": "States syllable count / first letter as part of the \"Phonetic rhythm\" scoring factor",
+        "concept": "syllables",
+        "state": "computed",
+        "backingDataset": "data/names.json (syllables, first_letter)",
+        "generatorFunction": "sibling-explanation-renderer.js :: buildContext()",
+        "evidence": {
+          "pagesInState": 150,
+          "totalPages": 150,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+        "concept": "popularity",
+        "state": "disclosed-missing",
+        "backingDataset": "data/popularity.json",
+        "generatorFunction": "sibling-explanation-renderer.js :: buildContext() (defaults popBand to \"other\" when no rows exist)",
+        "evidence": {
+          "pagesInState": null,
+          "totalPages": 150,
+          "pct": null,
+          "method": "source-verified only — the 150-name sibling batch cannot be reconstructed from the 5-name-deep popularity dataset (see audit/knowledge-density.json limitation), so an exact page count cannot be measured; this record's evidence is Unknown by count, not by mechanism."
+        },
+        "minorityPath": null,
+        "note": "\"other\" is a generic bucket label, not a specific fabricated claim (contrast with the meaning/origin fallbacks) — classified disclosed-missing."
+      }
+    ],
+    "surname-compatibility-page": [
+      {
+        "assertion": "States the surname's linguistic origin",
+        "concept": "surname_origin",
+        "state": "supported",
+        "backingDataset": "data/last-names.json (origin)",
+        "generatorFunction": "generate-lastname-pages.js",
+        "evidence": {
+          "pagesInState": 75,
+          "totalPages": 75,
+          "pct": 100,
+          "method": "live-data-count (data/last-names.json origin field, 100% populated)"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "States a first-name/surname compatibility score or ranking",
+        "concept": "compatibility_score",
+        "state": "computed",
+        "backingDataset": "computed (scoreCompatibility(): syllable balance, vowel/consonant endings, phonetic flow, length harmony)",
+        "generatorFunction": "scoreCompatibility() / getCompatibleNames()",
+        "evidence": {
+          "pagesInState": 75,
+          "totalPages": 75,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+        "concept": "heraldry",
+        "state": "disclosed-missing",
+        "backingDataset": "data/heraldry.json (available === true)",
+        "generatorFunction": "buildHeraldrySection()",
+        "evidence": {
+          "pagesInState": 74,
+          "totalPages": 75,
+          "pct": 98.67,
+          "method": "live-data-count"
+        },
+        "minorityPath": {
+          "when": "heraldry.json has available:true for this surname",
+          "state": "supported",
+          "pages": 1
+        },
+        "note": null
+      }
+    ],
+    "names-lastname-filter-page": [
+      {
+        "assertion": "States the surname's linguistic origin",
+        "concept": "surname_origin",
+        "state": "supported",
+        "backingDataset": "data/last-names.json (origin)",
+        "generatorFunction": "generateLastNamePage()",
+        "evidence": {
+          "pagesInState": 75,
+          "totalPages": 75,
+          "pct": 100,
+          "method": "live-data-count (data/last-names.json origin field, 100% populated)"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "States a first-name/surname compatibility score or ranking",
+        "concept": "compatibility_score",
+        "state": "computed",
+        "backingDataset": "computed (scoreCompatibility(): syllable balance, vowel/consonant endings, phonetic flow, length harmony)",
+        "generatorFunction": "scoreCompatibility() / getCompatibleNames()",
+        "evidence": {
+          "pagesInState": 75,
+          "totalPages": 75,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": null
+      }
+    ],
+    "equivalents-page": [
+      {
+        "assertion": "Lists cross-linguistic equivalents of the anchor name",
+        "concept": "equivalent_names",
+        "state": "supported",
+        "backingDataset": "data/name-equivalents.json (closed/curated set)",
+        "generatorFunction": "generate-equivalent-pages.js",
+        "evidence": {
+          "pagesInState": 27,
+          "totalPages": 27,
+          "pct": 100,
+          "method": "live-data-count"
+        },
+        "minorityPath": null,
+        "note": "The page only exists for the 27 anchors present in the dataset, so by construction every instance is backed by real curated data."
+      }
+    ],
+    "compare-name-country-pair-page": [
+      {
+        "assertion": "States each country's current popularity rank for the name",
+        "concept": "popularity",
+        "state": "supported",
+        "backingDataset": "data/popularity.json (via getRank(), computed independently of data/country-differentials.json)",
+        "generatorFunction": "generate-compare-pages.js :: getRank()",
+        "evidence": {
+          "pagesInState": 20,
+          "totalPages": 20,
+          "pct": 100,
+          "method": "source-verified (all 4 compared names have at least one real popularity row)"
+        },
+        "minorityPath": null,
+        "note": "audit/knowledge-dependencies.json (Phase 1B) attributed this page to data/country-differentials.json; Phase 1C source verification found generate-compare-pages.js never reads that file — it computes rank/movement/volatility directly from data/popularity.json instead. This is a correction to the Phase 1B chain, noted here rather than silently changed there."
+      },
+      {
+        "assertion": "States the 10-year rank movement / trend delta between two countries",
+        "concept": "trend",
+        "state": "fallback",
+        "backingDataset": "data/popularity.json (requires a year-2015 row, which does not exist for any name)",
+        "generatorFunction": "generate-compare-pages.js :: getTrendDeltaSection()",
+        "evidence": {
+          "pagesInState": 20,
+          "totalPages": 20,
+          "pct": 100,
+          "method": "grep-verified"
+        },
+        "minorityPath": null,
+        "note": null
+      },
+      {
+        "assertion": "Describes cultural/naming differences between the two countries",
+        "concept": "cultural_context",
+        "state": "computed",
+        "backingDataset": "hardcoded per-pair static text blocks (getCulturalContext()), not derived from any per-name dataset",
+        "generatorFunction": "generate-compare-pages.js :: getCulturalContext()",
+        "evidence": {
+          "pagesInState": 20,
+          "totalPages": 20,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": "Same 5 static paragraphs (one per country pair) are reused verbatim for every name compared within that pair — deterministic and always reproducible, so classified computed rather than supported (it is not about the specific name at all)."
+      }
+    ],
+    "names-country-page": [
+      {
+        "assertion": "Lists names associated with this country (explicit empty-state guard exists in source)",
+        "concept": "origin",
+        "state": "supported",
+        "backingDataset": "data/names-enriched.json (origin_country match) + data/countries.json",
+        "generatorFunction": "generateCountryPage() (`if (names.length === 0)` guard)",
+        "evidence": {
+          "pagesInState": 5,
+          "totalPages": 5,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": "All 5 site-supported country pages have at least some matching names in practice; the empty-state guard exists but was not observed to trigger for any of the 5."
+      }
+    ],
+    "names-style-page": [
+      {
+        "assertion": "Lists names tagged with this style (explicit \"No names in this style yet\" fallback text exists in source)",
+        "concept": "category",
+        "state": "supported",
+        "backingDataset": "data/categories.json",
+        "generatorFunction": "generateStylePage() (\"No names in this style yet.\" literal)",
+        "evidence": {
+          "pagesInState": 7,
+          "totalPages": 7,
+          "pct": 100,
+          "method": "source-verified"
+        },
+        "minorityPath": null,
+        "note": "An honest disclosed-missing message exists in source for empty style categories; whether any of the 7 live style pages actually trigger it was not individually re-verified in this pass (all 7 are treated as supported pending that check — see docs/TRUTHFULNESS_AUDIT.md limitations)."
+      }
+    ],
+    "popularity-year-page": [
+      {
+        "assertion": "Lists top-ranked names for the year",
+        "concept": "popularity",
+        "state": "supported",
+        "backingDataset": "data/popularity.json (7 rows total across 2022-2023)",
+        "generatorFunction": "generate-popularity-pages.js / generate-popularity-year-pages.js",
+        "evidence": {
+          "pagesInState": 3,
+          "totalPages": 3,
+          "pct": 100,
+          "method": "live-data-count"
+        },
+        "minorityPath": null,
+        "note": "Real data, just extremely sparse (7 rows shared across all 3 year pages) — not fabricated, so classified supported, not fallback."
+      }
+    ],
+    "trend-page": [
+      {
+        "assertion": "Lists top-5 trending names, 2015 vs 2025",
+        "concept": "trend",
+        "state": "supported",
+        "backingDataset": "data/regional-trend-acceleration.json (2 of 5 site countries: USA, CAN)",
+        "generatorFunction": "generate-trends-page.js",
+        "evidence": {
+          "pagesInState": 1,
+          "totalPages": 1,
+          "pct": 100,
+          "method": "live-data-count"
+        },
+        "minorityPath": null,
+        "note": "Covers only 2 of 5 countries, but the page does not claim broader coverage than that per its own title (\"US 2025 vs 2015\") — classified supported, not fallback."
+      }
+    ]
+  },
+  "validation": [
+    {
+      "template": "name-detail-page",
+      "totalAssertions": 13,
+      "counts": {
+        "supported": 2,
+        "computed": 3,
+        "disclosed-missing": 3,
+        "fallback": 5
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "names-like-page",
+      "totalAssertions": 4,
+      "counts": {
+        "supported": 0,
+        "computed": 2,
+        "disclosed-missing": 2,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "sibling-harmony-page",
+      "totalAssertions": 4,
+      "counts": {
+        "supported": 0,
+        "computed": 2,
+        "disclosed-missing": 1,
+        "fallback": 1
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "surname-compatibility-page",
+      "totalAssertions": 3,
+      "counts": {
+        "supported": 1,
+        "computed": 1,
+        "disclosed-missing": 1,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "names-lastname-filter-page",
+      "totalAssertions": 2,
+      "counts": {
+        "supported": 1,
+        "computed": 1,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "equivalents-page",
+      "totalAssertions": 1,
+      "counts": {
+        "supported": 1,
+        "computed": 0,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "compare-name-country-pair-page",
+      "totalAssertions": 3,
+      "counts": {
+        "supported": 1,
+        "computed": 1,
+        "disclosed-missing": 0,
+        "fallback": 1
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "names-country-page",
+      "totalAssertions": 1,
+      "counts": {
+        "supported": 1,
+        "computed": 0,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "names-style-page",
+      "totalAssertions": 1,
+      "counts": {
+        "supported": 1,
+        "computed": 0,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "popularity-year-page",
+      "totalAssertions": 1,
+      "counts": {
+        "supported": 1,
+        "computed": 0,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    },
+    {
+      "template": "trend-page",
+      "totalAssertions": 1,
+      "counts": {
+        "supported": 1,
+        "computed": 0,
+        "disclosed-missing": 0,
+        "fallback": 0
+      },
+      "sumMatchesTotal": true
+    }
+  ],
+  "notes": [
+    "Every count in the evidence field is either grep-verified against real generated HTML (method: \"grep-verified\" / \"live-data-count\") or pulled from a prior Phase 1A/1B audit report (method: \"phase1b-coverage\") — no percentage in this file was estimated by inspection alone.",
+    "Where an assertion behaves differently depending on whether its backing data is present, ONE dominant state is recorded here (matching the majority real-world case) and the minority behavior is recorded in minorityPath — this keeps every assertion in exactly one of the four buckets as required, while still disclosing the alternate path."
+  ]
+}

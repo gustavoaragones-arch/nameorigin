@@ -31,6 +31,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection, loadJsonFromFile } = require('../lib/adapters/legacy-dataset-runtime.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
 
 let computeSmoothness;
@@ -560,7 +561,7 @@ function run() {
     batchSize = MAX_BATCH;
   }
 
-  const lastNamesData = loadJson('last-names');
+  const lastNamesData = loadJsonFromFile('last-names');
   const surnames = lastNamesData.slice(0, batchSize).map((entry) => (entry && entry.name) || '').filter(Boolean);
   if (surnames.length === 0) {
     console.error('ERROR: No surnames in data/last-names.json or batch size 0.');
@@ -572,7 +573,7 @@ function run() {
   console.log('Batch size:', surnames.length, requested > MAX_BATCH ? '(capped from ' + requested + ')' : '');
   console.log('');
 
-  const names = loadJson('names');
+  const names = loadLegacyCollection('namesBase');
   if (names.length === 0) {
     console.error('ERROR: No names data found in data/names.json');
     process.exit(1);

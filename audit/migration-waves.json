@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Partitions all 18 canonical domains into migration waves. Wave numbers are the OUTPUT of a topological-level computation over audit/migration-dependency-graph.json's prerequisite edges (longest-path leveling: level(domain) = 1 + max(level(prerequisite)) for each prerequisite, 1 if none) — not chosen by hand. Every domain belongs to exactly one wave.",
+  "algorithm": "Standard DAG longest-path leveling. Run once against the 32 prerequisite edges in audit/migration-dependency-graph.json; completed without a circular-dependency error (see that file's cycleCheck). Full computation reproduced below for auditability.",
+
+  "waves": [
+    {
+      "wave": 1,
+      "name": "Foundation",
+      "domains": ["identity", "metadata"],
+      "rationale": "Zero prerequisites — every other domain's canonical destination requires an identity.id to exist first. metadata's structural fields (schemaVersion, createdAt, lastUpdated) can be stamped the moment a record is created, alongside identity; its one exception (dataCompletenessScore) is handled separately — see 'metadata exception' below."
+    },
+    {
+      "wave": 2,
+      "name": "Direct identity-dependent domains (parallel-safe)",
+      "domains": ["classification", "variants", "origin", "language", "popularity", "meaning", "pronunciation", "nicknames"],
+      "rationale": "All 8 domains have exactly one hard prerequisite (identity) per audit/migration-dependency-graph.json — none depends on any other domain in this wave, so all 8 are topologically parallel-safe. Because the wave is large, a documented, measurement-based SUB-ORDERING is provided below to sequence the actual migration work within the wave — this sub-ordering is a prioritization aid, not an additional hard dependency.",
+      "subOrdering": {
+        "method": "Two measured criteria, applied in order: (1) x-provenance from schemas/name-entity.schema.json — computed fields (no possible missing-data state) before researched fields (can be legitimately incomplete); (2) within researched fields, audit/knowledge-roi.json's Knowledge Recovery Score, descending (Phase 1D) — the field whose migration resolves the most currently-rendered fallback/disclosed occurrences first.",
+        "order": [
+          { "domain": "variants", "reason": "computed; also the domain with an exhaustively-confirmed 100% duplicate dataset (audit/knowledge-redundancy.json) — the single lowest-risk migration in the entire graph." },
+          { "domain": "classification", "reason": "computed (rule-based, deterministic)." },
+          { "domain": "nicknames", "reason": "new domain, zero current data — trivial to introduce (nothing to migrate, only a new empty structure to activate)." },
+          { "domain": "origin", "reason": "researched; Knowledge Recovery Score 100 (audit/knowledge-roi.json) — highest measured leverage of any field on the site." },
+          { "domain": "language", "reason": "researched; migrates in the same data-build step as origin (scripts/apply-origin-enrichment.js merges both from one source in one pass) — grouped immediately after origin for that reason, not independently scored by Phase 1D." },
+          { "domain": "popularity", "reason": "researched; Knowledge Recovery Score 42." },
+          { "domain": "meaning", "reason": "researched; Knowledge Recovery Score 41." },
+          { "domain": "pronunciation", "reason": "researched; Knowledge Recovery Score 21, and the domain currently at 0% coverage sitewide (audit/knowledge-coverage.json) — lowest current data volume to migrate of the researched fields." }
+        ]
+      }
+    },
+    {
+      "wave": 3,
+      "name": "Second-order dependents",
+      "domains": ["etymology", "history", "culture", "religion", "usage", "relatedNames", "relationships"],
+      "rationale": "Each domain in this wave has at least one hard or soft prerequisite inside wave 2. usage (hard: popularity), relatedNames (hard: origin + classification + popularity), and relationships (hard: origin + classification + popularity + pronunciation) have genuine data dependencies verified against generator source. etymology/history/culture/religion have only a SOFT (conceptual, not data-driven) dependency on origin/language, because none currently has any data to migrate — see the per-domain note below."
+    },
+    {
+      "wave": 4,
+      "name": "Terminal",
+      "domains": ["citations"],
+      "rationale": "The unique domain whose entire purpose is to reference OTHER researched domains (meaning, origin, etymology, history) — by definition it cannot be migrated before what it cites exists. Correctly computed as the single highest topological level (4) in the graph."
+    }
+  ],
+
+  "metadataException": {
+    "domain": "metadata",
+    "field": "dataCompletenessScore",
+    "handling": "Not wave-gated. This one field is defined to be recomputed continuously as every wave completes, since its value (fraction of non-null leaf fields) is only accurate once the current migration state of ALL other domains is known. It is placed in Wave 1 for validation purposes (every domain must belong to exactly one wave — audit/migration-validation.json), with this note as the documented exception, rather than inventing a fictitious 'Wave 5' for one sub-field of an otherwise-Wave-1 domain."
+  },
+
+  "softDependencyDomains": [
+    { "domain": "etymology", "softPrerequisite": "language", "note": "Zero current data (audit/knowledge-domains.json) — there is nothing to migrate. The soft dependency is a recommendation for when real etymology research begins in a future phase, not a migration blocker." },
+    { "domain": "history", "softPrerequisite": "origin", "note": "Zero current data. Same handling as etymology." },
+    { "domain": "culture", "softPrerequisite": "origin", "note": "Zero current data. Same handling as etymology." },
+    { "domain": "religion", "softPrerequisite": "origin", "note": "Zero current data. Confirmed absent from the project in Phase 1A." }
+  ],
+
+  "waveCount": 4,
+  "domainsCovered": 18,
+  "domainWaveIndex": {
+    "identity": 1, "metadata": 1,
+    "classification": 2, "variants": 2, "origin": 2, "language": 2, "popularity": 2, "meaning": 2, "pronunciation": 2, "nicknames": 2,
+    "etymology": 3, "history": 3, "culture": 3, "religion": 3, "usage": 3, "relatedNames": 3, "relationships": 3,
+    "citations": 4
+  }
+}

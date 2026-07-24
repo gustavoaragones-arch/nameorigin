@@ -16,6 +16,8 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
+const { resolveOrigin } = require('../lib/render/origin.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const { getTopSiblingMatches } = require('./generate-sibling-harmony.js');
 const { namesLikeUrl } = require('./url-helpers.js');
@@ -245,10 +247,13 @@ function generateSiblingPage(baseRecord, names, popularity, categories) {
   const baseLetter = (baseRecord.first_letter || (baseRecord.name || '').charAt(0) || '').toUpperCase();
   const matchLetters = [...new Set(matches.map((m) => (m.name.first_letter || (m.name.name || '').charAt(0) || '').toUpperCase()).filter(Boolean))];
   const letterDiversity = matchLetters.length;
-  const baseOriginLabel = (baseRecord.origin_country || baseRecord.language || '').trim();
+  const baseOriginResolved = resolveOrigin(baseRecord);
+  const baseOriginLabel = baseOriginResolved.hasOrigin ? baseOriginResolved.displayLabel : '';
   const baseSyl = baseRecord.syllables != null ? baseRecord.syllables : 2;
   const avgSyl = matches.length ? (matches.reduce((acc, m) => acc + (m.name.syllables != null ? m.name.syllables : 2), 0) / matches.length).toFixed(1) : '2';
-  const originPhrase = baseOriginLabel ? `${nameEsc} has ${htmlEscape(baseOriginLabel)} roots` : `${nameEsc} and the top candidates`;
+  const originPhrase = baseOriginLabel
+    ? `${nameEsc} has ${htmlEscape(baseOriginLabel)} roots`
+    : `${nameEsc} has origin not recorded in our sources; the top candidates`;
   const stylisticCohesionHtml = `
     <section aria-labelledby="cohesion-heading"><h2 id="cohesion-heading">Stylistic cohesion across siblings</h2>
     <p class="contextual">First-letter diversity varies by family: some parents want matching initials (e.g. ${nameEsc} and a sibling starting with ${baseLetter}); others prefer variety. Our table includes both—same-letter names get a rhythm bonus, but strong origin and style matches can score high without it. Cultural consistency matters: ${originPhrase}${baseOriginLabel ? '; the top candidates share or complement that origin' : ' are scored for shared or complementary origin'}, which drives 30% of the score. Length contrast is balanced so one name doesn't dominate: ${nameEsc} has ${baseSyl} syllable(s); the suggested names average about ${avgSyl}, keeping the set cohesive. Generational naming patterns are reflected in the popularity band (20%): names in similar usage tiers often feel like they belong to the same era, which helps sibling sets feel intentional rather than random.</p>
@@ -405,9 +410,9 @@ function run() {
   const batchArg = process.argv.find((a) => a.startsWith('--batch='));
   const limit = batchArg ? Math.min(parseInt(batchArg.split('=')[1], 10), TOP_NAMES_LIMIT) : TOP_NAMES_LIMIT;
 
-  const names = loadJson('names');
-  const popularity = loadJson('popularity');
-  const categories = loadJson('categories');
+  const names = loadLegacyCollection('namesEnriched');
+  const popularity = loadLegacyCollection('popularity');
+  const categories = loadLegacyCollection('categories');
 
   if (names.length === 0) {
     console.error('ERROR: No names data. Run export-json-data first.');

@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const { namesLikeUrl } = require('./url-helpers.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
@@ -325,8 +326,8 @@ nameorigin.io is owned and operated by Albor Digital LLC, an independent product
 }
 
 function run() {
-  const names = loadJson('names');
-  const popularity = loadJson('popularity');
+  const names = loadLegacyCollection('namesEnriched');
+  const popularity = loadLegacyCollection('popularity');
   if (!names.length || !popularity.length) {
     console.warn('Need data/names.json and data/popularity.json. Run build-popularity first.');
     return;

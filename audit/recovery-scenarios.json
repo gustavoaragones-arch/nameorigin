@@ -1,0 +1,398 @@
+{
+  "generatedAt": "2026-07-21T18:26:15.968Z",
+  "readOnly": true,
+  "modelingAssumption": "Enrichment is modeled as applying to a uniformly random subset of the currently-missing records for that field. Under that assumption, every fallback/disclosed-missing assertion tied to the field loses occurrences in direct proportion to the fraction of missing records enriched (recordsAdded / recordsMissingBefore). This is a stated scenario model, not a measurement of a change that has occurred — it is built entirely from real current occurrence counts (audit/truthfulness-matrix.json) scaled by a transparent, single assumption.",
+  "truthfulnessDensityDefinition": "A continuous (0-100%) metric distinct from Phase 1C's categorical per-assertion-type truthfulness ratio: the fraction of all (assertion, page) instances for a template currently in a supported/computed state, weighted by real page counts. Unlike the categorical ratio, this responds smoothly to partial enrichment, which is what scenario modeling requires.",
+  "scenarios": [
+    {
+      "scenario": "+100 meaning records enriched",
+      "field": "meaning",
+      "recordsAdded": 100,
+      "recordsRequested": 100,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 3,
+        "total": 3697,
+        "pct": 0.08
+      },
+      "coverageAfter": {
+        "present": 103,
+        "total": 3697,
+        "pct": 2.79
+      },
+      "fractionOfMissingRecordsEnriched": 2.71,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+          "currentOccurrences": 3694,
+          "projectedReduction": 100,
+          "projectedRemainingOccurrences": 3594
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows the name's meaning in the Quick Facts table",
+          "currentOccurrences": 3697,
+          "projectedReduction": 100,
+          "projectedRemainingOccurrences": 3597
+        }
+      ],
+      "totalOccurrenceReduction": 200,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 40.3,
+          "deltaPct": 0.5
+        }
+      ]
+    },
+    {
+      "scenario": "+500 meaning records enriched",
+      "field": "meaning",
+      "recordsAdded": 500,
+      "recordsRequested": 500,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 3,
+        "total": 3697,
+        "pct": 0.08
+      },
+      "coverageAfter": {
+        "present": 503,
+        "total": 3697,
+        "pct": 13.61
+      },
+      "fractionOfMissingRecordsEnriched": 13.54,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+          "currentOccurrences": 3694,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3194
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows the name's meaning in the Quick Facts table",
+          "currentOccurrences": 3697,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3197
+        }
+      ],
+      "totalOccurrenceReduction": 1000,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 41.9,
+          "deltaPct": 2.1
+        }
+      ]
+    },
+    {
+      "scenario": "+500 origin records enriched",
+      "field": "origin",
+      "recordsAdded": 500,
+      "recordsRequested": 500,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 163,
+        "total": 3697,
+        "pct": 4.41
+      },
+      "coverageAfter": {
+        "present": 663,
+        "total": 3697,
+        "pct": 17.93
+      },
+      "fractionOfMissingRecordsEnriched": 14.15,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3034
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Historical and Cultural Context\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3034
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3034
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3034
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+          "currentOccurrences": 150,
+          "projectedReduction": 21,
+          "projectedRemainingOccurrences": 129
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+          "currentOccurrences": 3534,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3034
+        }
+      ],
+      "totalOccurrenceReduction": 2521,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 44,
+          "deltaPct": 4.2
+        },
+        {
+          "template": "sibling-harmony-page",
+          "truthfulnessDensityBeforePct": 50,
+          "truthfulnessDensityAfterPct": 53.5,
+          "deltaPct": 3.5
+        },
+        {
+          "template": "names-like-page",
+          "truthfulnessDensityBeforePct": 51.1,
+          "truthfulnessDensityAfterPct": 54.5,
+          "deltaPct": 3.4
+        }
+      ]
+    },
+    {
+      "scenario": "+1000 origin records enriched",
+      "field": "origin",
+      "recordsAdded": 1000,
+      "recordsRequested": 1000,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 163,
+        "total": 3697,
+        "pct": 4.41
+      },
+      "coverageAfter": {
+        "present": 1163,
+        "total": 3697,
+        "pct": 31.46
+      },
+      "fractionOfMissingRecordsEnriched": 28.3,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2534
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Historical and Cultural Context\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2534
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2534
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+          "currentOccurrences": 3534,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2534
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+          "currentOccurrences": 150,
+          "projectedReduction": 42,
+          "projectedRemainingOccurrences": 108
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+          "currentOccurrences": 3534,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2534
+        }
+      ],
+      "totalOccurrenceReduction": 5042,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 48.2,
+          "deltaPct": 8.4
+        },
+        {
+          "template": "sibling-harmony-page",
+          "truthfulnessDensityBeforePct": 50,
+          "truthfulnessDensityAfterPct": 57,
+          "deltaPct": 7
+        },
+        {
+          "template": "names-like-page",
+          "truthfulnessDensityBeforePct": 51.1,
+          "truthfulnessDensityAfterPct": 57.9,
+          "deltaPct": 6.8
+        }
+      ]
+    },
+    {
+      "scenario": "+1000 pronunciation records enriched",
+      "field": "pronunciation",
+      "recordsAdded": 1000,
+      "recordsRequested": 1000,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 0,
+        "total": 3697,
+        "pct": 0
+      },
+      "coverageAfter": {
+        "present": 1000,
+        "total": 3697,
+        "pct": 27.05
+      },
+      "fractionOfMissingRecordsEnriched": 27.05,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows a Pronunciation section",
+          "currentOccurrences": 3697,
+          "projectedReduction": 1000,
+          "projectedRemainingOccurrences": 2697
+        }
+      ],
+      "totalOccurrenceReduction": 1000,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 41.9,
+          "deltaPct": 2.1
+        }
+      ]
+    },
+    {
+      "scenario": "+500 popularity records enriched",
+      "field": "popularity",
+      "recordsAdded": 500,
+      "recordsRequested": 500,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 5,
+        "total": 3697,
+        "pct": 0.14
+      },
+      "coverageAfter": {
+        "present": 505,
+        "total": 3697,
+        "pct": 13.66
+      },
+      "fractionOfMissingRecordsEnriched": 13.54,
+      "perAssertionProjection": [
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"How popular is the name {name}?\"",
+          "currentOccurrences": 3692,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3192
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"Similar Popularity\" (section omitted when none found)",
+          "currentOccurrences": 3692,
+          "projectedReduction": 500,
+          "projectedRemainingOccurrences": 3192
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+          "currentOccurrences": 150,
+          "projectedReduction": 20,
+          "projectedRemainingOccurrences": 130
+        }
+      ],
+      "totalOccurrenceReduction": 1020,
+      "templateDensityProjection": [
+        {
+          "template": "name-detail-page",
+          "truthfulnessDensityBeforePct": 39.8,
+          "truthfulnessDensityAfterPct": 40.9,
+          "deltaPct": 1.1
+        },
+        {
+          "template": "names-like-page",
+          "truthfulnessDensityBeforePct": 51.1,
+          "truthfulnessDensityAfterPct": 54.5,
+          "deltaPct": 3.4
+        },
+        {
+          "template": "sibling-harmony-page",
+          "truthfulnessDensityBeforePct": 50,
+          "truthfulnessDensityAfterPct": 53.3,
+          "deltaPct": 3.3
+        }
+      ]
+    },
+    {
+      "scenario": "+25 heraldry records enriched",
+      "field": "heraldry",
+      "recordsAdded": 25,
+      "recordsRequested": 25,
+      "clampedToAvailableMissing": false,
+      "coverageBefore": {
+        "present": 2,
+        "total": 75,
+        "pct": 2.67
+      },
+      "coverageAfter": {
+        "present": 27,
+        "total": 75,
+        "pct": 36
+      },
+      "fractionOfMissingRecordsEnriched": 34.25,
+      "perAssertionProjection": [
+        {
+          "template": "surname-compatibility-page",
+          "assertion": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+          "currentOccurrences": 74,
+          "projectedReduction": 25,
+          "projectedRemainingOccurrences": 49
+        }
+      ],
+      "totalOccurrenceReduction": 25,
+      "templateDensityProjection": [
+        {
+          "template": "surname-compatibility-page",
+          "truthfulnessDensityBeforePct": 67.1,
+          "truthfulnessDensityAfterPct": 78.2,
+          "deltaPct": 11.1
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Scenario records requested beyond the number of currently-missing records are clamped (clampedToAvailableMissing: true) rather than allowed to exceed 100% coverage.",
+    "perAssertionProjection reduction figures are rounded independently per assertion, so totalOccurrenceReduction may differ by a rounding unit or two from summing coverageBefore/coverageAfter deltas directly — both are reported so the arithmetic is auditable."
+  ]
+}

@@ -1,0 +1,737 @@
+{
+  "generatedAt": "2026-07-21T18:25:00.484Z",
+  "readOnly": true,
+  "scope": "Knowledge coverage only — not a quality or SEO audit. See audit/PROJECT_INTELLIGENCE_REPORT.md (Phase 1A) for architecture.",
+  "method": "Array-dataset field coverage is fully automatic (union of observed keys, non-empty-value ratio). Entity-level coverage answers \"how many of the 3,697 names have any data at all\" for relational datasets. See scripts/audit/knowledge-lib.js for exact rules (0 and false count as present; null/undefined/empty-string/empty-array/empty-object count as missing).",
+  "arrayDatasetFieldCoverage": {
+    "names.json (base)": {
+      "total": 3697,
+      "fields": [
+        {
+          "field": "first_letter",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "gender",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "id",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_modern",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_traditional",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "language",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "meaning",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "name",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "origin_country",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "phonetic",
+          "totalRecords": 3697,
+          "present": 0,
+          "missing": 3697,
+          "coveragePct": 0,
+          "missingPct": 100
+        },
+        {
+          "field": "syllables",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "names-enriched.json (with origin overrides merged)": {
+      "total": 3697,
+      "fields": [
+        {
+          "field": "first_letter",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "gender",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "id",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_modern",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_traditional",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "language",
+          "totalRecords": 3697,
+          "present": 163,
+          "missing": 3534,
+          "coveragePct": 4.41,
+          "missingPct": 95.59
+        },
+        {
+          "field": "meaning",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "name",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "origin_cluster",
+          "totalRecords": 3697,
+          "present": 167,
+          "missing": 3530,
+          "coveragePct": 4.52,
+          "missingPct": 95.48
+        },
+        {
+          "field": "origin_confidence",
+          "totalRecords": 3697,
+          "present": 167,
+          "missing": 3530,
+          "coveragePct": 4.52,
+          "missingPct": 95.48
+        },
+        {
+          "field": "origin_country",
+          "totalRecords": 3697,
+          "present": 124,
+          "missing": 3573,
+          "coveragePct": 3.35,
+          "missingPct": 96.65
+        },
+        {
+          "field": "phonetic",
+          "totalRecords": 3697,
+          "present": 0,
+          "missing": 3697,
+          "coveragePct": 0,
+          "missingPct": 100
+        },
+        {
+          "field": "syllables",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "normalized-names.json": {
+      "total": 3697,
+      "fields": [
+        {
+          "field": "confidence_score",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "first_letter",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "gender",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "id",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_modern",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "is_traditional",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "language",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "length",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "meaning",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "meaning_source",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "name",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "origin_country",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "origin_source",
+          "totalRecords": 3697,
+          "present": 3,
+          "missing": 3694,
+          "coveragePct": 0.08,
+          "missingPct": 99.92
+        },
+        {
+          "field": "phonetic",
+          "totalRecords": 3697,
+          "present": 0,
+          "missing": 3697,
+          "coveragePct": 0,
+          "missingPct": 100
+        },
+        {
+          "field": "phonetic_code",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "slug",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "spelling_variants",
+          "totalRecords": 3697,
+          "present": 2253,
+          "missing": 1444,
+          "coveragePct": 60.94,
+          "missingPct": 39.06
+        },
+        {
+          "field": "syllable_estimate",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "syllables",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "variant_no_accents",
+          "totalRecords": 3697,
+          "present": 3697,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "categories.json (per assignment row)": {
+      "total": 4468,
+      "fields": [
+        {
+          "field": "category",
+          "totalRecords": 4468,
+          "present": 4468,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "name_id",
+          "totalRecords": 4468,
+          "present": 4468,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "popularity.json (per popularity row)": {
+      "total": 7,
+      "fields": [
+        {
+          "field": "count",
+          "totalRecords": 7,
+          "present": 6,
+          "missing": 1,
+          "coveragePct": 85.71,
+          "missingPct": 14.29
+        },
+        {
+          "field": "country",
+          "totalRecords": 7,
+          "present": 7,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "name_id",
+          "totalRecords": 7,
+          "present": 7,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "rank",
+          "totalRecords": 7,
+          "present": 7,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "year",
+          "totalRecords": 7,
+          "present": 7,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "variants.json (per variant row)": {
+      "total": 18426,
+      "fields": [
+        {
+          "field": "language",
+          "totalRecords": 18426,
+          "present": 18426,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "name_id",
+          "totalRecords": 18426,
+          "present": 18426,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "variant",
+          "totalRecords": 18426,
+          "present": 18426,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "last-names.json": {
+      "total": 75,
+      "fields": [
+        {
+          "field": "name",
+          "totalRecords": 75,
+          "present": 75,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "note",
+          "totalRecords": 75,
+          "present": 75,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "origin",
+          "totalRecords": 75,
+          "present": 75,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "syllables",
+          "totalRecords": 75,
+          "present": 75,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "countries.json": {
+      "total": 5,
+      "fields": [
+        {
+          "field": "code",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "name",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "primary_language",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "region_group",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        }
+      ]
+    },
+    "country-differentials.json entries[]": {
+      "total": 5,
+      "fields": [
+        {
+          "field": "country",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "delta",
+          "totalRecords": 5,
+          "present": 0,
+          "missing": 5,
+          "coveragePct": 0,
+          "missingPct": 100
+        },
+        {
+          "field": "name",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "name_id",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "rank_2015",
+          "totalRecords": 5,
+          "present": 0,
+          "missing": 5,
+          "coveragePct": 0,
+          "missingPct": 100
+        },
+        {
+          "field": "rank_2025",
+          "totalRecords": 5,
+          "present": 5,
+          "missing": 0,
+          "coveragePct": 100,
+          "missingPct": 0
+        },
+        {
+          "field": "volatility_score",
+          "totalRecords": 5,
+          "present": 2,
+          "missing": 3,
+          "coveragePct": 40,
+          "missingPct": 60
+        }
+      ]
+    }
+  },
+  "entityLevelCoverage": {
+    "meaning": {
+      "totalRecords": 3697,
+      "present": 3,
+      "universe": "names.json (3,697)",
+      "missing": 3694,
+      "coveragePct": 0.08,
+      "missingPct": 99.92
+    },
+    "origin_country_or_language": {
+      "totalRecords": 3697,
+      "present": 163,
+      "universe": "names.json (3,697)",
+      "missing": 3534,
+      "coveragePct": 4.41,
+      "missingPct": 95.59
+    },
+    "origin_cluster": {
+      "totalRecords": 3697,
+      "present": 167,
+      "universe": "names.json (3,697)",
+      "missing": 3530,
+      "coveragePct": 4.52,
+      "missingPct": 95.48
+    },
+    "phonetic": {
+      "totalRecords": 3697,
+      "present": 0,
+      "universe": "names.json (3,697)",
+      "missing": 3697,
+      "coveragePct": 0,
+      "missingPct": 100
+    },
+    "syllables": {
+      "totalRecords": 3697,
+      "present": 3697,
+      "universe": "names.json (3,697)",
+      "missing": 0,
+      "coveragePct": 100,
+      "missingPct": 0
+    },
+    "gender": {
+      "totalRecords": 3697,
+      "present": 3697,
+      "universe": "names.json (3,697)",
+      "missing": 0,
+      "coveragePct": 100,
+      "missingPct": 0
+    },
+    "category_assignment": {
+      "totalRecords": 3697,
+      "present": 3697,
+      "universe": "names.json (3,697); categories.json has 4468 total assignment rows",
+      "missing": 0,
+      "coveragePct": 100,
+      "missingPct": 0
+    },
+    "popularity_record": {
+      "totalRecords": 3697,
+      "present": 5,
+      "universe": "names.json (3,697); popularity.json has 7 total rows",
+      "missing": 3692,
+      "coveragePct": 0.14,
+      "missingPct": 99.86
+    },
+    "variant_record": {
+      "totalRecords": 3697,
+      "present": 3697,
+      "universe": "names.json (3,697); variants.json has 18426 total rows",
+      "missing": 0,
+      "coveragePct": 100,
+      "missingPct": 0
+    },
+    "origin_override": {
+      "totalRecords": 3697,
+      "present": 167,
+      "universe": "names.json (3,697); data/origin-overrides.json keyed dataset",
+      "missing": 3530,
+      "coveragePct": 4.52,
+      "missingPct": 95.48
+    },
+    "equivalent_group": {
+      "totalRecords": 3697,
+      "present": 27,
+      "universe": "names.json (3,697); data/name-equivalents.json keyed dataset (anchor names only)",
+      "missing": 3670,
+      "coveragePct": 0.73,
+      "missingPct": 99.27
+    },
+    "country_differential_entry": {
+      "totalRecords": 18485,
+      "present": 5,
+      "universe": "names.json × countries.json = 3697 × 5 = 18485 possible name/country pairs",
+      "missing": 18480,
+      "coveragePct": 0.03,
+      "missingPct": 99.97
+    },
+    "heraldry_record": {
+      "totalRecords": 75,
+      "present": 2,
+      "universe": "last-names.json (75)",
+      "missing": 73,
+      "coveragePct": 2.67,
+      "missingPct": 97.33
+    }
+  },
+  "narrativeKnowledgeConcepts": [
+    {
+      "concept": "historical_context",
+      "backedBy": "no dedicated dataset — generated by buildCulturalContext() from origin_country/language only, with a generic fallback when absent",
+      "measuredIn": "audit/empty-knowledge.json"
+    },
+    {
+      "concept": "culture",
+      "backedBy": "no dedicated dataset — same buildCulturalContext()/buildOriginLineage() functions as historical_context",
+      "measuredIn": "audit/empty-knowledge.json"
+    },
+    {
+      "concept": "trend_data",
+      "backedBy": "data/regional-trend-acceleration.json (2 of 5 countries covered) + data/country-differentials.json (5 of 18,485 possible name/country pairs)",
+      "measuredIn": "see entityLevelCoverage.country_differential_entry above"
+    },
+    {
+      "concept": "surname_compatibility",
+      "backedBy": "computed at build time by scoreCompatibility() from phonetic rules — not stored as a field, so it has no missing-data state the way meaning/origin do",
+      "measuredIn": "n/a (always computed, not looked up)"
+    }
+  ],
+  "notes": [
+    "This report answers \"how much structured data exists,\" not \"is the page good.\" No quality judgment is made here.",
+    "entityLevelCoverage is the more important number for downstream scoring: e.g. popularity.json fields are ~100% populated WITHIN its 7 existing rows, but those 7 rows cover only 5 of 3,697 names — the entity-level view surfaces that gap; the field-level view alone would not."
+  ]
+}

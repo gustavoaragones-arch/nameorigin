@@ -1,0 +1,56 @@
+{
+  "phase": "5A-1",
+  "title": "Origin Expansion Wave 1",
+  "generatedAt": "2026-07-23T04:37:25.279Z",
+  "baselineReference": "knowledge-baseline-1.0",
+  "phase5BNotStarted": true,
+  "editorial": {
+    "researchFile": "data/sources/origin-wave1-research.json",
+    "waveEntriesResearched": 418,
+    "baselineOriginsPreserved": 167
+  },
+  "originsBefore": 167,
+  "originsAfter": 585,
+  "entitiesResearched": 418,
+  "coverageBeforePct": 4.52,
+  "coverageAfterPct": 15.82,
+  "coverageIncreasePct": 11.3,
+  "kciImpact": {
+    "averageBefore": 3.97,
+    "averageAfter": 6.23,
+    "medianBefore": 5,
+    "medianAfter": 5,
+    "distributionBefore": {
+      "0": 1397,
+      "1-20": 2177,
+      "21-40": 123,
+      "41-60": 0,
+      "61-80": 0,
+      "81-100": 0
+    },
+    "distributionAfter": {
+      "0": 1260,
+      "1-20": 2034,
+      "21-40": 402,
+      "41-60": 1,
+      "61-80": 0,
+      "81-100": 0
+    }
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "deterministicScoring": true,
+    "averageKciIncreased": true,
+    "originCoverageIncreased": true,
+    "noExistingOriginReduction": true,
+    "scoreRangeValid": true,
+    "renderingUnchanged": true,
+    "htmlUnchanged": true,
+    "urlsUnchanged": true,
+    "schemaUnchanged": true,
+    "builderUnchanged": true,
+    "adaptersUnchanged": true,
+    "kciScoringUnchanged": true,
+    "targetMinimumOriginsMet": true
+  }
+}

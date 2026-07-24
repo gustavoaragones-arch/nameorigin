@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Classification only — no dataset is recommended for deletion. 'future status' describes how a dataset would relate to the canonical model, not an instruction to change it now.",
+  "statusDefinitions": {
+    "keep": "Would remain a distinct dataset even under the canonical model (e.g. a small reference table or a closed curated set).",
+    "merge": "Its fields would be absorbed into the canonical Name Entity record, ending its life as a standalone file.",
+    "split": "Belongs to a different entity type entirely (e.g. Surname, Country) and would migrate to a sibling schema, not this one.",
+    "derived": "An upstream curation input consumed by another dataset before reaching any generator (e.g. an overrides file merged at build time).",
+    "computed": "Not stored knowledge at all — a ruleset or config that computes a value at render time.",
+    "deprecated": "Currently unreferenced by any script (per Phase 1B's audit/datasets.json) and its own conceptual purpose is already covered elsewhere; classification only, no deletion recommended."
+  },
+  "datasets": [
+    {
+      "dataset": "data/variants.json",
+      "canonicalFieldsSupplied": ["variants.spellingVariants[]"],
+      "primaryOwner": "variants",
+      "secondaryOwner": "none",
+      "futureStatus": "merge",
+      "note": "A relational (name_id -> variant) table with 18,426 rows across 3,697 names (100% entity coverage). Overlaps data/normalized-names.json's spelling_variants[] column for the same concept — see audit/knowledge-redundancy.json."
+    },
+    {
+      "dataset": "data/names.json",
+      "canonicalFieldsSupplied": ["identity.id", "identity.name", "identity.gender", "identity.firstLetter", "classification.isTraditional", "classification.isModern", "meaning.primary (0.08% populated)", "origin.country / origin.cluster (unenriched copy, 0% populated by construction)", "language.primary (unenriched copy)", "pronunciation.syllableCount"],
+      "primaryOwner": "identity",
+      "secondaryOwner": "meaning, origin, language (all sparse/unenriched in this file specifically)",
+      "futureStatus": "merge",
+      "note": "The base record every other names dataset joins against by name_id. Under the canonical model this becomes the identity-domain seed of the entity record."
+    },
+    {
+      "dataset": "data/names-enriched.json",
+      "canonicalFieldsSupplied": ["origin.country", "origin.cluster", "origin.confidence", "language.primary"],
+      "primaryOwner": "origin",
+      "secondaryOwner": "language",
+      "futureStatus": "merge",
+      "note": "Currently an overlay of names.json (base fields duplicated verbatim, plus origin_cluster/origin_confidence added). Under the canonical model, origin/language become first-class fields on the one entity record — no overlay file needed."
+    },
+    {
+      "dataset": "data/normalized-names.json",
+      "canonicalFieldsSupplied": ["identity.slug", "pronunciation.syllableCount (second, algorithmic estimate)", "pronunciation.ipa (candidate, via phonetic_code)", "variants.spellingVariants[] (second copy, see data/variants.json)", "citations.sources[] (via unused meaning_source/origin_source/confidence_score columns)"],
+      "primaryOwner": "identity (slug) and variants (spelling_variants)",
+      "secondaryOwner": "pronunciation, citations",
+      "futureStatus": "merge",
+      "note": "Overlaps data/variants.json for spelling variants and data/names.json/names-enriched.json for base fields (see audit/knowledge-redundancy.json). Its unused meaning_source/origin_source/confidence_score columns are the closest thing today to the new citations domain."
+    },
+    {
+      "dataset": "data/categories.json",
+      "canonicalFieldsSupplied": ["classification.categories[]"],
+      "primaryOwner": "classification",
+      "secondaryOwner": "none",
+      "futureStatus": "merge",
+      "note": "A relational (name_id -> category) table today; becomes an array field on the entity record."
+    },
+    {
+      "dataset": "data/origin-overrides.json",
+      "canonicalFieldsSupplied": ["origin.country", "origin.cluster", "origin.confidence", "language.primary"],
+      "primaryOwner": "origin",
+      "secondaryOwner": "language",
+      "futureStatus": "derived",
+      "note": "A curation input merged into names-enriched.json by apply-origin-enrichment.js before any generator reads it. Under the canonical model this remains the correct place to author new origin research — it becomes the write-path for origin.*, not a dataset generators read directly."
+    },
+    {
+      "dataset": "data/last-names.json",
+      "canonicalFieldsSupplied": ["(none — see below)"],
+      "primaryOwner": "n/a (out of scope for the Name Entity)",
+      "secondaryOwner": "n/a",
+      "futureStatus": "split",
+      "note": "Surname data. Would become the seed dataset for a future Surname Entity, referenced FROM the Name Entity's relationships.surnameCompatibility[] but not merged into it."
+    },
+    {
+      "dataset": "data/compatibility-explanation-variants.json",
+      "canonicalFieldsSupplied": ["(none — presentation only)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "keep",
+      "note": "A prose-variant pool consumed by compatibility-explanation-renderer.js. Not knowledge about any entity — stays outside the canonical model entirely as a presentation-layer asset."
+    },
+    {
+      "dataset": "data/sibling-explanation-variants.json",
+      "canonicalFieldsSupplied": ["(none — presentation only)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "keep",
+      "note": "Same status as compatibility-explanation-variants.json, for the sibling-harmony renderer."
+    },
+    {
+      "dataset": "data/name-equivalents.json",
+      "canonicalFieldsSupplied": ["relatedNames.equivalents[]"],
+      "primaryOwner": "relatedNames",
+      "secondaryOwner": "none",
+      "futureStatus": "merge",
+      "note": "A small, closed, curated set (27 anchors). Could remain a standalone lookup table indefinitely (status 'keep' would also be defensible) or be merged onto each anchor's own entity record — a judgment call for a future migration-planning phase, not resolved here."
+    },
+    {
+      "dataset": "data/compatibility_patterns.json",
+      "canonicalFieldsSupplied": ["(none — configures relationships.surnameCompatibility[].score)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "computed",
+      "note": "A scoring ruleset (factors + patterns), not per-entity data. Continues to exist as config that a canonical-model-aware compatibility function would read, not as entity data itself."
+    },
+    {
+      "dataset": "data/country-differentials.json",
+      "canonicalFieldsSupplied": ["relationships.comparisonPairs[] (rank fields)", "popularity.trendAcceleration (delta/volatility, conceptually)"],
+      "primaryOwner": "relationships",
+      "secondaryOwner": "popularity",
+      "futureStatus": "merge",
+      "note": "Phase 1C found this file is not currently read by scripts/generate-compare-pages.js at all (that generator computes independently from data/popularity.json). Its fields are real and mappable, but its current real-world consumer is zero generators — see audit/knowledge-redundancy.json."
+    },
+    {
+      "dataset": "data/cultural-explanation-variants.json",
+      "canonicalFieldsSupplied": ["(none — presentation only)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "deprecated",
+      "note": "Confirmed unreferenced by any script in audit/datasets.json (Phase 1B). Classified deprecated (unreferenced), not recommended for deletion."
+    },
+    {
+      "dataset": "data/comparison-intro-variants.json",
+      "canonicalFieldsSupplied": ["(none — presentation only)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "deprecated",
+      "note": "Same status as cultural-explanation-variants.json — confirmed unreferenced by any script."
+    },
+    {
+      "dataset": "data/delta-interpretation-variants.json",
+      "canonicalFieldsSupplied": ["(none — presentation only)"],
+      "primaryOwner": "n/a",
+      "secondaryOwner": "n/a",
+      "futureStatus": "deprecated",
+      "note": "Same status as cultural-explanation-variants.json — confirmed unreferenced by any script."
+    },
+    {
+      "dataset": "data/popularity.json",
+      "canonicalFieldsSupplied": ["popularity.records[]"],
+      "primaryOwner": "popularity",
+      "secondaryOwner": "usage (regionsOfUse is derived from this)",
+      "futureStatus": "merge",
+      "note": "The one real, currently-read source of popularity data; country-differentials.json and regional-trend-acceleration.json both derive from it independently rather than from each other (see audit/knowledge-redundancy.json)."
+    },
+    {
+      "dataset": "data/countries.json",
+      "canonicalFieldsSupplied": ["(reference only — backs origin.country and popularity.records[].country)"],
+      "primaryOwner": "n/a (reference/lookup, not per-name knowledge)",
+      "secondaryOwner": "n/a",
+      "futureStatus": "keep",
+      "note": "A small reference table (5 rows). Would remain a standalone lookup a future Country Entity references, not merged into any Name Entity record."
+    },
+    {
+      "dataset": "data/regional-trend-acceleration.json",
+      "canonicalFieldsSupplied": ["popularity.trendAcceleration"],
+      "primaryOwner": "popularity",
+      "secondaryOwner": "none",
+      "futureStatus": "merge",
+      "note": "Covers 2 of 5 site countries. Derives from data/popularity.json independently of data/country-differentials.json, which derives from the same source — a parallel-computation redundancy, not a data-loss risk (see audit/knowledge-redundancy.json)."
+    },
+    {
+      "dataset": "data/heraldry.json",
+      "canonicalFieldsSupplied": ["(none — see below)"],
+      "primaryOwner": "n/a (out of scope for the Name Entity)",
+      "secondaryOwner": "n/a",
+      "futureStatus": "split",
+      "note": "Surname data, same status as data/last-names.json — belongs to a future Surname Entity."
+    }
+  ],
+  "summaryByStatus": {
+    "merge": 9,
+    "split": 2,
+    "derived": 1,
+    "computed": 1,
+    "keep": 3,
+    "deprecated": 3
+  },
+  "totalDatasets": 19
+}

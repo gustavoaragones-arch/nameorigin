@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-07-21T18:25:28.939Z",
+  "readOnly": true,
+  "method": "Ratio = (supported + computed) / (supported + computed + fallback + disclosed-missing), computed per assertion, per audit/truthfulness-matrix.json — no weighting invented.",
+  "perTemplate": [
+    {
+      "template": "compare-name-country-pair-page",
+      "totalAssertions": 3,
+      "supported": 1,
+      "computed": 1,
+      "fallback": 1,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 66.7,
+      "formula": "(1 supported + 1 computed) / 3 total assertions = 66.7%"
+    },
+    {
+      "template": "equivalents-page",
+      "totalAssertions": 1,
+      "supported": 1,
+      "computed": 0,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 0 computed) / 1 total assertions = 100%"
+    },
+    {
+      "template": "name-detail-page",
+      "totalAssertions": 13,
+      "supported": 2,
+      "computed": 3,
+      "fallback": 5,
+      "disclosedMissing": 3,
+      "truthfulnessRatioPct": 38.5,
+      "formula": "(2 supported + 3 computed) / 13 total assertions = 38.5%"
+    },
+    {
+      "template": "names-country-page",
+      "totalAssertions": 1,
+      "supported": 1,
+      "computed": 0,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 0 computed) / 1 total assertions = 100%"
+    },
+    {
+      "template": "names-lastname-filter-page",
+      "totalAssertions": 2,
+      "supported": 1,
+      "computed": 1,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 1 computed) / 2 total assertions = 100%"
+    },
+    {
+      "template": "names-like-page",
+      "totalAssertions": 4,
+      "supported": 0,
+      "computed": 2,
+      "fallback": 0,
+      "disclosedMissing": 2,
+      "truthfulnessRatioPct": 50,
+      "formula": "(0 supported + 2 computed) / 4 total assertions = 50%"
+    },
+    {
+      "template": "names-style-page",
+      "totalAssertions": 1,
+      "supported": 1,
+      "computed": 0,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 0 computed) / 1 total assertions = 100%"
+    },
+    {
+      "template": "popularity-year-page",
+      "totalAssertions": 1,
+      "supported": 1,
+      "computed": 0,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 0 computed) / 1 total assertions = 100%"
+    },
+    {
+      "template": "sibling-harmony-page",
+      "totalAssertions": 4,
+      "supported": 0,
+      "computed": 2,
+      "fallback": 1,
+      "disclosedMissing": 1,
+      "truthfulnessRatioPct": 50,
+      "formula": "(0 supported + 2 computed) / 4 total assertions = 50%"
+    },
+    {
+      "template": "surname-compatibility-page",
+      "totalAssertions": 3,
+      "supported": 1,
+      "computed": 1,
+      "fallback": 0,
+      "disclosedMissing": 1,
+      "truthfulnessRatioPct": 66.7,
+      "formula": "(1 supported + 1 computed) / 3 total assertions = 66.7%"
+    },
+    {
+      "template": "trend-page",
+      "totalAssertions": 1,
+      "supported": 1,
+      "computed": 0,
+      "fallback": 0,
+      "disclosedMissing": 0,
+      "truthfulnessRatioPct": 100,
+      "formula": "(1 supported + 0 computed) / 1 total assertions = 100%"
+    }
+  ],
+  "siteWide": {
+    "totalAssertions": 34,
+    "supported": 10,
+    "computed": 10,
+    "fallback": 7,
+    "disclosedMissing": 7,
+    "truthfulnessRatioPct": 58.8,
+    "note": "This rolls up one row per (template, assertion) pair, not one row per generated page — a template with 3,697 live pages and a template with 1 live page each contribute equally here. See audit/truthfulness-hotspots.json for the same data sorted by fallback rate."
+  },
+  "notes": [
+    "A template with a high truthfulness ratio does not necessarily have more real data behind it than one with a low ratio — e.g. surname-compatibility-page scores highly because its curated dataset (75 surnames, 4 fields, 100% populated) is complete, while name-detail-page scores lower because its far larger dataset (3,697 names) is mostly uncurated. Scale is not accounted for in this ratio by design.",
+    "This report does not rank templates by \"quality\" — it only counts, per the Phase 1C brief, how many of a template's known assertion mechanisms are backed by real or deterministic data versus substituted or disclosed as absent."
+  ]
+}

@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection, loadJsonFromFile } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -74,10 +75,10 @@ ${entries.join('\n')}
 }
 
 function run() {
-  const names = loadJson('names');
-  const countries = loadJson('countries');
-  const lastNames = loadJson('last-names');
-  const popularity = loadJson('popularity');
+  const names = loadLegacyCollection('names');
+  const countries = loadJsonFromFile('countries');
+  const lastNames = loadJsonFromFile('last-names');
+  const popularity = loadLegacyCollection('popularity');
 
   const sitemapsDir = path.join(OUT_DIR, 'sitemaps');
   if (!fs.existsSync(sitemapsDir)) fs.mkdirSync(sitemapsDir, { recursive: true });

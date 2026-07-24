@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Assesses readiness across 6 dimensions using only categorical ratings (ready / mostly-ready / partial / blocked) backed by measurable evidence from Phases 1A-2B. No numeric weighted score is computed anywhere in this file — where a percentage appears, it is a directly-measured coverage figure already published in an earlier phase's report, not a synthesized index.",
+  "scale": {
+    "ready": "Fully complete and validated against measurable evidence; no known gap.",
+    "mostly-ready": "Complete for its primary purpose; a small, enumerated set of exceptions exist and are individually named, not hidden in an aggregate.",
+    "partial": "Meaningfully incomplete; roughly as much is done as isn't, or the incompleteness is concentrated in a way that matters for migration.",
+    "blocked": "Cannot proceed without first resolving a specific, named dependency."
+  },
+
+  "assessments": [
+    {
+      "dimension": "schema",
+      "rating": "mostly-ready",
+      "evidence": "schemas/name-entity.schema.json exists, is valid JSON Schema, defines 18 domains / 50 leaf fields. audit/schema-validation.json (Phase 2A) ran 6 structural checks: 5 PASS, 1 PARTIAL (generator coverage documentation, not the schema's own structure).",
+      "methodology": "Rating derived directly from audit/schema-validation.json's own overallResult, not recomputed.",
+      "limitations": "The schema has not been tested against a real data-loading/serialization implementation (out of scope for a documentation-only phase) — its internal consistency is validated, its practical usability with real tooling is not."
+    },
+    {
+      "dimension": "datasets",
+      "rating": "partial",
+      "evidence": "Planning is complete: all 19 datasets have a classified transition strategy (audit/dataset-transition-map.json, validated in audit/migration-validation.json: PASS, 19/19). Execution is at 0%: no dataset has actually been merged, replaced, or archived — by design, since this is a planning-only phase.",
+      "methodology": "Two sub-measurements reported separately rather than blended into one number: planning completeness (19/19 = 100%, a real count) and execution progress (0/19 = 0%, also a real count, expected to be zero at this phase).",
+      "limitations": "A single 'partial' rating necessarily compresses two very different 100%/0% facts into one word — both numbers are reported explicitly above specifically so this compression doesn't hide either fact."
+    },
+    {
+      "dimension": "generators",
+      "rating": "mostly-ready",
+      "evidence": "19 of 23 knowledge-relevant generators (83%) are classified adapter-ready (audit/backward-compatibility.json) — meaning a data-source swap alone, with zero code changes, would satisfy them. 3 are partial (dual-producer reconciliation needed), 1 requires-refactor (scripts/generate-trends-page.js).",
+      "methodology": "Rating derived directly from audit/backward-compatibility.json's classificationDistribution.",
+      "limitations": "Adapter-readiness measures structural compatibility, not migration safety — audit/generator-impact-matrix.json separately rates 4 of the same generators 'high complexity' because migrating them will change their rendered output even though no code change is required to do so. A generator can be simultaneously adapter-ready and high-risk; this dimension reports only the former."
+    },
+    {
+      "dimension": "knowledge",
+      "rating": "blocked",
+      "evidence": "The domains ranked highest-leverage in Phase 1D (audit/knowledge-roi.json) have the lowest current coverage: meaning 0.08%, origin/language 4.41%, popularity 0.14%, pronunciation 0%. Structural domains are at or near 100% (classification 100%, variants 100%, gender 100%, syllables 100%).",
+      "methodology": "Figures pulled directly from audit/knowledge-coverage.json's entityLevelCoverage (Phase 1B) — not recomputed.",
+      "limitations": "Rated 'blocked' rather than 'partial' deliberately: the canonical architecture can structurally accept this data today (schema readiness is mostly-ready), but migrating a domain with 0.08%-4.41% real coverage does not meaningfully change what most rendered pages say — the blocker is the knowledge itself, not the architecture. This is the same conclusion Phase 1D reached independently (audit/knowledge-roi.json), reconfirmed here as a readiness dimension rather than a recovery-leverage ranking."
+    },
+    {
+      "dimension": "migration dependencies",
+      "rating": "ready",
+      "evidence": "audit/migration-dependency-graph.json's cycle check: PASS. audit/migration-validation.json re-confirmed independently: all 7 structural checks PASS, including 'no circular migration dependencies exist' and 'no canonical domain is orphaned.'",
+      "methodology": "Rating derived directly from audit/migration-validation.json's overallResult for the structural (non-data) checks.",
+      "limitations": "This measures the PLAN's internal consistency, not whether executing the plan would encounter unforeseen issues — see audit/migration-risk-register.json for named risks that a structurally-sound plan can still carry."
+    },
+    {
+      "dimension": "validation coverage",
+      "rating": "ready",
+      "evidence": "7 of 7 planned structural validations in audit/migration-validation.json passed with cited evidence (domain-wave assignment, dataset-transition coverage, generator-classification coverage, dependency termination, cycle-freedom, orphan-freedom, transition-conflict-freedom).",
+      "methodology": "Direct count from audit/migration-validation.json.",
+      "limitations": "2 items are explicitly flagged in audit/migration-validation.json as unresolved DATA dependencies (the citations domain's unconfirmed producer; the 5 zero-data new domains) — these are reported there as non-hidden gaps, not folded into this 'ready' rating, since they are data-readiness issues (covered under the 'knowledge' dimension above) rather than validation-coverage gaps."
+    }
+  ],
+
+  "overallReadinessNarrative": "Three dimensions rate ready or mostly-ready (schema, generators, migration dependencies + validation coverage) — the STRUCTURAL side of this migration is sound and independently validated. Two dimensions rate partial or blocked (datasets, knowledge) — both for the same underlying reason: this phase only plans, and the knowledge that would make migration meaningful is still sparse. No numeric composite is offered because these six dimensions are not commensurable — a 'ready' dependency graph and a 'blocked' knowledge dimension cannot be averaged into one number without inventing a weighting Phases 1A-2B provide no basis for.",
+
+  "dimensionCount": 6,
+  "ratingDistribution": { "ready": 2, "mostly-ready": 2, "partial": 1, "blocked": 1 }
+}

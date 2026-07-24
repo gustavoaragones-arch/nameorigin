@@ -10,6 +10,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
+const {
+  resolveOrigin,
+  matchesRecordOrigin,
+  originKeyForMatching,
+  DISCLOSED_UNKNOWN_SENTENCE,
+} = require('../lib/render/origin.js');
+const { meaningSnippet } = require('../lib/render/meaning.js');
 
 const { namesLikeUrl } = require('./url-helpers.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
@@ -222,7 +230,8 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const firstLetter = (baseRecord.first_letter || nameStr.charAt(0) || '').toLowerCase();
   const firstTwo = nameStr.slice(0, 2);
   const firstThree = nameStr.slice(0, 3);
-  const originKey = (baseRecord.origin_country || '').toLowerCase().replace(/\s+/g, '') || (baseRecord.language || '').toLowerCase().replace(/\s+/g, '');
+  const baseOrigin = resolveOrigin(baseRecord);
+  const originKey = originKeyForMatching(baseRecord);
   const gender = baseRecord.gender || '';
   const nameById = new Map(names.map((n) => [n.id, n]));
   const basePopRows = (popularity || []).filter((p) => p.name_id === baseRecord.id);
@@ -260,7 +269,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   // Names with same origin
   if (originKey) {
     const sameOrigin = names.filter(
-      (n) => n.id !== baseRecord.id && !seenIds.has(n.id) && ((n.origin_country || '').toLowerCase().replace(/\s+/g, '') === originKey || (n.language || '').toLowerCase().replace(/\s+/g, '') === originKey)
+      (n) => n.id !== baseRecord.id && !seenIds.has(n.id) && matchesRecordOrigin(baseRecord, n)
     );
     sameOrigin.slice(0, 6).forEach((n) => {
       sameOriginMatches.push(n);
@@ -311,21 +320,47 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const nameLink = (n) => `<a href="${nameDetailPath(n.name)}">${htmlEscape(n.name)}</a>`;
   const nameCategories = (categories || []).filter((c) => c.name_id === baseRecord.id).map((c) => c.category);
   const styleLabel = nameCategories.length > 0 ? nameCategories[0] : (gender === 'boy' ? 'classic' : gender === 'girl' ? 'elegant' : 'modern');
-  const originLabel = baseRecord.origin_country || baseRecord.language || 'various origins';
+  const originLabel = baseOrigin.hasOrigin ? baseOrigin.displayLabel : null;
 
   // Controlled template variation: select intro/closing based on name ID hash for consistency
   const variationIndex = (baseRecord.id || 0) % 6;
 
+  function namesLikeOriginLead(name, style, g, idx) {
+    const nameEsc = htmlEscape(name);
+    const styleEsc = htmlEscape(style);
+    if (originLabel) {
+      const labelEsc = htmlEscape(originLabel);
+      const researched = [
+        `${nameEsc} has a ${styleEsc} feel and originates from ${labelEsc}`,
+        `${nameEsc} embodies a ${styleEsc} aesthetic with roots in ${labelEsc}`,
+        `${nameEsc} carries a ${styleEsc} quality from ${labelEsc}`,
+        `${nameEsc} has a ${styleEsc} character with origins in ${labelEsc}`,
+        `${nameEsc} features a ${styleEsc} style from ${labelEsc}`,
+        `${nameEsc} embodies a ${styleEsc} essence rooted in ${labelEsc}`,
+      ];
+      return researched[idx] + '.';
+    }
+    const disclosed = [
+      `${nameEsc} has a ${styleEsc} feel. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+      `${nameEsc} embodies a ${styleEsc} aesthetic. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+      `${nameEsc} carries a ${styleEsc} quality. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+      `${nameEsc} has a ${styleEsc} character. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+      `${nameEsc} features a ${styleEsc} style. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+      `${nameEsc} embodies a ${styleEsc} essence. ${DISCLOSED_UNKNOWN_SENTENCE}`,
+    ];
+    return disclosed[idx];
+  }
+
   // Intro paragraph variations (~150-200 words each, unique per name)
   const introTemplates = [
-    (name, style, origin, g) => `<p class="contextual">If you're considering the name ${htmlEscape(name)}, you might be looking for alternatives that share similar style, origin, or sound. ${htmlEscape(name)} has a ${htmlEscape(style)} feel and ${origin ? 'originates from ' + htmlEscape(origin) : 'has roots in multiple cultures'}. When choosing a name, many parents seek options that match their preferred style—whether that's ${htmlEscape(style)}, ${g === 'boy' ? 'strong and traditional' : g === 'girl' ? 'elegant and timeless' : 'versatile and modern'}—or that honor a specific cultural or linguistic heritage. Some parents also want names that sound similar phonetically, sharing the same first letter or similar opening sounds, which can create a cohesive feel when considering sibling names or family naming patterns. Others prioritize popularity, looking for names in a similar popularity band—whether that's top 100, top 500, or less common choices. This page curates names similar to ${htmlEscape(name)} across these dimensions, helping you discover alternatives that might resonate with your preferences while offering variety and meaning.</p>`,
-    (name, style, origin, g) => `<p class="contextual">Searching for names similar to ${htmlEscape(name)}? This curated list highlights alternatives that share key characteristics: phonetic similarity, cultural origin, popularity trends, or ${g ? g + ' name' : 'style'} appeal. ${htmlEscape(name)} embodies a ${htmlEscape(style)} aesthetic ${origin ? 'with roots in ' + htmlEscape(origin) : 'drawn from diverse cultural traditions'}, making it appealing to parents who value ${g === 'boy' ? 'strength and tradition' : g === 'girl' ? 'elegance and timelessness' : 'versatility and modernity'}. Names that sound alike—especially those sharing the same first letter or similar opening syllables—often work well together for siblings or extended family naming. Cultural matching matters too: names from the same linguistic or regional background can honor heritage while providing variety. Popularity considerations also play a role, as some parents prefer names in similar usage bands. Below, you'll find names that match ${htmlEscape(name)} in one or more of these ways, each with its own distinct meaning and history.</p>`,
-    (name, style, origin, g) => `<p class="contextual">When ${htmlEscape(name)} catches your attention, exploring similar names can help you find the perfect fit. ${htmlEscape(name)} carries a ${htmlEscape(style)} quality ${origin ? 'from ' + htmlEscape(origin) : 'with multicultural appeal'}, appealing to those who appreciate ${g === 'boy' ? 'classic strength' : g === 'girl' ? 'timeless elegance' : 'modern versatility'}. Finding names like ${htmlEscape(name)} involves considering several factors: phonetic resemblance (names that sound similar, especially with matching first letters), shared cultural or linguistic origins, comparable popularity levels, and ${g ? g + ' name' : 'style'} alignment. Parents often seek names that feel cohesive—whether for siblings, honoring family traditions, or matching a preferred aesthetic. Phonetic similarity creates harmony in sound, while shared origins can reflect cultural heritage. Popularity matching helps ensure a name feels familiar yet distinctive. This page brings together names that mirror ${htmlEscape(name)}'s appeal across these dimensions, offering meaningful alternatives to consider.</p>`,
-    (name, style, origin, g) => `<p class="contextual">Looking for names that share ${htmlEscape(name)}'s appeal? This collection highlights alternatives based on sound, origin, popularity, and ${g ? g + ' name' : 'style'} characteristics. ${htmlEscape(name)} has a ${htmlEscape(style)} character ${origin ? 'with origins in ' + htmlEscape(origin) : 'reflecting diverse cultural influences'}, making it attractive to parents who value ${g === 'boy' ? 'traditional strength' : g === 'girl' ? 'elegant sophistication' : 'contemporary flexibility'}. Similarity can come from multiple angles: names that sound alike (particularly those starting with the same letter or sharing opening sounds), names from the same cultural or linguistic background, names in similar popularity ranges, and names that share the same ${g ? g + ' name' : 'style'} category. Each approach offers different benefits—phonetic matches create auditory harmony, origin matches honor cultural connections, popularity matches ensure familiarity, and ${g ? g + ' name' : 'style'} matches align with preferences. The names below reflect these various forms of similarity to ${htmlEscape(name)}, giving you diverse options to explore.</p>`,
-    (name, style, origin, g) => `<p class="contextual">If ${htmlEscape(name)} resonates with you, discovering similar names can expand your options while maintaining what draws you to it. ${htmlEscape(name)} features a ${htmlEscape(style)} style ${origin ? 'from ' + htmlEscape(origin) : 'with broad cultural appeal'}, appealing to those who appreciate ${g === 'boy' ? 'classic masculinity' : g === 'girl' ? 'feminine elegance' : 'gender-neutral versatility'}. Names similar to ${htmlEscape(name)} can match in several ways: they might sound alike (sharing first letters or similar opening sounds for phonetic harmony), come from the same cultural or linguistic tradition (reflecting shared heritage), fall within similar popularity bands (ensuring comparable familiarity), or belong to the same ${g ? g + ' name' : 'style'} category. Parents choose similar names for various reasons: creating cohesive sibling sets, honoring cultural backgrounds, matching preferred popularity levels, or maintaining a consistent aesthetic. This page curates names that align with ${htmlEscape(name)} across these dimensions, each offering its own unique meaning and background while sharing key characteristics.</p>`,
-    (name, style, origin, g) => `<p class="contextual">Exploring names like ${htmlEscape(name)} helps you find alternatives that capture similar qualities. ${htmlEscape(name)} embodies a ${htmlEscape(style)} essence ${origin ? 'rooted in ' + htmlEscape(origin) : 'drawn from multiple cultural sources'}, making it appealing to parents who seek ${g === 'boy' ? 'strong, traditional' : g === 'girl' ? 'elegant, timeless' : 'versatile, modern'} names. Similarity can be measured by sound (names with matching first letters or similar opening sounds create phonetic connections), origin (names from the same cultural or linguistic background share heritage), popularity (names in similar usage bands offer comparable familiarity), and ${g ? g + ' name' : 'style'} category. These different forms of similarity serve different purposes: phonetic matches work well for sibling sets, origin matches honor cultural identity, popularity matches ensure recognition, and ${g ? g + ' name' : 'style'} matches align with preferences. Below are names that mirror ${htmlEscape(name)}'s appeal through these various lenses, providing meaningful alternatives with their own distinct stories.</p>`,
+    (name, style, g, idx) => `<p class="contextual">If you're considering the name ${htmlEscape(name)}, you might be looking for alternatives that share similar style, origin, or sound. ${namesLikeOriginLead(name, style, g, idx)} When choosing a name, many parents seek options that match their preferred style—whether that's ${htmlEscape(style)}, ${g === 'boy' ? 'strong and traditional' : g === 'girl' ? 'elegant and timeless' : 'versatile and modern'}—or that honor a specific cultural or linguistic heritage. Some parents also want names that sound similar phonetically, sharing the same first letter or similar opening sounds, which can create a cohesive feel when considering sibling names or family naming patterns. Others prioritize popularity, looking for names in a similar popularity band—whether that's top 100, top 500, or less common choices. This page curates names similar to ${htmlEscape(name)} across these dimensions, helping you discover alternatives that might resonate with your preferences while offering variety and meaning.</p>`,
+    (name, style, g, idx) => `<p class="contextual">Searching for names similar to ${htmlEscape(name)}? This curated list highlights alternatives that share key characteristics: phonetic similarity, cultural origin, popularity trends, or ${g ? g + ' name' : 'style'} appeal. ${namesLikeOriginLead(name, style, g, idx)} ${originLabel ? 'It appeals to parents who value' : 'Parents exploring similar names often value'} ${g === 'boy' ? 'strength and tradition' : g === 'girl' ? 'elegance and timelessness' : 'versatility and modernity'}. Names that sound alike—especially those sharing the same first letter or similar opening syllables—often work well together for siblings or extended family naming. Cultural matching matters too: names from the same linguistic or regional background can honor heritage while providing variety. Popularity considerations also play a role, as some parents prefer names in similar usage bands. Below, you'll find names that match ${htmlEscape(name)} in one or more of these ways, each with its own distinct meaning and history.</p>`,
+    (name, style, g, idx) => `<p class="contextual">When ${htmlEscape(name)} catches your attention, exploring similar names can help you find the perfect fit. ${namesLikeOriginLead(name, style, g, idx)} ${originLabel ? 'It appeals to those who appreciate' : 'Many parents appreciate'} ${g === 'boy' ? 'classic strength' : g === 'girl' ? 'timeless elegance' : 'modern versatility'}. Finding names like ${htmlEscape(name)} involves considering several factors: phonetic resemblance (names that sound similar, especially with matching first letters), shared cultural or linguistic origins, comparable popularity levels, and ${g ? g + ' name' : 'style'} alignment. Parents often seek names that feel cohesive—whether for siblings, honoring family traditions, or matching a preferred aesthetic. Phonetic similarity creates harmony in sound, while shared origins can reflect cultural heritage. Popularity matching helps ensure a name feels familiar yet distinctive. This page brings together names that mirror ${htmlEscape(name)}'s appeal across these dimensions, offering meaningful alternatives to consider.</p>`,
+    (name, style, g, idx) => `<p class="contextual">Looking for names that share ${htmlEscape(name)}'s appeal? This collection highlights alternatives based on sound, origin, popularity, and ${g ? g + ' name' : 'style'} characteristics. ${namesLikeOriginLead(name, style, g, idx)} ${originLabel ? 'It is attractive to parents who value' : 'It can still help parents who value'} ${g === 'boy' ? 'traditional strength' : g === 'girl' ? 'elegant sophistication' : 'contemporary flexibility'}. Similarity can come from multiple angles: names that sound alike (particularly those starting with the same letter or sharing opening sounds), names from the same cultural or linguistic background, names in similar popularity ranges, and names that share the same ${g ? g + ' name' : 'style'} category. Each approach offers different benefits—phonetic matches create auditory harmony, origin matches honor cultural connections, popularity matches ensure familiarity, and ${g ? g + ' name' : 'style'} matches align with preferences. The names below reflect these various forms of similarity to ${htmlEscape(name)}, giving you diverse options to explore.</p>`,
+    (name, style, g, idx) => `<p class="contextual">If ${htmlEscape(name)} resonates with you, discovering similar names can expand your options while maintaining what draws you to it. ${namesLikeOriginLead(name, style, g, idx)} ${originLabel ? 'It appeals to those who appreciate' : 'Many readers appreciate'} ${g === 'boy' ? 'classic masculinity' : g === 'girl' ? 'feminine elegance' : 'gender-neutral versatility'}. Names similar to ${htmlEscape(name)} can match in several ways: they might sound alike (sharing first letters or similar opening sounds for phonetic harmony), come from the same cultural or linguistic tradition (reflecting shared heritage), fall within similar popularity bands (ensuring comparable familiarity), or belong to the same ${g ? g + ' name' : 'style'} category. Parents choose similar names for various reasons: creating cohesive sibling sets, honoring cultural backgrounds, matching preferred popularity levels, or maintaining a consistent aesthetic. This page curates names that align with ${htmlEscape(name)} across these dimensions, each offering its own unique meaning and background while sharing key characteristics.</p>`,
+    (name, style, g, idx) => `<p class="contextual">Exploring names like ${htmlEscape(name)} helps you find alternatives that capture similar qualities. ${namesLikeOriginLead(name, style, g, idx)} ${originLabel ? 'It appeals to parents who seek' : 'Parents often seek'} ${g === 'boy' ? 'strong, traditional' : g === 'girl' ? 'elegant, timeless' : 'versatile, modern'} names. Similarity can be measured by sound (names with matching first letters or similar opening sounds create phonetic connections), origin (names from the same cultural or linguistic background share heritage), popularity (names in similar usage bands offer comparable familiarity), and ${g ? g + ' name' : 'style'} category. These different forms of similarity serve different purposes: phonetic matches work well for sibling sets, origin matches honor cultural identity, popularity matches ensure recognition, and ${g ? g + ' name' : 'style'} matches align with preferences. Below are names that mirror ${htmlEscape(name)}'s appeal through these various lenses, providing meaningful alternatives with their own distinct stories.</p>`,
   ];
-  const intro = introTemplates[variationIndex](baseRecord.name, styleLabel, originLabel, gender);
+  const intro = introTemplates[variationIndex](baseRecord.name, styleLabel, gender, variationIndex);
 
   // Mesh B: Popularity cross-link — "Liam peaked in 2018"
   const basePopByYear = (basePopRows || []).reduce((acc, p) => {
@@ -371,18 +406,18 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
         const isStrongMatch = nStr.startsWith(firstTwo) || nStr.startsWith(firstThree);
         const expVariations = isStrongMatch ? phoneticExplanations : phoneticExplanationsSimple;
         const explanation = expVariations[(variationIndex + idx) % expVariations.length](n.name, baseRecord.name);
-        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation}${meaningSnippet(n) ? ' ' + htmlEscape(meaningSnippet(n)) : ''}</li>`;
       }).join('')}</ul></section>`
     : '';
 
   // Origin explanation variations
   const originExplanations = [
-    (n, base, origin) => `${htmlEscape(n)} shares the same ${origin ? htmlEscape(origin) : 'cultural'} origin as ${htmlEscape(base)}, reflecting similar linguistic roots and cultural traditions.`,
-    (n, base, origin) => `${htmlEscape(n)} comes from the same ${origin ? htmlEscape(origin) : 'cultural'} background as ${htmlEscape(base)}, sharing linguistic and cultural heritage.`,
-    (n, base, origin) => `${htmlEscape(n)} has the same ${origin ? htmlEscape(origin) : 'cultural'} origin as ${htmlEscape(base)}, connecting through shared traditions and language.`,
-    (n, base, origin) => `${htmlEscape(n)} originates from the same ${origin ? htmlEscape(origin) : 'cultural'} source as ${htmlEscape(base)}, reflecting parallel cultural and linguistic roots.`,
-    (n, base, origin) => `${htmlEscape(n)} shares ${htmlEscape(base)}'s ${origin ? htmlEscape(origin) : 'cultural'} origin, drawing from the same linguistic and cultural wellspring.`,
-    (n, base, origin) => `${htmlEscape(n)} comes from the same ${origin ? htmlEscape(origin) : 'cultural'} tradition as ${htmlEscape(base)}, sharing heritage and linguistic connections.`,
+    (n, base, origin) => `${htmlEscape(n)} shares the same ${htmlEscape(origin)} origin as ${htmlEscape(base)}, reflecting similar linguistic roots and cultural traditions.`,
+    (n, base, origin) => `${htmlEscape(n)} comes from the same ${htmlEscape(origin)} background as ${htmlEscape(base)}, sharing linguistic and cultural heritage.`,
+    (n, base, origin) => `${htmlEscape(n)} has the same ${htmlEscape(origin)} origin as ${htmlEscape(base)}, connecting through shared traditions and language.`,
+    (n, base, origin) => `${htmlEscape(n)} originates from the same ${htmlEscape(origin)} source as ${htmlEscape(base)}, reflecting parallel cultural and linguistic roots.`,
+    (n, base, origin) => `${htmlEscape(n)} shares ${htmlEscape(base)}'s ${htmlEscape(origin)} origin, drawing from the same linguistic and cultural wellspring.`,
+    (n, base, origin) => `${htmlEscape(n)} comes from the same ${htmlEscape(origin)} tradition as ${htmlEscape(base)}, sharing heritage and linguistic connections.`,
   ];
 
   // Section transition phrasing (micro-variation so pages don't share identical flow)
@@ -415,7 +450,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const originSectionHtml = sameOriginMatches.length > 0
     ? transitionBeforeOrigin[variationIndex]() + `<section aria-labelledby="origin-heading"><h2 id="origin-heading">Names with the Same Origin</h2><ul class="name-list">${sameOriginMatches.map((n, idx) => {
         const explanation = originExplanations[(variationIndex + idx) % originExplanations.length](n.name, baseRecord.name, originLabel);
-        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation}${meaningSnippet(n) ? ' ' + htmlEscape(meaningSnippet(n)) : ''}</li>`;
       }).join('')}</ul></section>`
     : '';
 
@@ -436,7 +471,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
         const nPopRank = nPopRows.length > 0 ? Math.min(...nPopRows.map((p) => p.rank || 9999)) : 9999;
         const popLabel = nPopRank < 100 ? 'top 100' : nPopRank < 500 ? 'top 500' : nPopRank < 1000 ? 'top 1000' : 'less common';
         const explanation = popularityExplanations[(variationIndex + idx) % popularityExplanations.length](n.name, baseRecord.name, popLabel);
-        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation}${meaningSnippet(n) ? ' ' + htmlEscape(meaningSnippet(n)) : ''}</li>`;
       }).join('')}</ul></section>`
     : '';
 
@@ -454,7 +489,7 @@ function generateNamesLikePage(baseRecord, names, popularity, categories) {
   const alternativesSectionHtml = otherAlternatives.length > 0
     ? transitionBeforeAlternatives[(variationIndex + 2) % 6]() + `<section aria-labelledby="alternatives-heading"><h2 id="alternatives-heading">Other Alternatives You Might Like</h2><ul class="name-list">${otherAlternatives.map((n, idx) => {
         const explanation = alternativesExplanations[(variationIndex + idx) % alternativesExplanations.length](n.name, baseRecord.name, gender);
-        return `<li><strong>${nameLink(n)}</strong> — ${explanation} ${n.meaning ? htmlEscape(n.meaning.slice(0, 80)) + (n.meaning.length > 80 ? '…' : '') : ''}</li>`;
+        return `<li><strong>${nameLink(n)}</strong> — ${explanation}${meaningSnippet(n) ? ' ' + htmlEscape(meaningSnippet(n)) : ''}</li>`;
       }).join('')}</ul></section>`
     : '';
 
@@ -562,9 +597,9 @@ function run() {
   console.log('Phase 2.5 — Names Like Engine (full coverage)');
   console.log('');
 
-  const names = loadJson('names');
-  const popularity = loadJson('popularity');
-  const categories = loadJson('categories');
+  const names = loadLegacyCollection('namesEnriched');
+  const popularity = loadLegacyCollection('popularity');
+  const categories = loadLegacyCollection('categories');
 
   if (names.length === 0) {
     console.error('ERROR: No names data found.');

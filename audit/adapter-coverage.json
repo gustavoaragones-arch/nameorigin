@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Reports exactly which canonical fields the adapter layer reads from, which legacy fields it recreates, which fields it deliberately does not attempt to recreate, and how provenance is (and isn't) preserved through the translation.",
+
+  "canonicalFieldsExposed": [
+    "identity.id", "identity.name", "identity.gender", "identity.firstLetter",
+    "classification.isTraditional", "classification.isModern", "classification.categories[]",
+    "meaning.primary",
+    "origin.country", "origin.cluster", "origin.confidence",
+    "language.primary",
+    "pronunciation.ipa", "pronunciation.syllableCount",
+    "variants.spellingVariants[]",
+    "popularity.records[]"
+  ],
+
+  "legacyFieldsRecreated": {
+    "flatRecord (names / namesEnriched)": ["id", "name", "gender", "origin_country", "language", "meaning", "phonetic", "syllables", "first_letter", "is_traditional", "is_modern", "origin_cluster", "origin_confidence"],
+    "popularity rows": ["name_id", "country", "year", "rank", "count"],
+    "categories rows": ["name_id", "category"],
+    "variants rows": ["name_id", "variant", "language"]
+  },
+
+  "intentionallyUnsupportedFields": [
+    { "canonicalField": "pronunciation.phoneticSpelling", "reason": "The legacy shape has only one 'phonetic' slot; pronunciation.ipa was designated as its closer match (documented in lib/adapters/legacy-name-record.js). phoneticSpelling has no legacy field to map to and is not recreated." },
+    { "canonicalField": "pronunciation.audioUrl", "reason": "No legacy field ever existed for this — a genuinely new capability with nothing to adapt to." },
+    { "canonicalField": "classification.styleTags[]", "reason": "No legacy dataset field held this (it is sourced from build/topic-clusters.json, which has no adapter in this phase)." },
+    { "canonicalField": "usage.regionsOfUse / usage.isUnisex", "reason": "No legacy dataset field ever stored this — it was always computed inline at render time (buildPopularityRegionsPhrase()), never persisted, so there is no legacy field to recreate it into." },
+    { "canonicalField": "etymology.* / history.* / culture.* / religion.* / nicknames.* / citations.*", "reason": "No legacy dataset ever had fields for these domains — they are new domains with no current data (Phase 2A/3A) and therefore nothing for the adapter to translate." },
+    { "canonicalField": "relatedNames.equivalents[] / relatedNames.clusterId", "reason": "These map to data/name-equivalents.json and build/topic-clusters.json respectively, neither of which has an adapter built in this phase (not named in the Phase 3B brief's Part 2 examples)." },
+    { "canonicalField": "popularity.trendAcceleration", "reason": "No legacy popularity.json row ever carried this field; it is always null in the canonical data currently (Phase 3A), so there is nothing populated to adapt regardless." },
+    { "canonicalField": "relationships.comparisonPairs[]", "reason": "No legacy generator input format for this exists — data/country-differentials.json is a real dataset but was never itself a 'legacy record shape' any generator reads field-by-field the way names.json is; no adapter built for it in this phase." }
+  ],
+
+  "deferredRelationshipFields": [
+    { "field": "relatedNames.similarNameIds[]", "status": "null in every canonical entity (Phase 3A) — deferred as a cross-entity computation, out of scope for a per-entity builder. The adapter has nothing to expose because the source has nothing; this is reported explicitly, not synthesized to look populated." },
+    { "field": "relationships.siblingPairs[]", "status": "null in every canonical entity (Phase 3A) — same deferral reason (requires scripts/generate-sibling-harmony.js-style scoring against other entities)." },
+    { "field": "relationships.surnameCompatibility[]", "status": "null in every canonical entity (Phase 3A) — same deferral reason, plus it references an out-of-scope Surname entity." }
+  ],
+
+  "provenancePreservation": {
+    "approach": "The legacy flat-record shape itself never had a provenance concept (data/names.json and data/names-enriched.json rows carry no field indicating researched-vs-computed) — the adapter does not invent one, since that would not be reproducing legacy behavior, it would be adding new behavior under a legacy name.",
+    "whereProvenanceActuallyLives": "Fully preserved and recoverable from the canonical source: every leaf field's x-provenance annotation lives in schemas/name-entity.schema.json (Phase 2A), and audit/canonical-build-report.json (Phase 3A) already reports provenanceFieldCounts (21 computed, 29 researched) read directly from that schema. The adapter sits downstream of that and does not need to re-expose it in the legacy shape to preserve it upstream.",
+    "verified": "A caller needing provenance for a field the adapter exposes can consult data/canonical/names.json directly (the adapter's own input) rather than the adapted legacy-shape output — this was a deliberate design choice, not an oversight, and is documented in docs/ADAPTER_LAYER.md."
+  },
+
+  "coverageSummary": {
+    "canonicalDomainsWithAtLeastOneFieldExposed": 8,
+    "canonicalDomainsTotal": 18,
+    "domainsExposed": ["identity", "classification", "meaning", "origin", "language", "pronunciation", "variants", "popularity"],
+    "note": "8 of 18 canonical domains have at least one field reaching the legacy shape; this ratio is expected and correct, not a coverage failure — the legacy shape itself only ever had ~13 flat fields plus 3 relational datasets, so it structurally cannot represent domains (etymology, history, culture, religion, nicknames, citations, relatedNames, relationships) that never existed in the legacy model."
+  }
+}

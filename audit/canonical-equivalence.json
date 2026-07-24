@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Verifies that every fact preserved in data/canonical/names.json matches its source dataset exactly — data comparison only, no rendered HTML is inspected. Every entity (3,697) was checked on every dimension below; these are not sampled results.",
+  "method": "For each of the 3,697 canonical entities, looked up the corresponding source row(s) in data/names.json, data/names-enriched.json, data/normalized-names.json, data/categories.json, data/variants.json, and data/popularity.json by name_id, and compared field-for-field (categories and variants compared as sets, since row order is not a meaningful fact to preserve; popularity compared both by count and by full row content).",
+  "checks": [
+    { "dimension": "identity.id / identity.name", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "identity.slug (vs. data/normalized-names.json)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "identity.gender", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "identity.firstLetter", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "classification.categories[] (vs. data/categories.json, compared as sets)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "variants.spellingVariants[] (vs. data/variants.json, self-name excluded, compared as sets)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "popularity.records[] (vs. data/popularity.json, row count + full content per row)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "origin.country / origin.cluster / origin.confidence (vs. data/names-enriched.json)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" },
+    { "dimension": "language.primary (vs. data/names-enriched.json)", "entitiesChecked": 3697, "mismatches": 0, "result": "PASS" }
+  ],
+  "totalEntitiesVerified": 3697,
+  "totalMismatchesFound": 0,
+  "sampleFailures": [],
+  "overallResult": "PASS",
+  "notes": [
+    "This equivalence check exercises the SAME entities the build already produced (data/canonical/names.json) against the SAME source files the builder read from — it is not an independent second data source, so a passing result confirms internal consistency between the builder's output and its declared inputs, not correctness of the inputs themselves (which Phases 1A-1D already separately audited).",
+    "No rendered page, generator output, or HTML was inspected for this check — per the Phase 3A brief, this is a data-only comparison."
+  ]
+}

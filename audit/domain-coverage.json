@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-07-24T00:28:08.492Z",
+  "phase": "5.0",
+  "baselineReference": "knowledge-baseline-1.0",
+  "phase5AOriginExpansionStarted": false,
+  "entityCount": 3697,
+  "researchedOrigins": {
+    "count": 585,
+    "pct": 15.82
+  },
+  "researchedMeanings": {
+    "count": 516,
+    "pct": 13.96
+  },
+  "storedPronunciations": {
+    "count": 583,
+    "pct": 15.77
+  },
+  "etymologyCoverage": {
+    "count": 571,
+    "pct": 15.44
+  },
+  "historyCoverage": {
+    "count": 571,
+    "pct": 15.44
+  },
+  "citationCoverage": {
+    "count": 0,
+    "pct": 0
+  },
+  "variantsCoverage": {
+    "count": 2253,
+    "pct": 60.94
+  },
+  "popularityCoverage": {
+    "count": 5,
+    "pct": 0.14
+  }
+}

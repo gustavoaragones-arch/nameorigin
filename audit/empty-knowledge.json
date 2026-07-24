@@ -1,0 +1,183 @@
+{
+  "generatedAt": "2026-07-21T18:25:10.870Z",
+  "readOnly": true,
+  "method": "For each known fallback marker (identified by reading the generator source, see scripts/audit/knowledge-lib.js), every relevant generated HTML file is scanned for the literal substring. This is an exact count over real committed output, not a sample.",
+  "totalNameDetailPagesScanned": 3697,
+  "fallbackMarkerResults": [
+    {
+      "id": "meaning-fallback-documented-given-name",
+      "attribute": "meaning",
+      "marker": "documented given name",
+      "sourceFunction": "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+      "sourceLines": [
+        134,
+        165,
+        932,
+        1635,
+        1881
+      ],
+      "description": "When record.meaning is empty, these functions substitute the literal phrase \"a documented given name\" as if it were the name's actual meaning, in the meta description, the on-page Direct Answer, and the FAQ lead-in.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3694,
+      "fallbackRatePct": 99.92
+    },
+    {
+      "id": "meaning-fallback-em-dash",
+      "attribute": "meaning",
+      "marker": "—</p>",
+      "sourceFunction": "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+      "sourceLines": [
+        820,
+        1124,
+        1143
+      ],
+      "description": "A more conservative fallback used elsewhere on the same page: renders an em dash (\"—\") instead of a fabricated meaning when record.meaning is empty. Contrast with meaning-fallback-documented-given-name above, which fabricates a claim instead of marking the field as unknown.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3697,
+      "fallbackRatePct": 100
+    },
+    {
+      "id": "origin-fallback-multiple-traditions",
+      "attribute": "origin_country / language / origin_cluster",
+      "marker": "multiple traditions",
+      "sourceFunction": "buildNameUsageContextSection() / buildQuickFaqForName()",
+      "sourceLines": [
+        531,
+        1144
+      ],
+      "description": "When no origin_country, origin_cluster, or language is set, these sections substitute \"multiple traditions\" as the name's origin label.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3534,
+      "fallbackRatePct": 95.59
+    },
+    {
+      "id": "origin-fallback-various-linguistic-traditions",
+      "attribute": "origin_country / language",
+      "marker": "various linguistic traditions",
+      "sourceFunction": "buildOriginLineage()",
+      "sourceLines": [
+        834
+      ],
+      "description": "The \"Origin and Linguistic Lineage\" section always renders (never omitted); when origin is empty it substitutes \"various linguistic traditions\" and derives a generic \"related language families\" value.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3534,
+      "fallbackRatePct": 95.59
+    },
+    {
+      "id": "origin-fallback-various-cultural-traditions",
+      "attribute": "origin_country / language",
+      "marker": "various cultural traditions",
+      "sourceFunction": "buildCulturalContext()",
+      "sourceLines": [
+        865
+      ],
+      "description": "The \"Historical and Cultural Context\" section always renders (never omitted); when origin is empty it substitutes \"various cultural traditions\".",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3534,
+      "fallbackRatePct": 95.59
+    },
+    {
+      "id": "popularity-disclosed-no-stable-rank",
+      "attribute": "popularity",
+      "marker": "does not yet show a stable rank band",
+      "sourceFunction": "buildDirectAnswers()",
+      "sourceLines": [
+        948,
+        949
+      ],
+      "description": "Discovered in Phase 1C. When no popularity rank is available, the \"How popular is the name\" FAQ answer explicitly states the name \"does not yet show a stable rank band in every dataset we publish\" — an honest disclosure, not a fabrication. Verified at 3,692 of 3,697 name-detail pages (99.86%), matching the popularity_record entity coverage gap exactly.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 3692,
+      "fallbackRatePct": 99.86
+    },
+    {
+      "id": "popularity-regions-fallback-unreachable",
+      "attribute": "popularity",
+      "marker": "the United States and other regions",
+      "sourceFunction": "buildPopularityRegionsPhrase()",
+      "sourceLines": [
+        901
+      ],
+      "description": "Discovered in Phase 1C. Code exists to substitute \"the United States and other regions\" when popRows is empty, but this branch is only reached from a call site gated by hasRank being true — and hasRank is derived from the same popularity rows, so the two conditions co-occur. Verified: 0 of 3,697 pages contain this string. Recorded for completeness as a fallback mechanism that exists in source but has never fired in committed output.",
+      "pagesScanned": 3697,
+      "pagesContainingFallback": 0,
+      "fallbackRatePct": 0
+    },
+    {
+      "id": "sibling-origin-fallback-various-origins",
+      "attribute": "origin_country / language (sibling-harmony page)",
+      "marker": "various origins",
+      "sourceFunction": "sibling-explanation-renderer.js :: buildContext()",
+      "sourceLines": [
+        55
+      ],
+      "description": "Discovered in Phase 1C. generate-sibling-pages.js loads plain data/names.json (never data/names-enriched.json), so origin_country/language are null even for names that DO have curated origin data elsewhere on the site (e.g. Aadi, whose own name-detail page correctly shows \"India\"/\"Sanskrit\"). As a result this fallback fires on 150 of 150 sibling-harmony pages (100%) — a higher rate than the 95.6% seen on name-detail-page for the identical underlying concept, because the two generators read different datasets for the same field.",
+      "pagesScanned": 150,
+      "pagesContainingFallback": 150,
+      "fallbackRatePct": 100
+    },
+    {
+      "id": "compare-rank-movement-fallback-data-available",
+      "attribute": "country-comparison rank/movement",
+      "marker": "Rank and movement data are available for our covered countries",
+      "sourceFunction": "generate-compare-pages.js :: getTrendDeltaSection()",
+      "sourceLines": [
+        220
+      ],
+      "description": "Discovered in Phase 1C. When no rank differential AND no 10-year movement figure could be computed for either country in the pair (which requires both a 2015 and a current-year rank — and data/popularity.json contains no year-2015 rows at all, for any name), this section substitutes a generic sentence asserting that \"data are available for our covered countries,\" despite none being available for this specific name/country-pair instance. Verified: 20 of 20 compare-name-country-pair-page instances (100%) contain this exact string — the fallback fires on every single page of this template, because no name in the dataset has a 2015 popularity row.",
+      "pagesScanned": 20,
+      "pagesContainingFallback": 20,
+      "fallbackRatePct": 100
+    }
+  ],
+  "coverageVsRenderedGaps": [
+    {
+      "attribute": "meaning",
+      "templateBehavior": "always-with-fallback (name-detail-page)",
+      "datasetCoveragePct": 0.08,
+      "renderedFallbackPct": 99.92,
+      "gapNote": "Dataset coverage and rendered-fallback rate agree closely (both ~99.9% empty vs ~99.9% pages using the fabricated fallback phrase), confirming the sparsity is not masked anywhere else in the pipeline."
+    },
+    {
+      "attribute": "origin_country / language / origin_cluster",
+      "templateBehavior": "always-with-fallback (name-detail-page, 3 separate sections)",
+      "datasetCoveragePct": 4.41,
+      "renderedFallbackPct": 95.59,
+      "gapNote": "Three independent template sections (buildNameUsageContextSection, buildOriginLineage, buildCulturalContext) each re-derive their own fallback text from the same empty field, so the same ~95.6% of pages repeat generic origin language three times over."
+    },
+    {
+      "attribute": "phonetic",
+      "templateBehavior": "optional (name-detail-page Pronunciation section)",
+      "datasetCoveragePct": 0,
+      "renderedFallbackPct": null,
+      "gapNote": "Unlike meaning/origin, the phonetic field has no fallback text — the Pronunciation section is conditionally omitted (rendered only when record.phonetic is truthy). Because coverage is exactly 0%, this section never renders on any of the 3,697 pages; it exists in the template code but has never once fired."
+    },
+    {
+      "attribute": "popularity",
+      "templateBehavior": "optional (name-detail-page, names-like-page similarity dimension, popularity-year-page source)",
+      "datasetCoveragePct": 0.14,
+      "renderedFallbackPct": null,
+      "gapNote": "Popularity sections are conditionally omitted rather than faked (no literal fallback string found), but because only 5 of 3,697 names have any row, the \"Names with Similar Popularity\" dimension on names-like-page and the Popularity section on name-detail-page are absent for 99.86% of pages by construction, not by explicit fallback text."
+    }
+  ],
+  "headlineFinding": {
+    "marker": "documented given name",
+    "attribute": "meaning",
+    "pagesAffected": 3694,
+    "totalPages": 3697,
+    "pct": 99.92,
+    "statement": "3694 of 3697 name-detail pages (99.92%) contain the literal fallback phrase \"documented given name\" as the stated meaning of the name, in the meta description and/or on-page direct-answer text."
+  },
+  "mostPervasiveMarker": {
+    "marker": "—</p>",
+    "attribute": "meaning",
+    "pagesAffected": 3697,
+    "totalPages": 3697,
+    "pct": 100,
+    "note": "Reported separately from headlineFinding because this marker (an honest \"—\" placeholder in the Quick Facts table) is a different kind of gap than a fabricated claim — it discloses missing data rather than papering over it, even though it technically appears on more pages."
+  },
+  "notes": [
+    "This report only counts sections that ALWAYS render with a substituted generic value. Sections that are conditionally omitted when data is missing (phonetic, popularity) are listed for contrast but are not \"empty knowledge\" in the same sense — they under-populate silently rather than fabricate.",
+    "No section, marker, or gap here is scored, ranked by severity beyond raw counts, or paired with a fix — that is explicitly out of scope for Phase 1B per the brief."
+  ]
+}

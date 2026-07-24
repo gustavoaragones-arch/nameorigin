@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Traces, for every one of the 18 canonical domains defined in schemas/name-entity.schema.json, the chain: current datasets -> current generators -> canonical destination -> downstream consumers -> migration prerequisites. This is the graph audit/migration-waves.json's wave computation is derived from — built once here, not recomputed per deliverable.",
+  "method": "Datasets/generators per domain are pulled directly from audit/knowledge-domains.json and audit/generator-dependencies-v2.json (Phase 2A). Migration prerequisites are dependency EDGES (domain A must migrate before domain B) established from real code evidence — each edge below cites the specific generator behavior that creates it. No edge is asserted without a citable source.",
+
+  "domains": [
+    {
+      "domain": "identity",
+      "currentDatasets": ["data/names.json"],
+      "currentGenerators": ["scripts/generate-programmatic-pages.js", "scripts/generate-names-like.js", "scripts/generate-sibling-pages.js", "scripts/generate-lastname-pages.js", "scripts/generate-compare-pages.js", "scripts/generate-equivalent-pages.js", "scripts/generate-homepage.js", "(all page-generators — universal prerequisite)"],
+      "canonicalDestination": "identity.*",
+      "downstreamConsumers": ["every other domain (every entity keys off identity.id/slug)"],
+      "migrationPrerequisites": [],
+      "prerequisiteRationale": "No domain has a prerequisite for identity — it is the root of the dependency graph. Every other domain's canonical destination requires an identity.id to attach to."
+    },
+    {
+      "domain": "classification",
+      "currentDatasets": ["data/categories.json"],
+      "currentGenerators": ["scripts/classify-categories.js (data-build)", "scripts/generate-programmatic-pages.js (generateStylePage, related-names logic)"],
+      "canonicalDestination": "classification.*",
+      "downstreamConsumers": ["relationships.siblingPairs[] (style-match scoring factor)", "relatedNames.similarNameIds[] / clusterId (style pool + topic-cluster input)"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "scripts/classify-categories.js reads data/names.json (identity fields) to assign categories; no other domain is a prerequisite."
+    },
+    {
+      "domain": "meaning",
+      "currentDatasets": ["data/names.json", "data/names-enriched.json"],
+      "currentGenerators": ["scripts/enrich-meanings.js (data-build, Phase 1 acquisition)", "scripts/generate-programmatic-pages.js (buildMetaDescription, buildDirectAnswer, buildDirectAnswers, buildDefinitionBlock, buildNameFactsTable, buildQuickFaqForName)"],
+      "canonicalDestination": "meaning.primary, meaning.alternates, meaning.confidence",
+      "downstreamConsumers": ["citations.sources[] (would cite meaning.primary once populated)"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "Meaning research attaches to an existing identity record; no other domain feeds it. It is currently the domain with the single highest fallback-occurrence count (audit/knowledge-roi.json, Phase 1D)."
+    },
+    {
+      "domain": "origin",
+      "currentDatasets": ["data/names.json (unenriched copy)", "data/names-enriched.json", "data/origin-overrides.json"],
+      "currentGenerators": ["scripts/build-origin-seed.js (data-build, curated)", "scripts/apply-origin-enrichment.js (data-build, merge)", "scripts/generate-programmatic-pages.js", "scripts/generate-names-like.js (reads unenriched file)", "scripts/generate-sibling-pages.js (reads unenriched file — see audit/knowledge-redundancy.json origin-dual-file-split)"],
+      "canonicalDestination": "origin.country, origin.cluster, origin.confidence",
+      "downstreamConsumers": ["citations.sources[]", "history (soft/conceptual)", "culture (soft/conceptual)", "religion (soft/conceptual)", "relationships.siblingPairs[] (30% scoring factor)", "relatedNames.similarNameIds[] / clusterId (origin pool + cluster input)"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "The field ranked #1 by audit/knowledge-roi.json (Phase 1D). Has the widest downstream fan-out of any domain — 6 distinct downstream consumers, more than any other domain in this graph."
+    },
+    {
+      "domain": "language",
+      "currentDatasets": ["data/names-enriched.json", "data/origin-overrides.json"],
+      "currentGenerators": ["scripts/apply-origin-enrichment.js (same merge step as origin)", "scripts/generate-programmatic-pages.js"],
+      "canonicalDestination": "language.primary, language.related",
+      "downstreamConsumers": ["etymology (soft/conceptual — rootLanguage relates to language.primary)"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "Populated by the same data-build step as origin (scripts/apply-origin-enrichment.js merges both from data/origin-overrides.json in one pass) — not a prerequisite of origin, a parallel output of the same migration action."
+    },
+    {
+      "domain": "etymology",
+      "currentDatasets": ["(none)"],
+      "currentGenerators": ["(none)"],
+      "canonicalDestination": "etymology.rootWord, etymology.rootLanguage, etymology.derivationNotes",
+      "downstreamConsumers": ["citations.sources[] (once populated)"],
+      "migrationPrerequisites": ["identity", "language (soft — rootLanguage would reference language.primary for narrative coherence, not a hard data dependency since no etymology data currently exists to migrate)"],
+      "prerequisiteRationale": "A new domain with zero current data (audit/knowledge-domains.json). There is nothing to migrate; the 'prerequisite' on language is a conceptual ordering recommendation for when real etymology research begins, not a migration blocker."
+    },
+    {
+      "domain": "history",
+      "currentDatasets": ["(none — see buildCulturalContext() fallback text)"],
+      "currentGenerators": ["(none produce real per-entity history; scripts/generate-programmatic-pages.js's buildCulturalContext()/buildOriginLineage() render generic substitute text in this domain's place today)"],
+      "canonicalDestination": "history.firstRecordedUse, history.notableBearers, history.historicalUsageNotes",
+      "downstreamConsumers": ["citations.sources[] (once populated)"],
+      "migrationPrerequisites": ["identity", "origin (soft — cultural/historical framing conventionally references origin)"],
+      "prerequisiteRationale": "New domain, zero current data. Soft dependency noted because today's fallback text in this domain's place (audit/fallback-taxonomy.json) is itself origin-derived, suggesting real history content would likely reference origin too."
+    },
+    {
+      "domain": "culture",
+      "currentDatasets": ["(none)"],
+      "currentGenerators": ["(none — same fallback-text situation as history)"],
+      "canonicalDestination": "culture.culturalSignificance, culture.regionalNotes",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "origin (soft)"],
+      "prerequisiteRationale": "New domain, zero current data."
+    },
+    {
+      "domain": "religion",
+      "currentDatasets": ["(none)"],
+      "currentGenerators": ["(none)"],
+      "canonicalDestination": "religion.tradition, religion.scripturalReference",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "origin (soft)"],
+      "prerequisiteRationale": "Confirmed absent from the project entirely in Phase 1A (audit/entity-map.json entities.religions, count: 0). Not derived from the categories.json 'biblical' tag — that tag is deliberately mapped to classification, not religion (see audit/knowledge-domains.json)."
+    },
+    {
+      "domain": "usage",
+      "currentDatasets": ["(none stored — computed inline by buildPopularityRegionsPhrase() at render time)"],
+      "currentGenerators": ["scripts/generate-programmatic-pages.js (buildPopularityRegionsPhrase, inline)"],
+      "canonicalDestination": "usage.regionsOfUse, usage.isUnisex",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "popularity"],
+      "prerequisiteRationale": "usage.regionsOfUse is directly derived from popularity.records (which countries have ranking rows) — a hard dependency, not a soft one, since the current render-time function literally takes popularity rows as its input."
+    },
+    {
+      "domain": "pronunciation",
+      "currentDatasets": ["data/names.json / data/names-enriched.json (phonetic field, 0% populated)", "data/normalized-names.json (syllable_estimate, phonetic_code)"],
+      "currentGenerators": ["scripts/generate-programmatic-pages.js (conditional Pronunciation section)", "scripts/normalize-names.js (data-build, syllable_estimate/phonetic_code)"],
+      "canonicalDestination": "pronunciation.ipa, pronunciation.phoneticSpelling, pronunciation.syllableCount, pronunciation.audioUrl",
+      "downstreamConsumers": ["relationships.siblingPairs[] (25% scoring factor, rhythm)"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "syllableCount is deterministically derived from the name string (identity) alone. The phonetic field (candidate for ipa) has 0% coverage today — this domain has the largest gap between capability and actual data of any domain (audit/capability-matrix.json)."
+    },
+    {
+      "domain": "variants",
+      "currentDatasets": ["data/variants.json", "data/normalized-names.json (spelling_variants[])"],
+      "currentGenerators": ["scripts/acquire/build-variants.js (data-build)", "scripts/normalize-names.js (data-build, parallel producer — see audit/knowledge-redundancy.json)"],
+      "canonicalDestination": "variants.spellingVariants[], variants.transliterations[]",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "Deterministically derived from the name string alone. The one domain confirmed to have two datasets supplying byte-for-byte identical data (audit/knowledge-redundancy.json, exhaustively verified across all 3,697 names) — the lowest-risk merge in this entire graph."
+    },
+    {
+      "domain": "nicknames",
+      "currentDatasets": ["(none)"],
+      "currentGenerators": ["(none)"],
+      "canonicalDestination": "nicknames.commonNicknames[], nicknames.diminutives[]",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "New domain, zero current data, no conceptual dependency beyond identity (a nickname derives from the name itself, not from origin/culture/etc.)."
+    },
+    {
+      "domain": "relatedNames",
+      "currentDatasets": ["data/name-equivalents.json (equivalents[])", "build/topic-clusters.json (clusterId)", "(similarNameIds computed at render time, not persisted)"],
+      "currentGenerators": ["scripts/generate-equivalent-pages.js", "scripts/generate-programmatic-pages.js (getSimilarNamesForName, getClusterBlockNames)", "scripts/generate-names-like.js (4-pool similarity logic)"],
+      "canonicalDestination": "relatedNames.equivalents[], relatedNames.similarNameIds[], relatedNames.clusterId",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "origin", "classification", "popularity"],
+      "prerequisiteRationale": "relatedNames.equivalents[] alone would need only identity, but similarNameIds[] and clusterId draw on origin, classification (style), and popularity pools (scripts/generate-names-like.js's phonetic/origin/popularity/gender pools; build/topic-clusters.json's origin_cluster/style_cluster/popularity_band inputs). Per-domain (not per-field) migration ordering takes the LATEST of a domain's sub-field dependencies, so the whole domain waits for all three."
+    },
+    {
+      "domain": "popularity",
+      "currentDatasets": ["data/popularity.json", "data/country-differentials.json", "data/regional-trend-acceleration.json"],
+      "currentGenerators": ["scripts/build-popularity.js (data-build)", "scripts/generate-country-differentials.js (data-build)", "scripts/generate-regional-trend-acceleration.js (data-build)", "scripts/generate-programmatic-pages.js", "scripts/generate-compare-pages.js (does NOT read country-differentials.json — computes independently, see audit/knowledge-redundancy.json compare-page-orphaned-dataset)", "scripts/generate-trends-page.js"],
+      "canonicalDestination": "popularity.records[], popularity.trendAcceleration",
+      "downstreamConsumers": ["usage.regionsOfUse", "relationships.siblingPairs[] (20% scoring factor)", "relationships.comparisonPairs[]", "relatedNames.similarNameIds[] / clusterId"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "The domain with the widest current dataset fragmentation (3 files deriving independently from the same source — audit/knowledge-redundancy.json popularity-three-parallel-derivations) but the narrowest true prerequisite (identity only)."
+    },
+    {
+      "domain": "relationships",
+      "currentDatasets": ["(none stored — computed at render time by scoreCompatibility() and generate-sibling-harmony.js)"],
+      "currentGenerators": ["scripts/generate-smoothness-score.js", "scripts/generate-sibling-harmony.js", "scripts/generate-compare-pages.js (comparisonPairs)"],
+      "canonicalDestination": "relationships.surnameCompatibility[], relationships.siblingPairs[], relationships.comparisonPairs[]",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "origin", "classification", "popularity", "pronunciation"],
+      "prerequisiteRationale": "generate-sibling-harmony.js's own documented scoring weights (origin 30%, rhythm/pronunciation 25%, popularity 20%, length 15%, style/classification 10%) directly name 4 of this domain's 5 prerequisites. The 5th (identity) is universal. This is the domain with the most prerequisites of any in the graph, reflecting that it is entirely computed FROM the others rather than independently researched."
+    },
+    {
+      "domain": "citations",
+      "currentDatasets": ["data/normalized-names.json (meaning_source, origin_source, confidence_score — present but unpopulated columns)"],
+      "currentGenerators": ["scripts/enrich-meanings.js (intends to populate meaning_source/origin_source per its own header comment; not confirmed reaching live data)"],
+      "canonicalDestination": "citations.sources[]",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity", "meaning", "origin", "etymology", "history"],
+      "prerequisiteRationale": "A citation is, by definition, provenance FOR another fact — it cannot be meaningfully migrated before the fact it supports exists on the canonical record. This is the only domain in the graph with a hard dependency on 4 other researched domains simultaneously, making it the terminal node of the dependency graph (max computed level)."
+    },
+    {
+      "domain": "metadata",
+      "currentDatasets": ["(none — no current dataset tracks per-record timestamps)"],
+      "currentGenerators": ["scripts/build-date.js (sitewide build date, not per-entity)"],
+      "canonicalDestination": "metadata.schemaVersion, metadata.createdAt, metadata.lastUpdated, metadata.dataCompletenessScore",
+      "downstreamConsumers": ["none identified"],
+      "migrationPrerequisites": ["identity"],
+      "prerequisiteRationale": "schemaVersion/createdAt/lastUpdated can be stamped the moment an entity record is created (wave 1, alongside identity). dataCompletenessScore is a special case: it is CONTINUOUSLY recomputed as every other domain migrates, not gated to a single wave — see audit/migration-waves.json for how this is handled without violating the 'exactly one wave per domain' validation rule."
+    }
+  ],
+
+  "cycleCheck": {
+    "method": "Every migrationPrerequisites edge above was fed into a topological level computation (see audit/migration-waves.json for the algorithm and result). The computation completed without throwing a circular-dependency error, which it is programmed to do if any cycle exists.",
+    "result": "PASS — no circular dependency found among the 18 domains."
+  }
+}

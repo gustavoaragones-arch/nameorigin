@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-07-21T18:26:06.714Z",
+  "readOnly": true,
+  "scope": "Ranks knowledge FIELDS by measured project-wide impact, not individual pages. Sort key: audit/knowledge-roi.json knowledgeRecoveryScore (ties broken by recoverableOccurrenceTotal). No implementation or editorial-effort estimate is included — only measured impact.",
+  "queue": [
+    {
+      "rank": 1,
+      "field": "origin",
+      "label": "Origin (country / language / cluster)",
+      "knowledgeRecoveryScore": 100,
+      "currentCoveragePct": 4.41,
+      "missingRecords": 3534,
+      "templatesAffected": [
+        "name-detail-page",
+        "sibling-harmony-page",
+        "names-like-page"
+      ],
+      "pagesImpacted": 7544,
+      "recoverableOccurrenceTotal": 17820
+    },
+    {
+      "rank": 2,
+      "field": "popularity",
+      "label": "Popularity",
+      "knowledgeRecoveryScore": 42,
+      "currentCoveragePct": 0.14,
+      "missingRecords": 3692,
+      "templatesAffected": [
+        "name-detail-page",
+        "names-like-page",
+        "sibling-harmony-page"
+      ],
+      "pagesImpacted": 7544,
+      "recoverableOccurrenceTotal": 7534
+    },
+    {
+      "rank": 3,
+      "field": "meaning",
+      "label": "Meaning",
+      "knowledgeRecoveryScore": 41,
+      "currentCoveragePct": 0.08,
+      "missingRecords": 3694,
+      "templatesAffected": [
+        "name-detail-page"
+      ],
+      "pagesImpacted": 3697,
+      "recoverableOccurrenceTotal": 7391
+    },
+    {
+      "rank": 4,
+      "field": "pronunciation",
+      "label": "Pronunciation (phonetic)",
+      "knowledgeRecoveryScore": 21,
+      "currentCoveragePct": 0,
+      "missingRecords": 3697,
+      "templatesAffected": [
+        "name-detail-page"
+      ],
+      "pagesImpacted": 3697,
+      "recoverableOccurrenceTotal": 3697
+    },
+    {
+      "rank": 5,
+      "field": "heraldry",
+      "label": "Heraldry",
+      "knowledgeRecoveryScore": 0,
+      "currentCoveragePct": 2.67,
+      "missingRecords": 73,
+      "templatesAffected": [
+        "surname-compatibility-page"
+      ],
+      "pagesImpacted": 75,
+      "recoverableOccurrenceTotal": 74
+    },
+    {
+      "rank": 6,
+      "field": "trend",
+      "label": "Trend / rank movement",
+      "knowledgeRecoveryScore": 0,
+      "currentCoveragePct": 0.03,
+      "missingRecords": 18480,
+      "templatesAffected": [
+        "compare-name-country-pair-page"
+      ],
+      "pagesImpacted": 20,
+      "recoverableOccurrenceTotal": 20
+    }
+  ],
+  "notes": [
+    "This ranking answers \"which missing field, if populated, touches the most currently-non-factual rendered statements across the most pages\" — it does not account for how difficult or time-consuming any given field is to research, which is deliberately out of scope for a read-only measurement phase.",
+    "Fields with zero fallback/disclosed-missing occurrences (fully computed or fully curated fields) are excluded from this queue entirely, since they have no measurable recovery potential — see audit/knowledge-roi.json for the complete field list including those."
+  ]
+}

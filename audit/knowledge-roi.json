@@ -1,0 +1,610 @@
+{
+  "generatedAt": "2026-07-21T18:25:56.946Z",
+  "readOnly": true,
+  "scope": "Quantifies recovery potential only — no implementation advice, no editorial recommendation beyond the measured numbers themselves.",
+  "method": {
+    "recoverableOccurrenceTotal": "Sum, across every fallback- or disclosed-missing-classified assertion tied to this field (from audit/truthfulness-matrix.json, Phase 1C), of the number of currently-rendered pages showing that non-factual state. This is the count of individual rendered statements that would flip to a factual (supported) state if the field reached 100% coverage.",
+    "knowledgeRecoveryScore": "round(100 * thisField.recoverableOccurrenceTotal / maxAcrossAllFields.recoverableOccurrenceTotal) — a linear normalization of the measured occurrence total, bounded 0-100. No weighting, multiplier, or subjective factor is applied; the field with the single largest measured recoverable-occurrence total scores 100.",
+    "pagesImpacted": "Sum of live page counts (audit/project-inventory.json) for every distinct template containing at least one fallback or disclosed-missing assertion tied to this field. Templates are counted once each even if they contain multiple assertions for the same field."
+  },
+  "fields": [
+    {
+      "field": "origin",
+      "label": "Origin (country / language / cluster)",
+      "currentCoverage": {
+        "present": 163,
+        "total": 3697,
+        "missing": 3534,
+        "coveragePct": 4.41
+      },
+      "templatesAffected": [
+        "name-detail-page",
+        "sibling-harmony-page",
+        "names-like-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+          "currentState": "fallback"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Historical and Cultural Context\"",
+          "currentState": "fallback"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+          "currentState": "fallback"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+          "currentState": "fallback"
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+          "currentState": "disclosed-missing"
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+          "currentState": "fallback"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 5,
+        "totalPageOccurrences": 14286,
+        "breakdown": [
+          {
+            "template": "name-detail-page",
+            "assertion": "Describes the name's \"Origin and Linguistic Lineage\"",
+            "count": 3534,
+            "method": "directly-measured"
+          },
+          {
+            "template": "name-detail-page",
+            "assertion": "Describes the name's \"Historical and Cultural Context\"",
+            "count": 3534,
+            "method": "directly-measured"
+          },
+          {
+            "template": "name-detail-page",
+            "assertion": "FAQ answers \"Where does the name {name} come from?\"",
+            "count": 3534,
+            "method": "directly-measured"
+          },
+          {
+            "template": "name-detail-page",
+            "assertion": "Describes the name's \"Name Usage & Cultural Context\"",
+            "count": 3534,
+            "method": "directly-measured"
+          },
+          {
+            "template": "sibling-harmony-page",
+            "assertion": "States the base name's origin as part of the \"Shared origin\" scoring factor",
+            "count": 150,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 3534,
+        "breakdown": [
+          {
+            "template": "names-like-page",
+            "assertion": "Lists names with \"the Same Origin\" (section omitted when none found)",
+            "count": 3534,
+            "method": "derived-from-coverage-pct"
+          }
+        ]
+      },
+      "pagesImpacted": 7544,
+      "recoverableOccurrenceTotal": 17820,
+      "knowledgeRecoveryScore": 100
+    },
+    {
+      "field": "popularity",
+      "label": "Popularity",
+      "currentCoverage": {
+        "present": 5,
+        "total": 3697,
+        "missing": 3692,
+        "coveragePct": 0.14
+      },
+      "templatesAffected": [
+        "name-detail-page",
+        "names-like-page",
+        "sibling-harmony-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "name-detail-page",
+          "assertion": "FAQ answers \"How popular is the name {name}?\"",
+          "currentState": "disclosed-missing"
+        },
+        {
+          "template": "names-like-page",
+          "assertion": "Lists names with \"Similar Popularity\" (section omitted when none found)",
+          "currentState": "disclosed-missing"
+        },
+        {
+          "template": "sibling-harmony-page",
+          "assertion": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+          "currentState": "disclosed-missing"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 3,
+        "totalPageOccurrences": 7534,
+        "breakdown": [
+          {
+            "template": "name-detail-page",
+            "assertion": "FAQ answers \"How popular is the name {name}?\"",
+            "count": 3692,
+            "method": "directly-measured"
+          },
+          {
+            "template": "names-like-page",
+            "assertion": "Lists names with \"Similar Popularity\" (section omitted when none found)",
+            "count": 3692,
+            "method": "derived-from-coverage-pct"
+          },
+          {
+            "template": "sibling-harmony-page",
+            "assertion": "States a popularity band (\"top 100\" / \"other\") as part of the \"Popularity parity\" scoring factor",
+            "count": 150,
+            "method": "upper-bound (totalPages, no pct available)"
+          }
+        ]
+      },
+      "pagesImpacted": 7544,
+      "recoverableOccurrenceTotal": 7534,
+      "knowledgeRecoveryScore": 42
+    },
+    {
+      "field": "meaning",
+      "label": "Meaning",
+      "currentCoverage": {
+        "present": 3,
+        "total": 3697,
+        "missing": 3694,
+        "coveragePct": 0.08
+      },
+      "templatesAffected": [
+        "name-detail-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "name-detail-page",
+          "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+          "currentState": "fallback"
+        },
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows the name's meaning in the Quick Facts table",
+          "currentState": "disclosed-missing"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 3694,
+        "breakdown": [
+          {
+            "template": "name-detail-page",
+            "assertion": "States what the name \"means\" in the meta description / direct-answer / FAQ lead",
+            "count": 3694,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 3697,
+        "breakdown": [
+          {
+            "template": "name-detail-page",
+            "assertion": "Shows the name's meaning in the Quick Facts table",
+            "count": 3697,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "pagesImpacted": 3697,
+      "recoverableOccurrenceTotal": 7391,
+      "knowledgeRecoveryScore": 41
+    },
+    {
+      "field": "pronunciation",
+      "label": "Pronunciation (phonetic)",
+      "currentCoverage": {
+        "present": 0,
+        "total": 3697,
+        "missing": 3697,
+        "coveragePct": 0
+      },
+      "templatesAffected": [
+        "name-detail-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "name-detail-page",
+          "assertion": "Shows a Pronunciation section",
+          "currentState": "disclosed-missing"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 3697,
+        "breakdown": [
+          {
+            "template": "name-detail-page",
+            "assertion": "Shows a Pronunciation section",
+            "count": 3697,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "pagesImpacted": 3697,
+      "recoverableOccurrenceTotal": 3697,
+      "knowledgeRecoveryScore": 21
+    },
+    {
+      "field": "category",
+      "label": "Category / style tag",
+      "currentCoverage": {
+        "present": 3697,
+        "total": 3697,
+        "missing": 0,
+        "coveragePct": 100
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "compatibility_score",
+      "label": "Compatibility / harmony score",
+      "currentCoverage": {
+        "note": "No missing-data state for this field (always computed or structurally 100% present) — not applicable."
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "cultural_context",
+      "label": "Cultural context (compare-page)",
+      "currentCoverage": {
+        "note": "No missing-data state for this field (always computed or structurally 100% present) — not applicable."
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "equivalent_names",
+      "label": "Equivalent names",
+      "currentCoverage": {
+        "present": 27,
+        "total": 3697,
+        "missing": 3670,
+        "coveragePct": 0.73
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "gender",
+      "label": "Gender",
+      "currentCoverage": {
+        "present": 3697,
+        "total": 3697,
+        "missing": 0,
+        "coveragePct": 100
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "gender-cluster",
+      "label": "Gender/country cluster (names-like)",
+      "currentCoverage": {
+        "present": 3697,
+        "total": 3697,
+        "missing": 0,
+        "coveragePct": 100
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "heraldry",
+      "label": "Heraldry",
+      "currentCoverage": {
+        "present": 2,
+        "total": 75,
+        "missing": 73,
+        "coveragePct": 2.67
+      },
+      "templatesAffected": [
+        "surname-compatibility-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "surname-compatibility-page",
+          "assertion": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+          "currentState": "disclosed-missing"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 74,
+        "breakdown": [
+          {
+            "template": "surname-compatibility-page",
+            "assertion": "Shows a \"Heraldry and Family Heritage\" section (omitted when unavailable)",
+            "count": 74,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "pagesImpacted": 75,
+      "recoverableOccurrenceTotal": 74,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "letter",
+      "label": "Letter (alphabetical)",
+      "currentCoverage": {
+        "note": "No missing-data state for this field (always computed or structurally 100% present) — not applicable."
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "phonetic-similarity",
+      "label": "Phonetic similarity (names-like)",
+      "currentCoverage": {
+        "note": "No missing-data state for this field (always computed or structurally 100% present) — not applicable."
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "surname_origin",
+      "label": "Surname origin",
+      "currentCoverage": {
+        "note": "No missing-data state for this field (always computed or structurally 100% present) — not applicable."
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "syllables",
+      "label": "Syllables",
+      "currentCoverage": {
+        "present": 3697,
+        "total": 3697,
+        "missing": 0,
+        "coveragePct": 100
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "trend",
+      "label": "Trend / rank movement",
+      "currentCoverage": {
+        "present": 5,
+        "total": 18485,
+        "missing": 18480,
+        "coveragePct": 0.03
+      },
+      "templatesAffected": [
+        "compare-name-country-pair-page"
+      ],
+      "assertionTypesAffected": [
+        {
+          "template": "compare-name-country-pair-page",
+          "assertion": "States the 10-year rank movement / trend delta between two countries",
+          "currentState": "fallback"
+        }
+      ],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 1,
+        "totalPageOccurrences": 20,
+        "breakdown": [
+          {
+            "template": "compare-name-country-pair-page",
+            "assertion": "States the 10-year rank movement / trend delta between two countries",
+            "count": 20,
+            "method": "directly-measured"
+          }
+        ]
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 20,
+      "recoverableOccurrenceTotal": 20,
+      "knowledgeRecoveryScore": 0
+    },
+    {
+      "field": "variants",
+      "label": "Spelling variants",
+      "currentCoverage": {
+        "present": 3697,
+        "total": 3697,
+        "missing": 0,
+        "coveragePct": 100
+      },
+      "templatesAffected": [],
+      "assertionTypesAffected": [],
+      "fallbackAssertionsRemovedIfComplete": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "disclosedMissingConvertedToSupported": {
+        "assertionTypeCount": 0,
+        "totalPageOccurrences": 0,
+        "breakdown": []
+      },
+      "pagesImpacted": 0,
+      "recoverableOccurrenceTotal": 0,
+      "knowledgeRecoveryScore": 0
+    }
+  ],
+  "notes": [
+    "Fields with knowledgeRecoveryScore = 0 either have no missing-data state at all (letter, syllables, variants, gender, compatibility_score, surname_origin — all computed or fully curated) or currently produce zero fallback/disclosed-missing occurrences.",
+    "A field appearing in multiple templates (e.g. origin, popularity) may show a fallbackOccurrenceTotal larger than its own missing-record count, because more than one assertion on the same page can independently render the same absent field (e.g. origin renders in 3 separate sections plus 1 FAQ answer on name-detail-page alone) — see the breakdown arrays for the per-assertion detail."
+  ]
+}

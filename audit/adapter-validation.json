@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-07-24T00:28:08.353Z",
+  "readOnly": true,
+  "sourceFile": "data/canonical/names.json",
+  "entitiesProcessed": 3697,
+  "checks": [
+    {
+      "check": "Record counts identical to legacy datasets",
+      "result": "PASS",
+      "detail": [
+        {
+          "collection": "names",
+          "adapterCount": 3697,
+          "originalCount": 3697
+        },
+        {
+          "collection": "namesEnriched",
+          "adapterCount": 3697,
+          "originalCount": 3697
+        },
+        {
+          "collection": "popularity",
+          "adapterCount": 7,
+          "originalCount": 7
+        },
+        {
+          "collection": "categories",
+          "adapterCount": 4468,
+          "originalCount": 4468
+        },
+        {
+          "collection": "variants",
+          "adapterCount": 18426,
+          "originalCount": 18426
+        }
+      ],
+      "failures": []
+    },
+    {
+      "check": "Legacy field names preserved (names/namesEnriched)",
+      "result": "PASS",
+      "detail": "Expected keys: first_letter, gender, id, is_modern, is_traditional, language, meaning, name, origin_cluster, origin_confidence, origin_country, phonetic, syllables (base names.json keys + origin_cluster/origin_confidence, per documented adapter deviation)",
+      "failures": []
+    },
+    {
+      "check": "Legacy field names preserved (relational datasets)",
+      "result": "PASS",
+      "detail": [
+        {
+          "collection": "popularity",
+          "expected": [
+            "count",
+            "country",
+            "name_id",
+            "rank",
+            "year"
+          ],
+          "actual": [
+            "count",
+            "country",
+            "name_id",
+            "rank",
+            "year"
+          ]
+        },
+        {
+          "collection": "categories",
+          "expected": [
+            "category",
+            "name_id"
+          ],
+          "actual": [
+            "category",
+            "name_id"
+          ]
+        },
+        {
+          "collection": "variants",
+          "expected": [
+            "language",
+            "name_id",
+            "variant"
+          ],
+          "actual": [
+            "language",
+            "name_id",
+            "variant"
+          ]
+        }
+      ],
+      "failures": []
+    },
+    {
+      "check": "Identity preserved (id/name/gender/first_letter)",
+      "result": "PASS",
+      "detail": "3697 records checked",
+      "failures": []
+    },
+    {
+      "check": "Relational content preserved (categories, variants, popularity — compared as per-name_id sets, order-independent)",
+      "result": "PASS",
+      "detail": {
+        "categoryContentMismatches": 0,
+        "variantContentMismatches": 0,
+        "popularityContentMismatches": 0,
+        "note": "Literal array order differs from the original files in some cases (verified separately, not a failure — see docs/ADAPTER_LAYER.md) because the original datasets were built in multiple passes; content per name_id is what this check verifies."
+      }
+    },
+    {
+      "check": "Null handling preserved (zero fallback-text markers)",
+      "result": "PASS",
+      "detail": "0 marker(s) found",
+      "failures": []
+    },
+    {
+      "check": "Deterministic output (rebuilt twice from same input, byte-identical)",
+      "result": "PASS",
+      "detail": "Two independent adapter runs over the same canonical input produced byte-identical JSON."
+    },
+    {
+      "check": "No invented values (single-entity adapter output matches collection adapter output)",
+      "result": "PASS",
+      "detail": "lib/adapters/legacy-name-record.js and lib/adapters/legacy-datasets.js must produce identical per-entity output through two different call paths."
+    }
+  ],
+  "overallResult": "PASS"
+}

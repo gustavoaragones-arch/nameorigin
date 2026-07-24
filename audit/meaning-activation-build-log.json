@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-07-23T03:43:14.270Z",
+  "buildResults": [
+    {
+      "id": "generate-programmatic-pages",
+      "ok": true,
+      "status": 0,
+      "elapsedMs": 183603,
+      "stderrTail": ""
+    },
+    {
+      "id": "generate-names-like",
+      "ok": true,
+      "status": 0,
+      "elapsedMs": 14841,
+      "stderrTail": ""
+    }
+  ]
+}

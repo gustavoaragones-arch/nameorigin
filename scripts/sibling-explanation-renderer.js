@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
+const { resolveOrigin } = require('../lib/render/origin.js');
 
 let _variants = null;
 function loadVariants() {
@@ -52,7 +53,10 @@ function buildContext(baseRecord, popularity, categories) {
     : (name.match(/[aeiouy]+/gi) || []).length || 1;
   const sylCount = Math.max(1, syl);
   const sylAdj = sylCount === 1 ? 2 : sylCount - 1;
-  const origin = (baseRecord.origin_country || baseRecord.language || 'various origins').trim() || 'various origins';
+  const originResolved = resolveOrigin(baseRecord);
+  const origin = originResolved.hasOrigin
+    ? originResolved.displayLabel
+    : 'not recorded in our sources';
   let popBand = 'other';
   if (popularity && baseRecord.id != null) {
     const rows = popularity.filter((p) => p.name_id === baseRecord.id && p.rank != null);

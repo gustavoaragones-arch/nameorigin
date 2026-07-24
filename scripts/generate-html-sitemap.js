@@ -6,6 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection, loadJsonFromFile } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -47,9 +48,9 @@ function getPopularNameIds(popularity, limit = 200) {
 }
 
 function run() {
-  const names = loadJson('names');
-  const popularity = loadJson('popularity');
-  const countries = loadJson('countries');
+  const names = loadLegacyCollection('names');
+  const popularity = loadLegacyCollection('popularity');
+  const countries = loadJsonFromFile('countries');
   const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const COUNTRY_SLUG_MAP = { USA: 'usa', CAN: 'canada', IND: 'india', FRA: 'france', IRL: 'ireland' };
 

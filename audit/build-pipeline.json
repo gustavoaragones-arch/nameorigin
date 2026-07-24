@@ -1,0 +1,489 @@
+{
+  "generatedAt": "2026-07-21T18:24:59.741Z",
+  "readOnly": true,
+  "totalScriptsCataloged": 77,
+  "generatorCatalog": [
+    {
+      "script": "scripts/acquire/build-categories.js",
+      "purpose": "Phase 1 — Build data/categories.json from data/names.json. Rule-based: traditional for all; optional biblical/nature from known lists (open/curated)."
+    },
+    {
+      "script": "scripts/acquire/build-names.js",
+      "purpose": "Phase 1 — Build data/names.json from raw SSA and StatCan data. Unique names by (name, gender); unisex if name appears as both boy and girl. Derives: first_letter, syllables. Leaves origin_country, language, meaning for enrichment."
+    },
+    {
+      "script": "scripts/acquire/build-popularity.js",
+      "purpose": "Phase 1 — Build data/popularity.json from raw SSA + StatCan and data/names.json. Resolves name+gender to name_id; computes rank per country/year when missing."
+    },
+    {
+      "script": "scripts/acquire/build-variants.js",
+      "purpose": "Phase 1 — Build data/variants.json from data/names.json. At least one variant per name (canonical form in English). Expand later via Wikidata/open data."
+    },
+    {
+      "script": "scripts/acquire/config.js",
+      "purpose": "Phase 1 — Data source URLs and paths (public / government only). No commercial or SEO name sites."
+    },
+    {
+      "script": "scripts/acquire/fetch-ons-uk.js",
+      "purpose": "Phase 1 — UK ONS baby names (England and Wales). Data is Excel (.xlsx) from ONS; no direct CSV. Options: 1) Download manually from: https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/datasets/babynamesenglandandwalesbabynamesstatisticsgirls https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/datasets/babynamesenglandandwalesbabynamesstatisticsboys Save as data/raw/ons-girls.xlsx and data/raw/ons-boys.xlsx, then run a parser (e.g. xlsx package). 2) Or use a pre-built open dataset that cites ONS. This script writes an empty raw file so the pipeline doesn't fail; implement xlsx parsing when needed."
+    },
+    {
+      "script": "scripts/acquire/fetch-ssa.js",
+      "purpose": "Phase 1 — Fetch USA baby names from SSA (public data). Downloads names.zip, extracts yob*.txt, outputs data/raw/ssa-usa.json. Format: [ { name, gender, year, count }, ... ]"
+    },
+    {
+      "script": "scripts/acquire/fetch-statcan.js",
+      "purpose": "Phase 1 — Fetch Canada baby names from Statistics Canada (Open Government). Downloads CSV zip, parses, outputs data/raw/statcan-canada.json. Format: [ { name, gender, year, count, rank }, ... ]"
+    },
+    {
+      "script": "scripts/acquire/run-acquire.js",
+      "purpose": "Phase 1 — Run full acquisition pipeline: fetch raw data, then build data/*.json. Requires: Node 18+ (fetch not used; https used), unzip on PATH for SSA/StatCan."
+    },
+    {
+      "script": "scripts/aeo-article-schema.js",
+      "purpose": "Phase 5.0 AEO + 5.3: Shared Article JSON-LD (author + dateModified) for sitewide EEAT. Name pages may pass overrides: headline, description, mainEntityOfPage, about (Thing), mentions (Thing[]), hasPart (Question[])."
+    },
+    {
+      "script": "scripts/apply-origin-enrichment.js",
+      "purpose": "Phase 3.3 — Controlled Origin Backfill Engine. Merges data/origin-overrides.json (object keyed by name) into names without modifying base dataset. Rule: override > base. If no override → origin fields stay null (no guessing). Output: data/names-enriched.json. Generators use this when present. Usage: node scripts/apply-origin-enrichment.js"
+    },
+    {
+      "script": "scripts/build-all.js",
+      "purpose": "build-all.js — Master build script. Runs in order: 1. generate-name-pages.js 2. generate-filter-pages.js 3. generate-lastname-pages.js 4. generate-hubs.js 5. build-sitemap.js Env: OUT_DIR, SITE_URL (and others) are passed through to child scripts. Recommended (unified generator): To generate all programmatic pages (name, filter, country, style, letter, last-name, hub) with verification (total count, sample URLs, fail if zero pages), run: node scripts/generate-programmatic-pages.js && node scripts/build-sitemap.js The generator exits with code 1 if zero pages are generated."
+    },
+    {
+      "script": "scripts/build-compatibility.js",
+      "purpose": "Step 8 — Last name compatibility engine (rule-based scoring). Builds data/compatibility_patterns.json from curated rules. Score factors: syllable balance, vowel/consonant endings, phonetic flow, length harmony. Not per last name — rules apply to any first+last pair."
+    },
+    {
+      "script": "scripts/build-date.js",
+      "purpose": "Phase 5.5: Build date for last-updated signals (updates every rebuild)."
+    },
+    {
+      "script": "scripts/build-origin-seed.js",
+      "purpose": "Phase 3.3 / 3.3A — Build data/origin-overrides.json from deterministic, curated rules. No AI. Etymology-based only. Output: object keyed by lowercase name (freeze base dataset). Phase 3.3A scope: top 300 names only. Run after adding new names to names.json. Used by apply-origin-enrichment.js (mergeOriginData)."
+    },
+    {
+      "script": "scripts/build-popularity.js",
+      "purpose": "Step 6 — Popularity engine. Combines all country datasets (raw-data/ssa, uk, canada, australia) into data/popularity.json. Schema: name_id, country, year, rank, count, trend_direction. Trend: compare last 3 years → rising / stable / falling."
+    },
+    {
+      "script": "scripts/build-sitemap.js",
+      "purpose": "build-sitemap.js Generates: /sitemap.xml          — Sitemap index (references multiple part sitemaps below) /sitemaps/names.xml   — All /name/{slug}/ URLs (directory-based, no .html) /sitemaps/countries.xml — Country pages + gender+country /sitemaps/filters.xml — /names, gender, style, letters, trending, popular, hub pages /sitemaps/lastname.xml — Last name compatibility pages Uses same OUT_DIR and SITE_URL as generate-programmatic-pages.js."
+    },
+    {
+      "script": "scripts/build-sitemaps.js",
+      "purpose": "build-sitemaps.js Generates sitemap.xml (and optional sitemap index) from programmatic output and static routes."
+    },
+    {
+      "script": "scripts/classify-categories.js",
+      "purpose": "Step 5 — Category classifier (curated rule engine). Categories assigned via: origin, linguistic tags, meaning keywords, popularity, curated rule list. Output: data/categories.json [{ name_id, category }, ...]"
+    },
+    {
+      "script": "scripts/clean-rebuild-3.3e.js",
+      "purpose": "Phase 3.3E — Clean rebuild order (structural stabilization). Run after FIX 1–3: compare in sequence, sibling links guarded, baby-names-with linked from hub. 1. Delete generated output 2. apply-origin-enrichment.js 3. generate-programmatic-pages.js 3b. generate-equivalent-pages.js (Phase 5.2 — after name pages) 4. generate-sibling-pages.js --batch=150 5. generate-lastname-pages.js --batch=75 6. generate-compare-pages.js   ← FIX 1: /compare/index.html, /compare/us-vs-uk/index.html 7. build-sitemap.js 8. index-integrity-audit.js 9. post-2.25a-audit.js Usage: node scripts/clean-rebuild-3.3e.js"
+    },
+    {
+      "script": "scripts/compatibility-duplication-audit.js",
+      "purpose": "compatibility-duplication-audit.js — Content uniqueness audit for compatibility pages. Before expanding surname or sibling coverage, ensures: - Explanation sections are not templated clones - Flow logic descriptions are sufficiently varied - Tier explanations are not repeated >25% - Phonetic breakdown paragraphs rotate properly Audit scope: - /names/with-last-name-*.html (programmatic surname pages) - /baby-names-with-{slug}/index.html (Phase 2.6 surname pages) - /names/{name}/siblings/index.html (sibling harmony pages) Output: duplicate_count, risk_score, flagged_urls[] If duplication risk > 0.15: exit 1 (stop generation). Usage: node scripts/compatibility-duplication-audit.js"
+    },
+    {
+      "script": "scripts/compatibility-explanation-renderer.js",
+      "purpose": "Phase 3.0B — Compatibility Explanation Renderer Deterministic variant selection and block ordering. No random(). Uses hash(firstName + surname) for rotation."
+    },
+    {
+      "script": "scripts/crawl-depth-distribution.js",
+      "purpose": "Phase 3.1 — Crawl Depth Distribution Audit (MODULE A) BFS from homepage; reports % of sitemap pages at depth 1, 2, 3, 4, and any at depth ≥5. Success: 100% of pages at depth ≤ 4; any at depth ≥5 triggers structural correction. Usage: node scripts/crawl-depth-distribution.js Output: build/crawl-depth-distribution.json (optional, if BUILD_REPORT=1)"
+    },
+    {
+      "script": "scripts/delete-flat-name-pages.js",
+      "purpose": "delete-flat-name-pages.js — Phase 2.25A Step 2. Deletes all name/<slug>.html flat files. Keeps only name/<slug>/index.html. Run after updating the generator and before or after regenerating name pages."
+    },
+    {
+      "script": "scripts/enrich-meanings.js",
+      "purpose": "Step 4 — Meaning + origin enrichment. Uses Wikidata name entities and curated linguistic datasets only. Rules: only verified meanings; store source reference; no AI-generated meanings. Adds: meaning_source, origin_source, confidence_score."
+    },
+    {
+      "script": "scripts/export-d1-data.js",
+      "purpose": "export-d1-data.js Exports Cloudflare D1 tables to /data/*.json for static page generation. Run via: npx wrangler d1 execute DB --remote --command \"SELECT * FROM names\" (or use this script with wrangler bindings). For local/build without D1: copy existing /data/*.json or run after seeding D1. With D1: use wrangler d1 export or query and write JSON (see Cloudflare docs)."
+    },
+    {
+      "script": "scripts/export-json-data.js",
+      "purpose": "Step 7 — Export to static data. Produces the four JSON files consumed by programmatic SEO pages: data/names.json data/popularity.json data/variants.json data/categories.json"
+    },
+    {
+      "script": "scripts/generate-compare-pages.js",
+      "purpose": "Phase 2.8 — Country Comparison Engine. Generates /compare/{name}/{countryA}-vs-{countryB}/ index.html Cap: Top 100 global names × 5 country pairs = 500 pages max. Each page: Direct Answer (40–60 words), structured table, Trend Delta, Cultural Context, ≥15 internal links. Usage: node scripts/generate-compare-pages.js"
+    },
+    {
+      "script": "scripts/generate-country-differentials.js",
+      "purpose": "MODULE C — Popularity Differential Engine (DATA LAYER). For each name-country pair: rank_2025, rank_2015, delta, volatility_score. Dominance: for each (name, countryA, countryB), signal when rank_A <= 3 AND rank_B > 7 → strong. Output: data/country-differentials.json for template rendering. Usage: node scripts/generate-country-differentials.js"
+    },
+    {
+      "script": "scripts/generate-equivalent-pages.js",
+      "purpose": "Phase 5.2 — Equivalent Name Pages /equivalents/{slug}/index.html — controlled dataset only, static HTML. Usage: node scripts/generate-equivalent-pages.js Run after generate-programmatic-pages.js (name pages must exist)."
+    },
+    {
+      "script": "scripts/generate-filter-pages.js",
+      "purpose": "Phase 2 — Generate filter/list pages: names (all, boy, girl, unisex), countries, letters, styles. Output: programmatic/names/, programmatic/names/boy/, programmatic/countries/usa/, programmatic/letters/a/"
+    },
+    {
+      "script": "scripts/generate-homepage.js",
+      "purpose": "Phase 3.7 — Crawl Accelerator: Homepage Explorer Grid. Injects a grid of 100 name links into the homepage for faster crawl propagation. No URL/sitemap/JS changes. All links are standard HTML anchors. Requires: data/names-enriched.json or data/names.json, data/popularity.json. Writes: OUT_DIR/index.html (default ROOT). Guard: throws if homepage internal links < 120."
+    },
+    {
+      "script": "scripts/generate-html-sitemap.js",
+      "purpose": "Phase 5.5: HTML Sitemap — crawlable hub with 200+ links Generates /sitemap/index.html"
+    },
+    {
+      "script": "scripts/generate-hubs.js",
+      "purpose": "Phase 2 — Generate hub index pages. Clear hub architecture for SEO. Output: programmatic/index.html, programmatic/names/index.html (hub), programmatic/countries/index.html, programmatic/last-names/index.html, programmatic/letters/index.html"
+    },
+    {
+      "script": "scripts/generate-jurisdiction-compare-pages.js",
+      "purpose": "Phase 2.9 MODULE B — Jurisdiction comparison pages (controlled). /compare/california-vs-texas/, /compare/alberta-vs-ontario/, etc. Top 3 pairs per country only. Cap 6 pages. Min 700 words. Overlap %, Divergence index, Volatility comparison, Cultural explanation. Static HTML, Article + Breadcrumb + 2 FAQs, ≥18 links. Usage: node scripts/generate-jurisdiction-compare-pages.js"
+    },
+    {
+      "script": "scripts/generate-jurisdiction-pages.js",
+      "purpose": "Phase 2.9 — Jurisdiction & Regional Naming Intelligence. Generates /names/{country}/{jurisdiction}/ (e.g. /names/us/california/, /names/canada/alberta/). Initial cap: USA top 10 states + Canada top 5 provinces = 15 pages. Each page: Direct summary (50–80 words), Top 10 Boys & Girls tables (Rank | Name | National Rank | 10-Year Change), Regional Divergence (200+ words), Migration Influence (150+ words), ≥18 internal links. Uses national popularity data until regional data is available; structure ready for data/regional-popularity.json. Usage: node scripts/generate-jurisdiction-pages.js"
+    },
+    {
+      "script": "scripts/generate-lastname-pages.js",
+      "purpose": "generate-lastname-pages.js — Phase 2.6 Last-Name Compatibility Engine Generates high-quality programmatic pages at /baby-names-with-<slug>/ (e.g. /baby-names-with-smith/, /baby-names-with-garcia/). Discipline: - Static (SSG), 600+ word floor, ≥12 internal links - Canonical safe, batch limited (MAX_BATCH = 50) - Tier 1: 20 high-volume English surnames only Usage: node scripts/generate-lastname-pages.js [--batch=20]   (first run: 20 surnames) node scripts/generate-lastname-pages.js --batch=50    (after audit: expand to 50 if authority ≥ 0.99) First run = 20. After: run post-2.25a-audit.js; if authority_coverage_score ≥ 0.99, expand to 50. Never exceed 50 per batch. STEP 5 — Internal links: each page links to homepage, main baby names hub, ≥12 name pages (from boy/girl/unisex lists), ≥1 gender hub, ≥1 country hub. Min 12 internal links. STEP 6 — Meta: title \"Baby Names That Go With [Surname] — Best First Name Pairings\", meta description unique per surname (discover + pair naturally + explore boy/girl/gender-neutral). STEP 7 — Breadcrumb: Home > Baby Names > Last Name [Surname]. JSON-LD BreadcrumbList in layout. STEP 8 — Word floor: if under 600 words, inject H2 \"Why Name Flow Matters\" + 120–200 word block; if still under 600, throw. STEP 9 — Sitemap: /baby-names-with-<slug>/ in sitemaps/baby-names-with.xml (priority 0.7, changefreq weekly). STEP 10 — Controlled expansion: first run 20 only; then run post-2.25a-audit.js; if authority ≥ 0.99, expand to 50 (next 30). Never exceed 50 per batch. END STATE: 20 surname compatibility pages (expandable to 50 after audit), 600+ words each, ≥12 internal links, canonical safe, audit clean, ready for indexing."
+    },
+    {
+      "script": "scripts/generate-legal-pages.js",
+      "purpose": "Phase 3.4 — Generate legal pages with ≥400 words, ≥20 internal links, meta description. Output: legal/privacy.html, legal/terms.html"
+    },
+    {
+      "script": "scripts/generate-name-pages.js",
+      "purpose": "Phase 2 — Generate individual name pages under programmatic/names/[slug]/ Semantic HTML, canonical, breadcrumb JSON-LD, Person schema, internal links."
+    },
+    {
+      "script": "scripts/generate-names-like.js",
+      "purpose": "generate-names-like.js — Phase 2.5 Names Like Engine Generates \"Names Like X\" pages for all names in the dataset. Full coverage so sitemap and name-detail links match generated pages (no broken links). Usage: node scripts/generate-names-like.js"
+    },
+    {
+      "script": "scripts/generate-popularity-pages.js",
+      "purpose": "Popularity page cluster: /popularity/index.html and /popularity/2022.html, 2023.html, 2024.html Always generates index + 2022.html, 2023.html, 2024.html (2024 uses latest data if not yet available). Index: H1 Baby Name Popularity Trends, overview, links to years, top 20 trending, ≥25 links, ≥600 words. Year pages: H1 Most Popular Baby Names in [Year], top 50 names linked, intro/closing, ≥800 words, ≥40 links."
+    },
+    {
+      "script": "scripts/generate-popularity-year-pages.js",
+      "purpose": "generate-popularity-year-pages.js Generates year popularity pages: /popularity/1980.html through /popularity/2024.html Each page: H1, Top 20 Boy Names, Top 20 Girl Names, Biggest Risers, Biggest Decliners, Cultural Context All names linked to /name/<slug>/"
+    },
+    {
+      "script": "scripts/generate-programmatic-pages.js",
+      "purpose": "generate-programmatic-pages.js Generates all SEO programmatic pages: names list, country, gender, combined filters, last-name compatibility, and individual name pages. Output: static .html with breadcrumbs, JSON-LD, canonical, meta, internal links. Structured data: every page has exactly one Breadcrumb JSON-LD, one canonical URL, FAQ JSON-LD when applicable, and a unique <title> per page."
+    },
+    {
+      "script": "scripts/generate-regional-trend-acceleration.js",
+      "purpose": "Phase 2.9 MODULE C — Regional Trend Acceleration Index. trend_acceleration = (rank_2015 - rank_2025) / years (positive = rising). Output: data/regional-trend-acceleration.json for build-time consumption. Fastest rising names per country (per state when regional data exists). Data: official civil registry / government open data only. Usage: node scripts/generate-regional-trend-acceleration.js"
+    },
+    {
+      "script": "scripts/generate-sibling-harmony.js",
+      "purpose": "Phase 3.0 — Sibling Harmony Compatibility Engine™ Deterministic scoring: how well two names work as sibling names. Based on: shared origin cluster, phonetic rhythm similarity, popularity parity, length balance, style classification. Weights: origin_match_weight = 0.30 phonetic_weight     = 0.25 popularity_band_weight = 0.20 length_balance_weight  = 0.15 style_cluster_weight   = 0.10 Score 0–100. Returns top 12 matches. Deterministic, reproducible."
+    },
+    {
+      "script": "scripts/generate-sibling-pages.js",
+      "purpose": "Phase 3.0 — Sibling Harmony Compatibility Engine™ Generates /names/{name}/siblings/ for top 150 names. URL: /names/{name}/siblings/ (e.g. /names/liam/siblings/) Discipline: - Top 150 names only (initial rollout) - 700+ words, 18+ internal links - Harmony table, explanation, contrast section - HowTo + FAQ (max 2) + Article schema Usage: node scripts/generate-sibling-pages.js [--batch=150]"
+    },
+    {
+      "script": "scripts/generate-smoothness-score.js",
+      "purpose": "Phase 3.0 — Surname Compatibility Smoothness Score™ Deterministic scoring: how smoothly a first name flows with a surname. No AI, no randomness. Structured phonetic and linguistic modeling. Factors: syllable balance, phonetic transition, stress/rhythm proxy, ending–beginning consonant clash, length symmetry, total length penalty. Output: { score: 0–100, tier, explanation_components }. Tiers: Excellent Flow (85–100), Strong Flow (70–84), Neutral (50–69), Slight Friction (30–49), High Friction (0–29)."
+    },
+    {
+      "script": "scripts/generate-tool-pages.js",
+      "purpose": "Phase 4 — Tool landing pages (conversion, no popups). Output: tools/name-report/index.html, tools/sibling-report/index.html, tools/name-certificate/index.html STEP 8: Word count ≥ 800, ≥ 15 internal links. No intrusive JS. No blocking scripts."
+    },
+    {
+      "script": "scripts/generate-trends-page.js",
+      "purpose": "MODULE D — Micro Dataset: \"Top 5 Trending Names in USA: 2025 vs 2015\" Single page: /trends/us-2025-vs-2015/ Pre-rendered static HTML, 800+ words, table (Rank 2015, Rank 2025, Movement), Article + Breadcrumb + 2 FAQs. Links: comparison pages, name pages, country page. No JS-generated tables. Usage: node scripts/generate-trends-page.js Run generate-country-differentials.js first for best data."
+    },
+    {
+      "script": "scripts/generate-year-pages.js",
+      "purpose": "generate-year-pages.js D1-backed year popularity pages: /popularity/<year>.html Logic: - Query D1 for distinct years (or fallback to JSON when D1 unavailable) - For each year: get top N names by rank, render static HTML - Output: /popularity/<year>.html Internal link graph (15+ links per page): - 10 random names from this year - Adjacent years - Homepage, names hub, explore trends by year Usage: node scripts/generate-year-pages.js USE_D1=1 D1_DATABASE=nameorigin-db node scripts/generate-year-pages.js"
+    },
+    {
+      "script": "scripts/import-australia.js",
+      "purpose": "Step 2 — Raw data pipeline: Australia (ABS / data.gov.au). ABS and state sources often provide Excel or CSV. This script: - Looks for raw-data/australia/*.csv (or a single CSV you place there). - Parses CSV and outputs normalized temp data to raw-data/australia/normalized.json. Manual: download from https://data.gov.au/data/dataset/popular-baby-names1 or ABS, export CSV to raw-data/australia/."
+    },
+    {
+      "script": "scripts/import-canada.js",
+      "purpose": "Step 2 — Raw data pipeline: Statistics Canada. Downloads CSV zip, parses, outputs normalized temp data to raw-data/canada/."
+    },
+    {
+      "script": "scripts/import-ssa.js",
+      "purpose": "Step 2 — Raw data pipeline: SSA (USA). Downloads names.zip, parses yob*.txt CSV, outputs normalized temp data to raw-data/ssa/."
+    },
+    {
+      "script": "scripts/import-uk.js",
+      "purpose": "Step 2 — Raw data pipeline: UK (England and Wales) — ONS. ONS provides Excel (.xlsx); no direct CSV. This script: - Looks for raw-data/uk/*.csv (if you export CSV from ONS or use a pre-built CSV). - Or looks for raw-data/uk/boys.csv and raw-data/uk/girls.csv (manual export). Parses CSV and outputs normalized temp data to raw-data/uk/normalized.json. Manual: download from https://www.ons.gov.uk/.../babynamesenglandandwalesbabynamesstatisticsgirls (and boys), export as CSV into raw-data/uk/."
+    },
+    {
+      "script": "scripts/import-wikidata-names.js",
+      "purpose": "Step 2 — Raw data pipeline: Wikidata given names. Queries Wikidata Query Service (SPARQL) for given-name items (Q202444), fetches label and optional description/meaning. Outputs normalized JSON to raw-data/wikidata/. No scraping; public API only."
+    },
+    {
+      "script": "scripts/index-integrity-audit.js",
+      "purpose": "index-integrity-audit.js — Step 8 build validation. Scans generated HTML for indexability and content integrity. Output: build/index-integrity-report.json Checks: - Missing canonical - Duplicate titles - Missing meta descriptions - Pages < 400 words - Pages with < 8 internal links - Canonical pointing to homepage (non-home pages) - Duplicate canonical collisions (two+ pages with same canonical) - noindex meta (indexability safety) - Core Web Vitals: references to styles.css (should use styles.min.css), <script src=> without defer"
+    },
+    {
+      "script": "scripts/intent-monetization-map.js",
+      "purpose": "Phase 4 — Intent Monetization Map. Maps each page type to monetization intent (digital products, reports, email). Output: build/intent-monetization-map.json No ads. Revenue aligns with user intent."
+    },
+    {
+      "script": "scripts/internal-link-density-report.js",
+      "purpose": "Phase 3.1 — Internal Link Equity Distribution (MODULE B) Measures average internal links per page type (outbound) and average inbound links per page type. Goal: No page type should receive < 8 inbound links on average. Usage: node scripts/internal-link-density-report.js Output: build/internal-link-density-report.json (if BUILD_REPORT=1)"
+    },
+    {
+      "script": "scripts/lib.js",
+      "purpose": "Phase 2 — Shared helpers for programmatic SEO generators. Use from scripts via: const lib = require('./lib.js'); or load as module."
+    },
+    {
+      "script": "scripts/minify-css.js",
+      "purpose": "minify-css.js — Step 8 Core Web Vitals: produce minified CSS. Reads styles.css, strips comments and collapses whitespace, writes styles.min.css. Run before deploy so pages load /styles.min.css (non-blocking, smaller)."
+    },
+    {
+      "script": "scripts/normalize-names.js",
+      "purpose": "Step 3 — Data normalization engine. Reads raw-data/<source>/normalized.json (all sources), then: - Standardizes gender (M→boy, F→girl, U→unisex) - Normalizes name format (capitalize, accent-stripped variant, slug) - Deduplicates by lowercase name, phonetic similarity, origin match - Adds derived fields: first_letter, length, syllable_estimate, phonetic_code Outputs data/normalized-names.json (and optionally data/names.json)."
+    },
+    {
+      "script": "scripts/origin-coverage-report.js",
+      "purpose": "Phase 3.3 — Origin coverage report (measurable progress). Outputs: total with origin, % coverage, distribution by country, names with confidence < 0.9, country pages with > 20 names. Writes: build/origin-coverage-report.json Usage: node scripts/origin-coverage-report.js"
+    },
+    {
+      "script": "scripts/origin-integrity-audit.js",
+      "purpose": "Phase 3.3 — Origin integrity audit. Measures: % with origin assigned, % null, country distribution, >40% dominance flag, low-confidence clusters. Output: build/origin-integrity-report.json Usage: node scripts/origin-integrity-audit.js"
+    },
+    {
+      "script": "scripts/phase-3.1-structure-report.js",
+      "purpose": "Phase 3.1 — Structure Metrics Report Runs crawl-depth-distribution, internal-link-density, sitemap-hygiene, and optionally compatibility audit (expansion mode). Reports success criteria. Usage: node scripts/phase-3.1-structure-report.js Or: BUILD_REPORT=1 node scripts/phase-3.1-structure-report.js"
+    },
+    {
+      "script": "scripts/phase-3.4-guards.js",
+      "purpose": "Phase 3.4 — Hard guards before writing any HTML. Throws if wordCount < 400, internalLinks < 20, or meta description missing. Use in all page generators before fs.writeFileSync of HTML."
+    },
+    {
+      "script": "scripts/phase-3.5-validate-audit.js",
+      "purpose": "Phase 3.5 STEP 7 / Phase 3.6 STEP 8 — Validate index-integrity-audit report. Run after: node scripts/clean-rebuild-3.3e.js (which runs index-integrity-audit.js). Reads build/index-integrity-report.json and checks: broken_internal_links: 0 orphan_pages: 0 authority_coverage_score: 1 max_hops_from_home: 3 pages_under_400_words: 0 pages_with_less_than_20_internal_links: 0 Exits 0 only if all pass; otherwise prints failures and exits 1."
+    },
+    {
+      "script": "scripts/post-2.25a-audit.js",
+      "purpose": "post-2.25a-audit.js — After Phase 2.25A fix: re-run sitemap, internal link audit, canonical audit. Then print 5 name URLs for Search Console spot-check (manual step). Usage: node scripts/post-2.25a-audit.js"
+    },
+    {
+      "script": "scripts/run-phase1.js",
+      "purpose": "Run full Phase 1 — Curated Data Acquisition Engine. Order: import (raw-data) → normalize → enrich → classify → popularity → compatibility → export → seed → validate. Final output: /data/names.json, popularity.json, variants.json, categories.json"
+    },
+    {
+      "script": "scripts/seed-d1.js",
+      "purpose": "Step 9 — D1 database seeding. Reads data/names.json, data/popularity.json, data/categories.json, data/variants.json and generates SQL to seed Cloudflare D1 (or runs it via wrangler). Tables: names, name_popularity, name_categories, name_variants. Enables edge queries, analytics, and future AI features."
+    },
+    {
+      "script": "scripts/sibling-explanation-renderer.js",
+      "purpose": "Sibling Engine De-Templating — deterministic variant selection and data-driven rendering. No random(). Uses hash(baseName) for rotation. Injects computed elements (syllable count, origin, pop band)."
+    },
+    {
+      "script": "scripts/sitemap-hygiene-report.js",
+      "purpose": "Phase 3.1 — Sitemap Hygiene (MODULE D) Confirms: sibling pages in sitemap, compatibility pages in sitemap, no orphan cluster, sitemap not bloated. Optionally reports size growth. Usage: node scripts/sitemap-hygiene-report.js"
+    },
+    {
+      "script": "scripts/thin-page-reinforcement.js",
+      "purpose": "Phase 3.4 — Thin Page Analysis Parses index-integrity-report.json and groups thin pages by type. Output: build/thin-page-analysis.json Usage: node scripts/thin-page-reinforcement.js"
+    },
+    {
+      "script": "scripts/topic-cluster-map.js",
+      "purpose": "Phase 3.5 — Topic cluster map for Topical Authority Mesh. Builds cluster relationships: origin_cluster, gender, first_letter, syllable_count, popularity_band (high/medium/low), style_cluster (classic, modern, vintage, etc.). Output: build/topic-clusters.json Each name belongs to exactly 1 origin, 1 gender, 1 letter, 1 style, 1 popularity band."
+    },
+    {
+      "script": "scripts/url-helpers.js",
+      "purpose": "Normalized URL helpers for internal links. Ensures consistent format (e.g. trailing slash)."
+    },
+    {
+      "script": "scripts/utils/name-equivalents.js",
+      "purpose": "Phase 5.2 — Name equivalence (controlled dataset only). Sync load, no async, no external deps. Never throws. Valid slugs are a closed set from data/names-enriched.json only (hard filter). Logs one line when invalid equivalent slugs are dropped (dirty dataset signal)."
+    },
+    {
+      "script": "scripts/validate-data.js",
+      "purpose": "Step 10 — Validation engine. Checks: duplicate names, missing meanings, missing gender, missing origin, empty popularity data. Output: build/data-validation-report.json"
+    },
+    {
+      "script": "scripts/verify-phase2.js",
+      "purpose": "verify-phase2.js — Success criteria check for Phase 2. Exits 0 if all criteria pass, 1 otherwise. Criteria: ✅ Thousands of static pages ✅ Internal linking graph: every programmatic page type has ≥15 visible internal links (links to programmatic pages, hubs, or homepage; all server-rendered, no JS required) ✅ Structured hubs exist ✅ Sitemap coverage (sitemap index + 4 sitemaps; URLs ≥ pages) ✅ Breadcrumb schema everywhere (sample check) ✅ Zero orphan pages (every sitemap URL discoverable via sitemap and links) ✅ Crawl without JS: all navigation is in static HTML (verified by link count in source) ✅ Metadata (view source): unique descriptive <title>, <meta name=\"description\">, correct <link rel=\"canonical\"> ✅ Structured data (source code): BreadcrumbList JSON-LD on all programmatic pages; FAQPage JSON-LD where relevant. (Validate later with Google Rich Results Test.) ✅ Indexability: no noindex on pages; robots.txt allows crawling; sitemap.xml includes programmatic URLs. Phase 2.25 — Deployment & Index Integrity: ✅ No noindex meta tags (covered above). ✅ No accidental X-Robots-Tag in project config (wrangler, _headers, etc.). ✅ No canonical pointing to homepage on non-homepage pages; canonicals are self-referencing. Step 5 — Programmatic page validation: ✅ Minimum 400 words of contextual content (intro + body); unique H1; internal links to home, gender, country, related. Step 6 — Internal link graph: ✅ Every page reachable from homepage within 3 clicks; no orphans; programmatic pages link to hub; hub links to categories."
+    }
+  ],
+  "orchestratorSequences": [
+    {
+      "orchestrator": "scripts/run-phase1.js",
+      "purpose": "Run full Phase 1 — Curated Data Acquisition Engine. Order: import (raw-data) → normalize → enrich → classify → popularity → compatibility → export → seed → validate. Final output: /data/names.json, popularity.json, variants.json, categories.json",
+      "steps": [
+        "import-ssa.js",
+        "import-canada.js",
+        "import-uk.js",
+        "import-australia.js",
+        "import-wikidata-names.js",
+        "normalize-names.js",
+        "enrich-meanings.js",
+        "classify-categories.js",
+        "build-popularity.js",
+        "build-compatibility.js",
+        "export-json-data.js",
+        "seed-d1.js",
+        "validate-data.js"
+      ],
+      "status": "Data-acquisition pipeline (raw sources -> data/*.json). Independent of the page-generation pipeline below."
+    },
+    {
+      "orchestrator": "scripts/clean-rebuild-3.3e.js",
+      "purpose": "Phase 3.3E — Clean rebuild order (structural stabilization). Run after FIX 1–3: compare in sequence, sibling links guarded, baby-names-with linked from hub. 1. Delete generated output 2. apply-origin-enrichment.js 3. generate-programmatic-pages.js 3b. generate-equivalent-pages.js (Phase 5.2 — after name pages) 4. generate-sibling-pages.js --batch=150 5. generate-lastname-pages.js --batch=75 6. generate-compare-pages.js   ← FIX 1: /compare/index.html, /compare/us-vs-uk/index.html 7. build-sitemap.js 8. index-integrity-audit.js 9. post-2.25a-audit.js Usage: node scripts/clean-rebuild-3.3e.js",
+      "steps": [
+        "apply-origin-enrichment.js",
+        "topic-cluster-map.js",
+        "intent-monetization-map.js",
+        "generate-programmatic-pages.js",
+        "generate-equivalent-pages.js",
+        "generate-homepage.js",
+        "generate-html-sitemap.js",
+        "generate-tool-pages.js",
+        "generate-sibling-pages.js",
+        "generate-lastname-pages.js",
+        "generate-compare-pages.js",
+        "generate-trends-page.js",
+        "generate-legal-pages.js",
+        "generate-popularity-pages.js",
+        "build-sitemap.js",
+        "index-integrity-audit.js",
+        "phase-3.5-validate-audit.js",
+        "post-2.25a-audit.js"
+      ],
+      "status": "Current/canonical full-site rebuild sequence — its outputs (name/, names/, compare/, baby-names-with-*, etc.) match what is actually on disk today. NOTE: this script is destructive (rm -rf on generated output dirs before rebuilding) — cataloged here for documentation only, never executed by the audit subsystem."
+    },
+    {
+      "orchestrator": "scripts/build-all.js",
+      "purpose": "build-all.js — Master build script. Runs in order: 1. generate-name-pages.js 2. generate-filter-pages.js 3. generate-lastname-pages.js 4. generate-hubs.js 5. build-sitemap.js Env: OUT_DIR, SITE_URL (and others) are passed through to child scripts. Recommended (unified generator): To generate all programmatic pages (name, filter, country, style, letter, last-name, hub) with verification (total count, sample URLs, fail if zero pages), run: node scripts/generate-programmatic-pages.js && node scripts/build-sitemap.js The generator exits with code 1 if zero pages are generated.",
+      "steps": [
+        "generate-name-pages.js",
+        "generate-filter-pages.js",
+        "generate-lastname-pages.js",
+        "generate-hubs.js",
+        "generate-country-differentials.js",
+        "generate-compare-pages.js",
+        "generate-trends-page.js",
+        "generate-jurisdiction-pages.js",
+        "generate-regional-trend-acceleration.js",
+        "generate-jurisdiction-compare-pages.js",
+        "build-sitemap.js"
+      ],
+      "status": "Appears STALE: 3 of its 5 steps (generate-name-pages.js, generate-filter-pages.js, generate-hubs.js) write to PROGRAMMATIC_DIR via scripts/lib.js, i.e. a /programmatic/ directory. That directory does not exist anywhere in the repo, and generate-programmatic-pages.js contains the comment \"Phase 3.3D: single canonical tree; /programmatic/ must not exist.\" This suggests build-all.js predates the Phase 3.3D consolidation and was not updated to reflect it."
+    }
+  ],
+  "explicitDependencies": [
+    {
+      "script": "scripts/generate-equivalent-pages.js",
+      "dependsOn": [
+        "scripts/generate-programmatic-pages.js"
+      ],
+      "reason": "Header comment: \"Run after generate-programmatic-pages.js (name pages must exist).\""
+    },
+    {
+      "script": "scripts/apply-origin-enrichment.js",
+      "dependsOn": [
+        "scripts/build-origin-seed.js"
+      ],
+      "reason": "Merges data/origin-overrides.json (produced by build-origin-seed.js) into names-enriched.json."
+    },
+    {
+      "script": "scripts/generate-programmatic-pages.js",
+      "dependsOn": [
+        "scripts/apply-origin-enrichment.js (optional)"
+      ],
+      "reason": "loadNames() prefers names-enriched.json when present; falls back to names.json otherwise."
+    },
+    {
+      "script": "scripts/generate-homepage.js",
+      "dependsOn": [
+        "data/names-enriched.json or data/names.json",
+        "data/popularity.json"
+      ],
+      "reason": "Header comment: \"Requires: ...\""
+    },
+    {
+      "script": "scripts/phase-3.5-validate-audit.js",
+      "dependsOn": [
+        "scripts/index-integrity-audit.js"
+      ],
+      "reason": "Reads build/index-integrity-report.json produced by index-integrity-audit.js."
+    },
+    {
+      "script": "scripts/post-2.25a-audit.js",
+      "dependsOn": [
+        "scripts/build-sitemap.js",
+        "sitemap + generated pages"
+      ],
+      "reason": "Header comment: \"re-run sitemap, internal link audit, canonical audit.\""
+    },
+    {
+      "script": "scripts/thin-page-reinforcement.js",
+      "dependsOn": [
+        "scripts/index-integrity-audit.js"
+      ],
+      "reason": "Parses build/index-integrity-report.json."
+    },
+    {
+      "script": "scripts/seed-d1.js",
+      "dependsOn": [
+        "data/names.json",
+        "data/popularity.json",
+        "data/categories.json",
+        "data/variants.json"
+      ],
+      "reason": "Reads all four to generate SQL seed statements."
+    }
+  ],
+  "sharedUtilities": [
+    {
+      "file": "scripts/lib.js",
+      "role": "Legacy Phase 2 shared helpers (baseLayout, slug, breadcrumb) targeting the /programmatic/ output tree. Still required by the orphaned generate-name-pages.js / generate-filter-pages.js / generate-hubs.js (see status below)."
+    },
+    {
+      "file": "scripts/url-helpers.js",
+      "role": "Normalizes internal URL formats, e.g. namesLikeUrl() used by both generate-names-like.js and generate-programmatic-pages.js."
+    },
+    {
+      "file": "scripts/aeo-article-schema.js",
+      "role": "Shared Article JSON-LD (author + dateModified) merged into most page templates for sitewide E-E-A-T signals."
+    },
+    {
+      "file": "scripts/build-date.js",
+      "role": "Shared build-date stamp used for \"last updated\" freshness signals."
+    },
+    {
+      "file": "scripts/utils/name-equivalents.js",
+      "role": "Sync, closed-set loader for data/name-equivalents.json; hard-filters invalid slugs."
+    },
+    {
+      "file": "scripts/phase-3.4-guards.js",
+      "role": "Hard guard called before writing HTML: throws if word count < 400 or internal links < 20."
+    },
+    {
+      "file": "scripts/compatibility-explanation-renderer.js",
+      "role": "Deterministic (hash-based, no random()) prose-variant renderer for surname compatibility pages."
+    },
+    {
+      "file": "scripts/sibling-explanation-renderer.js",
+      "role": "Deterministic prose-variant renderer for sibling-harmony pages."
+    },
+    {
+      "file": "scripts/generate-smoothness-score.js",
+      "role": "Deterministic first+last name phonetic \"smoothness\" scoring engine, consumed by generate-programmatic-pages.js."
+    },
+    {
+      "file": "scripts/generate-sibling-harmony.js",
+      "role": "Deterministic sibling-pair compatibility scoring engine, consumed by generate-sibling-pages.js."
+    }
+  ],
+  "notes": [
+    "purpose text is extracted live from each script's leading /** ... */ or // header comment block — it reflects what the author wrote, not independently verified behavior.",
+    "This report identifies three competing \"master build\" scripts (run-phase1.js for data, clean-rebuild-3.3e.js and build-all.js for pages) rather than a single canonical entry point; see orchestratorSequences[].status for the evidence behind each."
+  ]
+}

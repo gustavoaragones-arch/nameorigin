@@ -1,0 +1,352 @@
+{
+  "generatedAt": "2026-07-21T18:25:00.572Z",
+  "readOnly": true,
+  "method": "presence classification (always / always-with-fallback / optional / computed) is curated from reading each generator function in scripts/generate-programmatic-pages.js and cross-generator scripts; coveragePct values are pulled live from audit/knowledge-coverage.json.",
+  "legend": {
+    "always": "Present on every page of this template; the underlying field is 100% populated or structurally guaranteed (e.g. name, gender).",
+    "always-with-fallback": "The section/value renders on every page regardless of data; when the real field is empty, a generic literal string substitutes for it (see audit/empty-knowledge.json for exact fallback text and page counts).",
+    "optional": "The section/value is present only when the underlying field or relational row exists; it is omitted (not faked) otherwise.",
+    "computed": "Derived algorithmically at build time from other fields (e.g. a compatibility score); has no \"missing data\" state of its own."
+  },
+  "templates": [
+    {
+      "category": "name-detail-page",
+      "pageCount": 3697,
+      "attributes": [
+        {
+          "attribute": "name",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "gender",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "first_letter",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "syllables",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "meaning",
+          "dataset": "data/names-enriched.json",
+          "presence": "always-with-fallback",
+          "coveragePct": 0.08,
+          "fallback": "\"a documented given name\" or \"—\" depending on section (see empty-knowledge.json)"
+        },
+        {
+          "attribute": "origin_country / language / origin_cluster",
+          "dataset": "data/names-enriched.json",
+          "presence": "always-with-fallback",
+          "coveragePct": 4.41,
+          "fallback": "\"multiple traditions\" / \"various linguistic traditions\" / \"various cultural traditions\" depending on section"
+        },
+        {
+          "attribute": "phonetic (pronunciation)",
+          "dataset": "data/names-enriched.json",
+          "presence": "optional",
+          "coveragePct": 0
+        },
+        {
+          "attribute": "popularity rows / chart / trend",
+          "dataset": "data/popularity.json",
+          "presence": "optional",
+          "coveragePct": 0.14
+        },
+        {
+          "attribute": "category tags",
+          "dataset": "data/categories.json",
+          "presence": "optional",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "spelling variants",
+          "dataset": "data/variants.json",
+          "presence": "optional",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "cross-linguistic equivalents",
+          "dataset": "data/name-equivalents.json",
+          "presence": "optional",
+          "coveragePct": 0.73
+        },
+        {
+          "attribute": "sibling-harmony cross-link",
+          "dataset": "computed batch list (top 150 by popularity)",
+          "presence": "optional",
+          "coveragePct": 4.06
+        },
+        {
+          "attribute": "topic cluster (related names)",
+          "dataset": "build/topic-clusters.json",
+          "presence": "optional",
+          "coveragePct": null
+        },
+        {
+          "attribute": "historical/cultural context prose",
+          "dataset": "derived from origin fields, no dedicated dataset",
+          "presence": "always-with-fallback",
+          "coveragePct": 4.41,
+          "fallback": "generic prose naming no real culture/history when origin is empty"
+        }
+      ]
+    },
+    {
+      "category": "names-like-page",
+      "pageCount": 3697,
+      "attributes": [
+        {
+          "attribute": "name",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "phonetic similarity pool (first-letter/prefix match)",
+          "dataset": "data/names.json (name string only)",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "same-origin pool",
+          "dataset": "data/names-enriched.json origin_country/language",
+          "presence": "optional",
+          "coveragePct": 4.41
+        },
+        {
+          "attribute": "similar-popularity pool",
+          "dataset": "data/popularity.json",
+          "presence": "optional",
+          "coveragePct": 0.14
+        },
+        {
+          "attribute": "other-alternatives pool (same gender / country cluster)",
+          "dataset": "data/names.json + data/popularity.json",
+          "presence": "always-with-fallback",
+          "coveragePct": 100,
+          "fallback": "falls back to same-gender pool when popularity-based country clustering has no data"
+        },
+        {
+          "attribute": "meaning snippet per linked name",
+          "dataset": "data/names.json meaning",
+          "presence": "optional",
+          "coveragePct": 0.08
+        }
+      ]
+    },
+    {
+      "category": "sibling-harmony-page",
+      "pageCount": 150,
+      "attributes": [
+        {
+          "attribute": "base name",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "sibling-batch membership (top 150 by popularity)",
+          "dataset": "computed from data/popularity.json ranking",
+          "presence": "always (gates whether the page exists at all)",
+          "coveragePct": 4.06
+        },
+        {
+          "attribute": "sibling harmony score",
+          "dataset": "computed (generate-sibling-harmony.js)",
+          "presence": "computed",
+          "coveragePct": null
+        },
+        {
+          "attribute": "origin cluster (used in scoring)",
+          "dataset": "data/names-enriched.json",
+          "presence": "optional",
+          "coveragePct": 4.52
+        }
+      ]
+    },
+    {
+      "category": "surname-compatibility-page",
+      "pageCount": 75,
+      "attributes": [
+        {
+          "attribute": "surname",
+          "dataset": "data/last-names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "origin",
+          "dataset": "data/last-names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "syllables",
+          "dataset": "data/last-names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "compatibility note",
+          "dataset": "data/last-names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "heraldry availability/region",
+          "dataset": "data/heraldry.json",
+          "presence": "optional",
+          "coveragePct": 2.67
+        },
+        {
+          "attribute": "per-first-name compatibility score",
+          "dataset": "computed (scoreCompatibility())",
+          "presence": "computed",
+          "coveragePct": null
+        }
+      ]
+    },
+    {
+      "category": "names-lastname-filter-page",
+      "pageCount": 75,
+      "attributes": [
+        {
+          "attribute": "surname",
+          "dataset": "data/last-names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "top-60 compatible first names",
+          "dataset": "computed from data/names.json + scoreCompatibility()",
+          "presence": "computed",
+          "coveragePct": null
+        }
+      ]
+    },
+    {
+      "category": "equivalents-page",
+      "pageCount": 27,
+      "attributes": [
+        {
+          "attribute": "anchor name + origin",
+          "dataset": "data/name-equivalents.json",
+          "presence": "always (closed set — page only exists for the 27 anchors present)",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "equivalents list (lang + slug)",
+          "dataset": "data/name-equivalents.json",
+          "presence": "always",
+          "coveragePct": 100
+        }
+      ]
+    },
+    {
+      "category": "compare-name-country-pair-page",
+      "pageCount": 20,
+      "attributes": [
+        {
+          "attribute": "name",
+          "dataset": "data/names.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "rank_2025 / rank_2015 / delta / volatility_score",
+          "dataset": "data/country-differentials.json",
+          "presence": "always-with-fallback",
+          "coveragePct": 0.03,
+          "fallback": "rank_2015/delta render as null/0 when historical rank is unavailable (observed in data/country-differentials.json sample rows)"
+        }
+      ]
+    },
+    {
+      "category": "names-country-page",
+      "pageCount": 5,
+      "attributes": [
+        {
+          "attribute": "country metadata",
+          "dataset": "data/countries.json",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "names tagged to this country",
+          "dataset": "data/names-enriched.json origin_country",
+          "presence": "optional (list length varies with coverage)",
+          "coveragePct": 4.41
+        },
+        {
+          "attribute": "popular/rising names for this country",
+          "dataset": "data/popularity.json",
+          "presence": "optional",
+          "coveragePct": 0.14
+        }
+      ]
+    },
+    {
+      "category": "names-style-page",
+      "pageCount": 7,
+      "attributes": [
+        {
+          "attribute": "style label (fixed set of 7)",
+          "dataset": "hardcoded in generate-programmatic-pages.js",
+          "presence": "always",
+          "coveragePct": 100
+        },
+        {
+          "attribute": "names tagged to this style",
+          "dataset": "data/categories.json",
+          "presence": "optional",
+          "coveragePct": 100
+        }
+      ]
+    },
+    {
+      "category": "popularity-year-page",
+      "pageCount": 3,
+      "attributes": [
+        {
+          "attribute": "top-50 ranked names for the year",
+          "dataset": "data/popularity.json",
+          "presence": "always-with-fallback",
+          "coveragePct": 0.14,
+          "fallback": "with only 7 rows total across 2022–2023, year pages necessarily reuse the same tiny pool"
+        }
+      ]
+    },
+    {
+      "category": "trend-page",
+      "pageCount": 1,
+      "attributes": [
+        {
+          "attribute": "top-5 trending names (2015 vs 2025)",
+          "dataset": "data/regional-trend-acceleration.json",
+          "presence": "always",
+          "coveragePct": null,
+          "note": "covers 2 of 5 countries (USA, CAN)"
+        }
+      ]
+    }
+  ],
+  "coverageCheck": {
+    "templatesInMatrix": 11,
+    "totalTemplatesInPhase1A": 24,
+    "note": "Templates not itemized here (root-hub-page, names-hub, names-letter-page, names-gender-page, names-gender-country-page, names-curated-list-page, names-lastname-hub, compare-country-pair-hub, compare-hub, popularity-hub, trends-hub, tool-landing-page, legal-page, about-page, homepage, html-sitemap) are list/aggregation/static pages that do not carry a distinct per-page structured-attribute set the way entity-detail pages do — each instance of that template renders the same attribute shape, just filtered to a different subset of the names/popularity/categories datasets already itemized above."
+  },
+  "notes": [
+    "This matrix intentionally does not judge whether a fallback is a problem — audit/empty-knowledge.json quantifies fallback usage; this report only maps where each attribute is used and whether the template hides or reveals its absence."
+  ]
+}

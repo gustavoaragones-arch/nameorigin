@@ -1,0 +1,191 @@
+{
+  "generatedAt": "2026-07-21T18:25:38.361Z",
+  "readOnly": true,
+  "permanentCatalogSource": "scripts/audit/knowledge-lib.js :: FALLBACK_MARKERS",
+  "howToExtend": "Add a new entry to FALLBACK_MARKERS in scripts/audit/knowledge-lib.js (id, attribute, marker, kind, appliesTo, sourceFunction, sourceLines, description). Every script that imports it — this one, audit/empty-knowledge.json (Phase 1B), and scripts/audit/truthfulness-lib.js (Phase 1C) — picks up the new entry automatically on next run.",
+  "mechanismCount": 9,
+  "mechanismsByKind": {
+    "fallback": 7,
+    "disclosed-missing": 2
+  },
+  "mechanisms": [
+    {
+      "id": "meaning-fallback-documented-given-name",
+      "kind": "fallback",
+      "generator": "buildMetaDescription",
+      "function": "buildMetaDescription() / buildDirectAnswer() / buildDirectAnswers()",
+      "lines": [
+        134,
+        165,
+        932,
+        1635,
+        1881
+      ],
+      "literalFallback": "documented given name",
+      "datasetField": "meaning",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3694,
+      "fallbackRatePct": 99.92,
+      "description": "When record.meaning is empty, these functions substitute the literal phrase \"a documented given name\" as if it were the name's actual meaning, in the meta description, the on-page Direct Answer, and the FAQ lead-in."
+    },
+    {
+      "id": "meaning-fallback-em-dash",
+      "kind": "disclosed-missing",
+      "generator": "buildDefinitionBlock",
+      "function": "buildDefinitionBlock() / buildNameFactsTable() / buildQuickFaqForName()",
+      "lines": [
+        820,
+        1124,
+        1143
+      ],
+      "literalFallback": "—</p>",
+      "datasetField": "meaning",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3697,
+      "fallbackRatePct": 100,
+      "description": "A more conservative fallback used elsewhere on the same page: renders an em dash (\"—\") instead of a fabricated meaning when record.meaning is empty. Contrast with meaning-fallback-documented-given-name above, which fabricates a claim instead of marking the field as unknown."
+    },
+    {
+      "id": "origin-fallback-multiple-traditions",
+      "kind": "fallback",
+      "generator": "buildNameUsageContextSection",
+      "function": "buildNameUsageContextSection() / buildQuickFaqForName()",
+      "lines": [
+        531,
+        1144
+      ],
+      "literalFallback": "multiple traditions",
+      "datasetField": "origin_country / language / origin_cluster",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3534,
+      "fallbackRatePct": 95.59,
+      "description": "When no origin_country, origin_cluster, or language is set, these sections substitute \"multiple traditions\" as the name's origin label."
+    },
+    {
+      "id": "origin-fallback-various-linguistic-traditions",
+      "kind": "fallback",
+      "generator": "buildOriginLineage",
+      "function": "buildOriginLineage()",
+      "lines": [
+        834
+      ],
+      "literalFallback": "various linguistic traditions",
+      "datasetField": "origin_country / language",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3534,
+      "fallbackRatePct": 95.59,
+      "description": "The \"Origin and Linguistic Lineage\" section always renders (never omitted); when origin is empty it substitutes \"various linguistic traditions\" and derives a generic \"related language families\" value."
+    },
+    {
+      "id": "origin-fallback-various-cultural-traditions",
+      "kind": "fallback",
+      "generator": "buildCulturalContext",
+      "function": "buildCulturalContext()",
+      "lines": [
+        865
+      ],
+      "literalFallback": "various cultural traditions",
+      "datasetField": "origin_country / language",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3534,
+      "fallbackRatePct": 95.59,
+      "description": "The \"Historical and Cultural Context\" section always renders (never omitted); when origin is empty it substitutes \"various cultural traditions\"."
+    },
+    {
+      "id": "popularity-disclosed-no-stable-rank",
+      "kind": "disclosed-missing",
+      "generator": "buildDirectAnswers",
+      "function": "buildDirectAnswers()",
+      "lines": [
+        948,
+        949
+      ],
+      "literalFallback": "does not yet show a stable rank band",
+      "datasetField": "popularity",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 3692,
+      "fallbackRatePct": 99.86,
+      "description": "Discovered in Phase 1C. When no popularity rank is available, the \"How popular is the name\" FAQ answer explicitly states the name \"does not yet show a stable rank band in every dataset we publish\" — an honest disclosure, not a fabrication. Verified at 3,692 of 3,697 name-detail pages (99.86%), matching the popularity_record entity coverage gap exactly."
+    },
+    {
+      "id": "popularity-regions-fallback-unreachable",
+      "kind": "fallback",
+      "generator": "buildPopularityRegionsPhrase",
+      "function": "buildPopularityRegionsPhrase()",
+      "lines": [
+        901
+      ],
+      "literalFallback": "the United States and other regions",
+      "datasetField": "popularity",
+      "templates": [
+        "name-detail-page"
+      ],
+      "pagesScanned": 3697,
+      "pagesAffected": 0,
+      "fallbackRatePct": 0,
+      "description": "Discovered in Phase 1C. Code exists to substitute \"the United States and other regions\" when popRows is empty, but this branch is only reached from a call site gated by hasRank being true — and hasRank is derived from the same popularity rows, so the two conditions co-occur. Verified: 0 of 3,697 pages contain this string. Recorded for completeness as a fallback mechanism that exists in source but has never fired in committed output."
+    },
+    {
+      "id": "sibling-origin-fallback-various-origins",
+      "kind": "fallback",
+      "generator": "sibling-explanation-renderer.js",
+      "function": "sibling-explanation-renderer.js :: buildContext()",
+      "lines": [
+        55
+      ],
+      "literalFallback": "various origins",
+      "datasetField": "origin_country / language (sibling-harmony page)",
+      "templates": [
+        "sibling-harmony-page"
+      ],
+      "pagesScanned": 150,
+      "pagesAffected": 150,
+      "fallbackRatePct": 100,
+      "description": "Discovered in Phase 1C. generate-sibling-pages.js loads plain data/names.json (never data/names-enriched.json), so origin_country/language are null even for names that DO have curated origin data elsewhere on the site (e.g. Aadi, whose own name-detail page correctly shows \"India\"/\"Sanskrit\"). As a result this fallback fires on 150 of 150 sibling-harmony pages (100%) — a higher rate than the 95.6% seen on name-detail-page for the identical underlying concept, because the two generators read different datasets for the same field."
+    },
+    {
+      "id": "compare-rank-movement-fallback-data-available",
+      "kind": "fallback",
+      "generator": "generate-compare-pages.js",
+      "function": "generate-compare-pages.js :: getTrendDeltaSection()",
+      "lines": [
+        220
+      ],
+      "literalFallback": "Rank and movement data are available for our covered countries",
+      "datasetField": "country-comparison rank/movement",
+      "templates": [
+        "compare-name-country-pair-page"
+      ],
+      "pagesScanned": 20,
+      "pagesAffected": 20,
+      "fallbackRatePct": 100,
+      "description": "Discovered in Phase 1C. When no rank differential AND no 10-year movement figure could be computed for either country in the pair (which requires both a 2015 and a current-year rank — and data/popularity.json contains no year-2015 rows at all, for any name), this section substitutes a generic sentence asserting that \"data are available for our covered countries,\" despite none being available for this specific name/country-pair instance. Verified: 20 of 20 compare-name-country-pair-page instances (100%) contain this exact string — the fallback fires on every single page of this template, because no name in the dataset has a 2015 popularity row."
+    }
+  ],
+  "duplicateCheck": {
+    "duplicateIdsFound": [],
+    "pass": true
+  },
+  "notes": [
+    "\"fallback\" mechanisms substitute a generic phrase that reads as a specific claim about the entity; \"disclosed-missing\" mechanisms substitute an honest placeholder or silently omit the section. Both are \"fallback mechanisms\" in the general sense (something renders when data is absent) but only the former is truthfulness-negative.",
+    "pagesAffected/fallbackRatePct are computed fresh against the currently-generated HTML on every run, so this file never goes stale relative to what is actually on disk."
+  ]
+}

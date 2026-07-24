@@ -9,6 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection, loadJsonFromFile } = require('../lib/adapters/legacy-dataset-runtime.js');
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const { getBuildDate } = require('./build-date.js');
 const { getEquivalents, normSlug } = require('./utils/name-equivalents.js');
@@ -26,10 +27,7 @@ function loadJson(name) {
 }
 
 function loadNames() {
-  const enrichedPath = path.join(DATA_DIR, 'names-enriched.json');
-  const basePath = path.join(DATA_DIR, 'names.json');
-  if (fs.existsSync(enrichedPath)) return JSON.parse(fs.readFileSync(enrichedPath, 'utf8'));
-  return JSON.parse(fs.readFileSync(basePath, 'utf8'));
+  return loadLegacyCollection('namesEnriched');
 }
 
 function htmlEscape(s) {
@@ -168,7 +166,7 @@ function run() {
   const nameBySlug = new Map(names.map((n) => [normSlug(n.name), n]));
   let raw;
   try {
-    raw = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'name-equivalents.json'), 'utf8'));
+    raw = loadJsonFromFile('name-equivalents');
   } catch (e) {
     console.error('Phase 5.2: missing or invalid data/name-equivalents.json');
     process.exit(1);

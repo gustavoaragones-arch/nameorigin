@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-07-22T22:04:01.586Z",
+  "readOnly": true,
+  "measurementMethod": "process.hrtime.bigint() around each phase; process.memoryUsage().heapUsed sampled immediately before and after entity assembly. Single-run measurement, not averaged across multiple runs — see limitations in docs/CANONICAL_BUILDER.md.",
+  "datasetSizes": {
+    "data/names.json": "3697 rows",
+    "data/names-enriched.json": "3697 rows",
+    "data/normalized-names.json": "3697 rows",
+    "data/categories.json": "4468 rows",
+    "data/variants.json": "18426 rows",
+    "data/popularity.json": "7 rows",
+    "data/name-equivalents.json": "27 anchors",
+    "data/country-differentials.json": "5 entries",
+    "data/countries.json": "5 rows",
+    "build/topic-clusters.json": "3697 names"
+  },
+  "timings": {
+    "datasetLoadMs": 126.09,
+    "entityAssemblyMs": 74.64,
+    "assemblyMsPerEntity": 0.0202,
+    "schemaValidationMs": 124.46,
+    "fileWriteMs": 52.28,
+    "totalMs": 377.47
+  },
+  "memory": {
+    "heapUsedBeforeAssemblyBytes": 16135624,
+    "heapUsedAfterAssemblyBytes": 22060576,
+    "heapUsedAfterAssemblyHuman": "21.04 MB",
+    "deltaDuringAssemblyBytes": 5924952,
+    "deltaDuringAssemblyHuman": "5.65 MB"
+  },
+  "outputSize": {
+    "bytes": 5630992,
+    "human": "5.37 MB"
+  }
+}

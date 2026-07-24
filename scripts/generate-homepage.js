@@ -11,6 +11,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { loadLegacyCollection } = require('../lib/adapters/legacy-dataset-runtime.js');
 
 const ROOT = path.join(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
@@ -23,15 +24,6 @@ function loadJson(name) {
   const p = path.join(DATA_DIR, name + '.json');
   if (!fs.existsSync(p)) return [];
   return JSON.parse(fs.readFileSync(p, 'utf8'));
-}
-
-function loadNames() {
-  const enrichedPath = path.join(DATA_DIR, 'names-enriched.json');
-  const basePath = path.join(DATA_DIR, 'names.json');
-  if (fs.existsSync(enrichedPath)) {
-    return JSON.parse(fs.readFileSync(enrichedPath, 'utf8'));
-  }
-  return JSON.parse(fs.readFileSync(basePath, 'utf8'));
 }
 
 function slug(str) {
@@ -66,8 +58,8 @@ function countInternalLinks(html, siteHost = 'nameorigin.io') {
 }
 
 function run() {
-  const names = loadNames();
-  const popularity = loadJson('popularity');
+  const names = loadLegacyCollection('namesEnriched');
+  const popularity = loadLegacyCollection('popularity');
   const nameById = new Map(names.map((n) => [n.id, n]));
 
   const popularIds = getPopularNameIds(popularity, EXPLORER_GRID_SIZE);

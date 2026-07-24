@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-07-21T18:25:47.563Z",
+  "readOnly": true,
+  "method": "Sorted descending by fallbackPct (fallback assertions / total assertions for that template); ties broken by ascending truthfulnessPct. Source: audit/page-truthfulness.json — no counts recomputed here.",
+  "hotspots": [
+    {
+      "template": "name-detail-page",
+      "totalAssertions": 13,
+      "fallbackAssertions": 5,
+      "supportedAssertions": 2,
+      "computedAssertions": 3,
+      "disclosedAssertions": 3,
+      "fallbackPct": 38.5,
+      "truthfulnessPct": 38.5
+    },
+    {
+      "template": "compare-name-country-pair-page",
+      "totalAssertions": 3,
+      "fallbackAssertions": 1,
+      "supportedAssertions": 1,
+      "computedAssertions": 1,
+      "disclosedAssertions": 0,
+      "fallbackPct": 33.3,
+      "truthfulnessPct": 66.7
+    },
+    {
+      "template": "sibling-harmony-page",
+      "totalAssertions": 4,
+      "fallbackAssertions": 1,
+      "supportedAssertions": 0,
+      "computedAssertions": 2,
+      "disclosedAssertions": 1,
+      "fallbackPct": 25,
+      "truthfulnessPct": 50
+    },
+    {
+      "template": "names-like-page",
+      "totalAssertions": 4,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 0,
+      "computedAssertions": 2,
+      "disclosedAssertions": 2,
+      "fallbackPct": 0,
+      "truthfulnessPct": 50
+    },
+    {
+      "template": "surname-compatibility-page",
+      "totalAssertions": 3,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 1,
+      "disclosedAssertions": 1,
+      "fallbackPct": 0,
+      "truthfulnessPct": 66.7
+    },
+    {
+      "template": "equivalents-page",
+      "totalAssertions": 1,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 0,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    },
+    {
+      "template": "names-country-page",
+      "totalAssertions": 1,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 0,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    },
+    {
+      "template": "names-lastname-filter-page",
+      "totalAssertions": 2,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 1,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    },
+    {
+      "template": "names-style-page",
+      "totalAssertions": 1,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 0,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    },
+    {
+      "template": "popularity-year-page",
+      "totalAssertions": 1,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 0,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    },
+    {
+      "template": "trend-page",
+      "totalAssertions": 1,
+      "fallbackAssertions": 0,
+      "supportedAssertions": 1,
+      "computedAssertions": 0,
+      "disclosedAssertions": 0,
+      "fallbackPct": 0,
+      "truthfulnessPct": 100
+    }
+  ],
+  "highestFallbackTemplate": {
+    "template": "name-detail-page",
+    "totalAssertions": 13,
+    "fallbackAssertions": 5,
+    "supportedAssertions": 2,
+    "computedAssertions": 3,
+    "disclosedAssertions": 3,
+    "fallbackPct": 38.5,
+    "truthfulnessPct": 38.5
+  },
+  "notes": [
+    "A high fallbackPct here does not by itself indicate how many live pages are affected — cross-reference audit/project-inventory.json page counts per template (e.g. name-detail-page carries its fallback rate across 3,697 pages; compare-name-country-pair-page carries a similar rate across only 20)."
+  ]
+}

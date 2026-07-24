@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-07-22T00:00:00.000Z",
+  "readOnly": true,
+  "scope": "Measurement only — no fix, merge, or deletion is recommended for any finding below. Each finding states exactly how it was verified.",
+  "findings": [
+    {
+      "id": "origin-dual-file-split",
+      "type": "same fact stored twice, read inconsistently",
+      "description": "origin_country / origin_cluster / language exist in both data/names.json (always null — 0% populated by construction) and data/names-enriched.json (the origin-overrides-merged version, 4.41% populated). Every page-generator except scripts/generate-sibling-pages.js and the standalone scripts/generate-names-like.js reads the enriched file; those two read the base file.",
+      "verifiedBy": "Source inspection (Phase 1C) confirmed via grep: scripts/generate-sibling-pages.js line 408 loadJson('names'); scripts/generate-programmatic-pages.js prefers names-enriched.json. Rendered-output confirmation: the sibling-harmony origin fallback ('various origins') fires on 150/150 sibling pages (100%) versus 3,534/3,697 (95.6%) on name-detail-page for the identical concept — a real, measured behavioral divergence caused by the file split.",
+      "affectedTemplates": ["sibling-harmony-page"],
+      "severity_measured": "150 of 150 sibling-harmony pages render a strictly worse origin-fallback rate than the site's actual origin coverage would allow, if they read the same file every other generator reads."
+    },
+    {
+      "id": "spelling-variants-exact-duplicate",
+      "type": "same concept represented identically in two datasets",
+      "description": "data/variants.json (18,426 rows, relational name_id -> variant) and data/normalized-names.json's spelling_variants[] column represent the exact same fact.",
+      "verifiedBy": "Full comparison across all 3,697 names in this phase: for every name, the variant set in data/variants.json (excluding the canonical spelling itself) is identical, element-for-element, to that name's normalized-names.json spelling_variants[] array. 0 mismatches found across 3,697 names.",
+      "affectedTemplates": ["name-detail-page (reads variants.json)"],
+      "severity_measured": "100% duplication confirmed, not merely suspected — these are the same data, computed and stored twice."
+    },
+    {
+      "id": "syllable-count-exact-duplicate",
+      "type": "same concept represented identically in two datasets",
+      "description": "data/names.json's syllables field and data/normalized-names.json's syllable_estimate field.",
+      "verifiedBy": "Full comparison across all 3,697 names: syllables === syllable_estimate for every single record. 0 divergences found.",
+      "affectedTemplates": ["name-detail-page", "sibling-harmony-page"],
+      "severity_measured": "100% duplication confirmed."
+    },
+    {
+      "id": "meaning-two-truthfulness-outcomes-one-field",
+      "type": "same fact, competing presentation (not a data duplication — a rendering-layer redundancy)",
+      "description": "The single meaning field is read by at least 2 independently-coded rendering paths on name-detail-page: buildMetaDescription()/buildDirectAnswer()/buildDirectAnswers() substitute the fabricated phrase 'a documented given name' when empty; buildDefinitionBlock()/buildNameFactsTable()/buildQuickFaqForName() substitute an honest '—' placeholder for the same empty field on the same page.",
+      "verifiedBy": "Phase 1C grep-verified: 'documented given name' appears on 3,694/3,697 pages; the em-dash placeholder appears on 3,697/3,697 pages — both drawing on the identical underlying null value.",
+      "affectedTemplates": ["name-detail-page"],
+      "severity_measured": "Two different truthfulness classifications (fallback vs. disclosed-missing, per audit/truthfulness-matrix.json) for one field on one page, depending purely on which of 2 independently-written functions rendered it."
+    },
+    {
+      "id": "surname-dual-url-system",
+      "type": "parallel datasets / competing ownership of the same 75-entity set",
+      "description": "data/last-names.json backs two distinct templates with two distinct URL shapes for the identical 75-surname entity set: /baby-names-with-{surname}/ (scripts/generate-lastname-pages.js) and /names/with-last-name-{surname}.html (generateLastNamePage() inside scripts/generate-programmatic-pages.js).",
+      "verifiedBy": "Confirmed in Phase 1A (audit/project-inventory.json: 75 surname-compatibility-page + 75 names-lastname-filter-page instances) and re-confirmed in Phase 1C's assertion catalog (both templates carry near-identical surname_origin and compatibility_score assertions from the same dataset).",
+      "affectedTemplates": ["surname-compatibility-page", "names-lastname-filter-page"],
+      "severity_measured": "150 total pages (75 x 2 templates) for 75 underlying entities."
+    },
+    {
+      "id": "popularity-three-parallel-derivations",
+      "type": "parallel datasets deriving from the same source, computed independently",
+      "description": "data/popularity.json is the single real source of ranking data. data/country-differentials.json and data/regional-trend-acceleration.json each independently compute rank-delta/trend metrics FROM popularity.json, rather than one building on the other's output.",
+      "verifiedBy": "Source inspection: scripts/generate-country-differentials.js and scripts/generate-regional-trend-acceleration.js both read data/popularity.json directly (confirmed via loadJson calls); neither reads the other's output file.",
+      "affectedTemplates": ["compare-name-country-pair-page (does not actually read country-differentials.json — see finding compare-page-orphaned-dataset below)", "trend-page (reads both derived files)"],
+      "severity_measured": "3 datasets (popularity.json + 2 derived files) for what the canonical model would represent as 1 domain (popularity) with 2 sub-concepts (records[], trendAcceleration)."
+    },
+    {
+      "id": "compare-page-orphaned-dataset",
+      "type": "dataset built but not consumed by its apparent target generator",
+      "description": "data/country-differentials.json's fields (rank_2025, rank_2015, delta, volatility_score) conceptually match what scripts/generate-compare-pages.js renders, but that generator computes rank/movement/volatility independently from data/popularity.json and never reads country-differentials.json.",
+      "verifiedBy": "Source inspection in Phase 1C: grep for 'country-differentials' inside scripts/generate-compare-pages.js returns zero matches; the file's own getRank()/getMovement()/getVolatility() functions read data/popularity.json directly. This corrected an earlier (Phase 1B) audit/knowledge-dependencies.json chain that had attributed compare-name-country-pair-page to country-differentials.json.",
+      "affectedTemplates": ["compare-name-country-pair-page"],
+      "severity_measured": "1 dataset (country-differentials.json) with a real consumer (generate-trends-page.js) elsewhere, but zero consumers for its most obviously-matching template."
+    },
+    {
+      "id": "categories-vs-styles-taxonomy-mismatch",
+      "type": "same concept represented differently in two places",
+      "description": "data/categories.json defines 6 values (traditional, popular, rare, biblical, classical, nature). The 7 /names/style/{slug}.html pages use a separately hardcoded list in scripts/generate-programmatic-pages.js (modern, traditional, rare, nature, biblical, classic, popular) — 'modern' has no categories.json equivalent, and 'classic' (style) vs 'classical' (category) is a naming mismatch between the two vocabularies for what appears to be the same concept.",
+      "verifiedBy": "Confirmed in Phase 1A's audit/entity-map.json categoryTaxonomy.crossCheckWithStylePages.",
+      "affectedTemplates": ["names-style-page"],
+      "severity_measured": "1 of 7 style values (modern) has zero backing category data; 1 pair (classic/classical) may or may not refer to the same concept — not resolved by any current code path."
+    },
+    {
+      "id": "orphaned-prose-variant-datasets",
+      "type": "competing/unused presentation assets",
+      "description": "3 of the 5 'explanation variant' prose-pool datasets (data/cultural-explanation-variants.json, data/comparison-intro-variants.json, data/delta-interpretation-variants.json) are referenced by zero scripts in the repository.",
+      "verifiedBy": "Phase 1B's audit/datasets.json text-search scan (every script in scripts/, scripts/acquire/, scripts/utils/ searched for each dataset's basename) found zero hits for these 3 files.",
+      "affectedTemplates": ["none currently"],
+      "severity_measured": "3 of 19 total datasets (16%) have no measured live consumer."
+    },
+    {
+      "id": "names-enriched-base-field-duplication",
+      "type": "same base fields stored twice across two files",
+      "description": "data/names-enriched.json duplicates every base field from data/names.json (id, name, gender, syllables, first_letter, is_traditional, is_modern) verbatim, in addition to adding origin_cluster/origin_confidence.",
+      "verifiedBy": "Direct structural comparison of the two files' schemas in Phase 1A/1B (audit/entity-map.json, audit/knowledge-coverage.json arrayDatasetFieldCoverage).",
+      "affectedTemplates": ["all templates that read names-enriched.json"],
+      "severity_measured": "7 of names-enriched.json's 9 fields are exact copies of names.json; only origin_cluster and origin_confidence are genuinely additive."
+    }
+  ],
+  "findingCount": 10,
+  "notes": [
+    "Every 'verifiedBy' field states a specific check that was actually run (either in this phase or a prior one) — no finding here is asserted without a citable method.",
+    "No finding recommends a fix. Findings 2 and 3 (spelling variants, syllable count) are the two with the strongest evidence (exhaustive, zero-exception verification across all 3,697 names) precisely because they were checked exhaustively rather than sampled."
+  ]
+}

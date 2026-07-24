@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nameorigin.io/schemas/name-entity.schema.json",
+  "title": "NameOrigin Canonical Name Entity",
+  "description": "Permanent canonical contract for a single given-name entity. Organizes knowledge into logical domains instead of the current flat, per-dataset field layout (see audit/knowledge-domains.json for the field-by-field migration mapping and audit/dataset-mapping.json for how today's data files feed each domain). This schema is architecture-only: it defines the target shape, not an implementation, migration order, or generator change. Every property carries custom `x-*` annotations (a standard JSON Schema extension convention) answering: is this researched or computed, is it user-visible, does it affect SEO, does it affect structured data (schema.org/JSON-LD), and whether multiple values are allowed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["identity"],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "description": "Domain: the entity's stable identifying facts. Always present; never null as a whole object.",
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "integer", "description": "Stable numeric identifier.", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "slug": { "type": "string", "description": "URL-safe canonical slug, deterministically derived from name.", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "name": { "type": "string", "description": "Canonical display spelling of the name.", "x-nullable": false, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "gender": { "type": "string", "enum": ["boy", "girl", "unisex"], "description": "Gender association as catalogued (not a claim about any individual bearer).", "x-nullable": false, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "firstLetter": { "type": "string", "minLength": 1, "maxLength": 1, "description": "First character of `name`, for alphabetical browsing.", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false }
+      },
+      "required": ["id", "slug", "name", "gender", "firstLetter"]
+    },
+
+    "classification": {
+      "type": ["object", "null"],
+      "description": "Domain: style/thematic tags used for browsing and filtering. Distinct from `identity` because tags are assigned, not inherent.",
+      "additionalProperties": false,
+      "properties": {
+        "categories": { "type": "array", "items": { "type": "string" }, "description": "Assigned category tags (e.g. traditional, biblical, rare). See audit/knowledge-redundancy.json for the categories-vs-styles taxonomy overlap.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "styleTags": { "type": "array", "items": { "type": "string" }, "description": "Style-page taxonomy membership (modern, classic, nature, ...) — a separate, currently only partially-overlapping vocabulary from categories.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "isTraditional": { "type": ["boolean", "null"], "description": "Traditional-usage flag.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "isModern": { "type": ["boolean", "null"], "description": "Modern-usage flag.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "meaning": {
+      "type": ["object", "null"],
+      "description": "Domain: what the name means. Null (the whole object) is the canonical way to represent 'no researched meaning exists' — the model has no separate 'unknown' sentinel value; absence is absence. This directly replaces today's practice of substituting literal fallback text ('a documented given name') when this field is empty (see audit/fallback-taxonomy.json, mechanism meaning-fallback-documented-given-name).",
+      "additionalProperties": false,
+      "properties": {
+        "primary": { "type": "string", "description": "The principal researched meaning.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "alternates": { "type": "array", "items": { "type": "string" }, "description": "Additional documented meanings where more than one tradition ascribes a different meaning.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Researcher confidence in `primary`, mirroring the existing origin_confidence pattern.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "origin": {
+      "type": ["object", "null"],
+      "description": "Domain: geographic/cultural origin. Today this single concept is split across two files read by two different generators (data/names-enriched.json for most templates, data/names.json for the sibling-harmony generator) — see audit/knowledge-redundancy.json. The canonical model has exactly one origin object per entity, ending that split by construction.",
+      "additionalProperties": false,
+      "properties": {
+        "country": { "type": "string", "description": "Country of origin.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "cluster": { "type": "string", "description": "Broader origin cluster (e.g. Indian, Nordic, Semitic) used for grouping/related-name logic.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Researcher confidence in the origin assignment.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "language": {
+      "type": ["object", "null"],
+      "description": "Domain: linguistic association, kept distinct from `origin` (a name can be linguistically Sanskrit while its country of origin is catalogued as India — today these are two fields on one flat record; here they remain two fields but under a schema that makes the relationship explicit).",
+      "additionalProperties": false,
+      "properties": {
+        "primary": { "type": "string", "description": "Primary language of origin.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "related": { "type": "array", "items": { "type": "string" }, "description": "Related/cognate languages.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "etymology": {
+      "type": ["object", "null"],
+      "description": "Domain: not present in any current dataset (a future expansion named explicitly in the Phase 2A brief). Placeholder structure only.",
+      "additionalProperties": false,
+      "properties": {
+        "rootWord": { "type": "string", "description": "The word(s) the name derives from.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "rootLanguage": { "type": "string", "description": "Language of the root word, which may differ from `language.primary` after linguistic evolution.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "derivationNotes": { "type": "string", "description": "Free-text account of how the name evolved from its root.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "history": {
+      "type": ["object", "null"],
+      "description": "Domain: not present in any current dataset. Today's 'Historical and Cultural Context' section (buildCulturalContext()) renders unconditionally with generic substitute text when no real history exists (see audit/fallback-taxonomy.json, mechanism origin-fallback-various-cultural-traditions) — this domain is where a real, entity-specific historical record would live instead.",
+      "additionalProperties": false,
+      "properties": {
+        "firstRecordedUse": { "type": "string", "description": "Earliest documented use, if known.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "notableBearers": { "type": "array", "items": { "type": "string" }, "description": "Notable historical or contemporary bearers of the name.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "historicalUsageNotes": { "type": "string", "description": "Free-text account of how usage has changed over time.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "culture": {
+      "type": ["object", "null"],
+      "description": "Domain: cultural significance distinct from raw historical facts (history is 'what happened'; culture is 'what it means to people now').",
+      "additionalProperties": false,
+      "properties": {
+        "culturalSignificance": { "type": "string", "description": "Free-text description of cultural resonance.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "regionalNotes": { "type": "array", "items": { "type": "object", "properties": { "region": { "type": "string" }, "note": { "type": "string" } } }, "description": "Region-specific cultural notes.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "religion": {
+      "type": ["object", "null"],
+      "description": "Domain: explicitly not present anywhere in the current project. Phase 1A's entity-map.json already recorded this absence directly ('No religion taxonomy exists in the dataset... the closest concept is the \"biblical\" value inside the categories.json taxonomy'). This domain formalizes where a real religion/tradition association would live, separate from the categories.json 'biblical' style tag it would eventually supersede for that purpose.",
+      "additionalProperties": false,
+      "properties": {
+        "tradition": { "type": "string", "description": "Associated religious tradition, if any (e.g. Christian, Islamic, Hindu, Jewish, secular).", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "scripturalReference": { "type": "string", "description": "Reference to a scriptural or religious text where the name appears, if applicable.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "usage": {
+      "type": ["object", "null"],
+      "description": "Domain: how and where the name is actually used today, as distinct from where it originated.",
+      "additionalProperties": false,
+      "properties": {
+        "regionsOfUse": { "type": "array", "items": { "type": "string" }, "description": "Countries/regions where the name sees notable current use (derived from `popularity.records`, not independently researched).", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "isUnisex": { "type": ["boolean", "null"], "description": "Convenience mirror of identity.gender === 'unisex'.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "pronunciation": {
+      "type": ["object", "null"],
+      "description": "Domain: how the name sounds. Currently the single most under-populated domain in the live site — the backing `phonetic` field has 0% coverage across all 3,697 names (audit/knowledge-coverage.json), so the existing Pronunciation section has never rendered on any page.",
+      "additionalProperties": false,
+      "properties": {
+        "ipa": { "type": "string", "description": "International Phonetic Alphabet transcription.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": true },
+        "phoneticSpelling": { "type": "string", "description": "Plain-language phonetic respelling (e.g. 'LEE-am').", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "syllableCount": { "type": ["integer", "null"], "description": "Number of syllables.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "audioUrl": { "type": "string", "format": "uri", "description": "Optional pronunciation audio clip — a genuinely new capability, not present in any current dataset.", "x-nullable": true, "x-multiple": false, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": true }
+      }
+    },
+
+    "variants": {
+      "type": ["object", "null"],
+      "description": "Domain: alternate spellings. Today represented in two separate datasets (data/variants.json and data/normalized-names.json's spelling_variants[]) that were not verified to be identical — see audit/knowledge-redundancy.json.",
+      "additionalProperties": false,
+      "properties": {
+        "spellingVariants": { "type": "array", "items": { "type": "object", "properties": { "spelling": { "type": "string" }, "language": { "type": "string" } } }, "description": "Alternate spellings, each optionally tagged with a language.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "transliterations": { "type": "array", "items": { "type": "object", "properties": { "script": { "type": "string" }, "value": { "type": "string" } } }, "description": "Renderings in non-Latin scripts (e.g. Devanagari, Cyrillic, Arabic) — a future expansion named explicitly in the Phase 2A brief; not present in any current dataset.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": true }
+      }
+    },
+
+    "nicknames": {
+      "type": ["object", "null"],
+      "description": "Domain: not present in any current dataset. Distinct from `variants` (a variant is an alternate FORM of the same name; a nickname is a shortened/affectionate name derived from it, e.g. 'Liam' from 'William').",
+      "additionalProperties": false,
+      "properties": {
+        "commonNicknames": { "type": "array", "items": { "type": "string" }, "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "diminutives": { "type": "array", "items": { "type": "string" }, "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "relatedNames": {
+      "type": ["object", "null"],
+      "description": "Domain: this name's place in the wider name graph. `equivalents` is today's closed, curated data/name-equivalents.json set; `similarNames` and `clusterId` correspond to the algorithmic 'Names Like X' and topic-cluster mechanisms.",
+      "additionalProperties": false,
+      "properties": {
+        "equivalents": { "type": "array", "items": { "type": "object", "properties": { "language": { "type": "string" }, "nameId": { "type": "string" } } }, "description": "Curated cross-linguistic equivalents.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "similarNameIds": { "type": "array", "items": { "type": "string" }, "description": "Algorithmically-similar names (phonetic/origin/popularity/gender pools), i.e. today's Names Like X page contents.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": false },
+        "clusterId": { "type": "string", "description": "Topic-cluster membership (build/topic-clusters.json).", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "popularity": {
+      "type": ["object", "null"],
+      "description": "Domain: usage-frequency data over time and geography. Currently the second-sparsest domain (0.14% entity-level coverage) and additionally fragmented across three datasets (data/popularity.json, data/country-differentials.json, data/regional-trend-acceleration.json) that each derive overlapping-but-not-identical metrics from the same underlying source — see audit/knowledge-redundancy.json.",
+      "additionalProperties": false,
+      "properties": {
+        "records": { "type": "array", "items": { "type": "object", "properties": { "country": { "type": "string" }, "year": { "type": "integer" }, "rank": { "type": ["integer", "null"] }, "count": { "type": ["integer", "null"] }, "trendDirection": { "type": ["string", "null"], "enum": ["rising", "stable", "falling", null] } } }, "description": "Per-country, per-year ranking records.", "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "trendAcceleration": { "type": ["number", "null"], "description": "(rank_earlier - rank_later) / years, positive = rising — the metric data/regional-trend-acceleration.json computes today.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "relationships": {
+      "type": ["object", "null"],
+      "description": "Domain: this name's computed relationships to OTHER entities (surnames, sibling names, comparison pairs) — distinct from relatedNames, which is about other first names sharing this name's own attributes. Note: surname_compatibility and comparisonPairs reference a Surname Entity and a Country Entity respectively, neither of which is defined by this Name Entity schema (see docs/CANONICAL_KNOWLEDGE_MODEL.md, 'Domain boundaries', and audit/schema-validation.json for the explicit unmapped-scope note).",
+      "additionalProperties": false,
+      "properties": {
+        "surnameCompatibility": { "type": "array", "items": { "type": "object", "properties": { "surnameId": { "type": "string" }, "score": { "type": "number" } } }, "description": "Computed first+last name phonetic compatibility scores.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "siblingPairs": { "type": "array", "items": { "type": "object", "properties": { "nameId": { "type": "string" }, "harmonyScore": { "type": "number" }, "sharedOrigin": { "type": ["boolean", "null"] }, "styleMatch": { "type": ["string", "null"] } } }, "description": "Computed sibling-name harmony scores. sharedOrigin is nullable because today's sibling generator reads unenriched data — see audit/knowledge-redundancy.json.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "comparisonPairs": { "type": "array", "items": { "type": "object", "properties": { "countryA": { "type": "string" }, "countryB": { "type": "string" }, "rankA": { "type": ["integer", "null"] }, "rankB": { "type": ["integer", "null"] } } }, "description": "Cross-country popularity comparisons.", "x-nullable": true, "x-multiple": true, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": false }
+      }
+    },
+
+    "citations": {
+      "type": ["object", "null"],
+      "description": "Domain: provenance for every researched (non-computed) fact above — a future expansion named explicitly in the Phase 2A brief; not present in any current dataset. Today's 'Sources and Etymology' section (buildReferenceBlock()) renders a generic, non-entity-specific list of source CATEGORIES on every page regardless of whether any real citation exists for that entity.",
+      "additionalProperties": false,
+      "properties": {
+        "sources": { "type": "array", "items": { "type": "object", "properties": { "field": { "type": "string", "description": "Which domain/field this citation supports, e.g. 'meaning.primary'." }, "type": { "type": "string" }, "reference": { "type": "string" }, "confidence": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }, "dateVerified": { "type": "string", "format": "date" } } }, "x-nullable": true, "x-multiple": true, "x-provenance": "researched", "x-userVisible": true, "x-seoImpact": false, "x-structuredDataImpact": true }
+      }
+    },
+
+    "metadata": {
+      "type": "object",
+      "description": "Domain: record-keeping about the entity itself, not about the name. Always present.",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": { "type": "string", "const": "1.0.0", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "createdAt": { "type": "string", "format": "date-time", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false },
+        "lastUpdated": { "type": "string", "format": "date-time", "x-nullable": false, "x-multiple": false, "x-provenance": "computed", "x-userVisible": true, "x-seoImpact": true, "x-structuredDataImpact": true },
+        "dataCompletenessScore": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Fraction of non-null leaf fields across the whole entity — a diagnostic figure, not a quality judgment.", "x-nullable": true, "x-multiple": false, "x-provenance": "computed", "x-userVisible": false, "x-seoImpact": false, "x-structuredDataImpact": false }
+      },
+      "required": ["schemaVersion", "createdAt", "lastUpdated"]
+    }
+  }
+}

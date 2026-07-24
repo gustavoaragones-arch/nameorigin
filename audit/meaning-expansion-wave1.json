@@ -1,0 +1,209 @@
+{
+  "phase": "5B-1",
+  "title": "Meaning Expansion Wave 1",
+  "generatedAt": "2026-07-23T14:04:09.345Z",
+  "baselineReference": "knowledge-baseline-1.0",
+  "phase5CNotStarted": true,
+  "editorial": {
+    "researchFile": "data/sources/meaning-wave1-research.json",
+    "waveEntriesResearched": 513,
+    "baselineMeaningsPreserved": 3
+  },
+  "meaningsBefore": 3,
+  "meaningsAfter": 516,
+  "entitiesResearched": 513,
+  "coverageBeforePct": 0.08,
+  "coverageAfterPct": 13.96,
+  "coverageIncreasePct": 13.88,
+  "kciImpact": {
+    "averageBefore": 6.23,
+    "averageAfter": 9.01,
+    "medianBefore": 5,
+    "medianAfter": 5,
+    "distributionBefore": {
+      "0": 1260,
+      "1-20": 2034,
+      "21-40": 402,
+      "41-60": 1,
+      "61-80": 0,
+      "81-100": 0
+    },
+    "distributionAfter": {
+      "0": 1254,
+      "1-20": 1860,
+      "21-40": 255,
+      "41-60": 328,
+      "61-80": 0,
+      "81-100": 0
+    }
+  },
+  "highestScoringEntitiesAfter": [
+    {
+      "slug": "aadi",
+      "name": "Aadi",
+      "score": 50,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aahil",
+      "name": "Aahil",
+      "score": 50,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aakriti",
+      "name": "Aakriti",
+      "score": 50,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aaradhya",
+      "name": "Aaradhya",
+      "score": 50,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aarnav",
+      "name": "Aarnav",
+      "score": 50,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 5
+      }
+    },
+    {
+      "slug": "aashvi",
+      "name": "Aashvi",
+      "score": 45,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "aathish",
+      "name": "Aathish",
+      "score": 45,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abbas",
+      "name": "Abbas",
+      "score": 45,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abe",
+      "name": "Abe",
+      "score": 45,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    },
+    {
+      "slug": "abhijot",
+      "name": "Abhijot",
+      "score": 45,
+      "breakdown": {
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "citations": 0,
+        "variants": 5,
+        "popularity": 0
+      }
+    }
+  ],
+  "validation": {
+    "entityCountUnchanged": true,
+    "deterministicScoring": true,
+    "averageKciIncreased": true,
+    "meaningCoverageIncreased": true,
+    "originCoveragePreserved": true,
+    "noExistingMeaningReduction": true,
+    "scoreRangeValid": true,
+    "renderingUnchanged": true,
+    "htmlUnchanged": true,
+    "urlsUnchanged": true,
+    "schemaUnchanged": true,
+    "builderUnchanged": true,
+    "adaptersUnchanged": true,
+    "kciScoringUnchanged": true,
+    "targetMinimumMeaningsMet": true
+  }
+}

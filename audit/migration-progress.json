@@ -1,0 +1,309 @@
+{
+  "generatedAt": "2026-07-22T22:22:01.568Z",
+  "phase": "3D",
+  "wave": 2,
+  "totals": {
+    "pageAndDataGeneratorsInScope": 30,
+    "migrated": 13,
+    "remainingOnLegacyPipeline": 18,
+    "excludedRequiresRefactor": 1
+  },
+  "waveCompletion": {
+    "wave1": {
+      "total": 7,
+      "migrated": 7,
+      "percent": 100
+    },
+    "wave2": {
+      "total": 6,
+      "migrated": 6,
+      "percent": 100
+    },
+    "infrastructureMigrationComplete": true,
+    "note": "Only scripts/generate-trends-page.js remains on legacy reads due to Phase 2B requires-refactor classification."
+  },
+  "migratedGenerators": [
+    {
+      "wave": 1,
+      "script": "scripts/build-sitemap.js",
+      "adapterCollections": [
+        "names",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/generate-html-sitemap.js",
+      "adapterCollections": [
+        "names",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/generate-homepage.js",
+      "adapterCollections": [
+        "namesEnriched",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/generate-popularity-pages.js",
+      "adapterCollections": [
+        "names",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/generate-popularity-year-pages.js",
+      "adapterCollections": [
+        "names",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/classify-categories.js",
+      "adapterCollections": [
+        "namesEnriched",
+        "popularity"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 1,
+      "script": "scripts/build-popularity.js",
+      "adapterCollections": [
+        "names"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-programmatic-pages.js",
+      "adapterCollections": [
+        "namesEnriched",
+        "popularity",
+        "categories",
+        "variants"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-names-like.js",
+      "adapterCollections": [
+        "namesBase",
+        "popularity",
+        "categories"
+      ],
+      "behaviorPreservation": "namesBase reads data/names.json directly — fallback behavior preserved until Phase 4",
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-sibling-pages.js",
+      "adapterCollections": [
+        "namesBase",
+        "popularity",
+        "categories"
+      ],
+      "behaviorPreservation": "namesBase reads data/names.json directly — fallback behavior preserved until Phase 4",
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-lastname-pages.js",
+      "adapterCollections": [
+        "namesBase"
+      ],
+      "behaviorPreservation": "namesBase reads data/names.json directly — fallback behavior preserved until Phase 4",
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-compare-pages.js",
+      "adapterCollections": [
+        "namesBase",
+        "popularity"
+      ],
+      "behaviorPreservation": "namesBase reads data/names.json directly — fallback behavior preserved until Phase 4",
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    },
+    {
+      "wave": 2,
+      "script": "scripts/generate-equivalent-pages.js",
+      "adapterCollections": [
+        "namesEnriched"
+      ],
+      "behaviorPreservation": null,
+      "rollback": "NAMEORIGIN_LEGACY_DATA=1"
+    }
+  ],
+  "excludedFromMigration": [
+    {
+      "script": "scripts/generate-trends-page.js",
+      "reason": "requires-refactor — multi-source reconciliation logic (Phase 2B audit/backward-compatibility.json)"
+    }
+  ],
+  "remainingGenerators": [
+    {
+      "script": "scripts/build-all.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/build-compatibility.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/build-date.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/build-origin-seed.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/build-sitemaps.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-country-differentials.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-filter-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-hubs.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-jurisdiction-compare-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-jurisdiction-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-legal-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-name-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-regional-trend-acceleration.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-sibling-harmony.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-smoothness-score.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-tool-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    },
+    {
+      "script": "scripts/generate-year-pages.js",
+      "dataSource": "legacy data/*.json direct reads (non-page-generator or out of wave scope)"
+    }
+  ],
+  "remainingLegacyDatasetReads": [
+    {
+      "dataset": "data/name-equivalents.json",
+      "consumers": [
+        "scripts/generate-equivalent-pages.js"
+      ],
+      "note": "No adapter in Phase 3B — closed curated dataset"
+    },
+    {
+      "dataset": "data/countries.json",
+      "consumers": [
+        "scripts/build-sitemap.js",
+        "scripts/generate-html-sitemap.js",
+        "scripts/generate-programmatic-pages.js"
+      ],
+      "note": "Reference table — out of Name Entity scope"
+    },
+    {
+      "dataset": "data/last-names.json",
+      "consumers": [
+        "scripts/build-sitemap.js",
+        "scripts/generate-lastname-pages.js",
+        "scripts/generate-programmatic-pages.js"
+      ],
+      "note": "Surname entity — out of canonical scope"
+    },
+    {
+      "dataset": "build/topic-clusters.json",
+      "consumers": [
+        "scripts/generate-programmatic-pages.js"
+      ],
+      "note": "Optional precomputed cluster file"
+    },
+    {
+      "dataset": "data/regional-trend-acceleration.json",
+      "consumers": [
+        "scripts/generate-trends-page.js"
+      ],
+      "note": "Trends refactor blocker"
+    },
+    {
+      "dataset": "data/country-differentials.json",
+      "consumers": [
+        "scripts/generate-trends-page.js"
+      ],
+      "note": "Trends refactor blocker"
+    }
+  ],
+  "remainingAdapterGaps": [
+    "name-equivalents.json",
+    "countries.json",
+    "last-names.json",
+    "topic-clusters.json",
+    "regional-trend-acceleration.json",
+    "country-differentials.json"
+  ],
+  "adapterUtilization": {
+    "collectionsUsed": [
+      "names",
+      "namesEnriched",
+      "namesBase",
+      "popularity",
+      "categories",
+      "variants"
+    ],
+    "collectionsAvailable": [
+      "names",
+      "namesEnriched",
+      "popularity",
+      "categories",
+      "variants"
+    ],
+    "runtimeModule": "lib/adapters/legacy-dataset-runtime.js",
+    "adapterModule": "lib/adapters/legacy-datasets.js"
+  }
+}
