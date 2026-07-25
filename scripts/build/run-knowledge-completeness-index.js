@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Phase 5.0 — Knowledge Completeness Index (KCI) audit runner.
+ * Phase 10A — Knowledge Completeness Index (KCI) audit runner.
  *
  * Builds canonical entities in memory (no dataset or schema changes),
- * scores each entity deterministically, and writes internal audit artifacts.
+ * scores each entity deterministically using Citation Records and
+ * Popularity Records, and writes internal audit artifacts.
  *
  * Usage: node scripts/build/run-knowledge-completeness-index.js
  */
@@ -23,14 +24,16 @@ const {
   computeDomainCoverage,
   MAX_SCORE,
 } = require('../../lib/analysis/knowledge-completeness.js');
+const { createKciActivationContext } = require('../../lib/analysis/kci-activation-v1.js');
 
 function main() {
   fs.mkdirSync(AUDIT_DIR, { recursive: true });
 
   const buildTimestamp = new Date().toISOString();
+  const activationCtx = createKciActivationContext();
   const ctx = loaders.loadAll();
   const entities = buildAllEntities(ctx, buildTimestamp);
-  const scoredEntities = entities.map(scoreEntity);
+  const scoredEntities = entities.map((entity) => scoreEntity(entity, activationCtx));
 
   if (scoredEntities.length !== entities.length) {
     throw new Error('KCI validation failed: entity count mismatch after scoring.');
@@ -42,14 +45,15 @@ function main() {
     }
   }
 
-  const report = buildKnowledgeCompletenessReport(entities, buildTimestamp);
+  const report = buildKnowledgeCompletenessReport(entities, buildTimestamp, activationCtx);
   const top100 = buildLeaderboard(scoredEntities, 'top', 100);
   const bottom100 = buildLeaderboard(scoredEntities, 'bottom', 100);
   const domainCoverage = {
     generatedAt: buildTimestamp,
-    phase: '5.0',
-    baselineReference: 'knowledge-baseline-1.0',
+    phase: '10A',
+    baselineReference: 'kci-activation-v1',
     phase5AOriginExpansionStarted: false,
+    activation: report.activation,
     ...computeDomainCoverage(scoredEntities, scoredEntities.length),
   };
 
@@ -58,15 +62,15 @@ function main() {
   fs.writeFileSync(path.join(AUDIT_DIR, 'kci-bottom-100.json'), JSON.stringify(bottom100, null, 2));
   fs.writeFileSync(path.join(AUDIT_DIR, 'domain-coverage.json'), JSON.stringify(domainCoverage, null, 2));
 
-  console.log('Phase 5.0 Knowledge Completeness Index complete.');
+  console.log('Phase 10A Knowledge Completeness Index complete.');
   console.log('  Entities processed:', report.entityCount);
   console.log('  Average KCI:', report.summary.average);
   console.log('  Median KCI:', report.summary.median);
   console.log('  Score range:', report.summary.min, '-', report.summary.max);
-  console.log('  Researched origins:', domainCoverage.researchedOrigins.count, `(${domainCoverage.researchedOrigins.pct}%)`);
-  console.log('  Researched meanings:', domainCoverage.researchedMeanings.count, `(${domainCoverage.researchedMeanings.pct}%)`);
-  console.log('  Stored pronunciations:', domainCoverage.storedPronunciations.count, `(${domainCoverage.storedPronunciations.pct}%)`);
-  console.log('  Phase 5A origin expansion started: false');
+  console.log('  Citation coverage:', domainCoverage.citationCoverage.count, `(${domainCoverage.citationCoverage.pct}%)`);
+  console.log('  Popularity coverage:', domainCoverage.popularityCoverage.count, `(${domainCoverage.popularityCoverage.pct}%)`);
+  console.log('  Citation scoring active: true');
+  console.log('  Popularity scoring active: true');
 }
 
 main();
