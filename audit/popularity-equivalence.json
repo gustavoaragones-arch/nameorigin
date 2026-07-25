@@ -1,8 +1,8 @@
 {
-  "phase": "9A",
-  "title": "Popularity Infrastructure Equivalence",
-  "generatedAt": "2026-07-25T02:08:53.909Z",
-  "baselineReference": "citation-population-v1",
+  "phase": "9B",
+  "title": "Popularity Records Equivalence",
+  "generatedAt": "2026-07-25T02:22:03.281Z",
+  "baselineReference": "popularity-infrastructure-v1",
   "knowledgeRecords": {
     "status": "PASS",
     "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
@@ -24,6 +24,13 @@
     "recordsBefore": 1150,
     "recordsAfter": 1150
   },
+  "popularityRegistry": {
+    "status": "PASS",
+    "hashBefore": "ded657c666e97780deb426529c8332e98ca603ef39375bca8eec73f0c2f34b94",
+    "hashAfter": "ded657c666e97780deb426529c8332e98ca603ef39375bca8eec73f0c2f34b94",
+    "sourcesBefore": 9,
+    "sourcesAfter": 9
+  },
   "enrichment": {
     "status": "PASS",
     "differences": 0,
@@ -41,9 +48,9 @@
   "editorialQa": {
     "status": "PASS",
     "issueCountAfter": 0,
-    "note": "Editorial QA is validated separately in the infrastructure audit pipeline."
+    "note": "Editorial QA is validated separately in the records audit pipeline."
   },
   "renderingUnchanged": true,
   "schemaUnchanged": true,
-  "popularityInfrastructureOnly": true
+  "popularityPopulationOnly": true
 }

@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nameorigin.io/schemas/popularity-records-v1.schema.json",
+  "title": "Popularity Records v1",
+  "description": "Entity-level popularity records mapped to canonical Popularity Registry source IDs. Phase 9B.",
+  "type": "object",
+  "required": ["schemaVersion", "title", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "title": { "type": "string" },
+    "generatedAt": { "type": ["string", "null"], "format": "date-time" },
+    "baselineReference": { "type": "string" },
+    "methodology": { "type": "string" },
+    "stats": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/record" }
+    }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["name", "popularity"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "popularity": { "$ref": "#/$defs/popularityBlock" }
+      }
+    },
+    "popularityBlock": {
+      "type": "object",
+      "required": ["sources", "regions"],
+      "additionalProperties": false,
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$"
+          }
+        },
+        "regions": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/regionBlock" }
+        }
+      }
+    },
+    "regionBlock": {
+      "type": "object",
+      "required": ["records"],
+      "additionalProperties": false,
+      "properties": {
+        "sourceId": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Z0-9_]+$"
+        },
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/popularityRow" }
+        }
+      }
+    },
+    "popularityRow": {
+      "type": "object",
+      "required": ["year"],
+      "additionalProperties": false,
+      "properties": {
+        "year": { "type": "integer" },
+        "rank": { "type": ["integer", "null"] },
+        "count": { "type": ["integer", "null"] },
+        "trendDirection": {
+          "type": ["string", "null"],
+          "enum": ["rising", "stable", "falling", null]
+        }
+      }
+    }
+  }
+}
