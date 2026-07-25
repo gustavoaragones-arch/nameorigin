@@ -1,0 +1,118 @@
+{
+  "phase": "8A",
+  "title": "Citation Infrastructure v1",
+  "generatedAt": "2026-07-25T00:32:42.044Z",
+  "baselineReference": "editorial-architecture-v2",
+  "infrastructureOnly": true,
+  "editorialExpansion": false,
+  "registry": {
+    "path": "data/citation-registry.json",
+    "schemaVersion": "1.0",
+    "uniqueCitations": 17,
+    "uniquePublications": 17,
+    "rawSourceEntries": 38,
+    "uniqueRawReferences": 31,
+    "duplicatePublicationsRemoved": 14,
+    "citationIds": [
+      "ACADEMIE_FRANCAISE_HISTORICAL_USAGE",
+      "ACADEMIE_FRANCAISE_NAME_ETYMOLOGY",
+      "ACADEMIE_FRANCAISE_PRONUNCIATION",
+      "ANCHOR_YALE_BIBLE_DICTIONARY_PERSONAL_NAMES",
+      "BEHIND_THE_NAME_EDITORIAL",
+      "CAMBRIDGE_ENGLISH_PRONOUNCING_DICTIONARY",
+      "DMNES",
+      "ENCYCLOPAEDIA_OF_ISLAM_PERSONAL_NAMES",
+      "IGRS_GAELIC_NAME_FORMS",
+      "IGRS_GAELIC_NAME_USAGE",
+      "LGPN",
+      "LGPN_PRONUNCIATION_GUIDES",
+      "OXFORD_DNB_NAME_BEARERS",
+      "OXFORD_FIRST_NAMES_2006",
+      "UNIVERSITY_OF_DELHI_SANSKRIT_ETYMOLOGY",
+      "UNIVERSITY_OF_DELHI_SANSKRIT_PRONUNCIATION",
+      "UNIVERSITY_OF_DELHI_SANSKRIT_USAGE"
+    ]
+  },
+  "resolution": {
+    "path": "data/citation-resolutions.json",
+    "recordsWithCitations": 1150,
+    "totalSourceReferences": 7886,
+    "resolvedReferences": 7886,
+    "unresolvedReferences": 0,
+    "resolutionRatePct": 100,
+    "sourceResolutionIndexSize": 38
+  },
+  "citationCoverage": {
+    "editorialSourceReferencesDiscovered": 38,
+    "canonicalPublications": 17,
+    "fullyResolved": true
+  },
+  "validationStatus": {
+    "citationRegistry": "PASS",
+    "editorialQa": "PASS",
+    "editorialIssueCount": 0,
+    "schemaValidation": "PASS"
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "knowledgeRecords": {
+      "status": "PASS",
+      "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "recordCountBefore": 1150,
+      "recordCountAfter": 1150
+    },
+    "enrichment": {
+      "status": "PASS",
+      "differences": 0,
+      "hashBefore": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459",
+      "hashAfter": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459"
+    },
+    "kci": {
+      "status": "PASS",
+      "averageBefore": 23.74,
+      "averageAfter": 23.74,
+      "maxBefore": 90,
+      "maxAfter": 90,
+      "weightsUnchanged": true
+    }
+  },
+  "kciSummary": {
+    "average": 23.74,
+    "max": 90,
+    "weights": {
+      "origin": 20,
+      "meaning": 20,
+      "pronunciation": 15,
+      "etymology": 15,
+      "history": 10,
+      "citations": 10,
+      "variants": 5,
+      "popularity": 5
+    },
+    "citationCoverageCount": 0,
+    "citationCoveragePct": 0
+  },
+  "performance": {
+    "pipelineElapsedMs": 3538,
+    "stepTimingsMs": {
+      "buildCitationRegistryMs": 292,
+      "resolveCitationsMs": 248,
+      "validateCitationRegistryMs": 288,
+      "editorialQaMs": 546,
+      "citationEquivalenceMs": 2086
+    }
+  },
+  "validation": {
+    "canonicalRegistryCreated": true,
+    "deterministicCitationIds": true,
+    "duplicatePublicationsNormalized": true,
+    "allSourceReferencesResolved": true,
+    "editorialQaPass": true,
+    "equivalencePass": true,
+    "kciUnchanged": true,
+    "renderingUnchanged": true,
+    "schemaUnchanged": true,
+    "editorialArchitectureV2Unchanged": true
+  }
+}

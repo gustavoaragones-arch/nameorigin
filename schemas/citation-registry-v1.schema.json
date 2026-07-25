@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nameorigin.io/schemas/citation-registry-v1.schema.json",
+  "title": "Citation Registry v1",
+  "description": "Canonical citation registry for NameOrigin.io editorial provenance. Phase 8A.",
+  "type": "object",
+  "required": ["schemaVersion", "title", "citations"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "title": { "type": "string" },
+    "generatedAt": { "type": ["string", "null"], "format": "date-time" },
+    "baselineReference": { "type": "string" },
+    "methodology": { "type": "string" },
+    "stats": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "citations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/citation" }
+    }
+  },
+  "$defs": {
+    "citation": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "type",
+        "publisher",
+        "edition",
+        "year",
+        "language",
+        "authority",
+        "license",
+        "url",
+        "retrieved"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "publisher": { "type": ["string", "null"] },
+        "edition": { "type": ["string", "null"] },
+        "year": { "type": ["integer", "null"] },
+        "language": { "type": ["string", "null"] },
+        "authority": { "type": ["string", "null"] },
+        "license": { "type": ["string", "null"] },
+        "url": { "type": ["string", "null"] },
+        "retrieved": { "type": ["string", "null"] },
+        "canonicalReference": { "type": "string" },
+        "sourceTypes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
