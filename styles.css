@@ -1660,3 +1660,125 @@ p.disclaimer.heraldry-disclaimer {
     align-items: center;
   }
 }
+
+/* Phase 11A: KCI explainability presentation */
+.kci-explainability {
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.kci-intro {
+  color: #555;
+  margin-bottom: var(--space-5);
+}
+
+.kci-overall {
+  margin-bottom: var(--space-6);
+}
+
+.kci-overall__label {
+  font-size: 0.875rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kci-overall__value {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.kci-overall__max {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #777;
+}
+
+.kci-progress {
+  width: 100%;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.kci-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2f6fed, #5b8def);
+  border-radius: 999px;
+}
+
+.kci-components {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .kci-components {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.kci-component {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: var(--space-4);
+}
+
+.kci-component__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.kci-component__title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.kci-component__score {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+}
+
+.kci-component__explanation {
+  margin: 0;
+  color: #444;
+  line-height: 1.5;
+}
+
+.kci-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #2457b2;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.kci-publications {
+  margin: var(--space-3) 0 0;
+  padding-left: 1.1rem;
+  color: #333;
+}
+
+.kci-publications li {
+  margin-bottom: 0.35rem;
+}
+
+.kci-meta {
+  margin: var(--space-3) 0 0;
+  font-size: 0.875rem;
+  color: #666;
+}

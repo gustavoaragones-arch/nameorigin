@@ -39,6 +39,8 @@ const {
 const { mergeArticleSchema } = require('./aeo-article-schema.js');
 const { getBuildDate } = require('./build-date.js');
 const { getEquivalents } = require('./utils/name-equivalents.js');
+const { createKciPresentationContext, buildExplainabilityForName } = require('../lib/presentation/kci-explainability.js');
+const { renderKciExplainabilitySection } = require('../lib/presentation/kci-explainability-html.js');
 
 let computeSmoothness;
 try {
@@ -1435,7 +1437,7 @@ ${items}
 </section>`;
 }
 
-function generateNamePage(record, names, popularity, categories, variants, siblingSlugs, topicClusters) {
+function generateNamePage(record, names, popularity, categories, variants, siblingSlugs, topicClusters, kciPresentationCtx) {
   const buildDate = getBuildDate();
   const nameSlug = slug(record.name);
   const pathSeg = nameDetailPath(record.name);
@@ -1756,6 +1758,11 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
   const originLineageSection = buildOriginLineage(record.name, record);
   const culturalContextSection = buildCulturalContext(record.name, record);
   const referenceBlockSection = buildReferenceBlock(record.name);
+  const kciExplainabilitySection = kciPresentationCtx
+    ? renderKciExplainabilitySection(
+        buildExplainabilityForName(record.name, nameSlug, kciPresentationCtx),
+      )
+    : '';
 
   // Mesh A: Popularity Cluster — only link to years we generate (2022, 2023, 2024)
   const POPULARITY_YEARS = [2022, 2023, 2024];
@@ -1889,6 +1896,7 @@ function generateNamePage(record, names, popularity, categories, variants, sibli
     ${nameIntro}
     <p class="last-updated"><time datetime="${buildDate.iso}">Last updated: ${buildDate.display}</time></p>
     ${nameFactsTable}
+    ${kciExplainabilitySection}
     <p><strong>Meaning:</strong> ${htmlEscape(meaningTableLabel(record))}</p>
     <p><strong>Origin:</strong> ${htmlEscape([record.origin_country, record.language].filter(Boolean).join(' · ') || '—')}</p>
     ${originLineageSection}
@@ -3142,10 +3150,17 @@ function run() {
   // Phase 3.3E: only name slugs in the sibling batch get a sibling link (avoids broken links for ~3,500 names)
   const siblingSlugs = getSiblingBatchNameSlugs(names, popularity, 150);
 
+  let kciPresentationCtx = null;
+  try {
+    kciPresentationCtx = createKciPresentationContext();
+  } catch (err) {
+    console.warn('KCI presentation context unavailable:', err.message);
+  }
+
   // Name pages (STEP 6: each ≥ 30 internal links; average > 40)
   let namePageLinkTotal = 0;
   names.forEach((n) => {
-    namePageLinkTotal += generateNamePage(n, names, popularity, categories, variants, siblingSlugs, topicClusters);
+    namePageLinkTotal += generateNamePage(n, names, popularity, categories, variants, siblingSlugs, topicClusters, kciPresentationCtx);
   });
   const avgLinksPerNamePage = names.length ? namePageLinkTotal / names.length : 0;
   if (names.length > 0 && avgLinksPerNamePage <= 40) {

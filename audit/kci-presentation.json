@@ -1,0 +1,114 @@
+{
+  "phase": "11A",
+  "title": "KCI Exposure & Explainability v1",
+  "generatedAt": "2026-07-25T14:42:43.126Z",
+  "baselineReference": "kci-activation-v1",
+  "presentationOnly": true,
+  "pagesTested": 3697,
+  "componentRendering": {
+    "overallKciDisplayed": true,
+    "knowledgeContributionDisplayed": true,
+    "citationContributionDisplayed": true,
+    "popularityContributionDisplayed": true,
+    "progressIndicatorDisplayed": true,
+    "coverageBadgesDisplayed": true
+  },
+  "citationRendering": {
+    "entitiesWithCitationData": 1150,
+    "entitiesMissingCitationData": 2547,
+    "publicationTitlesOnly": true,
+    "internalIdsExposed": false
+  },
+  "popularityRendering": {
+    "entitiesWithPopularityData": 4,
+    "entitiesMissingPopularityData": 3693,
+    "unresolvedAuthorityHandled": true,
+    "countriesAndYearsDisplayed": true
+  },
+  "kciSummary": {
+    "average": 26.85,
+    "citationCoverage": {
+      "count": 1150,
+      "pct": 31.11
+    },
+    "popularityCoverage": {
+      "count": 4,
+      "pct": 0.11
+    }
+  },
+  "validationStatus": {
+    "kciPresentation": "PASS",
+    "kciActivation": "PASS",
+    "editorialQa": "PASS",
+    "editorialIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "details": {
+      "phase": "11A",
+      "title": "KCI Presentation Equivalence",
+      "generatedAt": "2026-07-25T14:42:43.102Z",
+      "baselineReference": "kci-activation-v1",
+      "knowledgeRecords": {
+        "status": "PASS",
+        "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+        "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e"
+      },
+      "citationRegistry": {
+        "status": "PASS"
+      },
+      "citationRecords": {
+        "status": "PASS"
+      },
+      "popularityRegistry": {
+        "status": "PASS"
+      },
+      "popularityRecords": {
+        "status": "PASS"
+      },
+      "kciReport": {
+        "status": "PASS"
+      },
+      "kciEngine": {
+        "status": "PASS",
+        "hashBefore": "680df165710f2803da1b07c6871fdda399da4123edeac7fa497827de218e77d7",
+        "hashAfter": "680df165710f2803da1b07c6871fdda399da4123edeac7fa497827de218e77d7"
+      },
+      "enrichment": {
+        "status": "PASS",
+        "differences": 0
+      },
+      "renderingUnchanged": true,
+      "schemaUnchanged": true,
+      "editorialUnchanged": true,
+      "presentationOnly": true
+    }
+  },
+  "performance": {
+    "pipelineElapsedMs": 3894,
+    "stepTimingsMs": {
+      "runKciMs": 941,
+      "validateKciPresentationMs": 497,
+      "validateKciActivationMs": 464,
+      "editorialQaMs": 471,
+      "kciPresentationEquivalenceMs": 978
+    }
+  },
+  "validation": {
+    "overallKciDisplayed": true,
+    "componentContributionsDisplayed": true,
+    "citationExplanationsDisplayed": true,
+    "popularityExplanationsDisplayed": true,
+    "missingDataHandledGracefully": true,
+    "noInternalIdsExposed": true,
+    "deterministicRenderingPass": true,
+    "editorialQaPass": true,
+    "kciValidationPass": true,
+    "equivalencePass": true,
+    "knowledgeArchitectureUnchanged": true,
+    "citationArchitectureUnchanged": true,
+    "popularityArchitectureUnchanged": true,
+    "kciEngineUnchanged": true,
+    "renderingPresentationOnly": true
+  }
+}

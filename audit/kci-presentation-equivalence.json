@@ -1,0 +1,39 @@
+{
+  "phase": "11A",
+  "title": "KCI Presentation Equivalence",
+  "generatedAt": "2026-07-25T14:42:43.102Z",
+  "baselineReference": "kci-activation-v1",
+  "knowledgeRecords": {
+    "status": "PASS",
+    "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+    "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e"
+  },
+  "citationRegistry": {
+    "status": "PASS"
+  },
+  "citationRecords": {
+    "status": "PASS"
+  },
+  "popularityRegistry": {
+    "status": "PASS"
+  },
+  "popularityRecords": {
+    "status": "PASS"
+  },
+  "kciReport": {
+    "status": "PASS"
+  },
+  "kciEngine": {
+    "status": "PASS",
+    "hashBefore": "680df165710f2803da1b07c6871fdda399da4123edeac7fa497827de218e77d7",
+    "hashAfter": "680df165710f2803da1b07c6871fdda399da4123edeac7fa497827de218e77d7"
+  },
+  "enrichment": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "renderingUnchanged": true,
+  "schemaUnchanged": true,
+  "editorialUnchanged": true,
+  "presentationOnly": true
+}
