@@ -1,0 +1,126 @@
+{
+  "phase": "9A",
+  "title": "Popularity Infrastructure v1",
+  "generatedAt": "2026-07-25T02:08:53.968Z",
+  "baselineReference": "citation-population-v1",
+  "infrastructureOnly": true,
+  "popularityPopulation": false,
+  "registry": {
+    "path": "data/popularity-registry.json",
+    "schemaVersion": "1.0",
+    "registrySize": 9,
+    "sourceIds": [
+      "ABS_AUSTRALIA_BABY_NAMES",
+      "EUROSTAT_DEMOGRAPHIC_STATISTICS",
+      "ONS_ENGLAND_WALES_BABY_NAMES",
+      "SSA_US_BABY_NAMES",
+      "SSA_US_HISTORICAL_BABY_NAMES",
+      "STATCAN_CANADA_FIRST_NAMES",
+      "STATCAN_POPULATION_REGISTRY",
+      "UK_DATA_SERVICE_NAME_RESEARCH",
+      "UK_GRO_CIVIL_REGISTRATION"
+    ],
+    "rawAuthorityEntries": 10,
+    "duplicateAuthoritiesRemoved": 1,
+    "authorityClassesSupported": [
+      "government_statistics",
+      "civil_registration",
+      "national_statistics",
+      "population_registry",
+      "official_name_statistics",
+      "historical_name_dataset",
+      "academic_dataset",
+      "international_dataset"
+    ],
+    "authorityClassesInRegistry": [
+      "academic_dataset",
+      "civil_registration",
+      "government_statistics",
+      "historical_name_dataset",
+      "international_dataset",
+      "national_statistics",
+      "population_registry"
+    ],
+    "authorityResolutionIndexSize": 31
+  },
+  "validationStatus": {
+    "popularityRegistry": "PASS",
+    "editorialQa": "PASS",
+    "editorialIssueCount": 0,
+    "schemaValidation": "PASS"
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "knowledgeRecords": {
+      "status": "PASS",
+      "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "recordCountBefore": 1150,
+      "recordCountAfter": 1150
+    },
+    "citationRegistry": {
+      "status": "PASS",
+      "hashBefore": "b066db13884d6ca0dc68d3db1b20922061961657575be1e51b5f56dc6fa8bdcb",
+      "hashAfter": "b066db13884d6ca0dc68d3db1b20922061961657575be1e51b5f56dc6fa8bdcb",
+      "citationsBefore": 17,
+      "citationsAfter": 17
+    },
+    "citationRecords": {
+      "status": "PASS",
+      "hashBefore": "2cde219d427878f0114694210d680297738984bae6aab5b8b53fea7a44b7818b",
+      "hashAfter": "2cde219d427878f0114694210d680297738984bae6aab5b8b53fea7a44b7818b",
+      "recordsBefore": 1150,
+      "recordsAfter": 1150
+    },
+    "enrichment": {
+      "status": "PASS",
+      "differences": 0,
+      "hashBefore": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459",
+      "hashAfter": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459"
+    },
+    "kci": {
+      "status": "PASS",
+      "averageBefore": 23.74,
+      "averageAfter": 23.74,
+      "popularityCoverageBefore": 5,
+      "popularityCoverageAfter": 5,
+      "weightsUnchanged": true
+    }
+  },
+  "kciSummary": {
+    "average": 23.74,
+    "popularityCoverageCount": 5,
+    "popularityCoveragePct": 0.14,
+    "popularityScoringEnabled": false
+  },
+  "deterministicRebuild": {
+    "status": "PASS",
+    "semanticHash": "ded657c666e97780deb426529c8332e98ca603ef39375bca8eec73f0c2f34b94"
+  },
+  "performance": {
+    "pipelineElapsedMs": 1279,
+    "stepTimingsMs": {
+      "buildPopularityRegistryMs": 151,
+      "validatePopularityRegistryMs": 133,
+      "editorialQaMs": 442,
+      "popularityEquivalenceMs": 523
+    }
+  },
+  "validation": {
+    "canonicalRegistryCreated": true,
+    "deterministicRegistryIds": true,
+    "duplicateAuthoritiesNormalized": true,
+    "registrySchemaValidationPass": true,
+    "deterministicRebuildPass": true,
+    "editorialQaPass": true,
+    "equivalencePass": true,
+    "knowledgeRecordsUnchanged": true,
+    "citationRegistryUnchanged": true,
+    "citationRecordsUnchanged": true,
+    "enrichmentUnchanged": true,
+    "kciUnchanged": true,
+    "renderingUnchanged": true,
+    "schemaUnchanged": true,
+    "noPopularityValuesAdded": true
+  }
+}

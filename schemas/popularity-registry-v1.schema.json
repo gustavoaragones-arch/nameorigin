@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://nameorigin.io/schemas/popularity-registry-v1.schema.json",
+  "title": "Popularity Registry v1",
+  "description": "Canonical popularity source registry for NameOrigin.io. Phase 9A.",
+  "type": "object",
+  "required": ["schemaVersion", "title", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0" },
+    "title": { "type": "string" },
+    "generatedAt": { "type": ["string", "null"], "format": "date-time" },
+    "baselineReference": { "type": "string" },
+    "methodology": { "type": "string" },
+    "supportedAuthorityClasses": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "authorityResolutionIndex": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "type",
+        "publisher",
+        "country",
+        "coverage",
+        "license",
+        "url",
+        "retrieved"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+        "title": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "government_statistics",
+            "civil_registration",
+            "national_statistics",
+            "population_registry",
+            "official_name_statistics",
+            "historical_name_dataset",
+            "academic_dataset",
+            "international_dataset"
+          ]
+        },
+        "publisher": { "type": ["string", "null"] },
+        "country": { "type": ["string", "null"] },
+        "coverage": { "type": ["string", "null"] },
+        "license": { "type": ["string", "null"] },
+        "url": { "type": ["string", "null"] },
+        "retrieved": { "type": ["string", "null"] },
+        "canonicalAuthority": { "type": "string" },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

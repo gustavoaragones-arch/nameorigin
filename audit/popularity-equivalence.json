@@ -1,0 +1,49 @@
+{
+  "phase": "9A",
+  "title": "Popularity Infrastructure Equivalence",
+  "generatedAt": "2026-07-25T02:08:53.909Z",
+  "baselineReference": "citation-population-v1",
+  "knowledgeRecords": {
+    "status": "PASS",
+    "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+    "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+    "recordCountBefore": 1150,
+    "recordCountAfter": 1150
+  },
+  "citationRegistry": {
+    "status": "PASS",
+    "hashBefore": "b066db13884d6ca0dc68d3db1b20922061961657575be1e51b5f56dc6fa8bdcb",
+    "hashAfter": "b066db13884d6ca0dc68d3db1b20922061961657575be1e51b5f56dc6fa8bdcb",
+    "citationsBefore": 17,
+    "citationsAfter": 17
+  },
+  "citationRecords": {
+    "status": "PASS",
+    "hashBefore": "2cde219d427878f0114694210d680297738984bae6aab5b8b53fea7a44b7818b",
+    "hashAfter": "2cde219d427878f0114694210d680297738984bae6aab5b8b53fea7a44b7818b",
+    "recordsBefore": 1150,
+    "recordsAfter": 1150
+  },
+  "enrichment": {
+    "status": "PASS",
+    "differences": 0,
+    "hashBefore": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459",
+    "hashAfter": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459"
+  },
+  "kci": {
+    "status": "PASS",
+    "averageBefore": 23.74,
+    "averageAfter": 23.74,
+    "popularityCoverageBefore": 5,
+    "popularityCoverageAfter": 5,
+    "weightsUnchanged": true
+  },
+  "editorialQa": {
+    "status": "PASS",
+    "issueCountAfter": 0,
+    "note": "Editorial QA is validated separately in the infrastructure audit pipeline."
+  },
+  "renderingUnchanged": true,
+  "schemaUnchanged": true,
+  "popularityInfrastructureOnly": true
+}
