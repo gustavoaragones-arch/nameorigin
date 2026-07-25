@@ -1,0 +1,103 @@
+{
+  "phase": "8B",
+  "title": "Citation Records Population v1",
+  "generatedAt": "2026-07-25T01:48:14.094Z",
+  "baselineReference": "citation-infrastructure-v1",
+  "citationPopulationOnly": true,
+  "registry": {
+    "canonicalCitations": 17,
+    "registryFrozen": true
+  },
+  "citationRecordsGenerated": 1150,
+  "knowledgeRecordsMatched": 1150,
+  "citationIdsAssigned": 7886,
+  "averageCitationsPerEntity": 6.86,
+  "duplicateRemovals": 0,
+  "domainCoverage": {
+    "counts": {
+      "origin": 978,
+      "meaning": 906,
+      "pronunciation": 976,
+      "etymology": 964,
+      "history": 964
+    },
+    "pctOfEntities": {
+      "origin": 26.45,
+      "meaning": 24.51,
+      "pronunciation": 26.4,
+      "etymology": 26.08,
+      "history": 26.08
+    }
+  },
+  "unresolvedReferences": 0,
+  "deterministicRebuild": {
+    "status": "PASS",
+    "semanticHash": "2cde219d427878f0114694210d680297738984bae6aab5b8b53fea7a44b7818b"
+  },
+  "validationStatus": {
+    "citationRecords": "PASS",
+    "editorialQa": "PASS",
+    "editorialIssueCount": 0,
+    "schemaValidation": "PASS"
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "knowledgeRecords": {
+      "status": "PASS",
+      "hashBefore": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "hashAfter": "495f67b32d514d54ea8fb79afa13ed7619db174137ac08b8810113665774df9e",
+      "recordCountBefore": 1150,
+      "recordCountAfter": 1150
+    },
+    "enrichment": {
+      "status": "PASS",
+      "differences": 0,
+      "hashBefore": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459",
+      "hashAfter": "dc30376a9846424bb57d1b6ad4406392e59214f77622afdb40fea942ede1c459"
+    },
+    "kci": {
+      "status": "PASS",
+      "averageBefore": 23.74,
+      "averageAfter": 23.74,
+      "maxBefore": 90,
+      "maxAfter": 90,
+      "weightsUnchanged": true
+    }
+  },
+  "preservation": {
+    "knowledgeRecordsUnchanged": true,
+    "enrichmentUnchanged": true,
+    "kciAverageUnchanged": true,
+    "kciCitationCoverageUnchanged": true,
+    "kciWeightsUnchanged": true
+  },
+  "kciSummary": {
+    "average": 23.74,
+    "citationCoverageCount": 0,
+    "citationCoveragePct": 0,
+    "citationWeightingEnabled": false
+  },
+  "performance": {
+    "pipelineElapsedMs": 3061,
+    "stepTimingsMs": {
+      "buildCitationRecordsMs": 170,
+      "validateCitationRecordsMs": 266,
+      "editorialQaMs": 595,
+      "citationEquivalenceMs": 1713
+    }
+  },
+  "validation": {
+    "targetCitationRecords1150": true,
+    "allRegistryReferencesValid": true,
+    "unresolvedCitationIds": 0,
+    "deterministicRebuildPass": true,
+    "editorialQaPass": true,
+    "equivalencePass": true,
+    "knowledgeRecordsUnchanged": true,
+    "enrichmentUnchanged": true,
+    "kciUnchanged": true,
+    "renderingUnchanged": true,
+    "schemaUnchanged": true,
+    "citationInfrastructureFrozen": true
+  }
+}
