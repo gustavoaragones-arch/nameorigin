@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Sources &amp; Methodology for nameorigin.io. Transparency into editorial methodology, architecture versions, and quality assurance.">
+  <title>Sources &amp; Methodology | nameorigin.io</title>
+  <link rel="canonical" href="https://nameorigin.io/about/methodology/">
+  <link rel="stylesheet" href="/styles.min.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Organization","name":"NameOrigin.io","parentOrganization":{"@type":"Organization","name":"Albor Digital LLC"}},"dateModified":"2026-01-01"}</script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="/" class="site-logo">nameorigin.io</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
+        <div class="nav-inner">
+          <a href="/names">Names</a>
+          <a href="/about/">About</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="container section trust-page">
+    <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/about/">About</a> / <span aria-current="page">Sources &amp; Methodology</span></nav>
+    <h1>Sources &amp; Methodology</h1>
+    <nav class="trust-nav" aria-label="Trust and transparency pages"><span aria-current="page">Sources &amp; Methodology</span> · <a href="/about/editorial-policy/">Editorial Policy</a> · <a href="/about/architecture/">Architecture</a> · <a href="/about/quality-assurance/">Quality Assurance</a></nav><p class="contextual">How NameOrigin.io structures editorial knowledge, canonical citations, popularity sources, and the Knowledge Completeness Index using deterministic, auditable pipelines.</p><p class="contextual">NameOrigin.io separates editorial knowledge, canonical citations, popularity attribution, and scoring into independent layers. Each layer is built, validated, and frozen before the next layer consumes it. This page explains how those layers work together without exposing internal implementation identifiers.</p><section class="trust-panel"><h2>Knowledge Records</h2><p class="contextual">Structured editorial knowledge across origin, meaning, pronunciation, etymology, and history. Knowledge Records are the editorial source of truth and remain frozen during presentation phases. Editorial QA verifies record consistency before records contribute to scoring or public explainability.</p></section><section class="trust-panel"><h2>Citation Infrastructure</h2><p class="contextual">Editorial source references are normalized to canonical publications through a deterministic registry. Users see publication titles, editions, and organizations — never internal registry identifiers. Citation Records map each editorial entity to sorted, deduplicated publication references.</p></section><section class="trust-panel"><h2>Popularity Infrastructure</h2><p class="contextual">Popularity sources are normalized to canonical authority datasets such as government statistics and national registry publications. Entity popularity records reference these sources without embedding raw authority names on public pages. Regions without registry mappings preserve data but do not contribute popularity attribution until a canonical source exists.</p></section><section class="trust-panel"><h2>Knowledge Completeness Index</h2><p class="contextual">KCI is a deterministic internal score derived from editorial knowledge, citation records, and popularity records. Component scores are exposed on name pages through a read-only presentation layer that does not recalculate scoring. Missing records contribute zero points without error.</p></section><section class="trust-panel"><h2>Deterministic Builds</h2><p class="contextual">Registry builders, record population, KCI activation, and presentation rendering all support deterministic rebuild verification. Identical inputs produce identical outputs, and equivalence audits confirm that frozen artifacts remain unchanged when presentation layers are extended.</p></section><section class="trust-panel"><h2>How to read name pages</h2><p class="contextual">Each name page includes a Knowledge Completeness section summarizing editorial coverage, cited publications, and popularity availability. Publication references use a shared formatter that displays title, edition when available, and publishing organization. Browse <a href="/names/">all names</a> or review our <a href="/about/quality-assurance/">quality assurance</a> results for current validation status.</p></section><section class="trust-panel" aria-labelledby="validation-heading"><h2 id="validation-heading">Validation Status</h2><div class="trust-badges"><span class="trust-badge trust-badge--pass">Editorial QA: PASS</span><span class="trust-badge trust-badge--pass">KCI Activation: PASS</span><span class="trust-badge trust-badge--pass">KCI Presentation: PASS</span><span class="trust-badge trust-badge--pass">Deterministic Rebuild: PASS</span><span class="trust-badge trust-badge--pass">Equivalence: PASS</span></div></section>
+    <section aria-labelledby="explore-heading"><h2 id="explore-heading">Explore</h2>
+    <p class="internal-links"><a href="/">Home</a> · <a href="/names">All names</a> · <a href="/names/boy.html">Boy names</a> · <a href="/names/girl.html">Girl names</a> · <a href="/names/unisex.html">Unisex names</a> · <a href="/all-name-pages.html">All name pages</a> · <a href="/country-name-pages.html">Country name pages</a> · <a href="/style-name-pages.html">Style name pages</a> · <a href="/alphabet-name-pages.html">Alphabet name pages</a> · <a href="/names/with-last-name.html">Last name compatibility</a> · <a href="/popularity/">Popularity by year</a> · <a href="/compare/">Compare by country</a> · <a href="/trends/">Name trends</a> · <a href="/compatibility/">Compatibility tool</a> · <a href="/names/trending.html">Trending names</a> · <a href="/names/popular.html">Popular names</a> · <a href="/names/letters.html">Browse by letter</a> · <a href="/about/">About</a> · <a href="/about/methodology/">Sources &amp; Methodology</a> · <a href="/about/editorial-policy/">Editorial Policy</a> · <a href="/about/architecture/">Architecture</a> · <a href="/about/quality-assurance/">Quality Assurance</a> · <a href="/legal/privacy.html">Privacy policy</a> · <a href="/legal/terms.html">Terms of use</a></p>
+    </section>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__bottom">
+        <p class="mb-0">© 2026 nameorigin.io. All rights reserved.<br>
+nameorigin.io is owned and operated by Albor Digital LLC, an independent product studio based in Wyoming, USA.</p>
+        <p>Contact: <a href="mailto:contact@nameorigin.io">contact@nameorigin.io</a></p>
+        <p><a href="/sitemap/">Sitemap</a></p>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/navigation.js" defer></script>
+</body>
+</html>

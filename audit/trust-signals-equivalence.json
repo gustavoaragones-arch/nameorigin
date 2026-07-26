@@ -1,0 +1,39 @@
+{
+  "phase": "12A",
+  "title": "Trust Signals Equivalence",
+  "generatedAt": "2026-07-26T00:08:00.988Z",
+  "baselineReference": "kci-explainability-v1",
+  "knowledgeRecords": {
+    "status": "PASS"
+  },
+  "citationRegistry": {
+    "status": "PASS"
+  },
+  "citationRecords": {
+    "status": "PASS"
+  },
+  "popularityRegistry": {
+    "status": "PASS"
+  },
+  "popularityRecords": {
+    "status": "PASS"
+  },
+  "kciReport": {
+    "status": "PASS"
+  },
+  "kciEngine": {
+    "status": "PASS"
+  },
+  "kciPresentationSample": {
+    "status": "PASS"
+  },
+  "presentationLayerExtended": {
+    "status": "PASS",
+    "note": "Phase 12A extends presentation with trust signals and shared citation formatting."
+  },
+  "enrichment": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "trustPresentationOnly": true
+}

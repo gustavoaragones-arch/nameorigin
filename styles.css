@@ -1782,3 +1782,82 @@ p.disclaimer.heraldry-disclaimer {
   font-size: 0.875rem;
   color: #666;
 }
+
+/* Phase 12A: Trust signals presentation */
+.trust-page {
+  max-width: 920px;
+}
+
+.trust-nav {
+  margin: var(--space-4) 0 var(--space-6);
+  color: #555;
+}
+
+.trust-panel {
+  margin: var(--space-5) 0;
+  padding: var(--space-4);
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
+
+.trust-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.trust-table th,
+.trust-table td {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0.65rem 0.5rem;
+  text-align: left;
+}
+
+.trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trust-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: #f0f0f0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.trust-badge--pass {
+  background: #eaf7ea;
+  color: #1f6b1f;
+}
+
+.trust-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.trust-generated {
+  margin-top: var(--space-4);
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.citation-publications,
+.kci-publications {
+  margin: var(--space-3) 0 0;
+  padding-left: 1.1rem;
+}
+
+.citation-publication__title {
+  font-weight: 600;
+}
+
+.citation-publication__meta {
+  display: block;
+  color: #666;
+  font-size: 0.875rem;
+  margin-top: 0.15rem;
+}

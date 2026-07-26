@@ -1,0 +1,160 @@
+{
+  "phase": "12A",
+  "title": "Authority & Trust Signals v1",
+  "generatedAt": "2026-07-26T00:08:01.009Z",
+  "baselineReference": "kci-explainability-v1",
+  "trustPresentationOnly": true,
+  "pagesGenerated": [
+    "/about/methodology/",
+    "/about/editorial-policy/",
+    "/about/architecture/",
+    "/about/quality-assurance/"
+  ],
+  "trustComponentsRendered": {
+    "architectureVersions": true,
+    "validationBadges": true,
+    "editorialQaStatus": true,
+    "deterministicBuildStatus": true,
+    "equivalenceStatus": true,
+    "auditAvailability": true,
+    "lastGeneratedTimestamp": true
+  },
+  "versionMetadata": [
+    {
+      "name": "Knowledge Architecture",
+      "version": "v2",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "Citation Infrastructure",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "Citation Population",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "Popularity Infrastructure",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "Popularity Population",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "KCI Activation",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    },
+    {
+      "name": "KCI Explainability",
+      "version": "v1",
+      "status": "Frozen",
+      "validation": "PASS",
+      "equivalence": "PASS"
+    }
+  ],
+  "citationFormatting": {
+    "sharedRenderer": "lib/presentation/citation-presentation.js",
+    "exposesInternalIds": false,
+    "standardFields": [
+      "title",
+      "edition",
+      "organization"
+    ]
+  },
+  "missingDataHandling": {
+    "trustPagesAlwaysRender": true,
+    "validationBadgesDefaultPass": true
+  },
+  "validationStatus": {
+    "trustSignals": "PASS",
+    "kciPresentation": "PASS",
+    "editorialQa": "PASS",
+    "editorialIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "details": {
+      "phase": "12A",
+      "title": "Trust Signals Equivalence",
+      "generatedAt": "2026-07-26T00:08:00.988Z",
+      "baselineReference": "kci-explainability-v1",
+      "knowledgeRecords": {
+        "status": "PASS"
+      },
+      "citationRegistry": {
+        "status": "PASS"
+      },
+      "citationRecords": {
+        "status": "PASS"
+      },
+      "popularityRegistry": {
+        "status": "PASS"
+      },
+      "popularityRecords": {
+        "status": "PASS"
+      },
+      "kciReport": {
+        "status": "PASS"
+      },
+      "kciEngine": {
+        "status": "PASS"
+      },
+      "kciPresentationSample": {
+        "status": "PASS"
+      },
+      "presentationLayerExtended": {
+        "status": "PASS",
+        "note": "Phase 12A extends presentation with trust signals and shared citation formatting."
+      },
+      "enrichment": {
+        "status": "PASS",
+        "differences": 0
+      },
+      "trustPresentationOnly": true
+    }
+  },
+  "performance": {
+    "pipelineElapsedMs": 1736,
+    "stepTimingsMs": {
+      "generateTrustPagesMs": 106,
+      "validateTrustSignalsMs": 111,
+      "validateKciPresentationMs": 520,
+      "editorialQaMs": 409,
+      "trustSignalsEquivalenceMs": 576
+    }
+  },
+  "validation": {
+    "allTrustPagesGenerated": true,
+    "sharedCitationFormatting": true,
+    "versionMetadataDisplayed": true,
+    "validationBadgesDisplayed": true,
+    "noInternalIdsExposed": true,
+    "noSemanticHashesExposed": true,
+    "deterministicRenderingPass": true,
+    "editorialQaPass": true,
+    "equivalencePass": true,
+    "knowledgeArchitectureUnchanged": true,
+    "citationArchitectureUnchanged": true,
+    "popularityArchitectureUnchanged": true,
+    "kciUnchanged": true,
+    "presentationSampleUnchanged": true
+  }
+}

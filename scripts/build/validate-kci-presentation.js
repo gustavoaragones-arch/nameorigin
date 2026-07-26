@@ -22,7 +22,7 @@ function slug(str) {
 
 function collectInternalIds(ctx) {
   const ids = new Set();
-  for (const row of ctx.citationTitleIndex.keys()) ids.add(row);
+  for (const row of ctx.citationRegistryIndex.keys()) ids.add(row);
   const registry = loadJson(PRESENTATION_PATHS.citationRegistry, { citations: [] });
   for (const row of registry.citations || []) ids.add(row.id);
   const popularityRegistry = loadJson(path.join(ROOT, 'data', 'popularity-registry.json'), { sources: [] });
