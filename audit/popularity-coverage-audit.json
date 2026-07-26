@@ -1,0 +1,67 @@
+{
+  "phase": "14A",
+  "title": "Popularity Coverage Intelligence v1",
+  "generatedAt": "2026-07-26T03:59:05.095Z",
+  "baselineReference": "popularity-records-v1",
+  "measurementOnly": true,
+  "reportsGenerated": {
+    "popularityCoverage": true,
+    "popularityGapAnalysis": true
+  },
+  "reportStatistics": {
+    "totalEntities": 3697,
+    "popularityRecordCoveragePct": 0.14,
+    "entitiesWithPopularityRecords": 5,
+    "entitiesWithoutPopularityRecords": 3692,
+    "kciPopularityCoveragePct": 0.11,
+    "registryUtilizationPct": 11.11,
+    "integrityStatus": "PASS",
+    "top100Count": 100,
+    "zeroSourceEntities": 3693,
+    "unresolvedLegacyEntities": 1
+  },
+  "validationStatus": {
+    "popularityCoverageValidation": "PASS",
+    "integrity": "PASS"
+  },
+  "deterministicVerification": {
+    "status": "PASS",
+    "coverageReportReproducible": true,
+    "gapAnalysisReproducible": true
+  },
+  "repositoryUnchangedVerification": {
+    "status": "PASS",
+    "knowledgeRecords": "PASS",
+    "citationRecords": "PASS",
+    "popularityRegistry": "PASS",
+    "popularityRecords": "PASS",
+    "kciReport": "PASS",
+    "kciEngine": "PASS",
+    "popularityRecordsByteIdentical": "PASS",
+    "popularityRegistryByteIdentical": "PASS"
+  },
+  "performance": {
+    "pipelineElapsedMs": 1090,
+    "stepTimingsMs": {
+      "popularityCoverageMs": 226,
+      "popularityGapAnalysisMs": 205,
+      "validatePopularityCoverageMs": 434
+    }
+  },
+  "validation": {
+    "coverageReportGenerated": true,
+    "gapAnalysisGenerated": true,
+    "validationPass": true,
+    "deterministicPass": true,
+    "repositoryEquivalencePass": true,
+    "popularityRecordsUnchanged": true,
+    "popularityRegistryUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "citationRecordsUnchanged": true,
+    "kciUnchanged": true,
+    "presentationUnchanged": true,
+    "trustUnchanged": true,
+    "noPopularityRecordMutations": true,
+    "noRegistryMutations": true
+  }
+}

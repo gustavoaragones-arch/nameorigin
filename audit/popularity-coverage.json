@@ -1,0 +1,247 @@
+{
+  "phase": "14A",
+  "title": "Popularity Coverage Snapshot",
+  "generatedAt": "2026-07-25T02:22:02.869Z",
+  "baselineReference": "popularity-records-v1",
+  "readOnly": true,
+  "measurementOnly": true,
+  "overall": {
+    "totalEntities": 3697,
+    "totalPopularityRecords": 5,
+    "totalLegacyPopularityRows": 7,
+    "entitiesWithPopularityRecords": 5,
+    "entitiesWithoutPopularityRecords": 3692,
+    "popularityRecordCoveragePct": 0.14,
+    "entitiesWithLegacyPopularity": 5,
+    "legacyPopularityCoveragePct": 0.14,
+    "entitiesWithAttributableSources": 4,
+    "attributableSourceCoveragePct": 0.11,
+    "entitiesWithKciPopularityPoints": 4,
+    "kciPopularityCoveragePct": 0.11,
+    "totalSourcesReferenced": 1,
+    "averageSourcesPerPopularityRecord": 0.8,
+    "medianSourcesPerEntity": 1,
+    "maximumSourcesOnSingleEntity": 1,
+    "entitiesWithZeroSources": 3693,
+    "entitiesWithSingleSource": 4,
+    "unresolvedLegacyRows": 1
+  },
+  "coverageByDimension": {
+    "gender": [
+      {
+        "value": "boy",
+        "totalEntities": 1592,
+        "withPopularityRecord": 3,
+        "withLegacyPopularity": 3,
+        "withAttributableSources": 3,
+        "legacyRowCount": 5,
+        "popularityRecordCoveragePct": 0.19,
+        "legacyCoveragePct": 0.19,
+        "attributableCoveragePct": 0.19
+      },
+      {
+        "value": "girl",
+        "totalEntities": 1446,
+        "withPopularityRecord": 2,
+        "withLegacyPopularity": 2,
+        "withAttributableSources": 1,
+        "legacyRowCount": 2,
+        "popularityRecordCoveragePct": 0.14,
+        "legacyCoveragePct": 0.14,
+        "attributableCoveragePct": 0.07
+      },
+      {
+        "value": "unisex",
+        "totalEntities": 659,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      }
+    ],
+    "language": [
+      {
+        "value": "Unknown",
+        "totalEntities": 3694,
+        "withPopularityRecord": 5,
+        "withLegacyPopularity": 5,
+        "withAttributableSources": 4,
+        "legacyRowCount": 7,
+        "popularityRecordCoveragePct": 0.14,
+        "legacyCoveragePct": 0.14,
+        "attributableCoveragePct": 0.11
+      },
+      {
+        "value": "German",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      },
+      {
+        "value": "Hebrew",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      },
+      {
+        "value": "Latin",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      }
+    ],
+    "originCountry": [
+      {
+        "value": "Unknown",
+        "totalEntities": 3694,
+        "withPopularityRecord": 5,
+        "withLegacyPopularity": 5,
+        "withAttributableSources": 4,
+        "legacyRowCount": 7,
+        "popularityRecordCoveragePct": 0.14,
+        "legacyCoveragePct": 0.14,
+        "attributableCoveragePct": 0.11
+      },
+      {
+        "value": "Germany",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      },
+      {
+        "value": "Hebrew",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      },
+      {
+        "value": "Italy",
+        "totalEntities": 1,
+        "withPopularityRecord": 0,
+        "withLegacyPopularity": 0,
+        "withAttributableSources": 0,
+        "legacyRowCount": 0,
+        "popularityRecordCoveragePct": 0,
+        "legacyCoveragePct": 0,
+        "attributableCoveragePct": 0
+      }
+    ]
+  },
+  "countryCoverage": [
+    {
+      "country": "AUS",
+      "entitiesWithLegacyRows": 0,
+      "entitiesWithAttributableSource": 0,
+      "legacyRowCount": 0
+    },
+    {
+      "country": "CAN",
+      "entitiesWithLegacyRows": 0,
+      "entitiesWithAttributableSource": 0,
+      "legacyRowCount": 0
+    },
+    {
+      "country": "India",
+      "entitiesWithLegacyRows": 1,
+      "entitiesWithAttributableSource": 0,
+      "legacyRowCount": 1
+    },
+    {
+      "country": "UK",
+      "entitiesWithLegacyRows": 0,
+      "entitiesWithAttributableSource": 0,
+      "legacyRowCount": 0
+    },
+    {
+      "country": "USA",
+      "entitiesWithLegacyRows": 4,
+      "entitiesWithAttributableSource": 4,
+      "legacyRowCount": 6
+    }
+  ],
+  "distribution": {
+    "0": 3693,
+    "1": 4,
+    "2": 0,
+    "3+": 0
+  },
+  "registryQuality": {
+    "registrySourceCount": 9,
+    "referencedSourceCount": 1,
+    "unusedSources": [
+      "ABS_AUSTRALIA_BABY_NAMES",
+      "EUROSTAT_DEMOGRAPHIC_STATISTICS",
+      "ONS_ENGLAND_WALES_BABY_NAMES",
+      "SSA_US_HISTORICAL_BABY_NAMES",
+      "STATCAN_CANADA_FIRST_NAMES",
+      "STATCAN_POPULATION_REGISTRY",
+      "UK_DATA_SERVICE_NAME_RESEARCH",
+      "UK_GRO_CIVIL_REGISTRATION"
+    ],
+    "orphanRegistryEntries": 8,
+    "registryUtilizationPct": 11.11,
+    "unresolvedAuthorities": [
+      "India"
+    ],
+    "duplicateSourceUsage": [
+      {
+        "id": "SSA_US_BABY_NAMES",
+        "usageCount": 4
+      }
+    ],
+    "topSourcesByUsage": [
+      {
+        "id": "SSA_US_BABY_NAMES",
+        "usageCount": 4
+      }
+    ],
+    "regionalConcentration": [
+      {
+        "country": "USA",
+        "entityCount": 4
+      },
+      {
+        "country": "India",
+        "entityCount": 1
+      }
+    ]
+  },
+  "integrity": {
+    "status": "PASS",
+    "errors": [],
+    "checks": {
+      "noBrokenSourceIds": true,
+      "deterministicOrdering": true,
+      "duplicateFreeEntityReferences": true,
+      "registryConsistency": true
+    }
+  }
+}

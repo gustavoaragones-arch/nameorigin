@@ -1,0 +1,2685 @@
+{
+  "phase": "14A",
+  "title": "Popularity Gap Analysis & Prioritization",
+  "generatedAt": "2026-07-25T02:22:02.869Z",
+  "baselineReference": "popularity-records-v1",
+  "readOnly": true,
+  "planningReport": true,
+  "methodology": {
+    "priorityScoreFactors": [
+      "no_popularity_record",
+      "unresolved_legacy_authority",
+      "legacy_data_without_attribution",
+      "researched_without_popularity_points",
+      "knowledge_record_present",
+      "single_source_only",
+      "low_kci",
+      "origin_country_without_popularity"
+    ],
+    "note": "Priority scores are computed at audit time only and are not persisted to KCI or Popularity Records."
+  },
+  "top100HighestPriority": [
+    {
+      "slug": "aakriti",
+      "name": "Aakriti",
+      "currentSourceCount": 0,
+      "legacyRowCount": 1,
+      "legacyCountries": [
+        "India"
+      ],
+      "unresolvedLegacyCountries": [
+        "India"
+      ],
+      "hasPopularityRecord": true,
+      "hasKnowledgeRecord": true,
+      "currentKci": 95,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 225,
+      "priorityReasons": [
+        "unresolved_legacy_authority",
+        "legacy_data_without_attribution",
+        "researched_without_popularity_points",
+        "knowledge_record_present"
+      ],
+      "rank": 1
+    },
+    {
+      "slug": "abbygail",
+      "name": "Abbygail",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 2
+    },
+    {
+      "slug": "abd",
+      "name": "Abd",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 3
+    },
+    {
+      "slug": "abdifatah",
+      "name": "Abdifatah",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 4
+    },
+    {
+      "slug": "abdirahman",
+      "name": "Abdirahman",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 5
+    },
+    {
+      "slug": "abdullahi",
+      "name": "Abdullahi",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 6
+    },
+    {
+      "slug": "abifoluwa",
+      "name": "Abifoluwa",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 7
+    },
+    {
+      "slug": "abrar",
+      "name": "Abrar",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 8
+    },
+    {
+      "slug": "abshir",
+      "name": "Abshir",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 9
+    },
+    {
+      "slug": "abubakar",
+      "name": "Abubakar",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 10
+    },
+    {
+      "slug": "achille",
+      "name": "Achille",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 11
+    },
+    {
+      "slug": "achilles",
+      "name": "Achilles",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 12
+    },
+    {
+      "slug": "achraf",
+      "name": "Achraf",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 13
+    },
+    {
+      "slug": "addisyn",
+      "name": "Addisyn",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 14
+    },
+    {
+      "slug": "adeena",
+      "name": "Adeena",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 15
+    },
+    {
+      "slug": "ademide",
+      "name": "Ademide",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 16
+    },
+    {
+      "slug": "adham",
+      "name": "Adham",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 17
+    },
+    {
+      "slug": "adi",
+      "name": "Adi",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 18
+    },
+    {
+      "slug": "adib",
+      "name": "Adib",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 19
+    },
+    {
+      "slug": "adiba",
+      "name": "Adiba",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 20
+    },
+    {
+      "slug": "adil",
+      "name": "Adil",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 21
+    },
+    {
+      "slug": "adnan",
+      "name": "Adnan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 22
+    },
+    {
+      "slug": "advaita",
+      "name": "Advaita",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 23
+    },
+    {
+      "slug": "advaith",
+      "name": "Advaith",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 24
+    },
+    {
+      "slug": "affan",
+      "name": "Affan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 25
+    },
+    {
+      "slug": "afnan",
+      "name": "Afnan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 26
+    },
+    {
+      "slug": "afton",
+      "name": "Afton",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 27
+    },
+    {
+      "slug": "agamdeep",
+      "name": "Agamdeep",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 28
+    },
+    {
+      "slug": "agamjot",
+      "name": "Agamjot",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 29
+    },
+    {
+      "slug": "agamvir",
+      "name": "Agamvir",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 30
+    },
+    {
+      "slug": "aganetha",
+      "name": "Aganetha",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 31
+    },
+    {
+      "slug": "agnes",
+      "name": "Agnes",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 32
+    },
+    {
+      "slug": "ahnaf",
+      "name": "Ahnaf",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 33
+    },
+    {
+      "slug": "ahyan",
+      "name": "Ahyan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 34
+    },
+    {
+      "slug": "aikam",
+      "name": "Aikam",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 35
+    },
+    {
+      "slug": "aine",
+      "name": "Aine",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 36
+    },
+    {
+      "slug": "aishmeen",
+      "name": "Aishmeen",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 37
+    },
+    {
+      "slug": "aisling",
+      "name": "Aisling",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 38
+    },
+    {
+      "slug": "aissatou",
+      "name": "Aissatou",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 39
+    },
+    {
+      "slug": "ajaypal",
+      "name": "Ajaypal",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 40
+    },
+    {
+      "slug": "akbar",
+      "name": "Akbar",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 41
+    },
+    {
+      "slug": "akmal",
+      "name": "Akmal",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 42
+    },
+    {
+      "slug": "akram",
+      "name": "Akram",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 43
+    },
+    {
+      "slug": "alain",
+      "name": "Alain",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 44
+    },
+    {
+      "slug": "alanis",
+      "name": "Alanis",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 45
+    },
+    {
+      "slug": "alaric",
+      "name": "Alaric",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 46
+    },
+    {
+      "slug": "alaura",
+      "name": "Alaura",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 47
+    },
+    {
+      "slug": "alazar",
+      "name": "Alazar",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 48
+    },
+    {
+      "slug": "alberta",
+      "name": "Alberta",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 49
+    },
+    {
+      "slug": "alea",
+      "name": "Alea",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 50
+    },
+    {
+      "slug": "alfaaz",
+      "name": "Alfaaz",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 51
+    },
+    {
+      "slug": "alida",
+      "name": "Alida",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 52
+    },
+    {
+      "slug": "alishba",
+      "name": "Alishba",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 53
+    },
+    {
+      "slug": "almir",
+      "name": "Almir",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 54
+    },
+    {
+      "slug": "almira",
+      "name": "Almira",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 55
+    },
+    {
+      "slug": "alondra",
+      "name": "Alondra",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 56
+    },
+    {
+      "slug": "alonso",
+      "name": "Alonso",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 57
+    },
+    {
+      "slug": "anvika",
+      "name": "Anvika",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 58
+    },
+    {
+      "slug": "anvit",
+      "name": "Anvit",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 59
+    },
+    {
+      "slug": "anwar",
+      "name": "Anwar",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 60
+    },
+    {
+      "slug": "aoife",
+      "name": "Aoife",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 61
+    },
+    {
+      "slug": "aqsa",
+      "name": "Aqsa",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 62
+    },
+    {
+      "slug": "aracely",
+      "name": "Aracely",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 63
+    },
+    {
+      "slug": "aramis",
+      "name": "Aramis",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 64
+    },
+    {
+      "slug": "arbaaz",
+      "name": "Arbaaz",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 65
+    },
+    {
+      "slug": "arden",
+      "name": "Arden",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 66
+    },
+    {
+      "slug": "areeb",
+      "name": "Areeb",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 67
+    },
+    {
+      "slug": "areeba",
+      "name": "Areeba",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 68
+    },
+    {
+      "slug": "areej",
+      "name": "Areej",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 69
+    },
+    {
+      "slug": "ariadne",
+      "name": "Ariadne",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 70
+    },
+    {
+      "slug": "arlette",
+      "name": "Arlette",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 71
+    },
+    {
+      "slug": "arnaaz",
+      "name": "Arnaaz",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 72
+    },
+    {
+      "slug": "arnaud",
+      "name": "Arnaud",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 73
+    },
+    {
+      "slug": "arpan",
+      "name": "Arpan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 74
+    },
+    {
+      "slug": "arsalan",
+      "name": "Arsalan",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 75
+    },
+    {
+      "slug": "arshdeep",
+      "name": "Arshdeep",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 76
+    },
+    {
+      "slug": "arshpreet",
+      "name": "Arshpreet",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 77
+    },
+    {
+      "slug": "arvin",
+      "name": "Arvin",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 78
+    },
+    {
+      "slug": "aryeh",
+      "name": "Aryeh",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 79
+    },
+    {
+      "slug": "asa",
+      "name": "Asa",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 80
+    },
+    {
+      "slug": "asadullah",
+      "name": "Asadullah",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 81
+    },
+    {
+      "slug": "asees",
+      "name": "Asees",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 82
+    },
+    {
+      "slug": "ashmeet",
+      "name": "Ashmeet",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 83
+    },
+    {
+      "slug": "ashnoor",
+      "name": "Ashnoor",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 84
+    },
+    {
+      "slug": "ashrith",
+      "name": "Ashrith",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 85
+    },
+    {
+      "slug": "ashvik",
+      "name": "Ashvik",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 86
+    },
+    {
+      "slug": "ashvika",
+      "name": "Ashvika",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 87
+    },
+    {
+      "slug": "ashvin",
+      "name": "Ashvin",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 88
+    },
+    {
+      "slug": "asmaa",
+      "name": "Asmaa",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 89
+    },
+    {
+      "slug": "aspen",
+      "name": "Aspen",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 90
+    },
+    {
+      "slug": "aster",
+      "name": "Aster",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 30,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "unisex",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 91
+    },
+    {
+      "slug": "aston",
+      "name": "Aston",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 92
+    },
+    {
+      "slug": "athanasia",
+      "name": "Athanasia",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 93
+    },
+    {
+      "slug": "athanasios",
+      "name": "Athanasios",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 94
+    },
+    {
+      "slug": "atharv",
+      "name": "Atharv",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 95
+    },
+    {
+      "slug": "aude",
+      "name": "Aude",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 96
+    },
+    {
+      "slug": "audric",
+      "name": "Audric",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 97
+    },
+    {
+      "slug": "augustin",
+      "name": "Augustin",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 98
+    },
+    {
+      "slug": "aura",
+      "name": "Aura",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "girl",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 99
+    },
+    {
+      "slug": "aurelio",
+      "name": "Aurelio",
+      "currentSourceCount": 0,
+      "legacyRowCount": 0,
+      "legacyCountries": [],
+      "unresolvedLegacyCountries": [],
+      "hasPopularityRecord": false,
+      "hasKnowledgeRecord": true,
+      "currentKci": 35,
+      "kciPopularityScore": 0,
+      "originCountry": null,
+      "language": null,
+      "gender": "boy",
+      "priorityScore": 190,
+      "priorityReasons": [
+        "no_popularity_record",
+        "researched_without_popularity_points",
+        "knowledge_record_present",
+        "low_kci"
+      ],
+      "rank": 100
+    }
+  ],
+  "gapSummaries": {
+    "highestPriorityOrigins": [
+      {
+        "value": "Germany",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "emma"
+        ],
+        "averagePriority": 187
+      },
+      {
+        "value": "Hebrew",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "noah"
+        ],
+        "averagePriority": 187
+      },
+      {
+        "value": "Italy",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "olivia"
+        ],
+        "averagePriority": 187
+      }
+    ],
+    "highestPriorityLanguages": [
+      {
+        "value": "German",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "emma"
+        ],
+        "averagePriority": 187
+      },
+      {
+        "value": "Hebrew",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "noah"
+        ],
+        "averagePriority": 187
+      },
+      {
+        "value": "Latin",
+        "count": 1,
+        "totalPriority": 187,
+        "entities": [
+          "olivia"
+        ],
+        "averagePriority": 187
+      }
+    ],
+    "highestPriorityGenders": [
+      {
+        "value": "unisex",
+        "count": 659,
+        "totalPriority": 93611,
+        "entities": [
+          "abrar",
+          "adi",
+          "afnan",
+          "agamjot",
+          "aikam"
+        ],
+        "averagePriority": 142.05
+      },
+      {
+        "value": "girl",
+        "count": 1446,
+        "totalPriority": 191410,
+        "entities": [
+          "aakriti",
+          "abbygail",
+          "abifoluwa",
+          "addisyn",
+          "adeena"
+        ],
+        "averagePriority": 132.37
+      },
+      {
+        "value": "boy",
+        "count": 1592,
+        "totalPriority": 210380,
+        "entities": [
+          "abd",
+          "abdifatah",
+          "abdirahman",
+          "abdullahi",
+          "abshir"
+        ],
+        "averagePriority": 132.15
+      }
+    ],
+    "largestPopularityDeserts": [
+      {
+        "slug": "aakriti",
+        "name": "Aakriti",
+        "priorityScore": 225
+      },
+      {
+        "slug": "abbygail",
+        "name": "Abbygail",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abd",
+        "name": "Abd",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abdifatah",
+        "name": "Abdifatah",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abdirahman",
+        "name": "Abdirahman",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abdullahi",
+        "name": "Abdullahi",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abifoluwa",
+        "name": "Abifoluwa",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abrar",
+        "name": "Abrar",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abshir",
+        "name": "Abshir",
+        "priorityScore": 190
+      },
+      {
+        "slug": "abubakar",
+        "name": "Abubakar",
+        "priorityScore": 190
+      },
+      {
+        "slug": "achille",
+        "name": "Achille",
+        "priorityScore": 190
+      },
+      {
+        "slug": "achilles",
+        "name": "Achilles",
+        "priorityScore": 190
+      },
+      {
+        "slug": "achraf",
+        "name": "Achraf",
+        "priorityScore": 190
+      },
+      {
+        "slug": "addisyn",
+        "name": "Addisyn",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adeena",
+        "name": "Adeena",
+        "priorityScore": 190
+      },
+      {
+        "slug": "ademide",
+        "name": "Ademide",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adham",
+        "name": "Adham",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adi",
+        "name": "Adi",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adib",
+        "name": "Adib",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adiba",
+        "name": "Adiba",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adil",
+        "name": "Adil",
+        "priorityScore": 190
+      },
+      {
+        "slug": "adnan",
+        "name": "Adnan",
+        "priorityScore": 190
+      },
+      {
+        "slug": "advaita",
+        "name": "Advaita",
+        "priorityScore": 190
+      },
+      {
+        "slug": "advaith",
+        "name": "Advaith",
+        "priorityScore": 190
+      },
+      {
+        "slug": "affan",
+        "name": "Affan",
+        "priorityScore": 190
+      }
+    ],
+    "entitiesWithUnresolvedLegacyAuthority": [
+      {
+        "slug": "aakriti",
+        "name": "Aakriti",
+        "currentSourceCount": 0,
+        "legacyRowCount": 1,
+        "legacyCountries": [
+          "India"
+        ],
+        "unresolvedLegacyCountries": [
+          "India"
+        ],
+        "hasPopularityRecord": true,
+        "hasKnowledgeRecord": true,
+        "currentKci": 95,
+        "kciPopularityScore": 0,
+        "originCountry": null,
+        "language": null,
+        "gender": "girl",
+        "priorityScore": 225,
+        "priorityReasons": [
+          "unresolved_legacy_authority",
+          "legacy_data_without_attribution",
+          "researched_without_popularity_points",
+          "knowledge_record_present"
+        ],
+        "rank": 1
+      }
+    ],
+    "mostCommonMissingCountries": [
+      {
+        "country": "AUS",
+        "entitiesWithLegacyRows": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "AUS",
+        "entitiesWithLegacyRows": 0,
+        "entitiesWithAttributableSource": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "CAN",
+        "entitiesWithLegacyRows": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "CAN",
+        "entitiesWithLegacyRows": 0,
+        "entitiesWithAttributableSource": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "EU",
+        "entitiesWithLegacyRows": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "UK",
+        "entitiesWithLegacyRows": 0,
+        "legacyRowCount": 0
+      },
+      {
+        "country": "UK",
+        "entitiesWithLegacyRows": 0,
+        "entitiesWithAttributableSource": 0,
+        "legacyRowCount": 0
+      }
+    ]
+  },
+  "diversityAnalysis": {
+    "sourceConcentration": {
+      "topSourceUsagePct": 100,
+      "topSource": {
+        "id": "SSA_US_BABY_NAMES",
+        "usageCount": 4
+      }
+    },
+    "publisherDiversity": [
+      {
+        "publisher": "U.S. Social Security Administration",
+        "usageCount": 4
+      },
+      {
+        "publisher": "Australian Bureau of Statistics",
+        "usageCount": 0
+      },
+      {
+        "publisher": "Eurostat",
+        "usageCount": 0
+      },
+      {
+        "publisher": "Office for National Statistics",
+        "usageCount": 0
+      },
+      {
+        "publisher": "Statistics Canada",
+        "usageCount": 0
+      },
+      {
+        "publisher": "UK Data Service",
+        "usageCount": 0
+      },
+      {
+        "publisher": "General Register Office (England and Wales)",
+        "usageCount": 0
+      }
+    ],
+    "regionalConcentration": [
+      {
+        "country": "USA",
+        "entityCount": 4
+      },
+      {
+        "country": "India",
+        "entityCount": 1
+      }
+    ],
+    "sourceReuse": [
+      {
+        "id": "SSA_US_BABY_NAMES",
+        "usageCount": 4
+      }
+    ]
+  },
+  "totals": {
+    "entitiesRanked": 3697,
+    "zeroSourceEntities": 3693,
+    "singleSourceEntities": 4,
+    "unresolvedLegacyEntities": 1
+  }
+}
