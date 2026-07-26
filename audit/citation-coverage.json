@@ -1,0 +1,205 @@
+{
+  "phase": "13A",
+  "title": "Citation Coverage Snapshot",
+  "generatedAt": "2026-07-25T01:48:11.342Z",
+  "baselineReference": "citation-records-v1",
+  "readOnly": true,
+  "measurementOnly": true,
+  "overall": {
+    "totalEntities": 3697,
+    "totalKnowledgeRecords": 1150,
+    "totalCitationRecords": 1150,
+    "entitiesWithCitations": 1150,
+    "entitiesWithoutCitations": 2547,
+    "citationCoveragePct": 31.11,
+    "knowledgeRecordCitationCoveragePct": 100,
+    "totalPublicationsReferenced": 17,
+    "averagePublicationsPerCitedEntity": 3.48,
+    "medianPublicationsPerEntity": 4,
+    "maximumPublicationsOnSingleEntity": 6,
+    "entitiesWithZeroPublications": 2547,
+    "entitiesWithOnePublication": 148
+  },
+  "domainCoverage": {
+    "origin": {
+      "entitiesWithEditorial": 978,
+      "entitiesWithCitations": 978,
+      "entitiesWithoutCitations": 0,
+      "coveragePct": 100,
+      "averagePublications": 1.21
+    },
+    "meaning": {
+      "entitiesWithEditorial": 906,
+      "entitiesWithCitations": 906,
+      "entitiesWithoutCitations": 0,
+      "coveragePct": 100,
+      "averagePublications": 1.19
+    },
+    "pronunciation": {
+      "entitiesWithEditorial": 976,
+      "entitiesWithCitations": 976,
+      "entitiesWithoutCitations": 0,
+      "coveragePct": 100,
+      "averagePublications": 1.93
+    },
+    "etymology": {
+      "entitiesWithEditorial": 964,
+      "entitiesWithCitations": 964,
+      "entitiesWithoutCitations": 0,
+      "coveragePct": 100,
+      "averagePublications": 1.93
+    },
+    "history": {
+      "entitiesWithEditorial": 964,
+      "entitiesWithCitations": 964,
+      "entitiesWithoutCitations": 0,
+      "coveragePct": 100,
+      "averagePublications": 1.95
+    },
+    "variants": {
+      "entitiesWithEditorial": 3697,
+      "entitiesWithCitations": null,
+      "entitiesWithoutCitations": null,
+      "coveragePct": 100,
+      "averagePublications": null,
+      "note": "Variants are editorial-only in Citation Records v1; citations are not domain-mapped for variants."
+    }
+  },
+  "distribution": {
+    "0": 2547,
+    "1": 148,
+    "2": 96,
+    "3-5": 893,
+    "6-10": 13,
+    "10+": 0
+  },
+  "registryQuality": {
+    "registryPublicationCount": 17,
+    "referencedPublicationCount": 17,
+    "unusedPublications": [],
+    "orphanRegistryEntries": 0,
+    "registryUtilizationPct": 100,
+    "duplicatePublicationUsage": [
+      {
+        "id": "OXFORD_FIRST_NAMES_2006",
+        "usageCount": 4757
+      },
+      {
+        "id": "CAMBRIDGE_ENGLISH_PRONOUNCING_DICTIONARY",
+        "usageCount": 827
+      },
+      {
+        "id": "BEHIND_THE_NAME_EDITORIAL",
+        "usageCount": 683
+      },
+      {
+        "id": "OXFORD_DNB_NAME_BEARERS",
+        "usageCount": 683
+      },
+      {
+        "id": "ANCHOR_YALE_BIBLE_DICTIONARY_PERSONAL_NAMES",
+        "usageCount": 203
+      },
+      {
+        "id": "LGPN",
+        "usageCount": 138
+      },
+      {
+        "id": "DMNES",
+        "usageCount": 120
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_ETYMOLOGY",
+        "usageCount": 105
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_USAGE",
+        "usageCount": 105
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_PRONUNCIATION",
+        "usageCount": 76
+      },
+      {
+        "id": "IGRS_GAELIC_NAME_FORMS",
+        "usageCount": 74
+      },
+      {
+        "id": "ACADEMIE_FRANCAISE_HISTORICAL_USAGE",
+        "usageCount": 29
+      },
+      {
+        "id": "ACADEMIE_FRANCAISE_NAME_ETYMOLOGY",
+        "usageCount": 29
+      },
+      {
+        "id": "ACADEMIE_FRANCAISE_PRONUNCIATION",
+        "usageCount": 19
+      },
+      {
+        "id": "ENCYCLOPAEDIA_OF_ISLAM_PERSONAL_NAMES",
+        "usageCount": 17
+      },
+      {
+        "id": "IGRS_GAELIC_NAME_USAGE",
+        "usageCount": 13
+      },
+      {
+        "id": "LGPN_PRONUNCIATION_GUIDES",
+        "usageCount": 8
+      }
+    ],
+    "topPublicationsByUsage": [
+      {
+        "id": "OXFORD_FIRST_NAMES_2006",
+        "usageCount": 4757
+      },
+      {
+        "id": "CAMBRIDGE_ENGLISH_PRONOUNCING_DICTIONARY",
+        "usageCount": 827
+      },
+      {
+        "id": "BEHIND_THE_NAME_EDITORIAL",
+        "usageCount": 683
+      },
+      {
+        "id": "OXFORD_DNB_NAME_BEARERS",
+        "usageCount": 683
+      },
+      {
+        "id": "ANCHOR_YALE_BIBLE_DICTIONARY_PERSONAL_NAMES",
+        "usageCount": 203
+      },
+      {
+        "id": "LGPN",
+        "usageCount": 138
+      },
+      {
+        "id": "DMNES",
+        "usageCount": 120
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_ETYMOLOGY",
+        "usageCount": 105
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_USAGE",
+        "usageCount": 105
+      },
+      {
+        "id": "UNIVERSITY_OF_DELHI_SANSKRIT_PRONUNCIATION",
+        "usageCount": 76
+      }
+    ]
+  },
+  "integrity": {
+    "status": "PASS",
+    "errors": [],
+    "checks": {
+      "noBrokenPublicationIds": true,
+      "deterministicOrdering": true,
+      "duplicateFreeEntityReferences": true,
+      "registryConsistency": true
+    }
+  }
+}

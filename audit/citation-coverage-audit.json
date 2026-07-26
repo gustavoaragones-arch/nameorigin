@@ -1,0 +1,63 @@
+{
+  "phase": "13A",
+  "title": "Citation Coverage Intelligence v1",
+  "generatedAt": "2026-07-26T01:01:54.889Z",
+  "baselineReference": "citation-records-v1",
+  "measurementOnly": true,
+  "reportsGenerated": {
+    "citationCoverage": true,
+    "citationGapAnalysis": true
+  },
+  "reportStatistics": {
+    "totalEntities": 3697,
+    "citationCoveragePct": 31.11,
+    "entitiesWithCitations": 1150,
+    "entitiesWithoutCitations": 2547,
+    "registryUtilizationPct": 100,
+    "integrityStatus": "PASS",
+    "top100Count": 100,
+    "zeroCitationEntities": 2547
+  },
+  "validationStatus": {
+    "citationCoverageValidation": "PASS",
+    "integrity": "PASS"
+  },
+  "deterministicVerification": {
+    "status": "PASS",
+    "coverageReportReproducible": true,
+    "gapAnalysisReproducible": true
+  },
+  "repositoryUnchangedVerification": {
+    "status": "PASS",
+    "knowledgeRecords": "PASS",
+    "citationRegistry": "PASS",
+    "citationRecords": "PASS",
+    "kciReport": "PASS",
+    "kciEngine": "PASS",
+    "citationRecordsByteIdentical": "PASS",
+    "citationRegistryByteIdentical": "PASS"
+  },
+  "performance": {
+    "pipelineElapsedMs": 1201,
+    "stepTimingsMs": {
+      "citationCoverageMs": 247,
+      "citationGapAnalysisMs": 237,
+      "validateCitationCoverageMs": 503
+    }
+  },
+  "validation": {
+    "coverageReportGenerated": true,
+    "gapAnalysisGenerated": true,
+    "validationPass": true,
+    "deterministicPass": true,
+    "repositoryEquivalencePass": true,
+    "citationRecordsUnchanged": true,
+    "citationRegistryUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "kciUnchanged": true,
+    "presentationUnchanged": true,
+    "trustUnchanged": true,
+    "noCitationRecordMutations": true,
+    "noRegistryMutations": true
+  }
+}
