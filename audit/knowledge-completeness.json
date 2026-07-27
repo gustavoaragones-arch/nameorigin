@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T02:40:50.917Z",
+  "generatedAt": "2026-07-27T14:23:50.763Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 28,
+    "average": 28.4,
     "median": 5,
     "min": 0,
     "max": 100
@@ -33,10 +33,10 @@
     "histogram": {
       "0": 1051,
       "1-20": 1496,
-      "21-40": 50,
+      "21-40": 25,
       "41-60": 188,
       "61-80": 36,
-      "81-100": 876
+      "81-100": 901
     }
   },
   "domainCoverage": {
@@ -46,20 +46,20 @@
       "pct": 26.56
     },
     "researchedMeanings": {
-      "count": 971,
-      "pct": 26.26
+      "count": 996,
+      "pct": 26.94
     },
     "storedPronunciations": {
-      "count": 1047,
-      "pct": 28.32
+      "count": 1072,
+      "pct": 29
     },
     "etymologyCoverage": {
-      "count": 1038,
-      "pct": 28.08
+      "count": 1063,
+      "pct": 28.75
     },
     "historyCoverage": {
-      "count": 1038,
-      "pct": 28.08
+      "count": 1063,
+      "pct": 28.75
     },
     "citationCoverage": {
       "count": 1150,
@@ -1309,13 +1309,13 @@
     },
     {
       "slug": "aishmeen",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1323,13 +1323,13 @@
     },
     {
       "slug": "aisling",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1365,13 +1365,13 @@
     },
     {
       "slug": "ajaypal",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1379,13 +1379,13 @@
     },
     {
       "slug": "akbar",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1435,13 +1435,13 @@
     },
     {
       "slug": "akmal",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1449,13 +1449,13 @@
     },
     {
       "slug": "akram",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1477,13 +1477,13 @@
     },
     {
       "slug": "alain",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1491,13 +1491,13 @@
     },
     {
       "slug": "alanis",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1505,13 +1505,13 @@
     },
     {
       "slug": "alaric",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1533,13 +1533,13 @@
     },
     {
       "slug": "alaura",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1547,13 +1547,13 @@
     },
     {
       "slug": "alazar",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1561,13 +1561,13 @@
     },
     {
       "slug": "alberta",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1603,13 +1603,13 @@
     },
     {
       "slug": "alea",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1729,13 +1729,13 @@
     },
     {
       "slug": "alfaaz",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1757,13 +1757,13 @@
     },
     {
       "slug": "alida",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1771,13 +1771,13 @@
     },
     {
       "slug": "alishba",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1841,13 +1841,13 @@
     },
     {
       "slug": "almir",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1855,13 +1855,13 @@
     },
     {
       "slug": "almira",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -3717,13 +3717,13 @@
     },
     {
       "slug": "asadullah",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -3731,13 +3731,13 @@
     },
     {
       "slug": "asees",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -3801,13 +3801,13 @@
     },
     {
       "slug": "ashmeet",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -3815,13 +3815,13 @@
     },
     {
       "slug": "ashnoor",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -3829,13 +3829,13 @@
     },
     {
       "slug": "ashrith",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -3857,13 +3857,13 @@
     },
     {
       "slug": "ashvik",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -3871,13 +3871,13 @@
     },
     {
       "slug": "ashvika",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0

@@ -1,0 +1,195 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 4,
+  "title": "Knowledge Record Expansion Wave 1 Batch 4 — Domain Completion",
+  "generatedAt": "2026-07-27T14:23:52.554Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "method": "priority_score_ranking",
+    "scope": "complete_domains_only",
+    "excluded": "create_knowledge_record (Wave 2)",
+    "batchesCompleteBeforeSelection": 3,
+    "note": "Next 25 partial Knowledge Records after Batches 1–3, ranked by deterministic priority score. All have origin populated; missing meaning, pronunciation, etymology, and history."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 900,
+    "cumulativeFullyResearchedActual": 900,
+    "batchesComplete": 4,
+    "partialRemaining": 250,
+    "wave1PercentComplete": 0.2857
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 875,
+    "after": 900,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 875,
+      "partialKnowledgeRecords": 275,
+      "partialMissingDomainCounts": {
+        "origin": 168,
+        "meaning": 180,
+        "pronunciation": 103,
+        "etymology": 112,
+        "history": 112,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 900,
+      "partialKnowledgeRecords": 250,
+      "partialMissingDomainCounts": {
+        "origin": 168,
+        "meaning": 155,
+        "pronunciation": 78,
+        "etymology": 87,
+        "history": 87,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 982,
+        "pct": 26.56
+      },
+      "meaning": {
+        "count": 970,
+        "pct": 26.24
+      },
+      "pronunciation": {
+        "count": 1047,
+        "pct": 28.32
+      },
+      "etymology": {
+        "count": 1038,
+        "pct": 28.08
+      },
+      "history": {
+        "count": 1038,
+        "pct": 28.08
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 982,
+        "pct": 26.56
+      },
+      "meaning": {
+        "count": 995,
+        "pct": 26.91
+      },
+      "pronunciation": {
+        "count": 1072,
+        "pct": 29
+      },
+      "etymology": {
+        "count": 1063,
+        "pct": 28.75
+      },
+      "history": {
+        "count": 1063,
+        "pct": 28.75
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 0,
+        "pct": 0
+      },
+      "meaning": {
+        "count": 25,
+        "pct": 0.67
+      },
+      "pronunciation": {
+        "count": 25,
+        "pct": 0.68
+      },
+      "etymology": {
+        "count": 25,
+        "pct": 0.67
+      },
+      "history": {
+        "count": 25,
+        "pct": 0.67
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Aishmeen",
+      "Aisling",
+      "Ajaypal",
+      "Akbar",
+      "Akmal",
+      "Akram",
+      "Alain",
+      "Alanis",
+      "Alaric",
+      "Alaura",
+      "Alazar",
+      "Alberta",
+      "Alea",
+      "Alfaaz",
+      "Alida",
+      "Alishba",
+      "Almir",
+      "Almira",
+      "Asadullah",
+      "Asees",
+      "Ashmeet",
+      "Ashnoor",
+      "Ashrith",
+      "Ashvik",
+      "Ashvika"
+    ],
+    "targetDomains": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 28,
+    "averageAfter": 28.4
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}
