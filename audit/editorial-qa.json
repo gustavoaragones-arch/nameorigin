@@ -1,7 +1,7 @@
 {
   "phase": "6B",
   "title": "Editorial QA & Consistency Audit",
-  "generatedAt": "2026-07-27T01:49:11.603Z",
+  "generatedAt": "2026-07-27T01:53:03.999Z",
   "baselineReference": "knowledge-baseline-v2",
   "knowledgeRecordSource": "data/knowledge-records.json",
   "schemaReference": "schemas/knowledge-record-v2.schema.json",
@@ -203,22 +203,22 @@
         "nullNotes": 0
       },
       "meaning": {
-        "populated": 931,
+        "populated": 956,
         "emptySources": 0,
         "nullNotes": 0
       },
       "pronunciation": {
-        "populated": 1001,
+        "populated": 1026,
         "emptySources": 0,
         "nullNotes": 0
       },
       "etymology": {
-        "populated": 989,
+        "populated": 1014,
         "emptySources": 0,
         "nullNotes": 0
       },
       "history": {
-        "populated": 989,
+        "populated": 1014,
         "emptySources": 0,
         "nullNotes": 0
       }
@@ -232,29 +232,29 @@
           "pct": 26.45
         },
         "meaning": {
-          "count": 931,
-          "pct": 25.18
+          "count": 956,
+          "pct": 25.86
         },
         "pronunciation": {
-          "count": 1001,
-          "pct": 27.08
+          "count": 1026,
+          "pct": 27.75
         },
         "etymology": {
-          "count": 989,
-          "pct": 26.75
+          "count": 1014,
+          "pct": 27.43
         },
         "history": {
-          "count": 989,
-          "pct": 26.75
+          "count": 1014,
+          "pct": 27.43
         }
       },
-      "averagePopulatedDomainsPerRecord": 4.25,
+      "averagePopulatedDomainsPerRecord": 4.34,
       "populatedDomainsDistribution": {
-        "1": 86,
+        "1": 61,
         "2": 67,
         "3": 145,
         "4": 27,
-        "5": 825
+        "5": 850
       }
     },
     "crossDomainConsistency": {
