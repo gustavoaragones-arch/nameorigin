@@ -1,0 +1,63 @@
+{
+  "phase": "15A",
+  "title": "Editorial Coverage Intelligence v1",
+  "generatedAt": "2026-07-26T04:32:03.245Z",
+  "baselineReference": "knowledge-record-v2",
+  "measurementOnly": true,
+  "reportsGenerated": {
+    "editorialCoverage": true,
+    "editorialGapAnalysis": true
+  },
+  "reportStatistics": {
+    "totalEntities": 3697,
+    "knowledgeRecordCoveragePct": 31.11,
+    "entitiesWithKnowledgeRecords": 1150,
+    "entitiesWithoutKnowledgeRecords": 2547,
+    "partialKnowledgeRecords": 350,
+    "fullyResearchedPct": 21.64,
+    "integrityStatus": "PASS",
+    "top100Count": 100,
+    "unresearchedEntities": 2547
+  },
+  "validationStatus": {
+    "editorialCoverageValidation": "PASS",
+    "integrity": "PASS"
+  },
+  "deterministicVerification": {
+    "status": "PASS",
+    "coverageReportReproducible": true,
+    "gapAnalysisReproducible": true
+  },
+  "repositoryUnchangedVerification": {
+    "status": "PASS",
+    "knowledgeRecords": "PASS",
+    "citationRecords": "PASS",
+    "popularityRegistry": "PASS",
+    "popularityRecords": "PASS",
+    "kciReport": "PASS",
+    "kciEngine": "PASS",
+    "knowledgeRecordsByteIdentical": "PASS"
+  },
+  "performance": {
+    "pipelineElapsedMs": 2066,
+    "stepTimingsMs": {
+      "editorialCoverageMs": 503,
+      "editorialGapAnalysisMs": 365,
+      "validateEditorialCoverageMs": 758
+    }
+  },
+  "validation": {
+    "coverageReportGenerated": true,
+    "gapAnalysisGenerated": true,
+    "validationPass": true,
+    "deterministicPass": true,
+    "repositoryEquivalencePass": true,
+    "knowledgeRecordsUnchanged": true,
+    "citationRecordsUnchanged": true,
+    "popularityRecordsUnchanged": true,
+    "kciUnchanged": true,
+    "presentationUnchanged": true,
+    "trustUnchanged": true,
+    "noKnowledgeRecordMutations": true
+  }
+}

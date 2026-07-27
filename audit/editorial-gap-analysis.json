@@ -1,0 +1,6180 @@
+{
+  "phase": "15A",
+  "title": "Editorial Gap Analysis & Prioritization",
+  "generatedAt": "2026-07-25T01:48:13.061Z",
+  "baselineReference": "knowledge-record-v2",
+  "readOnly": true,
+  "planningReport": true,
+  "methodology": {
+    "priorityScoreFactors": [
+      "no_knowledge_record",
+      "partial_knowledge_record",
+      "missing_editorial_domains",
+      "popularity_available",
+      "citation_without_full_editorial",
+      "legacy_metadata_available",
+      "low_kci",
+      "near_complete_research",
+      "missing_core_domains"
+    ],
+    "note": "Priority scores are computed at audit time only and are not persisted to Knowledge Records or KCI."
+  },
+  "top100HighestPriority": [
+    {
+      "slug": "abbygail",
+      "name": "Abbygail",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Israel",
+      "language": "Hebrew",
+      "originCluster": "Hebrew",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 1
+    },
+    {
+      "slug": "abd",
+      "name": "Abd",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 2
+    },
+    {
+      "slug": "abdifatah",
+      "name": "Abdifatah",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 3
+    },
+    {
+      "slug": "abdirahman",
+      "name": "Abdirahman",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 4
+    },
+    {
+      "slug": "abdullahi",
+      "name": "Abdullahi",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 5
+    },
+    {
+      "slug": "abrar",
+      "name": "Abrar",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 6
+    },
+    {
+      "slug": "abshir",
+      "name": "Abshir",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 7
+    },
+    {
+      "slug": "abubakar",
+      "name": "Abubakar",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 8
+    },
+    {
+      "slug": "achille",
+      "name": "Achille",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 9
+    },
+    {
+      "slug": "achilles",
+      "name": "Achilles",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 10
+    },
+    {
+      "slug": "achraf",
+      "name": "Achraf",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 11
+    },
+    {
+      "slug": "addisyn",
+      "name": "Addisyn",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "United Kingdom",
+      "language": "English",
+      "originCluster": "English",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 12
+    },
+    {
+      "slug": "adham",
+      "name": "Adham",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 13
+    },
+    {
+      "slug": "adi",
+      "name": "Adi",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 14
+    },
+    {
+      "slug": "adib",
+      "name": "Adib",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 15
+    },
+    {
+      "slug": "adiba",
+      "name": "Adiba",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 16
+    },
+    {
+      "slug": "adil",
+      "name": "Adil",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 17
+    },
+    {
+      "slug": "adnan",
+      "name": "Adnan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 18
+    },
+    {
+      "slug": "advaita",
+      "name": "Advaita",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 19
+    },
+    {
+      "slug": "advaith",
+      "name": "Advaith",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 20
+    },
+    {
+      "slug": "affan",
+      "name": "Affan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 21
+    },
+    {
+      "slug": "afnan",
+      "name": "Afnan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 22
+    },
+    {
+      "slug": "afton",
+      "name": "Afton",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "United Kingdom",
+      "language": "English",
+      "originCluster": "English",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 23
+    },
+    {
+      "slug": "agamdeep",
+      "name": "Agamdeep",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 24
+    },
+    {
+      "slug": "agamjot",
+      "name": "Agamjot",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 25
+    },
+    {
+      "slug": "agamvir",
+      "name": "Agamvir",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 26
+    },
+    {
+      "slug": "aganetha",
+      "name": "Aganetha",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 27
+    },
+    {
+      "slug": "agnes",
+      "name": "Agnes",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 28
+    },
+    {
+      "slug": "ahnaf",
+      "name": "Ahnaf",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 29
+    },
+    {
+      "slug": "ahyan",
+      "name": "Ahyan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 30
+    },
+    {
+      "slug": "aikam",
+      "name": "Aikam",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 31
+    },
+    {
+      "slug": "aine",
+      "name": "Aine",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Ireland",
+      "language": "Irish",
+      "originCluster": "Irish",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 32
+    },
+    {
+      "slug": "aishmeen",
+      "name": "Aishmeen",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 33
+    },
+    {
+      "slug": "aisling",
+      "name": "Aisling",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Ireland",
+      "language": "Irish",
+      "originCluster": "Irish",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 34
+    },
+    {
+      "slug": "ajaypal",
+      "name": "Ajaypal",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 35
+    },
+    {
+      "slug": "akbar",
+      "name": "Akbar",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 36
+    },
+    {
+      "slug": "akmal",
+      "name": "Akmal",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 37
+    },
+    {
+      "slug": "akram",
+      "name": "Akram",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 38
+    },
+    {
+      "slug": "alain",
+      "name": "Alain",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 39
+    },
+    {
+      "slug": "alanis",
+      "name": "Alanis",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 40
+    },
+    {
+      "slug": "alaric",
+      "name": "Alaric",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Germany",
+      "language": "German",
+      "originCluster": "German",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 41
+    },
+    {
+      "slug": "alaura",
+      "name": "Alaura",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 42
+    },
+    {
+      "slug": "alazar",
+      "name": "Alazar",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Israel",
+      "language": "Hebrew",
+      "originCluster": "Hebrew",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 43
+    },
+    {
+      "slug": "alberta",
+      "name": "Alberta",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "Germany",
+      "language": "German",
+      "originCluster": "German",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 44
+    },
+    {
+      "slug": "alea",
+      "name": "Alea",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 45
+    },
+    {
+      "slug": "alfaaz",
+      "name": "Alfaaz",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 46
+    },
+    {
+      "slug": "alida",
+      "name": "Alida",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Germany",
+      "language": "German",
+      "originCluster": "German",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 47
+    },
+    {
+      "slug": "alishba",
+      "name": "Alishba",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 48
+    },
+    {
+      "slug": "almir",
+      "name": "Almir",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 49
+    },
+    {
+      "slug": "almira",
+      "name": "Almira",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 50
+    },
+    {
+      "slug": "alondra",
+      "name": "Alondra",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Spain",
+      "language": "Spanish",
+      "originCluster": "Spanish",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 51
+    },
+    {
+      "slug": "alonso",
+      "name": "Alonso",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Spain",
+      "language": "Spanish",
+      "originCluster": "Spanish",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 52
+    },
+    {
+      "slug": "anvika",
+      "name": "Anvika",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 53
+    },
+    {
+      "slug": "anvit",
+      "name": "Anvit",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 54
+    },
+    {
+      "slug": "anwar",
+      "name": "Anwar",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 55
+    },
+    {
+      "slug": "aoife",
+      "name": "Aoife",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Ireland",
+      "language": "Irish",
+      "originCluster": "Irish",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 56
+    },
+    {
+      "slug": "aqsa",
+      "name": "Aqsa",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 57
+    },
+    {
+      "slug": "aracely",
+      "name": "Aracely",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "Spain",
+      "language": "Spanish",
+      "originCluster": "Spanish",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 58
+    },
+    {
+      "slug": "aramis",
+      "name": "Aramis",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 59
+    },
+    {
+      "slug": "arbaaz",
+      "name": "Arbaaz",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 60
+    },
+    {
+      "slug": "arden",
+      "name": "Arden",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "United Kingdom",
+      "language": "English",
+      "originCluster": "English",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 61
+    },
+    {
+      "slug": "areeb",
+      "name": "Areeb",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 62
+    },
+    {
+      "slug": "areeba",
+      "name": "Areeba",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 63
+    },
+    {
+      "slug": "areej",
+      "name": "Areej",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 64
+    },
+    {
+      "slug": "ariadne",
+      "name": "Ariadne",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 65
+    },
+    {
+      "slug": "arlette",
+      "name": "Arlette",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 66
+    },
+    {
+      "slug": "arnaaz",
+      "name": "Arnaaz",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 67
+    },
+    {
+      "slug": "arnaud",
+      "name": "Arnaud",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 68
+    },
+    {
+      "slug": "arpan",
+      "name": "Arpan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 69
+    },
+    {
+      "slug": "arsalan",
+      "name": "Arsalan",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Persian",
+      "originCluster": "Persian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 70
+    },
+    {
+      "slug": "arshdeep",
+      "name": "Arshdeep",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 71
+    },
+    {
+      "slug": "arshpreet",
+      "name": "Arshpreet",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 72
+    },
+    {
+      "slug": "arvin",
+      "name": "Arvin",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 73
+    },
+    {
+      "slug": "aryeh",
+      "name": "Aryeh",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Israel",
+      "language": "Hebrew",
+      "originCluster": "Hebrew",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 74
+    },
+    {
+      "slug": "asa",
+      "name": "Asa",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Israel",
+      "language": "Hebrew",
+      "originCluster": "Hebrew",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 75
+    },
+    {
+      "slug": "asadullah",
+      "name": "Asadullah",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 76
+    },
+    {
+      "slug": "asees",
+      "name": "Asees",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Punjabi",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 77
+    },
+    {
+      "slug": "ashmeet",
+      "name": "Ashmeet",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 78
+    },
+    {
+      "slug": "ashnoor",
+      "name": "Ashnoor",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 79
+    },
+    {
+      "slug": "ashrith",
+      "name": "Ashrith",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 80
+    },
+    {
+      "slug": "ashvik",
+      "name": "Ashvik",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 81
+    },
+    {
+      "slug": "ashvika",
+      "name": "Ashvika",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 82
+    },
+    {
+      "slug": "ashvin",
+      "name": "Ashvin",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 83
+    },
+    {
+      "slug": "asmaa",
+      "name": "Asmaa",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": "Arabic",
+      "originCluster": "Arabic",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 84
+    },
+    {
+      "slug": "aster",
+      "name": "Aster",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 85
+    },
+    {
+      "slug": "aston",
+      "name": "Aston",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "United Kingdom",
+      "language": "English",
+      "originCluster": "English",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 86
+    },
+    {
+      "slug": "athanasia",
+      "name": "Athanasia",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 87
+    },
+    {
+      "slug": "athanasios",
+      "name": "Athanasios",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Greece",
+      "language": "Greek",
+      "originCluster": "Greek",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 88
+    },
+    {
+      "slug": "atharv",
+      "name": "Atharv",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "India",
+      "language": "Sanskrit",
+      "originCluster": "Indian",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 89
+    },
+    {
+      "slug": "aude",
+      "name": "Aude",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 90
+    },
+    {
+      "slug": "audric",
+      "name": "Audric",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "France",
+      "language": "French",
+      "originCluster": "French",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 91
+    },
+    {
+      "slug": "augustin",
+      "name": "Augustin",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 92
+    },
+    {
+      "slug": "aura",
+      "name": "Aura",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 93
+    },
+    {
+      "slug": "aurelio",
+      "name": "Aurelio",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 94
+    },
+    {
+      "slug": "aurelius",
+      "name": "Aurelius",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "origin",
+        "variants"
+      ],
+      "missingDomains": [
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 30,
+      "originCountry": "Italy",
+      "language": "Latin",
+      "originCluster": "Latin",
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 95
+    },
+    {
+      "slug": "bob",
+      "name": "Bob",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "meaning",
+        "variants"
+      ],
+      "missingDomains": [
+        "origin",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 96
+    },
+    {
+      "slug": "faisal",
+      "name": "Faisal",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "meaning",
+        "variants"
+      ],
+      "missingDomains": [
+        "origin",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 97
+    },
+    {
+      "slug": "farida",
+      "name": "Farida",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "meaning",
+        "variants"
+      ],
+      "missingDomains": [
+        "origin",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 98
+    },
+    {
+      "slug": "lilith",
+      "name": "Lilith",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "meaning",
+        "variants"
+      ],
+      "missingDomains": [
+        "origin",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 99
+    },
+    {
+      "slug": "lior",
+      "name": "Lior",
+      "currentEditorialCompleteness": 33.33,
+      "editorialDomainCount": 2,
+      "populatedDomains": [
+        "meaning",
+        "variants"
+      ],
+      "missingDomains": [
+        "origin",
+        "pronunciation",
+        "etymology",
+        "history"
+      ],
+      "hasKnowledgeRecord": true,
+      "hasPartialKnowledgeRecord": true,
+      "hasCitationRecord": true,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 35,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 139,
+      "priorityReasons": [
+        "partial_knowledge_record",
+        "missing_editorial_domains",
+        "citation_without_full_editorial",
+        "legacy_metadata_available",
+        "missing_core_domains"
+      ],
+      "rank": 100
+    }
+  ],
+  "gapSummaries": {
+    "highestPriorityOrigins": [
+      {
+        "value": "Hebrew",
+        "count": 1,
+        "totalPriority": 131,
+        "unresearched": 0,
+        "entities": [
+          "noah"
+        ],
+        "averagePriority": 131,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Japan",
+        "count": 1,
+        "totalPriority": 111,
+        "unresearched": 0,
+        "entities": [
+          "akira"
+        ],
+        "averagePriority": 111,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Denmark",
+        "count": 2,
+        "totalPriority": 144,
+        "unresearched": 0,
+        "entities": [
+          "lars",
+          "gunnar"
+        ],
+        "averagePriority": 72,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Spain",
+        "count": 22,
+        "totalPriority": 1550,
+        "unresearched": 0,
+        "entities": [
+          "alondra",
+          "alonso",
+          "aracely",
+          "alfonso",
+          "alvaro"
+        ],
+        "averagePriority": 70.45,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Germany",
+        "count": 24,
+        "totalPriority": 1606,
+        "unresearched": 0,
+        "entities": [
+          "alaric",
+          "alberta",
+          "alida",
+          "emma",
+          "adelaide"
+        ],
+        "averagePriority": 66.92,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "France",
+        "count": 58,
+        "totalPriority": 3200,
+        "unresearched": 0,
+        "entities": [
+          "achille",
+          "alain",
+          "alanis",
+          "aramis",
+          "arlette"
+        ],
+        "averagePriority": 55.17,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Italy",
+        "count": 65,
+        "totalPriority": 3441,
+        "unresearched": 0,
+        "entities": [
+          "alaura",
+          "alea",
+          "augustin",
+          "aura",
+          "aurelio"
+        ],
+        "averagePriority": 52.94,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Russia",
+        "count": 7,
+        "totalPriority": 363,
+        "unresearched": 0,
+        "entities": [
+          "igor",
+          "leonid",
+          "akim",
+          "irina",
+          "ivan"
+        ],
+        "averagePriority": 51.86,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Ireland",
+        "count": 27,
+        "totalPriority": 1299,
+        "unresearched": 0,
+        "entities": [
+          "aine",
+          "aisling",
+          "aoife",
+          "aileen",
+          "deirdre"
+        ],
+        "averagePriority": 48.11,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "India",
+        "count": 156,
+        "totalPriority": 7431,
+        "unresearched": 0,
+        "entities": [
+          "adi",
+          "adib",
+          "adiba",
+          "adil",
+          "advaita"
+        ],
+        "averagePriority": 47.63,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greece",
+        "count": 46,
+        "totalPriority": 2042,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "ariadne",
+          "aster"
+        ],
+        "averagePriority": 44.39,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Iran",
+        "count": 5,
+        "totalPriority": 219,
+        "unresearched": 0,
+        "entities": [
+          "arash",
+          "abtin",
+          "afsheen",
+          "amirali",
+          "caspian"
+        ],
+        "averagePriority": 43.8,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Israel",
+        "count": 80,
+        "totalPriority": 3118,
+        "unresearched": 0,
+        "entities": [
+          "abbygail",
+          "alazar",
+          "aryeh",
+          "asa",
+          "abriel"
+        ],
+        "averagePriority": 38.98,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "United Kingdom",
+        "count": 373,
+        "totalPriority": 10751,
+        "unresearched": 0,
+        "entities": [
+          "addisyn",
+          "afton",
+          "arden",
+          "aston",
+          "earl"
+        ],
+        "averagePriority": 28.82,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "United States",
+        "count": 11,
+        "totalPriority": 275,
+        "unresearched": 0,
+        "entities": [
+          "aceson",
+          "adleigh",
+          "alexavier",
+          "alexus",
+          "alexys"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Nigeria",
+        "count": 9,
+        "totalPriority": 225,
+        "unresearched": 0,
+        "entities": [
+          "adedamola",
+          "aloniab",
+          "boluwatife",
+          "chidubem",
+          "chimaobim"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Senegal",
+        "count": 2,
+        "totalPriority": 50,
+        "unresearched": 0,
+        "entities": [
+          "adja",
+          "boubacar"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Croatia",
+        "count": 1,
+        "totalPriority": 25,
+        "unresearched": 0,
+        "entities": [
+          "adrijana"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Morocco",
+        "count": 1,
+        "totalPriority": 25,
+        "unresearched": 0,
+        "entities": [
+          "afnane"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Portugal",
+        "count": 2,
+        "totalPriority": 50,
+        "unresearched": 0,
+        "entities": [
+          "almeida",
+          "catarina"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      }
+    ],
+    "highestPriorityLanguages": [
+      {
+        "value": "Turkish",
+        "count": 3,
+        "totalPriority": 357,
+        "unresearched": 0,
+        "entities": [
+          "aslan",
+          "demir",
+          "dilara"
+        ],
+        "averagePriority": 119,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Japanese",
+        "count": 1,
+        "totalPriority": 111,
+        "unresearched": 0,
+        "entities": [
+          "akira"
+        ],
+        "averagePriority": 111,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Arabic",
+        "count": 50,
+        "totalPriority": 5160,
+        "unresearched": 0,
+        "entities": [
+          "abd",
+          "abdifatah",
+          "abdirahman",
+          "abdullahi",
+          "abrar"
+        ],
+        "averagePriority": 103.2,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Spanish",
+        "count": 21,
+        "totalPriority": 1525,
+        "unresearched": 0,
+        "entities": [
+          "alondra",
+          "alonso",
+          "aracely",
+          "alfonso",
+          "alvaro"
+        ],
+        "averagePriority": 72.62,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "German",
+        "count": 24,
+        "totalPriority": 1606,
+        "unresearched": 0,
+        "entities": [
+          "alaric",
+          "alberta",
+          "alida",
+          "emma",
+          "adelaide"
+        ],
+        "averagePriority": 66.92,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Nordic",
+        "count": 7,
+        "totalPriority": 457,
+        "unresearched": 0,
+        "entities": [
+          "bjorn",
+          "lars",
+          "leif",
+          "astrid",
+          "gunnar"
+        ],
+        "averagePriority": 65.29,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Punjabi",
+        "count": 24,
+        "totalPriority": 1512,
+        "unresearched": 0,
+        "entities": [
+          "agamdeep",
+          "agamjot",
+          "agamvir",
+          "aishmeen",
+          "ajaypal"
+        ],
+        "averagePriority": 63,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Russian",
+        "count": 8,
+        "totalPriority": 482,
+        "unresearched": 0,
+        "entities": [
+          "alexei",
+          "igor",
+          "leonid",
+          "akim",
+          "irina"
+        ],
+        "averagePriority": 60.25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "French",
+        "count": 56,
+        "totalPriority": 3150,
+        "unresearched": 0,
+        "entities": [
+          "achille",
+          "alain",
+          "alanis",
+          "aramis",
+          "arlette"
+        ],
+        "averagePriority": 56.25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Latin",
+        "count": 42,
+        "totalPriority": 2306,
+        "unresearched": 0,
+        "entities": [
+          "alaura",
+          "alea",
+          "augustin",
+          "aura",
+          "aurelio"
+        ],
+        "averagePriority": 54.9,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Persian",
+        "count": 7,
+        "totalPriority": 383,
+        "unresearched": 0,
+        "entities": [
+          "arsalan",
+          "arash",
+          "abtin",
+          "afsheen",
+          "casper"
+        ],
+        "averagePriority": 54.71,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Scottish",
+        "count": 7,
+        "totalPriority": 347,
+        "unresearched": 0,
+        "entities": [
+          "ainslie",
+          "alastair",
+          "blair",
+          "blaire",
+          "craig"
+        ],
+        "averagePriority": 49.57,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Irish",
+        "count": 27,
+        "totalPriority": 1299,
+        "unresearched": 0,
+        "entities": [
+          "aine",
+          "aisling",
+          "aoife",
+          "aileen",
+          "deirdre"
+        ],
+        "averagePriority": 48.11,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Italian",
+        "count": 27,
+        "totalPriority": 1235,
+        "unresearched": 0,
+        "entities": [
+          "adriano",
+          "dante",
+          "domenico",
+          "donatella",
+          "flavia"
+        ],
+        "averagePriority": 45.74,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Sanskrit",
+        "count": 129,
+        "totalPriority": 5844,
+        "unresearched": 0,
+        "entities": [
+          "adi",
+          "adib",
+          "adiba",
+          "adil",
+          "advaita"
+        ],
+        "averagePriority": 45.3,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greek",
+        "count": 46,
+        "totalPriority": 2042,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "ariadne",
+          "aster"
+        ],
+        "averagePriority": 44.39,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Hebrew",
+        "count": 82,
+        "totalPriority": 3274,
+        "unresearched": 0,
+        "entities": [
+          "abbygail",
+          "alazar",
+          "aryeh",
+          "asa",
+          "noah"
+        ],
+        "averagePriority": 39.93,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Welsh",
+        "count": 11,
+        "totalPriority": 369,
+        "unresearched": 0,
+        "entities": [
+          "gareth",
+          "bevan",
+          "bronwen",
+          "bryn",
+          "cambria"
+        ],
+        "averagePriority": 33.55,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "English",
+        "count": 372,
+        "totalPriority": 10460,
+        "unresearched": 0,
+        "entities": [
+          "addisyn",
+          "afton",
+          "arden",
+          "aston",
+          "earl"
+        ],
+        "averagePriority": 28.12,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Yoruba",
+        "count": 2,
+        "totalPriority": 50,
+        "unresearched": 0,
+        "entities": [
+          "adedamola",
+          "boluwatife"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      }
+    ],
+    "highestPriorityCultures": [
+      {
+        "value": "Turkish",
+        "count": 3,
+        "totalPriority": 357,
+        "unresearched": 0,
+        "entities": [
+          "aslan",
+          "demir",
+          "dilara"
+        ],
+        "averagePriority": 119,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Japanese",
+        "count": 1,
+        "totalPriority": 111,
+        "unresearched": 0,
+        "entities": [
+          "akira"
+        ],
+        "averagePriority": 111,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Arabic",
+        "count": 46,
+        "totalPriority": 5060,
+        "unresearched": 0,
+        "entities": [
+          "abd",
+          "abdifatah",
+          "abdirahman",
+          "abdullahi",
+          "abrar"
+        ],
+        "averagePriority": 110,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Spanish",
+        "count": 21,
+        "totalPriority": 1525,
+        "unresearched": 0,
+        "entities": [
+          "alondra",
+          "alonso",
+          "aracely",
+          "alfonso",
+          "alvaro"
+        ],
+        "averagePriority": 72.62,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "German",
+        "count": 24,
+        "totalPriority": 1606,
+        "unresearched": 0,
+        "entities": [
+          "alaric",
+          "alberta",
+          "alida",
+          "emma",
+          "adelaide"
+        ],
+        "averagePriority": 66.92,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Russian",
+        "count": 7,
+        "totalPriority": 457,
+        "unresearched": 0,
+        "entities": [
+          "alexei",
+          "igor",
+          "leonid",
+          "irina",
+          "ivan"
+        ],
+        "averagePriority": 65.29,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Nordic",
+        "count": 7,
+        "totalPriority": 457,
+        "unresearched": 0,
+        "entities": [
+          "bjorn",
+          "lars",
+          "leif",
+          "astrid",
+          "gunnar"
+        ],
+        "averagePriority": 65.29,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "French",
+        "count": 56,
+        "totalPriority": 3150,
+        "unresearched": 0,
+        "entities": [
+          "achille",
+          "alain",
+          "alanis",
+          "aramis",
+          "arlette"
+        ],
+        "averagePriority": 56.25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Persian",
+        "count": 7,
+        "totalPriority": 383,
+        "unresearched": 0,
+        "entities": [
+          "arsalan",
+          "arash",
+          "abtin",
+          "afsheen",
+          "casper"
+        ],
+        "averagePriority": 54.71,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Latin",
+        "count": 44,
+        "totalPriority": 2356,
+        "unresearched": 0,
+        "entities": [
+          "alaura",
+          "alea",
+          "augustin",
+          "aura",
+          "aurelio"
+        ],
+        "averagePriority": 53.55,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Scottish",
+        "count": 7,
+        "totalPriority": 347,
+        "unresearched": 0,
+        "entities": [
+          "ainslie",
+          "alastair",
+          "blair",
+          "blaire",
+          "craig"
+        ],
+        "averagePriority": 49.57,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Irish",
+        "count": 27,
+        "totalPriority": 1299,
+        "unresearched": 0,
+        "entities": [
+          "aine",
+          "aisling",
+          "aoife",
+          "aileen",
+          "deirdre"
+        ],
+        "averagePriority": 48.11,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Indian",
+        "count": 156,
+        "totalPriority": 7431,
+        "unresearched": 0,
+        "entities": [
+          "adi",
+          "adib",
+          "adiba",
+          "adil",
+          "advaita"
+        ],
+        "averagePriority": 47.63,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Italian",
+        "count": 27,
+        "totalPriority": 1235,
+        "unresearched": 0,
+        "entities": [
+          "adriano",
+          "dante",
+          "domenico",
+          "donatella",
+          "flavia"
+        ],
+        "averagePriority": 45.74,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greek",
+        "count": 46,
+        "totalPriority": 2042,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "ariadne",
+          "aster"
+        ],
+        "averagePriority": 44.39,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "African",
+        "count": 25,
+        "totalPriority": 1021,
+        "unresearched": 0,
+        "entities": [
+          "abifoluwa",
+          "adeena",
+          "ademide",
+          "aissatou",
+          "adedamola"
+        ],
+        "averagePriority": 40.84,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Hebrew",
+        "count": 81,
+        "totalPriority": 3249,
+        "unresearched": 0,
+        "entities": [
+          "abbygail",
+          "alazar",
+          "aryeh",
+          "asa",
+          "noah"
+        ],
+        "averagePriority": 40.11,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Welsh",
+        "count": 11,
+        "totalPriority": 369,
+        "unresearched": 0,
+        "entities": [
+          "gareth",
+          "bevan",
+          "bronwen",
+          "bryn",
+          "cambria"
+        ],
+        "averagePriority": 33.55,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "English",
+        "count": 372,
+        "totalPriority": 10460,
+        "unresearched": 0,
+        "entities": [
+          "addisyn",
+          "afton",
+          "arden",
+          "aston",
+          "earl"
+        ],
+        "averagePriority": 28.12,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Slavic",
+        "count": 8,
+        "totalPriority": 200,
+        "unresearched": 0,
+        "entities": [
+          "adrijana",
+          "akim",
+          "bianka",
+          "bogdan",
+          "bogdana"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      }
+    ],
+    "highestPriorityGenders": [
+      {
+        "value": "boy",
+        "count": 1592,
+        "totalPriority": 170321,
+        "unresearched": 1144,
+        "entities": [
+          "abd",
+          "abdifatah",
+          "abdirahman",
+          "abdullahi",
+          "abshir"
+        ],
+        "averagePriority": 106.99,
+        "unresearchedPct": 71.86
+      },
+      {
+        "value": "girl",
+        "count": 1446,
+        "totalPriority": 152645,
+        "unresearched": 1036,
+        "entities": [
+          "abbygail",
+          "addisyn",
+          "adiba",
+          "advaita",
+          "afton"
+        ],
+        "averagePriority": 105.56,
+        "unresearchedPct": 71.65
+      },
+      {
+        "value": "unisex",
+        "count": 659,
+        "totalPriority": 62778,
+        "unresearched": 367,
+        "entities": [
+          "abrar",
+          "adi",
+          "afnan",
+          "agamjot",
+          "aikam"
+        ],
+        "averagePriority": 95.26,
+        "unresearchedPct": 55.69
+      }
+    ],
+    "largestEditorialDeserts": [
+      {
+        "slug": "aj",
+        "name": "Aj",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ally-rose",
+        "name": "Ally-rose",
+        "priorityScore": 127
+      },
+      {
+        "slug": "amelia-rose",
+        "name": "Amelia-rose",
+        "priorityScore": 127
+      },
+      {
+        "slug": "an",
+        "name": "An",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ann-sophie",
+        "name": "Ann-sophie",
+        "priorityScore": 127
+      },
+      {
+        "slug": "anna-eve",
+        "name": "Anna-eve",
+        "priorityScore": 127
+      },
+      {
+        "slug": "anna-maria",
+        "name": "Anna-maria",
+        "priorityScore": 127
+      },
+      {
+        "slug": "anne-charlotte",
+        "name": "Anne-charlotte",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ashley-lynn",
+        "name": "Ashley-lynn",
+        "priorityScore": 127
+      },
+      {
+        "slug": "audrey-rose",
+        "name": "Audrey-rose",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ava-grace",
+        "name": "Ava-grace",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ava-marie",
+        "name": "Ava-marie",
+        "priorityScore": 127
+      },
+      {
+        "slug": "ava-rose",
+        "name": "Ava-rose",
+        "priorityScore": 127
+      },
+      {
+        "slug": "avi",
+        "name": "Avi",
+        "priorityScore": 127
+      },
+      {
+        "slug": "awa",
+        "name": "Awa",
+        "priorityScore": 127
+      },
+      {
+        "slug": "bao",
+        "name": "Bao",
+        "priorityScore": 127
+      },
+      {
+        "slug": "bea",
+        "name": "Bea",
+        "priorityScore": 127
+      },
+      {
+        "slug": "constantine",
+        "name": "Constantine",
+        "priorityScore": 127
+      },
+      {
+        "slug": "cooper",
+        "name": "Cooper",
+        "priorityScore": 127
+      },
+      {
+        "slug": "copeland",
+        "name": "Copeland",
+        "priorityScore": 127
+      },
+      {
+        "slug": "corbyn",
+        "name": "Corbyn",
+        "priorityScore": 127
+      },
+      {
+        "slug": "cordell",
+        "name": "Cordell",
+        "priorityScore": 127
+      },
+      {
+        "slug": "corentin",
+        "name": "Corentin",
+        "priorityScore": 127
+      },
+      {
+        "slug": "cori",
+        "name": "Cori",
+        "priorityScore": 127
+      },
+      {
+        "slug": "corin",
+        "name": "Corin",
+        "priorityScore": 127
+      }
+    ],
+    "partialKnowledgeRecordSamples": [
+      {
+        "slug": "abbygail",
+        "name": "Abbygail",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abd",
+        "name": "Abd",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abdifatah",
+        "name": "Abdifatah",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abdirahman",
+        "name": "Abdirahman",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abdullahi",
+        "name": "Abdullahi",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abrar",
+        "name": "Abrar",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abshir",
+        "name": "Abshir",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "abubakar",
+        "name": "Abubakar",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "achille",
+        "name": "Achille",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "achilles",
+        "name": "Achilles",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "achraf",
+        "name": "Achraf",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "addisyn",
+        "name": "Addisyn",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adham",
+        "name": "Adham",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adi",
+        "name": "Adi",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adib",
+        "name": "Adib",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adiba",
+        "name": "Adiba",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adil",
+        "name": "Adil",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "adnan",
+        "name": "Adnan",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "advaita",
+        "name": "Advaita",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "advaith",
+        "name": "Advaith",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "affan",
+        "name": "Affan",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "afnan",
+        "name": "Afnan",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "afton",
+        "name": "Afton",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "agamdeep",
+        "name": "Agamdeep",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "slug": "agamjot",
+        "name": "Agamjot",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      }
+    ],
+    "mostCommonMissingDomains": [
+      {
+        "domain": "meaning",
+        "count": 2791
+      },
+      {
+        "domain": "etymology",
+        "count": 2733
+      },
+      {
+        "domain": "history",
+        "count": 2733
+      },
+      {
+        "domain": "pronunciation",
+        "count": 2721
+      },
+      {
+        "domain": "origin",
+        "count": 2719
+      },
+      {
+        "domain": "variants",
+        "count": 2547
+      }
+    ],
+    "entitiesWithPopularityButNoKnowledgeRecord": []
+  },
+  "expansionRoadmap": {
+    "phase15BInput": [
+      {
+        "rank": 1,
+        "slug": "abbygail",
+        "name": "Abbygail",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 2,
+        "slug": "abd",
+        "name": "Abd",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 3,
+        "slug": "abdifatah",
+        "name": "Abdifatah",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 4,
+        "slug": "abdirahman",
+        "name": "Abdirahman",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 5,
+        "slug": "abdullahi",
+        "name": "Abdullahi",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 6,
+        "slug": "abrar",
+        "name": "Abrar",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 7,
+        "slug": "abshir",
+        "name": "Abshir",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 8,
+        "slug": "abubakar",
+        "name": "Abubakar",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 9,
+        "slug": "achille",
+        "name": "Achille",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 10,
+        "slug": "achilles",
+        "name": "Achilles",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 11,
+        "slug": "achraf",
+        "name": "Achraf",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 12,
+        "slug": "addisyn",
+        "name": "Addisyn",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 13,
+        "slug": "adham",
+        "name": "Adham",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 14,
+        "slug": "adi",
+        "name": "Adi",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 15,
+        "slug": "adib",
+        "name": "Adib",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 16,
+        "slug": "adiba",
+        "name": "Adiba",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 17,
+        "slug": "adil",
+        "name": "Adil",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 18,
+        "slug": "adnan",
+        "name": "Adnan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 19,
+        "slug": "advaita",
+        "name": "Advaita",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 20,
+        "slug": "advaith",
+        "name": "Advaith",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 21,
+        "slug": "affan",
+        "name": "Affan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 22,
+        "slug": "afnan",
+        "name": "Afnan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 23,
+        "slug": "afton",
+        "name": "Afton",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 24,
+        "slug": "agamdeep",
+        "name": "Agamdeep",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 25,
+        "slug": "agamjot",
+        "name": "Agamjot",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 26,
+        "slug": "agamvir",
+        "name": "Agamvir",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 27,
+        "slug": "aganetha",
+        "name": "Aganetha",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 28,
+        "slug": "agnes",
+        "name": "Agnes",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 29,
+        "slug": "ahnaf",
+        "name": "Ahnaf",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 30,
+        "slug": "ahyan",
+        "name": "Ahyan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 31,
+        "slug": "aikam",
+        "name": "Aikam",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 32,
+        "slug": "aine",
+        "name": "Aine",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 33,
+        "slug": "aishmeen",
+        "name": "Aishmeen",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 34,
+        "slug": "aisling",
+        "name": "Aisling",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 35,
+        "slug": "ajaypal",
+        "name": "Ajaypal",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 36,
+        "slug": "akbar",
+        "name": "Akbar",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 37,
+        "slug": "akmal",
+        "name": "Akmal",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 38,
+        "slug": "akram",
+        "name": "Akram",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 39,
+        "slug": "alain",
+        "name": "Alain",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 40,
+        "slug": "alanis",
+        "name": "Alanis",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 41,
+        "slug": "alaric",
+        "name": "Alaric",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 42,
+        "slug": "alaura",
+        "name": "Alaura",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 43,
+        "slug": "alazar",
+        "name": "Alazar",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 44,
+        "slug": "alberta",
+        "name": "Alberta",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 45,
+        "slug": "alea",
+        "name": "Alea",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 46,
+        "slug": "alfaaz",
+        "name": "Alfaaz",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 47,
+        "slug": "alida",
+        "name": "Alida",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 48,
+        "slug": "alishba",
+        "name": "Alishba",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 49,
+        "slug": "almir",
+        "name": "Almir",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 50,
+        "slug": "almira",
+        "name": "Almira",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 51,
+        "slug": "alondra",
+        "name": "Alondra",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 52,
+        "slug": "alonso",
+        "name": "Alonso",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 53,
+        "slug": "anvika",
+        "name": "Anvika",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 54,
+        "slug": "anvit",
+        "name": "Anvit",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 55,
+        "slug": "anwar",
+        "name": "Anwar",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 56,
+        "slug": "aoife",
+        "name": "Aoife",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 57,
+        "slug": "aqsa",
+        "name": "Aqsa",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 58,
+        "slug": "aracely",
+        "name": "Aracely",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 59,
+        "slug": "aramis",
+        "name": "Aramis",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 60,
+        "slug": "arbaaz",
+        "name": "Arbaaz",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 61,
+        "slug": "arden",
+        "name": "Arden",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 62,
+        "slug": "areeb",
+        "name": "Areeb",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 63,
+        "slug": "areeba",
+        "name": "Areeba",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 64,
+        "slug": "areej",
+        "name": "Areej",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 65,
+        "slug": "ariadne",
+        "name": "Ariadne",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 66,
+        "slug": "arlette",
+        "name": "Arlette",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 67,
+        "slug": "arnaaz",
+        "name": "Arnaaz",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 68,
+        "slug": "arnaud",
+        "name": "Arnaud",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 69,
+        "slug": "arpan",
+        "name": "Arpan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 70,
+        "slug": "arsalan",
+        "name": "Arsalan",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 71,
+        "slug": "arshdeep",
+        "name": "Arshdeep",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 72,
+        "slug": "arshpreet",
+        "name": "Arshpreet",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 73,
+        "slug": "arvin",
+        "name": "Arvin",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 74,
+        "slug": "aryeh",
+        "name": "Aryeh",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 75,
+        "slug": "asa",
+        "name": "Asa",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 76,
+        "slug": "asadullah",
+        "name": "Asadullah",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 77,
+        "slug": "asees",
+        "name": "Asees",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 78,
+        "slug": "ashmeet",
+        "name": "Ashmeet",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 79,
+        "slug": "ashnoor",
+        "name": "Ashnoor",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 80,
+        "slug": "ashrith",
+        "name": "Ashrith",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 81,
+        "slug": "ashvik",
+        "name": "Ashvik",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 82,
+        "slug": "ashvika",
+        "name": "Ashvika",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 83,
+        "slug": "ashvin",
+        "name": "Ashvin",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 84,
+        "slug": "asmaa",
+        "name": "Asmaa",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 85,
+        "slug": "aster",
+        "name": "Aster",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 86,
+        "slug": "aston",
+        "name": "Aston",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 87,
+        "slug": "athanasia",
+        "name": "Athanasia",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 88,
+        "slug": "athanasios",
+        "name": "Athanasios",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 89,
+        "slug": "atharv",
+        "name": "Atharv",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 90,
+        "slug": "aude",
+        "name": "Aude",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 91,
+        "slug": "audric",
+        "name": "Audric",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 92,
+        "slug": "augustin",
+        "name": "Augustin",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 93,
+        "slug": "aura",
+        "name": "Aura",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 94,
+        "slug": "aurelio",
+        "name": "Aurelio",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 95,
+        "slug": "aurelius",
+        "name": "Aurelius",
+        "action": "complete_domains",
+        "missingDomains": [
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 96,
+        "slug": "bob",
+        "name": "Bob",
+        "action": "complete_domains",
+        "missingDomains": [
+          "origin",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 97,
+        "slug": "faisal",
+        "name": "Faisal",
+        "action": "complete_domains",
+        "missingDomains": [
+          "origin",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 98,
+        "slug": "farida",
+        "name": "Farida",
+        "action": "complete_domains",
+        "missingDomains": [
+          "origin",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 99,
+        "slug": "lilith",
+        "name": "Lilith",
+        "action": "complete_domains",
+        "missingDomains": [
+          "origin",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      },
+      {
+        "rank": 100,
+        "slug": "lior",
+        "name": "Lior",
+        "action": "complete_domains",
+        "missingDomains": [
+          "origin",
+          "pronunciation",
+          "etymology",
+          "history"
+        ],
+        "priorityScore": 139
+      }
+    ]
+  },
+  "totals": {
+    "entitiesRanked": 3697,
+    "unresearchedEntities": 2547,
+    "partialKnowledgeRecords": 350,
+    "fullyResearchedEntities": 800
+  }
+}
