@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T14:42:39.882Z",
+  "generatedAt": "2026-07-27T01:49:13.880Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 26.85,
+    "average": 27.26,
     "median": 5,
     "min": 0,
     "max": 100
@@ -33,10 +33,10 @@
     "histogram": {
       "0": 1051,
       "1-20": 1496,
-      "21-40": 114,
+      "21-40": 89,
       "41-60": 196,
       "61-80": 39,
-      "81-100": 801
+      "81-100": 826
     }
   },
   "domainCoverage": {
@@ -46,20 +46,20 @@
       "pct": 26.45
     },
     "researchedMeanings": {
-      "count": 909,
-      "pct": 24.59
+      "count": 934,
+      "pct": 25.26
     },
     "storedPronunciations": {
-      "count": 976,
-      "pct": 26.4
+      "count": 1001,
+      "pct": 27.08
     },
     "etymologyCoverage": {
-      "count": 964,
-      "pct": 26.08
+      "count": 989,
+      "pct": 26.75
     },
     "historyCoverage": {
-      "count": 964,
-      "pct": 26.08
+      "count": 989,
+      "pct": 26.75
     },
     "citationCoverage": {
       "count": 1150,
@@ -203,13 +203,13 @@
     },
     {
       "slug": "abbygail",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -217,13 +217,13 @@
     },
     {
       "slug": "abd",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -231,13 +231,13 @@
     },
     {
       "slug": "abdifatah",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -245,13 +245,13 @@
     },
     {
       "slug": "abdirahman",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -259,13 +259,13 @@
     },
     {
       "slug": "abdullahi",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -441,13 +441,13 @@
     },
     {
       "slug": "abrar",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -497,13 +497,13 @@
     },
     {
       "slug": "abshir",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -525,13 +525,13 @@
     },
     {
       "slug": "abubakar",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -553,13 +553,13 @@
     },
     {
       "slug": "achille",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -567,13 +567,13 @@
     },
     {
       "slug": "achilles",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -581,13 +581,13 @@
     },
     {
       "slug": "achraf",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -637,13 +637,13 @@
     },
     {
       "slug": "addisyn",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -749,13 +749,13 @@
     },
     {
       "slug": "adham",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -791,13 +791,13 @@
     },
     {
       "slug": "adi",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -805,13 +805,13 @@
     },
     {
       "slug": "adib",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -819,13 +819,13 @@
     },
     {
       "slug": "adiba",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -833,13 +833,13 @@
     },
     {
       "slug": "adil",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -931,13 +931,13 @@
     },
     {
       "slug": "adnan",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1029,13 +1029,13 @@
     },
     {
       "slug": "advaita",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1043,13 +1043,13 @@
     },
     {
       "slug": "advaith",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1071,13 +1071,13 @@
     },
     {
       "slug": "affan",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1085,13 +1085,13 @@
     },
     {
       "slug": "afnan",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1127,13 +1127,13 @@
     },
     {
       "slug": "afton",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -1141,13 +1141,13 @@
     },
     {
       "slug": "agamdeep",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1155,13 +1155,13 @@
     },
     {
       "slug": "agamjot",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0

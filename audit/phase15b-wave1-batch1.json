@@ -1,0 +1,178 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 1,
+  "title": "Knowledge Record Expansion Wave 1 Batch 1 — Domain Completion",
+  "generatedAt": "2026-07-27T01:49:15.387Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 800,
+    "after": 825,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 800,
+      "partialKnowledgeRecords": 350,
+      "partialMissingDomainCounts": {
+        "origin": 172,
+        "meaning": 244,
+        "pronunciation": 174,
+        "etymology": 186,
+        "history": 186,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 825,
+      "partialKnowledgeRecords": 325,
+      "partialMissingDomainCounts": {
+        "origin": 172,
+        "meaning": 219,
+        "pronunciation": 149,
+        "etymology": 161,
+        "history": 161,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 978,
+        "pct": 26.45
+      },
+      "meaning": {
+        "count": 906,
+        "pct": 24.51
+      },
+      "pronunciation": {
+        "count": 976,
+        "pct": 26.4
+      },
+      "etymology": {
+        "count": 964,
+        "pct": 26.08
+      },
+      "history": {
+        "count": 964,
+        "pct": 26.08
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 978,
+        "pct": 26.45
+      },
+      "meaning": {
+        "count": 931,
+        "pct": 25.18
+      },
+      "pronunciation": {
+        "count": 1001,
+        "pct": 27.08
+      },
+      "etymology": {
+        "count": 989,
+        "pct": 26.75
+      },
+      "history": {
+        "count": 989,
+        "pct": 26.75
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 0,
+        "pct": 0
+      },
+      "meaning": {
+        "count": 25,
+        "pct": 0.67
+      },
+      "pronunciation": {
+        "count": 25,
+        "pct": 0.68
+      },
+      "etymology": {
+        "count": 25,
+        "pct": 0.67
+      },
+      "history": {
+        "count": 25,
+        "pct": 0.67
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Abbygail",
+      "Abd",
+      "Abdifatah",
+      "Abdirahman",
+      "Abdullahi",
+      "Abrar",
+      "Abshir",
+      "Abubakar",
+      "Achille",
+      "Achilles",
+      "Achraf",
+      "Addisyn",
+      "Adham",
+      "Adi",
+      "Adib",
+      "Adiba",
+      "Adil",
+      "Adnan",
+      "Advaita",
+      "Advaith",
+      "Affan",
+      "Afnan",
+      "Afton",
+      "Agamdeep",
+      "Agamjot"
+    ],
+    "targetDomains": [
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 26.85,
+    "averageAfter": 27.26
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true
+  }
+}
