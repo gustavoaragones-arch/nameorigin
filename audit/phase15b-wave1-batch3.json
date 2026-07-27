@@ -1,0 +1,192 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 3,
+  "title": "Knowledge Record Expansion Wave 1 Batch 3 — Domain Completion",
+  "generatedAt": "2026-07-27T02:40:52.378Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "gapAnalysisRanks": "51–56",
+    "supplementalPartialRecords": 19,
+    "note": "Ranks 57–75 in phase15BInput are create_knowledge_record (Wave 2). Batch 3 completes partial records only to preserve Wave 1 governance."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 875,
+    "cumulativeFullyResearchedActual": 875,
+    "batchesComplete": 3,
+    "partialRemaining": 275
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 850,
+    "after": 875,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 850,
+      "partialKnowledgeRecords": 300,
+      "partialMissingDomainCounts": {
+        "origin": 172,
+        "meaning": 194,
+        "pronunciation": 124,
+        "etymology": 136,
+        "history": 136,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 875,
+      "partialKnowledgeRecords": 275,
+      "partialMissingDomainCounts": {
+        "origin": 168,
+        "meaning": 180,
+        "pronunciation": 103,
+        "etymology": 112,
+        "history": 112,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 978,
+        "pct": 26.45
+      },
+      "meaning": {
+        "count": 956,
+        "pct": 25.86
+      },
+      "pronunciation": {
+        "count": 1026,
+        "pct": 27.75
+      },
+      "etymology": {
+        "count": 1014,
+        "pct": 27.43
+      },
+      "history": {
+        "count": 1014,
+        "pct": 27.43
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 982,
+        "pct": 26.56
+      },
+      "meaning": {
+        "count": 970,
+        "pct": 26.24
+      },
+      "pronunciation": {
+        "count": 1047,
+        "pct": 28.32
+      },
+      "etymology": {
+        "count": 1038,
+        "pct": 28.08
+      },
+      "history": {
+        "count": 1038,
+        "pct": 28.08
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 4,
+        "pct": 0.11
+      },
+      "meaning": {
+        "count": 14,
+        "pct": 0.38
+      },
+      "pronunciation": {
+        "count": 21,
+        "pct": 0.57
+      },
+      "etymology": {
+        "count": 24,
+        "pct": 0.65
+      },
+      "history": {
+        "count": 24,
+        "pct": 0.65
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Abbas",
+      "Abel",
+      "Abifoluwa",
+      "Abriel",
+      "Adab",
+      "Adeena",
+      "Adel",
+      "Adelaide",
+      "Ademide",
+      "Adhvik",
+      "Adriano",
+      "Agamvir",
+      "Aganetha",
+      "Agnes",
+      "Ahnaf",
+      "Ahyan",
+      "Aikam",
+      "Aileen",
+      "Aine",
+      "Noah",
+      "Olivia",
+      "Olympia",
+      "Svetlana",
+      "Toby",
+      "Xenia"
+    ],
+    "targetDomains": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 27.66,
+    "averageAfter": 28
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}

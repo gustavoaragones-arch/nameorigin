@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T01:53:05.671Z",
+  "generatedAt": "2026-07-27T02:40:50.917Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 27.66,
+    "average": 28,
     "median": 5,
     "min": 0,
     "max": 100
@@ -33,33 +33,33 @@
     "histogram": {
       "0": 1051,
       "1-20": 1496,
-      "21-40": 64,
-      "41-60": 196,
-      "61-80": 39,
-      "81-100": 851
+      "21-40": 50,
+      "41-60": 188,
+      "61-80": 36,
+      "81-100": 876
     }
   },
   "domainCoverage": {
     "entityCount": 3697,
     "researchedOrigins": {
-      "count": 978,
-      "pct": 26.45
+      "count": 982,
+      "pct": 26.56
     },
     "researchedMeanings": {
-      "count": 959,
-      "pct": 25.94
+      "count": 971,
+      "pct": 26.26
     },
     "storedPronunciations": {
-      "count": 1026,
-      "pct": 27.75
+      "count": 1047,
+      "pct": 28.32
     },
     "etymologyCoverage": {
-      "count": 1014,
-      "pct": 27.43
+      "count": 1038,
+      "pct": 28.08
     },
     "historyCoverage": {
-      "count": 1014,
-      "pct": 27.43
+      "count": 1038,
+      "pct": 28.08
     },
     "citationCoverage": {
       "count": 1150,
@@ -189,13 +189,13 @@
     },
     {
       "slug": "abbas",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -287,13 +287,13 @@
     },
     {
       "slug": "abel",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -371,13 +371,13 @@
     },
     {
       "slug": "abifoluwa",
-      "score": 30,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -469,11 +469,11 @@
     },
     {
       "slug": "abriel",
-      "score": 55,
+      "score": 90,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
+        "meaning": 20,
+        "pronunciation": 15,
         "etymology": 15,
         "history": 10,
         "citations": 10,
@@ -595,13 +595,13 @@
     },
     {
       "slug": "adab",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -665,13 +665,13 @@
     },
     {
       "slug": "adeena",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -679,13 +679,13 @@
     },
     {
       "slug": "adel",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -693,13 +693,13 @@
     },
     {
       "slug": "adelaide",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -735,13 +735,13 @@
     },
     {
       "slug": "ademide",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -777,13 +777,13 @@
     },
     {
       "slug": "adhvik",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -973,13 +973,13 @@
     },
     {
       "slug": "adriano",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1169,13 +1169,13 @@
     },
     {
       "slug": "agamvir",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1183,13 +1183,13 @@
     },
     {
       "slug": "aganetha",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1197,13 +1197,13 @@
     },
     {
       "slug": "agnes",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1211,13 +1211,13 @@
     },
     {
       "slug": "ahnaf",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1225,13 +1225,13 @@
     },
     {
       "slug": "ahyan",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1253,13 +1253,13 @@
     },
     {
       "slug": "aikam",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1267,13 +1267,13 @@
     },
     {
       "slug": "aileen",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1281,13 +1281,13 @@
     },
     {
       "slug": "aine",
-      "score": 35,
+      "score": 95,
       "breakdown": {
         "origin": 20,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -34769,13 +34769,13 @@
     },
     {
       "slug": "noah",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -35511,13 +35511,13 @@
     },
     {
       "slug": "olivia",
-      "score": 65,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -35679,13 +35679,13 @@
     },
     {
       "slug": "olympia",
-      "score": 30,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -44093,13 +44093,13 @@
     },
     {
       "slug": "svetlana",
-      "score": 30,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -45745,13 +45745,13 @@
     },
     {
       "slug": "toby",
-      "score": 25,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -49497,13 +49497,13 @@
     },
     {
       "slug": "xenia",
-      "score": 35,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0

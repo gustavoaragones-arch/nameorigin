@@ -18,6 +18,7 @@ const SOURCE_FN = {
 };
 
 const COMPLETION_DOMAINS = ['meaning', 'pronunciation', 'etymology', 'history'];
+const ALL_EDITORIAL_OVERRIDE_DOMAINS = ['origin', ...COMPLETION_DOMAINS];
 
 function makeDomainField(domain, value, confidence, sourceKey, phaseLabel) {
   const sourcesFn = SOURCE_FN[domain];
@@ -34,7 +35,7 @@ function makeCompletionRecord(name, profile) {
   const sourceKey = profile.sourceKey || profile.cluster || 'default';
   const confidence = profile.confidence ?? 0.88;
   const phaseLabel = profile.phaseLabel || 'Phase 15B Wave 1 Batch 1';
-  return {
+  const record = {
     name,
     meaning: makeDomainField('meaning', profile.meaning, confidence, sourceKey, phaseLabel),
     pronunciation: makeDomainField(
@@ -47,9 +48,26 @@ function makeCompletionRecord(name, profile) {
     etymology: makeDomainField('etymology', profile.etymology, confidence, sourceKey, phaseLabel),
     history: makeDomainField('history', profile.history, confidence, sourceKey, phaseLabel),
   };
+
+  if (profile.origin_cluster || profile.origin_country || profile.language) {
+    record.origin = makeDomainField(
+      'origin',
+      {
+        origin_country: profile.origin_country ?? null,
+        origin_cluster: profile.origin_cluster ?? null,
+        language: profile.language ?? null,
+      },
+      confidence,
+      sourceKey,
+      phaseLabel,
+    );
+  }
+
+  return record;
 }
 
 module.exports = {
+  ALL_EDITORIAL_OVERRIDE_DOMAINS,
   COMPLETION_DOMAINS,
   confidenceLevel,
   makeDomainField,
