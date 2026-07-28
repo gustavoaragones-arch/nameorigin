@@ -1,0 +1,75 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "title": "Knowledge Record Expansion Wave 1 — Completion Manifest",
+  "generatedAt": "2026-07-28T14:50:58.026Z",
+  "baselineReference": "editorial-architecture-v2",
+  "status": "CLOSED",
+  "scope": {
+    "description": "Completion of existing partial Knowledge Records only",
+    "noNewKnowledgeRecords": true,
+    "wave2Scope": "create_knowledge_record for unresearched entities"
+  },
+  "execution": {
+    "deterministicBatchesExecuted": 14,
+    "recordsPerBatch": 25,
+    "partialKnowledgeRecordsCompleted": 350,
+    "selectionMethod": "priority_score_ranking",
+    "selectionScope": "complete_domains_only"
+  },
+  "finalState": {
+    "fullyResearchedEntities": 1150,
+    "partialKnowledgeRecords": 0,
+    "totalKnowledgeRecords": 1150,
+    "sixDomainEditorialStandard": "1,150 / 1,150",
+    "sixDomainCompletionPct": 100
+  },
+  "architecturalInvariants": {
+    "knowledgeRecordSchema": "unchanged",
+    "kciEngine": "unchanged",
+    "kciWeights": "unchanged",
+    "citationArchitecture": "unchanged",
+    "popularityRegistry": "unchanged",
+    "totalKnowledgeRecordCount": 1150
+  },
+  "validationRecord": {
+    "qaPass": "14/14",
+    "equivalencePass": "14/14",
+    "editorialIntegrityPass": "14/14",
+    "frozenLayerVerificationPass": "14/14",
+    "knowledgeRecordCountUnchanged": "14/14",
+    "allBatchesPass": true
+  },
+  "checkpointReference": {
+    "artifact": "audit/phase15b-wave1-checkpoint.json",
+    "role": "Midpoint architectural milestone — Batch 8"
+  },
+  "closeoutArtifacts": {
+    "finalReport": "audit/phase15b-wave1-final-report.json",
+    "finalReportDoc": "docs/PHASE15B_WAVE1_FINAL_REPORT.md",
+    "completionManifest": "audit/phase15b-wave1-completion-manifest.json",
+    "completionManifestDoc": "docs/PHASE15B_WAVE1_COMPLETION_MANIFEST.md",
+    "checkpoint": "audit/phase15b-wave1-checkpoint.json",
+    "batchAudits": [
+      "audit/phase15b-wave1-batch1.json",
+      "audit/phase15b-wave1-batch2.json",
+      "audit/phase15b-wave1-batch3.json",
+      "audit/phase15b-wave1-batch4.json",
+      "audit/phase15b-wave1-batch5.json",
+      "audit/phase15b-wave1-batch6.json",
+      "audit/phase15b-wave1-batch7.json",
+      "audit/phase15b-wave1-batch8.json",
+      "audit/phase15b-wave1-batch9.json",
+      "audit/phase15b-wave1-batch10.json",
+      "audit/phase15b-wave1-batch11.json",
+      "audit/phase15b-wave1-batch12.json",
+      "audit/phase15b-wave1-batch13.json",
+      "audit/phase15b-wave1-batch14.json"
+    ]
+  },
+  "handoff": {
+    "nextPhase": "Phase 15B Wave 2",
+    "nextObjective": "Create Knowledge Records for 2,547 unresearched entities",
+    "pipelineStatus": "validated_and_ready"
+  }
+}

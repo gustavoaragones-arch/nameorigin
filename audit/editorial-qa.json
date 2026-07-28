@@ -1,7 +1,7 @@
 {
   "phase": "6B",
   "title": "Editorial QA & Consistency Audit",
-  "generatedAt": "2026-07-28T14:33:26.324Z",
+  "generatedAt": "2026-07-28T14:50:53.987Z",
   "baselineReference": "knowledge-baseline-v2",
   "knowledgeRecordSource": "data/knowledge-records.json",
   "schemaReference": "schemas/knowledge-record-v2.schema.json",
@@ -198,12 +198,12 @@
     },
     "sourceCompleteness": {
       "origin": {
-        "populated": 1125,
+        "populated": 1150,
         "emptySources": 0,
         "nullNotes": 0
       },
       "meaning": {
-        "populated": 1125,
+        "populated": 1150,
         "emptySources": 0,
         "nullNotes": 0
       },
@@ -228,12 +228,12 @@
       "knowledgeRecordCount": 1150,
       "domainCoverage": {
         "origin": {
-          "count": 1125,
-          "pct": 30.43
+          "count": 1150,
+          "pct": 31.11
         },
         "meaning": {
-          "count": 1125,
-          "pct": 30.43
+          "count": 1150,
+          "pct": 31.11
         },
         "pronunciation": {
           "count": 1150,
@@ -248,13 +248,13 @@
           "pct": 31.11
         }
       },
-      "averagePopulatedDomainsPerRecord": 4.96,
+      "averagePopulatedDomainsPerRecord": 5,
       "populatedDomainsDistribution": {
         "1": 0,
         "2": 0,
-        "3": 25,
+        "3": 0,
         "4": 0,
-        "5": 1125
+        "5": 1150
       }
     },
     "crossDomainConsistency": {

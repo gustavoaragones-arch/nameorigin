@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T14:33:28.052Z",
+  "generatedAt": "2026-07-28T14:50:56.281Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 30.78,
+    "average": 31.05,
     "median": 5,
     "min": 0,
     "max": 100
@@ -34,20 +34,20 @@
       "0": 1051,
       "1-20": 1496,
       "21-40": 0,
-      "41-60": 25,
+      "41-60": 0,
       "61-80": 0,
-      "81-100": 1125
+      "81-100": 1150
     }
   },
   "domainCoverage": {
     "entityCount": 3697,
     "researchedOrigins": {
-      "count": 1125,
-      "pct": 30.43
+      "count": 1150,
+      "pct": 31.11
     },
     "researchedMeanings": {
-      "count": 1125,
-      "pct": 30.43
+      "count": 1150,
+      "pct": 31.11
     },
     "storedPronunciations": {
       "count": 1150,
@@ -46459,10 +46459,10 @@
     },
     {
       "slug": "uma",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -46683,10 +46683,10 @@
     },
     {
       "slug": "ursula",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -46921,10 +46921,10 @@
     },
     {
       "slug": "valentine",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -47019,10 +47019,10 @@
     },
     {
       "slug": "van",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -47033,10 +47033,10 @@
     },
     {
       "slug": "vance",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -47663,10 +47663,10 @@
     },
     {
       "slug": "viktor",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -48055,10 +48055,10 @@
     },
     {
       "slug": "viviana",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -48475,10 +48475,10 @@
     },
     {
       "slug": "watson",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49049,10 +49049,10 @@
     },
     {
       "slug": "winnie",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49147,10 +49147,10 @@
     },
     {
       "slug": "winston",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49161,10 +49161,10 @@
     },
     {
       "slug": "winter",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49273,10 +49273,10 @@
     },
     {
       "slug": "wren",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49315,10 +49315,10 @@
     },
     {
       "slug": "wyatt",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49385,10 +49385,10 @@
     },
     {
       "slug": "xander",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49455,10 +49455,10 @@
     },
     {
       "slug": "xavier",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49581,10 +49581,10 @@
     },
     {
       "slug": "ximena",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49749,10 +49749,10 @@
     },
     {
       "slug": "yael",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -49945,10 +49945,10 @@
     },
     {
       "slug": "yara",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -50183,10 +50183,10 @@
     },
     {
       "slug": "yehuda",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -50659,10 +50659,10 @@
     },
     {
       "slug": "yuki",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -50813,10 +50813,10 @@
     },
     {
       "slug": "yvette",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -51037,10 +51037,10 @@
     },
     {
       "slug": "zander",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -51289,10 +51289,10 @@
     },
     {
       "slug": "zena",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -51513,10 +51513,10 @@
     },
     {
       "slug": "zion",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -51639,10 +51639,10 @@
     },
     {
       "slug": "zora",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
