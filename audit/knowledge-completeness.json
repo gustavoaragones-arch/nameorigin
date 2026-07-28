@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T01:55:58.338Z",
+  "generatedAt": "2026-07-28T02:15:52.197Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 29.51,
+    "average": 29.7,
     "median": 5,
     "min": 0,
     "max": 100
@@ -34,32 +34,32 @@
       "0": 1051,
       "1-20": 1496,
       "21-40": 0,
-      "41-60": 132,
-      "61-80": 18,
-      "81-100": 1000
+      "41-60": 125,
+      "61-80": 0,
+      "81-100": 1025
     }
   },
   "domainCoverage": {
     "entityCount": 3697,
     "researchedOrigins": {
-      "count": 1010,
-      "pct": 27.32
+      "count": 1025,
+      "pct": 27.73
     },
     "researchedMeanings": {
-      "count": 1018,
-      "pct": 27.54
+      "count": 1025,
+      "pct": 27.73
     },
     "storedPronunciations": {
       "count": 1150,
       "pct": 31.11
     },
     "etymologyCoverage": {
-      "count": 1140,
-      "pct": 30.84
+      "count": 1150,
+      "pct": 31.11
     },
     "historyCoverage": {
-      "count": 1140,
-      "pct": 30.84
+      "count": 1150,
+      "pct": 31.11
     },
     "citationCoverage": {
       "count": 1150,
@@ -1295,13 +1295,13 @@
     },
     {
       "slug": "ainslie",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1407,13 +1407,13 @@
     },
     {
       "slug": "akira",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1519,13 +1519,13 @@
     },
     {
       "slug": "alastair",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -1575,13 +1575,13 @@
     },
     {
       "slug": "alder",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -4067,10 +4067,10 @@
     },
     {
       "slug": "atlas",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -5565,10 +5565,10 @@
     },
     {
       "slug": "bennett",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -9541,10 +9541,10 @@
     },
     {
       "slug": "conor",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -10465,13 +10465,13 @@
     },
     {
       "slug": "dashiell",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -10591,10 +10591,10 @@
     },
     {
       "slug": "davis",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -11795,13 +11795,13 @@
     },
     {
       "slug": "donald",
-      "score": 65,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -17227,13 +17227,13 @@
     },
     {
       "slug": "gilbert",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -18641,10 +18641,10 @@
     },
     {
       "slug": "hadley",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -20573,10 +20573,10 @@
     },
     {
       "slug": "holland",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -20713,10 +20713,10 @@
     },
     {
       "slug": "hudson",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -22169,9 +22169,9 @@
     },
     {
       "slug": "isidore",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -24731,9 +24731,9 @@
     },
     {
       "slug": "josef",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -27713,13 +27713,13 @@
     },
     {
       "slug": "kristen",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -28287,9 +28287,9 @@
     },
     {
       "slug": "laszlo",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -28903,9 +28903,9 @@
     },
     {
       "slug": "leonora",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -32151,13 +32151,13 @@
     },
     {
       "slug": "meredith",
-      "score": 65,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -34797,9 +34797,9 @@
     },
     {
       "slug": "noel",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -35231,9 +35231,9 @@
     },
     {
       "slug": "octavia",
-      "score": 70,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -35959,9 +35959,9 @@
     },
     {
       "slug": "orlando",
-      "score": 70,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
@@ -40593,13 +40593,13 @@
     },
     {
       "slug": "rudolph",
-      "score": 70,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
-        "etymology": 0,
-        "history": 0,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -41251,9 +41251,9 @@
     },
     {
       "slug": "samson",
-      "score": 75,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
+        "origin": 20,
         "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
