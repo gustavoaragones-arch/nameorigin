@@ -1,0 +1,195 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 6,
+  "title": "Knowledge Record Expansion Wave 1 Batch 6 — Domain Completion",
+  "generatedAt": "2026-07-28T01:37:30.347Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "method": "priority_score_ranking",
+    "scope": "complete_domains_only",
+    "excluded": "create_knowledge_record (Wave 2)",
+    "batchesCompleteBeforeSelection": 5,
+    "profilePattern": "origin_and_meaning_present",
+    "note": "Next 25 partial Knowledge Records after Batches 1–5. All have origin and meaning populated; missing pronunciation, etymology, and history only."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 950,
+    "cumulativeFullyResearchedActual": 950,
+    "batchesComplete": 6,
+    "partialRemaining": 200,
+    "wave1PercentComplete": 0.4286,
+    "batchesUntilCheckpoint8": 2
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 925,
+    "after": 950,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 925,
+      "partialKnowledgeRecords": 225,
+      "partialMissingDomainCounts": {
+        "origin": 159,
+        "meaning": 137,
+        "pronunciation": 57,
+        "etymology": 64,
+        "history": 64,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 950,
+      "partialKnowledgeRecords": 200,
+      "partialMissingDomainCounts": {
+        "origin": 159,
+        "meaning": 137,
+        "pronunciation": 32,
+        "etymology": 39,
+        "history": 39,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 991,
+        "pct": 26.81
+      },
+      "meaning": {
+        "count": 1013,
+        "pct": 27.4
+      },
+      "pronunciation": {
+        "count": 1093,
+        "pct": 29.56
+      },
+      "etymology": {
+        "count": 1086,
+        "pct": 29.38
+      },
+      "history": {
+        "count": 1086,
+        "pct": 29.38
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 991,
+        "pct": 26.81
+      },
+      "meaning": {
+        "count": 1013,
+        "pct": 27.4
+      },
+      "pronunciation": {
+        "count": 1118,
+        "pct": 30.24
+      },
+      "etymology": {
+        "count": 1111,
+        "pct": 30.05
+      },
+      "history": {
+        "count": 1111,
+        "pct": 30.05
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 0,
+        "pct": 0
+      },
+      "meaning": {
+        "count": 0,
+        "pct": 0
+      },
+      "pronunciation": {
+        "count": 25,
+        "pct": 0.68
+      },
+      "etymology": {
+        "count": 25,
+        "pct": 0.67
+      },
+      "history": {
+        "count": 25,
+        "pct": 0.67
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Alfonso",
+      "Alvaro",
+      "Arash",
+      "Asad",
+      "Aslan",
+      "August",
+      "Augusta",
+      "Aurore",
+      "Avni",
+      "Beatriz",
+      "Benedict",
+      "Bjorn",
+      "Cassius",
+      "Castiel",
+      "Cecile",
+      "Cephas",
+      "Chaim",
+      "Chava",
+      "Chaya",
+      "Cyril",
+      "Dante",
+      "Deirdre",
+      "Delphine",
+      "Demir",
+      "Dhruv"
+    ],
+    "targetDomains": [
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 28.78,
+    "averageAfter": 29.05
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}

@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-28T01:24:16.681Z",
+  "generatedAt": "2026-07-28T01:37:27.250Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -3247,21 +3247,6 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Spain",
-        "count": 22,
-        "totalPriority": 1208,
-        "unresearched": 0,
-        "entities": [
-          "alfonso",
-          "alvaro",
-          "beatriz",
-          "eduardo",
-          "esperanza"
-        ],
-        "averagePriority": 54.91,
-        "unresearchedPct": 0
-      },
-      {
         "value": "Russia",
         "count": 8,
         "totalPriority": 388,
@@ -3292,93 +3277,78 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Iran",
-        "count": 5,
-        "totalPriority": 219,
+        "value": "Spain",
+        "count": 22,
+        "totalPriority": 926,
         "unresearched": 0,
         "entities": [
-          "arash",
-          "abtin",
-          "afsheen",
-          "amirali",
-          "caspian"
+          "eduardo",
+          "esperanza",
+          "guillermo",
+          "santiago",
+          "alfonso"
         ],
-        "averagePriority": 43.8,
+        "averagePriority": 42.09,
         "unresearchedPct": 0
       },
       {
         "value": "France",
         "count": 58,
-        "totalPriority": 2288,
+        "totalPriority": 2006,
         "unresearched": 0,
         "entities": [
-          "aurore",
-          "cecile",
-          "delphine",
           "didier",
-          "julienne"
+          "julienne",
+          "lucien",
+          "manon",
+          "philippe"
         ],
-        "averagePriority": 39.45,
+        "averagePriority": 34.59,
         "unresearchedPct": 0
       },
       {
         "value": "Italy",
         "count": 66,
-        "totalPriority": 2582,
+        "totalPriority": 2112,
         "unresearched": 0,
         "entities": [
-          "august",
-          "augusta",
-          "benedict",
-          "cassius",
-          "dante"
+          "domenico",
+          "donatella",
+          "flavia",
+          "aria",
+          "atticus"
         ],
-        "averagePriority": 39.12,
+        "averagePriority": 32,
         "unresearchedPct": 0
       },
       {
         "value": "Ireland",
         "count": 27,
-        "totalPriority": 863,
+        "totalPriority": 769,
         "unresearched": 0,
         "entities": [
-          "deirdre",
           "eamon",
           "aiden",
           "aileen",
-          "aine"
+          "aine",
+          "aisling"
         ],
-        "averagePriority": 31.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Israel",
-        "count": 82,
-        "totalPriority": 2520,
-        "unresearched": 0,
-        "entities": [
-          "castiel",
-          "cephas",
-          "chaim",
-          "chava",
-          "chaya"
-        ],
-        "averagePriority": 30.73,
+        "averagePriority": 28.48,
         "unresearchedPct": 0
       },
       {
         "value": "India",
         "count": 156,
-        "totalPriority": 4495,
+        "totalPriority": 4307,
         "unresearched": 0,
         "entities": [
-          "avni",
-          "dhruv",
           "divya",
           "ravi",
-          "samar"
+          "samar",
+          "aadi",
+          "aahil"
         ],
-        "averagePriority": 28.81,
+        "averagePriority": 27.61,
         "unresearchedPct": 0
       },
       {
@@ -3397,18 +3367,33 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Greece",
-        "count": 48,
-        "totalPriority": 1294,
+        "value": "Israel",
+        "count": 82,
+        "totalPriority": 2050,
         "unresearched": 0,
         "entities": [
-          "cyril",
-          "achilles",
-          "aganetha",
-          "agnes",
-          "alexander"
+          "abbygail",
+          "abe",
+          "abel",
+          "abner",
+          "abrianna"
         ],
-        "averagePriority": 26.96,
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Iran",
+        "count": 5,
+        "totalPriority": 125,
+        "unresearched": 0,
+        "entities": [
+          "abtin",
+          "afsheen",
+          "amirali",
+          "arash",
+          "caspian"
+        ],
+        "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
@@ -3422,6 +3407,21 @@
           "alexavier",
           "alexus",
           "alexys"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greece",
+        "count": 48,
+        "totalPriority": 1200,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "alexander",
+          "alexandros"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3501,19 +3501,6 @@
     ],
     "highestPriorityLanguages": [
       {
-        "value": "Turkish",
-        "count": 3,
-        "totalPriority": 357,
-        "unresearched": 0,
-        "entities": [
-          "aslan",
-          "demir",
-          "dilara"
-        ],
-        "averagePriority": 119,
-        "unresearchedPct": 0
-      },
-      {
         "value": "Japanese",
         "count": 1,
         "totalPriority": 111,
@@ -3525,33 +3512,31 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Nordic",
-        "count": 7,
-        "totalPriority": 457,
+        "value": "Turkish",
+        "count": 3,
+        "totalPriority": 169,
         "unresearched": 0,
         "entities": [
-          "bjorn",
-          "lars",
-          "leif",
-          "astrid",
-          "gunnar"
+          "dilara",
+          "aslan",
+          "demir"
         ],
-        "averagePriority": 65.29,
+        "averagePriority": 56.33,
         "unresearchedPct": 0
       },
       {
-        "value": "Spanish",
-        "count": 21,
-        "totalPriority": 1183,
+        "value": "Nordic",
+        "count": 7,
+        "totalPriority": 363,
         "unresearched": 0,
         "entities": [
-          "alfonso",
-          "alvaro",
-          "beatriz",
-          "eduardo",
-          "esperanza"
+          "lars",
+          "leif",
+          "astrid",
+          "bjorn",
+          "gunnar"
         ],
-        "averagePriority": 56.33,
+        "averagePriority": 51.86,
         "unresearchedPct": 0
       },
       {
@@ -3600,63 +3585,48 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Italian",
-        "count": 28,
-        "totalPriority": 1166,
+        "value": "Spanish",
+        "count": 21,
+        "totalPriority": 901,
         "unresearched": 0,
         "entities": [
-          "dante",
+          "eduardo",
+          "esperanza",
+          "guillermo",
+          "santiago",
+          "alfonso"
+        ],
+        "averagePriority": 42.9,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Italian",
+        "count": 28,
+        "totalPriority": 1072,
+        "unresearched": 0,
+        "entities": [
           "domenico",
           "donatella",
           "flavia",
-          "aria"
+          "aria",
+          "adriano"
         ],
-        "averagePriority": 41.64,
+        "averagePriority": 38.29,
         "unresearchedPct": 0
       },
       {
         "value": "French",
         "count": 56,
-        "totalPriority": 2238,
+        "totalPriority": 1956,
         "unresearched": 0,
         "entities": [
-          "aurore",
-          "cecile",
-          "delphine",
           "didier",
-          "julienne"
+          "julienne",
+          "lucien",
+          "manon",
+          "philippe"
         ],
-        "averagePriority": 39.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Persian",
-        "count": 7,
-        "totalPriority": 269,
-        "unresearched": 0,
-        "entities": [
-          "arash",
-          "abtin",
-          "afsheen",
-          "arsalan",
-          "casper"
-        ],
-        "averagePriority": 38.43,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Latin",
-        "count": 42,
-        "totalPriority": 1516,
-        "unresearched": 0,
-        "entities": [
-          "august",
-          "augusta",
-          "benedict",
-          "cassius",
-          "atticus"
-        ],
-        "averagePriority": 36.1,
+        "averagePriority": 34.93,
         "unresearchedPct": 0
       },
       {
@@ -3677,61 +3647,46 @@
       {
         "value": "Irish",
         "count": 27,
-        "totalPriority": 863,
+        "totalPriority": 769,
         "unresearched": 0,
         "entities": [
-          "deirdre",
           "eamon",
           "aiden",
           "aileen",
-          "aine"
+          "aine",
+          "aisling"
         ],
-        "averagePriority": 31.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Hebrew",
-        "count": 84,
-        "totalPriority": 2570,
-        "unresearched": 0,
-        "entities": [
-          "castiel",
-          "cephas",
-          "chaim",
-          "chava",
-          "chaya"
-        ],
-        "averagePriority": 30.6,
+        "averagePriority": 28.48,
         "unresearchedPct": 0
       },
       {
         "value": "Sanskrit",
         "count": 129,
-        "totalPriority": 3820,
+        "totalPriority": 3632,
         "unresearched": 0,
         "entities": [
-          "avni",
-          "dhruv",
           "divya",
           "ravi",
-          "samar"
+          "samar",
+          "aadi",
+          "aahil"
         ],
-        "averagePriority": 29.61,
+        "averagePriority": 28.16,
         "unresearchedPct": 0
       },
       {
-        "value": "Greek",
-        "count": 48,
-        "totalPriority": 1294,
+        "value": "Latin",
+        "count": 42,
+        "totalPriority": 1140,
         "unresearched": 0,
         "entities": [
-          "cyril",
-          "achilles",
-          "aganetha",
-          "agnes",
-          "alexander"
+          "atticus",
+          "adrian",
+          "adrianne",
+          "alaura",
+          "alea"
         ],
-        "averagePriority": 26.96,
+        "averagePriority": 27.14,
         "unresearchedPct": 0
       },
       {
@@ -3752,16 +3707,61 @@
       {
         "value": "Arabic",
         "count": 52,
-        "totalPriority": 1394,
+        "totalPriority": 1300,
         "unresearched": 0,
         "entities": [
-          "asad",
           "abbas",
           "abd",
           "abdifatah",
-          "abdirahman"
+          "abdirahman",
+          "abdullahi"
         ],
-        "averagePriority": 26.81,
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Hebrew",
+        "count": 84,
+        "totalPriority": 2100,
+        "unresearched": 0,
+        "entities": [
+          "abbygail",
+          "abe",
+          "abel",
+          "abner",
+          "abrianna"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Persian",
+        "count": 7,
+        "totalPriority": 175,
+        "unresearched": 0,
+        "entities": [
+          "abtin",
+          "afsheen",
+          "arash",
+          "arsalan",
+          "casper"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greek",
+        "count": 48,
+        "totalPriority": 1200,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "alexander",
+          "alexandros"
+        ],
+        "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
@@ -3790,19 +3790,6 @@
     ],
     "highestPriorityCultures": [
       {
-        "value": "Turkish",
-        "count": 3,
-        "totalPriority": 357,
-        "unresearched": 0,
-        "entities": [
-          "aslan",
-          "demir",
-          "dilara"
-        ],
-        "averagePriority": 119,
-        "unresearchedPct": 0
-      },
-      {
         "value": "Japanese",
         "count": 1,
         "totalPriority": 111,
@@ -3814,31 +3801,14 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Nordic",
-        "count": 7,
-        "totalPriority": 457,
+        "value": "Turkish",
+        "count": 3,
+        "totalPriority": 169,
         "unresearched": 0,
         "entities": [
-          "bjorn",
-          "lars",
-          "leif",
-          "astrid",
-          "gunnar"
-        ],
-        "averagePriority": 65.29,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Spanish",
-        "count": 21,
-        "totalPriority": 1183,
-        "unresearched": 0,
-        "entities": [
-          "alfonso",
-          "alvaro",
-          "beatriz",
-          "eduardo",
-          "esperanza"
+          "dilara",
+          "aslan",
+          "demir"
         ],
         "averagePriority": 56.33,
         "unresearchedPct": 0
@@ -3854,6 +3824,21 @@
           "alexei",
           "irina",
           "ivan"
+        ],
+        "averagePriority": 51.86,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Nordic",
+        "count": 7,
+        "totalPriority": 363,
+        "unresearched": 0,
+        "entities": [
+          "lars",
+          "leif",
+          "astrid",
+          "bjorn",
+          "gunnar"
         ],
         "averagePriority": 51.86,
         "unresearchedPct": 0
@@ -3889,63 +3874,48 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Italian",
-        "count": 28,
-        "totalPriority": 1166,
+        "value": "Spanish",
+        "count": 21,
+        "totalPriority": 901,
         "unresearched": 0,
         "entities": [
-          "dante",
+          "eduardo",
+          "esperanza",
+          "guillermo",
+          "santiago",
+          "alfonso"
+        ],
+        "averagePriority": 42.9,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Italian",
+        "count": 28,
+        "totalPriority": 1072,
+        "unresearched": 0,
+        "entities": [
           "domenico",
           "donatella",
           "flavia",
-          "aria"
+          "aria",
+          "adriano"
         ],
-        "averagePriority": 41.64,
+        "averagePriority": 38.29,
         "unresearchedPct": 0
       },
       {
         "value": "French",
         "count": 56,
-        "totalPriority": 2238,
+        "totalPriority": 1956,
         "unresearched": 0,
         "entities": [
-          "aurore",
-          "cecile",
-          "delphine",
           "didier",
-          "julienne"
+          "julienne",
+          "lucien",
+          "manon",
+          "philippe"
         ],
-        "averagePriority": 39.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Persian",
-        "count": 7,
-        "totalPriority": 269,
-        "unresearched": 0,
-        "entities": [
-          "arash",
-          "abtin",
-          "afsheen",
-          "arsalan",
-          "casper"
-        ],
-        "averagePriority": 38.43,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Latin",
-        "count": 44,
-        "totalPriority": 1566,
-        "unresearched": 0,
-        "entities": [
-          "august",
-          "augusta",
-          "benedict",
-          "cassius",
-          "atticus"
-        ],
-        "averagePriority": 35.59,
+        "averagePriority": 34.93,
         "unresearchedPct": 0
       },
       {
@@ -3966,76 +3936,46 @@
       {
         "value": "Irish",
         "count": 27,
-        "totalPriority": 863,
+        "totalPriority": 769,
         "unresearched": 0,
         "entities": [
-          "deirdre",
           "eamon",
           "aiden",
           "aileen",
-          "aine"
+          "aine",
+          "aisling"
         ],
-        "averagePriority": 31.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Hebrew",
-        "count": 83,
-        "totalPriority": 2545,
-        "unresearched": 0,
-        "entities": [
-          "castiel",
-          "cephas",
-          "chaim",
-          "chava",
-          "chaya"
-        ],
-        "averagePriority": 30.66,
+        "averagePriority": 28.48,
         "unresearchedPct": 0
       },
       {
         "value": "Indian",
         "count": 156,
-        "totalPriority": 4495,
+        "totalPriority": 4307,
         "unresearched": 0,
         "entities": [
-          "avni",
-          "dhruv",
           "divya",
           "ravi",
-          "samar"
+          "samar",
+          "aadi",
+          "aahil"
         ],
-        "averagePriority": 28.81,
+        "averagePriority": 27.61,
         "unresearchedPct": 0
       },
       {
-        "value": "Arabic",
-        "count": 48,
-        "totalPriority": 1294,
+        "value": "Latin",
+        "count": 44,
+        "totalPriority": 1190,
         "unresearched": 0,
         "entities": [
-          "asad",
-          "abbas",
-          "abd",
-          "abdifatah",
-          "abdirahman"
+          "atticus",
+          "adrian",
+          "adrianne",
+          "alaura",
+          "alea"
         ],
-        "averagePriority": 26.96,
-        "unresearchedPct": 0
-      },
-      {
-        "value": "Greek",
-        "count": 48,
-        "totalPriority": 1294,
-        "unresearched": 0,
-        "entities": [
-          "cyril",
-          "achilles",
-          "aganetha",
-          "agnes",
-          "alexander"
-        ],
-        "averagePriority": 26.96,
+        "averagePriority": 27.05,
         "unresearchedPct": 0
       },
       {
@@ -4054,6 +3994,36 @@
         "unresearchedPct": 0
       },
       {
+        "value": "Arabic",
+        "count": 48,
+        "totalPriority": 1200,
+        "unresearched": 0,
+        "entities": [
+          "abbas",
+          "abd",
+          "abdifatah",
+          "abdirahman",
+          "abdullahi"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Hebrew",
+        "count": 83,
+        "totalPriority": 2075,
+        "unresearched": 0,
+        "entities": [
+          "abbygail",
+          "abe",
+          "abel",
+          "abner",
+          "abrianna"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
         "value": "African",
         "count": 25,
         "totalPriority": 625,
@@ -4064,6 +4034,36 @@
           "adeena",
           "ademide",
           "adja"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Persian",
+        "count": 7,
+        "totalPriority": 175,
+        "unresearched": 0,
+        "entities": [
+          "abtin",
+          "afsheen",
+          "arash",
+          "arsalan",
+          "casper"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Greek",
+        "count": 48,
+        "totalPriority": 1200,
+        "unresearched": 0,
+        "entities": [
+          "achilles",
+          "aganetha",
+          "agnes",
+          "alexander",
+          "alexandros"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -4088,7 +4088,7 @@
       {
         "value": "boy",
         "count": 1592,
-        "totalPriority": 163744,
+        "totalPriority": 162428,
         "unresearched": 1144,
         "entities": [
           "aj",
@@ -4097,13 +4097,13 @@
           "corbyn",
           "cordell"
         ],
-        "averagePriority": 102.85,
+        "averagePriority": 102.03,
         "unresearchedPct": 71.86
       },
       {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 147942,
+        "totalPriority": 147096,
         "unresearched": 1036,
         "entities": [
           "ally-rose",
@@ -4112,13 +4112,13 @@
           "anna-eve",
           "anna-maria"
         ],
-        "averagePriority": 102.31,
+        "averagePriority": 101.73,
         "unresearchedPct": 71.65
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 60163,
+        "totalPriority": 59975,
         "unresearched": 367,
         "entities": [
           "an",
@@ -4127,7 +4127,7 @@
           "cooper",
           "corin"
         ],
-        "averagePriority": 91.29,
+        "averagePriority": 91.01,
         "unresearchedPct": 55.69
       }
     ],
@@ -4260,8 +4260,8 @@
     ],
     "partialKnowledgeRecordSamples": [
       {
-        "slug": "alfonso",
-        "name": "Alfonso",
+        "slug": "didier",
+        "name": "Didier",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4270,8 +4270,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "alvaro",
-        "name": "Alvaro",
+        "slug": "dilara",
+        "name": "Dilara",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4280,8 +4280,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "arash",
-        "name": "Arash",
+        "slug": "divya",
+        "name": "Divya",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4290,8 +4290,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "asad",
-        "name": "Asad",
+        "slug": "domenico",
+        "name": "Domenico",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4300,8 +4300,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "aslan",
-        "name": "Aslan",
+        "slug": "donatella",
+        "name": "Donatella",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4310,8 +4310,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "august",
-        "name": "August",
+        "slug": "eamon",
+        "name": "Eamon",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4320,8 +4320,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "augusta",
-        "name": "Augusta",
+        "slug": "earl",
+        "name": "Earl",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4330,8 +4330,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "aurore",
-        "name": "Aurore",
+        "slug": "ebony",
+        "name": "Ebony",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4340,8 +4340,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "avni",
-        "name": "Avni",
+        "slug": "eduardo",
+        "name": "Eduardo",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4350,8 +4350,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "beatriz",
-        "name": "Beatriz",
+        "slug": "esperanza",
+        "name": "Esperanza",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4360,8 +4360,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "benedict",
-        "name": "Benedict",
+        "slug": "flavia",
+        "name": "Flavia",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4370,8 +4370,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "bjorn",
-        "name": "Bjorn",
+        "slug": "gareth",
+        "name": "Gareth",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4380,8 +4380,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "cassius",
-        "name": "Cassius",
+        "slug": "guillermo",
+        "name": "Guillermo",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4390,8 +4390,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "castiel",
-        "name": "Castiel",
+        "slug": "heinrich",
+        "name": "Heinrich",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4400,8 +4400,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "cecile",
-        "name": "Cecile",
+        "slug": "igor",
+        "name": "Igor",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4410,8 +4410,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "cephas",
-        "name": "Cephas",
+        "slug": "julienne",
+        "name": "Julienne",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4420,8 +4420,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "chaim",
-        "name": "Chaim",
+        "slug": "lars",
+        "name": "Lars",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4430,8 +4430,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "chava",
-        "name": "Chava",
+        "slug": "leif",
+        "name": "Leif",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4440,8 +4440,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "chaya",
-        "name": "Chaya",
+        "slug": "leonid",
+        "name": "Leonid",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4450,8 +4450,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "cyril",
-        "name": "Cyril",
+        "slug": "lucien",
+        "name": "Lucien",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4460,8 +4460,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "dante",
-        "name": "Dante",
+        "slug": "ludwig",
+        "name": "Ludwig",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4470,8 +4470,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "deirdre",
-        "name": "Deirdre",
+        "slug": "manon",
+        "name": "Manon",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4480,8 +4480,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "delphine",
-        "name": "Delphine",
+        "slug": "otto",
+        "name": "Otto",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4490,8 +4490,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "demir",
-        "name": "Demir",
+        "slug": "philippe",
+        "name": "Philippe",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4500,8 +4500,8 @@
         "priorityScore": 119
       },
       {
-        "slug": "dhruv",
-        "name": "Dhruv",
+        "slug": "ravi",
+        "name": "Ravi",
         "missingDomains": [
           "pronunciation",
           "etymology",
@@ -4521,15 +4521,15 @@
       },
       {
         "domain": "etymology",
-        "count": 2611
+        "count": 2586
       },
       {
         "domain": "history",
-        "count": 2611
+        "count": 2586
       },
       {
         "domain": "pronunciation",
-        "count": 2604
+        "count": 2579
       },
       {
         "domain": "variants",
@@ -6045,7 +6045,7 @@
   "totals": {
     "entitiesRanked": 3697,
     "unresearchedEntities": 2547,
-    "partialKnowledgeRecords": 225,
-    "fullyResearchedEntities": 925
+    "partialKnowledgeRecords": 200,
+    "fullyResearchedEntities": 950
   }
 }
