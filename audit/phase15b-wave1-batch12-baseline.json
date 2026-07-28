@@ -1,0 +1,46 @@
+{
+  "capturedAt": "2026-07-28T14:18:16.441Z",
+  "baselineReference": "editorial-architecture-v2",
+  "editorialCoverage": {
+    "totalEntities": 3697,
+    "totalKnowledgeRecords": 1150,
+    "entitiesWithKnowledgeRecords": 1150,
+    "entitiesWithoutKnowledgeRecords": 2547,
+    "knowledgeRecordCoveragePct": 31.11,
+    "fullyResearchedEntities": 1075,
+    "fullyResearchedPct": 29.08,
+    "partialKnowledgeRecords": 75,
+    "partialKnowledgeRecordPct": 2.03,
+    "partialAmongKnowledgeRecordsPct": 6.52,
+    "averageEditorialDomainsPerEntity": 1.83,
+    "averageEditorialDomainsPerKnowledgeRecord": 5.87,
+    "medianEditorialDomainsPerEntity": 0,
+    "maximumEditorialDomainsOnSingleEntity": 6,
+    "entitiesWithZeroEditorialDomains": 2547,
+    "entitiesWithFullEditorialDomains": 1075
+  },
+  "knowledgeRecords": 1150,
+  "fullFiveDomainRecords": 1075,
+  "domainCoverage": {
+    "origin": {
+      "count": 1075,
+      "pct": 29.08
+    },
+    "meaning": {
+      "count": 1075,
+      "pct": 29.08
+    },
+    "pronunciation": {
+      "count": 1150,
+      "pct": 31.11
+    },
+    "etymology": {
+      "count": 1150,
+      "pct": 31.11
+    },
+    "history": {
+      "count": 1150,
+      "pct": 31.11
+    }
+  }
+}

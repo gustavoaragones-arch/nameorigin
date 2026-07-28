@@ -1,7 +1,7 @@
 {
   "phase": "6A",
   "title": "Knowledge Record v2 Migration",
-  "generatedAt": "2026-07-28T14:04:24.007Z",
+  "generatedAt": "2026-07-28T14:18:21.382Z",
   "baselineReference": "knowledge-baseline-v2",
   "legacyCompatibilityActive": true,
   "totals": {
@@ -9,8 +9,8 @@
     "entities": 3697
   },
   "migrated": {
-    "originRecords": 1075,
-    "meaningRecords": 1075,
+    "originRecords": 1100,
+    "meaningRecords": 1100,
     "pronunciationRecords": 1150,
     "etymologyRecords": 1150,
     "historyRecords": 1150
@@ -31,24 +31,24 @@
   "enrichmentSummary": {
     "legacy": {
       "entityCount": 3697,
-      "withOrigin": 1075,
-      "withMeaning": 1075,
+      "withOrigin": 1100,
+      "withMeaning": 1100,
       "withPronunciation": 1150,
       "withEtymology": 1150,
       "withHistory": 1150
     },
     "knowledgeRecord": {
       "entityCount": 3697,
-      "withOrigin": 1075,
-      "withMeaning": 1075,
+      "withOrigin": 1100,
+      "withMeaning": 1100,
       "withPronunciation": 1150,
       "withEtymology": 1150,
       "withHistory": 1150
     }
   },
   "kciImpact": {
-    "legacyAverage": 27.13,
-    "knowledgeAverage": 27.13,
+    "legacyAverage": 27.4,
+    "knowledgeAverage": 27.4,
     "legacyMax": 90,
     "knowledgeMax": 90,
     "identical": true

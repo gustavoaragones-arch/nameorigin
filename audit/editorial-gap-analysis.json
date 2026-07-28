@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-28T14:04:22.820Z",
+  "generatedAt": "2026-07-28T14:18:20.070Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 31,
-        "totalPriority": 775,
+        "count": 45,
+        "totalPriority": 1125,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3285,8 +3285,8 @@
       },
       {
         "value": "France",
-        "count": 63,
-        "totalPriority": 1575,
+        "count": 65,
+        "totalPriority": 1625,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 55,
-        "totalPriority": 1375,
+        "count": 56,
+        "totalPriority": 1400,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 396,
-        "totalPriority": 9900,
+        "count": 401,
+        "totalPriority": 10025,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3372,8 +3372,8 @@
       },
       {
         "value": "Italy",
-        "count": 71,
-        "totalPriority": 1775,
+        "count": 72,
+        "totalPriority": 1800,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3561,8 +3561,8 @@
       },
       {
         "value": "English",
-        "count": 410,
-        "totalPriority": 10250,
+        "count": 427,
+        "totalPriority": 10675,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3576,8 +3576,8 @@
       },
       {
         "value": "French",
-        "count": 61,
-        "totalPriority": 1525,
+        "count": 63,
+        "totalPriority": 1575,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3591,8 +3591,8 @@
       },
       {
         "value": "Greek",
-        "count": 56,
-        "totalPriority": 1400,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3659,8 +3659,8 @@
       },
       {
         "value": "Italian",
-        "count": 29,
-        "totalPriority": 725,
+        "count": 30,
+        "totalPriority": 750,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3775,11 +3775,12 @@
       },
       {
         "value": "Portuguese",
-        "count": 1,
-        "totalPriority": 25,
+        "count": 2,
+        "totalPriority": 50,
         "unresearched": 0,
         "entities": [
-          "almeida"
+          "almeida",
+          "rio"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3863,8 +3864,8 @@
       },
       {
         "value": "English",
-        "count": 402,
-        "totalPriority": 10050,
+        "count": 413,
+        "totalPriority": 10325,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3878,8 +3879,8 @@
       },
       {
         "value": "French",
-        "count": 61,
-        "totalPriority": 1525,
+        "count": 64,
+        "totalPriority": 1600,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3893,8 +3894,8 @@
       },
       {
         "value": "Greek",
-        "count": 60,
-        "totalPriority": 1500,
+        "count": 63,
+        "totalPriority": 1575,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3908,8 +3909,8 @@
       },
       {
         "value": "German",
-        "count": 26,
-        "totalPriority": 650,
+        "count": 27,
+        "totalPriority": 675,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3923,8 +3924,8 @@
       },
       {
         "value": "Latin",
-        "count": 56,
-        "totalPriority": 1400,
+        "count": 59,
+        "totalPriority": 1475,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3953,8 +3954,8 @@
       },
       {
         "value": "Slavic",
-        "count": 12,
-        "totalPriority": 300,
+        "count": 13,
+        "totalPriority": 325,
         "unresearched": 0,
         "entities": [
           "adrijana",
@@ -3968,8 +3969,8 @@
       },
       {
         "value": "Irish",
-        "count": 31,
-        "totalPriority": 775,
+        "count": 32,
+        "totalPriority": 800,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -4024,8 +4025,8 @@
       },
       {
         "value": "Spanish",
-        "count": 23,
-        "totalPriority": 575,
+        "count": 24,
+        "totalPriority": 600,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -4067,8 +4068,8 @@
       },
       {
         "value": "Welsh",
-        "count": 13,
-        "totalPriority": 325,
+        "count": 14,
+        "totalPriority": 350,
         "unresearched": 0,
         "entities": [
           "bevan",
@@ -4085,7 +4086,7 @@
       {
         "value": "boy",
         "count": 1592,
-        "totalPriority": 158306,
+        "totalPriority": 157808,
         "unresearched": 1144,
         "entities": [
           "aj",
@@ -4094,13 +4095,13 @@
           "corbyn",
           "cordell"
         ],
-        "averagePriority": 99.44,
+        "averagePriority": 99.13,
         "unresearchedPct": 71.86
       },
       {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 143615,
+        "totalPriority": 143200,
         "unresearched": 1036,
         "entities": [
           "ally-rose",
@@ -4109,13 +4110,13 @@
           "anna-eve",
           "anna-maria"
         ],
-        "averagePriority": 99.32,
+        "averagePriority": 99.03,
         "unresearchedPct": 71.65
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 56648,
+        "totalPriority": 55486,
         "unresearched": 367,
         "entities": [
           "an",
@@ -4124,7 +4125,7 @@
           "cooper",
           "corin"
         ],
-        "averagePriority": 85.96,
+        "averagePriority": 84.2,
         "unresearchedPct": 55.69
       }
     ],
@@ -4257,8 +4258,8 @@
     ],
     "partialKnowledgeRecordSamples": [
       {
-        "slug": "oksana",
-        "name": "Oksana",
+        "slug": "rodrigo",
+        "name": "Rodrigo",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4266,8 +4267,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "ophelia",
-        "name": "Ophelia",
+        "slug": "romina",
+        "name": "Romina",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4275,8 +4276,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "ora",
-        "name": "Ora",
+        "slug": "rufus",
+        "name": "Rufus",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4284,8 +4285,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "orion",
-        "name": "Orion",
+        "slug": "ryder",
+        "name": "Ryder",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4293,8 +4294,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "oswald",
-        "name": "Oswald",
+        "slug": "santana",
+        "name": "Santana",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4302,8 +4303,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "otis",
-        "name": "Otis",
+        "slug": "santino",
+        "name": "Santino",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4311,8 +4312,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "paris",
-        "name": "Paris",
+        "slug": "scarlett",
+        "name": "Scarlett",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4320,8 +4321,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "parker",
-        "name": "Parker",
+        "slug": "sheldon",
+        "name": "Sheldon",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4329,8 +4330,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "patrice",
-        "name": "Patrice",
+        "slug": "shiloh",
+        "name": "Shiloh",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4338,8 +4339,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "payton",
-        "name": "Payton",
+        "slug": "simona",
+        "name": "Simona",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4347,8 +4348,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "percy",
-        "name": "Percy",
+        "slug": "sky",
+        "name": "Sky",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4356,8 +4357,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "piper",
-        "name": "Piper",
+        "slug": "skyler",
+        "name": "Skyler",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4365,8 +4366,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "porter",
-        "name": "Porter",
+        "slug": "soledad",
+        "name": "Soledad",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4374,8 +4375,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "presley",
-        "name": "Presley",
+        "slug": "spencer",
+        "name": "Spencer",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4383,8 +4384,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "preston",
-        "name": "Preston",
+        "slug": "stefania",
+        "name": "Stefania",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4392,8 +4393,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "prince",
-        "name": "Prince",
+        "slug": "stephan",
+        "name": "Stephan",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4401,8 +4402,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "quincy",
-        "name": "Quincy",
+        "slug": "sterling",
+        "name": "Sterling",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4410,8 +4411,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "raelyn",
-        "name": "Raelyn",
+        "slug": "steve",
+        "name": "Steve",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4419,8 +4420,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "raven",
-        "name": "Raven",
+        "slug": "storm",
+        "name": "Storm",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4428,8 +4429,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "raylan",
-        "name": "Raylan",
+        "slug": "sullivan",
+        "name": "Sullivan",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4437,8 +4438,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "reagan",
-        "name": "Reagan",
+        "slug": "sylvester",
+        "name": "Sylvester",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4446,8 +4447,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "reece",
-        "name": "Reece",
+        "slug": "tatum",
+        "name": "Tatum",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4455,8 +4456,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "renata",
-        "name": "Renata",
+        "slug": "thaddeus",
+        "name": "Thaddeus",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4464,8 +4465,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "rio",
-        "name": "Rio",
+        "slug": "trenton",
+        "name": "Trenton",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4473,8 +4474,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "river",
-        "name": "River",
+        "slug": "trudy",
+        "name": "Trudy",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4485,11 +4486,11 @@
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 2622
+        "count": 2597
       },
       {
         "domain": "meaning",
-        "count": 2622
+        "count": 2597
       },
       {
         "domain": "pronunciation",
@@ -6017,7 +6018,7 @@
   "totals": {
     "entitiesRanked": 3697,
     "unresearchedEntities": 2547,
-    "partialKnowledgeRecords": 75,
-    "fullyResearchedEntities": 1075
+    "partialKnowledgeRecords": 50,
+    "fullyResearchedEntities": 1100
   }
 }
