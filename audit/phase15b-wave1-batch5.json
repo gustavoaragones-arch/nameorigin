@@ -1,0 +1,196 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 5,
+  "title": "Knowledge Record Expansion Wave 1 Batch 5 — Domain Completion",
+  "generatedAt": "2026-07-28T01:24:19.591Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "method": "priority_score_ranking",
+    "scope": "complete_domains_only",
+    "excluded": "create_knowledge_record (Wave 2)",
+    "batchesCompleteBeforeSelection": 4,
+    "heterogeneousProfiles": true,
+    "note": "Next 25 partial Knowledge Records after Batches 1–4. Includes near-complete records (Emma, Kendrick, Alexei) and origin-backfill cases (Bob, Faisal, Lilith, etc.). Only missing domains are applied."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 925,
+    "cumulativeFullyResearchedActual": 925,
+    "batchesComplete": 5,
+    "partialRemaining": 225,
+    "wave1PercentComplete": 0.3571
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 900,
+    "after": 925,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 900,
+      "partialKnowledgeRecords": 250,
+      "partialMissingDomainCounts": {
+        "origin": 168,
+        "meaning": 155,
+        "pronunciation": 78,
+        "etymology": 87,
+        "history": 87,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 925,
+      "partialKnowledgeRecords": 225,
+      "partialMissingDomainCounts": {
+        "origin": 159,
+        "meaning": 137,
+        "pronunciation": 57,
+        "etymology": 64,
+        "history": 64,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 982,
+        "pct": 26.56
+      },
+      "meaning": {
+        "count": 995,
+        "pct": 26.91
+      },
+      "pronunciation": {
+        "count": 1072,
+        "pct": 29
+      },
+      "etymology": {
+        "count": 1063,
+        "pct": 28.75
+      },
+      "history": {
+        "count": 1063,
+        "pct": 28.75
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 991,
+        "pct": 26.81
+      },
+      "meaning": {
+        "count": 1013,
+        "pct": 27.4
+      },
+      "pronunciation": {
+        "count": 1093,
+        "pct": 29.56
+      },
+      "etymology": {
+        "count": 1086,
+        "pct": 29.38
+      },
+      "history": {
+        "count": 1086,
+        "pct": 29.38
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 9,
+        "pct": 0.25
+      },
+      "meaning": {
+        "count": 18,
+        "pct": 0.49
+      },
+      "pronunciation": {
+        "count": 21,
+        "pct": 0.56
+      },
+      "etymology": {
+        "count": 23,
+        "pct": 0.63
+      },
+      "history": {
+        "count": 23,
+        "pct": 0.63
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Aissatou",
+      "Alexei",
+      "Ashvin",
+      "Asmaa",
+      "Aster",
+      "Aston",
+      "Athanasia",
+      "Athanasios",
+      "Atharv",
+      "Aude",
+      "Audric",
+      "Augustin",
+      "Aura",
+      "Aurelio",
+      "Aurelius",
+      "Bob",
+      "Emma",
+      "Faisal",
+      "Farida",
+      "Gino",
+      "Kendrick",
+      "Lilith",
+      "Lior",
+      "Mckenzie",
+      "Tripp"
+    ],
+    "targetDomains": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 28.4,
+    "averageAfter": 28.78
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}
