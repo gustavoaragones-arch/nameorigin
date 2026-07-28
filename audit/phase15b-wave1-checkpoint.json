@@ -1,0 +1,197 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "checkpoint": 8,
+  "title": "Knowledge Record Expansion Wave 1 — Batch 8 Checkpoint",
+  "generatedAt": "2026-07-28T01:56:07.597Z",
+  "baselineReference": "editorial-architecture-v2",
+  "phase15AEndState": {
+    "fullyResearchedEntities": 800,
+    "partialKnowledgeRecords": 350,
+    "totalKnowledgeRecords": 1150,
+    "domainCoverage": {
+      "origin": {
+        "count": 978,
+        "pct": 26.45
+      },
+      "meaning": {
+        "count": 906,
+        "pct": 24.51
+      },
+      "pronunciation": {
+        "count": 976,
+        "pct": 26.4
+      },
+      "etymology": {
+        "count": 964,
+        "pct": 26.08
+      },
+      "history": {
+        "count": 964,
+        "pct": 26.08
+      }
+    }
+  },
+  "checkpointState": {
+    "fullyResearchedEntities": 1000,
+    "partialKnowledgeRecords": 150,
+    "totalKnowledgeRecords": 1150,
+    "fullyResearchedPctOfCorpus": 86.96
+  },
+  "editorialCompletion": {
+    "fullyResearched": {
+      "before": 800,
+      "after": 1000,
+      "increase": 200
+    },
+    "partialKnowledgeRecords": {
+      "before": 350,
+      "after": 150,
+      "decrease": 200
+    },
+    "wave1CompletionRate": 0.5714,
+    "wave1CompletionPct": 57.1,
+    "batchesComplete": 8,
+    "batchesRemaining": 6,
+    "recordsPerBatch": 25
+  },
+  "domainCoverageIncrease": {
+    "origin": {
+      "before": 978,
+      "after": 1010,
+      "increase": 32
+    },
+    "meaning": {
+      "before": 906,
+      "after": 1018,
+      "increase": 112
+    },
+    "pronunciation": {
+      "before": 976,
+      "after": 1150,
+      "increase": 174
+    },
+    "etymology": {
+      "before": 964,
+      "after": 1140,
+      "increase": 176
+    },
+    "history": {
+      "before": 964,
+      "after": 1140,
+      "increase": 176
+    }
+  },
+  "validationConsistency": {
+    "batchesReported": 8,
+    "qaPassCount": 8,
+    "equivalencePassCount": 8,
+    "frozenLayerPassCount": 8,
+    "knowledgeRecordsUnchangedCount": 8,
+    "editorialIntegrityPassCount": 8
+  },
+  "batchProgress": [
+    {
+      "batch": 1,
+      "fullyResearchedBefore": 800,
+      "fullyResearchedAfter": 825,
+      "partialBefore": 350,
+      "partialAfter": 325,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 2,
+      "fullyResearchedBefore": 825,
+      "fullyResearchedAfter": 850,
+      "partialBefore": 325,
+      "partialAfter": 300,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 3,
+      "fullyResearchedBefore": 850,
+      "fullyResearchedAfter": 875,
+      "partialBefore": 300,
+      "partialAfter": 275,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 4,
+      "fullyResearchedBefore": 875,
+      "fullyResearchedAfter": 900,
+      "partialBefore": 275,
+      "partialAfter": 250,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 5,
+      "fullyResearchedBefore": 900,
+      "fullyResearchedAfter": 925,
+      "partialBefore": 250,
+      "partialAfter": 225,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 6,
+      "fullyResearchedBefore": 925,
+      "fullyResearchedAfter": 950,
+      "partialBefore": 225,
+      "partialAfter": 200,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 7,
+      "fullyResearchedBefore": 950,
+      "fullyResearchedAfter": 975,
+      "partialBefore": 200,
+      "partialAfter": 175,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    },
+    {
+      "batch": 8,
+      "fullyResearchedBefore": 975,
+      "fullyResearchedAfter": 1000,
+      "partialBefore": 175,
+      "partialAfter": 150,
+      "recordsCompleted": 25,
+      "qaPass": true,
+      "equivalencePass": true
+    }
+  ],
+  "governanceVerification": {
+    "schemaUnmodified": true,
+    "kciAlgorithmUnchanged": true,
+    "citationArchitectureUnchanged": true,
+    "popularityArchitectureUnchanged": true,
+    "deterministicSelection": true,
+    "editorialOnly": true,
+    "completionOnly": true,
+    "knowledgeRecordCountFixed": true
+  },
+  "kciImpact": {
+    "averageAtCheckpoint": 29.51,
+    "medianAtCheckpoint": 5
+  },
+  "milestone": {
+    "majorityCorpusFullyResearched": true,
+    "wave1PastHalfway": true,
+    "eightConsecutiveValidatedBatches": true
+  },
+  "validation": {
+    "checkpointTargetsMet": true
+  }
+}

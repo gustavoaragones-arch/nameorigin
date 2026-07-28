@@ -1,0 +1,196 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 6,
+  "title": "Knowledge Record Expansion Wave 1 Batch 8 — Domain Completion",
+  "generatedAt": "2026-07-28T01:55:59.862Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "method": "priority_score_ranking",
+    "scope": "complete_domains_only",
+    "excluded": "create_knowledge_record (Wave 2)",
+    "batchesCompleteBeforeSelection": 7,
+    "checkpointBatch": true,
+    "heterogeneousProfiles": true,
+    "note": "Batch 8 checkpoint batch. Mixed profiles: origin-only backfill, meaning-only completion, and standard three-domain completion."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 1000,
+    "cumulativeFullyResearchedActual": 1000,
+    "batchesComplete": 8,
+    "partialRemaining": 150,
+    "wave1PercentComplete": 0.5714,
+    "checkpointBatch": true
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 975,
+    "after": 1000,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 975,
+      "partialKnowledgeRecords": 175,
+      "partialMissingDomainCounts": {
+        "origin": 159,
+        "meaning": 137,
+        "pronunciation": 7,
+        "etymology": 14,
+        "history": 14,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 1000,
+      "partialKnowledgeRecords": 150,
+      "partialMissingDomainCounts": {
+        "origin": 140,
+        "meaning": 132,
+        "pronunciation": 0,
+        "etymology": 10,
+        "history": 10,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 991,
+        "pct": 26.81
+      },
+      "meaning": {
+        "count": 1013,
+        "pct": 27.4
+      },
+      "pronunciation": {
+        "count": 1143,
+        "pct": 30.92
+      },
+      "etymology": {
+        "count": 1136,
+        "pct": 30.73
+      },
+      "history": {
+        "count": 1136,
+        "pct": 30.73
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 1010,
+        "pct": 27.32
+      },
+      "meaning": {
+        "count": 1018,
+        "pct": 27.54
+      },
+      "pronunciation": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "etymology": {
+        "count": 1140,
+        "pct": 30.84
+      },
+      "history": {
+        "count": 1140,
+        "pct": 30.84
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 19,
+        "pct": 0.51
+      },
+      "meaning": {
+        "count": 5,
+        "pct": 0.14
+      },
+      "pronunciation": {
+        "count": 7,
+        "pct": 0.19
+      },
+      "etymology": {
+        "count": 4,
+        "pct": 0.11
+      },
+      "history": {
+        "count": 4,
+        "pct": 0.11
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Alpha",
+      "Alton",
+      "Alvina",
+      "Aly",
+      "Angel",
+      "Aria",
+      "Aspen",
+      "Atticus",
+      "Benny",
+      "Bernice",
+      "Bertha",
+      "Bill",
+      "Bradley",
+      "Candace",
+      "Chase",
+      "Cheryl",
+      "Fabien",
+      "Fidel",
+      "Florian",
+      "Iris",
+      "Isabelle",
+      "Samar",
+      "Santiago",
+      "Wilhelm",
+      "Willa"
+    ],
+    "targetDomains": [
+      "pronunciation",
+      "etymology",
+      "history"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 29.32,
+    "averageAfter": 29.51
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}
