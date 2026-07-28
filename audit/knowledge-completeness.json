@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T01:37:28.690Z",
+  "generatedAt": "2026-07-28T01:43:47.674Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 29.05,
+    "average": 29.32,
     "median": 5,
     "min": 0,
     "max": 100
@@ -34,9 +34,9 @@
       "0": 1051,
       "1-20": 1496,
       "21-40": 3,
-      "41-60": 161,
+      "41-60": 136,
       "61-80": 36,
-      "81-100": 950
+      "81-100": 975
     }
   },
   "domainCoverage": {
@@ -50,16 +50,16 @@
       "pct": 27.4
     },
     "storedPronunciations": {
-      "count": 1118,
-      "pct": 30.24
+      "count": 1143,
+      "pct": 30.92
     },
     "etymologyCoverage": {
-      "count": 1111,
-      "pct": 30.05
+      "count": 1136,
+      "pct": 30.73
     },
     "historyCoverage": {
-      "count": 1111,
-      "pct": 30.05
+      "count": 1136,
+      "pct": 30.73
     },
     "citationCoverage": {
       "count": 1150,
@@ -11417,13 +11417,13 @@
     },
     {
       "slug": "didier",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -11445,13 +11445,13 @@
     },
     {
       "slug": "dilara",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -11655,13 +11655,13 @@
     },
     {
       "slug": "divya",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -11739,13 +11739,13 @@
     },
     {
       "slug": "domenico",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -11809,13 +11809,13 @@
     },
     {
       "slug": "donatella",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -12173,13 +12173,13 @@
     },
     {
       "slug": "eamon",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -12187,13 +12187,13 @@
     },
     {
       "slug": "earl",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -12243,13 +12243,13 @@
     },
     {
       "slug": "ebony",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -12467,13 +12467,13 @@
     },
     {
       "slug": "eduardo",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -14175,13 +14175,13 @@
     },
     {
       "slug": "esperanza",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -15911,13 +15911,13 @@
     },
     {
       "slug": "flavia",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -16611,13 +16611,13 @@
     },
     {
       "slug": "gareth",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -17843,13 +17843,13 @@
     },
     {
       "slug": "guillermo",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -20167,13 +20167,13 @@
     },
     {
       "slug": "heinrich",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -21133,13 +21133,13 @@
     },
     {
       "slug": "igor",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -24983,13 +24983,13 @@
     },
     {
       "slug": "julienne",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -28259,13 +28259,13 @@
     },
     {
       "slug": "lars",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -28707,13 +28707,13 @@
     },
     {
       "slug": "leif",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -28875,13 +28875,13 @@
     },
     {
       "slug": "leonid",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -29897,13 +29897,13 @@
     },
     {
       "slug": "lucien",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -29981,13 +29981,13 @@
     },
     {
       "slug": "ludwig",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -30807,13 +30807,13 @@
     },
     {
       "slug": "manon",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -36197,13 +36197,13 @@
     },
     {
       "slug": "otto",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
@@ -37485,13 +37485,13 @@
     },
     {
       "slug": "philippe",
-      "score": 50,
+      "score": 90,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 0,
         "popularity": 0
@@ -39263,13 +39263,13 @@
     },
     {
       "slug": "ravi",
-      "score": 55,
+      "score": 95,
       "breakdown": {
         "origin": 20,
         "meaning": 20,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
         "citations": 10,
         "variants": 5,
         "popularity": 0
