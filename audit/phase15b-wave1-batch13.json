@@ -1,0 +1,193 @@
+{
+  "phase": "15B",
+  "wave": 1,
+  "batch": 11,
+  "title": "Knowledge Record Expansion Wave 1 Batch 13 — Domain Completion",
+  "generatedAt": "2026-07-28T14:33:29.638Z",
+  "baselineReference": "editorial-architecture-v2",
+  "batchSelection": {
+    "method": "priority_score_ranking",
+    "scope": "complete_domains_only",
+    "excluded": "create_knowledge_record (Wave 2)",
+    "batchesCompleteBeforeSelection": 12,
+    "profilePattern": "origin_and_meaning_only",
+    "note": "All 25 records have pronunciation, etymology, and history populated; missing origin and meaning only."
+  },
+  "wave1Progress": {
+    "cumulativeFullyResearchedTarget": 1125,
+    "cumulativeFullyResearchedActual": 1125,
+    "batchesComplete": 13,
+    "partialRemaining": 25,
+    "wave1PercentComplete": 0.9286
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "editorialOnly": true,
+    "completionOnly": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1150,
+  "fullFiveDomainRecords": {
+    "before": 1100,
+    "after": 1125,
+    "increase": 25
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 1100,
+      "partialKnowledgeRecords": 50,
+      "partialMissingDomainCounts": {
+        "origin": 50,
+        "meaning": 50,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "variants": 0
+      }
+    },
+    "after": {
+      "fullyResearchedEntities": 1125,
+      "partialKnowledgeRecords": 25,
+      "partialMissingDomainCounts": {
+        "origin": 25,
+        "meaning": 25,
+        "pronunciation": 0,
+        "etymology": 0,
+        "history": 0,
+        "variants": 0
+      }
+    }
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 1100,
+        "pct": 29.75
+      },
+      "meaning": {
+        "count": 1100,
+        "pct": 29.75
+      },
+      "pronunciation": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "etymology": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "history": {
+        "count": 1150,
+        "pct": 31.11
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 1125,
+        "pct": 30.43
+      },
+      "meaning": {
+        "count": 1125,
+        "pct": 30.43
+      },
+      "pronunciation": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "etymology": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "history": {
+        "count": 1150,
+        "pct": 31.11
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 25,
+        "pct": 0.68
+      },
+      "meaning": {
+        "count": 25,
+        "pct": 0.68
+      },
+      "pronunciation": {
+        "count": 0,
+        "pct": 0
+      },
+      "etymology": {
+        "count": 0,
+        "pct": 0
+      },
+      "history": {
+        "count": 0,
+        "pct": 0
+      }
+    }
+  },
+  "batchCompletion": {
+    "curatedCount": 25,
+    "names": [
+      "Rodrigo",
+      "Romina",
+      "Rufus",
+      "Ryder",
+      "Santana",
+      "Santino",
+      "Scarlett",
+      "Sheldon",
+      "Shiloh",
+      "Simona",
+      "Sky",
+      "Skyler",
+      "Soledad",
+      "Spencer",
+      "Stefania",
+      "Stephan",
+      "Sterling",
+      "Steve",
+      "Storm",
+      "Sullivan",
+      "Sylvester",
+      "Tatum",
+      "Thaddeus",
+      "Trenton",
+      "Trudy"
+    ],
+    "targetDomains": [
+      "origin",
+      "meaning"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 30.51,
+    "averageAfter": 30.78
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "knowledgeRecordsUnchanged": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "targetBatchCompletion": true,
+    "wave1CumulativeTargetMet": true
+  }
+}

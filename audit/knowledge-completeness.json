@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-28T14:18:21.928Z",
+  "generatedAt": "2026-07-28T14:33:28.052Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 30.51,
+    "average": 30.78,
     "median": 5,
     "min": 0,
     "max": 100
@@ -34,20 +34,20 @@
       "0": 1051,
       "1-20": 1496,
       "21-40": 0,
-      "41-60": 50,
+      "41-60": 25,
       "61-80": 0,
-      "81-100": 1100
+      "81-100": 1125
     }
   },
   "domainCoverage": {
     "entityCount": 3697,
     "researchedOrigins": {
-      "count": 1100,
-      "pct": 29.75
+      "count": 1125,
+      "pct": 30.43
     },
     "researchedMeanings": {
-      "count": 1100,
-      "pct": 29.75
+      "count": 1125,
+      "pct": 30.43
     },
     "storedPronunciations": {
       "count": 1150,
@@ -40201,10 +40201,10 @@
     },
     {
       "slug": "rodrigo",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -40285,10 +40285,10 @@
     },
     {
       "slug": "romina",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -40649,10 +40649,10 @@
     },
     {
       "slug": "rufus",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -40705,10 +40705,10 @@
     },
     {
       "slug": "ryder",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -41447,10 +41447,10 @@
     },
     {
       "slug": "santana",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -41489,10 +41489,10 @@
     },
     {
       "slug": "santino",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -41867,10 +41867,10 @@
     },
     {
       "slug": "scarlett",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -42483,10 +42483,10 @@
     },
     {
       "slug": "sheldon",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -42553,10 +42553,10 @@
     },
     {
       "slug": "shiloh",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -42959,10 +42959,10 @@
     },
     {
       "slug": "simona",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43043,10 +43043,10 @@
     },
     {
       "slug": "sky",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43057,10 +43057,10 @@
     },
     {
       "slug": "skyler",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43211,10 +43211,10 @@
     },
     {
       "slug": "soledad",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43351,10 +43351,10 @@
     },
     {
       "slug": "spencer",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43533,10 +43533,10 @@
     },
     {
       "slug": "stefania",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43589,10 +43589,10 @@
     },
     {
       "slug": "stephan",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43617,10 +43617,10 @@
     },
     {
       "slug": "sterling",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43645,10 +43645,10 @@
     },
     {
       "slug": "steve",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43729,10 +43729,10 @@
     },
     {
       "slug": "storm",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -43967,10 +43967,10 @@
     },
     {
       "slug": "sullivan",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -44149,10 +44149,10 @@
     },
     {
       "slug": "sylvester",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -44751,10 +44751,10 @@
     },
     {
       "slug": "tatum",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -45227,10 +45227,10 @@
     },
     {
       "slug": "thaddeus",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -45899,10 +45899,10 @@
     },
     {
       "slug": "trenton",
-      "score": 55,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
@@ -46123,10 +46123,10 @@
     },
     {
       "slug": "trudy",
-      "score": 50,
+      "score": 90,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
+        "origin": 20,
+        "meaning": 20,
         "pronunciation": 15,
         "etymology": 15,
         "history": 10,
