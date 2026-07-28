@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-28T02:15:50.891Z",
+  "generatedAt": "2026-07-28T03:35:42.526Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -3225,8 +3225,8 @@
     "highestPriorityOrigins": [
       {
         "value": "India",
-        "count": 156,
-        "totalPriority": 4025,
+        "count": 157,
+        "totalPriority": 4050,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3240,8 +3240,8 @@
       },
       {
         "value": "Israel",
-        "count": 84,
-        "totalPriority": 2100,
+        "count": 86,
+        "totalPriority": 2150,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 15,
-        "totalPriority": 375,
+        "count": 23,
+        "totalPriority": 575,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 54,
-        "totalPriority": 1350,
+        "count": 55,
+        "totalPriority": 1375,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 386,
-        "totalPriority": 9650,
+        "count": 389,
+        "totalPriority": 9725,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3345,8 +3345,8 @@
       },
       {
         "value": "Germany",
-        "count": 25,
-        "totalPriority": 625,
+        "count": 26,
+        "totalPriority": 650,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3372,8 +3372,8 @@
       },
       {
         "value": "Italy",
-        "count": 69,
-        "totalPriority": 1725,
+        "count": 70,
+        "totalPriority": 1750,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3409,8 +3409,8 @@
       },
       {
         "value": "Ireland",
-        "count": 28,
-        "totalPriority": 700,
+        "count": 31,
+        "totalPriority": 775,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3424,15 +3424,15 @@
       },
       {
         "value": "Russia",
-        "count": 8,
-        "totalPriority": 200,
+        "count": 9,
+        "totalPriority": 225,
         "unresearched": 0,
         "entities": [
           "akim",
           "igor",
           "irina",
           "ivan",
-          "leonid"
+          "katya"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3501,8 +3501,8 @@
     "highestPriorityLanguages": [
       {
         "value": "Sanskrit",
-        "count": 129,
-        "totalPriority": 3350,
+        "count": 130,
+        "totalPriority": 3375,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3511,13 +3511,13 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.97,
+        "averagePriority": 25.96,
         "unresearchedPct": 0
       },
       {
         "value": "Arabic",
-        "count": 53,
-        "totalPriority": 1325,
+        "count": 55,
+        "totalPriority": 1375,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3531,8 +3531,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 86,
-        "totalPriority": 2150,
+        "count": 88,
+        "totalPriority": 2200,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3561,8 +3561,8 @@
       },
       {
         "value": "English",
-        "count": 387,
-        "totalPriority": 9675,
+        "count": 397,
+        "totalPriority": 9925,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3591,8 +3591,8 @@
       },
       {
         "value": "Greek",
-        "count": 55,
-        "totalPriority": 1375,
+        "count": 56,
+        "totalPriority": 1400,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3618,8 +3618,8 @@
       },
       {
         "value": "German",
-        "count": 25,
-        "totalPriority": 625,
+        "count": 26,
+        "totalPriority": 650,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3644,8 +3644,8 @@
       },
       {
         "value": "Latin",
-        "count": 47,
-        "totalPriority": 1175,
+        "count": 48,
+        "totalPriority": 1200,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3704,8 +3704,8 @@
       },
       {
         "value": "Irish",
-        "count": 28,
-        "totalPriority": 700,
+        "count": 32,
+        "totalPriority": 800,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3734,8 +3734,8 @@
       },
       {
         "value": "Russian",
-        "count": 9,
-        "totalPriority": 225,
+        "count": 11,
+        "totalPriority": 275,
         "unresearched": 0,
         "entities": [
           "akim",
@@ -3803,8 +3803,8 @@
       },
       {
         "value": "Arabic",
-        "count": 49,
-        "totalPriority": 1225,
+        "count": 51,
+        "totalPriority": 1275,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3818,8 +3818,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 85,
-        "totalPriority": 2125,
+        "count": 87,
+        "totalPriority": 2175,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3863,8 +3863,8 @@
       },
       {
         "value": "English",
-        "count": 387,
-        "totalPriority": 9675,
+        "count": 395,
+        "totalPriority": 9875,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3893,8 +3893,8 @@
       },
       {
         "value": "Greek",
-        "count": 55,
-        "totalPriority": 1375,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3908,8 +3908,8 @@
       },
       {
         "value": "German",
-        "count": 25,
-        "totalPriority": 625,
+        "count": 26,
+        "totalPriority": 650,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3923,8 +3923,8 @@
       },
       {
         "value": "Latin",
-        "count": 49,
-        "totalPriority": 1225,
+        "count": 50,
+        "totalPriority": 1250,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3953,8 +3953,8 @@
       },
       {
         "value": "Slavic",
-        "count": 10,
-        "totalPriority": 250,
+        "count": 11,
+        "totalPriority": 275,
         "unresearched": 0,
         "entities": [
           "adrijana",
@@ -3968,8 +3968,8 @@
       },
       {
         "value": "Irish",
-        "count": 28,
-        "totalPriority": 700,
+        "count": 31,
+        "totalPriority": 775,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -4009,15 +4009,15 @@
       },
       {
         "value": "Russian",
-        "count": 7,
-        "totalPriority": 175,
+        "count": 8,
+        "totalPriority": 200,
         "unresearched": 0,
         "entities": [
           "alexei",
           "igor",
           "irina",
           "ivan",
-          "leonid"
+          "katya"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -4052,15 +4052,15 @@
       },
       {
         "value": "Nordic",
-        "count": 7,
-        "totalPriority": 175,
+        "count": 9,
+        "totalPriority": 225,
         "unresearched": 0,
         "entities": [
           "astrid",
           "bjorn",
           "gunnar",
           "ingrid",
-          "lars"
+          "ivor"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -4085,7 +4085,7 @@
       {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 145358,
+        "totalPriority": 144445,
         "unresearched": 1036,
         "entities": [
           "ally-rose",
@@ -4094,13 +4094,13 @@
           "anna-eve",
           "anna-maria"
         ],
-        "averagePriority": 100.52,
+        "averagePriority": 99.89,
         "unresearchedPct": 71.65
       },
       {
         "value": "boy",
         "count": 1592,
-        "totalPriority": 159053,
+        "totalPriority": 158804,
         "unresearched": 1144,
         "entities": [
           "aj",
@@ -4109,13 +4109,13 @@
           "corbyn",
           "cordell"
         ],
-        "averagePriority": 99.91,
+        "averagePriority": 99.75,
         "unresearchedPct": 71.86
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 58308,
+        "totalPriority": 57395,
         "unresearched": 367,
         "entities": [
           "an",
@@ -4124,7 +4124,7 @@
           "cooper",
           "corin"
         ],
-        "averagePriority": 88.48,
+        "averagePriority": 87.09,
         "unresearchedPct": 55.69
       }
     ],
@@ -4257,8 +4257,8 @@
     ],
     "partialKnowledgeRecordSamples": [
       {
-        "slug": "ignatius",
-        "name": "Ignatius",
+        "slug": "kourtney",
+        "name": "Kourtney",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4266,8 +4266,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "ilana",
-        "name": "Ilana",
+        "slug": "kyler",
+        "name": "Kyler",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4275,8 +4275,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "imelda",
-        "name": "Imelda",
+        "slug": "langston",
+        "name": "Langston",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4284,8 +4284,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "imogen",
-        "name": "Imogen",
+        "slug": "laurence",
+        "name": "Laurence",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4293,8 +4293,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "indira",
-        "name": "Indira",
+        "slug": "leighton",
+        "name": "Leighton",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4302,8 +4302,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "isa",
-        "name": "Isa",
+        "slug": "leviathan",
+        "name": "Leviathan",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4311,8 +4311,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "isadora",
-        "name": "Isadora",
+        "slug": "lincoln",
+        "name": "Lincoln",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4320,8 +4320,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "ivanna",
-        "name": "Ivanna",
+        "slug": "lisbeth",
+        "name": "Lisbeth",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4329,8 +4329,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "ivor",
-        "name": "Ivor",
+        "slug": "lorna",
+        "name": "Lorna",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4338,8 +4338,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "jackson",
-        "name": "Jackson",
+        "slug": "lucinda",
+        "name": "Lucinda",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4347,8 +4347,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "jaylen",
-        "name": "Jaylen",
+        "slug": "maison",
+        "name": "Maison",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4356,8 +4356,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "jensen",
-        "name": "Jensen",
+        "slug": "malcolm",
+        "name": "Malcolm",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4365,8 +4365,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "judson",
-        "name": "Judson",
+        "slug": "margaux",
+        "name": "Margaux",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4374,8 +4374,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kaitlyn",
-        "name": "Kaitlyn",
+        "slug": "maritza",
+        "name": "Maritza",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4383,8 +4383,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kamila",
-        "name": "Kamila",
+        "slug": "mauricio",
+        "name": "Mauricio",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4392,8 +4392,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "karter",
-        "name": "Karter",
+        "slug": "melody",
+        "name": "Melody",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4401,8 +4401,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kasey",
-        "name": "Kasey",
+        "slug": "merlin",
+        "name": "Merlin",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4410,8 +4410,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kassidy",
-        "name": "Kassidy",
+        "slug": "milan",
+        "name": "Milan",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4419,8 +4419,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "katya",
-        "name": "Katya",
+        "slug": "mindy",
+        "name": "Mindy",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4428,8 +4428,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kayden",
-        "name": "Kayden",
+        "slug": "minerva",
+        "name": "Minerva",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4437,8 +4437,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kennedi",
-        "name": "Kennedi",
+        "slug": "mirabel",
+        "name": "Mirabel",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4446,8 +4446,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "keren",
-        "name": "Keren",
+        "slug": "montana",
+        "name": "Montana",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4455,8 +4455,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kimora",
-        "name": "Kimora",
+        "slug": "nikita",
+        "name": "Nikita",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4464,8 +4464,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kingsley",
-        "name": "Kingsley",
+        "slug": "nova",
+        "name": "Nova",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4473,8 +4473,8 @@
         "priorityScore": 108
       },
       {
-        "slug": "kori",
-        "name": "Kori",
+        "slug": "oakley",
+        "name": "Oakley",
         "missingDomains": [
           "origin",
           "meaning"
@@ -4485,11 +4485,11 @@
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 2672
+        "count": 2647
       },
       {
         "domain": "meaning",
-        "count": 2672
+        "count": 2647
       },
       {
         "domain": "pronunciation",
@@ -6017,7 +6017,7 @@
   "totals": {
     "entitiesRanked": 3697,
     "unresearchedEntities": 2547,
-    "partialKnowledgeRecords": 125,
-    "fullyResearchedEntities": 1025
+    "partialKnowledgeRecords": 100,
+    "fullyResearchedEntities": 1050
   }
 }
