@@ -1,12 +1,12 @@
 {
   "phase": "6B",
   "title": "Editorial QA & Consistency Audit",
-  "generatedAt": "2026-07-29T02:08:48.219Z",
+  "generatedAt": "2026-07-29T02:13:22.745Z",
   "baselineReference": "knowledge-baseline-v2",
   "knowledgeRecordSource": "data/knowledge-records.json",
   "schemaReference": "schemas/knowledge-record-v2.schema.json",
   "totals": {
-    "knowledgeRecords": 1350,
+    "knowledgeRecords": 1450,
     "entities": 3697,
     "recordsWithIssues": 0,
     "totalIssueCount": 0
@@ -23,7 +23,7 @@
     },
     "duplicateText": {
       "clusterThreshold": 10,
-      "clusterCount": 5,
+      "clusterCount": 6,
       "clusters": [
         {
           "domain": "etymology",
@@ -189,6 +189,36 @@
             "Arlene"
           ],
           "additionalNames": 31
+        },
+        {
+          "domain": "history",
+          "recordCount": 22,
+          "textPreview": "Attested in Punjabi Sikh naming traditions in India and the diaspora (Oxford Dictionary of First Names, 2006).",
+          "affectedNames": [
+            "Ekbir",
+            "Fatehveer",
+            "Guntaaz",
+            "Guntaj",
+            "Guransh",
+            "Gurbaj",
+            "Gurdit",
+            "Gurjot",
+            "Gurkirat",
+            "Gurmaan",
+            "Gurmannat",
+            "Gurnaaz",
+            "Gurnav",
+            "Gurneet",
+            "Gurnoor",
+            "Gursahib",
+            "Gursakhi",
+            "Gurseerat",
+            "Gursehaj",
+            "Gursifat",
+            "Gurtej",
+            "Gurveen"
+          ],
+          "additionalNames": 0
         }
       ]
     },
@@ -198,54 +228,54 @@
     },
     "sourceCompleteness": {
       "origin": {
-        "populated": 1350,
+        "populated": 1450,
         "emptySources": 0,
         "nullNotes": 0
       },
       "meaning": {
-        "populated": 1350,
+        "populated": 1450,
         "emptySources": 0,
         "nullNotes": 0
       },
       "pronunciation": {
-        "populated": 1350,
+        "populated": 1450,
         "emptySources": 0,
         "nullNotes": 0
       },
       "etymology": {
-        "populated": 1350,
+        "populated": 1450,
         "emptySources": 0,
         "nullNotes": 0
       },
       "history": {
-        "populated": 1350,
+        "populated": 1450,
         "emptySources": 0,
         "nullNotes": 0
       }
     },
     "editorialCompleteness": {
       "entityCount": 3697,
-      "knowledgeRecordCount": 1350,
+      "knowledgeRecordCount": 1450,
       "domainCoverage": {
         "origin": {
-          "count": 1350,
-          "pct": 36.52
+          "count": 1450,
+          "pct": 39.22
         },
         "meaning": {
-          "count": 1350,
-          "pct": 36.52
+          "count": 1450,
+          "pct": 39.22
         },
         "pronunciation": {
-          "count": 1350,
-          "pct": 36.52
+          "count": 1450,
+          "pct": 39.22
         },
         "etymology": {
-          "count": 1350,
-          "pct": 36.52
+          "count": 1450,
+          "pct": 39.22
         },
         "history": {
-          "count": 1350,
-          "pct": 36.52
+          "count": 1450,
+          "pct": 39.22
         }
       },
       "averagePopulatedDomainsPerRecord": 5,
@@ -254,7 +284,7 @@
         "2": 0,
         "3": 0,
         "4": 0,
-        "5": 1350
+        "5": 1450
       }
     },
     "crossDomainConsistency": {
@@ -263,7 +293,7 @@
     },
     "nameNormalization": {
       "issueCount": 0,
-      "uniqueNormalizedKeys": 1350,
+      "uniqueNormalizedKeys": 1450,
       "sample": []
     },
     "schemaValidation": {
