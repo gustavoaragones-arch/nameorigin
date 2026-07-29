@@ -1,0 +1,1101 @@
+{
+  "phase": "16B",
+  "title": "Wave 2 Governance Verification",
+  "generatedAt": "2026-07-28T18:36:25.184Z",
+  "baselineReference": "editorial-architecture-v2",
+  "status": "FROZEN",
+  "scope": "governance_only",
+  "prerequisites": {
+    "wave1Manifest": {
+      "artifact": "audit/phase15b-wave1-completion-manifest.json",
+      "status": "CLOSED",
+      "fullyResearched": 1150,
+      "partialRemaining": 0,
+      "met": true
+    },
+    "phase16aIntelligence": {
+      "artifact": "audit/phase16a-expansion-intelligence.json",
+      "status": "COMPLETE",
+      "unresearchedEntities": 2547,
+      "recommendedWaveSize": 100,
+      "met": true
+    }
+  },
+  "governanceDocuments": {
+    "allPresent": true,
+    "documents": [
+      {
+        "filename": "WAVE2_GOVERNANCE.md",
+        "path": "docs/WAVE2_GOVERNANCE.md",
+        "exists": true,
+        "sha256": "ee868b4a3ce11273e878706c2c170efc656c78564302c7608b16bd97330cbd0d"
+      },
+      {
+        "filename": "WAVE2_BATCH_SPECIFICATION.md",
+        "path": "docs/WAVE2_BATCH_SPECIFICATION.md",
+        "exists": true,
+        "sha256": "8c1fc96f05bb804ef0261d2997986017f36a34a113f45bce92d92c728b802b28"
+      },
+      {
+        "filename": "WAVE2_VALIDATION_PROTOCOL.md",
+        "path": "docs/WAVE2_VALIDATION_PROTOCOL.md",
+        "exists": true,
+        "sha256": "829851fef914ce5d772eb044b2af1e104521b0b0ded060c3f5fbbab49cca2270"
+      }
+    ]
+  },
+  "frozenInvariants": {
+    "knowledgeRecordSchema": "unchanged",
+    "kciEngine": "unchanged",
+    "kciWeights": "unchanged",
+    "citationArchitecture": "unchanged",
+    "popularityRegistry": "unchanged",
+    "entityUniverse": 3697,
+    "wave1KnowledgeRecords": 1150,
+    "frozenArtifactHashes": {
+      "knowledgeRecords": "40466bf56711a549aa214e9aeb737f14aecc7f9fb433395e800eb522e9f67aa1",
+      "citationRecords": "8514b85cb37bf7d0ad47bd104c07d38d8fed41f181ce13d5ebc93b9abf8ee221",
+      "popularityRegistry": "ce989e90291711ebb025f72169db4fb5755f5519895441b7501dbbedd221226a",
+      "popularityRecords": "dcbf127a79eb8a5746b6f9b307b914444aafa257d83e83da6d4342af9bba3051",
+      "kciReport": "52d61236a5d67c8bfa8fc3c0d07ffb8f1df155246582a4de2de15af06dd7605c"
+    }
+  },
+  "wave2CreationInvariants": {
+    "operation": "create_knowledge_record",
+    "monotonicKrGrowth": true,
+    "entityAccounting": "knowledgeRecords + unresearched = 3697",
+    "noOverlapWithWave1": true,
+    "fullSixDomainAtCreation": true,
+    "deterministicSelection": "phase16a_creation_order",
+    "slugPolicy": "normalizeKey(name)",
+    "duplicatePrevention": "slug_key_uniqueness_required",
+    "cumulativeEquivalence": true
+  },
+  "batchParameters": {
+    "batchSize": 100,
+    "finalBatchSize": 47,
+    "totalBatches": 26,
+    "startingKrCount": 1150,
+    "finalKrCount": 3697,
+    "selectionSource": "audit/phase16a-expansion-intelligence.json"
+  },
+  "batchPlan": [
+    {
+      "batch": 1,
+      "rankStart": 1,
+      "rankEnd": 100,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1250,
+      "expectedUnresearchedAfter": 2447,
+      "milestone": "Wave 2A entry"
+    },
+    {
+      "batch": 2,
+      "rankStart": 101,
+      "rankEnd": 200,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1350,
+      "expectedUnresearchedAfter": 2347,
+      "milestone": null
+    },
+    {
+      "batch": 3,
+      "rankStart": 201,
+      "rankEnd": 300,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1450,
+      "expectedUnresearchedAfter": 2247,
+      "milestone": null
+    },
+    {
+      "batch": 4,
+      "rankStart": 301,
+      "rankEnd": 400,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1550,
+      "expectedUnresearchedAfter": 2147,
+      "milestone": null
+    },
+    {
+      "batch": 5,
+      "rankStart": 401,
+      "rankEnd": 500,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1650,
+      "expectedUnresearchedAfter": 2047,
+      "milestone": null
+    },
+    {
+      "batch": 6,
+      "rankStart": 501,
+      "rankEnd": 600,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1750,
+      "expectedUnresearchedAfter": 1947,
+      "milestone": null
+    },
+    {
+      "batch": 7,
+      "rankStart": 601,
+      "rankEnd": 700,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1850,
+      "expectedUnresearchedAfter": 1847,
+      "milestone": null
+    },
+    {
+      "batch": 8,
+      "rankStart": 701,
+      "rankEnd": 800,
+      "batchSize": 100,
+      "expectedKrCountAfter": 1950,
+      "expectedUnresearchedAfter": 1747,
+      "milestone": null
+    },
+    {
+      "batch": 9,
+      "rankStart": 801,
+      "rankEnd": 900,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2050,
+      "expectedUnresearchedAfter": 1647,
+      "milestone": null
+    },
+    {
+      "batch": 10,
+      "rankStart": 901,
+      "rankEnd": 1000,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2150,
+      "expectedUnresearchedAfter": 1547,
+      "milestone": null
+    },
+    {
+      "batch": 11,
+      "rankStart": 1001,
+      "rankEnd": 1100,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2250,
+      "expectedUnresearchedAfter": 1447,
+      "milestone": null
+    },
+    {
+      "batch": 12,
+      "rankStart": 1101,
+      "rankEnd": 1200,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2350,
+      "expectedUnresearchedAfter": 1347,
+      "milestone": null
+    },
+    {
+      "batch": 13,
+      "rankStart": 1201,
+      "rankEnd": 1300,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2450,
+      "expectedUnresearchedAfter": 1247,
+      "milestone": null
+    },
+    {
+      "batch": 14,
+      "rankStart": 1301,
+      "rankEnd": 1400,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2550,
+      "expectedUnresearchedAfter": 1147,
+      "milestone": null
+    },
+    {
+      "batch": 15,
+      "rankStart": 1401,
+      "rankEnd": 1500,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2650,
+      "expectedUnresearchedAfter": 1047,
+      "milestone": null
+    },
+    {
+      "batch": 16,
+      "rankStart": 1501,
+      "rankEnd": 1600,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2750,
+      "expectedUnresearchedAfter": 947,
+      "milestone": null
+    },
+    {
+      "batch": 17,
+      "rankStart": 1601,
+      "rankEnd": 1700,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2850,
+      "expectedUnresearchedAfter": 847,
+      "milestone": null
+    },
+    {
+      "batch": 18,
+      "rankStart": 1701,
+      "rankEnd": 1800,
+      "batchSize": 100,
+      "expectedKrCountAfter": 2950,
+      "expectedUnresearchedAfter": 747,
+      "milestone": null
+    },
+    {
+      "batch": 19,
+      "rankStart": 1801,
+      "rankEnd": 1900,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3050,
+      "expectedUnresearchedAfter": 647,
+      "milestone": null
+    },
+    {
+      "batch": 20,
+      "rankStart": 1901,
+      "rankEnd": 2000,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3150,
+      "expectedUnresearchedAfter": 547,
+      "milestone": null
+    },
+    {
+      "batch": 21,
+      "rankStart": 2001,
+      "rankEnd": 2100,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3250,
+      "expectedUnresearchedAfter": 447,
+      "milestone": null
+    },
+    {
+      "batch": 22,
+      "rankStart": 2101,
+      "rankEnd": 2200,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3350,
+      "expectedUnresearchedAfter": 347,
+      "milestone": null
+    },
+    {
+      "batch": 23,
+      "rankStart": 2201,
+      "rankEnd": 2300,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3450,
+      "expectedUnresearchedAfter": 247,
+      "milestone": null
+    },
+    {
+      "batch": 24,
+      "rankStart": 2301,
+      "rankEnd": 2400,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3550,
+      "expectedUnresearchedAfter": 147,
+      "milestone": null
+    },
+    {
+      "batch": 25,
+      "rankStart": 2401,
+      "rankEnd": 2500,
+      "batchSize": 100,
+      "expectedKrCountAfter": 3650,
+      "expectedUnresearchedAfter": 47,
+      "milestone": null
+    },
+    {
+      "batch": 26,
+      "rankStart": 2501,
+      "rankEnd": 2547,
+      "batchSize": 47,
+      "expectedKrCountAfter": 3697,
+      "expectedUnresearchedAfter": 0,
+      "milestone": "Full corpus coverage"
+    }
+  ],
+  "wave2Batch1": {
+    "batch": 1,
+    "wave": "2A",
+    "rankStart": 1,
+    "rankEnd": 100,
+    "batchSize": 100,
+    "expectedKrCountAfter": 1250,
+    "expectedUnresearchedAfter": 2447,
+    "entities": [
+      {
+        "rank": 1,
+        "slug": "aj",
+        "name": "Aj",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 2,
+        "slug": "ally-rose",
+        "name": "Ally-rose",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 3,
+        "slug": "amelia-rose",
+        "name": "Amelia-rose",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 4,
+        "slug": "an",
+        "name": "An",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 5,
+        "slug": "ann-sophie",
+        "name": "Ann-sophie",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 6,
+        "slug": "anna-eve",
+        "name": "Anna-eve",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 7,
+        "slug": "anna-maria",
+        "name": "Anna-maria",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 8,
+        "slug": "ava-rose",
+        "name": "Ava-rose",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 9,
+        "slug": "awa",
+        "name": "Awa",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 10,
+        "slug": "bao",
+        "name": "Bao",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 11,
+        "slug": "bea",
+        "name": "Bea",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 12,
+        "slug": "constantine",
+        "name": "Constantine",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 13,
+        "slug": "corbyn",
+        "name": "Corbyn",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 14,
+        "slug": "cordell",
+        "name": "Cordell",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 15,
+        "slug": "cori",
+        "name": "Cori",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 16,
+        "slug": "corina",
+        "name": "Corina",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 17,
+        "slug": "cornelius",
+        "name": "Cornelius",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 18,
+        "slug": "corrado",
+        "name": "Corrado",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 19,
+        "slug": "cortney",
+        "name": "Cortney",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 20,
+        "slug": "cory",
+        "name": "Cory",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 21,
+        "slug": "cosette",
+        "name": "Cosette",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 22,
+        "slug": "crosby",
+        "name": "Crosby",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 23,
+        "slug": "crue",
+        "name": "Crue",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 24,
+        "slug": "cydney",
+        "name": "Cydney",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 25,
+        "slug": "cypress",
+        "name": "Cypress",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 26,
+        "slug": "dael",
+        "name": "Dael",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 27,
+        "slug": "daemon",
+        "name": "Daemon",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 28,
+        "slug": "dakoda",
+        "name": "Dakoda",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 29,
+        "slug": "dalton",
+        "name": "Dalton",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 30,
+        "slug": "damara",
+        "name": "Damara",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 31,
+        "slug": "daneen",
+        "name": "Daneen",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 32,
+        "slug": "danelle",
+        "name": "Danelle",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 33,
+        "slug": "danish",
+        "name": "Danish",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 34,
+        "slug": "danyka",
+        "name": "Danyka",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 35,
+        "slug": "daren",
+        "name": "Daren",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 36,
+        "slug": "darion",
+        "name": "Darion",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 37,
+        "slug": "darla",
+        "name": "Darla",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 38,
+        "slug": "darnell",
+        "name": "Darnell",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 39,
+        "slug": "darrell",
+        "name": "Darrell",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 40,
+        "slug": "daven",
+        "name": "Daven",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 41,
+        "slug": "dawson",
+        "name": "Dawson",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 42,
+        "slug": "daylen",
+        "name": "Daylen",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 43,
+        "slug": "dayton",
+        "name": "Dayton",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 44,
+        "slug": "deandre",
+        "name": "Deandre",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 45,
+        "slug": "deckard",
+        "name": "Deckard",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 46,
+        "slug": "decker",
+        "name": "Decker",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 47,
+        "slug": "deena",
+        "name": "Deena",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 48,
+        "slug": "deja",
+        "name": "Deja",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 49,
+        "slug": "delina",
+        "name": "Delina",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 50,
+        "slug": "delsa",
+        "name": "Delsa",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 51,
+        "slug": "delta",
+        "name": "Delta",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 52,
+        "slug": "demarcus",
+        "name": "Demarcus",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 53,
+        "slug": "deniz",
+        "name": "Deniz",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 54,
+        "slug": "denton",
+        "name": "Denton",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 55,
+        "slug": "deon",
+        "name": "Deon",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 56,
+        "slug": "derick",
+        "name": "Derick",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 57,
+        "slug": "desirae",
+        "name": "Desirae",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 58,
+        "slug": "destin",
+        "name": "Destin",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 59,
+        "slug": "destinee",
+        "name": "Destinee",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 60,
+        "slug": "devonte",
+        "name": "Devonte",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 61,
+        "slug": "devrick",
+        "name": "Devrick",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 62,
+        "slug": "devyn",
+        "name": "Devyn",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 63,
+        "slug": "dezmond",
+        "name": "Dezmond",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 64,
+        "slug": "diedrich",
+        "name": "Diedrich",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 65,
+        "slug": "dilawar",
+        "name": "Dilawar",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 66,
+        "slug": "dixon",
+        "name": "Dixon",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 67,
+        "slug": "donavan",
+        "name": "Donavan",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 68,
+        "slug": "donte",
+        "name": "Donte",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 69,
+        "slug": "doreen",
+        "name": "Doreen",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 70,
+        "slug": "dottie",
+        "name": "Dottie",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 71,
+        "slug": "draven",
+        "name": "Draven",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 72,
+        "slug": "drayson",
+        "name": "Drayson",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 73,
+        "slug": "drayton",
+        "name": "Drayton",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 74,
+        "slug": "dre",
+        "name": "Dre",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 75,
+        "slug": "duy",
+        "name": "Duy",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 76,
+        "slug": "dwight",
+        "name": "Dwight",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 77,
+        "slug": "easten",
+        "name": "Easten",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 78,
+        "slug": "eastyn",
+        "name": "Eastyn",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 79,
+        "slug": "eddy",
+        "name": "Eddy",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 80,
+        "slug": "edie",
+        "name": "Edie",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 81,
+        "slug": "edison",
+        "name": "Edison",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 82,
+        "slug": "edric",
+        "name": "Edric",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 83,
+        "slug": "eesha",
+        "name": "Eesha",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 84,
+        "slug": "efe",
+        "name": "Efe",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 85,
+        "slug": "effie",
+        "name": "Effie",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 86,
+        "slug": "egor",
+        "name": "Egor",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 87,
+        "slug": "eilidh",
+        "name": "Eilidh",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 88,
+        "slug": "eisa",
+        "name": "Eisa",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 89,
+        "slug": "eitan",
+        "name": "Eitan",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 90,
+        "slug": "ekaksh",
+        "name": "Ekaksh",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 91,
+        "slug": "ekam",
+        "name": "Ekam",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 92,
+        "slug": "ekamveer",
+        "name": "Ekamveer",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 93,
+        "slug": "ekansh",
+        "name": "Ekansh",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 94,
+        "slug": "ekbir",
+        "name": "Ekbir",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 95,
+        "slug": "el",
+        "name": "El",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 96,
+        "slug": "elan",
+        "name": "Elan",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 97,
+        "slug": "elana",
+        "name": "Elana",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 98,
+        "slug": "eldon",
+        "name": "Eldon",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 99,
+        "slug": "elektra",
+        "name": "Elektra",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      },
+      {
+        "rank": 100,
+        "slug": "elhadj",
+        "name": "Elhadj",
+        "expansionPriorityScore": 121,
+        "creationReadiness": "minor_enrichment"
+      }
+    ]
+  },
+  "validationProtocol": {
+    "document": "docs/WAVE2_VALIDATION_PROTOCOL.md",
+    "perBatchChecks": [
+      "qa_pass",
+      "equivalence_pass",
+      "editorial_integrity_pass",
+      "frozen_layers_unchanged",
+      "monotonic_kr_growth",
+      "entity_accounting_balanced",
+      "duplicate_prevention",
+      "no_wave1_mutation",
+      "full_six_domain_creation"
+    ],
+    "wave1ToWave2Evolution": [
+      {
+        "check": "knowledge_record_count",
+        "wave1Behavior": "fixed_at_1150",
+        "wave2Behavior": "monotonic_increase_by_batch_size"
+      },
+      {
+        "check": "equivalence",
+        "wave1Behavior": "zero_differences_against_baseline",
+        "wave2Behavior": "zero_differences_against_cumulative_baseline"
+      },
+      {
+        "check": "duplicate_prevention",
+        "wave1Behavior": "not_applicable",
+        "wave2Behavior": "no_slug_collision_with_existing_or_created"
+      },
+      {
+        "check": "entity_accounting",
+        "wave1Behavior": "1150_kr_2547_unresearched",
+        "wave2Behavior": "kr_count_plus_unresearched_equals_3697"
+      }
+    ]
+  },
+  "successCriteria": {
+    "perBatch": [
+      "Exact batch size of new fully researched Knowledge Records created",
+      "KR count increased by batch size; unresearched decreased by batch size",
+      "All validation checks PASS",
+      "No Wave 1 editorial content modified",
+      "Batch audit artifact written"
+    ],
+    "wave2Complete": {
+      "knowledgeRecords": 3697,
+      "fullyResearched": 3697,
+      "unresearched": 0,
+      "partial": 0,
+      "batches": 26
+    }
+  },
+  "handoff": {
+    "nextPhase": "Phase 15B Wave 2 Batch 1",
+    "nextAction": "create_knowledge_record for ranks 1–100",
+    "expectedKrCountAfterBatch1": 1250,
+    "implementationBlockedUntilFrozen": true,
+    "readyForImplementation": true
+  },
+  "verification": {
+    "status": "PASS",
+    "errors": [],
+    "checks": {
+      "wave1Closed": true,
+      "phase16aComplete": true,
+      "governanceDocsPresent": true,
+      "creationOrderComplete": true,
+      "batch1Defined": true,
+      "batchPlanValid": true,
+      "entityAccountingAtBaseline": true
+    }
+  }
+}
