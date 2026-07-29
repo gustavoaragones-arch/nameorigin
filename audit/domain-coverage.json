@@ -1,40 +1,40 @@
 {
-  "generatedAt": "2026-07-29T02:22:06.158Z",
+  "generatedAt": "2026-07-29T02:34:41.388Z",
   "phase": "10A",
   "baselineReference": "kci-activation-v1",
   "phase5AOriginExpansionStarted": false,
   "activation": {
     "citationRecords": true,
     "popularityRecords": true,
-    "citationRecordsCount": 1550,
+    "citationRecordsCount": 1650,
     "popularityRecordsCount": 5,
     "citationScoringActive": true,
     "popularityScoringActive": true
   },
   "entityCount": 3697,
   "researchedOrigins": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "researchedMeanings": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "storedPronunciations": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "etymologyCoverage": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "historyCoverage": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "citationCoverage": {
-    "count": 1550,
-    "pct": 41.93
+    "count": 1650,
+    "pct": 44.63
   },
   "variantsCoverage": {
     "count": 2253,
