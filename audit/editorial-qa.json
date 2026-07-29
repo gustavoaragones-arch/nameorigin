@@ -1,12 +1,12 @@
 {
   "phase": "6B",
   "title": "Editorial QA & Consistency Audit",
-  "generatedAt": "2026-07-29T02:34:39.106Z",
+  "generatedAt": "2026-07-29T02:43:01.134Z",
   "baselineReference": "knowledge-baseline-v2",
   "knowledgeRecordSource": "data/knowledge-records.json",
   "schemaReference": "schemas/knowledge-record-v2.schema.json",
   "totals": {
-    "knowledgeRecords": 1650,
+    "knowledgeRecords": 1750,
     "entities": 3697,
     "recordsWithIssues": 0,
     "totalIssueCount": 0
@@ -250,54 +250,54 @@
     },
     "sourceCompleteness": {
       "origin": {
-        "populated": 1650,
+        "populated": 1750,
         "emptySources": 0,
         "nullNotes": 0
       },
       "meaning": {
-        "populated": 1650,
+        "populated": 1750,
         "emptySources": 0,
         "nullNotes": 0
       },
       "pronunciation": {
-        "populated": 1650,
+        "populated": 1750,
         "emptySources": 0,
         "nullNotes": 0
       },
       "etymology": {
-        "populated": 1650,
+        "populated": 1750,
         "emptySources": 0,
         "nullNotes": 0
       },
       "history": {
-        "populated": 1650,
+        "populated": 1750,
         "emptySources": 0,
         "nullNotes": 0
       }
     },
     "editorialCompleteness": {
       "entityCount": 3697,
-      "knowledgeRecordCount": 1650,
+      "knowledgeRecordCount": 1750,
       "domainCoverage": {
         "origin": {
-          "count": 1650,
-          "pct": 44.63
+          "count": 1750,
+          "pct": 47.34
         },
         "meaning": {
-          "count": 1650,
-          "pct": 44.63
+          "count": 1750,
+          "pct": 47.34
         },
         "pronunciation": {
-          "count": 1650,
-          "pct": 44.63
+          "count": 1750,
+          "pct": 47.34
         },
         "etymology": {
-          "count": 1650,
-          "pct": 44.63
+          "count": 1750,
+          "pct": 47.34
         },
         "history": {
-          "count": 1650,
-          "pct": 44.63
+          "count": 1750,
+          "pct": 47.34
         }
       },
       "averagePopulatedDomainsPerRecord": 5,
@@ -306,7 +306,7 @@
         "2": 0,
         "3": 0,
         "4": 0,
-        "5": 1650
+        "5": 1750
       }
     },
     "crossDomainConsistency": {
@@ -315,7 +315,7 @@
     },
     "nameNormalization": {
       "issueCount": 0,
-      "uniqueNormalizedKeys": 1650,
+      "uniqueNormalizedKeys": 1750,
       "sample": []
     },
     "schemaValidation": {

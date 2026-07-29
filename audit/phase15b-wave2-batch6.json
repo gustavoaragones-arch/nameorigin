@@ -1,0 +1,286 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "batch": 6,
+  "title": "Knowledge Record Expansion Wave 2A Batch 6 — Record Creation",
+  "generatedAt": "2026-07-29T02:43:05.551Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "cumulativeBaselineReference": "audit/phase15b-wave2-batch5-baseline.json",
+  "batchSelection": {
+    "method": "phase16a_creation_order",
+    "scope": "create_knowledge_record_only",
+    "wave": 2,
+    "subwave": "2A",
+    "batch": 6,
+    "rankStart": 501,
+    "rankEnd": 600,
+    "batchesCompleteBeforeSelection": 5,
+    "profilePattern": "full_six_domain_creation",
+    "sourceArtifact": "audit/phase16a-expansion-intelligence.json",
+    "governanceReference": "audit/phase16b-governance-check.json",
+    "cumulativeBaselineReference": "audit/phase15b-wave2-batch5-baseline.json",
+    "expectedKrCountAfter": 1750
+  },
+  "wave2Progress": {
+    "cumulativeKrTarget": 1750,
+    "cumulativeKrActual": 1750,
+    "batchesComplete": 6,
+    "unresearchedRemaining": 1947
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true,
+    "priorWave2BatchesImmutable": true
+  },
+  "knowledgeRecordsBefore": 1650,
+  "knowledgeRecordsAfter": 1750,
+  "knowledgeRecordsAdded": 100,
+  "fullFiveDomainRecords": {
+    "before": 1650,
+    "after": 1750,
+    "increase": 100
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 1650,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 2047
+    },
+    "after": {
+      "fullyResearchedEntities": 1750,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 1947
+    }
+  },
+  "entityAccounting": {
+    "totalEntities": 3697,
+    "knowledgeRecordsPlusUnresearched": 3697,
+    "balanced": true
+  },
+  "duplicateCheck": {
+    "overlapWithPreBatchKnowledgeRecords": 0,
+    "batchKeysChecked": 100,
+    "pass": true
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 1650,
+        "pct": 44.63
+      },
+      "meaning": {
+        "count": 1650,
+        "pct": 44.63
+      },
+      "pronunciation": {
+        "count": 1650,
+        "pct": 44.63
+      },
+      "etymology": {
+        "count": 1650,
+        "pct": 44.63
+      },
+      "history": {
+        "count": 1650,
+        "pct": 44.63
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 1750,
+        "pct": 47.34
+      },
+      "meaning": {
+        "count": 1750,
+        "pct": 47.34
+      },
+      "pronunciation": {
+        "count": 1750,
+        "pct": 47.34
+      },
+      "etymology": {
+        "count": 1750,
+        "pct": 47.34
+      },
+      "history": {
+        "count": 1750,
+        "pct": 47.34
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "meaning": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "pronunciation": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "etymology": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "history": {
+        "count": 100,
+        "pct": 2.71
+      }
+    }
+  },
+  "batchCreation": {
+    "curatedCount": 100,
+    "names": [
+      "Jessica-lynn",
+      "Jessika",
+      "Jesus",
+      "Jethro",
+      "Jevon",
+      "Jezabel",
+      "Jia",
+      "Jibril",
+      "Joakim",
+      "Joao",
+      "Jodhveer",
+      "Jody",
+      "Johannes",
+      "Johnson",
+      "Jordane",
+      "Jordano",
+      "Jordi",
+      "Jordy",
+      "Jordynn",
+      "Jorel",
+      "Jorgia",
+      "Jory",
+      "Josefina",
+      "Josiane",
+      "Jouri",
+      "Journee",
+      "Journey",
+      "Jovana",
+      "Jovi",
+      "Jovie",
+      "Juanita",
+      "Juliano",
+      "Julieta",
+      "Julissa",
+      "Junaid",
+      "Junior",
+      "Justice",
+      "Justina",
+      "Justus",
+      "Justyn",
+      "Kabel",
+      "Kadence",
+      "Kai",
+      "Kain",
+      "Kaislyn",
+      "Kaito",
+      "Kajal",
+      "Kalel",
+      "Kalilah",
+      "Kalista",
+      "Kalliope",
+      "Kalum",
+      "Kalvin",
+      "Kalyna",
+      "Kamal",
+      "Kamari",
+      "Kamil",
+      "Kamran",
+      "Kamryn",
+      "Kandice",
+      "Kapri",
+      "Karanveer",
+      "Karel",
+      "Kari",
+      "Karis",
+      "Karishma",
+      "Karlie",
+      "Karlos",
+      "Karmen",
+      "Karolina",
+      "Karsten",
+      "Karsyn",
+      "Karthik",
+      "Kashtin",
+      "Kashvi",
+      "Kasia",
+      "Kasper",
+      "Kasra",
+      "Kassandre",
+      "Kassius",
+      "Kataleya",
+      "Katalina",
+      "Katana",
+      "Kateri",
+      "Katharina",
+      "Kathir",
+      "Kausar",
+      "Kavin",
+      "Kaydance",
+      "Kayleb",
+      "Kaylen",
+      "Keanan",
+      "Keerit",
+      "Keila",
+      "Kelsie",
+      "Kelson",
+      "Kendal",
+      "Kendyl",
+      "Kenji",
+      "Kensington"
+    ],
+    "operation": "create_knowledge_record",
+    "domainsAssigned": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history",
+      "variants"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 43.22,
+    "averageAfter": 45.65
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "monotonicKrGrowth": true,
+    "targetKrCount": true,
+    "targetUnresearched": true,
+    "noPartialRecords": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "duplicatePreventionPass": true,
+    "entityAccountingPass": true,
+    "frozenLayersPass": true,
+    "governanceMet": true,
+    "cumulativeBaselinePreserved": true
+  }
+}
