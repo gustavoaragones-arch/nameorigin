@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-28T14:50:54.735Z",
+  "generatedAt": "2026-07-29T01:58:28.517Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -20,230 +20,6 @@
     "note": "Priority scores are computed at audit time only and are not persisted to Knowledge Records or KCI."
   },
   "top100HighestPriority": [
-    {
-      "slug": "aj",
-      "name": "Aj",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 1
-    },
-    {
-      "slug": "ally-rose",
-      "name": "Ally-rose",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 2
-    },
-    {
-      "slug": "amelia-rose",
-      "name": "Amelia-rose",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 3
-    },
-    {
-      "slug": "an",
-      "name": "An",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 4
-    },
-    {
-      "slug": "ann-sophie",
-      "name": "Ann-sophie",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 5
-    },
-    {
-      "slug": "anna-eve",
-      "name": "Anna-eve",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 6
-    },
-    {
-      "slug": "anna-maria",
-      "name": "Anna-maria",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 7
-    },
     {
       "slug": "anne-charlotte",
       "name": "Anne-charlotte",
@@ -274,7 +50,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 8
+      "rank": 1
     },
     {
       "slug": "ashley-lynn",
@@ -306,7 +82,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 9
+      "rank": 2
     },
     {
       "slug": "audrey-rose",
@@ -338,7 +114,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 10
+      "rank": 3
     },
     {
       "slug": "ava-grace",
@@ -370,7 +146,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 11
+      "rank": 4
     },
     {
       "slug": "ava-marie",
@@ -402,39 +178,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 12
-    },
-    {
-      "slug": "ava-rose",
-      "name": "Ava-rose",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 13
+      "rank": 5
     },
     {
       "slug": "avi",
@@ -466,135 +210,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 14
-    },
-    {
-      "slug": "awa",
-      "name": "Awa",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 15
-    },
-    {
-      "slug": "bao",
-      "name": "Bao",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 16
-    },
-    {
-      "slug": "bea",
-      "name": "Bea",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 17
-    },
-    {
-      "slug": "constantine",
-      "name": "Constantine",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 18
+      "rank": 6
     },
     {
       "slug": "cooper",
@@ -626,7 +242,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 19
+      "rank": 7
     },
     {
       "slug": "copeland",
@@ -658,71 +274,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 20
-    },
-    {
-      "slug": "corbyn",
-      "name": "Corbyn",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 21
-    },
-    {
-      "slug": "cordell",
-      "name": "Cordell",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 22
+      "rank": 8
     },
     {
       "slug": "corentin",
@@ -754,39 +306,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 23
-    },
-    {
-      "slug": "cori",
-      "name": "Cori",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 24
+      "rank": 9
     },
     {
       "slug": "corin",
@@ -818,39 +338,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 25
-    },
-    {
-      "slug": "corina",
-      "name": "Corina",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 26
+      "rank": 10
     },
     {
       "slug": "cormac",
@@ -882,167 +370,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 27
-    },
-    {
-      "slug": "cornelius",
-      "name": "Cornelius",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 28
-    },
-    {
-      "slug": "corrado",
-      "name": "Corrado",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 29
-    },
-    {
-      "slug": "cortney",
-      "name": "Cortney",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 30
-    },
-    {
-      "slug": "cory",
-      "name": "Cory",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 31
-    },
-    {
-      "slug": "cosette",
-      "name": "Cosette",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 32
+      "rank": 11
     },
     {
       "slug": "crixus",
@@ -1074,71 +402,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 33
-    },
-    {
-      "slug": "crosby",
-      "name": "Crosby",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 34
-    },
-    {
-      "slug": "crue",
-      "name": "Crue",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 35
+      "rank": 12
     },
     {
       "slug": "cuyler",
@@ -1170,39 +434,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 36
-    },
-    {
-      "slug": "cydney",
-      "name": "Cydney",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 37
+      "rank": 13
     },
     {
       "slug": "cypher",
@@ -1234,263 +466,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 38
-    },
-    {
-      "slug": "cypress",
-      "name": "Cypress",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 39
-    },
-    {
-      "slug": "dael",
-      "name": "Dael",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 40
-    },
-    {
-      "slug": "daemon",
-      "name": "Daemon",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 41
-    },
-    {
-      "slug": "dakoda",
-      "name": "Dakoda",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 42
-    },
-    {
-      "slug": "dalton",
-      "name": "Dalton",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 43
-    },
-    {
-      "slug": "damara",
-      "name": "Damara",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 44
-    },
-    {
-      "slug": "daneen",
-      "name": "Daneen",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 45
-    },
-    {
-      "slug": "danelle",
-      "name": "Danelle",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 46
+      "rank": 14
     },
     {
       "slug": "danijela",
@@ -1522,7 +498,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 47
+      "rank": 15
     },
     {
       "slug": "danilynn",
@@ -1554,39 +530,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 48
-    },
-    {
-      "slug": "danish",
-      "name": "Danish",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 49
+      "rank": 16
     },
     {
       "slug": "danita",
@@ -1618,39 +562,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 50
-    },
-    {
-      "slug": "danyka",
-      "name": "Danyka",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 51
+      "rank": 17
     },
     {
       "slug": "darby",
@@ -1682,167 +594,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 52
-    },
-    {
-      "slug": "daren",
-      "name": "Daren",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 53
-    },
-    {
-      "slug": "darion",
-      "name": "Darion",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 54
-    },
-    {
-      "slug": "darla",
-      "name": "Darla",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 55
-    },
-    {
-      "slug": "darnell",
-      "name": "Darnell",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 56
-    },
-    {
-      "slug": "darrell",
-      "name": "Darrell",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 57
+      "rank": 18
     },
     {
       "slug": "dartagnan",
@@ -1874,39 +626,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 58
-    },
-    {
-      "slug": "daven",
-      "name": "Daven",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 59
+      "rank": 19
     },
     {
       "slug": "davida",
@@ -1938,7 +658,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 60
+      "rank": 20
     },
     {
       "slug": "davie",
@@ -1970,71 +690,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 61
-    },
-    {
-      "slug": "dawson",
-      "name": "Dawson",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 62
-    },
-    {
-      "slug": "daylen",
-      "name": "Daylen",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 63
+      "rank": 21
     },
     {
       "slug": "daymond",
@@ -2066,39 +722,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 64
-    },
-    {
-      "slug": "dayton",
-      "name": "Dayton",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 65
+      "rank": 22
     },
     {
       "slug": "daytona",
@@ -2130,167 +754,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 66
-    },
-    {
-      "slug": "deandre",
-      "name": "Deandre",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 67
-    },
-    {
-      "slug": "deckard",
-      "name": "Deckard",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 68
-    },
-    {
-      "slug": "decker",
-      "name": "Decker",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 69
-    },
-    {
-      "slug": "deena",
-      "name": "Deena",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 70
-    },
-    {
-      "slug": "deja",
-      "name": "Deja",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 71
+      "rank": 23
     },
     {
       "slug": "delbert",
@@ -2322,7 +786,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 72
+      "rank": 24
     },
     {
       "slug": "delight",
@@ -2354,39 +818,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 73
-    },
-    {
-      "slug": "delina",
-      "name": "Delina",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 74
+      "rank": 25
     },
     {
       "slug": "delphi",
@@ -2418,71 +850,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 75
-    },
-    {
-      "slug": "delsa",
-      "name": "Delsa",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 76
-    },
-    {
-      "slug": "delta",
-      "name": "Delta",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 77
+      "rank": 26
     },
     {
       "slug": "deluca",
@@ -2514,7 +882,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 78
+      "rank": 27
     },
     {
       "slug": "delvin",
@@ -2546,39 +914,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 79
-    },
-    {
-      "slug": "demarcus",
-      "name": "Demarcus",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 80
+      "rank": 28
     },
     {
       "slug": "dempsey",
@@ -2610,71 +946,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 81
-    },
-    {
-      "slug": "deniz",
-      "name": "Deniz",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 82
-    },
-    {
-      "slug": "denton",
-      "name": "Denton",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 83
+      "rank": 29
     },
     {
       "slug": "denver",
@@ -2706,103 +978,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 84
-    },
-    {
-      "slug": "deon",
-      "name": "Deon",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 85
-    },
-    {
-      "slug": "derick",
-      "name": "Derick",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 86
-    },
-    {
-      "slug": "desirae",
-      "name": "Desirae",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 87
+      "rank": 30
     },
     {
       "slug": "desta",
@@ -2834,71 +1010,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 88
-    },
-    {
-      "slug": "destin",
-      "name": "Destin",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 89
-    },
-    {
-      "slug": "destinee",
-      "name": "Destinee",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 90
+      "rank": 31
     },
     {
       "slug": "devaughn",
@@ -2930,7 +1042,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 91
+      "rank": 32
     },
     {
       "slug": "devlin",
@@ -2962,7 +1074,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 92
+      "rank": 33
     },
     {
       "slug": "devlyn",
@@ -2994,39 +1106,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 93
-    },
-    {
-      "slug": "devonte",
-      "name": "Devonte",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 94
+      "rank": 34
     },
     {
       "slug": "devran",
@@ -3058,71 +1138,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 95
-    },
-    {
-      "slug": "devrick",
-      "name": "Devrick",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 96
-    },
-    {
-      "slug": "devyn",
-      "name": "Devyn",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 97
+      "rank": 35
     },
     {
       "slug": "dexter",
@@ -3154,39 +1170,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 98
-    },
-    {
-      "slug": "dezmond",
-      "name": "Dezmond",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 5,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 99
+      "rank": 36
     },
     {
       "slug": "diamond",
@@ -3218,6 +1202,2022 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 37
+    },
+    {
+      "slug": "dilnaaz",
+      "name": "Dilnaaz",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 38
+    },
+    {
+      "slug": "dilnoor",
+      "name": "Dilnoor",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 39
+    },
+    {
+      "slug": "dilreet",
+      "name": "Dilreet",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 40
+    },
+    {
+      "slug": "djamel",
+      "name": "Djamel",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 41
+    },
+    {
+      "slug": "dominion",
+      "name": "Dominion",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 42
+    },
+    {
+      "slug": "dresden",
+      "name": "Dresden",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 43
+    },
+    {
+      "slug": "dudley",
+      "name": "Dudley",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 44
+    },
+    {
+      "slug": "dutch",
+      "name": "Dutch",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 45
+    },
+    {
+      "slug": "dyk",
+      "name": "Dyk",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 46
+    },
+    {
+      "slug": "ebadat",
+      "name": "Ebadat",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 47
+    },
+    {
+      "slug": "ebubechukwu",
+      "name": "Ebubechukwu",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 48
+    },
+    {
+      "slug": "ebunoluwa",
+      "name": "Ebunoluwa",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 49
+    },
+    {
+      "slug": "echo",
+      "name": "Echo",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 50
+    },
+    {
+      "slug": "ecrin",
+      "name": "Ecrin",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 51
+    },
+    {
+      "slug": "edelweiss",
+      "name": "Edelweiss",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 52
+    },
+    {
+      "slug": "ediz",
+      "name": "Ediz",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 53
+    },
+    {
+      "slug": "edvin",
+      "name": "Edvin",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 54
+    },
+    {
+      "slug": "efnan",
+      "name": "Efnan",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 55
+    },
+    {
+      "slug": "efosa",
+      "name": "Efosa",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 56
+    },
+    {
+      "slug": "efrata",
+      "name": "Efrata",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 57
+    },
+    {
+      "slug": "egypt",
+      "name": "Egypt",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 58
+    },
+    {
+      "slug": "ekagar",
+      "name": "Ekagar",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 59
+    },
+    {
+      "slug": "ekamjot",
+      "name": "Ekamjot",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 60
+    },
+    {
+      "slug": "ekampreet",
+      "name": "Ekampreet",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 61
+    },
+    {
+      "slug": "ekas",
+      "name": "Ekas",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 62
+    },
+    {
+      "slug": "ekjot",
+      "name": "Ekjot",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 63
+    },
+    {
+      "slug": "eknoor",
+      "name": "Eknoor",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 64
+    },
+    {
+      "slug": "eldana",
+      "name": "Eldana",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 65
+    },
+    {
+      "slug": "eleftheria",
+      "name": "Eleftheria",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 66
+    },
+    {
+      "slug": "eleftherios",
+      "name": "Eleftherios",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 67
+    },
+    {
+      "slug": "elexis",
+      "name": "Elexis",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 68
+    },
+    {
+      "slug": "eliab",
+      "name": "Eliab",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 69
+    },
+    {
+      "slug": "eliakim",
+      "name": "Eliakim",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 70
+    },
+    {
+      "slug": "elian",
+      "name": "Elian",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 71
+    },
+    {
+      "slug": "eliel",
+      "name": "Eliel",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 72
+    },
+    {
+      "slug": "eliezer",
+      "name": "Eliezer",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 73
+    },
+    {
+      "slug": "elif",
+      "name": "Elif",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 74
+    },
+    {
+      "slug": "elilta",
+      "name": "Elilta",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 75
+    },
+    {
+      "slug": "elimelech",
+      "name": "Elimelech",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 76
+    },
+    {
+      "slug": "elinor",
+      "name": "Elinor",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 77
+    },
+    {
+      "slug": "elisha",
+      "name": "Elisha",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 78
+    },
+    {
+      "slug": "ella-grace",
+      "name": "Ella-grace",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 79
+    },
+    {
+      "slug": "ellery",
+      "name": "Ellery",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 80
+    },
+    {
+      "slug": "elli",
+      "name": "Elli",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 81
+    },
+    {
+      "slug": "ellison",
+      "name": "Ellison",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 82
+    },
+    {
+      "slug": "elnathan",
+      "name": "Elnathan",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 83
+    },
+    {
+      "slug": "elnaz",
+      "name": "Elnaz",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 84
+    },
+    {
+      "slug": "elonga",
+      "name": "Elonga",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 85
+    },
+    {
+      "slug": "elric",
+      "name": "Elric",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 86
+    },
+    {
+      "slug": "elroy",
+      "name": "Elroy",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 87
+    },
+    {
+      "slug": "elvin",
+      "name": "Elvin",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 88
+    },
+    {
+      "slug": "elvina",
+      "name": "Elvina",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 89
+    },
+    {
+      "slug": "elvis",
+      "name": "Elvis",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 90
+    },
+    {
+      "slug": "elwood",
+      "name": "Elwood",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 91
+    },
+    {
+      "slug": "ely",
+      "name": "Ely",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 92
+    },
+    {
+      "slug": "ely-rose",
+      "name": "Ely-rose",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 93
+    },
+    {
+      "slug": "elyes",
+      "name": "Elyes",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 94
+    },
+    {
+      "slug": "elysa",
+      "name": "Elysa",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 95
+    },
+    {
+      "slug": "elyzabeth",
+      "name": "Elyzabeth",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 96
+    },
+    {
+      "slug": "eman",
+      "name": "Eman",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 97
+    },
+    {
+      "slug": "emanat",
+      "name": "Emanat",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 98
+    },
+    {
+      "slug": "emanuel",
+      "name": "Emanuel",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 99
+    },
+    {
+      "slug": "emanuelle",
+      "name": "Emanuelle",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 5,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 100
     }
   ],
@@ -3225,8 +3225,8 @@
     "highestPriorityOrigins": [
       {
         "value": "India",
-        "count": 158,
-        "totalPriority": 4075,
+        "count": 164,
+        "totalPriority": 4225,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3235,13 +3235,13 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.79,
+        "averagePriority": 25.76,
         "unresearchedPct": 0
       },
       {
         "value": "Israel",
-        "count": 89,
-        "totalPriority": 2225,
+        "count": 93,
+        "totalPriority": 2325,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 68,
-        "totalPriority": 1700,
+        "count": 109,
+        "totalPriority": 2725,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3285,8 +3285,8 @@
       },
       {
         "value": "France",
-        "count": 67,
-        "totalPriority": 1675,
+        "count": 71,
+        "totalPriority": 1775,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 56,
-        "totalPriority": 1400,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 408,
-        "totalPriority": 10200,
+        "count": 430,
+        "totalPriority": 10750,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3330,8 +3330,8 @@
       },
       {
         "value": "Nigeria",
-        "count": 9,
-        "totalPriority": 225,
+        "count": 10,
+        "totalPriority": 250,
         "unresearched": 0,
         "entities": [
           "adedamola",
@@ -3345,8 +3345,8 @@
       },
       {
         "value": "Germany",
-        "count": 29,
-        "totalPriority": 725,
+        "count": 31,
+        "totalPriority": 775,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3360,20 +3360,22 @@
       },
       {
         "value": "Senegal",
-        "count": 2,
-        "totalPriority": 50,
+        "count": 4,
+        "totalPriority": 100,
         "unresearched": 0,
         "entities": [
           "adja",
-          "boubacar"
+          "awa",
+          "boubacar",
+          "elhadj"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
         "value": "Italy",
-        "count": 76,
-        "totalPriority": 1900,
+        "count": 78,
+        "totalPriority": 1950,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3409,8 +3411,8 @@
       },
       {
         "value": "Ireland",
-        "count": 32,
-        "totalPriority": 800,
+        "count": 34,
+        "totalPriority": 850,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3423,16 +3425,30 @@
         "unresearchedPct": 0
       },
       {
+        "value": "Denmark",
+        "count": 4,
+        "totalPriority": 100,
+        "unresearched": 0,
+        "entities": [
+          "aj",
+          "gunnar",
+          "jensen",
+          "lars"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
         "value": "Russia",
-        "count": 11,
-        "totalPriority": 275,
+        "count": 12,
+        "totalPriority": 300,
         "unresearched": 0,
         "entities": [
           "akim",
+          "egor",
           "igor",
           "irina",
-          "ivan",
-          "katya"
+          "ivan"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3486,24 +3502,13 @@
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
-      },
-      {
-        "value": "Ethiopia",
-        "count": 1,
-        "totalPriority": 25,
-        "unresearched": 0,
-        "entities": [
-          "amanuel"
-        ],
-        "averagePriority": 25,
-        "unresearchedPct": 0
       }
     ],
     "highestPriorityLanguages": [
       {
         "value": "Sanskrit",
-        "count": 131,
-        "totalPriority": 3400,
+        "count": 135,
+        "totalPriority": 3500,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3512,13 +3517,13 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.95,
+        "averagePriority": 25.93,
         "unresearchedPct": 0
       },
       {
         "value": "Arabic",
-        "count": 55,
-        "totalPriority": 1375,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3532,8 +3537,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 92,
-        "totalPriority": 2300,
+        "count": 98,
+        "totalPriority": 2450,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3562,8 +3567,8 @@
       },
       {
         "value": "English",
-        "count": 453,
-        "totalPriority": 11325,
+        "count": 508,
+        "totalPriority": 12700,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3577,8 +3582,8 @@
       },
       {
         "value": "French",
-        "count": 65,
-        "totalPriority": 1625,
+        "count": 70,
+        "totalPriority": 1750,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3592,8 +3597,8 @@
       },
       {
         "value": "Greek",
-        "count": 58,
-        "totalPriority": 1450,
+        "count": 66,
+        "totalPriority": 1650,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3607,20 +3612,21 @@
       },
       {
         "value": "Yoruba",
-        "count": 2,
-        "totalPriority": 50,
+        "count": 3,
+        "totalPriority": 75,
         "unresearched": 0,
         "entities": [
           "adedamola",
-          "boluwatife"
+          "boluwatife",
+          "efe"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
         "value": "German",
-        "count": 29,
-        "totalPriority": 725,
+        "count": 31,
+        "totalPriority": 775,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3634,19 +3640,20 @@
       },
       {
         "value": "Wolof",
-        "count": 1,
-        "totalPriority": 25,
+        "count": 2,
+        "totalPriority": 50,
         "unresearched": 0,
         "entities": [
-          "adja"
+          "adja",
+          "awa"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
         "value": "Latin",
-        "count": 51,
-        "totalPriority": 1275,
+        "count": 52,
+        "totalPriority": 1300,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3660,8 +3667,8 @@
       },
       {
         "value": "Italian",
-        "count": 34,
-        "totalPriority": 850,
+        "count": 36,
+        "totalPriority": 900,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3690,8 +3697,8 @@
       },
       {
         "value": "Punjabi",
-        "count": 24,
-        "totalPriority": 600,
+        "count": 26,
+        "totalPriority": 650,
         "unresearched": 0,
         "entities": [
           "agamdeep",
@@ -3705,8 +3712,8 @@
       },
       {
         "value": "Irish",
-        "count": 33,
-        "totalPriority": 825,
+        "count": 34,
+        "totalPriority": 850,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3734,16 +3741,28 @@
         "unresearchedPct": 0
       },
       {
+        "value": "Danish",
+        "count": 2,
+        "totalPriority": 50,
+        "unresearched": 0,
+        "entities": [
+          "aj",
+          "jensen"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
         "value": "Russian",
-        "count": 13,
-        "totalPriority": 325,
+        "count": 14,
+        "totalPriority": 350,
         "unresearched": 0,
         "entities": [
           "akim",
           "alexei",
+          "egor",
           "igor",
-          "irina",
-          "ivan"
+          "irina"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3774,19 +3793,6 @@
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
-      },
-      {
-        "value": "Portuguese",
-        "count": 3,
-        "totalPriority": 75,
-        "unresearched": 0,
-        "entities": [
-          "almeida",
-          "rio",
-          "yara"
-        ],
-        "averagePriority": 25,
-        "unresearchedPct": 0
       }
     ],
     "highestPriorityCultures": [
@@ -3807,8 +3813,8 @@
       },
       {
         "value": "Arabic",
-        "count": 52,
-        "totalPriority": 1300,
+        "count": 56,
+        "totalPriority": 1400,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3822,8 +3828,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 94,
-        "totalPriority": 2350,
+        "count": 100,
+        "totalPriority": 2500,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3837,8 +3843,8 @@
       },
       {
         "value": "African",
-        "count": 25,
-        "totalPriority": 625,
+        "count": 27,
+        "totalPriority": 675,
         "unresearched": 0,
         "entities": [
           "abifoluwa",
@@ -3867,8 +3873,8 @@
       },
       {
         "value": "English",
-        "count": 428,
-        "totalPriority": 10700,
+        "count": 486,
+        "totalPriority": 12150,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3882,8 +3888,8 @@
       },
       {
         "value": "French",
-        "count": 65,
-        "totalPriority": 1625,
+        "count": 70,
+        "totalPriority": 1750,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3897,8 +3903,8 @@
       },
       {
         "value": "Greek",
-        "count": 69,
-        "totalPriority": 1725,
+        "count": 77,
+        "totalPriority": 1925,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3912,8 +3918,8 @@
       },
       {
         "value": "German",
-        "count": 28,
-        "totalPriority": 700,
+        "count": 30,
+        "totalPriority": 750,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3927,8 +3933,8 @@
       },
       {
         "value": "Latin",
-        "count": 65,
-        "totalPriority": 1625,
+        "count": 68,
+        "totalPriority": 1700,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3942,8 +3948,8 @@
       },
       {
         "value": "Italian",
-        "count": 30,
-        "totalPriority": 750,
+        "count": 31,
+        "totalPriority": 775,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3972,8 +3978,8 @@
       },
       {
         "value": "Irish",
-        "count": 33,
-        "totalPriority": 825,
+        "count": 35,
+        "totalPriority": 875,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3987,8 +3993,8 @@
       },
       {
         "value": "Scottish",
-        "count": 10,
-        "totalPriority": 250,
+        "count": 11,
+        "totalPriority": 275,
         "unresearched": 0,
         "entities": [
           "ainslie",
@@ -3996,6 +4002,21 @@
           "blair",
           "blaire",
           "craig"
+        ],
+        "averagePriority": 25,
+        "unresearchedPct": 0
+      },
+      {
+        "value": "Nordic",
+        "count": 10,
+        "totalPriority": 250,
+        "unresearched": 0,
+        "entities": [
+          "aj",
+          "astrid",
+          "bjorn",
+          "gunnar",
+          "ingrid"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -4014,15 +4035,15 @@
       },
       {
         "value": "Russian",
-        "count": 8,
-        "totalPriority": 200,
+        "count": 9,
+        "totalPriority": 225,
         "unresearched": 0,
         "entities": [
           "alexei",
+          "egor",
           "igor",
           "irina",
-          "ivan",
-          "katya"
+          "ivan"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -4056,21 +4077,6 @@
         "unresearchedPct": 0
       },
       {
-        "value": "Nordic",
-        "count": 9,
-        "totalPriority": 225,
-        "unresearched": 0,
-        "entities": [
-          "astrid",
-          "bjorn",
-          "gunnar",
-          "ingrid",
-          "ivor"
-        ],
-        "averagePriority": 25,
-        "unresearchedPct": 0
-      },
-      {
         "value": "Welsh",
         "count": 15,
         "totalPriority": 375,
@@ -4088,87 +4094,52 @@
     ],
     "highestPriorityGenders": [
       {
-        "value": "boy",
-        "count": 1592,
-        "totalPriority": 156563,
-        "unresearched": 1144,
-        "entities": [
-          "aj",
-          "constantine",
-          "copeland",
-          "corbyn",
-          "cordell"
-        ],
-        "averagePriority": 98.34,
-        "unresearchedPct": 71.86
-      },
-      {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 141872,
-        "unresearched": 1036,
+        "totalPriority": 138506,
+        "unresearched": 1003,
         "entities": [
-          "ally-rose",
-          "amelia-rose",
-          "ann-sophie",
-          "anna-eve",
-          "anna-maria"
+          "anne-charlotte",
+          "ashley-lynn",
+          "audrey-rose",
+          "ava-grace",
+          "ava-marie"
         ],
-        "averagePriority": 98.11,
-        "unresearchedPct": 71.65
+        "averagePriority": 95.79,
+        "unresearchedPct": 69.36
+      },
+      {
+        "value": "boy",
+        "count": 1592,
+        "totalPriority": 150953,
+        "unresearched": 1089,
+        "entities": [
+          "copeland",
+          "corentin",
+          "cormac",
+          "crixus",
+          "cuyler"
+        ],
+        "averagePriority": 94.82,
+        "unresearchedPct": 68.4
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 53909,
-        "unresearched": 367,
+        "totalPriority": 52685,
+        "unresearched": 355,
         "entities": [
-          "an",
           "avi",
-          "bao",
           "cooper",
-          "corin"
+          "corin",
+          "darby",
+          "davie"
         ],
-        "averagePriority": 81.8,
-        "unresearchedPct": 55.69
+        "averagePriority": 79.95,
+        "unresearchedPct": 53.87
       }
     ],
     "largestEditorialDeserts": [
-      {
-        "slug": "aj",
-        "name": "Aj",
-        "priorityScore": 127
-      },
-      {
-        "slug": "ally-rose",
-        "name": "Ally-rose",
-        "priorityScore": 127
-      },
-      {
-        "slug": "amelia-rose",
-        "name": "Amelia-rose",
-        "priorityScore": 127
-      },
-      {
-        "slug": "an",
-        "name": "An",
-        "priorityScore": 127
-      },
-      {
-        "slug": "ann-sophie",
-        "name": "Ann-sophie",
-        "priorityScore": 127
-      },
-      {
-        "slug": "anna-eve",
-        "name": "Anna-eve",
-        "priorityScore": 127
-      },
-      {
-        "slug": "anna-maria",
-        "name": "Anna-maria",
-        "priorityScore": 127
-      },
       {
         "slug": "anne-charlotte",
         "name": "Anne-charlotte",
@@ -4195,33 +4166,8 @@
         "priorityScore": 127
       },
       {
-        "slug": "ava-rose",
-        "name": "Ava-rose",
-        "priorityScore": 127
-      },
-      {
         "slug": "avi",
         "name": "Avi",
-        "priorityScore": 127
-      },
-      {
-        "slug": "awa",
-        "name": "Awa",
-        "priorityScore": 127
-      },
-      {
-        "slug": "bao",
-        "name": "Bao",
-        "priorityScore": 127
-      },
-      {
-        "slug": "bea",
-        "name": "Bea",
-        "priorityScore": 127
-      },
-      {
-        "slug": "constantine",
-        "name": "Constantine",
         "priorityScore": 127
       },
       {
@@ -4235,28 +4181,88 @@
         "priorityScore": 127
       },
       {
-        "slug": "corbyn",
-        "name": "Corbyn",
-        "priorityScore": 127
-      },
-      {
-        "slug": "cordell",
-        "name": "Cordell",
-        "priorityScore": 127
-      },
-      {
         "slug": "corentin",
         "name": "Corentin",
         "priorityScore": 127
       },
       {
-        "slug": "cori",
-        "name": "Cori",
+        "slug": "corin",
+        "name": "Corin",
         "priorityScore": 127
       },
       {
-        "slug": "corin",
-        "name": "Corin",
+        "slug": "cormac",
+        "name": "Cormac",
+        "priorityScore": 127
+      },
+      {
+        "slug": "crixus",
+        "name": "Crixus",
+        "priorityScore": 127
+      },
+      {
+        "slug": "cuyler",
+        "name": "Cuyler",
+        "priorityScore": 127
+      },
+      {
+        "slug": "cypher",
+        "name": "Cypher",
+        "priorityScore": 127
+      },
+      {
+        "slug": "danijela",
+        "name": "Danijela",
+        "priorityScore": 127
+      },
+      {
+        "slug": "danilynn",
+        "name": "Danilynn",
+        "priorityScore": 127
+      },
+      {
+        "slug": "danita",
+        "name": "Danita",
+        "priorityScore": 127
+      },
+      {
+        "slug": "darby",
+        "name": "Darby",
+        "priorityScore": 127
+      },
+      {
+        "slug": "dartagnan",
+        "name": "D'artagnan",
+        "priorityScore": 127
+      },
+      {
+        "slug": "davida",
+        "name": "Davida",
+        "priorityScore": 127
+      },
+      {
+        "slug": "davie",
+        "name": "Davie",
+        "priorityScore": 127
+      },
+      {
+        "slug": "daymond",
+        "name": "Daymond",
+        "priorityScore": 127
+      },
+      {
+        "slug": "daytona",
+        "name": "Daytona",
+        "priorityScore": 127
+      },
+      {
+        "slug": "delbert",
+        "name": "Delbert",
+        "priorityScore": 127
+      },
+      {
+        "slug": "delight",
+        "name": "Delight",
         "priorityScore": 127
       }
     ],
@@ -4264,27 +4270,27 @@
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 2547
+        "count": 2447
       },
       {
         "domain": "meaning",
-        "count": 2547
+        "count": 2447
       },
       {
         "domain": "pronunciation",
-        "count": 2547
+        "count": 2447
       },
       {
         "domain": "etymology",
-        "count": 2547
+        "count": 2447
       },
       {
         "domain": "history",
-        "count": 2547
+        "count": 2447
       },
       {
         "domain": "variants",
-        "count": 2547
+        "count": 2447
       }
     ],
     "entitiesWithPopularityButNoKnowledgeRecord": []
@@ -4293,8 +4299,8 @@
     "phase15BInput": [
       {
         "rank": 1,
-        "slug": "aj",
-        "name": "Aj",
+        "slug": "anne-charlotte",
+        "name": "Anne-charlotte",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4308,111 +4314,6 @@
       },
       {
         "rank": 2,
-        "slug": "ally-rose",
-        "name": "Ally-rose",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 3,
-        "slug": "amelia-rose",
-        "name": "Amelia-rose",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 4,
-        "slug": "an",
-        "name": "An",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 5,
-        "slug": "ann-sophie",
-        "name": "Ann-sophie",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 6,
-        "slug": "anna-eve",
-        "name": "Anna-eve",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 7,
-        "slug": "anna-maria",
-        "name": "Anna-maria",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 8,
-        "slug": "anne-charlotte",
-        "name": "Anne-charlotte",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 9,
         "slug": "ashley-lynn",
         "name": "Ashley-lynn",
         "action": "create_knowledge_record",
@@ -4427,7 +4328,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 10,
+        "rank": 3,
         "slug": "audrey-rose",
         "name": "Audrey-rose",
         "action": "create_knowledge_record",
@@ -4442,7 +4343,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 11,
+        "rank": 4,
         "slug": "ava-grace",
         "name": "Ava-grace",
         "action": "create_knowledge_record",
@@ -4457,7 +4358,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 12,
+        "rank": 5,
         "slug": "ava-marie",
         "name": "Ava-marie",
         "action": "create_knowledge_record",
@@ -4472,22 +4373,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 13,
-        "slug": "ava-rose",
-        "name": "Ava-rose",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 14,
+        "rank": 6,
         "slug": "avi",
         "name": "Avi",
         "action": "create_knowledge_record",
@@ -4502,67 +4388,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 15,
-        "slug": "awa",
-        "name": "Awa",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 16,
-        "slug": "bao",
-        "name": "Bao",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 17,
-        "slug": "bea",
-        "name": "Bea",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 18,
-        "slug": "constantine",
-        "name": "Constantine",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 19,
+        "rank": 7,
         "slug": "cooper",
         "name": "Cooper",
         "action": "create_knowledge_record",
@@ -4577,7 +4403,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 20,
+        "rank": 8,
         "slug": "copeland",
         "name": "Copeland",
         "action": "create_knowledge_record",
@@ -4592,37 +4418,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 21,
-        "slug": "corbyn",
-        "name": "Corbyn",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 22,
-        "slug": "cordell",
-        "name": "Cordell",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 23,
+        "rank": 9,
         "slug": "corentin",
         "name": "Corentin",
         "action": "create_knowledge_record",
@@ -4637,22 +4433,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 24,
-        "slug": "cori",
-        "name": "Cori",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 25,
+        "rank": 10,
         "slug": "corin",
         "name": "Corin",
         "action": "create_knowledge_record",
@@ -4667,22 +4448,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 26,
-        "slug": "corina",
-        "name": "Corina",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 27,
+        "rank": 11,
         "slug": "cormac",
         "name": "Cormac",
         "action": "create_knowledge_record",
@@ -4697,82 +4463,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 28,
-        "slug": "cornelius",
-        "name": "Cornelius",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 29,
-        "slug": "corrado",
-        "name": "Corrado",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 30,
-        "slug": "cortney",
-        "name": "Cortney",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 31,
-        "slug": "cory",
-        "name": "Cory",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 32,
-        "slug": "cosette",
-        "name": "Cosette",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 33,
+        "rank": 12,
         "slug": "crixus",
         "name": "Crixus",
         "action": "create_knowledge_record",
@@ -4787,37 +4478,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 34,
-        "slug": "crosby",
-        "name": "Crosby",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 35,
-        "slug": "crue",
-        "name": "Crue",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 36,
+        "rank": 13,
         "slug": "cuyler",
         "name": "Cuyler",
         "action": "create_knowledge_record",
@@ -4832,22 +4493,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 37,
-        "slug": "cydney",
-        "name": "Cydney",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 38,
+        "rank": 14,
         "slug": "cypher",
         "name": "Cypher",
         "action": "create_knowledge_record",
@@ -4862,127 +4508,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 39,
-        "slug": "cypress",
-        "name": "Cypress",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 40,
-        "slug": "dael",
-        "name": "Dael",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 41,
-        "slug": "daemon",
-        "name": "Daemon",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 42,
-        "slug": "dakoda",
-        "name": "Dakoda",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 43,
-        "slug": "dalton",
-        "name": "Dalton",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 44,
-        "slug": "damara",
-        "name": "Damara",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 45,
-        "slug": "daneen",
-        "name": "Daneen",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 46,
-        "slug": "danelle",
-        "name": "Danelle",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 47,
+        "rank": 15,
         "slug": "danijela",
         "name": "Danijela",
         "action": "create_knowledge_record",
@@ -4997,7 +4523,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 48,
+        "rank": 16,
         "slug": "danilynn",
         "name": "Danilynn",
         "action": "create_knowledge_record",
@@ -5012,22 +4538,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 49,
-        "slug": "danish",
-        "name": "Danish",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 50,
+        "rank": 17,
         "slug": "danita",
         "name": "Danita",
         "action": "create_knowledge_record",
@@ -5042,22 +4553,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 51,
-        "slug": "danyka",
-        "name": "Danyka",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 52,
+        "rank": 18,
         "slug": "darby",
         "name": "Darby",
         "action": "create_knowledge_record",
@@ -5072,82 +4568,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 53,
-        "slug": "daren",
-        "name": "Daren",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 54,
-        "slug": "darion",
-        "name": "Darion",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 55,
-        "slug": "darla",
-        "name": "Darla",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 56,
-        "slug": "darnell",
-        "name": "Darnell",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 57,
-        "slug": "darrell",
-        "name": "Darrell",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 58,
+        "rank": 19,
         "slug": "dartagnan",
         "name": "D'artagnan",
         "action": "create_knowledge_record",
@@ -5162,22 +4583,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 59,
-        "slug": "daven",
-        "name": "Daven",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 60,
+        "rank": 20,
         "slug": "davida",
         "name": "Davida",
         "action": "create_knowledge_record",
@@ -5192,7 +4598,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 61,
+        "rank": 21,
         "slug": "davie",
         "name": "Davie",
         "action": "create_knowledge_record",
@@ -5207,37 +4613,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 62,
-        "slug": "dawson",
-        "name": "Dawson",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 63,
-        "slug": "daylen",
-        "name": "Daylen",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 64,
+        "rank": 22,
         "slug": "daymond",
         "name": "Daymond",
         "action": "create_knowledge_record",
@@ -5252,22 +4628,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 65,
-        "slug": "dayton",
-        "name": "Dayton",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 66,
+        "rank": 23,
         "slug": "daytona",
         "name": "Daytona",
         "action": "create_knowledge_record",
@@ -5282,82 +4643,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 67,
-        "slug": "deandre",
-        "name": "Deandre",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 68,
-        "slug": "deckard",
-        "name": "Deckard",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 69,
-        "slug": "decker",
-        "name": "Decker",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 70,
-        "slug": "deena",
-        "name": "Deena",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 71,
-        "slug": "deja",
-        "name": "Deja",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 72,
+        "rank": 24,
         "slug": "delbert",
         "name": "Delbert",
         "action": "create_knowledge_record",
@@ -5372,7 +4658,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 73,
+        "rank": 25,
         "slug": "delight",
         "name": "Delight",
         "action": "create_knowledge_record",
@@ -5387,22 +4673,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 74,
-        "slug": "delina",
-        "name": "Delina",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 75,
+        "rank": 26,
         "slug": "delphi",
         "name": "Delphi",
         "action": "create_knowledge_record",
@@ -5417,37 +4688,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 76,
-        "slug": "delsa",
-        "name": "Delsa",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 77,
-        "slug": "delta",
-        "name": "Delta",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 78,
+        "rank": 27,
         "slug": "deluca",
         "name": "Deluca",
         "action": "create_knowledge_record",
@@ -5462,7 +4703,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 79,
+        "rank": 28,
         "slug": "delvin",
         "name": "Delvin",
         "action": "create_knowledge_record",
@@ -5477,22 +4718,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 80,
-        "slug": "demarcus",
-        "name": "Demarcus",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 81,
+        "rank": 29,
         "slug": "dempsey",
         "name": "Dempsey",
         "action": "create_knowledge_record",
@@ -5507,37 +4733,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 82,
-        "slug": "deniz",
-        "name": "Deniz",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 83,
-        "slug": "denton",
-        "name": "Denton",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 84,
+        "rank": 30,
         "slug": "denver",
         "name": "Denver",
         "action": "create_knowledge_record",
@@ -5552,52 +4748,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 85,
-        "slug": "deon",
-        "name": "Deon",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 86,
-        "slug": "derick",
-        "name": "Derick",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 87,
-        "slug": "desirae",
-        "name": "Desirae",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 88,
+        "rank": 31,
         "slug": "desta",
         "name": "Desta",
         "action": "create_knowledge_record",
@@ -5612,37 +4763,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 89,
-        "slug": "destin",
-        "name": "Destin",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 90,
-        "slug": "destinee",
-        "name": "Destinee",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 91,
+        "rank": 32,
         "slug": "devaughn",
         "name": "Devaughn",
         "action": "create_knowledge_record",
@@ -5657,7 +4778,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 92,
+        "rank": 33,
         "slug": "devlin",
         "name": "Devlin",
         "action": "create_knowledge_record",
@@ -5672,7 +4793,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 93,
+        "rank": 34,
         "slug": "devlyn",
         "name": "Devlyn",
         "action": "create_knowledge_record",
@@ -5687,22 +4808,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 94,
-        "slug": "devonte",
-        "name": "Devonte",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 95,
+        "rank": 35,
         "slug": "devran",
         "name": "Devran",
         "action": "create_knowledge_record",
@@ -5717,37 +4823,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 96,
-        "slug": "devrick",
-        "name": "Devrick",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 97,
-        "slug": "devyn",
-        "name": "Devyn",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 98,
+        "rank": 36,
         "slug": "dexter",
         "name": "Dexter",
         "action": "create_knowledge_record",
@@ -5762,9 +4838,939 @@
         "priorityScore": 127
       },
       {
+        "rank": 37,
+        "slug": "diamond",
+        "name": "Diamond",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 38,
+        "slug": "dilnaaz",
+        "name": "Dilnaaz",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 39,
+        "slug": "dilnoor",
+        "name": "Dilnoor",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 40,
+        "slug": "dilreet",
+        "name": "Dilreet",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 41,
+        "slug": "djamel",
+        "name": "Djamel",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 42,
+        "slug": "dominion",
+        "name": "Dominion",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 43,
+        "slug": "dresden",
+        "name": "Dresden",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 44,
+        "slug": "dudley",
+        "name": "Dudley",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 45,
+        "slug": "dutch",
+        "name": "Dutch",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 46,
+        "slug": "dyk",
+        "name": "Dyk",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 47,
+        "slug": "ebadat",
+        "name": "Ebadat",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 48,
+        "slug": "ebubechukwu",
+        "name": "Ebubechukwu",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 49,
+        "slug": "ebunoluwa",
+        "name": "Ebunoluwa",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 50,
+        "slug": "echo",
+        "name": "Echo",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 51,
+        "slug": "ecrin",
+        "name": "Ecrin",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 52,
+        "slug": "edelweiss",
+        "name": "Edelweiss",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 53,
+        "slug": "ediz",
+        "name": "Ediz",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 54,
+        "slug": "edvin",
+        "name": "Edvin",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 55,
+        "slug": "efnan",
+        "name": "Efnan",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 56,
+        "slug": "efosa",
+        "name": "Efosa",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 57,
+        "slug": "efrata",
+        "name": "Efrata",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 58,
+        "slug": "egypt",
+        "name": "Egypt",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 59,
+        "slug": "ekagar",
+        "name": "Ekagar",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 60,
+        "slug": "ekamjot",
+        "name": "Ekamjot",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 61,
+        "slug": "ekampreet",
+        "name": "Ekampreet",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 62,
+        "slug": "ekas",
+        "name": "Ekas",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 63,
+        "slug": "ekjot",
+        "name": "Ekjot",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 64,
+        "slug": "eknoor",
+        "name": "Eknoor",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 65,
+        "slug": "eldana",
+        "name": "Eldana",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 66,
+        "slug": "eleftheria",
+        "name": "Eleftheria",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 67,
+        "slug": "eleftherios",
+        "name": "Eleftherios",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 68,
+        "slug": "elexis",
+        "name": "Elexis",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 69,
+        "slug": "eliab",
+        "name": "Eliab",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 70,
+        "slug": "eliakim",
+        "name": "Eliakim",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 71,
+        "slug": "elian",
+        "name": "Elian",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 72,
+        "slug": "eliel",
+        "name": "Eliel",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 73,
+        "slug": "eliezer",
+        "name": "Eliezer",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 74,
+        "slug": "elif",
+        "name": "Elif",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 75,
+        "slug": "elilta",
+        "name": "Elilta",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 76,
+        "slug": "elimelech",
+        "name": "Elimelech",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 77,
+        "slug": "elinor",
+        "name": "Elinor",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 78,
+        "slug": "elisha",
+        "name": "Elisha",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 79,
+        "slug": "ella-grace",
+        "name": "Ella-grace",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 80,
+        "slug": "ellery",
+        "name": "Ellery",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 81,
+        "slug": "elli",
+        "name": "Elli",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 82,
+        "slug": "ellison",
+        "name": "Ellison",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 83,
+        "slug": "elnathan",
+        "name": "Elnathan",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 84,
+        "slug": "elnaz",
+        "name": "Elnaz",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 85,
+        "slug": "elonga",
+        "name": "Elonga",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 86,
+        "slug": "elric",
+        "name": "Elric",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 87,
+        "slug": "elroy",
+        "name": "Elroy",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 88,
+        "slug": "elvin",
+        "name": "Elvin",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 89,
+        "slug": "elvina",
+        "name": "Elvina",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 90,
+        "slug": "elvis",
+        "name": "Elvis",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 91,
+        "slug": "elwood",
+        "name": "Elwood",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 92,
+        "slug": "ely",
+        "name": "Ely",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 93,
+        "slug": "ely-rose",
+        "name": "Ely-rose",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 94,
+        "slug": "elyes",
+        "name": "Elyes",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 95,
+        "slug": "elysa",
+        "name": "Elysa",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 96,
+        "slug": "elyzabeth",
+        "name": "Elyzabeth",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 97,
+        "slug": "eman",
+        "name": "Eman",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 98,
+        "slug": "emanat",
+        "name": "Emanat",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
         "rank": 99,
-        "slug": "dezmond",
-        "name": "Dezmond",
+        "slug": "emanuel",
+        "name": "Emanuel",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5778,8 +5784,8 @@
       },
       {
         "rank": 100,
-        "slug": "diamond",
-        "name": "Diamond",
+        "slug": "emanuelle",
+        "name": "Emanuelle",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5795,8 +5801,8 @@
   },
   "totals": {
     "entitiesRanked": 3697,
-    "unresearchedEntities": 2547,
+    "unresearchedEntities": 2447,
     "partialKnowledgeRecords": 0,
-    "fullyResearchedEntities": 1150
+    "fullyResearchedEntities": 1250
   }
 }

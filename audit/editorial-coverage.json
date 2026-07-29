@@ -1,74 +1,74 @@
 {
   "phase": "15A",
   "title": "Editorial Coverage Snapshot",
-  "generatedAt": "2026-07-28T14:50:54.735Z",
+  "generatedAt": "2026-07-29T01:58:28.517Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "measurementOnly": true,
   "overall": {
     "totalEntities": 3697,
-    "totalKnowledgeRecords": 1150,
-    "entitiesWithKnowledgeRecords": 1150,
-    "entitiesWithoutKnowledgeRecords": 2547,
-    "knowledgeRecordCoveragePct": 31.11,
-    "fullyResearchedEntities": 1150,
-    "fullyResearchedPct": 31.11,
+    "totalKnowledgeRecords": 1250,
+    "entitiesWithKnowledgeRecords": 1250,
+    "entitiesWithoutKnowledgeRecords": 2447,
+    "knowledgeRecordCoveragePct": 33.81,
+    "fullyResearchedEntities": 1250,
+    "fullyResearchedPct": 33.81,
     "partialKnowledgeRecords": 0,
     "partialKnowledgeRecordPct": 0,
     "partialAmongKnowledgeRecordsPct": 0,
-    "averageEditorialDomainsPerEntity": 1.87,
+    "averageEditorialDomainsPerEntity": 2.03,
     "averageEditorialDomainsPerKnowledgeRecord": 6,
     "medianEditorialDomainsPerEntity": 0,
     "maximumEditorialDomainsOnSingleEntity": 6,
-    "entitiesWithZeroEditorialDomains": 2547,
-    "entitiesWithFullEditorialDomains": 1150
+    "entitiesWithZeroEditorialDomains": 2447,
+    "entitiesWithFullEditorialDomains": 1250
   },
   "domainCoverage": {
     "origin": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     },
     "meaning": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     },
     "pronunciation": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     },
     "etymology": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     },
     "history": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     },
     "variants": {
-      "entitiesWithEditorial": 1150,
-      "entitiesWithoutEditorial": 2547,
-      "coveragePct": 31.11,
+      "entitiesWithEditorial": 1250,
+      "entitiesWithoutEditorial": 2447,
+      "coveragePct": 33.81,
       "coverageAmongKnowledgeRecordsPct": 100
     }
   },
   "distribution": {
-    "0": 2547,
+    "0": 2447,
     "1": 0,
     "2": 0,
     "3": 0,
     "4": 0,
     "5": 0,
-    "6": 1150
+    "6": 1250
   },
   "partialKnowledgeRecords": {
     "count": 0,
@@ -86,95 +86,106 @@
       {
         "value": "boy",
         "totalEntities": 1592,
-        "withKnowledgeRecord": 448,
-        "fullyResearched": 448,
+        "withKnowledgeRecord": 503,
+        "fullyResearched": 503,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 2688,
-        "knowledgeRecordCoveragePct": 28.14,
-        "fullyResearchedPct": 28.14,
-        "averageEditorialDomains": 1.69
+        "totalEditorialDomains": 3018,
+        "knowledgeRecordCoveragePct": 31.6,
+        "fullyResearchedPct": 31.6,
+        "averageEditorialDomains": 1.9
       },
       {
         "value": "girl",
         "totalEntities": 1446,
-        "withKnowledgeRecord": 410,
-        "fullyResearched": 410,
+        "withKnowledgeRecord": 443,
+        "fullyResearched": 443,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 2460,
-        "knowledgeRecordCoveragePct": 28.35,
-        "fullyResearchedPct": 28.35,
-        "averageEditorialDomains": 1.7
+        "totalEditorialDomains": 2658,
+        "knowledgeRecordCoveragePct": 30.64,
+        "fullyResearchedPct": 30.64,
+        "averageEditorialDomains": 1.84
       },
       {
         "value": "unisex",
         "totalEntities": 659,
-        "withKnowledgeRecord": 292,
-        "fullyResearched": 292,
+        "withKnowledgeRecord": 304,
+        "fullyResearched": 304,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 1752,
-        "knowledgeRecordCoveragePct": 44.31,
-        "fullyResearchedPct": 44.31,
-        "averageEditorialDomains": 2.66
+        "totalEditorialDomains": 1824,
+        "knowledgeRecordCoveragePct": 46.13,
+        "fullyResearchedPct": 46.13,
+        "averageEditorialDomains": 2.77
       }
     ],
     "language": [
       {
         "value": "Unknown",
-        "totalEntities": 2559,
+        "totalEntities": 2459,
         "withKnowledgeRecord": 12,
         "fullyResearched": 12,
         "partialKnowledgeRecord": 0,
         "totalEditorialDomains": 72,
-        "knowledgeRecordCoveragePct": 0.47,
-        "fullyResearchedPct": 0.47,
+        "knowledgeRecordCoveragePct": 0.49,
+        "fullyResearchedPct": 0.49,
         "averageEditorialDomains": 0.03
       },
       {
         "value": "English",
-        "totalEntities": 453,
-        "withKnowledgeRecord": 453,
-        "fullyResearched": 453,
+        "totalEntities": 508,
+        "withKnowledgeRecord": 508,
+        "fullyResearched": 508,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 2718,
+        "totalEditorialDomains": 3048,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Sanskrit",
-        "totalEntities": 131,
-        "withKnowledgeRecord": 131,
-        "fullyResearched": 131,
+        "totalEntities": 135,
+        "withKnowledgeRecord": 135,
+        "fullyResearched": 135,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 786,
+        "totalEditorialDomains": 810,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Hebrew",
-        "totalEntities": 92,
-        "withKnowledgeRecord": 92,
-        "fullyResearched": 92,
+        "totalEntities": 98,
+        "withKnowledgeRecord": 98,
+        "fullyResearched": 98,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 552,
+        "totalEditorialDomains": 588,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "French",
-        "totalEntities": 65,
-        "withKnowledgeRecord": 65,
-        "fullyResearched": 65,
+        "totalEntities": 70,
+        "withKnowledgeRecord": 70,
+        "fullyResearched": 70,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 390,
+        "totalEditorialDomains": 420,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Greek",
+        "totalEntities": 66,
+        "withKnowledgeRecord": 66,
+        "fullyResearched": 66,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 396,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Arabic",
         "totalEntities": 58,
         "withKnowledgeRecord": 58,
         "fullyResearched": 58,
@@ -185,29 +196,29 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Arabic",
-        "totalEntities": 55,
-        "withKnowledgeRecord": 55,
-        "fullyResearched": 55,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 330,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
         "value": "Latin",
-        "totalEntities": 51,
-        "withKnowledgeRecord": 51,
-        "fullyResearched": 51,
+        "totalEntities": 52,
+        "withKnowledgeRecord": 52,
+        "fullyResearched": 52,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 306,
+        "totalEditorialDomains": 312,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Italian",
+        "totalEntities": 36,
+        "withKnowledgeRecord": 36,
+        "fullyResearched": 36,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 216,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Irish",
         "totalEntities": 34,
         "withKnowledgeRecord": 34,
         "fullyResearched": 34,
@@ -218,12 +229,12 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Irish",
-        "totalEntities": 33,
-        "withKnowledgeRecord": 33,
-        "fullyResearched": 33,
+        "value": "German",
+        "totalEntities": 31,
+        "withKnowledgeRecord": 31,
+        "fullyResearched": 31,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 198,
+        "totalEditorialDomains": 186,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -240,23 +251,23 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "German",
-        "totalEntities": 29,
-        "withKnowledgeRecord": 29,
-        "fullyResearched": 29,
+        "value": "Punjabi",
+        "totalEntities": 26,
+        "withKnowledgeRecord": 26,
+        "fullyResearched": 26,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 174,
+        "totalEditorialDomains": 156,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
-        "value": "Punjabi",
-        "totalEntities": 24,
-        "withKnowledgeRecord": 24,
-        "fullyResearched": 24,
+        "value": "Russian",
+        "totalEntities": 14,
+        "withKnowledgeRecord": 14,
+        "fullyResearched": 14,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 144,
+        "totalEditorialDomains": 84,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -268,17 +279,6 @@
         "fullyResearched": 14,
         "partialKnowledgeRecord": 0,
         "totalEditorialDomains": 84,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Russian",
-        "totalEntities": 13,
-        "withKnowledgeRecord": 13,
-        "fullyResearched": 13,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 78,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -339,6 +339,17 @@
         "averageEditorialDomains": 6
       },
       {
+        "value": "Turkish",
+        "totalEntities": 4,
+        "withKnowledgeRecord": 4,
+        "fullyResearched": 4,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 24,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
         "value": "Igbo",
         "totalEntities": 3,
         "withKnowledgeRecord": 3,
@@ -361,12 +372,34 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Turkish",
+        "value": "Yoruba",
         "totalEntities": 3,
         "withKnowledgeRecord": 3,
         "fullyResearched": 3,
         "partialKnowledgeRecord": 0,
         "totalEditorialDomains": 18,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Chinese",
+        "totalEntities": 2,
+        "withKnowledgeRecord": 2,
+        "fullyResearched": 2,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 12,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Danish",
+        "totalEntities": 2,
+        "withKnowledgeRecord": 2,
+        "fullyResearched": 2,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 12,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -383,7 +416,18 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Yoruba",
+        "value": "Romanian",
+        "totalEntities": 2,
+        "withKnowledgeRecord": 2,
+        "fullyResearched": 2,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 12,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Wolof",
         "totalEntities": 2,
         "withKnowledgeRecord": 2,
         "fullyResearched": 2,
@@ -395,17 +439,6 @@
       },
       {
         "value": "Amharic",
-        "totalEntities": 1,
-        "withKnowledgeRecord": 1,
-        "fullyResearched": 1,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 6,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Danish",
         "totalEntities": 1,
         "withKnowledgeRecord": 1,
         "fullyResearched": 1,
@@ -449,7 +482,7 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Romanian",
+        "value": "Scottish Gaelic",
         "totalEntities": 1,
         "withKnowledgeRecord": 1,
         "fullyResearched": 1,
@@ -482,7 +515,18 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Wolof",
+        "value": "Urdu",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Vietnamese",
         "totalEntities": 1,
         "withKnowledgeRecord": 1,
         "fullyResearched": 1,
@@ -496,110 +540,110 @@
     "originCountry": [
       {
         "value": "Unknown",
-        "totalEntities": 2622,
+        "totalEntities": 2522,
         "withKnowledgeRecord": 75,
         "fullyResearched": 75,
         "partialKnowledgeRecord": 0,
         "totalEditorialDomains": 450,
-        "knowledgeRecordCoveragePct": 2.86,
-        "fullyResearchedPct": 2.86,
-        "averageEditorialDomains": 0.17
+        "knowledgeRecordCoveragePct": 2.97,
+        "fullyResearchedPct": 2.97,
+        "averageEditorialDomains": 0.18
       },
       {
         "value": "United Kingdom",
-        "totalEntities": 408,
-        "withKnowledgeRecord": 408,
-        "fullyResearched": 408,
+        "totalEntities": 430,
+        "withKnowledgeRecord": 430,
+        "fullyResearched": 430,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 2448,
+        "totalEditorialDomains": 2580,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "India",
-        "totalEntities": 158,
-        "withKnowledgeRecord": 158,
-        "fullyResearched": 158,
+        "totalEntities": 164,
+        "withKnowledgeRecord": 164,
+        "fullyResearched": 164,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 948,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Israel",
-        "totalEntities": 89,
-        "withKnowledgeRecord": 89,
-        "fullyResearched": 89,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 534,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Italy",
-        "totalEntities": 76,
-        "withKnowledgeRecord": 76,
-        "fullyResearched": 76,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 456,
+        "totalEditorialDomains": 984,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "United States",
-        "totalEntities": 68,
-        "withKnowledgeRecord": 68,
-        "fullyResearched": 68,
+        "totalEntities": 109,
+        "withKnowledgeRecord": 109,
+        "fullyResearched": 109,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 408,
+        "totalEditorialDomains": 654,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Israel",
+        "totalEntities": 93,
+        "withKnowledgeRecord": 93,
+        "fullyResearched": 93,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 558,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Italy",
+        "totalEntities": 78,
+        "withKnowledgeRecord": 78,
+        "fullyResearched": 78,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 468,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "France",
-        "totalEntities": 67,
-        "withKnowledgeRecord": 67,
-        "fullyResearched": 67,
+        "totalEntities": 71,
+        "withKnowledgeRecord": 71,
+        "fullyResearched": 71,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 402,
+        "totalEditorialDomains": 426,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Greece",
-        "totalEntities": 56,
-        "withKnowledgeRecord": 56,
-        "fullyResearched": 56,
+        "totalEntities": 58,
+        "withKnowledgeRecord": 58,
+        "fullyResearched": 58,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 336,
+        "totalEditorialDomains": 348,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Ireland",
-        "totalEntities": 32,
-        "withKnowledgeRecord": 32,
-        "fullyResearched": 32,
+        "totalEntities": 34,
+        "withKnowledgeRecord": 34,
+        "fullyResearched": 34,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 192,
+        "totalEditorialDomains": 204,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Germany",
-        "totalEntities": 29,
-        "withKnowledgeRecord": 29,
-        "fullyResearched": 29,
+        "totalEntities": 31,
+        "withKnowledgeRecord": 31,
+        "fullyResearched": 31,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 174,
+        "totalEditorialDomains": 186,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -617,22 +661,22 @@
       },
       {
         "value": "Russia",
-        "totalEntities": 11,
-        "withKnowledgeRecord": 11,
-        "fullyResearched": 11,
+        "totalEntities": 12,
+        "withKnowledgeRecord": 12,
+        "fullyResearched": 12,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 66,
+        "totalEditorialDomains": 72,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Nigeria",
-        "totalEntities": 9,
-        "withKnowledgeRecord": 9,
-        "fullyResearched": 9,
+        "totalEntities": 10,
+        "withKnowledgeRecord": 10,
+        "fullyResearched": 10,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 54,
+        "totalEditorialDomains": 60,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -650,6 +694,28 @@
       },
       {
         "value": "Arabia",
+        "totalEntities": 4,
+        "withKnowledgeRecord": 4,
+        "fullyResearched": 4,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 24,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Denmark",
+        "totalEntities": 4,
+        "withKnowledgeRecord": 4,
+        "fullyResearched": 4,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 24,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Senegal",
         "totalEntities": 4,
         "withKnowledgeRecord": 4,
         "fullyResearched": 4,
@@ -682,7 +748,7 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Denmark",
+        "value": "Poland",
         "totalEntities": 3,
         "withKnowledgeRecord": 3,
         "fullyResearched": 3,
@@ -693,7 +759,7 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Poland",
+        "value": "Scotland",
         "totalEntities": 3,
         "withKnowledgeRecord": 3,
         "fullyResearched": 3,
@@ -715,6 +781,17 @@
         "averageEditorialDomains": 6
       },
       {
+        "value": "China",
+        "totalEntities": 2,
+        "withKnowledgeRecord": 2,
+        "fullyResearched": 2,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 12,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
         "value": "Japan",
         "totalEntities": 2,
         "withKnowledgeRecord": 2,
@@ -727,28 +804,6 @@
       },
       {
         "value": "Portugal",
-        "totalEntities": 2,
-        "withKnowledgeRecord": 2,
-        "fullyResearched": 2,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 12,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Scotland",
-        "totalEntities": 2,
-        "withKnowledgeRecord": 2,
-        "fullyResearched": 2,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 12,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Senegal",
         "totalEntities": 2,
         "withKnowledgeRecord": 2,
         "fullyResearched": 2,
@@ -814,7 +869,40 @@
         "averageEditorialDomains": 6
       },
       {
+        "value": "Lebanon",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
         "value": "Morocco",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Netherlands",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Pakistan",
         "totalEntities": 1,
         "withKnowledgeRecord": 1,
         "fullyResearched": 1,
@@ -847,6 +935,28 @@
         "averageEditorialDomains": 6
       },
       {
+        "value": "Romania",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Saudi Arabia",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
         "value": "Serbia",
         "totalEntities": 1,
         "withKnowledgeRecord": 1,
@@ -867,12 +977,34 @@
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
+      },
+      {
+        "value": "Turkey",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Vietnam",
+        "totalEntities": 1,
+        "withKnowledgeRecord": 1,
+        "fullyResearched": 1,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 6,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
       }
     ],
     "originCluster": [
       {
         "value": "Unknown",
-        "totalEntities": 2547,
+        "totalEntities": 2447,
         "withKnowledgeRecord": 0,
         "fullyResearched": 0,
         "partialKnowledgeRecord": 0,
@@ -883,11 +1015,11 @@
       },
       {
         "value": "English",
-        "totalEntities": 428,
-        "withKnowledgeRecord": 428,
-        "fullyResearched": 428,
+        "totalEntities": 486,
+        "withKnowledgeRecord": 486,
+        "fullyResearched": 486,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 2568,
+        "totalEditorialDomains": 2916,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -905,88 +1037,88 @@
       },
       {
         "value": "Hebrew",
-        "totalEntities": 94,
-        "withKnowledgeRecord": 94,
-        "fullyResearched": 94,
+        "totalEntities": 100,
+        "withKnowledgeRecord": 100,
+        "fullyResearched": 100,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 564,
+        "totalEditorialDomains": 600,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Greek",
-        "totalEntities": 69,
-        "withKnowledgeRecord": 69,
-        "fullyResearched": 69,
+        "totalEntities": 77,
+        "withKnowledgeRecord": 77,
+        "fullyResearched": 77,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 414,
+        "totalEditorialDomains": 462,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "French",
-        "totalEntities": 65,
-        "withKnowledgeRecord": 65,
-        "fullyResearched": 65,
+        "totalEntities": 70,
+        "withKnowledgeRecord": 70,
+        "fullyResearched": 70,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 390,
+        "totalEditorialDomains": 420,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Latin",
-        "totalEntities": 65,
-        "withKnowledgeRecord": 65,
-        "fullyResearched": 65,
+        "totalEntities": 68,
+        "withKnowledgeRecord": 68,
+        "fullyResearched": 68,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 390,
+        "totalEditorialDomains": 408,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Arabic",
-        "totalEntities": 52,
-        "withKnowledgeRecord": 52,
-        "fullyResearched": 52,
+        "totalEntities": 56,
+        "withKnowledgeRecord": 56,
+        "fullyResearched": 56,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 312,
+        "totalEditorialDomains": 336,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Irish",
-        "totalEntities": 33,
-        "withKnowledgeRecord": 33,
-        "fullyResearched": 33,
+        "totalEntities": 35,
+        "withKnowledgeRecord": 35,
+        "fullyResearched": 35,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 198,
+        "totalEditorialDomains": 210,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "Italian",
-        "totalEntities": 30,
-        "withKnowledgeRecord": 30,
-        "fullyResearched": 30,
+        "totalEntities": 31,
+        "withKnowledgeRecord": 31,
+        "fullyResearched": 31,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 180,
+        "totalEditorialDomains": 186,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
       },
       {
         "value": "German",
-        "totalEntities": 28,
-        "withKnowledgeRecord": 28,
-        "fullyResearched": 28,
+        "totalEntities": 30,
+        "withKnowledgeRecord": 30,
+        "fullyResearched": 30,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 168,
+        "totalEditorialDomains": 180,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -1004,11 +1136,11 @@
       },
       {
         "value": "African",
-        "totalEntities": 25,
-        "withKnowledgeRecord": 25,
-        "fullyResearched": 25,
+        "totalEntities": 27,
+        "withKnowledgeRecord": 27,
+        "fullyResearched": 27,
         "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 150,
+        "totalEditorialDomains": 162,
         "knowledgeRecordCoveragePct": 100,
         "fullyResearchedPct": 100,
         "averageEditorialDomains": 6
@@ -1037,6 +1169,17 @@
       },
       {
         "value": "Scottish",
+        "totalEntities": 11,
+        "withKnowledgeRecord": 11,
+        "fullyResearched": 11,
+        "partialKnowledgeRecord": 0,
+        "totalEditorialDomains": 66,
+        "knowledgeRecordCoveragePct": 100,
+        "fullyResearchedPct": 100,
+        "averageEditorialDomains": 6
+      },
+      {
+        "value": "Nordic",
         "totalEntities": 10,
         "withKnowledgeRecord": 10,
         "fullyResearched": 10,
@@ -1047,7 +1190,7 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Nordic",
+        "value": "Russian",
         "totalEntities": 9,
         "withKnowledgeRecord": 9,
         "fullyResearched": 9,
@@ -1058,7 +1201,7 @@
         "averageEditorialDomains": 6
       },
       {
-        "value": "Russian",
+        "value": "Sanskrit",
         "totalEntities": 8,
         "withKnowledgeRecord": 8,
         "fullyResearched": 8,
@@ -1103,17 +1246,6 @@
       },
       {
         "value": "Japanese",
-        "totalEntities": 2,
-        "withKnowledgeRecord": 2,
-        "fullyResearched": 2,
-        "partialKnowledgeRecord": 0,
-        "totalEditorialDomains": 12,
-        "knowledgeRecordCoveragePct": 100,
-        "fullyResearchedPct": 100,
-        "averageEditorialDomains": 6
-      },
-      {
-        "value": "Sanskrit",
         "totalEntities": 2,
         "withKnowledgeRecord": 2,
         "fullyResearched": 2,
@@ -1170,12 +1302,12 @@
     ]
   },
   "editorialConcentration": {
-    "knowledgeRecordsPctOfUniverse": 31.11,
-    "unresearchedEntityCount": 2547,
-    "unresearchedEntityPct": 68.89,
+    "knowledgeRecordsPctOfUniverse": 33.81,
+    "unresearchedEntityCount": 2447,
+    "unresearchedEntityPct": 66.19,
     "legacyMetadataAvailable": {
-      "withLegacyMeaning": 1150,
-      "withLegacyOrigin": 1138,
+      "withLegacyMeaning": 1250,
+      "withLegacyOrigin": 1238,
       "withPopularity": 5
     }
   },

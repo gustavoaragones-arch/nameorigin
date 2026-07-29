@@ -1,0 +1,285 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "batch": 1,
+  "title": "Knowledge Record Expansion Wave 2A Batch 1 — Record Creation",
+  "generatedAt": "2026-07-29T01:58:31.469Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "batchSelection": {
+    "method": "phase16a_creation_order",
+    "scope": "create_knowledge_record_only",
+    "wave": 2,
+    "subwave": "2A",
+    "batch": 1,
+    "rankStart": 1,
+    "rankEnd": 100,
+    "batchesCompleteBeforeSelection": 0,
+    "profilePattern": "full_six_domain_creation",
+    "sourceArtifact": "audit/phase16a-expansion-intelligence.json",
+    "governanceReference": "audit/phase16b-governance-check.json",
+    "milestone": "Wave 2A entry",
+    "expectedKrCountAfter": 1250
+  },
+  "wave2Progress": {
+    "cumulativeKrTarget": 1250,
+    "cumulativeKrActual": 1250,
+    "batchesComplete": 1,
+    "unresearchedRemaining": 2447,
+    "milestone": "Wave 2A entry"
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true
+  },
+  "knowledgeRecordsBefore": 1150,
+  "knowledgeRecordsAfter": 1250,
+  "knowledgeRecordsAdded": 100,
+  "fullFiveDomainRecords": {
+    "before": 1150,
+    "after": 1250,
+    "increase": 100
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 1150,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 2547
+    },
+    "after": {
+      "fullyResearchedEntities": 1250,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 2447
+    }
+  },
+  "entityAccounting": {
+    "totalEntities": 3697,
+    "knowledgeRecordsPlusUnresearched": 3697,
+    "balanced": true
+  },
+  "duplicateCheck": {
+    "overlapWithPreBatchKnowledgeRecords": 0,
+    "batchKeysChecked": 100,
+    "pass": true
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "meaning": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "pronunciation": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "etymology": {
+        "count": 1150,
+        "pct": 31.11
+      },
+      "history": {
+        "count": 1150,
+        "pct": 31.11
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 1250,
+        "pct": 33.81
+      },
+      "meaning": {
+        "count": 1250,
+        "pct": 33.81
+      },
+      "pronunciation": {
+        "count": 1250,
+        "pct": 33.81
+      },
+      "etymology": {
+        "count": 1250,
+        "pct": 33.81
+      },
+      "history": {
+        "count": 1250,
+        "pct": 33.81
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 100,
+        "pct": 2.7
+      },
+      "meaning": {
+        "count": 100,
+        "pct": 2.7
+      },
+      "pronunciation": {
+        "count": 100,
+        "pct": 2.7
+      },
+      "etymology": {
+        "count": 100,
+        "pct": 2.7
+      },
+      "history": {
+        "count": 100,
+        "pct": 2.7
+      }
+    }
+  },
+  "batchCreation": {
+    "curatedCount": 100,
+    "names": [
+      "Aj",
+      "Ally-rose",
+      "Amelia-rose",
+      "An",
+      "Ann-sophie",
+      "Anna-eve",
+      "Anna-maria",
+      "Ava-rose",
+      "Awa",
+      "Bao",
+      "Bea",
+      "Constantine",
+      "Corbyn",
+      "Cordell",
+      "Cori",
+      "Corina",
+      "Cornelius",
+      "Corrado",
+      "Cortney",
+      "Cory",
+      "Cosette",
+      "Crosby",
+      "Crue",
+      "Cydney",
+      "Cypress",
+      "Dael",
+      "Daemon",
+      "Dakoda",
+      "Dalton",
+      "Damara",
+      "Daneen",
+      "Danelle",
+      "Danish",
+      "Danyka",
+      "Daren",
+      "Darion",
+      "Darla",
+      "Darnell",
+      "Darrell",
+      "Daven",
+      "Dawson",
+      "Daylen",
+      "Dayton",
+      "Deandre",
+      "Deckard",
+      "Decker",
+      "Deena",
+      "Deja",
+      "Delina",
+      "Delsa",
+      "Delta",
+      "Demarcus",
+      "Deniz",
+      "Denton",
+      "Deon",
+      "Derick",
+      "Desirae",
+      "Destin",
+      "Destinee",
+      "Devonte",
+      "Devrick",
+      "Devyn",
+      "Dezmond",
+      "Diedrich",
+      "Dilawar",
+      "Dixon",
+      "Donavan",
+      "Donte",
+      "Doreen",
+      "Dottie",
+      "Draven",
+      "Drayson",
+      "Drayton",
+      "Dre",
+      "Duy",
+      "Dwight",
+      "Easten",
+      "Eastyn",
+      "Eddy",
+      "Edie",
+      "Edison",
+      "Edric",
+      "Eesha",
+      "Efe",
+      "Effie",
+      "Egor",
+      "Eilidh",
+      "Eisa",
+      "Eitan",
+      "Ekaksh",
+      "Ekam",
+      "Ekamveer",
+      "Ekansh",
+      "Ekbir",
+      "El",
+      "Elan",
+      "Elana",
+      "Eldon",
+      "Elektra",
+      "Elhadj"
+    ],
+    "operation": "create_knowledge_record",
+    "domainsAssigned": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history",
+      "variants"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 31.05,
+    "averageAfter": 33.48
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "monotonicKrGrowth": true,
+    "targetKrCount": true,
+    "targetUnresearched": true,
+    "noPartialRecords": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "duplicatePreventionPass": true,
+    "entityAccountingPass": true,
+    "frozenLayersPass": true,
+    "governanceMet": true,
+    "wave1BaselinePreserved": true
+  }
+}
