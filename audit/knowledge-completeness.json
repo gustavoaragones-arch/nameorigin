@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T04:09:41.494Z",
+  "generatedAt": "2026-07-30T01:44:34.874Z",
   "phase": "10A",
   "title": "Knowledge Completeness Index",
   "baselineReference": "kci-activation-v1",
@@ -16,7 +16,7 @@
     "popularity": 5
   },
   "summary": {
-    "average": 52.96,
+    "average": 55.39,
     "median": 90,
     "min": 0,
     "max": 100
@@ -32,38 +32,38 @@
     ],
     "histogram": {
       "0": 1051,
-      "1-20": 596,
+      "1-20": 496,
       "21-40": 0,
       "41-60": 0,
       "61-80": 0,
-      "81-100": 2050
+      "81-100": 2150
     }
   },
   "domainCoverage": {
     "entityCount": 3697,
     "researchedOrigins": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "researchedMeanings": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "storedPronunciations": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "etymologyCoverage": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "historyCoverage": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "citationCoverage": {
-      "count": 2050,
-      "pct": 55.45
+      "count": 2150,
+      "pct": 58.16
     },
     "variantsCoverage": {
       "count": 2253,
@@ -34461,28 +34461,28 @@
     },
     {
       "slug": "nikolina",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "nikos",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34503,28 +34503,28 @@
     },
     {
       "slug": "nils",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "nimar",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34545,14 +34545,14 @@
     },
     {
       "slug": "nimrit",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34601,14 +34601,14 @@
     },
     {
       "slug": "nirvan",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34629,14 +34629,14 @@
     },
     {
       "slug": "nirvi",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34685,14 +34685,14 @@
     },
     {
       "slug": "nitara",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34741,28 +34741,28 @@
     },
     {
       "slug": "niyamat",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "nizar",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34825,14 +34825,14 @@
     },
     {
       "slug": "nolen",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34853,14 +34853,14 @@
     },
     {
       "slug": "noralie",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34881,14 +34881,14 @@
     },
     {
       "slug": "noreen",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34909,14 +34909,14 @@
     },
     {
       "slug": "norris",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34937,42 +34937,42 @@
     },
     {
       "slug": "nour",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "noura",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "noursine",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -34993,28 +34993,28 @@
     },
     {
       "slug": "novak",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "novaleigh",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35035,56 +35035,56 @@
     },
     {
       "slug": "nuha",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "nusaybah",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oneil",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oaklan",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35119,14 +35119,14 @@
     },
     {
       "slug": "oaklyn",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35147,14 +35147,14 @@
     },
     {
       "slug": "obadiah",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35175,28 +35175,28 @@
     },
     {
       "slug": "oberon",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "obinna",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35217,14 +35217,14 @@
     },
     {
       "slug": "ocie",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35245,42 +35245,42 @@
     },
     {
       "slug": "octavian",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "odell",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oden",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35315,14 +35315,14 @@
     },
     {
       "slug": "odile",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35357,14 +35357,14 @@
     },
     {
       "slug": "ojas",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35385,14 +35385,14 @@
     },
     {
       "slug": "ola",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35441,14 +35441,14 @@
     },
     {
       "slug": "olena",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35469,28 +35469,28 @@
     },
     {
       "slug": "oli",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "olin",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35553,28 +35553,28 @@
     },
     {
       "slug": "ollie",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "olsen",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35595,28 +35595,28 @@
     },
     {
       "slug": "oluwaferanmi",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oluwasemilore",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35637,42 +35637,42 @@
     },
     {
       "slug": "oluwatimilehin",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oluwatishe",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oluwatobi",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35693,84 +35693,84 @@
     },
     {
       "slug": "olyvia",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "omari",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "omid",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "omran",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "onkar",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "ons",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35791,14 +35791,14 @@
     },
     {
       "slug": "onyx",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35833,14 +35833,14 @@
     },
     {
       "slug": "opie",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35875,14 +35875,14 @@
     },
     {
       "slug": "oren",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35917,14 +35917,14 @@
     },
     {
       "slug": "oriana",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -35945,14 +35945,14 @@
     },
     {
       "slug": "orla",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36029,14 +36029,14 @@
     },
     {
       "slug": "osama",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36057,42 +36057,42 @@
     },
     {
       "slug": "oskar",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oslo",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "osman",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36141,14 +36141,14 @@
     },
     {
       "slug": "othman",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36225,28 +36225,28 @@
     },
     {
       "slug": "oumaima",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "oumou",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36267,28 +36267,28 @@
     },
     {
       "slug": "oviya",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "owais",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36309,56 +36309,56 @@
     },
     {
       "slug": "owyn",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "ozalee",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "ozzy",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "pacey",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36379,14 +36379,14 @@
     },
     {
       "slug": "page",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36407,28 +36407,28 @@
     },
     {
       "slug": "paisley",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "paityn",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36561,56 +36561,56 @@
     },
     {
       "slug": "paolo",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "papa",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "paradise",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "param",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36631,14 +36631,14 @@
     },
     {
       "slug": "pari",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36659,14 +36659,14 @@
     },
     {
       "slug": "parisa",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36715,56 +36715,56 @@
     },
     {
       "slug": "parneet",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "partap",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "parteek",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "parth",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36785,42 +36785,42 @@
     },
     {
       "slug": "parwaan",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "pascale",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "pasha",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36883,28 +36883,28 @@
     },
     {
       "slug": "patrina",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "patryk",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36953,14 +36953,14 @@
     },
     {
       "slug": "paulo",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -36995,14 +36995,14 @@
     },
     {
       "slug": "pavel",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37121,28 +37121,28 @@
     },
     {
       "slug": "paycen",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
     },
     {
       "slug": "payne",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37191,14 +37191,14 @@
     },
     {
       "slug": "peighton",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37219,14 +37219,14 @@
     },
     {
       "slug": "peneloppe",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37261,14 +37261,14 @@
     },
     {
       "slug": "percival",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37289,14 +37289,14 @@
     },
     {
       "slug": "perla",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37317,14 +37317,14 @@
     },
     {
       "slug": "persephone",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37359,14 +37359,14 @@
     },
     {
       "slug": "phaedra",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37387,14 +37387,14 @@
     },
     {
       "slug": "phelix",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37415,14 +37415,14 @@
     },
     {
       "slug": "pheonix",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37443,14 +37443,14 @@
     },
     {
       "slug": "philemon",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -37471,14 +37471,14 @@
     },
     {
       "slug": "philippa",
-      "score": 5,
+      "score": 95,
       "breakdown": {
-        "origin": 0,
-        "meaning": 0,
-        "pronunciation": 0,
-        "etymology": 0,
-        "history": 0,
-        "citations": 0,
+        "origin": 20,
+        "meaning": 20,
+        "pronunciation": 15,
+        "etymology": 15,
+        "history": 10,
+        "citations": 10,
         "variants": 5,
         "popularity": 0
       }
@@ -51837,7 +51837,7 @@
   "activation": {
     "citationRecords": true,
     "popularityRecords": true,
-    "citationRecordsCount": 2050,
+    "citationRecordsCount": 2150,
     "popularityRecordsCount": 5,
     "citationScoringActive": true,
     "popularityScoringActive": true
