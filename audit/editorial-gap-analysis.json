@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-31T04:46:42.368Z",
+  "generatedAt": "2026-07-31T05:13:07.070Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -3225,8 +3225,8 @@
     "highestPriorityOrigins": [
       {
         "value": "India",
-        "count": 366,
-        "totalPriority": 9275,
+        "count": 381,
+        "totalPriority": 9650,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3235,7 +3235,7 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.34,
+        "averagePriority": 25.33,
         "unresearchedPct": 0
       },
       {
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 463,
-        "totalPriority": 11575,
+        "count": 498,
+        "totalPriority": 12450,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3285,8 +3285,8 @@
       },
       {
         "value": "France",
-        "count": 155,
-        "totalPriority": 3875,
+        "count": 160,
+        "totalPriority": 4000,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 72,
-        "totalPriority": 1800,
+        "count": 74,
+        "totalPriority": 1850,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 489,
-        "totalPriority": 12225,
+        "count": 490,
+        "totalPriority": 12250,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3330,8 +3330,8 @@
       },
       {
         "value": "Nigeria",
-        "count": 16,
-        "totalPriority": 400,
+        "count": 17,
+        "totalPriority": 425,
         "unresearched": 0,
         "entities": [
           "adedamola",
@@ -3345,8 +3345,8 @@
       },
       {
         "value": "Germany",
-        "count": 56,
-        "totalPriority": 1400,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3375,8 +3375,8 @@
       },
       {
         "value": "Italy",
-        "count": 117,
-        "totalPriority": 2925,
+        "count": 125,
+        "totalPriority": 3125,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3390,20 +3390,21 @@
       },
       {
         "value": "Croatia",
-        "count": 2,
-        "totalPriority": 50,
+        "count": 3,
+        "totalPriority": 75,
         "unresearched": 0,
         "entities": [
           "adrijana",
-          "iva"
+          "iva",
+          "tomislav"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
       },
       {
         "value": "Morocco",
-        "count": 9,
-        "totalPriority": 225,
+        "count": 10,
+        "totalPriority": 250,
         "unresearched": 0,
         "entities": [
           "afnane",
@@ -3432,8 +3433,8 @@
       },
       {
         "value": "Denmark",
-        "count": 10,
-        "totalPriority": 250,
+        "count": 11,
+        "totalPriority": 275,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -3447,8 +3448,8 @@
       },
       {
         "value": "Russia",
-        "count": 27,
-        "totalPriority": 675,
+        "count": 34,
+        "totalPriority": 850,
         "unresearched": 0,
         "entities": [
           "akim",
@@ -3477,8 +3478,8 @@
       },
       {
         "value": "Spain",
-        "count": 45,
-        "totalPriority": 1125,
+        "count": 47,
+        "totalPriority": 1175,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -3535,8 +3536,8 @@
       },
       {
         "value": "Arabic",
-        "count": 139,
-        "totalPriority": 3475,
+        "count": 142,
+        "totalPriority": 3550,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3580,8 +3581,8 @@
       },
       {
         "value": "English",
-        "count": 932,
-        "totalPriority": 23300,
+        "count": 972,
+        "totalPriority": 24300,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3595,8 +3596,8 @@
       },
       {
         "value": "French",
-        "count": 180,
-        "totalPriority": 4500,
+        "count": 185,
+        "totalPriority": 4625,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3610,8 +3611,8 @@
       },
       {
         "value": "Greek",
-        "count": 81,
-        "totalPriority": 2025,
+        "count": 83,
+        "totalPriority": 2075,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3625,8 +3626,8 @@
       },
       {
         "value": "Yoruba",
-        "count": 8,
-        "totalPriority": 200,
+        "count": 9,
+        "totalPriority": 225,
         "unresearched": 0,
         "entities": [
           "adedamola",
@@ -3640,8 +3641,8 @@
       },
       {
         "value": "German",
-        "count": 56,
-        "totalPriority": 1400,
+        "count": 57,
+        "totalPriority": 1425,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3670,8 +3671,8 @@
       },
       {
         "value": "Latin",
-        "count": 52,
-        "totalPriority": 1300,
+        "count": 53,
+        "totalPriority": 1325,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3685,8 +3686,8 @@
       },
       {
         "value": "Italian",
-        "count": 74,
-        "totalPriority": 1850,
+        "count": 79,
+        "totalPriority": 1975,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3715,8 +3716,8 @@
       },
       {
         "value": "Punjabi",
-        "count": 136,
-        "totalPriority": 3400,
+        "count": 137,
+        "totalPriority": 3425,
         "unresearched": 0,
         "entities": [
           "agamdeep",
@@ -3760,8 +3761,8 @@
       },
       {
         "value": "Danish",
-        "count": 8,
-        "totalPriority": 200,
+        "count": 9,
+        "totalPriority": 225,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -3775,8 +3776,8 @@
       },
       {
         "value": "Russian",
-        "count": 29,
-        "totalPriority": 725,
+        "count": 36,
+        "totalPriority": 900,
         "unresearched": 0,
         "entities": [
           "akim",
@@ -3805,8 +3806,8 @@
       },
       {
         "value": "Spanish",
-        "count": 55,
-        "totalPriority": 1375,
+        "count": 57,
+        "totalPriority": 1425,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -3837,8 +3838,8 @@
       },
       {
         "value": "Arabic",
-        "count": 229,
-        "totalPriority": 5725,
+        "count": 240,
+        "totalPriority": 6000,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3852,8 +3853,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 235,
-        "totalPriority": 5875,
+        "count": 238,
+        "totalPriority": 5950,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3867,8 +3868,8 @@
       },
       {
         "value": "African",
-        "count": 47,
-        "totalPriority": 1175,
+        "count": 48,
+        "totalPriority": 1200,
         "unresearched": 0,
         "entities": [
           "abifoluwa",
@@ -3882,8 +3883,8 @@
       },
       {
         "value": "Persian",
-        "count": 35,
-        "totalPriority": 875,
+        "count": 36,
+        "totalPriority": 900,
         "unresearched": 0,
         "entities": [
           "abtin",
@@ -3897,8 +3898,8 @@
       },
       {
         "value": "English",
-        "count": 684,
-        "totalPriority": 17100,
+        "count": 701,
+        "totalPriority": 17525,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3927,8 +3928,8 @@
       },
       {
         "value": "Greek",
-        "count": 152,
-        "totalPriority": 3800,
+        "count": 160,
+        "totalPriority": 4000,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3942,8 +3943,8 @@
       },
       {
         "value": "German",
-        "count": 40,
-        "totalPriority": 1000,
+        "count": 45,
+        "totalPriority": 1125,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3957,8 +3958,8 @@
       },
       {
         "value": "Latin",
-        "count": 152,
-        "totalPriority": 3800,
+        "count": 171,
+        "totalPriority": 4275,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3987,8 +3988,8 @@
       },
       {
         "value": "Slavic",
-        "count": 37,
-        "totalPriority": 925,
+        "count": 43,
+        "totalPriority": 1075,
         "unresearched": 0,
         "entities": [
           "adrijana",
@@ -4032,8 +4033,8 @@
       },
       {
         "value": "Nordic",
-        "count": 18,
-        "totalPriority": 450,
+        "count": 20,
+        "totalPriority": 500,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -4107,8 +4108,8 @@
       },
       {
         "value": "Welsh",
-        "count": 19,
-        "totalPriority": 475,
+        "count": 20,
+        "totalPriority": 500,
         "unresearched": 0,
         "entities": [
           "bevan",
@@ -4125,8 +4126,8 @@
       {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 86486,
-        "unresearched": 493,
+        "totalPriority": 82712,
+        "unresearched": 456,
         "entities": [
           "anne-charlotte",
           "ashley-lynn",
@@ -4134,29 +4135,14 @@
           "ava-grace",
           "ava-marie"
         ],
-        "averagePriority": 59.81,
-        "unresearchedPct": 34.09
-      },
-      {
-        "value": "boy",
-        "count": 1592,
-        "totalPriority": 95057,
-        "unresearched": 541,
-        "entities": [
-          "copeland",
-          "corentin",
-          "cormac",
-          "crixus",
-          "cuyler"
-        ],
-        "averagePriority": 59.71,
-        "unresearchedPct": 33.98
+        "averagePriority": 57.2,
+        "unresearchedPct": 31.54
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 38201,
-        "unresearched": 213,
+        "totalPriority": 37589,
+        "unresearched": 207,
         "entities": [
           "avi",
           "cooper",
@@ -4164,8 +4150,23 @@
           "darby",
           "davie"
         ],
-        "averagePriority": 57.97,
-        "unresearchedPct": 32.32
+        "averagePriority": 57.04,
+        "unresearchedPct": 31.41
+      },
+      {
+        "value": "boy",
+        "count": 1592,
+        "totalPriority": 89243,
+        "unresearched": 484,
+        "entities": [
+          "copeland",
+          "corentin",
+          "cormac",
+          "crixus",
+          "cuyler"
+        ],
+        "averagePriority": 56.06,
+        "unresearchedPct": 30.4
       }
     ],
     "largestEditorialDeserts": [
@@ -4299,27 +4300,27 @@
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 1247
+        "count": 1147
       },
       {
         "domain": "meaning",
-        "count": 1247
+        "count": 1147
       },
       {
         "domain": "pronunciation",
-        "count": 1247
+        "count": 1147
       },
       {
         "domain": "etymology",
-        "count": 1247
+        "count": 1147
       },
       {
         "domain": "history",
-        "count": 1247
+        "count": 1147
       },
       {
         "domain": "variants",
-        "count": 1247
+        "count": 1147
       }
     ],
     "entitiesWithPopularityButNoKnowledgeRecord": []
@@ -5830,8 +5831,8 @@
   },
   "totals": {
     "entitiesRanked": 3697,
-    "unresearchedEntities": 1247,
+    "unresearchedEntities": 1147,
     "partialKnowledgeRecords": 0,
-    "fullyResearchedEntities": 2450
+    "fullyResearchedEntities": 2550
   }
 }

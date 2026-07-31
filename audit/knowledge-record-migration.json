@@ -1,19 +1,19 @@
 {
   "phase": "6A",
   "title": "Knowledge Record v2 Migration",
-  "generatedAt": "2026-07-31T04:46:43.464Z",
+  "generatedAt": "2026-07-31T05:13:09.122Z",
   "baselineReference": "knowledge-baseline-v2",
   "legacyCompatibilityActive": true,
   "totals": {
-    "records": 2450,
+    "records": 2550,
     "entities": 3697
   },
   "migrated": {
-    "originRecords": 2450,
-    "meaningRecords": 2450,
-    "pronunciationRecords": 2450,
-    "etymologyRecords": 2450,
-    "historyRecords": 2450
+    "originRecords": 2550,
+    "meaningRecords": 2550,
+    "pronunciationRecords": 2550,
+    "etymologyRecords": 2550,
+    "historyRecords": 2550
   },
   "migrationSuccessRatePct": 100,
   "validation": {
@@ -31,24 +31,24 @@
   "enrichmentSummary": {
     "legacy": {
       "entityCount": 3697,
-      "withOrigin": 2450,
-      "withMeaning": 2450,
-      "withPronunciation": 2450,
-      "withEtymology": 2450,
-      "withHistory": 2450
+      "withOrigin": 2550,
+      "withMeaning": 2550,
+      "withPronunciation": 2550,
+      "withEtymology": 2550,
+      "withHistory": 2550
     },
     "knowledgeRecord": {
       "entityCount": 3697,
-      "withOrigin": 2450,
-      "withMeaning": 2450,
-      "withPronunciation": 2450,
-      "withEtymology": 2450,
-      "withHistory": 2450
+      "withOrigin": 2550,
+      "withMeaning": 2550,
+      "withPronunciation": 2550,
+      "withEtymology": 2550,
+      "withHistory": 2550
     }
   },
   "kciImpact": {
-    "legacyAverage": 56.07,
-    "knowledgeAverage": 56.07,
+    "legacyAverage": 58.23,
+    "knowledgeAverage": 58.23,
     "legacyMax": 90,
     "knowledgeMax": 90,
     "identical": true
