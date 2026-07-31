@@ -1,0 +1,270 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "checkpoint": 13,
+  "title": "Knowledge Record Expansion Wave 2A — Halfway Governance Review",
+  "generatedAt": "2026-07-31T04:46:45.786Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "wave1EndState": {
+    "knowledgeRecords": 1150,
+    "fullyResearchedEntities": 1125,
+    "partialKnowledgeRecords": 0
+  },
+  "wave2StartState": {
+    "knowledgeRecords": 1150,
+    "fullyResearchedEntities": 1150,
+    "unresearchedEntities": 2547
+  },
+  "checkpointState": {
+    "knowledgeRecords": 2450,
+    "fullyResearchedEntities": 2450,
+    "unresearchedEntities": 1247,
+    "partialKnowledgeRecords": 0,
+    "entityAccountingBalanced": true
+  },
+  "wave2Expansion": {
+    "recordsCreated": 1300,
+    "plannedAtCheckpoint": 1300,
+    "batchesComplete": 13,
+    "batchesRemaining": 13,
+    "wave2CompletionPct": 50,
+    "plannedKrAtCheckpoint": 2450,
+    "plannedUnresearchedAtCheckpoint": 1247,
+    "onTrajectory": true
+  },
+  "domainCoverageAtCheckpoint": {
+    "origin": {
+      "before": 1150,
+      "after": 2450,
+      "increase": 1300,
+      "pctAfter": 66.27
+    },
+    "meaning": {
+      "before": 1150,
+      "after": 2450,
+      "increase": 1300,
+      "pctAfter": 66.27
+    },
+    "pronunciation": {
+      "before": 1150,
+      "after": 2450,
+      "increase": 1300,
+      "pctAfter": 66.27
+    },
+    "etymology": {
+      "before": 1150,
+      "after": 2450,
+      "increase": 1300,
+      "pctAfter": 66.27
+    },
+    "history": {
+      "before": 1150,
+      "after": 2450,
+      "increase": 1300,
+      "pctAfter": 66.27
+    }
+  },
+  "validationConsistency": {
+    "batchesReported": 13,
+    "batchesExpected": 13,
+    "allBatchesPresent": true,
+    "qaPassCount": 13,
+    "equivalencePassCount": 13,
+    "duplicatePreventionPassCount": 13,
+    "frozenLayerPassCount": 13,
+    "entityAccountingPassCount": 13,
+    "fullValidationPassCount": 13,
+    "totalRecordsCreated": 1300,
+    "cumulativeBaselinePreservedCount": 13
+  },
+  "batchProgress": [
+    {
+      "batch": 1,
+      "knowledgeRecordsBefore": 1150,
+      "knowledgeRecordsAfter": 1250,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 2447,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 2,
+      "knowledgeRecordsBefore": 1250,
+      "knowledgeRecordsAfter": 1350,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 2347,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 3,
+      "knowledgeRecordsBefore": 1350,
+      "knowledgeRecordsAfter": 1450,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 2247,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 4,
+      "knowledgeRecordsBefore": 1450,
+      "knowledgeRecordsAfter": 1550,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 2147,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 5,
+      "knowledgeRecordsBefore": 1550,
+      "knowledgeRecordsAfter": 1650,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 2047,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 6,
+      "knowledgeRecordsBefore": 1650,
+      "knowledgeRecordsAfter": 1750,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1947,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 7,
+      "knowledgeRecordsBefore": 1750,
+      "knowledgeRecordsAfter": 1850,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1847,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 8,
+      "knowledgeRecordsBefore": 1850,
+      "knowledgeRecordsAfter": 1950,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1747,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 9,
+      "knowledgeRecordsBefore": 1950,
+      "knowledgeRecordsAfter": 2050,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1647,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 10,
+      "knowledgeRecordsBefore": 2050,
+      "knowledgeRecordsAfter": 2150,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1547,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 11,
+      "knowledgeRecordsBefore": 2150,
+      "knowledgeRecordsAfter": 2250,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1447,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 12,
+      "knowledgeRecordsBefore": 2250,
+      "knowledgeRecordsAfter": 2350,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1347,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    },
+    {
+      "batch": 13,
+      "knowledgeRecordsBefore": 2350,
+      "knowledgeRecordsAfter": 2450,
+      "knowledgeRecordsAdded": 100,
+      "unresearchedAfter": 1247,
+      "partialAfter": 0,
+      "qaPass": true,
+      "equivalenceDifferences": 0,
+      "validationPass": true
+    }
+  ],
+  "infrastructureStability": {
+    "sharedWave2LibUnchanged": true,
+    "applyPipelineUnchanged": true,
+    "frozenLayerHashes": {
+      "kciEngine": "8e5c9f8993354e767b65bab371e3c9055fd3de498b664896be997bb23d5aee4a",
+      "kciActivation": "496b42777ae0cfc7eaf90af11d787270b305e68ee608b0d56c27ec75c590e472",
+      "popularityRegistry": "e0fbf6c07250231ad84dea868c6478541b6b9a2215d61ed5c3a8b80c301ed286",
+      "wave2Lib": "25de33c8ec16ea5777e43f758b457f81bcea2cb43e1a7520aedbbc814f1a5442",
+      "applyLib": "5b3473bcd4154f1288fd51f23ed7a1eeb58c7420a13032167bdb746578110619"
+    },
+    "governanceStatus": "FROZEN",
+    "batchesUsingIdenticalArchitecture": 13
+  },
+  "governanceVerification": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true,
+    "priorWave2BatchesImmutable": true,
+    "duplicatePreventionEffective": true,
+    "equivalencePreserved": true,
+    "entityAccountingMaintained": true,
+    "zeroPartialRecords": true
+  },
+  "kciImpact": {
+    "averageAtCheckpoint": 62.7,
+    "medianAtCheckpoint": 95
+  },
+  "milestone": {
+    "halfwayReview": true,
+    "earlyMajorityCoveragePassed": true,
+    "batchesUntilFullCorpus": 13
+  },
+  "validation": {
+    "allBatchesReported": true,
+    "allBatchesQaPass": true,
+    "allBatchesFullValidationPass": true,
+    "trajectoryOnPlan": true,
+    "entityAccountingPass": true,
+    "governanceMet": true,
+    "infrastructureStable": true,
+    "readyForSecondHalf": true
+  }
+}
