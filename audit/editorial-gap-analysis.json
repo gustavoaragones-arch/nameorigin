@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-07-31T05:13:07.070Z",
+  "generatedAt": "2026-07-31T13:04:36.685Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -20,134 +20,6 @@
     "note": "Priority scores are computed at audit time only and are not persisted to Knowledge Records or KCI."
   },
   "top100HighestPriority": [
-    {
-      "slug": "anne-charlotte",
-      "name": "Anne-charlotte",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 1
-    },
-    {
-      "slug": "ashley-lynn",
-      "name": "Ashley-lynn",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 2
-    },
-    {
-      "slug": "audrey-rose",
-      "name": "Audrey-rose",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 3
-    },
-    {
-      "slug": "ava-grace",
-      "name": "Ava-grace",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 4
-    },
     {
       "slug": "ava-marie",
       "name": "Ava-marie",
@@ -178,7 +50,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 5
+      "rank": 1
     },
     {
       "slug": "avi",
@@ -210,7 +82,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 6
+      "rank": 2
     },
     {
       "slug": "cooper",
@@ -242,7 +114,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 7
+      "rank": 3
     },
     {
       "slug": "copeland",
@@ -274,7 +146,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 8
+      "rank": 4
     },
     {
       "slug": "corentin",
@@ -306,7 +178,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 9
+      "rank": 5
     },
     {
       "slug": "corin",
@@ -338,7 +210,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 10
+      "rank": 6
     },
     {
       "slug": "cormac",
@@ -370,7 +242,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 11
+      "rank": 7
     },
     {
       "slug": "crixus",
@@ -402,7 +274,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 12
+      "rank": 8
     },
     {
       "slug": "cuyler",
@@ -434,7 +306,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 13
+      "rank": 9
     },
     {
       "slug": "cypher",
@@ -466,7 +338,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 14
+      "rank": 10
     },
     {
       "slug": "danijela",
@@ -498,7 +370,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 15
+      "rank": 11
     },
     {
       "slug": "danilynn",
@@ -530,7 +402,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 16
+      "rank": 12
     },
     {
       "slug": "danita",
@@ -562,7 +434,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 17
+      "rank": 13
     },
     {
       "slug": "darby",
@@ -594,7 +466,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 18
+      "rank": 14
     },
     {
       "slug": "dartagnan",
@@ -626,7 +498,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 19
+      "rank": 15
     },
     {
       "slug": "davida",
@@ -658,7 +530,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 20
+      "rank": 16
     },
     {
       "slug": "davie",
@@ -690,7 +562,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 21
+      "rank": 17
     },
     {
       "slug": "daymond",
@@ -722,7 +594,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 22
+      "rank": 18
     },
     {
       "slug": "daytona",
@@ -754,7 +626,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 23
+      "rank": 19
     },
     {
       "slug": "delbert",
@@ -786,7 +658,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 24
+      "rank": 20
     },
     {
       "slug": "delight",
@@ -818,7 +690,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 25
+      "rank": 21
     },
     {
       "slug": "delphi",
@@ -850,7 +722,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 26
+      "rank": 22
     },
     {
       "slug": "deluca",
@@ -882,7 +754,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 27
+      "rank": 23
     },
     {
       "slug": "delvin",
@@ -914,7 +786,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 28
+      "rank": 24
     },
     {
       "slug": "dempsey",
@@ -946,7 +818,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 29
+      "rank": 25
     },
     {
       "slug": "denver",
@@ -978,7 +850,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 30
+      "rank": 26
     },
     {
       "slug": "desta",
@@ -1010,7 +882,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 31
+      "rank": 27
     },
     {
       "slug": "devaughn",
@@ -1042,7 +914,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 32
+      "rank": 28
     },
     {
       "slug": "devlin",
@@ -1074,7 +946,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 33
+      "rank": 29
     },
     {
       "slug": "devlyn",
@@ -1106,7 +978,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 34
+      "rank": 30
     },
     {
       "slug": "devran",
@@ -1138,7 +1010,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 35
+      "rank": 31
     },
     {
       "slug": "dexter",
@@ -1170,7 +1042,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 36
+      "rank": 32
     },
     {
       "slug": "diamond",
@@ -1202,7 +1074,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 37
+      "rank": 33
     },
     {
       "slug": "dilnaaz",
@@ -1234,7 +1106,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 38
+      "rank": 34
     },
     {
       "slug": "dilnoor",
@@ -1266,7 +1138,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 39
+      "rank": 35
     },
     {
       "slug": "dilreet",
@@ -1298,7 +1170,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 40
+      "rank": 36
     },
     {
       "slug": "djamel",
@@ -1330,7 +1202,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 41
+      "rank": 37
     },
     {
       "slug": "dominion",
@@ -1362,7 +1234,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 42
+      "rank": 38
     },
     {
       "slug": "dresden",
@@ -1394,7 +1266,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 43
+      "rank": 39
     },
     {
       "slug": "dudley",
@@ -1426,7 +1298,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 44
+      "rank": 40
     },
     {
       "slug": "dutch",
@@ -1458,7 +1330,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 45
+      "rank": 41
     },
     {
       "slug": "dyk",
@@ -1490,7 +1362,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 46
+      "rank": 42
     },
     {
       "slug": "ebadat",
@@ -1522,7 +1394,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 47
+      "rank": 43
     },
     {
       "slug": "ebubechukwu",
@@ -1554,7 +1426,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 48
+      "rank": 44
     },
     {
       "slug": "ebunoluwa",
@@ -1586,7 +1458,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 49
+      "rank": 45
     },
     {
       "slug": "echo",
@@ -1618,7 +1490,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 50
+      "rank": 46
     },
     {
       "slug": "ecrin",
@@ -1650,7 +1522,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 51
+      "rank": 47
     },
     {
       "slug": "edelweiss",
@@ -1682,7 +1554,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 52
+      "rank": 48
     },
     {
       "slug": "ediz",
@@ -1714,7 +1586,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 53
+      "rank": 49
     },
     {
       "slug": "edvin",
@@ -1746,7 +1618,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 54
+      "rank": 50
     },
     {
       "slug": "efnan",
@@ -1778,7 +1650,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 55
+      "rank": 51
     },
     {
       "slug": "efosa",
@@ -1810,7 +1682,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 56
+      "rank": 52
     },
     {
       "slug": "efrata",
@@ -1842,7 +1714,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 57
+      "rank": 53
     },
     {
       "slug": "egypt",
@@ -1874,7 +1746,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 58
+      "rank": 54
     },
     {
       "slug": "ekagar",
@@ -1906,7 +1778,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 59
+      "rank": 55
     },
     {
       "slug": "ekamjot",
@@ -1938,7 +1810,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 60
+      "rank": 56
     },
     {
       "slug": "ekampreet",
@@ -1970,7 +1842,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 61
+      "rank": 57
     },
     {
       "slug": "ekas",
@@ -2002,7 +1874,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 62
+      "rank": 58
     },
     {
       "slug": "ekjot",
@@ -2034,7 +1906,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 63
+      "rank": 59
     },
     {
       "slug": "eknoor",
@@ -2066,7 +1938,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 64
+      "rank": 60
     },
     {
       "slug": "eldana",
@@ -2098,7 +1970,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 65
+      "rank": 61
     },
     {
       "slug": "eleftheria",
@@ -2130,7 +2002,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 66
+      "rank": 62
     },
     {
       "slug": "eleftherios",
@@ -2162,7 +2034,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 67
+      "rank": 63
     },
     {
       "slug": "elexis",
@@ -2194,7 +2066,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 68
+      "rank": 64
     },
     {
       "slug": "eliab",
@@ -2226,7 +2098,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 69
+      "rank": 65
     },
     {
       "slug": "eliel",
@@ -2258,7 +2130,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 70
+      "rank": 66
     },
     {
       "slug": "elilta",
@@ -2290,7 +2162,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 71
+      "rank": 67
     },
     {
       "slug": "elimelech",
@@ -2322,7 +2194,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 72
+      "rank": 68
     },
     {
       "slug": "ella-grace",
@@ -2354,7 +2226,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 73
+      "rank": 69
     },
     {
       "slug": "ellison",
@@ -2386,7 +2258,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 74
+      "rank": 70
     },
     {
       "slug": "elnathan",
@@ -2418,7 +2290,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 75
+      "rank": 71
     },
     {
       "slug": "elnaz",
@@ -2450,7 +2322,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 76
+      "rank": 72
     },
     {
       "slug": "elvin",
@@ -2482,7 +2354,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 77
+      "rank": 73
     },
     {
       "slug": "elvina",
@@ -2514,7 +2386,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 78
+      "rank": 74
     },
     {
       "slug": "elvis",
@@ -2546,7 +2418,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 79
+      "rank": 75
     },
     {
       "slug": "emanat",
@@ -2578,7 +2450,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 80
+      "rank": 76
     },
     {
       "slug": "ember",
@@ -2610,7 +2482,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 81
+      "rank": 77
     },
     {
       "slug": "emerald",
@@ -2642,7 +2514,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 82
+      "rank": 78
     },
     {
       "slug": "emeraude",
@@ -2674,7 +2546,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 83
+      "rank": 79
     },
     {
       "slug": "emma-grace",
@@ -2706,7 +2578,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 84
+      "rank": 80
     },
     {
       "slug": "emma-marie",
@@ -2738,7 +2610,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 85
+      "rank": 81
     },
     {
       "slug": "erdem",
@@ -2770,7 +2642,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 86
+      "rank": 82
     },
     {
       "slug": "ericson",
@@ -2802,7 +2674,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 87
+      "rank": 83
     },
     {
       "slug": "erline",
@@ -2834,7 +2706,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 88
+      "rank": 84
     },
     {
       "slug": "erva",
@@ -2866,7 +2738,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 89
+      "rank": 85
     },
     {
       "slug": "espen",
@@ -2898,7 +2770,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 90
+      "rank": 86
     },
     {
       "slug": "essence",
@@ -2930,7 +2802,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 91
+      "rank": 87
     },
     {
       "slug": "eternity",
@@ -2962,7 +2834,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 92
+      "rank": 88
     },
     {
       "slug": "ethaniel",
@@ -2994,7 +2866,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 93
+      "rank": 89
     },
     {
       "slug": "etinosa",
@@ -3026,7 +2898,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 94
+      "rank": 90
     },
     {
       "slug": "eudora",
@@ -3058,7 +2930,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 95
+      "rank": 91
     },
     {
       "slug": "eva-maude",
@@ -3090,7 +2962,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 96
+      "rank": 92
     },
     {
       "slug": "evdokia",
@@ -3122,7 +2994,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 97
+      "rank": 93
     },
     {
       "slug": "eve-laurie",
@@ -3154,7 +3026,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 98
+      "rank": 94
     },
     {
       "slug": "ever",
@@ -3186,7 +3058,7 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 99
+      "rank": 95
     },
     {
       "slug": "everest",
@@ -3218,6 +3090,134 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 96
+    },
+    {
+      "slug": "evolet",
+      "name": "Evolet",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 97
+    },
+    {
+      "slug": "evren",
+      "name": "Evren",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 98
+    },
+    {
+      "slug": "ezekielle",
+      "name": "Ezekielle",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 99
+    },
+    {
+      "slug": "ezriel",
+      "name": "Ezriel",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 100
     }
   ],
@@ -3225,8 +3225,8 @@
     "highestPriorityOrigins": [
       {
         "value": "India",
-        "count": 381,
-        "totalPriority": 9650,
+        "count": 388,
+        "totalPriority": 9825,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3235,13 +3235,13 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.33,
+        "averagePriority": 25.32,
         "unresearchedPct": 0
       },
       {
         "value": "Israel",
-        "count": 115,
-        "totalPriority": 2875,
+        "count": 123,
+        "totalPriority": 3075,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3255,8 +3255,8 @@
       },
       {
         "value": "Iran",
-        "count": 25,
-        "totalPriority": 625,
+        "count": 28,
+        "totalPriority": 700,
         "unresearched": 0,
         "entities": [
           "abtin",
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 498,
-        "totalPriority": 12450,
+        "count": 515,
+        "totalPriority": 12875,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3285,8 +3285,8 @@
       },
       {
         "value": "France",
-        "count": 160,
-        "totalPriority": 4000,
+        "count": 164,
+        "totalPriority": 4100,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 74,
-        "totalPriority": 1850,
+        "count": 76,
+        "totalPriority": 1900,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 490,
-        "totalPriority": 12250,
+        "count": 494,
+        "totalPriority": 12350,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3330,8 +3330,8 @@
       },
       {
         "value": "Nigeria",
-        "count": 17,
-        "totalPriority": 425,
+        "count": 18,
+        "totalPriority": 450,
         "unresearched": 0,
         "entities": [
           "adedamola",
@@ -3345,8 +3345,8 @@
       },
       {
         "value": "Germany",
-        "count": 58,
-        "totalPriority": 1450,
+        "count": 59,
+        "totalPriority": 1475,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3403,8 +3403,8 @@
       },
       {
         "value": "Morocco",
-        "count": 10,
-        "totalPriority": 250,
+        "count": 16,
+        "totalPriority": 400,
         "unresearched": 0,
         "entities": [
           "afnane",
@@ -3448,8 +3448,8 @@
       },
       {
         "value": "Russia",
-        "count": 34,
-        "totalPriority": 850,
+        "count": 37,
+        "totalPriority": 925,
         "unresearched": 0,
         "entities": [
           "akim",
@@ -3478,8 +3478,8 @@
       },
       {
         "value": "Spain",
-        "count": 47,
-        "totalPriority": 1175,
+        "count": 48,
+        "totalPriority": 1200,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -3493,8 +3493,8 @@
       },
       {
         "value": "Portugal",
-        "count": 5,
-        "totalPriority": 125,
+        "count": 6,
+        "totalPriority": 150,
         "unresearched": 0,
         "entities": [
           "almeida",
@@ -3536,8 +3536,8 @@
       },
       {
         "value": "Arabic",
-        "count": 142,
-        "totalPriority": 3550,
+        "count": 158,
+        "totalPriority": 3950,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3551,8 +3551,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 124,
-        "totalPriority": 3100,
+        "count": 132,
+        "totalPriority": 3300,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3566,8 +3566,8 @@
       },
       {
         "value": "Persian",
-        "count": 27,
-        "totalPriority": 675,
+        "count": 30,
+        "totalPriority": 750,
         "unresearched": 0,
         "entities": [
           "abtin",
@@ -3581,8 +3581,8 @@
       },
       {
         "value": "English",
-        "count": 972,
-        "totalPriority": 24300,
+        "count": 993,
+        "totalPriority": 24825,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3596,8 +3596,8 @@
       },
       {
         "value": "French",
-        "count": 185,
-        "totalPriority": 4625,
+        "count": 190,
+        "totalPriority": 4750,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3611,8 +3611,8 @@
       },
       {
         "value": "Greek",
-        "count": 83,
-        "totalPriority": 2075,
+        "count": 85,
+        "totalPriority": 2125,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3641,8 +3641,8 @@
       },
       {
         "value": "German",
-        "count": 57,
-        "totalPriority": 1425,
+        "count": 58,
+        "totalPriority": 1450,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3716,8 +3716,8 @@
       },
       {
         "value": "Punjabi",
-        "count": 137,
-        "totalPriority": 3425,
+        "count": 139,
+        "totalPriority": 3475,
         "unresearched": 0,
         "entities": [
           "agamdeep",
@@ -3776,8 +3776,8 @@
       },
       {
         "value": "Russian",
-        "count": 36,
-        "totalPriority": 900,
+        "count": 39,
+        "totalPriority": 975,
         "unresearched": 0,
         "entities": [
           "akim",
@@ -3806,8 +3806,8 @@
       },
       {
         "value": "Spanish",
-        "count": 57,
-        "totalPriority": 1425,
+        "count": 59,
+        "totalPriority": 1475,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -3838,8 +3838,8 @@
       },
       {
         "value": "Arabic",
-        "count": 240,
-        "totalPriority": 6000,
+        "count": 266,
+        "totalPriority": 6650,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3853,8 +3853,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 238,
-        "totalPriority": 5950,
+        "count": 252,
+        "totalPriority": 6300,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3868,8 +3868,8 @@
       },
       {
         "value": "African",
-        "count": 48,
-        "totalPriority": 1200,
+        "count": 50,
+        "totalPriority": 1250,
         "unresearched": 0,
         "entities": [
           "abifoluwa",
@@ -3883,8 +3883,8 @@
       },
       {
         "value": "Persian",
-        "count": 36,
-        "totalPriority": 900,
+        "count": 40,
+        "totalPriority": 1000,
         "unresearched": 0,
         "entities": [
           "abtin",
@@ -3898,8 +3898,8 @@
       },
       {
         "value": "English",
-        "count": 701,
-        "totalPriority": 17525,
+        "count": 710,
+        "totalPriority": 17750,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3913,8 +3913,8 @@
       },
       {
         "value": "French",
-        "count": 136,
-        "totalPriority": 3400,
+        "count": 138,
+        "totalPriority": 3450,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3928,8 +3928,8 @@
       },
       {
         "value": "Greek",
-        "count": 160,
-        "totalPriority": 4000,
+        "count": 167,
+        "totalPriority": 4175,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3943,8 +3943,8 @@
       },
       {
         "value": "German",
-        "count": 45,
-        "totalPriority": 1125,
+        "count": 47,
+        "totalPriority": 1175,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3988,8 +3988,8 @@
       },
       {
         "value": "Slavic",
-        "count": 43,
-        "totalPriority": 1075,
+        "count": 54,
+        "totalPriority": 1350,
         "unresearched": 0,
         "entities": [
           "adrijana",
@@ -4078,8 +4078,8 @@
       },
       {
         "value": "Spanish",
-        "count": 35,
-        "totalPriority": 875,
+        "count": 39,
+        "totalPriority": 975,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -4108,8 +4108,8 @@
       },
       {
         "value": "Welsh",
-        "count": 20,
-        "totalPriority": 500,
+        "count": 21,
+        "totalPriority": 525,
         "unresearched": 0,
         "entities": [
           "bevan",
@@ -4124,25 +4124,10 @@
     ],
     "highestPriorityGenders": [
       {
-        "value": "girl",
-        "count": 1446,
-        "totalPriority": 82712,
-        "unresearched": 456,
-        "entities": [
-          "anne-charlotte",
-          "ashley-lynn",
-          "audrey-rose",
-          "ava-grace",
-          "ava-marie"
-        ],
-        "averagePriority": 57.2,
-        "unresearchedPct": 31.54
-      },
-      {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 37589,
-        "unresearched": 207,
+        "totalPriority": 36569,
+        "unresearched": 197,
         "entities": [
           "avi",
           "cooper",
@@ -4150,14 +4135,29 @@
           "darby",
           "davie"
         ],
-        "averagePriority": 57.04,
-        "unresearchedPct": 31.41
+        "averagePriority": 55.49,
+        "unresearchedPct": 29.89
+      },
+      {
+        "value": "girl",
+        "count": 1446,
+        "totalPriority": 78836,
+        "unresearched": 418,
+        "entities": [
+          "ava-marie",
+          "danijela",
+          "danilynn",
+          "danita",
+          "davida"
+        ],
+        "averagePriority": 54.52,
+        "unresearchedPct": 28.91
       },
       {
         "value": "boy",
         "count": 1592,
-        "totalPriority": 89243,
-        "unresearched": 484,
+        "totalPriority": 83939,
+        "unresearched": 432,
         "entities": [
           "copeland",
           "corentin",
@@ -4165,31 +4165,11 @@
           "crixus",
           "cuyler"
         ],
-        "averagePriority": 56.06,
-        "unresearchedPct": 30.4
+        "averagePriority": 52.73,
+        "unresearchedPct": 27.14
       }
     ],
     "largestEditorialDeserts": [
-      {
-        "slug": "anne-charlotte",
-        "name": "Anne-charlotte",
-        "priorityScore": 127
-      },
-      {
-        "slug": "ashley-lynn",
-        "name": "Ashley-lynn",
-        "priorityScore": 127
-      },
-      {
-        "slug": "audrey-rose",
-        "name": "Audrey-rose",
-        "priorityScore": 127
-      },
-      {
-        "slug": "ava-grace",
-        "name": "Ava-grace",
-        "priorityScore": 127
-      },
       {
         "slug": "ava-marie",
         "name": "Ava-marie",
@@ -4294,33 +4274,53 @@
         "slug": "delight",
         "name": "Delight",
         "priorityScore": 127
+      },
+      {
+        "slug": "delphi",
+        "name": "Delphi",
+        "priorityScore": 127
+      },
+      {
+        "slug": "deluca",
+        "name": "Deluca",
+        "priorityScore": 127
+      },
+      {
+        "slug": "delvin",
+        "name": "Delvin",
+        "priorityScore": 127
+      },
+      {
+        "slug": "dempsey",
+        "name": "Dempsey",
+        "priorityScore": 127
       }
     ],
     "partialKnowledgeRecordSamples": [],
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 1147
+        "count": 1047
       },
       {
         "domain": "meaning",
-        "count": 1147
+        "count": 1047
       },
       {
         "domain": "pronunciation",
-        "count": 1147
+        "count": 1047
       },
       {
         "domain": "etymology",
-        "count": 1147
+        "count": 1047
       },
       {
         "domain": "history",
-        "count": 1147
+        "count": 1047
       },
       {
         "domain": "variants",
-        "count": 1147
+        "count": 1047
       }
     ],
     "entitiesWithPopularityButNoKnowledgeRecord": []
@@ -4329,8 +4329,8 @@
     "phase15BInput": [
       {
         "rank": 1,
-        "slug": "anne-charlotte",
-        "name": "Anne-charlotte",
+        "slug": "ava-marie",
+        "name": "Ava-marie",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4344,66 +4344,6 @@
       },
       {
         "rank": 2,
-        "slug": "ashley-lynn",
-        "name": "Ashley-lynn",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 3,
-        "slug": "audrey-rose",
-        "name": "Audrey-rose",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 4,
-        "slug": "ava-grace",
-        "name": "Ava-grace",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 5,
-        "slug": "ava-marie",
-        "name": "Ava-marie",
-        "action": "create_knowledge_record",
-        "missingDomains": [
-          "origin",
-          "meaning",
-          "pronunciation",
-          "etymology",
-          "history",
-          "variants"
-        ],
-        "priorityScore": 127
-      },
-      {
-        "rank": 6,
         "slug": "avi",
         "name": "Avi",
         "action": "create_knowledge_record",
@@ -4418,7 +4358,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 7,
+        "rank": 3,
         "slug": "cooper",
         "name": "Cooper",
         "action": "create_knowledge_record",
@@ -4433,7 +4373,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 8,
+        "rank": 4,
         "slug": "copeland",
         "name": "Copeland",
         "action": "create_knowledge_record",
@@ -4448,7 +4388,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 9,
+        "rank": 5,
         "slug": "corentin",
         "name": "Corentin",
         "action": "create_knowledge_record",
@@ -4463,7 +4403,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 10,
+        "rank": 6,
         "slug": "corin",
         "name": "Corin",
         "action": "create_knowledge_record",
@@ -4478,7 +4418,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 11,
+        "rank": 7,
         "slug": "cormac",
         "name": "Cormac",
         "action": "create_knowledge_record",
@@ -4493,7 +4433,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 12,
+        "rank": 8,
         "slug": "crixus",
         "name": "Crixus",
         "action": "create_knowledge_record",
@@ -4508,7 +4448,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 13,
+        "rank": 9,
         "slug": "cuyler",
         "name": "Cuyler",
         "action": "create_knowledge_record",
@@ -4523,7 +4463,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 14,
+        "rank": 10,
         "slug": "cypher",
         "name": "Cypher",
         "action": "create_knowledge_record",
@@ -4538,7 +4478,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 15,
+        "rank": 11,
         "slug": "danijela",
         "name": "Danijela",
         "action": "create_knowledge_record",
@@ -4553,7 +4493,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 16,
+        "rank": 12,
         "slug": "danilynn",
         "name": "Danilynn",
         "action": "create_knowledge_record",
@@ -4568,7 +4508,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 17,
+        "rank": 13,
         "slug": "danita",
         "name": "Danita",
         "action": "create_knowledge_record",
@@ -4583,7 +4523,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 18,
+        "rank": 14,
         "slug": "darby",
         "name": "Darby",
         "action": "create_knowledge_record",
@@ -4598,7 +4538,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 19,
+        "rank": 15,
         "slug": "dartagnan",
         "name": "D'artagnan",
         "action": "create_knowledge_record",
@@ -4613,7 +4553,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 20,
+        "rank": 16,
         "slug": "davida",
         "name": "Davida",
         "action": "create_knowledge_record",
@@ -4628,7 +4568,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 21,
+        "rank": 17,
         "slug": "davie",
         "name": "Davie",
         "action": "create_knowledge_record",
@@ -4643,7 +4583,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 22,
+        "rank": 18,
         "slug": "daymond",
         "name": "Daymond",
         "action": "create_knowledge_record",
@@ -4658,7 +4598,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 23,
+        "rank": 19,
         "slug": "daytona",
         "name": "Daytona",
         "action": "create_knowledge_record",
@@ -4673,7 +4613,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 24,
+        "rank": 20,
         "slug": "delbert",
         "name": "Delbert",
         "action": "create_knowledge_record",
@@ -4688,7 +4628,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 25,
+        "rank": 21,
         "slug": "delight",
         "name": "Delight",
         "action": "create_knowledge_record",
@@ -4703,7 +4643,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 26,
+        "rank": 22,
         "slug": "delphi",
         "name": "Delphi",
         "action": "create_knowledge_record",
@@ -4718,7 +4658,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 27,
+        "rank": 23,
         "slug": "deluca",
         "name": "Deluca",
         "action": "create_knowledge_record",
@@ -4733,7 +4673,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 28,
+        "rank": 24,
         "slug": "delvin",
         "name": "Delvin",
         "action": "create_knowledge_record",
@@ -4748,7 +4688,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 29,
+        "rank": 25,
         "slug": "dempsey",
         "name": "Dempsey",
         "action": "create_knowledge_record",
@@ -4763,7 +4703,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 30,
+        "rank": 26,
         "slug": "denver",
         "name": "Denver",
         "action": "create_knowledge_record",
@@ -4778,7 +4718,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 31,
+        "rank": 27,
         "slug": "desta",
         "name": "Desta",
         "action": "create_knowledge_record",
@@ -4793,7 +4733,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 32,
+        "rank": 28,
         "slug": "devaughn",
         "name": "Devaughn",
         "action": "create_knowledge_record",
@@ -4808,7 +4748,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 33,
+        "rank": 29,
         "slug": "devlin",
         "name": "Devlin",
         "action": "create_knowledge_record",
@@ -4823,7 +4763,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 34,
+        "rank": 30,
         "slug": "devlyn",
         "name": "Devlyn",
         "action": "create_knowledge_record",
@@ -4838,7 +4778,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 35,
+        "rank": 31,
         "slug": "devran",
         "name": "Devran",
         "action": "create_knowledge_record",
@@ -4853,7 +4793,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 36,
+        "rank": 32,
         "slug": "dexter",
         "name": "Dexter",
         "action": "create_knowledge_record",
@@ -4868,7 +4808,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 37,
+        "rank": 33,
         "slug": "diamond",
         "name": "Diamond",
         "action": "create_knowledge_record",
@@ -4883,7 +4823,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 38,
+        "rank": 34,
         "slug": "dilnaaz",
         "name": "Dilnaaz",
         "action": "create_knowledge_record",
@@ -4898,7 +4838,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 39,
+        "rank": 35,
         "slug": "dilnoor",
         "name": "Dilnoor",
         "action": "create_knowledge_record",
@@ -4913,7 +4853,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 40,
+        "rank": 36,
         "slug": "dilreet",
         "name": "Dilreet",
         "action": "create_knowledge_record",
@@ -4928,7 +4868,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 41,
+        "rank": 37,
         "slug": "djamel",
         "name": "Djamel",
         "action": "create_knowledge_record",
@@ -4943,7 +4883,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 42,
+        "rank": 38,
         "slug": "dominion",
         "name": "Dominion",
         "action": "create_knowledge_record",
@@ -4958,7 +4898,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 43,
+        "rank": 39,
         "slug": "dresden",
         "name": "Dresden",
         "action": "create_knowledge_record",
@@ -4973,7 +4913,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 44,
+        "rank": 40,
         "slug": "dudley",
         "name": "Dudley",
         "action": "create_knowledge_record",
@@ -4988,7 +4928,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 45,
+        "rank": 41,
         "slug": "dutch",
         "name": "Dutch",
         "action": "create_knowledge_record",
@@ -5003,7 +4943,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 46,
+        "rank": 42,
         "slug": "dyk",
         "name": "Dyk",
         "action": "create_knowledge_record",
@@ -5018,7 +4958,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 47,
+        "rank": 43,
         "slug": "ebadat",
         "name": "Ebadat",
         "action": "create_knowledge_record",
@@ -5033,7 +4973,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 48,
+        "rank": 44,
         "slug": "ebubechukwu",
         "name": "Ebubechukwu",
         "action": "create_knowledge_record",
@@ -5048,7 +4988,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 49,
+        "rank": 45,
         "slug": "ebunoluwa",
         "name": "Ebunoluwa",
         "action": "create_knowledge_record",
@@ -5063,7 +5003,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 50,
+        "rank": 46,
         "slug": "echo",
         "name": "Echo",
         "action": "create_knowledge_record",
@@ -5078,7 +5018,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 51,
+        "rank": 47,
         "slug": "ecrin",
         "name": "Ecrin",
         "action": "create_knowledge_record",
@@ -5093,7 +5033,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 52,
+        "rank": 48,
         "slug": "edelweiss",
         "name": "Edelweiss",
         "action": "create_knowledge_record",
@@ -5108,7 +5048,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 53,
+        "rank": 49,
         "slug": "ediz",
         "name": "Ediz",
         "action": "create_knowledge_record",
@@ -5123,7 +5063,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 54,
+        "rank": 50,
         "slug": "edvin",
         "name": "Edvin",
         "action": "create_knowledge_record",
@@ -5138,7 +5078,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 55,
+        "rank": 51,
         "slug": "efnan",
         "name": "Efnan",
         "action": "create_knowledge_record",
@@ -5153,7 +5093,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 56,
+        "rank": 52,
         "slug": "efosa",
         "name": "Efosa",
         "action": "create_knowledge_record",
@@ -5168,7 +5108,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 57,
+        "rank": 53,
         "slug": "efrata",
         "name": "Efrata",
         "action": "create_knowledge_record",
@@ -5183,7 +5123,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 58,
+        "rank": 54,
         "slug": "egypt",
         "name": "Egypt",
         "action": "create_knowledge_record",
@@ -5198,7 +5138,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 59,
+        "rank": 55,
         "slug": "ekagar",
         "name": "Ekagar",
         "action": "create_knowledge_record",
@@ -5213,7 +5153,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 60,
+        "rank": 56,
         "slug": "ekamjot",
         "name": "Ekamjot",
         "action": "create_knowledge_record",
@@ -5228,7 +5168,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 61,
+        "rank": 57,
         "slug": "ekampreet",
         "name": "Ekampreet",
         "action": "create_knowledge_record",
@@ -5243,7 +5183,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 62,
+        "rank": 58,
         "slug": "ekas",
         "name": "Ekas",
         "action": "create_knowledge_record",
@@ -5258,7 +5198,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 63,
+        "rank": 59,
         "slug": "ekjot",
         "name": "Ekjot",
         "action": "create_knowledge_record",
@@ -5273,7 +5213,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 64,
+        "rank": 60,
         "slug": "eknoor",
         "name": "Eknoor",
         "action": "create_knowledge_record",
@@ -5288,7 +5228,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 65,
+        "rank": 61,
         "slug": "eldana",
         "name": "Eldana",
         "action": "create_knowledge_record",
@@ -5303,7 +5243,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 66,
+        "rank": 62,
         "slug": "eleftheria",
         "name": "Eleftheria",
         "action": "create_knowledge_record",
@@ -5318,7 +5258,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 67,
+        "rank": 63,
         "slug": "eleftherios",
         "name": "Eleftherios",
         "action": "create_knowledge_record",
@@ -5333,7 +5273,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 68,
+        "rank": 64,
         "slug": "elexis",
         "name": "Elexis",
         "action": "create_knowledge_record",
@@ -5348,7 +5288,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 69,
+        "rank": 65,
         "slug": "eliab",
         "name": "Eliab",
         "action": "create_knowledge_record",
@@ -5363,7 +5303,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 70,
+        "rank": 66,
         "slug": "eliel",
         "name": "Eliel",
         "action": "create_knowledge_record",
@@ -5378,7 +5318,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 71,
+        "rank": 67,
         "slug": "elilta",
         "name": "Elilta",
         "action": "create_knowledge_record",
@@ -5393,7 +5333,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 72,
+        "rank": 68,
         "slug": "elimelech",
         "name": "Elimelech",
         "action": "create_knowledge_record",
@@ -5408,7 +5348,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 73,
+        "rank": 69,
         "slug": "ella-grace",
         "name": "Ella-grace",
         "action": "create_knowledge_record",
@@ -5423,7 +5363,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 74,
+        "rank": 70,
         "slug": "ellison",
         "name": "Ellison",
         "action": "create_knowledge_record",
@@ -5438,7 +5378,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 75,
+        "rank": 71,
         "slug": "elnathan",
         "name": "Elnathan",
         "action": "create_knowledge_record",
@@ -5453,7 +5393,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 76,
+        "rank": 72,
         "slug": "elnaz",
         "name": "Elnaz",
         "action": "create_knowledge_record",
@@ -5468,7 +5408,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 77,
+        "rank": 73,
         "slug": "elvin",
         "name": "Elvin",
         "action": "create_knowledge_record",
@@ -5483,7 +5423,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 78,
+        "rank": 74,
         "slug": "elvina",
         "name": "Elvina",
         "action": "create_knowledge_record",
@@ -5498,7 +5438,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 79,
+        "rank": 75,
         "slug": "elvis",
         "name": "Elvis",
         "action": "create_knowledge_record",
@@ -5513,7 +5453,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 80,
+        "rank": 76,
         "slug": "emanat",
         "name": "Emanat",
         "action": "create_knowledge_record",
@@ -5528,7 +5468,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 81,
+        "rank": 77,
         "slug": "ember",
         "name": "Ember",
         "action": "create_knowledge_record",
@@ -5543,7 +5483,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 82,
+        "rank": 78,
         "slug": "emerald",
         "name": "Emerald",
         "action": "create_knowledge_record",
@@ -5558,7 +5498,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 83,
+        "rank": 79,
         "slug": "emeraude",
         "name": "Emeraude",
         "action": "create_knowledge_record",
@@ -5573,7 +5513,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 84,
+        "rank": 80,
         "slug": "emma-grace",
         "name": "Emma-grace",
         "action": "create_knowledge_record",
@@ -5588,7 +5528,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 85,
+        "rank": 81,
         "slug": "emma-marie",
         "name": "Emma-marie",
         "action": "create_knowledge_record",
@@ -5603,7 +5543,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 86,
+        "rank": 82,
         "slug": "erdem",
         "name": "Erdem",
         "action": "create_knowledge_record",
@@ -5618,7 +5558,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 87,
+        "rank": 83,
         "slug": "ericson",
         "name": "Ericson",
         "action": "create_knowledge_record",
@@ -5633,7 +5573,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 88,
+        "rank": 84,
         "slug": "erline",
         "name": "Erline",
         "action": "create_knowledge_record",
@@ -5648,7 +5588,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 89,
+        "rank": 85,
         "slug": "erva",
         "name": "Erva",
         "action": "create_knowledge_record",
@@ -5663,7 +5603,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 90,
+        "rank": 86,
         "slug": "espen",
         "name": "Espen",
         "action": "create_knowledge_record",
@@ -5678,7 +5618,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 91,
+        "rank": 87,
         "slug": "essence",
         "name": "Essence",
         "action": "create_knowledge_record",
@@ -5693,7 +5633,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 92,
+        "rank": 88,
         "slug": "eternity",
         "name": "Eternity",
         "action": "create_knowledge_record",
@@ -5708,7 +5648,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 93,
+        "rank": 89,
         "slug": "ethaniel",
         "name": "Ethaniel",
         "action": "create_knowledge_record",
@@ -5723,7 +5663,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 94,
+        "rank": 90,
         "slug": "etinosa",
         "name": "Etinosa",
         "action": "create_knowledge_record",
@@ -5738,7 +5678,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 95,
+        "rank": 91,
         "slug": "eudora",
         "name": "Eudora",
         "action": "create_knowledge_record",
@@ -5753,7 +5693,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 96,
+        "rank": 92,
         "slug": "eva-maude",
         "name": "Eva-maude",
         "action": "create_knowledge_record",
@@ -5768,7 +5708,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 97,
+        "rank": 93,
         "slug": "evdokia",
         "name": "Evdokia",
         "action": "create_knowledge_record",
@@ -5783,7 +5723,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 98,
+        "rank": 94,
         "slug": "eve-laurie",
         "name": "Eve-laurie",
         "action": "create_knowledge_record",
@@ -5798,7 +5738,7 @@
         "priorityScore": 127
       },
       {
-        "rank": 99,
+        "rank": 95,
         "slug": "ever",
         "name": "Ever",
         "action": "create_knowledge_record",
@@ -5813,9 +5753,69 @@
         "priorityScore": 127
       },
       {
-        "rank": 100,
+        "rank": 96,
         "slug": "everest",
         "name": "Everest",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 97,
+        "slug": "evolet",
+        "name": "Evolet",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 98,
+        "slug": "evren",
+        "name": "Evren",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 99,
+        "slug": "ezekielle",
+        "name": "Ezekielle",
+        "action": "create_knowledge_record",
+        "missingDomains": [
+          "origin",
+          "meaning",
+          "pronunciation",
+          "etymology",
+          "history",
+          "variants"
+        ],
+        "priorityScore": 127
+      },
+      {
+        "rank": 100,
+        "slug": "ezriel",
+        "name": "Ezriel",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5831,8 +5831,8 @@
   },
   "totals": {
     "entitiesRanked": 3697,
-    "unresearchedEntities": 1147,
+    "unresearchedEntities": 1047,
     "partialKnowledgeRecords": 0,
-    "fullyResearchedEntities": 2550
+    "fullyResearchedEntities": 2650
   }
 }
