@@ -1,7 +1,7 @@
 {
   "phase": "15A",
   "title": "Editorial Gap Analysis & Prioritization",
-  "generatedAt": "2026-08-01T00:44:11.985Z",
+  "generatedAt": "2026-08-01T01:19:50.433Z",
   "baselineReference": "knowledge-record-v2",
   "readOnly": true,
   "planningReport": true,
@@ -21,8 +21,8 @@
   },
   "top100HighestPriority": [
     {
-      "slug": "kayla-marie",
-      "name": "Kayla-marie",
+      "slug": "mantra",
+      "name": "Mantra",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -43,7 +43,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -53,8 +53,8 @@
       "rank": 1
     },
     {
-      "slug": "kebron",
-      "name": "Kebron",
+      "slug": "manvik",
+      "name": "Manvik",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -85,8 +85,8 @@
       "rank": 2
     },
     {
-      "slug": "kelsey",
-      "name": "Kelsey",
+      "slug": "marie-pascale",
+      "name": "Marie-pascale",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -107,7 +107,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -117,8 +117,8 @@
       "rank": 3
     },
     {
-      "slug": "kemper",
-      "name": "Kemper",
+      "slug": "marie-pier",
+      "name": "Marie-pier",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -149,40 +149,8 @@
       "rank": 4
     },
     {
-      "slug": "kenrick",
-      "name": "Kenrick",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 5
-    },
-    {
-      "slug": "kestrel",
-      "name": "Kestrel",
+      "slug": "marie-rose",
+      "name": "Marie-rose",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -210,11 +178,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 6
+      "rank": 5
     },
     {
-      "slug": "kevonte",
-      "name": "Kevonte",
+      "slug": "marquise",
+      "name": "Marquise",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -235,7 +203,39 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 6
+    },
+    {
+      "slug": "marty",
+      "name": "Marty",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -245,8 +245,8 @@
       "rank": 7
     },
     {
-      "slug": "kevork",
-      "name": "Kevork",
+      "slug": "marvel",
+      "name": "Marvel",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -277,8 +277,8 @@
       "rank": 8
     },
     {
-      "slug": "kexin",
-      "name": "Kexin",
+      "slug": "masroor",
+      "name": "Masroor",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -299,7 +299,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -309,8 +309,8 @@
       "rank": 9
     },
     {
-      "slug": "khadidja",
-      "name": "Khadidja",
+      "slug": "matraca",
+      "name": "Matraca",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -341,8 +341,40 @@
       "rank": 10
     },
     {
-      "slug": "khushdeep",
-      "name": "Khushdeep",
+      "slug": "matyar",
+      "name": "Matyar",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 11
+    },
+    {
+      "slug": "maven",
+      "name": "Maven",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -370,43 +402,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 11
-    },
-    {
-      "slug": "khushnoor",
-      "name": "Khushnoor",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
       "rank": 12
     },
     {
-      "slug": "kinnon",
-      "name": "Kinnon",
+      "slug": "maverick",
+      "name": "Maverick",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -437,40 +437,8 @@
       "rank": 13
     },
     {
-      "slug": "kiranpreet",
-      "name": "Kiranpreet",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 14
-    },
-    {
-      "slug": "kirby",
-      "name": "Kirby",
+      "slug": "mavi",
+      "name": "Mavi",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -498,11 +466,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 15
+      "rank": 14
     },
     {
-      "slug": "kirtan",
-      "name": "Kirtan",
+      "slug": "mavik",
+      "name": "Mavik",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -530,11 +498,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 16
+      "rank": 15
     },
     {
-      "slug": "klover",
-      "name": "Klover",
+      "slug": "mavleen",
+      "name": "Mavleen",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -562,11 +530,43 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 16
+    },
+    {
+      "slug": "max-olivier",
+      "name": "Max-olivier",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 17
     },
     {
-      "slug": "knowledge",
-      "name": "Knowledge",
+      "slug": "maynard",
+      "name": "Maynard",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -597,8 +597,40 @@
       "rank": 18
     },
     {
-      "slug": "knoxley",
-      "name": "Knoxley",
+      "slug": "mazikeen",
+      "name": "Mazikeen",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 19
+    },
+    {
+      "slug": "medhansh",
+      "name": "Medhansh",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -626,11 +658,43 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 19
+      "rank": 20
     },
     {
-      "slug": "kobi",
-      "name": "Kobi",
+      "slug": "melorin",
+      "name": "Melorin",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 21
+    },
+    {
+      "slug": "memphis",
+      "name": "Memphis",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -658,75 +722,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 20
-    },
-    {
-      "slug": "kolter",
-      "name": "Kolter",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 21
-    },
-    {
-      "slug": "konrad",
-      "name": "Konrad",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
       "rank": 22
     },
     {
-      "slug": "konstantina",
-      "name": "Konstantina",
+      "slug": "menelik",
+      "name": "Menelik",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -747,7 +747,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -757,8 +757,8 @@
       "rank": 23
     },
     {
-      "slug": "kordell",
-      "name": "Kordell",
+      "slug": "micheline",
+      "name": "Micheline",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -779,7 +779,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -789,8 +789,8 @@
       "rank": 24
     },
     {
-      "slug": "kosta",
-      "name": "Kosta",
+      "slug": "milaap",
+      "name": "Milaap",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -811,7 +811,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -821,8 +821,8 @@
       "rank": 25
     },
     {
-      "slug": "krikor",
-      "name": "Krikor",
+      "slug": "milagros",
+      "name": "Milagros",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -843,7 +843,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -853,8 +853,8 @@
       "rank": 26
     },
     {
-      "slug": "krishan",
-      "name": "Krishan",
+      "slug": "miller",
+      "name": "Miller",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -875,7 +875,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -885,8 +885,8 @@
       "rank": 27
     },
     {
-      "slug": "krishika",
-      "name": "Krishika",
+      "slug": "ming",
+      "name": "Ming",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -907,7 +907,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -917,8 +917,8 @@
       "rank": 28
     },
     {
-      "slug": "krishvi",
-      "name": "Krishvi",
+      "slug": "miracle",
+      "name": "Miracle",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -939,7 +939,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -949,8 +949,8 @@
       "rank": 29
     },
     {
-      "slug": "krithvik",
-      "name": "Krithvik",
+      "slug": "mishika",
+      "name": "Mishika",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -971,7 +971,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -981,40 +981,8 @@
       "rank": 30
     },
     {
-      "slug": "kritika",
-      "name": "Kritika",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 31
-    },
-    {
-      "slug": "krzysztof",
-      "name": "Krzysztof",
+      "slug": "mithran",
+      "name": "Mithran",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1042,11 +1010,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 32
+      "rank": 31
     },
     {
-      "slug": "kudrat",
-      "name": "Kudrat",
+      "slug": "mitsuki",
+      "name": "Mitsuki",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1074,11 +1042,43 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 32
+    },
+    {
+      "slug": "mizuki",
+      "name": "Mizuki",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 33
     },
     {
-      "slug": "kulvir",
-      "name": "Kulvir",
+      "slug": "mohamed-amine",
+      "name": "Mohamed-amine",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1109,8 +1109,8 @@
       "rank": 34
     },
     {
-      "slug": "labeeb",
-      "name": "Labeeb",
+      "slug": "moncef",
+      "name": "Moncef",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1141,40 +1141,8 @@
       "rank": 35
     },
     {
-      "slug": "ladainian",
-      "name": "Ladainian",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 36
-    },
-    {
-      "slug": "lael",
-      "name": "Lael",
+      "slug": "monroe",
+      "name": "Monroe",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1202,11 +1170,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 37
+      "rank": 36
     },
     {
-      "slug": "lafleche",
-      "name": "Lafleche",
+      "slug": "montanna",
+      "name": "Montanna",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1227,7 +1195,39 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 37
+    },
+    {
+      "slug": "morireoluwa",
+      "name": "Morireoluwa",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1237,8 +1237,8 @@
       "rank": 38
     },
     {
-      "slug": "lagertha",
-      "name": "Lagertha",
+      "slug": "morning",
+      "name": "Morning",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1269,40 +1269,8 @@
       "rank": 39
     },
     {
-      "slug": "lamar",
-      "name": "Lamar",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 40
-    },
-    {
-      "slug": "lamine",
-      "name": "Lamine",
+      "slug": "mubashir",
+      "name": "Mubashir",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1330,11 +1298,43 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 40
+    },
+    {
+      "slug": "mumtaz",
+      "name": "Mumtaz",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 41
     },
     {
-      "slug": "larkin",
-      "name": "Larkin",
+      "slug": "munachimso",
+      "name": "Munachimso",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1365,40 +1365,8 @@
       "rank": 42
     },
     {
-      "slug": "larkyn",
-      "name": "Larkyn",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 43
-    },
-    {
-      "slug": "lathushan",
-      "name": "Lathushan",
+      "slug": "musab",
+      "name": "Musab",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1426,11 +1394,43 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 43
+    },
+    {
+      "slug": "nadar",
+      "name": "Nadar",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 44
     },
     {
-      "slug": "latrell",
-      "name": "Latrell",
+      "slug": "nadav",
+      "name": "Nadav",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1461,8 +1461,8 @@
       "rank": 45
     },
     {
-      "slug": "laurance",
-      "name": "Laurance",
+      "slug": "naetochukwu",
+      "name": "Naetochukwu",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1483,7 +1483,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1493,8 +1493,8 @@
       "rank": 46
     },
     {
-      "slug": "laurel",
-      "name": "Laurel",
+      "slug": "naftali",
+      "name": "Naftali",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1515,7 +1515,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1525,40 +1525,8 @@
       "rank": 47
     },
     {
-      "slug": "laurent",
-      "name": "Laurent",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 48
-    },
-    {
-      "slug": "laurie-jade",
-      "name": "Laurie-jade",
+      "slug": "naimal",
+      "name": "Naimal",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1586,11 +1554,43 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 48
+    },
+    {
+      "slug": "najib",
+      "name": "Najib",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 49
     },
     {
-      "slug": "laurie-pier",
-      "name": "Laurie-pier",
+      "slug": "nakshatra",
+      "name": "Nakshatra",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1621,8 +1621,8 @@
       "rank": 50
     },
     {
-      "slug": "laurier",
-      "name": "Laurier",
+      "slug": "nandini",
+      "name": "Nandini",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1643,7 +1643,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1653,8 +1653,8 @@
       "rank": 51
     },
     {
-      "slug": "lavender",
-      "name": "Lavender",
+      "slug": "nandita",
+      "name": "Nandita",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1685,72 +1685,8 @@
       "rank": 52
     },
     {
-      "slug": "lavin",
-      "name": "Lavin",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 53
-    },
-    {
-      "slug": "layton",
-      "name": "Layton",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 54
-    },
-    {
-      "slug": "lazarus",
-      "name": "Lazarus",
+      "slug": "narayan",
+      "name": "Narayan",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1778,11 +1714,75 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 53
+    },
+    {
+      "slug": "nardos",
+      "name": "Nardos",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 54
+    },
+    {
+      "slug": "natalija",
+      "name": "Natalija",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 55
     },
     {
-      "slug": "leandra",
-      "name": "Leandra",
+      "slug": "natalina",
+      "name": "Natalina",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1813,8 +1813,8 @@
       "rank": 56
     },
     {
-      "slug": "lemar",
-      "name": "Lemar",
+      "slug": "natsumi",
+      "name": "Natsumi",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1835,7 +1835,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1845,8 +1845,8 @@
       "rank": 57
     },
     {
-      "slug": "lennon",
-      "name": "Lennon",
+      "slug": "naturelle",
+      "name": "Naturelle",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1867,7 +1867,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1877,8 +1877,8 @@
       "rank": 58
     },
     {
-      "slug": "leo-paul",
-      "name": "Leo-paul",
+      "slug": "naunidh",
+      "name": "Naunidh",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1899,7 +1899,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1909,8 +1909,8 @@
       "rank": 59
     },
     {
-      "slug": "leod",
-      "name": "Leod",
+      "slug": "naunihal",
+      "name": "Naunihal",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -1931,7 +1931,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -1941,72 +1941,8 @@
       "rank": 60
     },
     {
-      "slug": "lestat",
-      "name": "Lestat",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 61
-    },
-    {
-      "slug": "levente",
-      "name": "Levente",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 62
-    },
-    {
-      "slug": "lexington",
-      "name": "Lexington",
+      "slug": "navdeep",
+      "name": "Navdeep",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2034,11 +1970,75 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 61
+    },
+    {
+      "slug": "naveen",
+      "name": "Naveen",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 62
+    },
+    {
+      "slug": "navira",
+      "name": "Navira",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 63
     },
     {
-      "slug": "liberty",
-      "name": "Liberty",
+      "slug": "navjit",
+      "name": "Navjit",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2069,8 +2069,8 @@
       "rank": 64
     },
     {
-      "slug": "lilian",
-      "name": "Lilian",
+      "slug": "navjot",
+      "name": "Navjot",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2101,8 +2101,8 @@
       "rank": 65
     },
     {
-      "slug": "lily-jade",
-      "name": "Lily-jade",
+      "slug": "navkiran",
+      "name": "Navkiran",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2133,8 +2133,8 @@
       "rank": 66
     },
     {
-      "slug": "lily-marie",
-      "name": "Lily-marie",
+      "slug": "navkirat",
+      "name": "Navkirat",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2155,7 +2155,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2165,8 +2165,8 @@
       "rank": 67
     },
     {
-      "slug": "lily-maude",
-      "name": "Lily-maude",
+      "slug": "navneet",
+      "name": "Navneet",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2187,7 +2187,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "unisex",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2197,8 +2197,8 @@
       "rank": 68
     },
     {
-      "slug": "lisa-marie",
-      "name": "Lisa-marie",
+      "slug": "navnoor",
+      "name": "Navnoor",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2229,8 +2229,40 @@
       "rank": 69
     },
     {
-      "slug": "loredana",
-      "name": "Loredana",
+      "slug": "navpreet",
+      "name": "Navpreet",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 70
+    },
+    {
+      "slug": "navreen",
+      "name": "Navreen",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2258,43 +2290,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 70
-    },
-    {
-      "slug": "lotfi",
-      "name": "Lotfi",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
       "rank": 71
     },
     {
-      "slug": "louis-alexandre",
-      "name": "Louis-alexandre",
+      "slug": "navreet",
+      "name": "Navreet",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2315,7 +2315,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2325,8 +2325,8 @@
       "rank": 72
     },
     {
-      "slug": "louis-arthur",
-      "name": "Louis-arthur",
+      "slug": "navroop",
+      "name": "Navroop",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2347,7 +2347,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2357,8 +2357,8 @@
       "rank": 73
     },
     {
-      "slug": "louis-charles",
-      "name": "Louis-charles",
+      "slug": "navrose",
+      "name": "Navrose",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2379,7 +2379,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2389,8 +2389,8 @@
       "rank": 74
     },
     {
-      "slug": "louis-david",
-      "name": "Louis-david",
+      "slug": "navtej",
+      "name": "Navtej",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2421,8 +2421,8 @@
       "rank": 75
     },
     {
-      "slug": "louis-emile",
-      "name": "Louis-emile",
+      "slug": "nazanin",
+      "name": "Nazanin",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2443,7 +2443,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "boy",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2453,8 +2453,8 @@
       "rank": 76
     },
     {
-      "slug": "louis-olivier",
-      "name": "Louis-olivier",
+      "slug": "nazareth",
+      "name": "Nazareth",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2485,8 +2485,8 @@
       "rank": 77
     },
     {
-      "slug": "louis-vincent",
-      "name": "Louis-vincent",
+      "slug": "nemanja",
+      "name": "Nemanja",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2517,8 +2517,8 @@
       "rank": 78
     },
     {
-      "slug": "lourdes",
-      "name": "Lourdes",
+      "slug": "nephtalie",
+      "name": "Nephtalie",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2549,8 +2549,72 @@
       "rank": 79
     },
     {
-      "slug": "lovepreet",
-      "name": "Lovepreet",
+      "slug": "nevada",
+      "name": "Nevada",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 80
+    },
+    {
+      "slug": "ngoc",
+      "name": "Ngoc",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "unisex",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 81
+    },
+    {
+      "slug": "nikosis",
+      "name": "Nikosis",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2578,75 +2642,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 80
-    },
-    {
-      "slug": "ludivine",
-      "name": "Ludivine",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 81
-    },
-    {
-      "slug": "ludmila",
-      "name": "Ludmila",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "girl",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
       "rank": 82
     },
     {
-      "slug": "ludovica",
-      "name": "Ludovica",
+      "slug": "nimit",
+      "name": "Nimit",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2667,7 +2667,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2677,8 +2677,8 @@
       "rank": 83
     },
     {
-      "slug": "luna-rose",
-      "name": "Luna-rose",
+      "slug": "niranjan",
+      "name": "Niranjan",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2699,7 +2699,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "girl",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2709,8 +2709,8 @@
       "rank": 84
     },
     {
-      "slug": "macarthur",
-      "name": "Macarthur",
+      "slug": "niroshan",
+      "name": "Niroshan",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2741,72 +2741,8 @@
       "rank": 85
     },
     {
-      "slug": "macgregor",
-      "name": "Macgregor",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 86
-    },
-    {
-      "slug": "mackinnon",
-      "name": "Mackinnon",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "boy",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 87
-    },
-    {
-      "slug": "madden",
-      "name": "Madden",
+      "slug": "nirvair",
+      "name": "Nirvair",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2834,11 +2770,75 @@
         "low_kci",
         "missing_core_domains"
       ],
+      "rank": 86
+    },
+    {
+      "slug": "nirvana",
+      "name": "Nirvana",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 87
+    },
+    {
+      "slug": "nishanth",
+      "name": "Nishanth",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
       "rank": 88
     },
     {
-      "slug": "mafalda",
-      "name": "Mafalda",
+      "slug": "nitanis",
+      "name": "Nitanis",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2869,8 +2869,8 @@
       "rank": 89
     },
     {
-      "slug": "majd",
-      "name": "Majd",
+      "slug": "nithushan",
+      "name": "Nithushan",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2891,7 +2891,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -2901,8 +2901,8 @@
       "rank": 90
     },
     {
-      "slug": "majesty",
-      "name": "Majesty",
+      "slug": "nivaaz",
+      "name": "Nivaaz",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -2933,72 +2933,8 @@
       "rank": 91
     },
     {
-      "slug": "mandeep",
-      "name": "Mandeep",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 92
-    },
-    {
-      "slug": "maninder",
-      "name": "Maninder",
-      "currentEditorialCompleteness": 0,
-      "editorialDomainCount": 0,
-      "populatedDomains": [],
-      "missingDomains": [
-        "origin",
-        "meaning",
-        "pronunciation",
-        "etymology",
-        "history",
-        "variants"
-      ],
-      "hasKnowledgeRecord": false,
-      "hasPartialKnowledgeRecord": false,
-      "hasCitationRecord": false,
-      "hasPopularityRecord": false,
-      "hasPopularity": false,
-      "currentKci": 0,
-      "originCountry": null,
-      "language": null,
-      "originCluster": null,
-      "gender": "unisex",
-      "priorityScore": 127,
-      "priorityReasons": [
-        "no_knowledge_record",
-        "low_kci",
-        "missing_core_domains"
-      ],
-      "rank": 93
-    },
-    {
-      "slug": "maninush",
-      "name": "Maninush",
+      "slug": "nivetha",
+      "name": "Nivetha",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3026,11 +2962,11 @@
         "low_kci",
         "missing_core_domains"
       ],
-      "rank": 94
+      "rank": 92
     },
     {
-      "slug": "manjot",
-      "name": "Manjot",
+      "slug": "noah-james",
+      "name": "Noah-james",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3051,7 +2987,71 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 93
+    },
+    {
+      "slug": "noland",
+      "name": "Noland",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "boy",
+      "priorityScore": 127,
+      "priorityReasons": [
+        "no_knowledge_record",
+        "low_kci",
+        "missing_core_domains"
+      ],
+      "rank": 94
+    },
+    {
+      "slug": "noorjot",
+      "name": "Noorjot",
+      "currentEditorialCompleteness": 0,
+      "editorialDomainCount": 0,
+      "populatedDomains": [],
+      "missingDomains": [
+        "origin",
+        "meaning",
+        "pronunciation",
+        "etymology",
+        "history",
+        "variants"
+      ],
+      "hasKnowledgeRecord": false,
+      "hasPartialKnowledgeRecord": false,
+      "hasCitationRecord": false,
+      "hasPopularityRecord": false,
+      "hasPopularity": false,
+      "currentKci": 0,
+      "originCountry": null,
+      "language": null,
+      "originCluster": null,
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -3061,8 +3061,8 @@
       "rank": 95
     },
     {
-      "slug": "mankirat",
-      "name": "Mankirat",
+      "slug": "norbert",
+      "name": "Norbert",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3083,7 +3083,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "boy",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -3093,8 +3093,8 @@
       "rank": 96
     },
     {
-      "slug": "manning",
-      "name": "Manning",
+      "slug": "north",
+      "name": "North",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3125,8 +3125,8 @@
       "rank": 97
     },
     {
-      "slug": "manraj",
-      "name": "Manraj",
+      "slug": "november",
+      "name": "November",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3147,7 +3147,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -3157,8 +3157,8 @@
       "rank": 98
     },
     {
-      "slug": "manreet",
-      "name": "Manreet",
+      "slug": "oakleigh",
+      "name": "Oakleigh",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3189,8 +3189,8 @@
       "rank": 99
     },
     {
-      "slug": "manroop",
-      "name": "Manroop",
+      "slug": "oaklynn",
+      "name": "Oaklynn",
       "currentEditorialCompleteness": 0,
       "editorialDomainCount": 0,
       "populatedDomains": [],
@@ -3211,7 +3211,7 @@
       "originCountry": null,
       "language": null,
       "originCluster": null,
-      "gender": "unisex",
+      "gender": "girl",
       "priorityScore": 127,
       "priorityReasons": [
         "no_knowledge_record",
@@ -3225,8 +3225,8 @@
     "highestPriorityOrigins": [
       {
         "value": "India",
-        "count": 485,
-        "totalPriority": 12250,
+        "count": 503,
+        "totalPriority": 12700,
         "unresearched": 0,
         "entities": [
           "aadi",
@@ -3235,13 +3235,13 @@
           "aaradhya",
           "aarnav"
         ],
-        "averagePriority": 25.26,
+        "averagePriority": 25.25,
         "unresearchedPct": 0
       },
       {
         "value": "Israel",
-        "count": 133,
-        "totalPriority": 3325,
+        "count": 136,
+        "totalPriority": 3400,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3270,8 +3270,8 @@
       },
       {
         "value": "United States",
-        "count": 628,
-        "totalPriority": 15700,
+        "count": 658,
+        "totalPriority": 16450,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3285,8 +3285,8 @@
       },
       {
         "value": "France",
-        "count": 189,
-        "totalPriority": 4725,
+        "count": 199,
+        "totalPriority": 4975,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3300,8 +3300,8 @@
       },
       {
         "value": "Greece",
-        "count": 83,
-        "totalPriority": 2075,
+        "count": 85,
+        "totalPriority": 2125,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3315,8 +3315,8 @@
       },
       {
         "value": "United Kingdom",
-        "count": 506,
-        "totalPriority": 12650,
+        "count": 508,
+        "totalPriority": 12700,
         "unresearched": 0,
         "entities": [
           "addison",
@@ -3345,8 +3345,8 @@
       },
       {
         "value": "Germany",
-        "count": 68,
-        "totalPriority": 1700,
+        "count": 69,
+        "totalPriority": 1725,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3360,8 +3360,8 @@
       },
       {
         "value": "Senegal",
-        "count": 15,
-        "totalPriority": 375,
+        "count": 16,
+        "totalPriority": 400,
         "unresearched": 0,
         "entities": [
           "adja",
@@ -3375,8 +3375,8 @@
       },
       {
         "value": "Italy",
-        "count": 135,
-        "totalPriority": 3375,
+        "count": 138,
+        "totalPriority": 3450,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3420,8 +3420,8 @@
       },
       {
         "value": "Ireland",
-        "count": 64,
-        "totalPriority": 1600,
+        "count": 67,
+        "totalPriority": 1675,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3435,8 +3435,8 @@
       },
       {
         "value": "Denmark",
-        "count": 11,
-        "totalPriority": 275,
+        "count": 12,
+        "totalPriority": 300,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -3495,15 +3495,15 @@
       },
       {
         "value": "Portugal",
-        "count": 6,
-        "totalPriority": 150,
+        "count": 7,
+        "totalPriority": 175,
         "unresearched": 0,
         "entities": [
           "almeida",
           "catarina",
           "emanuel",
           "evora",
-          "matilde"
+          "mafalda"
         ],
         "averagePriority": 25,
         "unresearchedPct": 0
@@ -3538,8 +3538,8 @@
       },
       {
         "value": "Arabic",
-        "count": 175,
-        "totalPriority": 4375,
+        "count": 178,
+        "totalPriority": 4450,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3553,8 +3553,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 148,
-        "totalPriority": 3700,
+        "count": 151,
+        "totalPriority": 3775,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3583,8 +3583,8 @@
       },
       {
         "value": "English",
-        "count": 1110,
-        "totalPriority": 27750,
+        "count": 1142,
+        "totalPriority": 28550,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3598,8 +3598,8 @@
       },
       {
         "value": "French",
-        "count": 216,
-        "totalPriority": 5400,
+        "count": 232,
+        "totalPriority": 5800,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3613,8 +3613,8 @@
       },
       {
         "value": "Greek",
-        "count": 91,
-        "totalPriority": 2275,
+        "count": 93,
+        "totalPriority": 2325,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3643,8 +3643,8 @@
       },
       {
         "value": "German",
-        "count": 68,
-        "totalPriority": 1700,
+        "count": 69,
+        "totalPriority": 1725,
         "unresearched": 0,
         "entities": [
           "adelaide",
@@ -3688,8 +3688,8 @@
       },
       {
         "value": "Italian",
-        "count": 89,
-        "totalPriority": 2225,
+        "count": 92,
+        "totalPriority": 2300,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3718,8 +3718,8 @@
       },
       {
         "value": "Punjabi",
-        "count": 218,
-        "totalPriority": 5450,
+        "count": 231,
+        "totalPriority": 5775,
         "unresearched": 0,
         "entities": [
           "agamdeep",
@@ -3733,8 +3733,8 @@
       },
       {
         "value": "Irish",
-        "count": 51,
-        "totalPriority": 1275,
+        "count": 54,
+        "totalPriority": 1350,
         "unresearched": 0,
         "entities": [
           "aiden",
@@ -3763,8 +3763,8 @@
       },
       {
         "value": "Danish",
-        "count": 9,
-        "totalPriority": 225,
+        "count": 10,
+        "totalPriority": 250,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -3808,8 +3808,8 @@
       },
       {
         "value": "Spanish",
-        "count": 68,
-        "totalPriority": 1700,
+        "count": 69,
+        "totalPriority": 1725,
         "unresearched": 0,
         "entities": [
           "alfonso",
@@ -3840,8 +3840,8 @@
       },
       {
         "value": "Arabic",
-        "count": 299,
-        "totalPriority": 7475,
+        "count": 305,
+        "totalPriority": 7625,
         "unresearched": 0,
         "entities": [
           "abbas",
@@ -3855,8 +3855,8 @@
       },
       {
         "value": "Hebrew",
-        "count": 289,
-        "totalPriority": 7225,
+        "count": 294,
+        "totalPriority": 7350,
         "unresearched": 0,
         "entities": [
           "abbygail",
@@ -3900,8 +3900,8 @@
       },
       {
         "value": "English",
-        "count": 783,
-        "totalPriority": 19575,
+        "count": 804,
+        "totalPriority": 20100,
         "unresearched": 0,
         "entities": [
           "aceson",
@@ -3915,8 +3915,8 @@
       },
       {
         "value": "French",
-        "count": 155,
-        "totalPriority": 3875,
+        "count": 171,
+        "totalPriority": 4275,
         "unresearched": 0,
         "entities": [
           "achille",
@@ -3930,8 +3930,8 @@
       },
       {
         "value": "Greek",
-        "count": 178,
-        "totalPriority": 4450,
+        "count": 180,
+        "totalPriority": 4500,
         "unresearched": 0,
         "entities": [
           "achilles",
@@ -3960,8 +3960,8 @@
       },
       {
         "value": "Latin",
-        "count": 195,
-        "totalPriority": 4875,
+        "count": 201,
+        "totalPriority": 5025,
         "unresearched": 0,
         "entities": [
           "adrian",
@@ -3975,8 +3975,8 @@
       },
       {
         "value": "Italian",
-        "count": 51,
-        "totalPriority": 1275,
+        "count": 53,
+        "totalPriority": 1325,
         "unresearched": 0,
         "entities": [
           "adriano",
@@ -3990,8 +3990,8 @@
       },
       {
         "value": "Slavic",
-        "count": 64,
-        "totalPriority": 1600,
+        "count": 68,
+        "totalPriority": 1700,
         "unresearched": 0,
         "entities": [
           "adrijana",
@@ -4035,8 +4035,8 @@
       },
       {
         "value": "Nordic",
-        "count": 23,
-        "totalPriority": 575,
+        "count": 25,
+        "totalPriority": 625,
         "unresearched": 0,
         "entities": [
           "aj",
@@ -4128,173 +4128,173 @@
       {
         "value": "girl",
         "count": 1446,
-        "totalPriority": 62822,
-        "unresearched": 261,
+        "totalPriority": 59456,
+        "unresearched": 228,
         "entities": [
-          "kayla-marie",
-          "kestrel",
-          "kexin",
-          "khadidja",
-          "khushnoor"
+          "marie-pascale",
+          "marie-rose",
+          "matraca",
+          "mavleen",
+          "mazikeen"
         ],
-        "averagePriority": 43.45,
-        "unresearchedPct": 18.05
+        "averagePriority": 41.12,
+        "unresearchedPct": 15.77
       },
       {
         "value": "boy",
         "count": 1592,
-        "totalPriority": 67925,
-        "unresearched": 275,
+        "totalPriority": 63743,
+        "unresearched": 234,
         "entities": [
-          "kebron",
-          "kenrick",
-          "kevonte",
-          "kevork",
-          "kirtan"
+          "mantra",
+          "manvik",
+          "marvel",
+          "masroor",
+          "matyar"
         ],
-        "averagePriority": 42.67,
-        "unresearchedPct": 17.27
+        "averagePriority": 40.04,
+        "unresearchedPct": 14.7
       },
       {
         "value": "unisex",
         "count": 659,
-        "totalPriority": 27797,
-        "unresearched": 111,
+        "totalPriority": 25145,
+        "unresearched": 85,
         "entities": [
-          "kelsey",
-          "kemper",
-          "khushdeep",
-          "kinnon",
-          "kirby"
+          "marie-pier",
+          "marquise",
+          "marty",
+          "maven",
+          "maverick"
         ],
-        "averagePriority": 42.18,
-        "unresearchedPct": 16.84
+        "averagePriority": 38.16,
+        "unresearchedPct": 12.9
       }
     ],
     "largestEditorialDeserts": [
       {
-        "slug": "kayla-marie",
-        "name": "Kayla-marie",
+        "slug": "mantra",
+        "name": "Mantra",
         "priorityScore": 127
       },
       {
-        "slug": "kebron",
-        "name": "Kebron",
+        "slug": "manvik",
+        "name": "Manvik",
         "priorityScore": 127
       },
       {
-        "slug": "kelsey",
-        "name": "Kelsey",
+        "slug": "marie-pascale",
+        "name": "Marie-pascale",
         "priorityScore": 127
       },
       {
-        "slug": "kemper",
-        "name": "Kemper",
+        "slug": "marie-pier",
+        "name": "Marie-pier",
         "priorityScore": 127
       },
       {
-        "slug": "kenrick",
-        "name": "Kenrick",
+        "slug": "marie-rose",
+        "name": "Marie-rose",
         "priorityScore": 127
       },
       {
-        "slug": "kestrel",
-        "name": "Kestrel",
+        "slug": "marquise",
+        "name": "Marquise",
         "priorityScore": 127
       },
       {
-        "slug": "kevonte",
-        "name": "Kevonte",
+        "slug": "marty",
+        "name": "Marty",
         "priorityScore": 127
       },
       {
-        "slug": "kevork",
-        "name": "Kevork",
+        "slug": "marvel",
+        "name": "Marvel",
         "priorityScore": 127
       },
       {
-        "slug": "kexin",
-        "name": "Kexin",
+        "slug": "masroor",
+        "name": "Masroor",
         "priorityScore": 127
       },
       {
-        "slug": "khadidja",
-        "name": "Khadidja",
+        "slug": "matraca",
+        "name": "Matraca",
         "priorityScore": 127
       },
       {
-        "slug": "khushdeep",
-        "name": "Khushdeep",
+        "slug": "matyar",
+        "name": "Matyar",
         "priorityScore": 127
       },
       {
-        "slug": "khushnoor",
-        "name": "Khushnoor",
+        "slug": "maven",
+        "name": "Maven",
         "priorityScore": 127
       },
       {
-        "slug": "kinnon",
-        "name": "Kinnon",
+        "slug": "maverick",
+        "name": "Maverick",
         "priorityScore": 127
       },
       {
-        "slug": "kiranpreet",
-        "name": "Kiranpreet",
+        "slug": "mavi",
+        "name": "Mavi",
         "priorityScore": 127
       },
       {
-        "slug": "kirby",
-        "name": "Kirby",
+        "slug": "mavik",
+        "name": "Mavik",
         "priorityScore": 127
       },
       {
-        "slug": "kirtan",
-        "name": "Kirtan",
+        "slug": "mavleen",
+        "name": "Mavleen",
         "priorityScore": 127
       },
       {
-        "slug": "klover",
-        "name": "Klover",
+        "slug": "max-olivier",
+        "name": "Max-olivier",
         "priorityScore": 127
       },
       {
-        "slug": "knowledge",
-        "name": "Knowledge",
+        "slug": "maynard",
+        "name": "Maynard",
         "priorityScore": 127
       },
       {
-        "slug": "knoxley",
-        "name": "Knoxley",
+        "slug": "mazikeen",
+        "name": "Mazikeen",
         "priorityScore": 127
       },
       {
-        "slug": "kobi",
-        "name": "Kobi",
+        "slug": "medhansh",
+        "name": "Medhansh",
         "priorityScore": 127
       },
       {
-        "slug": "kolter",
-        "name": "Kolter",
+        "slug": "melorin",
+        "name": "Melorin",
         "priorityScore": 127
       },
       {
-        "slug": "konrad",
-        "name": "Konrad",
+        "slug": "memphis",
+        "name": "Memphis",
         "priorityScore": 127
       },
       {
-        "slug": "konstantina",
-        "name": "Konstantina",
+        "slug": "menelik",
+        "name": "Menelik",
         "priorityScore": 127
       },
       {
-        "slug": "kordell",
-        "name": "Kordell",
+        "slug": "micheline",
+        "name": "Micheline",
         "priorityScore": 127
       },
       {
-        "slug": "kosta",
-        "name": "Kosta",
+        "slug": "milaap",
+        "name": "Milaap",
         "priorityScore": 127
       }
     ],
@@ -4302,27 +4302,27 @@
     "mostCommonMissingDomains": [
       {
         "domain": "origin",
-        "count": 647
+        "count": 547
       },
       {
         "domain": "meaning",
-        "count": 647
+        "count": 547
       },
       {
         "domain": "pronunciation",
-        "count": 647
+        "count": 547
       },
       {
         "domain": "etymology",
-        "count": 647
+        "count": 547
       },
       {
         "domain": "history",
-        "count": 647
+        "count": 547
       },
       {
         "domain": "variants",
-        "count": 647
+        "count": 547
       }
     ],
     "entitiesWithPopularityButNoKnowledgeRecord": []
@@ -4331,8 +4331,8 @@
     "phase15BInput": [
       {
         "rank": 1,
-        "slug": "kayla-marie",
-        "name": "Kayla-marie",
+        "slug": "mantra",
+        "name": "Mantra",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4346,8 +4346,8 @@
       },
       {
         "rank": 2,
-        "slug": "kebron",
-        "name": "Kebron",
+        "slug": "manvik",
+        "name": "Manvik",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4361,8 +4361,8 @@
       },
       {
         "rank": 3,
-        "slug": "kelsey",
-        "name": "Kelsey",
+        "slug": "marie-pascale",
+        "name": "Marie-pascale",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4376,8 +4376,8 @@
       },
       {
         "rank": 4,
-        "slug": "kemper",
-        "name": "Kemper",
+        "slug": "marie-pier",
+        "name": "Marie-pier",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4391,8 +4391,8 @@
       },
       {
         "rank": 5,
-        "slug": "kenrick",
-        "name": "Kenrick",
+        "slug": "marie-rose",
+        "name": "Marie-rose",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4406,8 +4406,8 @@
       },
       {
         "rank": 6,
-        "slug": "kestrel",
-        "name": "Kestrel",
+        "slug": "marquise",
+        "name": "Marquise",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4421,8 +4421,8 @@
       },
       {
         "rank": 7,
-        "slug": "kevonte",
-        "name": "Kevonte",
+        "slug": "marty",
+        "name": "Marty",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4436,8 +4436,8 @@
       },
       {
         "rank": 8,
-        "slug": "kevork",
-        "name": "Kevork",
+        "slug": "marvel",
+        "name": "Marvel",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4451,8 +4451,8 @@
       },
       {
         "rank": 9,
-        "slug": "kexin",
-        "name": "Kexin",
+        "slug": "masroor",
+        "name": "Masroor",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4466,8 +4466,8 @@
       },
       {
         "rank": 10,
-        "slug": "khadidja",
-        "name": "Khadidja",
+        "slug": "matraca",
+        "name": "Matraca",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4481,8 +4481,8 @@
       },
       {
         "rank": 11,
-        "slug": "khushdeep",
-        "name": "Khushdeep",
+        "slug": "matyar",
+        "name": "Matyar",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4496,8 +4496,8 @@
       },
       {
         "rank": 12,
-        "slug": "khushnoor",
-        "name": "Khushnoor",
+        "slug": "maven",
+        "name": "Maven",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4511,8 +4511,8 @@
       },
       {
         "rank": 13,
-        "slug": "kinnon",
-        "name": "Kinnon",
+        "slug": "maverick",
+        "name": "Maverick",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4526,8 +4526,8 @@
       },
       {
         "rank": 14,
-        "slug": "kiranpreet",
-        "name": "Kiranpreet",
+        "slug": "mavi",
+        "name": "Mavi",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4541,8 +4541,8 @@
       },
       {
         "rank": 15,
-        "slug": "kirby",
-        "name": "Kirby",
+        "slug": "mavik",
+        "name": "Mavik",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4556,8 +4556,8 @@
       },
       {
         "rank": 16,
-        "slug": "kirtan",
-        "name": "Kirtan",
+        "slug": "mavleen",
+        "name": "Mavleen",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4571,8 +4571,8 @@
       },
       {
         "rank": 17,
-        "slug": "klover",
-        "name": "Klover",
+        "slug": "max-olivier",
+        "name": "Max-olivier",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4586,8 +4586,8 @@
       },
       {
         "rank": 18,
-        "slug": "knowledge",
-        "name": "Knowledge",
+        "slug": "maynard",
+        "name": "Maynard",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4601,8 +4601,8 @@
       },
       {
         "rank": 19,
-        "slug": "knoxley",
-        "name": "Knoxley",
+        "slug": "mazikeen",
+        "name": "Mazikeen",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4616,8 +4616,8 @@
       },
       {
         "rank": 20,
-        "slug": "kobi",
-        "name": "Kobi",
+        "slug": "medhansh",
+        "name": "Medhansh",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4631,8 +4631,8 @@
       },
       {
         "rank": 21,
-        "slug": "kolter",
-        "name": "Kolter",
+        "slug": "melorin",
+        "name": "Melorin",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4646,8 +4646,8 @@
       },
       {
         "rank": 22,
-        "slug": "konrad",
-        "name": "Konrad",
+        "slug": "memphis",
+        "name": "Memphis",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4661,8 +4661,8 @@
       },
       {
         "rank": 23,
-        "slug": "konstantina",
-        "name": "Konstantina",
+        "slug": "menelik",
+        "name": "Menelik",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4676,8 +4676,8 @@
       },
       {
         "rank": 24,
-        "slug": "kordell",
-        "name": "Kordell",
+        "slug": "micheline",
+        "name": "Micheline",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4691,8 +4691,8 @@
       },
       {
         "rank": 25,
-        "slug": "kosta",
-        "name": "Kosta",
+        "slug": "milaap",
+        "name": "Milaap",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4706,8 +4706,8 @@
       },
       {
         "rank": 26,
-        "slug": "krikor",
-        "name": "Krikor",
+        "slug": "milagros",
+        "name": "Milagros",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4721,8 +4721,8 @@
       },
       {
         "rank": 27,
-        "slug": "krishan",
-        "name": "Krishan",
+        "slug": "miller",
+        "name": "Miller",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4736,8 +4736,8 @@
       },
       {
         "rank": 28,
-        "slug": "krishika",
-        "name": "Krishika",
+        "slug": "ming",
+        "name": "Ming",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4751,8 +4751,8 @@
       },
       {
         "rank": 29,
-        "slug": "krishvi",
-        "name": "Krishvi",
+        "slug": "miracle",
+        "name": "Miracle",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4766,8 +4766,8 @@
       },
       {
         "rank": 30,
-        "slug": "krithvik",
-        "name": "Krithvik",
+        "slug": "mishika",
+        "name": "Mishika",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4781,8 +4781,8 @@
       },
       {
         "rank": 31,
-        "slug": "kritika",
-        "name": "Kritika",
+        "slug": "mithran",
+        "name": "Mithran",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4796,8 +4796,8 @@
       },
       {
         "rank": 32,
-        "slug": "krzysztof",
-        "name": "Krzysztof",
+        "slug": "mitsuki",
+        "name": "Mitsuki",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4811,8 +4811,8 @@
       },
       {
         "rank": 33,
-        "slug": "kudrat",
-        "name": "Kudrat",
+        "slug": "mizuki",
+        "name": "Mizuki",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4826,8 +4826,8 @@
       },
       {
         "rank": 34,
-        "slug": "kulvir",
-        "name": "Kulvir",
+        "slug": "mohamed-amine",
+        "name": "Mohamed-amine",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4841,8 +4841,8 @@
       },
       {
         "rank": 35,
-        "slug": "labeeb",
-        "name": "Labeeb",
+        "slug": "moncef",
+        "name": "Moncef",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4856,8 +4856,8 @@
       },
       {
         "rank": 36,
-        "slug": "ladainian",
-        "name": "Ladainian",
+        "slug": "monroe",
+        "name": "Monroe",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4871,8 +4871,8 @@
       },
       {
         "rank": 37,
-        "slug": "lael",
-        "name": "Lael",
+        "slug": "montanna",
+        "name": "Montanna",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4886,8 +4886,8 @@
       },
       {
         "rank": 38,
-        "slug": "lafleche",
-        "name": "Lafleche",
+        "slug": "morireoluwa",
+        "name": "Morireoluwa",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4901,8 +4901,8 @@
       },
       {
         "rank": 39,
-        "slug": "lagertha",
-        "name": "Lagertha",
+        "slug": "morning",
+        "name": "Morning",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4916,8 +4916,8 @@
       },
       {
         "rank": 40,
-        "slug": "lamar",
-        "name": "Lamar",
+        "slug": "mubashir",
+        "name": "Mubashir",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4931,8 +4931,8 @@
       },
       {
         "rank": 41,
-        "slug": "lamine",
-        "name": "Lamine",
+        "slug": "mumtaz",
+        "name": "Mumtaz",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4946,8 +4946,8 @@
       },
       {
         "rank": 42,
-        "slug": "larkin",
-        "name": "Larkin",
+        "slug": "munachimso",
+        "name": "Munachimso",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4961,8 +4961,8 @@
       },
       {
         "rank": 43,
-        "slug": "larkyn",
-        "name": "Larkyn",
+        "slug": "musab",
+        "name": "Musab",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4976,8 +4976,8 @@
       },
       {
         "rank": 44,
-        "slug": "lathushan",
-        "name": "Lathushan",
+        "slug": "nadar",
+        "name": "Nadar",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -4991,8 +4991,8 @@
       },
       {
         "rank": 45,
-        "slug": "latrell",
-        "name": "Latrell",
+        "slug": "nadav",
+        "name": "Nadav",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5006,8 +5006,8 @@
       },
       {
         "rank": 46,
-        "slug": "laurance",
-        "name": "Laurance",
+        "slug": "naetochukwu",
+        "name": "Naetochukwu",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5021,8 +5021,8 @@
       },
       {
         "rank": 47,
-        "slug": "laurel",
-        "name": "Laurel",
+        "slug": "naftali",
+        "name": "Naftali",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5036,8 +5036,8 @@
       },
       {
         "rank": 48,
-        "slug": "laurent",
-        "name": "Laurent",
+        "slug": "naimal",
+        "name": "Naimal",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5051,8 +5051,8 @@
       },
       {
         "rank": 49,
-        "slug": "laurie-jade",
-        "name": "Laurie-jade",
+        "slug": "najib",
+        "name": "Najib",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5066,8 +5066,8 @@
       },
       {
         "rank": 50,
-        "slug": "laurie-pier",
-        "name": "Laurie-pier",
+        "slug": "nakshatra",
+        "name": "Nakshatra",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5081,8 +5081,8 @@
       },
       {
         "rank": 51,
-        "slug": "laurier",
-        "name": "Laurier",
+        "slug": "nandini",
+        "name": "Nandini",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5096,8 +5096,8 @@
       },
       {
         "rank": 52,
-        "slug": "lavender",
-        "name": "Lavender",
+        "slug": "nandita",
+        "name": "Nandita",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5111,8 +5111,8 @@
       },
       {
         "rank": 53,
-        "slug": "lavin",
-        "name": "Lavin",
+        "slug": "narayan",
+        "name": "Narayan",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5126,8 +5126,8 @@
       },
       {
         "rank": 54,
-        "slug": "layton",
-        "name": "Layton",
+        "slug": "nardos",
+        "name": "Nardos",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5141,8 +5141,8 @@
       },
       {
         "rank": 55,
-        "slug": "lazarus",
-        "name": "Lazarus",
+        "slug": "natalija",
+        "name": "Natalija",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5156,8 +5156,8 @@
       },
       {
         "rank": 56,
-        "slug": "leandra",
-        "name": "Leandra",
+        "slug": "natalina",
+        "name": "Natalina",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5171,8 +5171,8 @@
       },
       {
         "rank": 57,
-        "slug": "lemar",
-        "name": "Lemar",
+        "slug": "natsumi",
+        "name": "Natsumi",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5186,8 +5186,8 @@
       },
       {
         "rank": 58,
-        "slug": "lennon",
-        "name": "Lennon",
+        "slug": "naturelle",
+        "name": "Naturelle",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5201,8 +5201,8 @@
       },
       {
         "rank": 59,
-        "slug": "leo-paul",
-        "name": "Leo-paul",
+        "slug": "naunidh",
+        "name": "Naunidh",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5216,8 +5216,8 @@
       },
       {
         "rank": 60,
-        "slug": "leod",
-        "name": "Leod",
+        "slug": "naunihal",
+        "name": "Naunihal",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5231,8 +5231,8 @@
       },
       {
         "rank": 61,
-        "slug": "lestat",
-        "name": "Lestat",
+        "slug": "navdeep",
+        "name": "Navdeep",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5246,8 +5246,8 @@
       },
       {
         "rank": 62,
-        "slug": "levente",
-        "name": "Levente",
+        "slug": "naveen",
+        "name": "Naveen",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5261,8 +5261,8 @@
       },
       {
         "rank": 63,
-        "slug": "lexington",
-        "name": "Lexington",
+        "slug": "navira",
+        "name": "Navira",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5276,8 +5276,8 @@
       },
       {
         "rank": 64,
-        "slug": "liberty",
-        "name": "Liberty",
+        "slug": "navjit",
+        "name": "Navjit",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5291,8 +5291,8 @@
       },
       {
         "rank": 65,
-        "slug": "lilian",
-        "name": "Lilian",
+        "slug": "navjot",
+        "name": "Navjot",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5306,8 +5306,8 @@
       },
       {
         "rank": 66,
-        "slug": "lily-jade",
-        "name": "Lily-jade",
+        "slug": "navkiran",
+        "name": "Navkiran",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5321,8 +5321,8 @@
       },
       {
         "rank": 67,
-        "slug": "lily-marie",
-        "name": "Lily-marie",
+        "slug": "navkirat",
+        "name": "Navkirat",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5336,8 +5336,8 @@
       },
       {
         "rank": 68,
-        "slug": "lily-maude",
-        "name": "Lily-maude",
+        "slug": "navneet",
+        "name": "Navneet",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5351,8 +5351,8 @@
       },
       {
         "rank": 69,
-        "slug": "lisa-marie",
-        "name": "Lisa-marie",
+        "slug": "navnoor",
+        "name": "Navnoor",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5366,8 +5366,8 @@
       },
       {
         "rank": 70,
-        "slug": "loredana",
-        "name": "Loredana",
+        "slug": "navpreet",
+        "name": "Navpreet",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5381,8 +5381,8 @@
       },
       {
         "rank": 71,
-        "slug": "lotfi",
-        "name": "Lotfi",
+        "slug": "navreen",
+        "name": "Navreen",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5396,8 +5396,8 @@
       },
       {
         "rank": 72,
-        "slug": "louis-alexandre",
-        "name": "Louis-alexandre",
+        "slug": "navreet",
+        "name": "Navreet",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5411,8 +5411,8 @@
       },
       {
         "rank": 73,
-        "slug": "louis-arthur",
-        "name": "Louis-arthur",
+        "slug": "navroop",
+        "name": "Navroop",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5426,8 +5426,8 @@
       },
       {
         "rank": 74,
-        "slug": "louis-charles",
-        "name": "Louis-charles",
+        "slug": "navrose",
+        "name": "Navrose",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5441,8 +5441,8 @@
       },
       {
         "rank": 75,
-        "slug": "louis-david",
-        "name": "Louis-david",
+        "slug": "navtej",
+        "name": "Navtej",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5456,8 +5456,8 @@
       },
       {
         "rank": 76,
-        "slug": "louis-emile",
-        "name": "Louis-emile",
+        "slug": "nazanin",
+        "name": "Nazanin",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5471,8 +5471,8 @@
       },
       {
         "rank": 77,
-        "slug": "louis-olivier",
-        "name": "Louis-olivier",
+        "slug": "nazareth",
+        "name": "Nazareth",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5486,8 +5486,8 @@
       },
       {
         "rank": 78,
-        "slug": "louis-vincent",
-        "name": "Louis-vincent",
+        "slug": "nemanja",
+        "name": "Nemanja",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5501,8 +5501,8 @@
       },
       {
         "rank": 79,
-        "slug": "lourdes",
-        "name": "Lourdes",
+        "slug": "nephtalie",
+        "name": "Nephtalie",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5516,8 +5516,8 @@
       },
       {
         "rank": 80,
-        "slug": "lovepreet",
-        "name": "Lovepreet",
+        "slug": "nevada",
+        "name": "Nevada",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5531,8 +5531,8 @@
       },
       {
         "rank": 81,
-        "slug": "ludivine",
-        "name": "Ludivine",
+        "slug": "ngoc",
+        "name": "Ngoc",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5546,8 +5546,8 @@
       },
       {
         "rank": 82,
-        "slug": "ludmila",
-        "name": "Ludmila",
+        "slug": "nikosis",
+        "name": "Nikosis",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5561,8 +5561,8 @@
       },
       {
         "rank": 83,
-        "slug": "ludovica",
-        "name": "Ludovica",
+        "slug": "nimit",
+        "name": "Nimit",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5576,8 +5576,8 @@
       },
       {
         "rank": 84,
-        "slug": "luna-rose",
-        "name": "Luna-rose",
+        "slug": "niranjan",
+        "name": "Niranjan",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5591,8 +5591,8 @@
       },
       {
         "rank": 85,
-        "slug": "macarthur",
-        "name": "Macarthur",
+        "slug": "niroshan",
+        "name": "Niroshan",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5606,8 +5606,8 @@
       },
       {
         "rank": 86,
-        "slug": "macgregor",
-        "name": "Macgregor",
+        "slug": "nirvair",
+        "name": "Nirvair",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5621,8 +5621,8 @@
       },
       {
         "rank": 87,
-        "slug": "mackinnon",
-        "name": "Mackinnon",
+        "slug": "nirvana",
+        "name": "Nirvana",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5636,8 +5636,8 @@
       },
       {
         "rank": 88,
-        "slug": "madden",
-        "name": "Madden",
+        "slug": "nishanth",
+        "name": "Nishanth",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5651,8 +5651,8 @@
       },
       {
         "rank": 89,
-        "slug": "mafalda",
-        "name": "Mafalda",
+        "slug": "nitanis",
+        "name": "Nitanis",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5666,8 +5666,8 @@
       },
       {
         "rank": 90,
-        "slug": "majd",
-        "name": "Majd",
+        "slug": "nithushan",
+        "name": "Nithushan",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5681,8 +5681,8 @@
       },
       {
         "rank": 91,
-        "slug": "majesty",
-        "name": "Majesty",
+        "slug": "nivaaz",
+        "name": "Nivaaz",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5696,8 +5696,8 @@
       },
       {
         "rank": 92,
-        "slug": "mandeep",
-        "name": "Mandeep",
+        "slug": "nivetha",
+        "name": "Nivetha",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5711,8 +5711,8 @@
       },
       {
         "rank": 93,
-        "slug": "maninder",
-        "name": "Maninder",
+        "slug": "noah-james",
+        "name": "Noah-james",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5726,8 +5726,8 @@
       },
       {
         "rank": 94,
-        "slug": "maninush",
-        "name": "Maninush",
+        "slug": "noland",
+        "name": "Noland",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5741,8 +5741,8 @@
       },
       {
         "rank": 95,
-        "slug": "manjot",
-        "name": "Manjot",
+        "slug": "noorjot",
+        "name": "Noorjot",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5756,8 +5756,8 @@
       },
       {
         "rank": 96,
-        "slug": "mankirat",
-        "name": "Mankirat",
+        "slug": "norbert",
+        "name": "Norbert",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5771,8 +5771,8 @@
       },
       {
         "rank": 97,
-        "slug": "manning",
-        "name": "Manning",
+        "slug": "north",
+        "name": "North",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5786,8 +5786,8 @@
       },
       {
         "rank": 98,
-        "slug": "manraj",
-        "name": "Manraj",
+        "slug": "november",
+        "name": "November",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5801,8 +5801,8 @@
       },
       {
         "rank": 99,
-        "slug": "manreet",
-        "name": "Manreet",
+        "slug": "oakleigh",
+        "name": "Oakleigh",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5816,8 +5816,8 @@
       },
       {
         "rank": 100,
-        "slug": "manroop",
-        "name": "Manroop",
+        "slug": "oaklynn",
+        "name": "Oaklynn",
         "action": "create_knowledge_record",
         "missingDomains": [
           "origin",
@@ -5833,8 +5833,8 @@
   },
   "totals": {
     "entitiesRanked": 3697,
-    "unresearchedEntities": 647,
+    "unresearchedEntities": 547,
     "partialKnowledgeRecords": 0,
-    "fullyResearchedEntities": 3050
+    "fullyResearchedEntities": 3150
   }
 }
