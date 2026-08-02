@@ -1,0 +1,239 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "batch": 26,
+  "title": "Knowledge Record Expansion Wave 2A Batch 26 — Full Corpus Completion",
+  "generatedAt": "2026-08-02T03:35:41.361Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "cumulativeBaselineReference": "audit/phase15b-wave2-batch25-baseline.json",
+  "batchSelection": {
+    "method": "phase16a_creation_order",
+    "scope": "create_knowledge_record_only",
+    "wave": 2,
+    "subwave": "2A",
+    "batch": 26,
+    "rankStart": 2501,
+    "rankEnd": 2547,
+    "batchesCompleteBeforeSelection": 25,
+    "profilePattern": "full_six_domain_creation",
+    "sourceArtifact": "audit/phase16a-expansion-intelligence.json",
+    "governanceReference": "audit/phase16b-governance-check.json",
+    "cumulativeBaselineReference": "audit/phase15b-wave2-batch25-baseline.json",
+    "expectedKrCountAfter": 3697,
+    "milestone": "Full corpus",
+    "finalBatch": true,
+    "recordCount": 47
+  },
+  "wave2Progress": {
+    "cumulativeKrTarget": 3697,
+    "cumulativeKrActual": 3697,
+    "batchesComplete": 26,
+    "unresearchedRemaining": 0,
+    "milestone": "Full corpus",
+    "wave2Complete": true
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true,
+    "priorWave2BatchesImmutable": true
+  },
+  "knowledgeRecordsBefore": 3650,
+  "knowledgeRecordsAfter": 3697,
+  "knowledgeRecordsAdded": 47,
+  "fullFiveDomainRecords": {
+    "before": 3650,
+    "after": 3697,
+    "increase": 47
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 3650,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 47
+    },
+    "after": {
+      "fullyResearchedEntities": 3697,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 0
+    }
+  },
+  "entityAccounting": {
+    "totalEntities": 3697,
+    "knowledgeRecordsPlusUnresearched": 3697,
+    "balanced": true
+  },
+  "duplicateCheck": {
+    "overlapWithPreBatchKnowledgeRecords": 0,
+    "batchKeysChecked": 47,
+    "pass": true
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "meaning": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "pronunciation": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "etymology": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "history": {
+        "count": 3650,
+        "pct": 98.73
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 3697,
+        "pct": 100
+      },
+      "meaning": {
+        "count": 3697,
+        "pct": 100
+      },
+      "pronunciation": {
+        "count": 3697,
+        "pct": 100
+      },
+      "etymology": {
+        "count": 3697,
+        "pct": 100
+      },
+      "history": {
+        "count": 3697,
+        "pct": 100
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 47,
+        "pct": 1.27
+      },
+      "meaning": {
+        "count": 47,
+        "pct": 1.27
+      },
+      "pronunciation": {
+        "count": 47,
+        "pct": 1.27
+      },
+      "etymology": {
+        "count": 47,
+        "pct": 1.27
+      },
+      "history": {
+        "count": 47,
+        "pct": 1.27
+      }
+    }
+  },
+  "batchCreation": {
+    "curatedCount": 47,
+    "names": [
+      "Yariel",
+      "Yaroslav",
+      "Yasha",
+      "Yechiel",
+      "Yehudis",
+      "Yemariam",
+      "Yennefer",
+      "Yicheng",
+      "Yiming",
+      "Yining",
+      "Yitty",
+      "Yoadan",
+      "Yocheved",
+      "Yoram",
+      "Yorkabel",
+      "Yoselin",
+      "Yostina",
+      "Yotam",
+      "Yuri",
+      "Yutong",
+      "Yuvansh",
+      "Yuvika",
+      "Yuvleen",
+      "Zabella",
+      "Zabrina",
+      "Zacchaeus",
+      "Zachariel",
+      "Zack-olivier",
+      "Zalman",
+      "Zarif",
+      "Zarnish",
+      "Zawadi",
+      "Zaxton",
+      "Zealand",
+      "Zebedee",
+      "Zenith",
+      "Zephanie",
+      "Zephyr",
+      "Zeppelin",
+      "Zimal",
+      "Zitong",
+      "Zong",
+      "Zuleika",
+      "Zulfiqar",
+      "Zunaisha",
+      "Zuriel",
+      "Zyler"
+    ],
+    "operation": "create_knowledge_record",
+    "domainsAssigned": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history",
+      "variants"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 91.91,
+    "averageAfter": 93.05
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "monotonicKrGrowth": true,
+    "targetKrCount": true,
+    "targetUnresearched": true,
+    "noPartialRecords": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "duplicatePreventionPass": true,
+    "entityAccountingPass": true,
+    "frozenLayersPass": true,
+    "governanceMet": true,
+    "cumulativeBaselinePreserved": true,
+    "fullCorpusComplete": true
+  }
+}
