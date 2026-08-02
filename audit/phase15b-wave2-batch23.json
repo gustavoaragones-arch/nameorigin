@@ -1,0 +1,286 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "batch": 23,
+  "title": "Knowledge Record Expansion Wave 2A Batch 23 — Record Creation",
+  "generatedAt": "2026-08-02T00:15:31.790Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "cumulativeBaselineReference": "audit/phase15b-wave2-batch22-baseline.json",
+  "batchSelection": {
+    "method": "phase16a_creation_order",
+    "scope": "create_knowledge_record_only",
+    "wave": 2,
+    "subwave": "2A",
+    "batch": 23,
+    "rankStart": 2201,
+    "rankEnd": 2300,
+    "batchesCompleteBeforeSelection": 22,
+    "profilePattern": "full_six_domain_creation",
+    "sourceArtifact": "audit/phase16a-expansion-intelligence.json",
+    "governanceReference": "audit/phase16b-governance-check.json",
+    "cumulativeBaselineReference": "audit/phase15b-wave2-batch22-baseline.json",
+    "expectedKrCountAfter": 3450
+  },
+  "wave2Progress": {
+    "cumulativeKrTarget": 3450,
+    "cumulativeKrActual": 3450,
+    "batchesComplete": 23,
+    "unresearchedRemaining": 247
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true,
+    "priorWave2BatchesImmutable": true
+  },
+  "knowledgeRecordsBefore": 3350,
+  "knowledgeRecordsAfter": 3450,
+  "knowledgeRecordsAdded": 100,
+  "fullFiveDomainRecords": {
+    "before": 3350,
+    "after": 3450,
+    "increase": 100
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 3350,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 347
+    },
+    "after": {
+      "fullyResearchedEntities": 3450,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 247
+    }
+  },
+  "entityAccounting": {
+    "totalEntities": 3697,
+    "knowledgeRecordsPlusUnresearched": 3697,
+    "balanced": true
+  },
+  "duplicateCheck": {
+    "overlapWithPreBatchKnowledgeRecords": 0,
+    "batchKeysChecked": 100,
+    "pass": true
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 3350,
+        "pct": 90.61
+      },
+      "meaning": {
+        "count": 3350,
+        "pct": 90.61
+      },
+      "pronunciation": {
+        "count": 3350,
+        "pct": 90.61
+      },
+      "etymology": {
+        "count": 3350,
+        "pct": 90.61
+      },
+      "history": {
+        "count": 3350,
+        "pct": 90.61
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 3450,
+        "pct": 93.32
+      },
+      "meaning": {
+        "count": 3450,
+        "pct": 93.32
+      },
+      "pronunciation": {
+        "count": 3450,
+        "pct": 93.32
+      },
+      "etymology": {
+        "count": 3450,
+        "pct": 93.32
+      },
+      "history": {
+        "count": 3450,
+        "pct": 93.32
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "meaning": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "pronunciation": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "etymology": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "history": {
+        "count": 100,
+        "pct": 2.71
+      }
+    }
+  },
+  "batchCreation": {
+    "curatedCount": 100,
+    "names": [
+      "Ragnar",
+      "Rainbow",
+      "Raistlin",
+      "Rajdeep",
+      "Rajkaran",
+      "Rajneet",
+      "Rajveer",
+      "Ramadan",
+      "Ramandeep",
+      "Ramandip",
+      "Ramanpreet",
+      "Ramses",
+      "Randeep",
+      "Ranfateh",
+      "Ransher",
+      "Ransom",
+      "Rantegh",
+      "Ranvijay",
+      "Ravdeep",
+      "Ravjot",
+      "Ravleen",
+      "Rebecca-lynn",
+      "Redmond",
+      "Reginald",
+      "Rehbar",
+      "Remington",
+      "Renee-claude",
+      "Renleigh",
+      "Renley",
+      "Rhaenyra",
+      "Rhodes",
+      "Richere",
+      "Richmond",
+      "Ridley",
+      "Riordan",
+      "Rithvika",
+      "Riverlyn",
+      "Rivers",
+      "Robinson",
+      "Rodger",
+      "Rolanda",
+      "Roran",
+      "Rosalita",
+      "Rosamund",
+      "Rose-emilie",
+      "Royalty",
+      "Ruairi",
+      "Ruftalem",
+      "Ryandeep",
+      "Ryerson",
+      "Ryker",
+      "Ryland",
+      "Ryler",
+      "Salsabil",
+      "Sam-olivier",
+      "Samraj",
+      "Sandip",
+      "Sanjeev",
+      "Sanjog",
+      "Sara-rose",
+      "Sarah-elizabeth",
+      "Sarah-gabrielle",
+      "Sarah-marie",
+      "Sarbjot",
+      "Sarkis",
+      "Sarvika",
+      "Satchel",
+      "Satkar",
+      "Satsuki",
+      "Savgun",
+      "Savleen",
+      "Saxon",
+      "Sehajdeep",
+      "Sehajpreet",
+      "Selena-rose",
+      "Sepanta",
+      "Severin",
+      "Shabnam",
+      "Shadman",
+      "Shams",
+      "Shanleigh",
+      "Sharmarke",
+      "Sheridan",
+      "Sherman",
+      "Shiddat",
+      "Shubhkarman",
+      "Shutong",
+      "Sidrat",
+      "Sikander",
+      "Silken",
+      "Silver",
+      "Silvio",
+      "Simarpreet",
+      "Simon-olivier",
+      "Slade",
+      "Slater",
+      "Socrates",
+      "Solal",
+      "Solange",
+      "Soleil"
+    ],
+    "operation": "create_knowledge_record",
+    "domainsAssigned": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history",
+      "variants"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 84.61,
+    "averageAfter": 87.04
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "monotonicKrGrowth": true,
+    "targetKrCount": true,
+    "targetUnresearched": true,
+    "noPartialRecords": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "duplicatePreventionPass": true,
+    "entityAccountingPass": true,
+    "frozenLayersPass": true,
+    "governanceMet": true,
+    "cumulativeBaselinePreserved": true
+  }
+}
