@@ -1,0 +1,286 @@
+{
+  "phase": "15B",
+  "wave": 2,
+  "subwave": "2A",
+  "batch": 25,
+  "title": "Knowledge Record Expansion Wave 2A Batch 25 — Record Creation",
+  "generatedAt": "2026-08-02T02:44:11.478Z",
+  "baselineReference": "editorial-architecture-v2",
+  "governanceReference": "audit/phase16b-governance-check.json",
+  "cumulativeBaselineReference": "audit/phase15b-wave2-batch24-baseline.json",
+  "batchSelection": {
+    "method": "phase16a_creation_order",
+    "scope": "create_knowledge_record_only",
+    "wave": 2,
+    "subwave": "2A",
+    "batch": 25,
+    "rankStart": 2401,
+    "rankEnd": 2500,
+    "batchesCompleteBeforeSelection": 24,
+    "profilePattern": "full_six_domain_creation",
+    "sourceArtifact": "audit/phase16a-expansion-intelligence.json",
+    "governanceReference": "audit/phase16b-governance-check.json",
+    "cumulativeBaselineReference": "audit/phase15b-wave2-batch24-baseline.json",
+    "expectedKrCountAfter": 3650
+  },
+  "wave2Progress": {
+    "cumulativeKrTarget": 3650,
+    "cumulativeKrActual": 3650,
+    "batchesComplete": 25,
+    "unresearchedRemaining": 47
+  },
+  "governance": {
+    "schemaFrozen": true,
+    "kciWeightsFrozen": true,
+    "citationRegistryFrozen": true,
+    "popularityRegistryFrozen": true,
+    "creationOnly": true,
+    "wave1RecordsImmutable": true,
+    "priorWave2BatchesImmutable": true
+  },
+  "knowledgeRecordsBefore": 3550,
+  "knowledgeRecordsAfter": 3650,
+  "knowledgeRecordsAdded": 100,
+  "fullFiveDomainRecords": {
+    "before": 3550,
+    "after": 3650,
+    "increase": 100
+  },
+  "editorialCoverage": {
+    "before": {
+      "fullyResearchedEntities": 3550,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 147
+    },
+    "after": {
+      "fullyResearchedEntities": 3650,
+      "partialKnowledgeRecords": 0,
+      "entitiesWithoutKnowledgeRecords": 47
+    }
+  },
+  "entityAccounting": {
+    "totalEntities": 3697,
+    "knowledgeRecordsPlusUnresearched": 3697,
+    "balanced": true
+  },
+  "duplicateCheck": {
+    "overlapWithPreBatchKnowledgeRecords": 0,
+    "batchKeysChecked": 100,
+    "pass": true
+  },
+  "coverageByDomain": {
+    "before": {
+      "origin": {
+        "count": 3550,
+        "pct": 96.02
+      },
+      "meaning": {
+        "count": 3550,
+        "pct": 96.02
+      },
+      "pronunciation": {
+        "count": 3550,
+        "pct": 96.02
+      },
+      "etymology": {
+        "count": 3550,
+        "pct": 96.02
+      },
+      "history": {
+        "count": 3550,
+        "pct": 96.02
+      }
+    },
+    "after": {
+      "origin": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "meaning": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "pronunciation": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "etymology": {
+        "count": 3650,
+        "pct": 98.73
+      },
+      "history": {
+        "count": 3650,
+        "pct": 98.73
+      }
+    },
+    "increase": {
+      "origin": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "meaning": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "pronunciation": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "etymology": {
+        "count": 100,
+        "pct": 2.71
+      },
+      "history": {
+        "count": 100,
+        "pct": 2.71
+      }
+    }
+  },
+  "batchCreation": {
+    "curatedCount": 100,
+    "names": [
+      "Valeska",
+      "Valkyrie",
+      "Vanda",
+      "Vanden",
+      "Vander",
+      "Vanora",
+      "Vanshika",
+      "Vardaan",
+      "Varsha",
+      "Varvara",
+      "Vashti",
+      "Vasilios",
+      "Vaughn",
+      "Vedansh",
+      "Vedanshi",
+      "Vedika",
+      "Veera",
+      "Venba",
+      "Venkata",
+      "Verity",
+      "Vernon",
+      "Vesna",
+      "Vesper",
+      "Vicente",
+      "Vicky",
+      "Vidhitsa",
+      "Vidit",
+      "Vimal",
+      "Vincenza",
+      "Vinoth",
+      "Viransh",
+      "Virasat",
+      "Virat",
+      "Virgil",
+      "Vitaly",
+      "Vithuran",
+      "Vivek",
+      "Vlad",
+      "Vladyslava",
+      "Vliet",
+      "Vrinda",
+      "Vrishank",
+      "Vrushti",
+      "Vukasin",
+      "Wabigoni",
+      "Wahenoor",
+      "Wajiha",
+      "Walker",
+      "Wallis",
+      "Ward",
+      "Wareesha",
+      "Warner",
+      "Warsame",
+      "Wayden",
+      "Wedad",
+      "Wednesday",
+      "Weronika",
+      "Weslyn",
+      "West",
+      "Westley",
+      "Westlyn",
+      "Wheeler",
+      "Whitley",
+      "Wilhelmina",
+      "Willamina",
+      "William-alexandre",
+      "Willow-rose",
+      "Wincy",
+      "Windsor",
+      "Wing",
+      "Winner",
+      "Winry",
+      "Winslow",
+      "Winson",
+      "Wissam",
+      "Wissem",
+      "Wolfgang",
+      "Woodrow",
+      "Woods",
+      "Wynton",
+      "Xaiden",
+      "Xandra",
+      "Xavia",
+      "Xaviera",
+      "Xerxes",
+      "Xiaoran",
+      "Xinran",
+      "Xintong",
+      "Xinyuan",
+      "Xyla",
+      "Yafet",
+      "Yalda",
+      "Yamileth",
+      "Yamina",
+      "Yanet",
+      "Yaniv",
+      "Yann-ael",
+      "Yanrick",
+      "Yared",
+      "Yaretzi"
+    ],
+    "operation": "create_knowledge_record",
+    "domainsAssigned": [
+      "origin",
+      "meaning",
+      "pronunciation",
+      "etymology",
+      "history",
+      "variants"
+    ]
+  },
+  "qaStatus": {
+    "status": "PASS",
+    "clean": true,
+    "totalIssueCount": 0
+  },
+  "equivalenceStatus": {
+    "status": "PASS",
+    "differences": 0
+  },
+  "kciImpact": {
+    "averageBefore": 89.47,
+    "averageAfter": 91.91
+  },
+  "frozenLayerVerification": {
+    "kciEngineUnchanged": true,
+    "kciActivationUnchanged": true,
+    "popularityRegistryUnchanged": true
+  },
+  "validation": {
+    "entityCountUnchanged": true,
+    "monotonicKrGrowth": true,
+    "targetKrCount": true,
+    "targetUnresearched": true,
+    "noPartialRecords": true,
+    "qaPass": true,
+    "equivalencePass": true,
+    "editorialIntegrityPass": true,
+    "duplicatePreventionPass": true,
+    "entityAccountingPass": true,
+    "frozenLayersPass": true,
+    "governanceMet": true,
+    "cumulativeBaselinePreserved": true
+  }
+}
