@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-08-02T00:08:50.723Z",
+  "baselineReference": "editorial-architecture-v2",
+  "wave2Batch21EndState": true,
+  "previousBaselineReference": "audit/phase15b-wave2-batch21-baseline.json",
+  "editorialCoverage": {
+    "totalEntities": 3697,
+    "totalKnowledgeRecords": 3250,
+    "entitiesWithKnowledgeRecords": 3250,
+    "entitiesWithoutKnowledgeRecords": 447,
+    "knowledgeRecordCoveragePct": 87.91,
+    "fullyResearchedEntities": 3250,
+    "fullyResearchedPct": 87.91,
+    "partialKnowledgeRecords": 0,
+    "partialKnowledgeRecordPct": 0,
+    "partialAmongKnowledgeRecordsPct": 0,
+    "averageEditorialDomainsPerEntity": 5.27,
+    "averageEditorialDomainsPerKnowledgeRecord": 6,
+    "medianEditorialDomainsPerEntity": 6,
+    "maximumEditorialDomainsOnSingleEntity": 6,
+    "entitiesWithZeroEditorialDomains": 447,
+    "entitiesWithFullEditorialDomains": 3250
+  },
+  "knowledgeRecords": 3250,
+  "fullFiveDomainRecords": 3250,
+  "domainCoverage": {
+    "origin": {
+      "count": 3250,
+      "pct": 87.91
+    },
+    "meaning": {
+      "count": 3250,
+      "pct": 87.91
+    },
+    "pronunciation": {
+      "count": 3250,
+      "pct": 87.91
+    },
+    "etymology": {
+      "count": 3250,
+      "pct": 87.91
+    },
+    "history": {
+      "count": 3250,
+      "pct": 87.91
+    }
+  }
+}
