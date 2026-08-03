@@ -154,8 +154,9 @@ Phase 17A is the first post-expansion capability phase. It consumes the complete
 | Phase | Focus |
 | --- | --- |
 | **17A** | Knowledge Graph Engine → freeze |
-| 17B | Relationship Navigation |
-| 18A | Structured Exports |
+| 17B | Navigation Engine → freeze |
+| 17C | Relationship Presentation |
+| 18A | Structured Export Engine |
 | 18B | AI / Research API |
 | 19A | Dataset Publication |
 

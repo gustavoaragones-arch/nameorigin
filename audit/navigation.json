@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-08-03T00:07:57.818Z",
+  "phase": "17B",
+  "title": "Relationship Navigation Engine v1",
+  "baselineReference": "editorial-architecture-v2",
+  "readOnly": true,
+  "navigationVersion": "17B-v1",
+  "graphVersion": "17A-v1",
+  "graphSemanticHash": "5cc6f2594d1172e915f32284c78e0d9a9f04a06669e1756fa6f82b2e43c79156",
+  "entityCount": 3697,
+  "metrics": {
+    "entityCount": 3697,
+    "averageRelatedNames": 8.1612,
+    "maxRelatedNames": 60,
+    "emptyNavigationNodes": 1,
+    "relationshipUsage": {
+      "RELATED_MEANING": 1973,
+      "SAME_CULTURAL_GROUP": 3528,
+      "SAME_LANGUAGE": 3660,
+      "SAME_ORIGIN": 3691,
+      "SIMILAR_PRONUNCIATION": 239
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "errorCount": 0,
+    "errors": [],
+    "deterministicOrdering": true,
+    "semanticHash": "876f9628d5b8100811fb102b1c92816641beb1ab24ac50ef57ee56461b024b82",
+    "editorialDataUnchanged": true,
+    "graphUnchanged": true,
+    "frozenLayers": {
+      "knowledgeRecordsUnchanged": true,
+      "knowledgeGraphUnchanged": true
+    }
+  },
+  "outputs": {
+    "relatedNames": "data/navigation/related-names.json",
+    "originNavigation": "data/navigation/origin-navigation.json",
+    "languageNavigation": "data/navigation/language-navigation.json",
+    "meaningNavigation": "data/navigation/meaning-navigation.json",
+    "pronunciationNavigation": "data/navigation/pronunciation-navigation.json",
+    "culturalNavigation": "data/navigation/cultural-navigation.json"
+  }
+}
