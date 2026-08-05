@@ -28,6 +28,27 @@ Name Pages / Explorer Pages / APIs (future)
 
 Phase 17B stops at navigation artifact generation and validation. No UI, no page generation, no API.
 
+## Navigation Contract (frozen API)
+
+The six navigation artifacts form a stable contract for every downstream consumer:
+
+```
+Knowledge Graph (Frozen)
+        │
+        ▼
+Navigation Engine (Frozen)
+        │
+        ▼
+Navigation Contract
+        │
+   ┌────┼──────────┬─────────┐
+   ▼    ▼          ▼         ▼
+ 17C   18A        18B      future
+ UI  Export       API    Consumers
+```
+
+Phase 17C, structured exports, APIs, and future search features must consume only the navigation artifacts — never `data/graph/*` directly. Graph internals may evolve without affecting presentation or export consumers as long as the navigation contract remains stable.
+
 ## Inputs
 
 The navigation engine reads only Phase 17A graph artifacts:

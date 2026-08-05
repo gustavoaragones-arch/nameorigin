@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-08-03T01:57:38.793Z",
+  "phase": "17C",
+  "title": "Relationship Presentation v1",
+  "baselineReference": "editorial-architecture-v2",
+  "readOnly": true,
+  "presentationVersion": "17C-v1",
+  "navigationVersion": "17B-v1",
+  "graphVersion": "17A-v1",
+  "graphSemanticHash": "5cc6f2594d1172e915f32284c78e0d9a9f04a06669e1756fa6f82b2e43c79156",
+  "navigationSemanticHash": "876f9628d5b8100811fb102b1c92816641beb1ab24ac50ef57ee56461b024b82",
+  "entityCount": 3697,
+  "metrics": {
+    "entityCount": 3697,
+    "pagesWithContent": 3696,
+    "emptyPages": 1,
+    "explorerPages": 981,
+    "relatedNameCards": 30172,
+    "explorerGroups": 981,
+    "pagesUpdated": 3697,
+    "pagesMissing": 0,
+    "pagesWithMarkers": 0,
+    "brokenLinks": 0
+  },
+  "validation": {
+    "status": "PASS",
+    "errorCount": 0,
+    "errors": [],
+    "deterministicOrdering": true,
+    "semanticHash": "fc381a99ea6102afa48733c4bcd2595c221005f8c52d4a7cb3ab8801d90c71b2",
+    "editorialDataUnchanged": true,
+    "graphUnchanged": true,
+    "navigationUnchanged": true,
+    "frozenLayers": {
+      "knowledgeRecordsUnchanged": true,
+      "knowledgeGraphUnchanged": true,
+      "navigationUnchanged": true
+    }
+  },
+  "outputs": {
+    "namePages": "name/{slug}/index.html",
+    "relationshipsHub": "relationships/index.html",
+    "explorerPages": "relationships/{kind}/{group-id}/index.html"
+  }
+}
