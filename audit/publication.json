@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-08-06T13:56:28.559Z",
+  "phase": "19A",
+  "title": "Versioned Dataset Publication v1",
+  "baselineReference": "export-contract-v1",
+  "readOnly": true,
+  "publicationVersion": "19A-v1",
+  "datasetVersion": "18A-v1",
+  "generationTimeMs": 30522,
+  "metrics": {
+    "releaseVersion": "18A-v1",
+    "filesPackaged": 8313,
+    "totalBytes": 135090075,
+    "checksumCount": 8313,
+    "categories": {
+      "knowledge": 3,
+      "citations": 3,
+      "popularity": 3,
+      "graph": 3,
+      "navigation": 6,
+      "api": 8291
+    },
+    "recordCounts": {
+      "knowledgeRecords": 3697,
+      "citationRecords": 3697,
+      "popularityRecords": 5,
+      "graphNodes": 3697,
+      "graphEdges": 23737,
+      "graphJsonlLines": 23737,
+      "navigationEntities": 3697,
+      "navigationOriginGroups": 36,
+      "navigationLanguageGroups": 62,
+      "navigationMeaningGroups": 582,
+      "navigationPronunciationGroups": 114,
+      "navigationCulturalGroups": 187,
+      "knowledgeCsvRows": 3697,
+      "citationsCsvRows": 3697,
+      "popularityCsvRows": 7
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "errorCount": 0,
+    "errors": [],
+    "deterministicOrdering": true,
+    "semanticHash": "91c5f6ff398fc9cb07810bffdd0eca35f16af44b7f7444f073c8178f978b9a2a",
+    "exportUnchanged": true,
+    "apiUnchanged": true,
+    "frozenLayers": {
+      "exportContractUnchanged": true,
+      "apiOutputsUnchanged": true
+    }
+  },
+  "outputs": {
+    "releaseDirectory": "releases/18A-v1",
+    "manifest": "releases/18A-v1/manifest.json",
+    "checksums": "releases/18A-v1/checksums.sha256"
+  }
+}

@@ -71,6 +71,7 @@ data/
 downloads/
 exports/
 /api/
+/releases/
 datasets/
 **/normalized*.json
 *.csv
