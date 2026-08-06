@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-08-06T14:00:00.000Z",
+  "phase": "Platform Certification",
+  "title": "NameOrigin.io Platform Certification v1.0",
+  "platformVersion": "1.0",
+  "status": "architecture_complete",
+  "baselineReference": "editorial-architecture-v2",
+  "certificationDate": "2026-08-06",
+  "corpusSize": 3697,
+  "primaryDatasetRelease": "18A-v1",
+  "eras": {
+    "foundation": "complete",
+    "intelligence": "complete",
+    "trust": "complete",
+    "expansion": "complete",
+    "consumption": "complete"
+  },
+  "frozenLayers": {
+    "knowledgeRecords": { "schemaVersion": "2.0", "recordCount": 3697 },
+    "citationRecords": { "schemaVersion": "1.0", "recordCount": 3697 },
+    "popularityRecords": { "schemaVersion": "1.0", "recordCount": 5 },
+    "knowledgeGraph": { "version": "17A-v1", "nodeCount": 3697, "edgeCount": 23737 },
+    "navigation": { "version": "17B-v1", "entityCount": 3697 },
+    "presentation": { "version": "17C-v1", "namePages": 3697, "explorerPages": 981 },
+    "exportContract": { "version": "18A-v1", "artifactCount": 19 },
+    "api": { "version": "1", "staticResponses": 8289 },
+    "publication": { "version": "19A-v1", "releaseVersion": "18A-v1" }
+  },
+  "semanticHashes": {
+    "knowledgeGraph17A": "5cc6f2594d1172e915f32284c78e0d9a9f04a06669e1756fa6f82b2e43c79156",
+    "navigation17B": "876f9628d5b8100811fb102b1c92816641beb1ab24ac50ef57ee56461b024b82",
+    "presentation17C": "fc381a99ea6102afa48733c4bcd2595c221005f8c52d4a7cb3ab8801d90c71b2",
+    "export18A": "229318105314bda7bb7f66c5271f782b8823ac9adf031d14eb29790f4967c5ab",
+    "api18B": "f7bec6b93c3ff71fe7f9c048adf0d8877353332e95c4845e4641757ddccfdd85",
+    "publication19A": "91c5f6ff398fc9cb07810bffdd0eca35f16af44b7f7444f073c8178f978b9a2a"
+  },
+  "datasetStatistics": {
+    "knowledgeRecords": 3697,
+    "citationRecords": 3697,
+    "popularityRecords": 5,
+    "averageKci": 93.05,
+    "graphNodes": 3697,
+    "graphEdges": 23737,
+    "navigationEntities": 3697,
+    "averageRelatedNames": 8.1612,
+    "relatedNameCards": 30172,
+    "exportArtifacts": 19,
+    "apiResponses": 8289,
+    "publishedFiles": 8313,
+    "publishedBytes": 135090075,
+    "publishedChecksums": 8313
+  },
+  "validationSummary": {
+    "knowledgeGraph17A": "PASS",
+    "navigation17B": "PASS",
+    "presentation17C": "PASS",
+    "export18A": "PASS",
+    "api18B": "PASS",
+    "publication19A": "PASS"
+  },
+  "publicContracts": {
+    "navigationContract": "data/navigation/*.json",
+    "exportContract": "exports/*",
+    "publishedRelease": "releases/18A-v1/"
+  },
+  "governancePrinciples": [
+    "single_direction_dependency",
+    "explicit_contracts_only",
+    "determinism_over_heuristics",
+    "absence_is_null",
+    "audit_before_freeze",
+    "version_everything",
+    "publication_is_packaging"
+  ],
+  "auditReferences": {
+    "knowledgeGraph": "audit/knowledge-graph.json",
+    "navigation": "audit/navigation.json",
+    "presentation": "audit/relationship-presentation.json",
+    "structuredExports": "audit/structured-exports.json",
+    "api": "audit/api.json",
+    "publication": "audit/publication.json",
+    "kci": "audit/knowledge-completeness.json"
+  },
+  "documentation": {
+    "certification": "docs/PLATFORM_CERTIFICATION_V1.md",
+    "architectureHistory": "docs/ARCHITECTURE_VERSION_HISTORY.md"
+  },
+  "futureWorkModel": "dataset_operations_not_architecture"
+}
