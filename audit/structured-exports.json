@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-05T14:07:43.934Z",
+  "phase": "18A",
+  "title": "Structured Export Engine v1",
+  "baselineReference": "editorial-architecture-v2",
+  "readOnly": true,
+  "exportVersion": "18A-v1",
+  "generationTimeMs": 3935,
+  "metrics": {
+    "filesGenerated": 19,
+    "totalExportedRecords": 38530,
+    "formats": [
+      "json",
+      "jsonl",
+      "csv"
+    ],
+    "recordCounts": {
+      "knowledgeRecords": 3697,
+      "citationRecords": 3697,
+      "popularityRecords": 5,
+      "graphNodes": 3697,
+      "graphEdges": 23737,
+      "graphJsonlLines": 23737,
+      "navigationEntities": 3697,
+      "navigationOriginGroups": 36,
+      "navigationLanguageGroups": 62,
+      "navigationMeaningGroups": 582,
+      "navigationPronunciationGroups": 114,
+      "navigationCulturalGroups": 187,
+      "knowledgeCsvRows": 3697,
+      "citationsCsvRows": 3697,
+      "popularityCsvRows": 7
+    },
+    "artifacts": 19
+  },
+  "validation": {
+    "status": "PASS",
+    "errorCount": 0,
+    "errors": [],
+    "deterministicOrdering": true,
+    "semanticHash": "229318105314bda7bb7f66c5271f782b8823ac9adf031d14eb29790f4967c5ab",
+    "frozenLayers": {
+      "knowledgeRecordsUnchanged": true,
+      "citationRecordsUnchanged": true,
+      "popularityRecordsUnchanged": true,
+      "knowledgeGraphUnchanged": true,
+      "navigationUnchanged": true,
+      "kciUnchanged": true,
+      "allSourceArtifactsUnchanged": true
+    }
+  },
+  "outputs": {
+    "exportDirectory": "exports/",
+    "manifest": "exports/manifest.json"
+  }
+}
