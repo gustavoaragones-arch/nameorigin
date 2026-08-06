@@ -70,6 +70,7 @@ raw-data/
 data/
 downloads/
 exports/
+/api/
 datasets/
 **/normalized*.json
 *.csv

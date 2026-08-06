@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-08-06T02:28:39.510Z",
+  "phase": "18B",
+  "title": "AI / Research API v1",
+  "baselineReference": "export-contract-v1",
+  "readOnly": true,
+  "apiVersion": "1",
+  "datasetVersion": "18A-v1",
+  "exportSemanticHash": "229318105314bda7bb7f66c5271f782b8823ac9adf031d14eb29790f4967c5ab",
+  "entityCount": 3697,
+  "generationTimeMs": 10871,
+  "metrics": {
+    "endpoints": {
+      "manifest": 1,
+      "name": 3697,
+      "relationships": 3697,
+      "origin": 36,
+      "language": 62,
+      "meaning": 582,
+      "cultural": 187,
+      "searchIndex": 1
+    },
+    "lookupIndexes": {
+      "slugs": 3697,
+      "originGroups": 36,
+      "languageGroups": 62,
+      "meaningGroups": 582,
+      "culturalGroups": 187
+    },
+    "responseCount": 8289,
+    "formats": [
+      "json"
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "errorCount": 0,
+    "errors": [],
+    "deterministicOrdering": true,
+    "semanticHash": "f7bec6b93c3ff71fe7f9c048adf0d8877353332e95c4845e4641757ddccfdd85",
+    "exportUnchanged": true,
+    "exportSemanticHashMatch": true,
+    "frozenLayers": {
+      "exportContractUnchanged": true
+    }
+  },
+  "outputs": {
+    "apiRoot": "api/v1/",
+    "manifest": "api/v1/manifest.json",
+    "name": "api/v1/name/{slug}.json",
+    "relationships": "api/v1/relationships/{slug}.json",
+    "origin": "api/v1/origin/{group}.json",
+    "language": "api/v1/language/{group}.json",
+    "meaning": "api/v1/meaning/{group}.json",
+    "cultural": "api/v1/cultural/{group}.json",
+    "searchIndex": "api/v1/search-index.json",
+    "searchPrefix": "api/v1/search/{prefix}.json"
+  }
+}
